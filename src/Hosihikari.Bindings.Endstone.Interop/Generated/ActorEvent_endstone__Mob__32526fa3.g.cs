@@ -16,7 +16,7 @@ public sealed unsafe partial class ActorEvent_endstone__Mob_
 
     public nint getActor()
     {
-        return (nint)NativeMethods.TablePtr->f49((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f58((void*)_handle);
     }
 
     public void Destroy() =>

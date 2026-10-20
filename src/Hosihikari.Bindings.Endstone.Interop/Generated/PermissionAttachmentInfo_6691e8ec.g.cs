@@ -16,30 +16,30 @@ public sealed unsafe partial class PermissionAttachmentInfo : global::System.IDi
 
     public nint getAttachment()
     {
-        return (nint)NativeMethods.TablePtr->f910((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f926((void*)_handle);
     }
 
     public nint getPermissible()
     {
-        return (nint)NativeMethods.TablePtr->f911((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f927((void*)_handle);
     }
 
     public string getPermission()
     {
-        var __hs_view = NativeMethods.TablePtr->f912((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f928((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool getValue()
     {
-        return NativeMethods.TablePtr->f913((void*)_handle);
+        return NativeMethods.TablePtr->f929((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f909((void*)_handle);
+            NativeMethods.TablePtr->f925((void*)_handle);
             _handle = 0;
         }
     }

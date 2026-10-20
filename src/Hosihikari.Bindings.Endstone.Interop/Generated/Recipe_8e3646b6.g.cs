@@ -13,7 +13,7 @@ public sealed unsafe partial class Recipe
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack getResult()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f1248((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f1264((void*)_handle));
     }
 
     public void Destroy() =>

@@ -16,60 +16,60 @@ public sealed unsafe partial class Actor
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(tag);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f11((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f20((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public nint asItem()
     {
-        return (nint)NativeMethods.TablePtr->f12((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f21((void*)_handle);
     }
 
     public nint asMob()
     {
-        return (nint)NativeMethods.TablePtr->f13((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f22((void*)_handle);
     }
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f14((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f23((void*)_handle);
     }
 
     public long getId()
     {
-        return NativeMethods.TablePtr->f15((void*)_handle);
+        return NativeMethods.TablePtr->f24((void*)_handle);
     }
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f16((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f25((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location getLocation()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->f17((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->f26((void*)_handle));
     }
 
     public string getNameTag()
     {
-        var __hs_view = NativeMethods.TablePtr->f18((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f27((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public ulong getRuntimeId()
     {
-        return NativeMethods.TablePtr->f19((void*)_handle);
+        return NativeMethods.TablePtr->f28((void*)_handle);
     }
 
     public string getScoreTag()
     {
-        var __hs_view = NativeMethods.TablePtr->f20((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f29((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string[] getScoreboardTags()
     {
-        var __hs_view = NativeMethods.TablePtr->f21((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f30((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -81,53 +81,53 @@ public sealed unsafe partial class Actor
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f22((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f31((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector getVelocity()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f23((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f32((void*)_handle));
     }
 
     public bool isDead()
     {
-        return NativeMethods.TablePtr->f24((void*)_handle);
+        return NativeMethods.TablePtr->f33((void*)_handle);
     }
 
     public bool isInLava()
     {
-        return NativeMethods.TablePtr->f25((void*)_handle);
+        return NativeMethods.TablePtr->f34((void*)_handle);
     }
 
     public bool isInWater()
     {
-        return NativeMethods.TablePtr->f26((void*)_handle);
+        return NativeMethods.TablePtr->f35((void*)_handle);
     }
 
     public bool isNameTagAlwaysVisible()
     {
-        return NativeMethods.TablePtr->f27((void*)_handle);
+        return NativeMethods.TablePtr->f36((void*)_handle);
     }
 
     public bool isNameTagVisible()
     {
-        return NativeMethods.TablePtr->f28((void*)_handle);
+        return NativeMethods.TablePtr->f37((void*)_handle);
     }
 
     public bool isOnGround()
     {
-        return NativeMethods.TablePtr->f29((void*)_handle);
+        return NativeMethods.TablePtr->f38((void*)_handle);
     }
 
     public bool isValid()
     {
-        return NativeMethods.TablePtr->f30((void*)_handle);
+        return NativeMethods.TablePtr->f39((void*)_handle);
     }
 
     public void remove()
     {
-        NativeMethods.TablePtr->f31((void*)_handle);
+        NativeMethods.TablePtr->f40((void*)_handle);
     }
 
     public bool removeScoreboardTag(string tag)
@@ -135,7 +135,7 @@ public sealed unsafe partial class Actor
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(tag);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f32((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f41((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -144,23 +144,23 @@ public sealed unsafe partial class Actor
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f33((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f42((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void setNameTagAlwaysVisible(bool visible)
     {
-        NativeMethods.TablePtr->f34((void*)_handle, visible);
+        NativeMethods.TablePtr->f43((void*)_handle, visible);
     }
 
     public void setNameTagVisible(bool visible)
     {
-        NativeMethods.TablePtr->f35((void*)_handle, visible);
+        NativeMethods.TablePtr->f44((void*)_handle, visible);
     }
 
     public void setRotation(float yaw, float pitch)
     {
-        NativeMethods.TablePtr->f36((void*)_handle, yaw, pitch);
+        NativeMethods.TablePtr->f45((void*)_handle, yaw, pitch);
     }
 
     public void setScoreTag(string score)
@@ -168,17 +168,17 @@ public sealed unsafe partial class Actor
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(score);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f37((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f46((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool teleport(global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor target)
     {
-        return NativeMethods.TablePtr->f38((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->f47((void*)_handle, (void*)target.Handle);
     }
 
     public bool teleport(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location)
     {
-        return NativeMethods.TablePtr->f39((void*)_handle, (void*)location.Handle);
+        return NativeMethods.TablePtr->f48((void*)_handle, (void*)location.Handle);
     }
 }

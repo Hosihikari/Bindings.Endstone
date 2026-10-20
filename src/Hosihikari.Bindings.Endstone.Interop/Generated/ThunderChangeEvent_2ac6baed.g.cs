@@ -13,7 +13,7 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1451();
+        get => (nint)NativeMethods.TablePtr->f1467();
     }
 
     public static ThunderChangeEvent Create(nint level, bool to) =>
@@ -21,13 +21,13 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1452((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1468((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool toThunderState()
     {
-        return NativeMethods.TablePtr->f1453((void*)_handle);
+        return NativeMethods.TablePtr->f1469((void*)_handle);
     }
 
 
@@ -35,7 +35,7 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1450((void*)_handle);
+            NativeMethods.TablePtr->f1466((void*)_handle);
             _handle = 0;
         }
     }

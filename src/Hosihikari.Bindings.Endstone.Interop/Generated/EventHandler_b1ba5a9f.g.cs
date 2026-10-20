@@ -16,35 +16,35 @@ public sealed unsafe partial class EventHandler : global::System.IDisposable
 
     public void callEvent(global::Hosihikari.Bindings.Endstone.Interop.endstone.Event @event)
     {
-        NativeMethods.TablePtr->f514((void*)_handle, (void*)@event.Handle);
+        NativeMethods.TablePtr->f524((void*)_handle, (void*)@event.Handle);
     }
 
     public string getEventType()
     {
-        var __hs_view = NativeMethods.TablePtr->f515((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f525((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->f516((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f526((void*)_handle);
     }
 
     public int getPriority()
     {
-        return NativeMethods.TablePtr->f517((void*)_handle);
+        return NativeMethods.TablePtr->f527((void*)_handle);
     }
 
     public bool isIgnoreCancelled()
     {
-        return NativeMethods.TablePtr->f518((void*)_handle);
+        return NativeMethods.TablePtr->f528((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f513((void*)_handle);
+            NativeMethods.TablePtr->f523((void*)_handle);
             _handle = 0;
         }
     }

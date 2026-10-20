@@ -13,47 +13,49 @@ public sealed unsafe partial class MessageForm : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getButton1()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f819((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f832((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getButton2()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f820((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f833((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getContent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f821((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f834((void*)_handle));
     }
 
-    public nint getOnSubmit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *, int)>' is not supported.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Function_e874b0c2 getOnSubmit()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Function_e874b0c2((nint)NativeMethods.TablePtr->f835((void*)_handle));
+    }
 
     public nint setButton1(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f822((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->f836((void*)_handle, (void*)text.Handle);
     }
 
     public nint setButton2(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f823((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->f837((void*)_handle, (void*)text.Handle);
     }
 
     public nint setContent(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f824((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->f838((void*)_handle, (void*)text.Handle);
     }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f825((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f839((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f818((void*)_handle);
+            NativeMethods.TablePtr->f831((void*)_handle);
             _handle = 0;
         }
     }

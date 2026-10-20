@@ -80,6 +80,18 @@
 #ifndef HS_ACTION_FORM_DESTROY_INDEX
 #error "HS_ACTION_FORM_DESTROY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_ACTION_FORM_SET_ON_SUBMIT_INDEX
+#error "HS_ACTION_FORM_SET_ON_SUBMIT_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ACTION_FORM_GET_ON_SUBMIT_INDEX
+#error "HS_ACTION_FORM_GET_ON_SUBMIT_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_CALLABLE_INVOKE_INDEX
+#error "HS_CALLABLE_INVOKE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_CALLABLE_DESTROY_INDEX
+#error "HS_CALLABLE_DESTROY_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_VARIANT_CREATE_STRING_INDEX
 #error "HS_VARIANT_CREATE_STRING_INDEX must be defined by build.ps1"
 #endif
@@ -95,6 +107,12 @@
 
 namespace {
 void pluginAnchor() {}
+
+int g_submitCalls = 0;
+int g_submitReleases = 0;
+
+void smokeSubmit(void *, void *, int) { ++g_submitCalls; }
+void smokeSubmitRelease(void *) { ++g_submitReleases; }
 }  // namespace
 
 class ShimSmokePlugin : public endstone::Plugin {
@@ -345,6 +363,24 @@ public:
                 }
             }
 
+            using SetOnSubmitFn = void *(*)(void *, void *, void *, void *);
+            using GetOnSubmitFn = void *(*)(void *);
+            using InvokeSubmitFn = void (*)(void *, void *, std::int32_t);
+            bool callableOk = false;
+            if (actionForm) {
+                reinterpret_cast<SetOnSubmitFn>(slots[HS_ACTION_FORM_SET_ON_SUBMIT_INDEX])(
+                    actionForm,
+                    reinterpret_cast<void *>(&smokeSubmit),
+                    nullptr,
+                    reinterpret_cast<void *>(&smokeSubmitRelease));
+                auto *submit = reinterpret_cast<GetOnSubmitFn>(slots[HS_ACTION_FORM_GET_ON_SUBMIT_INDEX])(actionForm);
+                if (submit) {
+                    reinterpret_cast<InvokeSubmitFn>(slots[HS_CALLABLE_INVOKE_INDEX])(submit, nullptr, 0);
+                    callableOk = g_submitCalls == 1;
+                    reinterpret_cast<DestroyFn>(slots[HS_CALLABLE_DESTROY_INDEX])(submit);
+                }
+            }
+
             if (content) {
                 reinterpret_cast<DestroyFn>(slots[HS_VARIANT_DESTROY_INDEX])(content);
             }
@@ -353,11 +389,14 @@ public:
                 reinterpret_cast<DestroyFn>(slots[HS_ACTION_FORM_DESTROY_INDEX])(actionForm);
             }
 
+            callableOk = callableOk && g_submitReleases == 1;
             out << "action_form.string_variant=" << (variantOk ? "ok" : "FAIL") << "\n";
+            out << "callable.round_trip=" << (callableOk ? "ok" : "FAIL") << "\n";
 
             out << "result="
                 << (actualName == server.getName() && actualVersion == server.getVersion() && vectorsOk
-                            && pluginsOk && sharedOk && objectivesOk && containersOk && banRoundTripOk && variantOk
+                            && pluginsOk && sharedOk && objectivesOk && containersOk && banRoundTripOk
+                            && variantOk && callableOk
                         ? "OK"
                         : "FAIL")
                 << "\n";

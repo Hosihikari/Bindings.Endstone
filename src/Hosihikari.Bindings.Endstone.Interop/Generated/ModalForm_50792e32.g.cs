@@ -13,7 +13,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
 
     public nint addControl(nint control)
     {
-        return (nint)NativeMethods.TablePtr->f832((void*)_handle, (void*)control);
+        return (nint)NativeMethods.TablePtr->f846((void*)_handle, (void*)control);
     }
 
     public nint getControls() =>
@@ -22,17 +22,19 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
     public string? getIcon()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f833((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f847((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
-    public nint getOnSubmit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *, std::basic_string<char>)>' is not supported.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Function_08258ebd getOnSubmit()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Function_08258ebd((nint)NativeMethods.TablePtr->f848((void*)_handle));
+    }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getSubmitButton()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f834((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f849((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
@@ -44,25 +46,25 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f835((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, icon is not null);
+            return (nint)NativeMethods.TablePtr->f850((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, icon is not null);
         }
     }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f836((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f851((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public nint setSubmitButton(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? text)
     {
-        return (nint)NativeMethods.TablePtr->f837((void*)_handle, (void*)(text?.Handle ?? 0), text is not null);
+        return (nint)NativeMethods.TablePtr->f852((void*)_handle, (void*)(text?.Handle ?? 0), text is not null);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f831((void*)_handle);
+            NativeMethods.TablePtr->f845((void*)_handle);
             _handle = 0;
         }
     }

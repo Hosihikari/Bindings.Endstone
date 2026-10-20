@@ -88,6 +88,126 @@ inline std::vector<std::basic_string_view<char>> hs_make_string_view_vector(Hosi
     return result;
 }
 
+static void hs_callable_7a4e965f_destroy(void* hs_self) try
+{
+    delete static_cast<std::function<void (const endstone::PermissionAttachment &)>*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_callable_7a4e965f_invoke(void* hs_self, void* arg0) try
+{
+    (*static_cast<std::function<void (const endstone::PermissionAttachment &)>*>(hs_self))(*static_cast<const endstone::PermissionAttachment*>(arg0));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_callable_a442e6f7_destroy(void* hs_self) try
+{
+    delete static_cast<std::function<void (endstone::Player *)>*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_callable_a442e6f7_invoke(void* hs_self, void* arg0) try
+{
+    (*static_cast<std::function<void (endstone::Player *)>*>(hs_self))(static_cast<endstone::Player*>(arg0));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_callable_e874b0c2_destroy(void* hs_self) try
+{
+    delete static_cast<std::function<void (endstone::Player *, int)>*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_callable_e874b0c2_invoke(void* hs_self, void* arg0, std::int32_t arg1) try
+{
+    (*static_cast<std::function<void (endstone::Player *, int)>*>(hs_self))(static_cast<endstone::Player*>(arg0), static_cast<int>(arg1));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_callable_08258ebd_destroy(void* hs_self) try
+{
+    delete static_cast<std::function<void (endstone::Player *, std::basic_string<char>)>*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_callable_08258ebd_invoke(void* hs_self, void* arg0, const char* arg1_data, std::size_t arg1_size) try
+{
+    (*static_cast<std::function<void (endstone::Player *, std::basic_string<char>)>*>(hs_self))(static_cast<endstone::Player*>(arg0), std::basic_string<char>(arg1_data, arg1_size));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_destroy_14f013f3(void* hs_self) try
 {
     delete static_cast<endstone::ActionForm*>(hs_self);
@@ -216,6 +336,21 @@ catch (...)
 static void* hs_method_d5090347(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ActionForm*>(hs_self)->getControls()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_fd0890fa(void* hs_self) try
+{
+    return static_cast<void*>(new std::function<void (endstone::Player *, int)>(static_cast<endstone::ActionForm*>(hs_self)->getOnSubmit()));
 }
 catch (std::exception const& hs_error)
 {
@@ -3917,6 +4052,21 @@ catch (...)
     setLastError("unknown native exception");
     if (hs_hasValue) { *hs_hasValue = false; }
     return HosihikariStringView{nullptr, 0};
+}
+
+static void* hs_method_b6343190(void* hs_self) try
+{
+    return static_cast<void*>(new std::function<void (endstone::Player *)>(static_cast<endstone::Button*>(hs_self)->getOnClick()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void* hs_method_b2627229(void* hs_self) try
@@ -8213,6 +8363,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_f3d0d576(void* hs_self) try
+{
+    return static_cast<void*>(new std::function<void (endstone::Player *)>(static_cast<endstone::Form<endstone::ActionForm>*>(hs_self)->getOnClose()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_3eb60709(void* hs_self) try
 {
     return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Form<endstone::ActionForm>*>(hs_self)->getTitle()));
@@ -8308,6 +8473,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_c1218e7f(void* hs_self) try
+{
+    return static_cast<void*>(new std::function<void (endstone::Player *)>(static_cast<endstone::Form<endstone::MessageForm>*>(hs_self)->getOnClose()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_200d5e7a(void* hs_self) try
 {
     return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Form<endstone::MessageForm>*>(hs_self)->getTitle()));
@@ -8391,6 +8571,21 @@ catch (...)
 static void* hs_create_5911bb43() try
 {
     return new endstone::Form<endstone::ModalForm>();
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_88a5abf6(void* hs_self) try
+{
+    return static_cast<void*>(new std::function<void (endstone::Player *)>(static_cast<endstone::Form<endstone::ModalForm>*>(hs_self)->getOnClose()));
 }
 catch (std::exception const& hs_error)
 {
@@ -12943,6 +13138,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_9826e082(void* hs_self) try
+{
+    return static_cast<void*>(new std::function<void (endstone::Player *, int)>(static_cast<endstone::MessageForm*>(hs_self)->getOnSubmit()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_41da86fb(void* hs_self, void* text) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::MessageForm*>(hs_self)->setButton1(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text))));
@@ -13146,6 +13356,21 @@ catch (...)
     setLastError("unknown native exception");
     if (hs_hasValue) { *hs_hasValue = false; }
     return HosihikariStringView{nullptr, 0};
+}
+
+static void* hs_method_738959a6(void* hs_self) try
+{
+    return static_cast<void*>(new std::function<void (endstone::Player *, std::basic_string<char>)>(static_cast<endstone::ModalForm*>(hs_self)->getOnSubmit()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void* hs_method_87da21ad(void* hs_self, bool* hs_hasValue) try
@@ -14234,6 +14459,21 @@ catch (...)
 static void* hs_method_bafd887c(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::PermissionAttachment*>(hs_self)->getPlugin()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_1561e66f(void* hs_self) try
+{
+    return static_cast<void*>(new std::function<void (const endstone::PermissionAttachment &)>(static_cast<endstone::PermissionAttachment*>(hs_self)->getRemovalCallback()));
 }
 catch (std::exception const& hs_error)
 {
@@ -26781,6 +27021,14 @@ catch (...)
 const HosihikariBindingTableV1 kTable{
     std::uint32_t{1},
     static_cast<std::uint32_t>(sizeof(HosihikariBindingTableV1)),
+    &hs_callable_7a4e965f_destroy,
+    &hs_callable_7a4e965f_invoke,
+    &hs_callable_a442e6f7_destroy,
+    &hs_callable_a442e6f7_invoke,
+    &hs_callable_e874b0c2_destroy,
+    &hs_callable_e874b0c2_invoke,
+    &hs_callable_08258ebd_destroy,
+    &hs_callable_08258ebd_invoke,
     &hs_destroy_14f013f3,
     &hs_create_598bce7a,
     &hs_method_e3736391,
@@ -26789,6 +27037,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_20c60f83,
     &hs_method_9d857e16,
     &hs_method_d5090347,
+    &hs_method_fd0890fa,
     &hs_method_3f77668b,
     &hs_method_0cf944fa,
     &hs_method_7a063590,
@@ -27025,6 +27274,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_a4f12f29,
     &hs_create_ed5746f6,
     &hs_method_694a6369,
+    &hs_method_b6343190,
     &hs_method_b2627229,
     &hs_method_ebda1615,
     &hs_method_7466e41b,
@@ -27302,16 +27552,19 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f53a20bc,
     &hs_destroy_ba9f438f,
     &hs_create_3f90e3e1,
+    &hs_method_f3d0d576,
     &hs_method_3eb60709,
     &hs_method_dd992244,
     &hs_method_8541389a,
     &hs_destroy_1ad4d711,
     &hs_create_26427ab1,
+    &hs_method_c1218e7f,
     &hs_method_200d5e7a,
     &hs_method_dab04cb1,
     &hs_method_3aab670c,
     &hs_destroy_42131b78,
     &hs_create_5911bb43,
+    &hs_method_88a5abf6,
     &hs_method_ffd54804,
     &hs_method_560b2e39,
     &hs_method_689a3327,
@@ -27603,6 +27856,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_b37b9bbb,
     &hs_method_2db27c2d,
     &hs_method_e035040a,
+    &hs_method_9826e082,
     &hs_method_41da86fb,
     &hs_method_046c33b1,
     &hs_method_d9b782ea,
@@ -27615,6 +27869,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_50792e32,
     &hs_method_d6ba0b11,
     &hs_method_e533f412,
+    &hs_method_738959a6,
     &hs_method_87da21ad,
     &hs_method_2fd6a4b6,
     &hs_method_7a28fda0,
@@ -27684,6 +27939,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_66cc8237,
     &hs_method_0db6400b,
     &hs_method_bafd887c,
+    &hs_method_1561e66f,
     &hs_method_5aae78fb,
     &hs_method_cb061df8,
     &hs_method_dd9332da,

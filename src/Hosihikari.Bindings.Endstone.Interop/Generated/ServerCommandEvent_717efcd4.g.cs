@@ -13,7 +13,7 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1372();
+        get => (nint)NativeMethods.TablePtr->f1388();
     }
 
     public static ServerCommandEvent Create(nint sender, nint command) =>
@@ -21,19 +21,19 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
 
     public string getCommand()
     {
-        var __hs_view = NativeMethods.TablePtr->f1373((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1389((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1374((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1390((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getSender()
     {
-        return (nint)NativeMethods.TablePtr->f1375((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1391((void*)_handle);
     }
 
     public void setCommand(string message)
@@ -41,7 +41,7 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1376((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f1392((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -49,7 +49,7 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1371((void*)_handle);
+            NativeMethods.TablePtr->f1387((void*)_handle);
             _handle = 0;
         }
     }

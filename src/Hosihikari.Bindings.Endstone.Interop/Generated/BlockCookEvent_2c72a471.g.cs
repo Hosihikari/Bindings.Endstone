@@ -16,35 +16,35 @@ public sealed unsafe partial class BlockCookEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f151();
+        get => (nint)NativeMethods.TablePtr->f160();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f152((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f161((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getResult()
     {
-        return (nint)NativeMethods.TablePtr->f153((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f162((void*)_handle);
     }
 
     public nint getSource()
     {
-        return (nint)NativeMethods.TablePtr->f154((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f163((void*)_handle);
     }
 
     public void setResult(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack result)
     {
-        NativeMethods.TablePtr->f155((void*)_handle, (void*)result.Handle);
+        NativeMethods.TablePtr->f164((void*)_handle, (void*)result.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f150((void*)_handle);
+            NativeMethods.TablePtr->f159((void*)_handle);
             _handle = 0;
         }
     }

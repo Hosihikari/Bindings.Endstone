@@ -13,7 +13,7 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
 
     public static ActionForm Create()
     {
-        var handle = NativeMethods.TablePtr->f1();
+        var handle = NativeMethods.TablePtr->f9();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -27,41 +27,43 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->f2((void*)_handle, (void*)text.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
+            return (nint)NativeMethods.TablePtr->f10((void*)_handle, (void*)text.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
         }
     }
 
     public nint addDivider()
     {
-        return (nint)NativeMethods.TablePtr->f3((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f11((void*)_handle);
     }
 
     public nint addHeader(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f4((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->f12((void*)_handle, (void*)text.Handle);
     }
 
     public nint addLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f5((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->f13((void*)_handle, (void*)text.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getContent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f6((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f14((void*)_handle));
     }
 
     public nint getControls()
     {
-        return (nint)NativeMethods.TablePtr->f7((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f15((void*)_handle);
     }
 
-    public nint getOnSubmit() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *, int)>' is not supported.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Function_e874b0c2 getOnSubmit()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Function_e874b0c2((nint)NativeMethods.TablePtr->f16((void*)_handle));
+    }
 
     public nint setContent(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f8((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->f17((void*)_handle, (void*)text.Handle);
     }
 
     public nint setControls(global::Hosihikari.Bindings.Endstone.Interop.Variant_5bd3e0f1[] controls)
@@ -75,20 +77,20 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
         fixed (nint* __hs_vectorHandleData = __hs_vectorHandles)
         {
             var __hs_vectorData = (void**)__hs_vectorHandleData;
-            return (nint)NativeMethods.TablePtr->f9((void*)_handle, __hs_vectorData, (nuint)(controls?.Length ?? 0));
+            return (nint)NativeMethods.TablePtr->f18((void*)_handle, __hs_vectorData, (nuint)(controls?.Length ?? 0));
         }
     }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f10((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f19((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f0((void*)_handle);
+            NativeMethods.TablePtr->f8((void*)_handle);
             _handle = 0;
         }
     }

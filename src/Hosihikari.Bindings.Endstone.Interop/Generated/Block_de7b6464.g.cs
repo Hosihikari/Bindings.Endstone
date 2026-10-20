@@ -13,79 +13,79 @@ public sealed unsafe partial class Block : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockState? captureState()
     {
-        var __hs_handle = NativeMethods.TablePtr->f129((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f138((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockState((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? clone()
     {
-        var __hs_handle = NativeMethods.TablePtr->f130((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f139((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? getData()
     {
-        var __hs_handle = NativeMethods.TablePtr->f131((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f140((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
     }
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f132((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f141((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location getLocation()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->f133((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->f142((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getRelative(int face)
     {
-        var __hs_handle = NativeMethods.TablePtr->f134((void*)_handle, face);
+        var __hs_handle = NativeMethods.TablePtr->f143((void*)_handle, face);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getRelative(int face, int distance)
     {
-        var __hs_handle = NativeMethods.TablePtr->f135((void*)_handle, face, distance);
+        var __hs_handle = NativeMethods.TablePtr->f144((void*)_handle, face, distance);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getRelative(int offset_x, int offset_y, int offset_z)
     {
-        var __hs_handle = NativeMethods.TablePtr->f136((void*)_handle, offset_x, offset_y, offset_z);
+        var __hs_handle = NativeMethods.TablePtr->f145((void*)_handle, offset_x, offset_y, offset_z);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f137((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f146((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getX()
     {
-        return NativeMethods.TablePtr->f138((void*)_handle);
+        return NativeMethods.TablePtr->f147((void*)_handle);
     }
 
     public int getY()
     {
-        return NativeMethods.TablePtr->f139((void*)_handle);
+        return NativeMethods.TablePtr->f148((void*)_handle);
     }
 
     public int getZ()
     {
-        return NativeMethods.TablePtr->f140((void*)_handle);
+        return NativeMethods.TablePtr->f149((void*)_handle);
     }
 
     public void setData(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData data)
     {
-        NativeMethods.TablePtr->f141((void*)_handle, (void*)data.Handle);
+        NativeMethods.TablePtr->f150((void*)_handle, (void*)data.Handle);
     }
 
     public void setData(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData data, bool apply_physics)
     {
-        NativeMethods.TablePtr->f142((void*)_handle, (void*)data.Handle, apply_physics);
+        NativeMethods.TablePtr->f151((void*)_handle, (void*)data.Handle, apply_physics);
     }
 
     public void setType(string type)
@@ -93,7 +93,7 @@ public sealed unsafe partial class Block : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f143((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f152((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -102,7 +102,7 @@ public sealed unsafe partial class Block : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f144((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, apply_physics);
+            NativeMethods.TablePtr->f153((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, apply_physics);
         }
     }
 
@@ -111,7 +111,7 @@ public sealed unsafe partial class Block : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f128((void*)_handle);
+            NativeMethods.TablePtr->f137((void*)_handle);
             _handle = 0;
         }
     }

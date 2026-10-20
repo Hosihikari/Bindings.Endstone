@@ -90,6 +90,19 @@ $ActionFormCreate = Get-TableIndex "ActionForm_*.g.cs" 'Create\(\)[\s\S]*?TableP
 $ActionFormSetContent = Get-TableIndex "ActionForm_*.g.cs" 'setContent\([\s\S]*?TablePtr->f(\d+)' "ActionForm::setContent"
 $ActionFormGetContent = Get-TableIndex "ActionForm_*.g.cs" 'getContent\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::getContent"
 $ActionFormDestroy = Get-TableIndex "ActionForm_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::Dispose"
+$ActionFormSetOnSubmit = Get-TableIndex "ActionForm_*.g.cs" 'setOnSubmit\([\s\S]*?TablePtr->f(\d+)' "ActionForm::setOnSubmit"
+$ActionFormGetOnSubmit = Get-TableIndex "ActionForm_*.g.cs" 'getOnSubmit\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::getOnSubmit"
+
+$CallableFile = Get-ChildItem $GeneratedDirectory -Filter "Function_*.g.cs" |
+    Where-Object { (Get-Content $_.FullName -Raw) -match 'Invoke\(nint arg0, int arg1\)' } |
+    Select-Object -First 1
+if (-not $CallableFile) { throw "The Player*/int callable wrapper was not found." }
+$CallableText = Get-Content $CallableFile.FullName -Raw
+$CallableInvoke = [regex]::Match($CallableText, 'Invoke\(nint arg0, int arg1\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$CallableDestroy = [regex]::Match($CallableText, 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+if (-not $CallableInvoke -or -not $CallableDestroy) {
+    throw "Could not find the Player*/int callable table indices."
+}
 
 $VariantFile = Get-ChildItem $GeneratedDirectory -Filter "Variant_*.g.cs" |
     Where-Object { (Get-Content $_.FullName -Raw) -match 'CreateTranslatable' } |
@@ -139,6 +152,10 @@ $Args = @(
     "/DHS_ACTION_FORM_SET_CONTENT_INDEX=$ActionFormSetContent",
     "/DHS_ACTION_FORM_GET_CONTENT_INDEX=$ActionFormGetContent",
     "/DHS_ACTION_FORM_DESTROY_INDEX=$ActionFormDestroy",
+    "/DHS_ACTION_FORM_SET_ON_SUBMIT_INDEX=$ActionFormSetOnSubmit",
+    "/DHS_ACTION_FORM_GET_ON_SUBMIT_INDEX=$ActionFormGetOnSubmit",
+    "/DHS_CALLABLE_INVOKE_INDEX=$CallableInvoke",
+    "/DHS_CALLABLE_DESTROY_INDEX=$CallableDestroy",
     "/DHS_VARIANT_CREATE_STRING_INDEX=$VariantCreateString",
     "/DHS_VARIANT_INDEX_INDEX=$VariantIndex",
     "/DHS_VARIANT_GET_STRING_INDEX=$VariantGetString",

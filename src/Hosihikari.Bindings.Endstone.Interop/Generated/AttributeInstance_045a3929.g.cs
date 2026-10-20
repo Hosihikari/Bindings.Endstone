@@ -13,17 +13,17 @@ public sealed unsafe partial class AttributeInstance
 
     public void addModifier(global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier modifier)
     {
-        NativeMethods.TablePtr->f92((void*)_handle, (void*)modifier.Handle);
+        NativeMethods.TablePtr->f101((void*)_handle, (void*)modifier.Handle);
     }
 
     public float getBaseValue()
     {
-        return NativeMethods.TablePtr->f93((void*)_handle);
+        return NativeMethods.TablePtr->f102((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier[] getModifiers()
     {
-        var __hs_view = NativeMethods.TablePtr->f94((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f103((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -35,22 +35,22 @@ public sealed unsafe partial class AttributeInstance
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_ getType()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->f95((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->f104((void*)_handle));
     }
 
     public float getValue()
     {
-        return NativeMethods.TablePtr->f96((void*)_handle);
+        return NativeMethods.TablePtr->f105((void*)_handle);
     }
 
     public void removeModifier(global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier modifier)
     {
-        NativeMethods.TablePtr->f97((void*)_handle, (void*)modifier.Handle);
+        NativeMethods.TablePtr->f106((void*)_handle, (void*)modifier.Handle);
     }
 
     public void setBaseValue(float value)
     {
-        NativeMethods.TablePtr->f98((void*)_handle, value);
+        NativeMethods.TablePtr->f107((void*)_handle, value);
     }
 
     public void Destroy() =>

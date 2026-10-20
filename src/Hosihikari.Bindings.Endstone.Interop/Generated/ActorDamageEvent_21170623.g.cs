@@ -16,27 +16,27 @@ public sealed unsafe partial class ActorDamageEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f40();
+        get => (nint)NativeMethods.TablePtr->f49();
     }
 
     public float getDamage()
     {
-        return NativeMethods.TablePtr->f41((void*)_handle);
+        return NativeMethods.TablePtr->f50((void*)_handle);
     }
 
     public nint getDamageSource()
     {
-        return (nint)NativeMethods.TablePtr->f42((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f51((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f43((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f52((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void setDamage(float damage)
     {
-        NativeMethods.TablePtr->f44((void*)_handle, damage);
+        NativeMethods.TablePtr->f53((void*)_handle, damage);
     }
 }

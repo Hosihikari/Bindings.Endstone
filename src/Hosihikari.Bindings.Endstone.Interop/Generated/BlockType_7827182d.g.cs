@@ -13,22 +13,22 @@ public sealed unsafe partial class BlockType
 
     public static nint Air
     {
-        get => (nint)NativeMethods.TablePtr->f202();
+        get => (nint)NativeMethods.TablePtr->f211();
     }
 
     public static nint RegistryType
     {
-        get => (nint)NativeMethods.TablePtr->f203();
+        get => (nint)NativeMethods.TablePtr->f212();
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? createBlockData()
     {
-        var __hs_handle = NativeMethods.TablePtr->f204((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f213((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
     }
 
     public bool hasItemType()
     {
-        return NativeMethods.TablePtr->f205((void*)_handle);
+        return NativeMethods.TablePtr->f214((void*)_handle);
     }
 }

@@ -16,17 +16,17 @@ public sealed unsafe partial class ActorDeathEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f45();
+        get => (nint)NativeMethods.TablePtr->f54();
     }
 
     public nint getDamageSource()
     {
-        return (nint)NativeMethods.TablePtr->f46((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f55((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f47((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f56((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 }

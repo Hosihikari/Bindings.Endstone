@@ -13,7 +13,7 @@ public sealed unsafe partial class SocketAddress : global::System.IDisposable
 
     public static SocketAddress Create()
     {
-        var handle = NativeMethods.TablePtr->f1431();
+        var handle = NativeMethods.TablePtr->f1447();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -27,7 +27,7 @@ public sealed unsafe partial class SocketAddress : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(hostname);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->f1432(__hs_stringData0, (nuint)__hs_stringBytes0.Length, port);
+            var handle = NativeMethods.TablePtr->f1448(__hs_stringData0, (nuint)__hs_stringBytes0.Length, port);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -39,25 +39,25 @@ public sealed unsafe partial class SocketAddress : global::System.IDisposable
 
     public string getHostname()
     {
-        var __hs_view = NativeMethods.TablePtr->f1433((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1449((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public uint getPort()
     {
-        return NativeMethods.TablePtr->f1434((void*)_handle);
+        return NativeMethods.TablePtr->f1450((void*)_handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress other)
     {
-        return NativeMethods.TablePtr->f1435((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f1451((void*)_handle, (void*)other.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1430((void*)_handle);
+            NativeMethods.TablePtr->f1446((void*)_handle);
             _handle = 0;
         }
     }

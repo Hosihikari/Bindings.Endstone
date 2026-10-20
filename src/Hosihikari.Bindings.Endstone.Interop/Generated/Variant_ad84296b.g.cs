@@ -13,7 +13,7 @@ public sealed unsafe class Variant_ad84296b : global::System.IDisposable
 
     public static Variant_ad84296b CreatePlayerPointer(nint value)
     {
-        var handle = NativeMethods.TablePtr->f1681((void*)value);
+        var handle = NativeMethods.TablePtr->f1697((void*)value);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -23,7 +23,7 @@ public sealed unsafe class Variant_ad84296b : global::System.IDisposable
 
     public static Variant_ad84296b CreateActorPointer(nint value)
     {
-        var handle = NativeMethods.TablePtr->f1682((void*)value);
+        var handle = NativeMethods.TablePtr->f1698((void*)value);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,7 +36,7 @@ public sealed unsafe class Variant_ad84296b : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(value);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f1683(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f1699(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -45,7 +45,7 @@ public sealed unsafe class Variant_ad84296b : global::System.IDisposable
         }
     }
 
-    public int Index => NativeMethods.TablePtr->f1688((void*)_handle);
+    public int Index => NativeMethods.TablePtr->f1704((void*)_handle);
 
     public bool IsPlayerPointer => Index == 0;
 
@@ -60,7 +60,7 @@ public sealed unsafe class Variant_ad84296b : global::System.IDisposable
             return null;
         }
 
-        var __hs_pointer = NativeMethods.TablePtr->f1685((void*)_handle);
+        var __hs_pointer = NativeMethods.TablePtr->f1701((void*)_handle);
         return __hs_pointer == null ? null : (nint)__hs_pointer;
     }
 
@@ -71,7 +71,7 @@ public sealed unsafe class Variant_ad84296b : global::System.IDisposable
             return null;
         }
 
-        var __hs_pointer = NativeMethods.TablePtr->f1686((void*)_handle);
+        var __hs_pointer = NativeMethods.TablePtr->f1702((void*)_handle);
         return __hs_pointer == null ? null : (nint)__hs_pointer;
     }
 
@@ -82,7 +82,7 @@ public sealed unsafe class Variant_ad84296b : global::System.IDisposable
             return null;
         }
 
-        var __hs_view = NativeMethods.TablePtr->f1687((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1703((void*)_handle);
         return __hs_view.Data == null ? string.Empty : global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -90,7 +90,7 @@ public sealed unsafe class Variant_ad84296b : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1684((void*)_handle);
+            NativeMethods.TablePtr->f1700((void*)_handle);
             _handle = 0;
         }
     }
