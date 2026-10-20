@@ -16,17 +16,17 @@ public sealed unsafe partial class BlockFromToEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f159();
+        get => (nint)NativeMethods.TablePtr->f167();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f160((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f168((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getToBlock()
     {
-        return (nint)NativeMethods.TablePtr->f161((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f169((void*)_handle);
     }
 }

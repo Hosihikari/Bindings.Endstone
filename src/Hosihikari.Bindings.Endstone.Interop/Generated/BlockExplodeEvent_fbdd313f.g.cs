@@ -16,22 +16,22 @@ public sealed unsafe partial class BlockExplodeEvent : global::System.IDisposabl
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f152();
+        get => (nint)NativeMethods.TablePtr->f160();
     }
 
     public nint getBlockList_0b36dd73()
     {
-        return (nint)NativeMethods.TablePtr->f153((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f161((void*)_handle);
     }
 
     public nint getBlockList_c66ca50a()
     {
-        return (nint)NativeMethods.TablePtr->f154((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f162((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f155((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f163((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -40,7 +40,7 @@ public sealed unsafe partial class BlockExplodeEvent : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f151((void*)_handle);
+            NativeMethods.TablePtr->f159((void*)_handle);
             _handle = 0;
         }
     }

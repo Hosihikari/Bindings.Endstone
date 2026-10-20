@@ -13,60 +13,60 @@ public sealed unsafe partial class UUID : global::System.IDisposable
 
     public nint begin_aec4c3c3()
     {
-        return (nint)NativeMethods.TablePtr->f1446((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1462((void*)_handle);
     }
 
     public nint begin_cfcdc770()
     {
-        return (nint)NativeMethods.TablePtr->f1447((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1463((void*)_handle);
     }
 
     public nint data
     {
-        get => (nint)NativeMethods.TablePtr->f1448((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->f1464((void*)_handle);
     }
 
     public nint end_358c4b97()
     {
-        return (nint)NativeMethods.TablePtr->f1449((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1465((void*)_handle);
     }
 
     public nint end_bed6b0aa()
     {
-        return (nint)NativeMethods.TablePtr->f1450((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1466((void*)_handle);
     }
 
     public bool isNil()
     {
-        return NativeMethods.TablePtr->f1451((void*)_handle);
+        return NativeMethods.TablePtr->f1467((void*)_handle);
     }
 
     public static ulong size()
     {
-        return NativeMethods.TablePtr->f1452();
+        return NativeMethods.TablePtr->f1468();
     }
 
     public string str()
     {
-        var __hs_view = NativeMethods.TablePtr->f1453((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1469((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void swap(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID rhs)
     {
-        NativeMethods.TablePtr->f1454((void*)_handle, (void*)rhs.Handle);
+        NativeMethods.TablePtr->f1470((void*)_handle, (void*)rhs.Handle);
     }
 
     public int version()
     {
-        return NativeMethods.TablePtr->f1455((void*)_handle);
+        return NativeMethods.TablePtr->f1471((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1445((void*)_handle);
+            NativeMethods.TablePtr->f1461((void*)_handle);
             _handle = 0;
         }
     }

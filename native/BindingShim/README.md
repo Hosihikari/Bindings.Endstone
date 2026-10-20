@@ -22,4 +22,4 @@ Generated sources are produced by `Hosihikari/Bindings.Generator` with `--virtua
 
 ## Status
 
-The committed table has 1,664 functions. Inline members, virtual interfaces, eligible template instances, inline/constexpr static fields, optional parameters/results, vector parameters/results, shared-pointer results, expected results, and variant values are projected; non-virtual out-of-line members and unsupported types remain Interop stubs with reasoned messages. The shim builds against the Endstone headers and is loaded by a CLR host in the server process.
+The committed table has 1,680 functions. Inline members, virtual interfaces, eligible template instances, inline/constexpr static fields, optional parameters/results, vector parameters/results, shared-pointer results, expected results, and variant values are projected; non-virtual out-of-line members and unsupported types remain Interop stubs with reasoned messages. The shim builds against the Endstone headers and is loaded by a CLR host in the server process.

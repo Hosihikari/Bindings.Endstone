@@ -2,6 +2,7 @@
 // ir-manifest-sha256: sha256:38004634f9896583be1f576d5481e6c70e1681cb84a6e7094f5ee1b0157e0a08
 #include "binding_table.h"
 
+#include <chrono>
 #include <cstddef>
 #include <cstdint>
 #include <exception>
@@ -1744,6 +1745,40 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static std::int64_t hs_method_ca474207(void* hs_self) try
+{
+    return static_cast<std::int64_t>(std::chrono::duration_cast<std::chrono::milliseconds>((static_cast<endstone::BanEntry*>(hs_self)->getCreated()).time_since_epoch()).count());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return 0;
+}
+
+static std::int64_t hs_method_9931b4a6(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::BanEntry*>(hs_self)->getExpiration();
+    *hs_hasValue = result.has_value();
+    return result ? static_cast<std::int64_t>(std::chrono::duration_cast<std::chrono::milliseconds>((*result).time_since_epoch()).count()) : std::int64_t{0};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
+}
+
 static HosihikariStringView hs_method_c99f83bc(void* hs_self) try
 {
     auto result = static_cast<endstone::BanEntry*>(hs_self)->getReason();
@@ -1778,6 +1813,36 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void hs_method_8bd4367b(void* hs_self, std::int64_t created) try
+{
+    static_cast<endstone::BanEntry*>(hs_self)->setCreated(std::chrono::system_clock::time_point(std::chrono::milliseconds(created)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_5570ad52(void* hs_self, std::int64_t expiration, bool expiration_hasValue) try
+{
+    static_cast<endstone::BanEntry*>(hs_self)->setExpiration((expiration_hasValue ? std::optional<std::chrono::time_point<std::chrono::system_clock>>{std::chrono::system_clock::time_point(std::chrono::milliseconds(expiration))} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_f4930bd7(void* hs_self, const char* reason_data, std::size_t reason_size) try
 {
     static_cast<endstone::BanEntry*>(hs_self)->setReason(std::basic_string<char>(reason_data, reason_size));
@@ -1806,6 +1871,36 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariSharedHandle hs_method_95d473c7(void* hs_self, const char* target_data, std::size_t target_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool reason_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::BanList<endstone::IpBanEntry>*>(hs_self)->addBan(std::basic_string<char>(target_data, target_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_ac608f70(void* hs_self, const char* target_data, std::size_t target_size, const char* reason_data, std::size_t reason_size, std::int64_t expires, const char* source_data, std::size_t source_size, bool reason_hasValue, bool expires_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::BanList<endstone::IpBanEntry>*>(hs_self)->addBan(std::basic_string<char>(target_data, target_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), (expires_hasValue ? std::optional<std::chrono::time_point<std::chrono::system_clock>>{std::chrono::system_clock::time_point(std::chrono::milliseconds(expires))} : std::nullopt), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static HosihikariSharedHandle hs_method_9c067d7e(void* hs_self, const char* target_data, std::size_t target_size) try
@@ -1871,6 +1966,36 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariSharedHandle hs_method_a1c47b93(void* hs_self, const char* target_data, std::size_t target_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool reason_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::BanList<endstone::PlayerBanEntry>*>(hs_self)->addBan(std::basic_string<char>(target_data, target_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_9f5304ff(void* hs_self, const char* target_data, std::size_t target_size, const char* reason_data, std::size_t reason_size, std::int64_t expires, const char* source_data, std::size_t source_size, bool reason_hasValue, bool expires_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::BanList<endstone::PlayerBanEntry>*>(hs_self)->addBan(std::basic_string<char>(target_data, target_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), (expires_hasValue ? std::optional<std::chrono::time_point<std::chrono::system_clock>>{std::chrono::system_clock::time_point(std::chrono::milliseconds(expires))} : std::nullopt), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static HosihikariSharedHandle hs_method_b75217ef(void* hs_self, const char* target_data, std::size_t target_size) try
@@ -9764,6 +9889,36 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static HosihikariSharedHandle hs_method_4c6dbde4(void* hs_self, const char* address_data, std::size_t address_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool reason_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::IpBanList*>(hs_self)->addBan(std::basic_string<char>(address_data, address_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_7285c7d5(void* hs_self, const char* address_data, std::size_t address_size, const char* reason_data, std::size_t reason_size, std::int64_t expires, const char* source_data, std::size_t source_size, bool reason_hasValue, bool expires_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::IpBanList*>(hs_self)->addBan(std::basic_string<char>(address_data, address_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), (expires_hasValue ? std::optional<std::chrono::time_point<std::chrono::system_clock>>{std::chrono::system_clock::time_point(std::chrono::milliseconds(expires))} : std::nullopt), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static HosihikariSharedHandle hs_method_81765192(void* hs_self, const char* address_data, std::size_t address_size) try
 {
     return hs_make_shared_handle((static_cast<endstone::IpBanList*>(hs_self)->getBanEntry(std::basic_string<char>(address_data, address_size))).get());
@@ -14413,6 +14568,21 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static std::int64_t hs_method_9cb6513a(void* hs_self) try
+{
+    return static_cast<std::int64_t>((static_cast<endstone::Player*>(hs_self)->getPing()).count());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return 0;
+}
+
 static void* hs_method_d95fa490(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Player*>(hs_self)->getScoreboard()));
@@ -15130,6 +15300,66 @@ catch (...)
     setLastError("unknown native exception");
     if (hs_hasValue) { *hs_hasValue = false; }
     return HosihikariStringView{nullptr, 0};
+}
+
+static HosihikariSharedHandle hs_method_402af978(void* hs_self, const char* name_data, std::size_t name_size, void* uuid, const char* xuid_data, std::size_t xuid_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool uuid_hasValue, bool xuid_hasValue, bool reason_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::PlayerBanList*>(hs_self)->addBan(std::basic_string<char>(name_data, name_size), (uuid_hasValue ? std::optional<endstone::UUID>{*static_cast<const endstone::UUID*>(uuid)} : std::nullopt), (xuid_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(xuid_data, xuid_size)} : std::nullopt), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_f5a8bfc6(void* hs_self, const char* name_data, std::size_t name_size, void* uuid, const char* xuid_data, std::size_t xuid_size, const char* reason_data, std::size_t reason_size, std::int64_t expires, const char* source_data, std::size_t source_size, bool uuid_hasValue, bool xuid_hasValue, bool reason_hasValue, bool expires_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::PlayerBanList*>(hs_self)->addBan(std::basic_string<char>(name_data, name_size), (uuid_hasValue ? std::optional<endstone::UUID>{*static_cast<const endstone::UUID*>(uuid)} : std::nullopt), (xuid_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(xuid_data, xuid_size)} : std::nullopt), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), (expires_hasValue ? std::optional<std::chrono::time_point<std::chrono::system_clock>>{std::chrono::system_clock::time_point(std::chrono::milliseconds(expires))} : std::nullopt), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_d3942874(void* hs_self, const char* name_data, std::size_t name_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool reason_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::PlayerBanList*>(hs_self)->addBan(std::basic_string<char>(name_data, name_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static HosihikariSharedHandle hs_method_4e3f6442(void* hs_self, const char* name_data, std::size_t name_size, const char* reason_data, std::size_t reason_size, std::int64_t expires, const char* source_data, std::size_t source_size, bool reason_hasValue, bool expires_hasValue, bool source_hasValue) try
+{
+    return hs_make_shared_handle((static_cast<endstone::PlayerBanList*>(hs_self)->addBan(std::basic_string<char>(name_data, name_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), (expires_hasValue ? std::optional<std::chrono::time_point<std::chrono::system_clock>>{std::chrono::system_clock::time_point(std::chrono::milliseconds(expires))} : std::nullopt), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
 static HosihikariSharedHandle hs_method_e53ccf1d(void* hs_self, const char* name_data, std::size_t name_size) try
@@ -21386,6 +21616,21 @@ catch (...)
     return nullptr;
 }
 
+static std::int64_t hs_method_c8a59532(void* hs_self) try
+{
+    return static_cast<std::int64_t>(std::chrono::duration_cast<std::chrono::milliseconds>((static_cast<endstone::Server*>(hs_self)->getStartTime()).time_since_epoch()).count());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return 0;
+}
+
 static HosihikariStringView hs_method_e4199c93(void* hs_self) try
 {
     auto result = static_cast<endstone::Server*>(hs_self)->getVersion();
@@ -26380,14 +26625,22 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_8a078c40,
     &hs_destroy_758b8053,
     &hs_get_25022bea,
+    &hs_method_ca474207,
+    &hs_method_9931b4a6,
     &hs_method_c99f83bc,
     &hs_method_10758bad,
+    &hs_method_8bd4367b,
+    &hs_method_5570ad52,
     &hs_method_f4930bd7,
     &hs_method_7f7278fb,
+    &hs_method_95d473c7,
+    &hs_method_ac608f70,
     &hs_method_9c067d7e,
     &hs_method_744f42c5,
     &hs_method_2b4b4759,
     &hs_method_34e4c2c5,
+    &hs_method_a1c47b93,
+    &hs_method_9f5304ff,
     &hs_method_b75217ef,
     &hs_method_9156ed58,
     &hs_method_5b738ea9,
@@ -26890,6 +27143,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_a7df4d30,
     &hs_create_0c659ed5,
     &hs_method_38cbbb5a,
+    &hs_method_4c6dbde4,
+    &hs_method_7285c7d5,
     &hs_method_81765192,
     &hs_method_bd6469d4,
     &hs_method_bc2fd375,
@@ -27187,6 +27442,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a3acd946,
     &hs_method_f261279f,
     &hs_method_e7dd9639,
+    &hs_method_9cb6513a,
     &hs_method_d95fa490,
     &hs_method_b5761a6a,
     &hs_method_4e1b6265,
@@ -27234,6 +27490,10 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_6e16ee39,
     &hs_method_80abbf8c,
     &hs_method_8099d776,
+    &hs_method_402af978,
+    &hs_method_f5a8bfc6,
+    &hs_method_d3942874,
+    &hs_method_4e3f6442,
     &hs_method_e53ccf1d,
     &hs_method_ac3c9805,
     &hs_method_0e726e25,
@@ -27617,6 +27877,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a77fc0fd,
     &hs_method_6bb45431,
     &hs_method_19d8ed59,
+    &hs_method_c8a59532,
     &hs_method_e4199c93,
     &hs_method_7c897210,
     &hs_method_419189fb,

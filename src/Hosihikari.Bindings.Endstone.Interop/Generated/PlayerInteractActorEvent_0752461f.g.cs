@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDi
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1017();
+        get => (nint)NativeMethods.TablePtr->f1032();
     }
 
     public static PlayerInteractActorEvent Create(nint player, nint actor) =>
@@ -21,12 +21,12 @@ public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDi
 
     public nint getActor()
     {
-        return (nint)NativeMethods.TablePtr->f1018((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1033((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1019((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1034((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -35,7 +35,7 @@ public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDi
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1016((void*)_handle);
+            NativeMethods.TablePtr->f1031((void*)_handle);
             _handle = 0;
         }
     }

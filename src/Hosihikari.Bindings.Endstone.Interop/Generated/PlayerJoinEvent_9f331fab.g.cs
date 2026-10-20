@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerJoinEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1055();
+        get => (nint)NativeMethods.TablePtr->f1070();
     }
 
     public static PlayerJoinEvent Create(nint player, nint join_message) =>
@@ -21,27 +21,27 @@ public sealed unsafe partial class PlayerJoinEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1056((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1071((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getJoinMessage()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1057((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f1072((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
     public void setJoinMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? message)
     {
-        NativeMethods.TablePtr->f1058((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
+        NativeMethods.TablePtr->f1073((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1054((void*)_handle);
+            NativeMethods.TablePtr->f1069((void*)_handle);
             _handle = 0;
         }
     }

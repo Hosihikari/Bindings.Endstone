@@ -13,12 +13,12 @@ public sealed unsafe partial class PlayerPortalEvent : global::System.IDisposabl
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1088();
+        get => (nint)NativeMethods.TablePtr->f1103();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1089((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1104((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -26,7 +26,7 @@ public sealed unsafe partial class PlayerPortalEvent : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1087((void*)_handle);
+            NativeMethods.TablePtr->f1102((void*)_handle);
             _handle = 0;
         }
     }

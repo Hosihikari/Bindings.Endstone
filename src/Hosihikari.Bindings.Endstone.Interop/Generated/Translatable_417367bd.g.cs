@@ -33,7 +33,7 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
             {
                 fixed (byte* __hs_stringData0 = __hs_stringBytes0)
                 {
-                    var handle = NativeMethods.TablePtr->f1441(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                    var handle = NativeMethods.TablePtr->f1457(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
                     if (handle == null)
                     {
                         throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,17 +51,17 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->f1442((void*)_handle);
+        return NativeMethods.TablePtr->f1458((void*)_handle);
     }
 
     public nint getParameters()
     {
-        return (nint)NativeMethods.TablePtr->f1443((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1459((void*)_handle);
     }
 
     public string getText()
     {
-        var __hs_view = NativeMethods.TablePtr->f1444((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1460((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -69,7 +69,7 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1440((void*)_handle);
+            NativeMethods.TablePtr->f1456((void*)_handle);
             _handle = 0;
         }
     }

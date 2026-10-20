@@ -16,33 +16,33 @@ public sealed unsafe partial class BlockPlaceEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f173();
+        get => (nint)NativeMethods.TablePtr->f181();
     }
 
     public nint getBlockAgainst()
     {
-        return (nint)NativeMethods.TablePtr->f174((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f182((void*)_handle);
     }
 
     public nint getBlockPlacedState()
     {
-        return (nint)NativeMethods.TablePtr->f175((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f183((void*)_handle);
     }
 
     public nint getBlockReplaced()
     {
-        return (nint)NativeMethods.TablePtr->f176((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f184((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f177((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f185((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f178((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f186((void*)_handle);
     }
 
 
@@ -50,7 +50,7 @@ public sealed unsafe partial class BlockPlaceEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f172((void*)_handle);
+            NativeMethods.TablePtr->f180((void*)_handle);
             _handle = 0;
         }
     }

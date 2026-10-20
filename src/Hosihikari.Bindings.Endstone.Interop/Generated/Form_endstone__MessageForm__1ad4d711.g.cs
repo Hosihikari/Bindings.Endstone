@@ -13,7 +13,7 @@ public sealed unsafe partial class Form_endstone__MessageForm_ : global::System.
 
     public static Form_endstone__MessageForm_ Create()
     {
-        var handle = NativeMethods.TablePtr->f515();
+        var handle = NativeMethods.TablePtr->f523();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -27,24 +27,24 @@ public sealed unsafe partial class Form_endstone__MessageForm_ : global::System.
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getTitle()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f516((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f524((void*)_handle));
     }
 
     public nint setOnClose(nint on_closeInvoke, nint on_closeUserData, nint on_closeRelease)
     {
-        return (nint)NativeMethods.TablePtr->f517((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
+        return (nint)NativeMethods.TablePtr->f525((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
     }
 
     public nint setTitle(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 title)
     {
-        return (nint)NativeMethods.TablePtr->f518((void*)_handle, (void*)title.Handle);
+        return (nint)NativeMethods.TablePtr->f526((void*)_handle, (void*)title.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f514((void*)_handle);
+            NativeMethods.TablePtr->f522((void*)_handle);
             _handle = 0;
         }
     }

@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerEmoteEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1006();
+        get => (nint)NativeMethods.TablePtr->f1021();
     }
 
     public static PlayerEmoteEvent Create(nint player, nint emote_id, bool muted) =>
@@ -21,24 +21,24 @@ public sealed unsafe partial class PlayerEmoteEvent : global::System.IDisposable
 
     public string getEmoteId()
     {
-        var __hs_view = NativeMethods.TablePtr->f1007((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1022((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1008((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1023((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isMuted()
     {
-        return NativeMethods.TablePtr->f1009((void*)_handle);
+        return NativeMethods.TablePtr->f1024((void*)_handle);
     }
 
     public void setMuted(bool muted)
     {
-        NativeMethods.TablePtr->f1010((void*)_handle, muted);
+        NativeMethods.TablePtr->f1025((void*)_handle, muted);
     }
 
 
@@ -46,7 +46,7 @@ public sealed unsafe partial class PlayerEmoteEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1005((void*)_handle);
+            NativeMethods.TablePtr->f1020((void*)_handle);
             _handle = 0;
         }
     }

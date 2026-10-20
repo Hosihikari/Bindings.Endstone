@@ -19,7 +19,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f741((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f751((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -28,7 +28,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f742((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f752((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -37,13 +37,13 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f743((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f753((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f744((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f754((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -52,13 +52,13 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f745((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f755((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool isEnabledFor(byte level)
     {
-        return NativeMethods.TablePtr->f746((void*)_handle, level);
+        return NativeMethods.TablePtr->f756((void*)_handle, level);
     }
 
     public void log(byte level, string message)
@@ -66,13 +66,13 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->f747((void*)_handle, level, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            NativeMethods.TablePtr->f757((void*)_handle, level, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
         }
     }
 
     public void setLevel(byte level)
     {
-        NativeMethods.TablePtr->f748((void*)_handle, level);
+        NativeMethods.TablePtr->f758((void*)_handle, level);
     }
 
     public void trace(string message)
@@ -80,7 +80,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f749((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f759((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -89,7 +89,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f750((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f760((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 

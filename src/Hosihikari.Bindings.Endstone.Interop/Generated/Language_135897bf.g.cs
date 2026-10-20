@@ -13,13 +13,13 @@ public sealed unsafe partial class Language
 
     public string getLocale()
     {
-        var __hs_view = NativeMethods.TablePtr->f690((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f700((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string translate(global::Hosihikari.Bindings.Endstone.Interop.endstone.Translatable translatable)
     {
-        var __hs_view = NativeMethods.TablePtr->f691((void*)_handle, (void*)translatable.Handle);
+        var __hs_view = NativeMethods.TablePtr->f701((void*)_handle, (void*)translatable.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -28,7 +28,7 @@ public sealed unsafe partial class Language
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(locale);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var __hs_view = NativeMethods.TablePtr->f692((void*)_handle, (void*)translatable.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            var __hs_view = NativeMethods.TablePtr->f702((void*)_handle, (void*)translatable.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
@@ -38,7 +38,7 @@ public sealed unsafe partial class Language
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->f693((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_view = NativeMethods.TablePtr->f703((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
@@ -51,7 +51,7 @@ public sealed unsafe partial class Language
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var __hs_view = NativeMethods.TablePtr->f694((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+                var __hs_view = NativeMethods.TablePtr->f704((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
                 return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
             }
         }
@@ -79,7 +79,7 @@ public sealed unsafe partial class Language
             {
                 fixed (byte* __hs_stringData0 = __hs_stringBytes0)
                 {
-                    var __hs_view = NativeMethods.TablePtr->f695((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                    var __hs_view = NativeMethods.TablePtr->f705((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
                     return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
                 }
             }
@@ -115,7 +115,7 @@ public sealed unsafe partial class Language
                 {
                     fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                     {
-                        var __hs_view = NativeMethods.TablePtr->f696((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData2, (nuint)__hs_stringBytes2.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                        var __hs_view = NativeMethods.TablePtr->f706((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData2, (nuint)__hs_stringBytes2.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
                         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
                     }
                 }

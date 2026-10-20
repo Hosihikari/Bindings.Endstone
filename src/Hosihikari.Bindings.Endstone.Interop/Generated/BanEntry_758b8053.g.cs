@@ -20,36 +20,46 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         }
     }
 
-    public nint getCreated() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::chrono::time_point<std::chrono::system_clock>' is not a known bindable declaration.");
+    public long getCreated()
+    {
+        return NativeMethods.TablePtr->f107((void*)_handle);
+    }
 
-    public nint getExpiration() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::chrono::time_point<std::chrono::system_clock>' is not a known bindable declaration.");
+    public long? getExpiration()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->f108((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (long?)null;
+    }
 
     public string getReason()
     {
-        var __hs_view = NativeMethods.TablePtr->f107((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f109((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getSource()
     {
-        var __hs_view = NativeMethods.TablePtr->f108((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f110((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void setCreated(nint created) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::chrono::time_point<std::chrono::system_clock>' is not a known bindable declaration.");
+    public void setCreated(long created)
+    {
+        NativeMethods.TablePtr->f111((void*)_handle, created);
+    }
 
-    public void setExpiration(nint expiration) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::chrono::time_point<std::chrono::system_clock>' is abstract or not copy-constructible.");
+    public void setExpiration(long? expiration)
+    {
+        NativeMethods.TablePtr->f112((void*)_handle, expiration ?? default(long), expiration.HasValue);
+    }
 
     public void setReason(string reason)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(reason);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f109((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f113((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -58,7 +68,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(source);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f110((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f114((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 

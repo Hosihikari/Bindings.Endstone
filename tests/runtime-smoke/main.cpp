@@ -59,6 +59,15 @@
 #ifndef HS_PLAYER_BAN_ENTRY_INDEX
 #error "HS_PLAYER_BAN_ENTRY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_PLAYER_BAN_ADD_INDEX
+#error "HS_PLAYER_BAN_ADD_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PLAYER_BAN_REMOVE_INDEX
+#error "HS_PLAYER_BAN_REMOVE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PLAYER_BANNED_INDEX
+#error "HS_PLAYER_BANNED_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_ACTION_FORM_CREATE_INDEX
 #error "HS_ACTION_FORM_CREATE_INDEX must be defined by build.ps1"
 #endif
@@ -248,7 +257,12 @@ public:
             using GetBanListFn = void *(*)(void *);
             using GetBanEntriesFn = HosihikariArrayView (*)(void *);
             using GetBanEntryFn = HosihikariSharedHandle (*)(void *, const char *, std::size_t);
+            using AddBanFn = HosihikariSharedHandle (*)(
+                void *, const char *, std::size_t, const char *, std::size_t, std::int64_t, const char *, std::size_t, bool, bool);
+            using RemoveBanFn = void (*)(void *, const char *, std::size_t);
+            using IsBannedFn = bool (*)(void *, const char *, std::size_t);
             bool containersOk = false;
+            bool banRoundTripOk = false;
             if (auto *banList = reinterpret_cast<GetBanListFn>(slots[HS_SERVER_BAN_LIST_INDEX])(handle)) {
                 const auto entries = reinterpret_cast<GetBanEntriesFn>(slots[HS_PLAYER_BAN_ENTRIES_INDEX])(banList);
                 containersOk = true;
@@ -268,9 +282,42 @@ public:
                 if (missing.release) {
                     missing.release(missing.holder);
                 }
+
+                const char *banName = "hosihikari-smoke-ban";
+                const std::size_t banNameSize = std::strlen(banName);
+                const auto removeBan = reinterpret_cast<RemoveBanFn>(slots[HS_PLAYER_BAN_REMOVE_INDEX]);
+                const auto isBanned = reinterpret_cast<IsBannedFn>(slots[HS_PLAYER_BANNED_INDEX]);
+                removeBan(banList, banName, banNameSize);
+                auto added = reinterpret_cast<AddBanFn>(slots[HS_PLAYER_BAN_ADD_INDEX])(
+                    banList,
+                    banName,
+                    banNameSize,
+                    "smoke",
+                    5,
+                    60,
+                    "hosihikari",
+                    10,
+                    true,
+                    true);
+                banRoundTripOk = added.holder != nullptr && added.target != nullptr;
+                if (added.release) {
+                    added.release(added.holder);
+                }
+
+                auto fetched = reinterpret_cast<GetBanEntryFn>(slots[HS_PLAYER_BAN_ENTRY_INDEX])(
+                    banList, banName, banNameSize);
+                banRoundTripOk = banRoundTripOk && fetched.holder != nullptr;
+                if (fetched.release) {
+                    fetched.release(fetched.holder);
+                }
+
+                banRoundTripOk = banRoundTripOk && isBanned(banList, banName, banNameSize);
+                removeBan(banList, banName, banNameSize);
+                banRoundTripOk = banRoundTripOk && !isBanned(banList, banName, banNameSize);
             }
 
             out << "ban_list.shared_array=" << (containersOk ? "ok" : "FAIL") << "\n";
+            out << "ban_list.add_remove=" << (banRoundTripOk ? "ok" : "FAIL") << "\n";
 
             using CreateActionFormFn = void *(*)();
             using SetContentFn = void *(*)(void *, void *);
@@ -310,7 +357,7 @@ public:
 
             out << "result="
                 << (actualName == server.getName() && actualVersion == server.getVersion() && vectorsOk
-                            && pluginsOk && sharedOk && objectivesOk && containersOk && variantOk
+                            && pluginsOk && sharedOk && objectivesOk && containersOk && banRoundTripOk && variantOk
                         ? "OK"
                         : "FAIL")
                 << "\n";

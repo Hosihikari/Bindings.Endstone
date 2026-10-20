@@ -16,35 +16,35 @@ public sealed unsafe partial class BroadcastMessageEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f226();
+        get => (nint)NativeMethods.TablePtr->f234();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f227((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f235((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getMessage()
     {
-        return (nint)NativeMethods.TablePtr->f228((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f236((void*)_handle);
     }
 
     public nint getRecipients()
     {
-        return (nint)NativeMethods.TablePtr->f229((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f237((void*)_handle);
     }
 
     public void setMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)
     {
-        NativeMethods.TablePtr->f230((void*)_handle, (void*)message.Handle);
+        NativeMethods.TablePtr->f238((void*)_handle, (void*)message.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f225((void*)_handle);
+            NativeMethods.TablePtr->f233((void*)_handle);
             _handle = 0;
         }
     }
