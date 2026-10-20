@@ -122,6 +122,13 @@ $BoolVariantDestroy = [regex]::Match($BoolVariantText, 'Dispose\(\)[\s\S]*?Table
 if (-not $BoolVariantIndex -or -not $BoolVariantAsBool -or -not $BoolVariantDestroy) {
     throw "Could not find the bool/string/int variant table indices."
 }
+$ServerCommandSender = Get-TableIndex "Server_*.g.cs" 'getCommandSender\(\)[\s\S]*?TablePtr->f(\d+)' "Server::getCommandSender"
+$PermissiblePermissionLevel = Get-TableIndex "Permissible_*.g.cs" 'getPermissionLevel\(\)[\s\S]*?TablePtr->f(\d+)' "Permissible::getPermissionLevel"
+$CommandSenderName = Get-TableIndex "CommandSender_*.g.cs" 'getName\(\)[\s\S]*?TablePtr->f(\d+)' "CommandSender::getName"
+$WrapperCreate = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'Create\([\s\S]*?TablePtr->f(\d+)' "CommandSenderWrapper::Create"
+$WrapperPermissionLevel = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'getPermissionLevel\(\)[\s\S]*?TablePtr->f(\d+)' "CommandSenderWrapper::getPermissionLevel"
+$WrapperName = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'getName\(\)[\s\S]*?TablePtr->f(\d+)' "CommandSenderWrapper::getName"
+$WrapperDestroy = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "CommandSenderWrapper::Dispose"
 
 $GeneratedDirectory = Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated"
 $ActionFormCreate = Get-TableIndex "ActionForm_*.g.cs" 'Create\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::Create"
@@ -207,6 +214,13 @@ $Args = @(
     "/DHS_BOOL_VARIANT_INDEX_INDEX=$BoolVariantIndex",
     "/DHS_BOOL_VARIANT_AS_BOOL_INDEX=$BoolVariantAsBool",
     "/DHS_BOOL_VARIANT_DESTROY_INDEX=$BoolVariantDestroy",
+    "/DHS_SERVER_COMMAND_SENDER_INDEX=$ServerCommandSender",
+    "/DHS_PERMISSIBLE_PERMISSION_LEVEL_INDEX=$PermissiblePermissionLevel",
+    "/DHS_COMMAND_SENDER_NAME_INDEX=$CommandSenderName",
+    "/DHS_COMMAND_SENDER_WRAPPER_CREATE_INDEX=$WrapperCreate",
+    "/DHS_COMMAND_SENDER_WRAPPER_PERMISSION_LEVEL_INDEX=$WrapperPermissionLevel",
+    "/DHS_COMMAND_SENDER_WRAPPER_NAME_INDEX=$WrapperName",
+    "/DHS_COMMAND_SENDER_WRAPPER_DESTROY_INDEX=$WrapperDestroy",
     "/DHS_ACTION_FORM_CREATE_INDEX=$ActionFormCreate",
     "/DHS_ACTION_FORM_SET_CONTENT_INDEX=$ActionFormSetContent",
     "/DHS_ACTION_FORM_GET_CONTENT_INDEX=$ActionFormGetContent",

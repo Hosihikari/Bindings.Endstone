@@ -37,6 +37,7 @@ The plugin verifies:
 - a `Dropdown` control round-trips through the typed form-control variant into `ModalForm::addControl` and back out of `getControls`;
 - a `Dictionary<string, bool>` argument reaches `Permission::Create` and `getChildren()` returns the same entry;
 - `Server::createBlockData` accepts a block-state map, and `BlockData::getBlockStates()` returns the boolean entry with its variant value intact;
+- `CommandSenderWrapper` is constructed from the server's `CommandSender&` through a mutable-reference parameter; the wrapper delegates `getName()` and `getPermissionLevel()` to the sender;
 - a string `std::variant` round-trips through `ActionForm::setContent`/`getContent`, including index and string accessors;
 - `ActionForm::setOnSubmit`/`getOnSubmit` round-trips a `std::function`: the returned callable invokes the managed handler exactly once and releases its shared state once.
 
@@ -60,6 +61,7 @@ item_meta.map=ok
 modal_form.controls=ok
 permission.map=ok
 block_data.map=ok
+mutable_reference.ctor=ok
 action_form.string_variant=ok
 callable.round_trip=ok
 result=OK

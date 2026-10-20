@@ -132,6 +132,27 @@
 #ifndef HS_BOOL_VARIANT_DESTROY_INDEX
 #error "HS_BOOL_VARIANT_DESTROY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_SERVER_COMMAND_SENDER_INDEX
+#error "HS_SERVER_COMMAND_SENDER_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PERMISSIBLE_PERMISSION_LEVEL_INDEX
+#error "HS_PERMISSIBLE_PERMISSION_LEVEL_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_COMMAND_SENDER_NAME_INDEX
+#error "HS_COMMAND_SENDER_NAME_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_COMMAND_SENDER_WRAPPER_CREATE_INDEX
+#error "HS_COMMAND_SENDER_WRAPPER_CREATE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_COMMAND_SENDER_WRAPPER_PERMISSION_LEVEL_INDEX
+#error "HS_COMMAND_SENDER_WRAPPER_PERMISSION_LEVEL_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_COMMAND_SENDER_WRAPPER_NAME_INDEX
+#error "HS_COMMAND_SENDER_WRAPPER_NAME_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_COMMAND_SENDER_WRAPPER_DESTROY_INDEX
+#error "HS_COMMAND_SENDER_WRAPPER_DESTROY_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_ACTION_FORM_CREATE_INDEX
 #error "HS_ACTION_FORM_CREATE_INDEX must be defined by build.ps1"
 #endif
@@ -177,6 +198,7 @@ int g_submitReleases = 0;
 
 void smokeSubmit(void *, void *, int) { ++g_submitCalls; }
 void smokeSubmitRelease(void *) { ++g_submitReleases; }
+void smokeNoopMessage(void *, void *) {}
 }  // namespace
 
 class ShimSmokePlugin : public endstone::Plugin {
@@ -524,6 +546,37 @@ public:
             }
 
             out << "block_data.map=" << (blockStateMapOk ? "ok" : "FAIL") << "\n";
+
+            using GetCommandSenderFn = void *(*)(void *);
+            using WrapperCreateFn = void *(*)(void *, void *, void *, void *, void *, void *, void *);
+            using IntMethodFn = std::int32_t (*)(void *);
+            using GetNameFn = HosihikariStringView (*)(void *);
+            bool mutableReferenceCtorOk = false;
+            if (auto *sender = reinterpret_cast<GetCommandSenderFn>(slots[HS_SERVER_COMMAND_SENDER_INDEX])(handle)) {
+                auto *wrapper = reinterpret_cast<WrapperCreateFn>(slots[HS_COMMAND_SENDER_WRAPPER_CREATE_INDEX])(
+                    sender,
+                    reinterpret_cast<void *>(&smokeNoopMessage),
+                    nullptr,
+                    nullptr,
+                    reinterpret_cast<void *>(&smokeNoopMessage),
+                    nullptr,
+                    nullptr);
+                if (wrapper) {
+                    const auto senderLevel = reinterpret_cast<IntMethodFn>(
+                        slots[HS_PERMISSIBLE_PERMISSION_LEVEL_INDEX])(sender);
+                    const auto wrapperLevel = reinterpret_cast<IntMethodFn>(
+                        slots[HS_COMMAND_SENDER_WRAPPER_PERMISSION_LEVEL_INDEX])(wrapper);
+                    const auto senderName = reinterpret_cast<GetNameFn>(slots[HS_COMMAND_SENDER_NAME_INDEX])(sender);
+                    const auto wrapperName = reinterpret_cast<GetNameFn>(
+                        slots[HS_COMMAND_SENDER_WRAPPER_NAME_INDEX])(wrapper);
+                    mutableReferenceCtorOk = senderLevel == wrapperLevel
+                        && std::string(senderName.data, senderName.size)
+                            == std::string(wrapperName.data, wrapperName.size);
+                    reinterpret_cast<DestroyFn>(slots[HS_COMMAND_SENDER_WRAPPER_DESTROY_INDEX])(wrapper);
+                }
+            }
+
+            out << "mutable_reference.ctor=" << (mutableReferenceCtorOk ? "ok" : "FAIL") << "\n";
 
             using CreateActionFormFn = void *(*)();
             using SetContentFn = void *(*)(void *, void *);
