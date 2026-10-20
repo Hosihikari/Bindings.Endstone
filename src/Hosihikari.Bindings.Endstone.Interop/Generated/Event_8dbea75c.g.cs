@@ -19,13 +19,13 @@ public sealed unsafe partial class Event
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f492((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f501((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isAsynchronous()
     {
-        return NativeMethods.TablePtr->f493((void*)_handle);
+        return NativeMethods.TablePtr->f502((void*)_handle);
     }
 
     public nint operator_assign(nint arg0) =>

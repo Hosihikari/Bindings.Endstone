@@ -16,80 +16,89 @@ public sealed unsafe partial class MapView
 
     public int getCenterX()
     {
-        return NativeMethods.TablePtr->f775((void*)_handle);
+        return NativeMethods.TablePtr->f788((void*)_handle);
     }
 
     public int getCenterZ()
     {
-        return NativeMethods.TablePtr->f776((void*)_handle);
+        return NativeMethods.TablePtr->f789((void*)_handle);
     }
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f777((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f790((void*)_handle);
     }
 
     public long getId()
     {
-        return NativeMethods.TablePtr->f778((void*)_handle);
+        return NativeMethods.TablePtr->f791((void*)_handle);
     }
 
-    public nint getRenderers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::shared_ptr<endstone::MapRenderer>' is not supported.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle[] getRenderers()
+    {
+        var __hs_view = NativeMethods.TablePtr->f792((void*)_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.SharedHandleData*)__hs_view.Data;
+        var __hs_result = new global::Hosihikari.Bindings.Abi.SharedHandle[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_items[__hs_i])!;
+        }
+        return __hs_result;
+    }
 
     public byte getScale()
     {
-        return NativeMethods.TablePtr->f779((void*)_handle);
+        return NativeMethods.TablePtr->f793((void*)_handle);
     }
 
     public bool isLocked()
     {
-        return NativeMethods.TablePtr->f780((void*)_handle);
+        return NativeMethods.TablePtr->f794((void*)_handle);
     }
 
     public bool isUnlimitedTracking()
     {
-        return NativeMethods.TablePtr->f781((void*)_handle);
+        return NativeMethods.TablePtr->f795((void*)_handle);
     }
 
     public bool isVirtual()
     {
-        return NativeMethods.TablePtr->f782((void*)_handle);
+        return NativeMethods.TablePtr->f796((void*)_handle);
     }
 
     public bool removeRenderer(nint renderer)
     {
-        return NativeMethods.TablePtr->f783((void*)_handle, (void*)renderer);
+        return NativeMethods.TablePtr->f797((void*)_handle, (void*)renderer);
     }
 
     public void setCenterX(int x)
     {
-        NativeMethods.TablePtr->f784((void*)_handle, x);
+        NativeMethods.TablePtr->f798((void*)_handle, x);
     }
 
     public void setCenterZ(int z)
     {
-        NativeMethods.TablePtr->f785((void*)_handle, z);
+        NativeMethods.TablePtr->f799((void*)_handle, z);
     }
 
     public void setDimension(global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension dimension)
     {
-        NativeMethods.TablePtr->f786((void*)_handle, (void*)dimension.Handle);
+        NativeMethods.TablePtr->f800((void*)_handle, (void*)dimension.Handle);
     }
 
     public void setLocked(bool locked)
     {
-        NativeMethods.TablePtr->f787((void*)_handle, locked);
+        NativeMethods.TablePtr->f801((void*)_handle, locked);
     }
 
     public void setScale(byte scale)
     {
-        NativeMethods.TablePtr->f788((void*)_handle, scale);
+        NativeMethods.TablePtr->f802((void*)_handle, scale);
     }
 
     public void setUnlimitedTracking(bool unlimited)
     {
-        NativeMethods.TablePtr->f789((void*)_handle, unlimited);
+        NativeMethods.TablePtr->f803((void*)_handle, unlimited);
     }
 
     public void Destroy() =>

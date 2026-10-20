@@ -13,19 +13,19 @@ public sealed unsafe partial class Colors : global::System.IDisposable
 
     public static nint BLACK
     {
-        get => (nint)NativeMethods.TablePtr->f323();
+        get => (nint)NativeMethods.TablePtr->f329();
     }
 
     public static nint WHITE
     {
-        get => (nint)NativeMethods.TablePtr->f324();
+        get => (nint)NativeMethods.TablePtr->f330();
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f322((void*)_handle);
+            NativeMethods.TablePtr->f328((void*)_handle);
             _handle = 0;
         }
     }

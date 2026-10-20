@@ -13,20 +13,29 @@ public sealed unsafe partial class CrossbowMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f376();
+        get => NativeMethods.TablePtr->f383();
     }
 
     public void addChargedProjectile(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        NativeMethods.TablePtr->f377((void*)_handle, (void*)item.Handle);
+        NativeMethods.TablePtr->f384((void*)_handle, (void*)item.Handle);
     }
 
-    public nint getChargedProjectiles() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::ItemStack' is not supported.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[] getChargedProjectiles()
+    {
+        var __hs_view = NativeMethods.TablePtr->f385((void*)_handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
 
     public bool hasChargedProjectiles()
     {
-        return NativeMethods.TablePtr->f378((void*)_handle);
+        return NativeMethods.TablePtr->f386((void*)_handle);
     }
 
     public void setChargedProjectiles(nint projectiles) =>

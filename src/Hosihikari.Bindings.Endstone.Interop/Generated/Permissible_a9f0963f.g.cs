@@ -13,7 +13,7 @@ public sealed unsafe partial class Permissible
 
     public nint addAttachment(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        return (nint)NativeMethods.TablePtr->f848((void*)_handle, (void*)plugin.Handle);
+        return (nint)NativeMethods.TablePtr->f862((void*)_handle, (void*)plugin.Handle);
     }
 
     public nint addAttachment(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, string name, bool value)
@@ -21,26 +21,34 @@ public sealed unsafe partial class Permissible
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->f849((void*)_handle, (void*)plugin.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, value);
+            return (nint)NativeMethods.TablePtr->f863((void*)_handle, (void*)plugin.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, value);
         }
     }
 
     public nint asCommandSender()
     {
-        return (nint)NativeMethods.TablePtr->f850((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f864((void*)_handle);
     }
 
-    public nint getEffectivePermissions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_set<endstone::PermissionAttachmentInfo *>' is not a known bindable declaration.");
+    public nint[] getEffectivePermissions()
+    {
+        var __hs_view = NativeMethods.TablePtr->f865((void*)_handle);
+        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
     public int getPermissionLevel()
     {
-        return NativeMethods.TablePtr->f851((void*)_handle);
+        return NativeMethods.TablePtr->f866((void*)_handle);
     }
 
     public bool hasPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        return NativeMethods.TablePtr->f852((void*)_handle, (void*)perm.Handle);
+        return NativeMethods.TablePtr->f867((void*)_handle, (void*)perm.Handle);
     }
 
     public bool hasPermission(string name)
@@ -48,13 +56,13 @@ public sealed unsafe partial class Permissible
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f853((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f868((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool isPermissionSet(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        return NativeMethods.TablePtr->f854((void*)_handle, (void*)perm.Handle);
+        return NativeMethods.TablePtr->f869((void*)_handle, (void*)perm.Handle);
     }
 
     public bool isPermissionSet(string name)
@@ -62,18 +70,18 @@ public sealed unsafe partial class Permissible
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f855((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f870((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void recalculatePermissions()
     {
-        NativeMethods.TablePtr->f856((void*)_handle);
+        NativeMethods.TablePtr->f871((void*)_handle);
     }
 
     public bool removeAttachment(global::Hosihikari.Bindings.Endstone.Interop.endstone.PermissionAttachment attachment)
     {
-        return NativeMethods.TablePtr->f857((void*)_handle, (void*)attachment.Handle);
+        return NativeMethods.TablePtr->f872((void*)_handle, (void*)attachment.Handle);
     }
 
     public void Destroy() =>

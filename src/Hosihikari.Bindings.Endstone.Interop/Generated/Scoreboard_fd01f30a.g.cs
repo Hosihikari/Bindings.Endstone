@@ -16,7 +16,7 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1263((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria);
+            var __hs_handle = NativeMethods.TablePtr->f1287((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
@@ -29,7 +29,7 @@ public sealed unsafe partial class Scoreboard
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var __hs_handle = NativeMethods.TablePtr->f1264((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria, __hs_stringData2, (nuint)__hs_stringBytes2.Length);
+                var __hs_handle = NativeMethods.TablePtr->f1288((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria, __hs_stringData2, (nuint)__hs_stringBytes2.Length);
                 return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
             }
         }
@@ -43,7 +43,7 @@ public sealed unsafe partial class Scoreboard
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var __hs_handle = NativeMethods.TablePtr->f1265((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria, __hs_stringData2, (nuint)__hs_stringBytes2.Length, render_type);
+                var __hs_handle = NativeMethods.TablePtr->f1289((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria, __hs_stringData2, (nuint)__hs_stringBytes2.Length, render_type);
                 return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
             }
         }
@@ -51,7 +51,7 @@ public sealed unsafe partial class Scoreboard
 
     public void clearSlot(int slot)
     {
-        NativeMethods.TablePtr->f1266((void*)_handle, slot);
+        NativeMethods.TablePtr->f1290((void*)_handle, slot);
     }
 
     public nint getEntries() =>
@@ -59,7 +59,7 @@ public sealed unsafe partial class Scoreboard
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(int slot)
     {
-        var __hs_handle = NativeMethods.TablePtr->f1267((void*)_handle, slot);
+        var __hs_handle = NativeMethods.TablePtr->f1291((void*)_handle, slot);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
     }
 
@@ -68,23 +68,50 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1268((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_handle = NativeMethods.TablePtr->f1292((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
 
-    public nint getObjectives() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<endstone::Objective>' is not supported.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective[] getObjectives()
+    {
+        var __hs_view = NativeMethods.TablePtr->f1293((void*)_handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
 
-    public nint getObjectivesByCriteria(nint criteria) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<endstone::Objective>' is not supported.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective[] getObjectivesByCriteria(int criteria)
+    {
+        var __hs_view = NativeMethods.TablePtr->f1294((void*)_handle, criteria);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
 
-    public nint getScores(nint entry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<endstone::Score>' is not supported.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Score[] getScores(global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b entry)
+    {
+        var __hs_view = NativeMethods.TablePtr->f1295((void*)_handle, (void*)entry.Handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Score[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Score((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
 
     public void resetScores(global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b entry)
     {
-        NativeMethods.TablePtr->f1269((void*)_handle, (void*)entry.Handle);
+        NativeMethods.TablePtr->f1296((void*)_handle, (void*)entry.Handle);
     }
 
     public void Destroy() =>

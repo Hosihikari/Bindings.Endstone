@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerItemHeldEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1031();
+        get => (nint)NativeMethods.TablePtr->f1050();
     }
 
     public static PlayerItemHeldEvent Create(nint player, nint previous, nint current) =>
@@ -21,25 +21,25 @@ public sealed unsafe partial class PlayerItemHeldEvent : global::System.IDisposa
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1032((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1051((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getNewSlot()
     {
-        return NativeMethods.TablePtr->f1033((void*)_handle);
+        return NativeMethods.TablePtr->f1052((void*)_handle);
     }
 
     public int getPreviousSlot()
     {
-        return NativeMethods.TablePtr->f1034((void*)_handle);
+        return NativeMethods.TablePtr->f1053((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1030((void*)_handle);
+            NativeMethods.TablePtr->f1049((void*)_handle);
             _handle = 0;
         }
     }

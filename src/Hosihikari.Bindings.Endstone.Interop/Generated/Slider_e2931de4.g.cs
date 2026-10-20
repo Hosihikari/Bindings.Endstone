@@ -13,7 +13,7 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public static Slider Create()
     {
-        var handle = NativeMethods.TablePtr->f1370();
+        var handle = NativeMethods.TablePtr->f1397();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -24,7 +24,7 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public static Slider Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label, float min, float max, float step, float? default_value)
     {
-        var handle = NativeMethods.TablePtr->f1371((void*)label.Handle, min, max, step, default_value ?? default(float), default_value.HasValue);
+        var handle = NativeMethods.TablePtr->f1398((void*)label.Handle, min, max, step, default_value ?? default(float), default_value.HasValue);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,60 +36,60 @@ public sealed unsafe partial class Slider : global::System.IDisposable
     public float? getDefaultValue()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f1372((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f1399((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (float?)null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1373((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1400((void*)_handle));
     }
 
     public float getMax()
     {
-        return NativeMethods.TablePtr->f1374((void*)_handle);
+        return NativeMethods.TablePtr->f1401((void*)_handle);
     }
 
     public float getMin()
     {
-        return NativeMethods.TablePtr->f1375((void*)_handle);
+        return NativeMethods.TablePtr->f1402((void*)_handle);
     }
 
     public float getStep()
     {
-        return NativeMethods.TablePtr->f1376((void*)_handle);
+        return NativeMethods.TablePtr->f1403((void*)_handle);
     }
 
     public nint setDefaultValue(float? default_value)
     {
-        return (nint)NativeMethods.TablePtr->f1377((void*)_handle, default_value ?? default(float), default_value.HasValue);
+        return (nint)NativeMethods.TablePtr->f1404((void*)_handle, default_value ?? default(float), default_value.HasValue);
     }
 
     public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return (nint)NativeMethods.TablePtr->f1378((void*)_handle, (void*)label.Handle);
+        return (nint)NativeMethods.TablePtr->f1405((void*)_handle, (void*)label.Handle);
     }
 
     public nint setMax(float max)
     {
-        return (nint)NativeMethods.TablePtr->f1379((void*)_handle, max);
+        return (nint)NativeMethods.TablePtr->f1406((void*)_handle, max);
     }
 
     public nint setMin(float min)
     {
-        return (nint)NativeMethods.TablePtr->f1380((void*)_handle, min);
+        return (nint)NativeMethods.TablePtr->f1407((void*)_handle, min);
     }
 
     public nint setStep(float step)
     {
-        return (nint)NativeMethods.TablePtr->f1381((void*)_handle, step);
+        return (nint)NativeMethods.TablePtr->f1408((void*)_handle, step);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1369((void*)_handle);
+            NativeMethods.TablePtr->f1396((void*)_handle);
             _handle = 0;
         }
     }

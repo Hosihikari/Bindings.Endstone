@@ -13,7 +13,7 @@ public sealed unsafe partial class ScriptMessageEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1271();
+        get => (nint)NativeMethods.TablePtr->f1298();
     }
 
     public static ScriptMessageEvent Create(string message_id, string message, global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender)
@@ -24,7 +24,7 @@ public sealed unsafe partial class ScriptMessageEvent : global::System.IDisposab
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var handle = NativeMethods.TablePtr->f1272(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)sender.Handle);
+                var handle = NativeMethods.TablePtr->f1299(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)sender.Handle);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -37,32 +37,32 @@ public sealed unsafe partial class ScriptMessageEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1273((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1300((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f1274((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1301((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessageId()
     {
-        var __hs_view = NativeMethods.TablePtr->f1275((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1302((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getSender()
     {
-        return (nint)NativeMethods.TablePtr->f1276((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1303((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1270((void*)_handle);
+            NativeMethods.TablePtr->f1297((void*)_handle);
             _handle = 0;
         }
     }

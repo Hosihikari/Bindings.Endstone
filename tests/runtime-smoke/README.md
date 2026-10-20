@@ -30,6 +30,8 @@ The plugin verifies:
 - string and integer vector parameters reach `Translatable::Create` and `ArrayTag<int>::Create`;
 - `PluginManager::getPlugins()` returns borrowed `Plugin*` addresses;
 - `Server::createScoreboard()` returns a `shared_ptr` handle whose target serves `Scoreboard::clearSlot` and releases cleanly;
+- `Scoreboard::getObjectives()` returns an owned `Objective[]` (empty on a fresh scoreboard);
+- `PlayerBanList::getEntries()` returns `SharedHandle[]` and `getBanEntry("missing")` returns null;
 - a string `std::variant` round-trips through `ActionForm::setContent`/`getContent`, including index and string accessors.
 
 Expected result:
@@ -45,6 +47,8 @@ translatable.string_vector=ok
 arraytag.int_vector=ok
 plugin_manager.plugin_vector=ok
 scoreboard.shared_handle=ok
+scoreboard.owned_array=ok
+ban_list.shared_array=ok
 action_form.string_variant=ok
 result=OK
 ```

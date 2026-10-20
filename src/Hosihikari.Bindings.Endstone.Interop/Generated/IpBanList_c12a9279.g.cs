@@ -12,23 +12,39 @@ public sealed unsafe partial class IpBanList
     public nint Handle => _handle;
 
     public nint addBan_4c6dbde4(nint address, nint reason, nint duration, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'endstone::NotNull<endstone::IpBanEntry>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::chrono::duration<long long>' is not a known bindable declaration.");
 
     public nint addBan_7285c7d5(nint address, nint reason, nint expires, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'endstone::NotNull<endstone::IpBanEntry>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::chrono::time_point<std::chrono::system_clock>' is abstract or not copy-constructible.");
 
-    public nint getBanEntry(nint address) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'endstone::Nullable<endstone::IpBanEntry>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle? getBanEntry(string address)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(address);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_shared = NativeMethods.TablePtr->f617((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+        }
+    }
 
-    public nint getEntries() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::NotNull<endstone::IpBanEntry>' is not supported.");
+    public global::Hosihikari.Bindings.Abi.SharedHandle[] getEntries()
+    {
+        var __hs_view = NativeMethods.TablePtr->f618((void*)_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.SharedHandleData*)__hs_view.Data;
+        var __hs_result = new global::Hosihikari.Bindings.Abi.SharedHandle[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_items[__hs_i])!;
+        }
+        return __hs_result;
+    }
 
     public bool isBanned(string address)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(address);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f607((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f619((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -37,7 +53,7 @@ public sealed unsafe partial class IpBanList
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(address);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f608((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f620((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 }

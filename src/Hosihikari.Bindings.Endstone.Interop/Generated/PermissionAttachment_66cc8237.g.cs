@@ -16,7 +16,7 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
 
     public nint getPermissible()
     {
-        return (nint)NativeMethods.TablePtr->f871((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f887((void*)_handle);
     }
 
     public nint getPermissions() =>
@@ -24,7 +24,7 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
 
     public nint getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->f872((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f888((void*)_handle);
     }
 
     public nint getRemovalCallback() =>
@@ -32,12 +32,12 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
 
     public bool remove()
     {
-        return NativeMethods.TablePtr->f873((void*)_handle);
+        return NativeMethods.TablePtr->f889((void*)_handle);
     }
 
     public void setPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm, bool value)
     {
-        NativeMethods.TablePtr->f874((void*)_handle, (void*)perm.Handle, value);
+        NativeMethods.TablePtr->f890((void*)_handle, (void*)perm.Handle, value);
     }
 
     public void setPermission(string name, bool value)
@@ -45,18 +45,18 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f875((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, value);
+            NativeMethods.TablePtr->f891((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, value);
         }
     }
 
     public void setRemovalCallback(nint exInvoke, nint exUserData, nint exRelease)
     {
-        NativeMethods.TablePtr->f876((void*)_handle, (void*)exInvoke, (void*)exUserData, (void*)exRelease);
+        NativeMethods.TablePtr->f892((void*)_handle, (void*)exInvoke, (void*)exUserData, (void*)exRelease);
     }
 
     public void unsetPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        NativeMethods.TablePtr->f877((void*)_handle, (void*)perm.Handle);
+        NativeMethods.TablePtr->f893((void*)_handle, (void*)perm.Handle);
     }
 
     public void unsetPermission(string name)
@@ -64,7 +64,7 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f878((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f894((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -72,7 +72,7 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f870((void*)_handle);
+            NativeMethods.TablePtr->f886((void*)_handle);
             _handle = 0;
         }
     }

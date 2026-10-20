@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f972();
+        get => (nint)NativeMethods.TablePtr->f991();
     }
 
     public static PlayerDeathEvent Create(nint player, nint damage_source, nint death_message) =>
@@ -22,31 +22,31 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getDeathMessage()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f973((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f992((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f974((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f993((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f975((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f994((void*)_handle);
     }
 
     public void setDeathMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? death_message)
     {
-        NativeMethods.TablePtr->f976((void*)_handle, (void*)(death_message?.Handle ?? 0), death_message is not null);
+        NativeMethods.TablePtr->f995((void*)_handle, (void*)(death_message?.Handle ?? 0), death_message is not null);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f971((void*)_handle);
+            NativeMethods.TablePtr->f990((void*)_handle);
             _handle = 0;
         }
     }

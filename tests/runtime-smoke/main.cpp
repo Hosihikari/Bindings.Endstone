@@ -47,6 +47,18 @@
 #ifndef HS_SCOREBOARD_CLEAR_SLOT_INDEX
 #error "HS_SCOREBOARD_CLEAR_SLOT_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_SCOREBOARD_OBJECTIVES_INDEX
+#error "HS_SCOREBOARD_OBJECTIVES_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_SERVER_BAN_LIST_INDEX
+#error "HS_SERVER_BAN_LIST_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PLAYER_BAN_ENTRIES_INDEX
+#error "HS_PLAYER_BAN_ENTRIES_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PLAYER_BAN_ENTRY_INDEX
+#error "HS_PLAYER_BAN_ENTRY_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_ACTION_FORM_CREATE_INDEX
 #error "HS_ACTION_FORM_CREATE_INDEX must be defined by build.ps1"
 #endif
@@ -219,14 +231,46 @@ public:
 
             using CreateScoreboardFn = HosihikariSharedHandle (*)(void *);
             using ClearSlotFn = void (*)(void *, std::int32_t);
+            using GetObjectivesFn = HosihikariArrayView (*)(void *);
             auto shared = reinterpret_cast<CreateScoreboardFn>(slots[HS_SERVER_CREATE_SCOREBOARD_INDEX])(handle);
             bool sharedOk = shared.holder != nullptr && shared.target != nullptr && shared.release != nullptr;
+            bool objectivesOk = false;
             if (sharedOk) {
                 reinterpret_cast<ClearSlotFn>(slots[HS_SCOREBOARD_CLEAR_SLOT_INDEX])(shared.target, 0);
+                const auto objectives = reinterpret_cast<GetObjectivesFn>(slots[HS_SCOREBOARD_OBJECTIVES_INDEX])(shared.target);
+                objectivesOk = objectives.size == 0;
                 shared.release(shared.holder);
             }
 
             out << "scoreboard.shared_handle=" << (sharedOk ? "ok" : "FAIL") << "\n";
+            out << "scoreboard.owned_array=" << (objectivesOk ? "ok" : "FAIL") << "\n";
+
+            using GetBanListFn = void *(*)(void *);
+            using GetBanEntriesFn = HosihikariArrayView (*)(void *);
+            using GetBanEntryFn = HosihikariSharedHandle (*)(void *, const char *, std::size_t);
+            bool containersOk = false;
+            if (auto *banList = reinterpret_cast<GetBanListFn>(slots[HS_SERVER_BAN_LIST_INDEX])(handle)) {
+                const auto entries = reinterpret_cast<GetBanEntriesFn>(slots[HS_PLAYER_BAN_ENTRIES_INDEX])(banList);
+                containersOk = true;
+                const auto sharedItems = static_cast<HosihikariSharedHandle const *>(entries.data);
+                for (std::size_t index = 0; index < entries.size; ++index) {
+                    if (sharedItems[index].release == nullptr) {
+                        containersOk = false;
+                        continue;
+                    }
+
+                    sharedItems[index].release(sharedItems[index].holder);
+                }
+
+                auto missing = reinterpret_cast<GetBanEntryFn>(slots[HS_PLAYER_BAN_ENTRY_INDEX])(
+                    banList, "hosihikari-missing", 18);
+                containersOk = containersOk && missing.holder == nullptr && missing.release == nullptr;
+                if (missing.release) {
+                    missing.release(missing.holder);
+                }
+            }
+
+            out << "ban_list.shared_array=" << (containersOk ? "ok" : "FAIL") << "\n";
 
             using CreateActionFormFn = void *(*)();
             using SetContentFn = void *(*)(void *, void *);
@@ -266,7 +310,7 @@ public:
 
             out << "result="
                 << (actualName == server.getName() && actualVersion == server.getVersion() && vectorsOk
-                            && pluginsOk && sharedOk && variantOk
+                            && pluginsOk && sharedOk && objectivesOk && containersOk && variantOk
                         ? "OK"
                         : "FAIL")
                 << "\n";
