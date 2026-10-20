@@ -3,11 +3,20 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class StepSlider
+public sealed unsafe partial class StepSlider : global::System.IDisposable
 {
     private nint _handle;
 
     public StepSlider(nint handle) => _handle = handle;
 
     public nint Handle => _handle;
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f1460((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

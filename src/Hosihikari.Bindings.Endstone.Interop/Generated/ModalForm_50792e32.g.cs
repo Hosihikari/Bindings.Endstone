@@ -11,53 +11,74 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public nint addControl(nint control)
+    public nint addControl(global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872 control)
     {
-        return (nint)NativeMethods.TablePtr->f851((void*)_handle, (void*)control);
+        return (nint)NativeMethods.TablePtr->f851((void*)_handle, (void*)control.Handle);
     }
 
-    public nint getControls() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>' is not supported.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872[] getControls()
+    {
+        var __hs_view = NativeMethods.TablePtr->f852((void*)_handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
+    }
 
     public string? getIcon()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f852((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f853((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Function_08258ebd getOnSubmit()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Function_08258ebd((nint)NativeMethods.TablePtr->f853((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Function_08258ebd((nint)NativeMethods.TablePtr->f854((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getSubmitButton()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f854((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f855((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
-    public nint setControls(nint controls) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>' is not supported.");
+    public nint setControls(global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872[] controls)
+    {
+        var __hs_vectorItems = controls;
+        var __hs_vectorHandles = new nint[__hs_vectorItems?.Length ?? 0];
+        for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++)
+        {
+            __hs_vectorHandles[__hs_i] = __hs_vectorItems![__hs_i]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData = __hs_vectorHandles)
+        {
+            var __hs_vectorData = (void**)__hs_vectorHandleData;
+            return (nint)NativeMethods.TablePtr->f856((void*)_handle, __hs_vectorData, (nuint)(controls?.Length ?? 0));
+        }
+    }
 
     public nint setIcon(string? icon)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f855((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, icon is not null);
+            return (nint)NativeMethods.TablePtr->f857((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, icon is not null);
         }
     }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f856((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f858((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public nint setSubmitButton(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? text)
     {
-        return (nint)NativeMethods.TablePtr->f857((void*)_handle, (void*)(text?.Handle ?? 0), text is not null);
+        return (nint)NativeMethods.TablePtr->f859((void*)_handle, (void*)(text?.Handle ?? 0), text is not null);
     }
 
     public void Dispose()

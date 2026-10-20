@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerRespawnEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1137();
+        get => (nint)NativeMethods.TablePtr->f1139();
     }
 
     public static PlayerRespawnEvent Create(nint player) =>
@@ -21,7 +21,7 @@ public sealed unsafe partial class PlayerRespawnEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1138((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1140((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -30,7 +30,7 @@ public sealed unsafe partial class PlayerRespawnEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1136((void*)_handle);
+            NativeMethods.TablePtr->f1138((void*)_handle);
             _handle = 0;
         }
     }

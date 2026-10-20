@@ -25,7 +25,7 @@ public sealed unsafe partial class PlayerBanList
                 {
                     fixed (byte* __hs_stringData5 = __hs_stringBytes5)
                     {
-                        var __hs_shared = NativeMethods.TablePtr->f998((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, __hs_stringData3, (nuint)__hs_stringBytes3.Length, duration, __hs_stringData5, (nuint)__hs_stringBytes5.Length, uuid is not null, xuid is not null, reason is not null, source is not null);
+                        var __hs_shared = NativeMethods.TablePtr->f1000((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, __hs_stringData3, (nuint)__hs_stringBytes3.Length, duration, __hs_stringData5, (nuint)__hs_stringBytes5.Length, uuid is not null, xuid is not null, reason is not null, source is not null);
                         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                     }
                 }
@@ -47,7 +47,7 @@ public sealed unsafe partial class PlayerBanList
                 {
                     fixed (byte* __hs_stringData5 = __hs_stringBytes5)
                     {
-                        var __hs_shared = NativeMethods.TablePtr->f999((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, __hs_stringData3, (nuint)__hs_stringBytes3.Length, expires ?? default(long), __hs_stringData5, (nuint)__hs_stringBytes5.Length, uuid is not null, xuid is not null, reason is not null, expires.HasValue, source is not null);
+                        var __hs_shared = NativeMethods.TablePtr->f1001((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, __hs_stringData3, (nuint)__hs_stringBytes3.Length, expires ?? default(long), __hs_stringData5, (nuint)__hs_stringBytes5.Length, uuid is not null, xuid is not null, reason is not null, expires.HasValue, source is not null);
                         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                     }
                 }
@@ -66,7 +66,7 @@ public sealed unsafe partial class PlayerBanList
             {
                 fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                 {
-                    var __hs_shared = NativeMethods.TablePtr->f1000((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, duration, __hs_stringData3, (nuint)__hs_stringBytes3.Length, reason is not null, source is not null);
+                    var __hs_shared = NativeMethods.TablePtr->f1002((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, duration, __hs_stringData3, (nuint)__hs_stringBytes3.Length, reason is not null, source is not null);
                     return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                 }
             }
@@ -84,7 +84,7 @@ public sealed unsafe partial class PlayerBanList
             {
                 fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                 {
-                    var __hs_shared = NativeMethods.TablePtr->f1001((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, expires ?? default(long), __hs_stringData3, (nuint)__hs_stringBytes3.Length, reason is not null, expires.HasValue, source is not null);
+                    var __hs_shared = NativeMethods.TablePtr->f1003((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, expires ?? default(long), __hs_stringData3, (nuint)__hs_stringBytes3.Length, reason is not null, expires.HasValue, source is not null);
                     return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                 }
             }
@@ -96,7 +96,7 @@ public sealed unsafe partial class PlayerBanList
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->f1002((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_shared = NativeMethods.TablePtr->f1004((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
@@ -109,7 +109,7 @@ public sealed unsafe partial class PlayerBanList
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var __hs_shared = NativeMethods.TablePtr->f1003((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
+                var __hs_shared = NativeMethods.TablePtr->f1005((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
                 return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
             }
         }
@@ -117,7 +117,7 @@ public sealed unsafe partial class PlayerBanList
 
     public global::Hosihikari.Bindings.Abi.SharedHandle[] getEntries()
     {
-        var __hs_view = NativeMethods.TablePtr->f1004((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1006((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.SharedHandleData*)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Abi.SharedHandle[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -132,7 +132,7 @@ public sealed unsafe partial class PlayerBanList
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f1005((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f1007((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -144,7 +144,7 @@ public sealed unsafe partial class PlayerBanList
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                return NativeMethods.TablePtr->f1006((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
+                return NativeMethods.TablePtr->f1008((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
             }
         }
     }
@@ -154,7 +154,7 @@ public sealed unsafe partial class PlayerBanList
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1007((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f1009((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -166,7 +166,7 @@ public sealed unsafe partial class PlayerBanList
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                NativeMethods.TablePtr->f1008((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
+                NativeMethods.TablePtr->f1010((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
             }
         }
     }

@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerPickupItemEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1125();
+        get => (nint)NativeMethods.TablePtr->f1127();
     }
 
     public static PlayerPickupItemEvent Create(nint player, nint item) =>
@@ -21,20 +21,20 @@ public sealed unsafe partial class PlayerPickupItemEvent : global::System.IDispo
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1126((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1128((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getItem()
     {
-        return (nint)NativeMethods.TablePtr->f1127((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1129((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1124((void*)_handle);
+            NativeMethods.TablePtr->f1126((void*)_handle);
             _handle = 0;
         }
     }

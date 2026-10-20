@@ -14,82 +14,82 @@ public sealed unsafe partial class PlayerInventory
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getBoots()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1071((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f1073((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getChestplate()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1072((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f1074((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public int getHeldItemSlot()
     {
-        return NativeMethods.TablePtr->f1073((void*)_handle);
+        return NativeMethods.TablePtr->f1075((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getHelmet()
-    {
-        var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1074((void*)_handle, &__hs_hasValue);
-        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
-    }
-
-    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getItemInMainHand()
-    {
-        var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1075((void*)_handle, &__hs_hasValue);
-        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
-    }
-
-    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getItemInOffHand()
     {
         var __hs_hasValue = false;
         var __hs_handle = NativeMethods.TablePtr->f1076((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
-    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getLeggings()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getItemInMainHand()
     {
         var __hs_hasValue = false;
         var __hs_handle = NativeMethods.TablePtr->f1077((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getItemInOffHand()
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->f1078((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getLeggings()
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->f1079((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
+    }
+
     public void setBoots(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? boots)
     {
-        NativeMethods.TablePtr->f1078((void*)_handle, (void*)(boots?.Handle ?? 0), boots is not null);
+        NativeMethods.TablePtr->f1080((void*)_handle, (void*)(boots?.Handle ?? 0), boots is not null);
     }
 
     public void setChestplate(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? chestplate)
     {
-        NativeMethods.TablePtr->f1079((void*)_handle, (void*)(chestplate?.Handle ?? 0), chestplate is not null);
+        NativeMethods.TablePtr->f1081((void*)_handle, (void*)(chestplate?.Handle ?? 0), chestplate is not null);
     }
 
     public void setHeldItemSlot(int slot)
     {
-        NativeMethods.TablePtr->f1080((void*)_handle, slot);
+        NativeMethods.TablePtr->f1082((void*)_handle, slot);
     }
 
     public void setHelmet(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? helmet)
     {
-        NativeMethods.TablePtr->f1081((void*)_handle, (void*)(helmet?.Handle ?? 0), helmet is not null);
+        NativeMethods.TablePtr->f1083((void*)_handle, (void*)(helmet?.Handle ?? 0), helmet is not null);
     }
 
     public void setItemInMainHand(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? item)
     {
-        NativeMethods.TablePtr->f1082((void*)_handle, (void*)(item?.Handle ?? 0), item is not null);
+        NativeMethods.TablePtr->f1084((void*)_handle, (void*)(item?.Handle ?? 0), item is not null);
     }
 
     public void setItemInOffHand(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? item)
     {
-        NativeMethods.TablePtr->f1083((void*)_handle, (void*)(item?.Handle ?? 0), item is not null);
+        NativeMethods.TablePtr->f1085((void*)_handle, (void*)(item?.Handle ?? 0), item is not null);
     }
 
     public void setLeggings(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? leggings)
     {
-        NativeMethods.TablePtr->f1084((void*)_handle, (void*)(leggings?.Handle ?? 0), leggings is not null);
+        NativeMethods.TablePtr->f1086((void*)_handle, (void*)(leggings?.Handle ?? 0), leggings is not null);
     }
 }

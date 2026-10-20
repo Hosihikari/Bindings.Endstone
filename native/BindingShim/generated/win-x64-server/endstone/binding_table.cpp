@@ -13484,6 +13484,26 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariArrayView hs_method_e6901603(void* hs_self) try
+{
+    thread_local std::vector<void*> hs_arrayResult;
+    auto result = static_cast<endstone::ModalForm*>(hs_self)->getControls();
+    hs_arrayResult.clear();
+    hs_arrayResult.reserve(result.size());
+    for (auto const& item : result) { hs_arrayResult.push_back(static_cast<void*>(new std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>(item))); }
+    return HosihikariArrayView{hs_arrayResult.data(), hs_arrayResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
 static HosihikariStringView hs_method_e533f412(void* hs_self, bool* hs_hasValue) try
 {
     auto result = static_cast<endstone::ModalForm*>(hs_self)->getIcon();
@@ -13536,6 +13556,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static void* hs_method_e8d9d3b9(void* hs_self, const void** controls_data, std::size_t controls_count) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ModalForm*>(hs_self)->setControls(hs_make_variant_vector<std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>>(controls_data, controls_count))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
     return nullptr;
 }
 
@@ -23245,6 +23280,21 @@ catch (...)
     return false;
 }
 
+static void hs_destroy_9dcd438a(void* hs_self) try
+{
+    delete static_cast<endstone::StepSlider*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_34195476(void* hs_self) try
 {
     static_cast<endstone::Task*>(hs_self)->cancel();
@@ -26844,6 +26894,292 @@ catch (...)
     return 0;
 }
 
+static void* hs_variant_27d5b872_create_0(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>(std::in_place_index<0>, *static_cast<const endstone::Dropdown*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_create_1(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>(std::in_place_index<1>, *static_cast<const endstone::Label*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_create_2(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>(std::in_place_index<2>, *static_cast<const endstone::Slider*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_create_3(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>(std::in_place_index<3>, *static_cast<const endstone::StepSlider*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_create_4(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>(std::in_place_index<4>, *static_cast<const endstone::TextInput*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_create_5(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>(std::in_place_index<5>, *static_cast<const endstone::Toggle*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_create_6(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>(std::in_place_index<6>, *static_cast<const endstone::Divider*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_create_7(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>(std::in_place_index<7>, *static_cast<const endstone::Header*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void hs_variant_27d5b872_destroy(void* hs_self) try
+{
+    delete static_cast<std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void* hs_variant_27d5b872_get_0(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self);
+    if (hs_value.index() != 0) { return nullptr; }
+    return static_cast<void*>(new endstone::Dropdown(std::get<0>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_get_1(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self);
+    if (hs_value.index() != 1) { return nullptr; }
+    return static_cast<void*>(new endstone::Label(std::get<1>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_get_2(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self);
+    if (hs_value.index() != 2) { return nullptr; }
+    return static_cast<void*>(new endstone::Slider(std::get<2>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_get_3(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self);
+    if (hs_value.index() != 3) { return nullptr; }
+    return static_cast<void*>(new endstone::StepSlider(std::get<3>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_get_4(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self);
+    if (hs_value.index() != 4) { return nullptr; }
+    return static_cast<void*>(new endstone::TextInput(std::get<4>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_get_5(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self);
+    if (hs_value.index() != 5) { return nullptr; }
+    return static_cast<void*>(new endstone::Toggle(std::get<5>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_get_6(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self);
+    if (hs_value.index() != 6) { return nullptr; }
+    return static_cast<void*>(new endstone::Divider(std::get<6>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_27d5b872_get_7(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self);
+    if (hs_value.index() != 7) { return nullptr; }
+    return static_cast<void*>(new endstone::Header(std::get<7>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static std::int32_t hs_variant_27d5b872_index(void* hs_self) try
+{
+    return static_cast<std::int32_t>(static_cast<const std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>*>(hs_self)->index());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return 0;
+}
+
 static void* hs_variant_e1e3d57e_create_0(void* value) try
 {
     return static_cast<void*>(new std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>(std::in_place_index<0>, *static_cast<const endstone::MessageForm*>(value)));
@@ -28051,9 +28387,11 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_3cecb4b6,
     &hs_destroy_50792e32,
     &hs_method_d6ba0b11,
+    &hs_method_e6901603,
     &hs_method_e533f412,
     &hs_method_738959a6,
     &hs_method_87da21ad,
+    &hs_method_e8d9d3b9,
     &hs_method_2fd6a4b6,
     &hs_method_7a28fda0,
     &hs_method_b175a990,
@@ -28657,6 +28995,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_7235e4c3,
     &hs_method_49415507,
     &hs_method_868949fd,
+    &hs_destroy_9dcd438a,
     &hs_method_34195476,
     &hs_method_53f1a0f6,
     &hs_method_cd52150c,
@@ -28894,6 +29233,24 @@ const HosihikariBindingTableV1 kTable{
     &hs_variant_5bd3e0f1_get_2,
     &hs_variant_5bd3e0f1_get_3,
     &hs_variant_5bd3e0f1_index,
+    &hs_variant_27d5b872_create_0,
+    &hs_variant_27d5b872_create_1,
+    &hs_variant_27d5b872_create_2,
+    &hs_variant_27d5b872_create_3,
+    &hs_variant_27d5b872_create_4,
+    &hs_variant_27d5b872_create_5,
+    &hs_variant_27d5b872_create_6,
+    &hs_variant_27d5b872_create_7,
+    &hs_variant_27d5b872_destroy,
+    &hs_variant_27d5b872_get_0,
+    &hs_variant_27d5b872_get_1,
+    &hs_variant_27d5b872_get_2,
+    &hs_variant_27d5b872_get_3,
+    &hs_variant_27d5b872_get_4,
+    &hs_variant_27d5b872_get_5,
+    &hs_variant_27d5b872_get_6,
+    &hs_variant_27d5b872_get_7,
+    &hs_variant_27d5b872_index,
     &hs_variant_e1e3d57e_create_0,
     &hs_variant_e1e3d57e_create_1,
     &hs_variant_e1e3d57e_create_2,
