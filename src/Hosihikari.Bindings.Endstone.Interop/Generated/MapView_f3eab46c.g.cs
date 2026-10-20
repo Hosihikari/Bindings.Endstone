@@ -11,32 +11,34 @@ public sealed unsafe partial class MapView
 
     public nint Handle => _handle;
 
-    public void addRenderer(nint renderer) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::shared_ptr<endstone::MapRenderer>' is not a known bindable declaration.");
+    public void addRenderer(global::Hosihikari.Bindings.Abi.SharedHandle? renderer)
+    {
+        NativeMethods.TablePtr->f831((void*)_handle, renderer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
     public int getCenterX()
     {
-        return NativeMethods.TablePtr->f830((void*)_handle);
+        return NativeMethods.TablePtr->f832((void*)_handle);
     }
 
     public int getCenterZ()
     {
-        return NativeMethods.TablePtr->f831((void*)_handle);
+        return NativeMethods.TablePtr->f833((void*)_handle);
     }
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f832((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f834((void*)_handle);
     }
 
     public long getId()
     {
-        return NativeMethods.TablePtr->f833((void*)_handle);
+        return NativeMethods.TablePtr->f835((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle[] getRenderers()
     {
-        var __hs_view = NativeMethods.TablePtr->f834((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f836((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.SharedHandleData*)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Abi.SharedHandle[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -48,57 +50,57 @@ public sealed unsafe partial class MapView
 
     public byte getScale()
     {
-        return NativeMethods.TablePtr->f835((void*)_handle);
+        return NativeMethods.TablePtr->f837((void*)_handle);
     }
 
     public bool isLocked()
     {
-        return NativeMethods.TablePtr->f836((void*)_handle);
+        return NativeMethods.TablePtr->f838((void*)_handle);
     }
 
     public bool isUnlimitedTracking()
     {
-        return NativeMethods.TablePtr->f837((void*)_handle);
+        return NativeMethods.TablePtr->f839((void*)_handle);
     }
 
     public bool isVirtual()
     {
-        return NativeMethods.TablePtr->f838((void*)_handle);
+        return NativeMethods.TablePtr->f840((void*)_handle);
     }
 
-    public bool removeRenderer(nint renderer)
+    public bool removeRenderer(global::Hosihikari.Bindings.Abi.SharedHandle? renderer)
     {
-        return NativeMethods.TablePtr->f839((void*)_handle, (void*)renderer);
+        return NativeMethods.TablePtr->f841((void*)_handle, renderer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public void setCenterX(int x)
     {
-        NativeMethods.TablePtr->f840((void*)_handle, x);
+        NativeMethods.TablePtr->f842((void*)_handle, x);
     }
 
     public void setCenterZ(int z)
     {
-        NativeMethods.TablePtr->f841((void*)_handle, z);
+        NativeMethods.TablePtr->f843((void*)_handle, z);
     }
 
     public void setDimension(global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension dimension)
     {
-        NativeMethods.TablePtr->f842((void*)_handle, (void*)dimension.Handle);
+        NativeMethods.TablePtr->f844((void*)_handle, (void*)dimension.Handle);
     }
 
     public void setLocked(bool locked)
     {
-        NativeMethods.TablePtr->f843((void*)_handle, locked);
+        NativeMethods.TablePtr->f845((void*)_handle, locked);
     }
 
     public void setScale(byte scale)
     {
-        NativeMethods.TablePtr->f844((void*)_handle, scale);
+        NativeMethods.TablePtr->f846((void*)_handle, scale);
     }
 
     public void setUnlimitedTracking(bool unlimited)
     {
-        NativeMethods.TablePtr->f845((void*)_handle, unlimited);
+        NativeMethods.TablePtr->f847((void*)_handle, unlimited);
     }
 
     public void Destroy() =>

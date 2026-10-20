@@ -13,12 +13,12 @@ public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.ID
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1075();
+        get => (nint)NativeMethods.TablePtr->f1077();
     }
 
     public static PlayerGameModeChangeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, int new_game_mode)
     {
-        var handle = NativeMethods.TablePtr->f1076((void*)player.Handle, new_game_mode);
+        var handle = NativeMethods.TablePtr->f1078((void*)player.Handle, new_game_mode);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,13 +29,13 @@ public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.ID
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1077((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1079((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getNewGameMode()
     {
-        return NativeMethods.TablePtr->f1078((void*)_handle);
+        return NativeMethods.TablePtr->f1080((void*)_handle);
     }
 
 
@@ -43,7 +43,7 @@ public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.ID
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1074((void*)_handle);
+            NativeMethods.TablePtr->f1076((void*)_handle);
             _handle = 0;
         }
     }

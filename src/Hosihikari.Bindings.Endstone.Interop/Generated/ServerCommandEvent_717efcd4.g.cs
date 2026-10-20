@@ -13,7 +13,7 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1432();
+        get => (nint)NativeMethods.TablePtr->f1435();
     }
 
     public static ServerCommandEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string command)
@@ -21,7 +21,7 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(command);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->f1433((void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            var handle = NativeMethods.TablePtr->f1436((void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -33,19 +33,19 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
 
     public string getCommand()
     {
-        var __hs_view = NativeMethods.TablePtr->f1434((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1437((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1435((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1438((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getSender()
     {
-        return (nint)NativeMethods.TablePtr->f1436((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1439((void*)_handle);
     }
 
     public void setCommand(string message)
@@ -53,7 +53,7 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1437((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f1440((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -61,7 +61,7 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1431((void*)_handle);
+            NativeMethods.TablePtr->f1434((void*)_handle);
             _handle = 0;
         }
     }

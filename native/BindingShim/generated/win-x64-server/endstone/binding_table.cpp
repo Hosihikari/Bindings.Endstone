@@ -12,8 +12,11 @@
 #include <memory>
 #include <new>
 #include <optional>
+#include <stdexcept>
 #include <string>
 #include <string_view>
+#include <type_traits>
+#include <typeindex>
 #include <unordered_map>
 #include <utility>
 #include <variant>
@@ -41,8 +44,25 @@ inline std::vector<std::string> hs_make_string_vector(HosihikariStringView const
     for (std::size_t i = 0; i < count; ++i) { result.emplace_back(data[i].data, data[i].size); }
     return result;
 }
+struct hs_shared_holder_base
+{
+    virtual ~hs_shared_holder_base() = default;
+    virtual std::shared_ptr<const void> hs_share() const = 0;
+    virtual std::type_index hs_type() const = 0;
+};
+
 template <class T>
-struct hs_shared_holder { std::shared_ptr<T> value; };
+struct hs_shared_holder final : hs_shared_holder_base
+{
+    explicit hs_shared_holder(std::shared_ptr<T> value) : value(std::move(value)) {}
+    std::shared_ptr<T> value;
+    std::shared_ptr<const void> hs_share() const override
+    {
+        return std::shared_ptr<const void>(value, value.get());
+    }
+
+    std::type_index hs_type() const override { return std::type_index(typeid(T)); }
+};
 
 template <class T>
 void hs_release_shared_holder(void* holder)
@@ -54,8 +74,28 @@ template <class T>
 HosihikariSharedHandle hs_make_shared_handle(std::shared_ptr<T> value)
 {
     if (!value) { return HosihikariSharedHandle{nullptr, nullptr, nullptr}; }
-    auto* holder = new hs_shared_holder<T>{std::move(value)};
+    auto* holder = new hs_shared_holder<T>(std::move(value));
     return HosihikariSharedHandle{holder, const_cast<void*>(static_cast<void const*>(holder->value.get())), &hs_release_shared_holder<T>};
+}
+
+template <class T>
+std::shared_ptr<T> hs_shared_from_handle(HosihikariSharedHandle handle)
+{
+    if (handle.holder == nullptr) { return {}; }
+    auto* holder = static_cast<hs_shared_holder_base*>(handle.holder);
+    if (holder->hs_type() != std::type_index(typeid(T))) {
+        throw std::invalid_argument("shared handle type mismatch");
+    }
+    using Value = std::remove_const_t<T>;
+    auto shared = holder->hs_share();
+    auto* raw = const_cast<Value*>(static_cast<Value const*>(shared.get()));
+    return std::shared_ptr<T>(std::move(shared), raw);
+}
+
+template <class T>
+std::weak_ptr<T> hs_weak_from_handle(HosihikariSharedHandle handle)
+{
+    return std::weak_ptr<T>(hs_shared_from_handle<T>(handle));
 }
 
 template <class T>
@@ -6005,6 +6045,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static bool hs_method_05b1c177(void* hs_self, HosihikariSharedHandle command) try
+{
+    return static_cast<bool>(static_cast<endstone::CommandMap*>(hs_self)->registerCommand(hs_shared_from_handle<endstone::Command>(command)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return false;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return false;
 }
 
 static void* hs_method_92d89af7(void* hs_self) try
@@ -13208,6 +13263,21 @@ catch (...)
     return;
 }
 
+static void hs_method_cc6d2d45(void* hs_self, HosihikariSharedHandle renderer) try
+{
+    static_cast<endstone::MapView*>(hs_self)->addRenderer(hs_shared_from_handle<endstone::MapRenderer>(renderer));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static std::int32_t hs_method_3c3ee09a(void* hs_self) try
 {
     return static_cast<std::int32_t>(static_cast<endstone::MapView*>(hs_self)->getCenterX());
@@ -13348,9 +13418,9 @@ catch (...)
     return false;
 }
 
-static bool hs_method_34277fd9(void* hs_self, void* renderer) try
+static bool hs_method_34277fd9(void* hs_self, HosihikariSharedHandle renderer) try
 {
-    return static_cast<bool>(static_cast<endstone::MapView*>(hs_self)->removeRenderer(*static_cast<const std::shared_ptr<endstone::MapRenderer>*>(renderer)));
+    return static_cast<bool>(static_cast<endstone::MapView*>(hs_self)->removeRenderer(hs_shared_from_handle<endstone::MapRenderer>(renderer)));
 }
 catch (std::exception const& hs_error)
 {
@@ -19060,6 +19130,21 @@ catch (...)
     return nullptr;
 }
 
+static void hs_method_3aac26f3(void* hs_self, HosihikariSharedHandle executor) try
+{
+    static_cast<endstone::PluginCommand*>(hs_self)->setExecutor(hs_shared_from_handle<endstone::CommandExecutor>(executor));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_destroy_497facfc(void* hs_self) try
 {
     delete static_cast<endstone::PluginDescription*>(hs_self);
@@ -23524,6 +23609,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
+static void hs_method_5e0e663b(void* hs_self, const char* name_data, std::size_t name_size, HosihikariSharedHandle provider, void* plugin, std::int32_t priority) try
+{
+    static_cast<endstone::ServiceManager*>(hs_self)->registerService(std::basic_string<char>(name_data, name_size), hs_shared_from_handle<endstone::Service>(provider), *static_cast<const endstone::Plugin*>(plugin), static_cast<endstone::ServicePriority>(priority));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
 }
 
 static void hs_method_17d8d0e8(void* hs_self, void* provider) try
@@ -28924,6 +29024,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_9377e1af,
     &hs_method_40f031d6,
     &hs_method_f9a885bb,
+    &hs_method_05b1c177,
     &hs_method_92d89af7,
     &hs_method_e3076cf4,
     &hs_method_5cb0ae2a,
@@ -29378,6 +29479,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_e56656e4,
     &hs_method_adda0eac,
     &hs_method_224059bb,
+    &hs_method_cc6d2d45,
     &hs_method_3c3ee09a,
     &hs_method_90396455,
     &hs_method_2816961f,
@@ -29747,6 +29849,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_18c8a5a2,
     &hs_method_8b4c19e2,
     &hs_method_2476b603,
+    &hs_method_3aac26f3,
     &hs_destroy_497facfc,
     &hs_method_a68fa3c7,
     &hs_method_07a6157f,
@@ -30017,6 +30120,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d0f9781a,
     &hs_destroy_22f51898,
     &hs_method_5a82ad36,
+    &hs_method_5e0e663b,
     &hs_method_17d8d0e8,
     &hs_method_d8e7f62a,
     &hs_method_700a22f6,

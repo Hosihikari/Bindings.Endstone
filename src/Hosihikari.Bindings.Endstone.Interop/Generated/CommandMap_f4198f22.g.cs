@@ -44,8 +44,10 @@ public sealed unsafe partial class CommandMap
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
 
-    public bool registerCommand(nint command) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::shared_ptr<endstone::Command>' is not a known bindable declaration.");
+    public bool registerCommand(global::Hosihikari.Bindings.Abi.SharedHandle? command)
+    {
+        return NativeMethods.TablePtr->f376((void*)_handle, command?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+    }
 
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");

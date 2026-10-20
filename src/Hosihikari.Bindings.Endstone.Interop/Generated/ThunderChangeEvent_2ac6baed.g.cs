@@ -13,12 +13,12 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1513();
+        get => (nint)NativeMethods.TablePtr->f1517();
     }
 
     public static ThunderChangeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Level level, bool to)
     {
-        var handle = NativeMethods.TablePtr->f1514((void*)level.Handle, to);
+        var handle = NativeMethods.TablePtr->f1518((void*)level.Handle, to);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,13 +29,13 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1515((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1519((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool toThunderState()
     {
-        return NativeMethods.TablePtr->f1516((void*)_handle);
+        return NativeMethods.TablePtr->f1520((void*)_handle);
     }
 
 
@@ -43,7 +43,7 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1512((void*)_handle);
+            NativeMethods.TablePtr->f1516((void*)_handle);
             _handle = 0;
         }
     }

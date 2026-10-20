@@ -13,7 +13,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public static ItemStack Create_bea8b69c(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        var handle = NativeMethods.TablePtr->f698((void*)other.Handle);
+        var handle = NativeMethods.TablePtr->f699((void*)other.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -24,7 +24,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public static ItemStack Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type, int amount, int data)
     {
-        var handle = NativeMethods.TablePtr->f699((void*)type.Handle, amount, data);
+        var handle = NativeMethods.TablePtr->f700((void*)type.Handle, amount, data);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -35,7 +35,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public static ItemStack Create_5db531db(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        var handle = NativeMethods.TablePtr->f700((void*)other.Handle);
+        var handle = NativeMethods.TablePtr->f701((void*)other.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -46,54 +46,54 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public int getAmount()
     {
-        return NativeMethods.TablePtr->f701((void*)_handle);
+        return NativeMethods.TablePtr->f702((void*)_handle);
     }
 
     public int getData()
     {
-        return NativeMethods.TablePtr->f702((void*)_handle);
+        return NativeMethods.TablePtr->f703((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? getItemMeta()
     {
-        var __hs_handle = NativeMethods.TablePtr->f703((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f704((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle) : null;
     }
 
     public int getMaxStackSize()
     {
-        return NativeMethods.TablePtr->f704((void*)_handle);
+        return NativeMethods.TablePtr->f705((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag getNbt()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag((nint)NativeMethods.TablePtr->f705((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag((nint)NativeMethods.TablePtr->f706((void*)_handle));
     }
 
     public string getTranslationKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f706((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f707((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getType()
     {
-        return (nint)NativeMethods.TablePtr->f707((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f708((void*)_handle);
     }
 
     public bool hasItemMeta()
     {
-        return NativeMethods.TablePtr->f708((void*)_handle);
+        return NativeMethods.TablePtr->f709((void*)_handle);
     }
 
     public bool isSimilar(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return NativeMethods.TablePtr->f709((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f710((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return NativeMethods.TablePtr->f710((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f711((void*)_handle, (void*)other.Handle);
     }
 
     public nint operator_assign_f452cd9a(nint other) =>
@@ -104,32 +104,32 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return NativeMethods.TablePtr->f711((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f712((void*)_handle, (void*)other.Handle);
     }
 
     public void setAmount(int amount)
     {
-        NativeMethods.TablePtr->f712((void*)_handle, amount);
+        NativeMethods.TablePtr->f713((void*)_handle, amount);
     }
 
     public void setData(int data)
     {
-        NativeMethods.TablePtr->f713((void*)_handle, data);
+        NativeMethods.TablePtr->f714((void*)_handle, data);
     }
 
     public bool setItemMeta(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta)
     {
-        return NativeMethods.TablePtr->f714((void*)_handle, (void*)meta.Handle);
+        return NativeMethods.TablePtr->f715((void*)_handle, (void*)meta.Handle);
     }
 
     public void setNbt(global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag nbt)
     {
-        NativeMethods.TablePtr->f715((void*)_handle, (void*)nbt.Handle);
+        NativeMethods.TablePtr->f716((void*)_handle, (void*)nbt.Handle);
     }
 
     public void setType(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        NativeMethods.TablePtr->f716((void*)_handle, (void*)type.Handle);
+        NativeMethods.TablePtr->f717((void*)_handle, (void*)type.Handle);
     }
 
 
@@ -137,7 +137,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f697((void*)_handle);
+            NativeMethods.TablePtr->f698((void*)_handle);
             _handle = 0;
         }
     }

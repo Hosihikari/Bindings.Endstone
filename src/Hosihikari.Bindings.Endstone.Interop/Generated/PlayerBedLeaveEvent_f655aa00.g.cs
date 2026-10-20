@@ -13,12 +13,12 @@ public sealed unsafe partial class PlayerBedLeaveEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1030();
+        get => (nint)NativeMethods.TablePtr->f1032();
     }
 
     public static PlayerBedLeaveEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Block bed)
     {
-        var handle = NativeMethods.TablePtr->f1031((void*)player.Handle, (void*)bed.Handle);
+        var handle = NativeMethods.TablePtr->f1033((void*)player.Handle, (void*)bed.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,12 +29,12 @@ public sealed unsafe partial class PlayerBedLeaveEvent : global::System.IDisposa
 
     public nint getBed()
     {
-        return (nint)NativeMethods.TablePtr->f1032((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1034((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1033((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1035((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -43,7 +43,7 @@ public sealed unsafe partial class PlayerBedLeaveEvent : global::System.IDisposa
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1029((void*)_handle);
+            NativeMethods.TablePtr->f1031((void*)_handle);
             _handle = 0;
         }
     }

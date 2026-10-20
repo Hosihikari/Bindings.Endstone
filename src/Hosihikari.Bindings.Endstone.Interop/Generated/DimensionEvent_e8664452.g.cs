@@ -16,6 +16,6 @@ public sealed unsafe partial class DimensionEvent
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f430((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f431((void*)_handle);
     }
 }

@@ -16,7 +16,7 @@ public sealed unsafe partial class PermissionAttachmentInfo : global::System.IDi
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(permission);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->f946((void*)permissible.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)attachment.Handle, value);
+            var handle = NativeMethods.TablePtr->f948((void*)permissible.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)attachment.Handle, value);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,30 +28,30 @@ public sealed unsafe partial class PermissionAttachmentInfo : global::System.IDi
 
     public nint getAttachment()
     {
-        return (nint)NativeMethods.TablePtr->f947((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f949((void*)_handle);
     }
 
     public nint getPermissible()
     {
-        return (nint)NativeMethods.TablePtr->f948((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f950((void*)_handle);
     }
 
     public string getPermission()
     {
-        var __hs_view = NativeMethods.TablePtr->f949((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f951((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool getValue()
     {
-        return NativeMethods.TablePtr->f950((void*)_handle);
+        return NativeMethods.TablePtr->f952((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f945((void*)_handle);
+            NativeMethods.TablePtr->f947((void*)_handle);
             _handle = 0;
         }
     }

@@ -16,17 +16,23 @@ public sealed unsafe partial class ServiceManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->f1468((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_shared = NativeMethods.TablePtr->f1471((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
-    public void registerService(nint name, nint provider, nint plugin, nint priority) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::shared_ptr<endstone::Service>' is not a known bindable declaration.");
+    public void registerService(string name, global::Hosihikari.Bindings.Abi.SharedHandle? provider, global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, int priority)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            NativeMethods.TablePtr->f1472((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, provider?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)plugin.Handle, priority);
+        }
+    }
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
     {
-        NativeMethods.TablePtr->f1469((void*)_handle, (void*)provider.Handle);
+        NativeMethods.TablePtr->f1473((void*)_handle, (void*)provider.Handle);
     }
 
     public void unregister(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
@@ -34,13 +40,13 @@ public sealed unsafe partial class ServiceManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1470((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)provider.Handle);
+            NativeMethods.TablePtr->f1474((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)provider.Handle);
         }
     }
 
     public void unregisterAll(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1471((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1475((void*)_handle, (void*)plugin.Handle);
     }
 
     public void Destroy() =>
