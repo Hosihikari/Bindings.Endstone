@@ -16,7 +16,7 @@ public sealed unsafe partial class CommandBuilder : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f894(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f1245(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,7 +28,7 @@ public sealed unsafe partial class CommandBuilder : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Command build()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command((nint)NativeMethods.TablePtr->f895((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command((nint)NativeMethods.TablePtr->f1246((void*)_handle));
     }
 
     public nint description(string description)
@@ -36,7 +36,7 @@ public sealed unsafe partial class CommandBuilder : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(description);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f896((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1247((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -44,7 +44,7 @@ public sealed unsafe partial class CommandBuilder : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f893((void*)_handle);
+            NativeMethods.TablePtr->f1244((void*)_handle);
             _handle = 0;
         }
     }

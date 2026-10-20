@@ -13,7 +13,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
 
     public nint addControl(nint control)
     {
-        return (nint)NativeMethods.TablePtr->f452((void*)_handle, (void*)control);
+        return (nint)NativeMethods.TablePtr->f697((void*)_handle, (void*)control);
     }
 
     public nint getControls() =>
@@ -36,7 +36,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f453((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f698((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public nint setSubmitButton(nint text) =>
@@ -46,7 +46,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f451((void*)_handle);
+            NativeMethods.TablePtr->f696((void*)_handle);
             _handle = 0;
         }
     }

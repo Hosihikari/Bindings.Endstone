@@ -19,7 +19,7 @@ public sealed unsafe partial class PlayerInventory
 
     public int getHeldItemSlot()
     {
-        return NativeMethods.TablePtr->f607((void*)_handle);
+        return NativeMethods.TablePtr->f866((void*)_handle);
     }
 
     public nint getHelmet() =>
@@ -42,7 +42,7 @@ public sealed unsafe partial class PlayerInventory
 
     public void setHeldItemSlot(int slot)
     {
-        NativeMethods.TablePtr->f608((void*)_handle, slot);
+        NativeMethods.TablePtr->f867((void*)_handle, slot);
     }
 
     public void setHelmet(nint helmet) =>

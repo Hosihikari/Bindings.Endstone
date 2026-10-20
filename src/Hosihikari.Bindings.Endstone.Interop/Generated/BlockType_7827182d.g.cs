@@ -13,14 +13,12 @@ public sealed unsafe partial class BlockType
 
     public static nint Air
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f159();
     }
 
     public static nint RegistryType
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f160();
     }
 
     public nint createBlockData() =>
@@ -28,6 +26,6 @@ public sealed unsafe partial class BlockType
 
     public bool hasItemType()
     {
-        return NativeMethods.TablePtr->f119((void*)_handle);
+        return NativeMethods.TablePtr->f161((void*)_handle);
     }
 }

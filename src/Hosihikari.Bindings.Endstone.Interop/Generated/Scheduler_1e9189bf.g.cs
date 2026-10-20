@@ -13,12 +13,12 @@ public sealed unsafe partial class Scheduler
 
     public void cancelTask(uint id)
     {
-        NativeMethods.TablePtr->f713((void*)_handle, id);
+        NativeMethods.TablePtr->f1055((void*)_handle, id);
     }
 
     public void cancelTasks(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f714((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1056((void*)_handle, (void*)plugin.Handle);
     }
 
     public nint getPendingTasks() =>
@@ -26,12 +26,12 @@ public sealed unsafe partial class Scheduler
 
     public bool isQueued(uint id)
     {
-        return NativeMethods.TablePtr->f715((void*)_handle, id);
+        return NativeMethods.TablePtr->f1057((void*)_handle, id);
     }
 
     public bool isRunning(uint id)
     {
-        return NativeMethods.TablePtr->f716((void*)_handle, id);
+        return NativeMethods.TablePtr->f1058((void*)_handle, id);
     }
 
     public nint runTask(nint plugin, nint task) =>

@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerBedLeaveEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f822();
     }
 
     public static PlayerBedLeaveEvent Create(nint player, nint bed) =>
@@ -22,12 +21,12 @@ public sealed unsafe partial class PlayerBedLeaveEvent
 
     public nint getBed()
     {
-        return (nint)NativeMethods.TablePtr->f573((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f823((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f574((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f824((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 

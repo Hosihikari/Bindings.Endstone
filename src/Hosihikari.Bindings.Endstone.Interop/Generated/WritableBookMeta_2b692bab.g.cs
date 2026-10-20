@@ -11,10 +11,9 @@ public sealed unsafe partial class WritableBookMeta
 
     public nint Handle => _handle;
 
-    public static nint MetaType
+    public static int MetaType
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => NativeMethods.TablePtr->f1239();
     }
 
     public void addPage(nint pages) =>
@@ -22,13 +21,13 @@ public sealed unsafe partial class WritableBookMeta
 
     public string getPage(int page)
     {
-        var __hs_view = NativeMethods.TablePtr->f889((void*)_handle, page);
+        var __hs_view = NativeMethods.TablePtr->f1240((void*)_handle, page);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getPageCount()
     {
-        return NativeMethods.TablePtr->f890((void*)_handle);
+        return NativeMethods.TablePtr->f1241((void*)_handle);
     }
 
     public nint getPages() =>
@@ -36,7 +35,7 @@ public sealed unsafe partial class WritableBookMeta
 
     public bool hasPages()
     {
-        return NativeMethods.TablePtr->f891((void*)_handle);
+        return NativeMethods.TablePtr->f1242((void*)_handle);
     }
 
     public void setPage(int page, string data)
@@ -44,7 +43,7 @@ public sealed unsafe partial class WritableBookMeta
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(data);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f892((void*)_handle, page, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f1243((void*)_handle, page, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 

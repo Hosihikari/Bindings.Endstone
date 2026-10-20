@@ -16,18 +16,17 @@ public sealed unsafe partial class ActorDeathEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f41();
     }
 
     public nint getDamageSource()
     {
-        return (nint)NativeMethods.TablePtr->f40((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f42((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f41((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f43((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 }

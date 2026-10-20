@@ -13,8 +13,7 @@ public sealed unsafe partial class ServerCommandEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f1111();
     }
 
     public static ServerCommandEvent Create(nint sender, nint command) =>
@@ -22,19 +21,19 @@ public sealed unsafe partial class ServerCommandEvent
 
     public string getCommand()
     {
-        var __hs_view = NativeMethods.TablePtr->f766((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1112((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f767((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1113((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getSender()
     {
-        return (nint)NativeMethods.TablePtr->f768((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1114((void*)_handle);
     }
 
     public void setCommand(string message)
@@ -42,7 +41,7 @@ public sealed unsafe partial class ServerCommandEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f769((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f1115((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 }

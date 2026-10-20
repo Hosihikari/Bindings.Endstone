@@ -19,59 +19,59 @@ public sealed unsafe partial class Plugin
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f640((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f912((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public nint getDataFolder()
     {
-        return (nint)NativeMethods.TablePtr->f641((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f913((void*)_handle);
     }
 
     public nint getDescription()
     {
-        return (nint)NativeMethods.TablePtr->f642((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f914((void*)_handle);
     }
 
     public nint getLogger()
     {
-        return (nint)NativeMethods.TablePtr->f643((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f915((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f644((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f916((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPluginLoader()
     {
-        return (nint)NativeMethods.TablePtr->f645((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f917((void*)_handle);
     }
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f646((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f918((void*)_handle);
     }
 
     public bool isEnabled()
     {
-        return NativeMethods.TablePtr->f647((void*)_handle);
+        return NativeMethods.TablePtr->f919((void*)_handle);
     }
 
     public void onDisable()
     {
-        NativeMethods.TablePtr->f648((void*)_handle);
+        NativeMethods.TablePtr->f920((void*)_handle);
     }
 
     public void onEnable()
     {
-        NativeMethods.TablePtr->f649((void*)_handle);
+        NativeMethods.TablePtr->f921((void*)_handle);
     }
 
     public void onLoad()
     {
-        NativeMethods.TablePtr->f650((void*)_handle);
+        NativeMethods.TablePtr->f922((void*)_handle);
     }
 
     public void Destroy() =>

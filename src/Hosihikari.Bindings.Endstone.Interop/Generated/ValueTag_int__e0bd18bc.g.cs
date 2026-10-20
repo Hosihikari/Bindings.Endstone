@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone.nbt;
 
-public sealed partial class ValueTag_int_
+public sealed unsafe partial class ValueTag_int_ : global::System.IDisposable
 {
     private nint _handle;
 
@@ -11,18 +11,47 @@ public sealed partial class ValueTag_int_
 
     public nint Handle => _handle;
 
-    public static ValueTag_int_ Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public static ValueTag_int_ Create()
+    {
+        var handle = NativeMethods.TablePtr->f1346();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public static ValueTag_int_ Create_f46b9ede(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        return new ValueTag_int_((nint)handle);
+    }
+
+    public static ValueTag_int_ Create_f46b9ede(nint v)
+    {
+        var handle = NativeMethods.TablePtr->f1347((void*)v);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ValueTag_int_((nint)handle);
+    }
 
     public static ValueTag_int_ Create_c206d7b2(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
 
-    public nint operator_const_int__() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint operator_const_int__()
+    {
+        return (nint)NativeMethods.TablePtr->f1348((void*)_handle);
+    }
 
-    public nint value() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint value()
+    {
+        return (nint)NativeMethods.TablePtr->f1349((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f1345((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

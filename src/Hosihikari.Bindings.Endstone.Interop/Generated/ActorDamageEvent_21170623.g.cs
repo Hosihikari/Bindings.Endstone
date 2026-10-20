@@ -16,28 +16,27 @@ public sealed unsafe partial class ActorDamageEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f36();
     }
 
     public float getDamage()
     {
-        return NativeMethods.TablePtr->f36((void*)_handle);
+        return NativeMethods.TablePtr->f37((void*)_handle);
     }
 
     public nint getDamageSource()
     {
-        return (nint)NativeMethods.TablePtr->f37((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f38((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f38((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f39((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void setDamage(float damage)
     {
-        NativeMethods.TablePtr->f39((void*)_handle, damage);
+        NativeMethods.TablePtr->f40((void*)_handle, damage);
     }
 }

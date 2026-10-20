@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerDeathEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f836();
     }
 
     public static PlayerDeathEvent Create(nint player, nint damage_source, nint death_message) =>
@@ -25,13 +24,13 @@ public sealed unsafe partial class PlayerDeathEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f584((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f837((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f585((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f838((void*)_handle);
     }
 
     public void setDeathMessage(nint death_message) =>

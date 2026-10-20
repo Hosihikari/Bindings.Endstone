@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerMoveEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f888();
     }
 
     public static PlayerMoveEvent Create(nint player, nint from, nint to) =>
@@ -22,39 +21,39 @@ public sealed unsafe partial class PlayerMoveEvent
 
     public nint from_
     {
-        get => (nint)NativeMethods.TablePtr->f623((void*)_handle);
-        set => NativeMethods.TablePtr->f624((void*)_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->f889((void*)_handle);
+        set => NativeMethods.TablePtr->f890((void*)_handle, (void*)value);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f625((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f891((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getFrom()
     {
-        return (nint)NativeMethods.TablePtr->f626((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f892((void*)_handle);
     }
 
     public nint getTo()
     {
-        return (nint)NativeMethods.TablePtr->f627((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f893((void*)_handle);
     }
 
     public void setFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location from)
     {
-        NativeMethods.TablePtr->f628((void*)_handle, (void*)from.Handle);
+        NativeMethods.TablePtr->f894((void*)_handle, (void*)from.Handle);
     }
 
     public void setTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location to)
     {
-        NativeMethods.TablePtr->f629((void*)_handle, (void*)to.Handle);
+        NativeMethods.TablePtr->f895((void*)_handle, (void*)to.Handle);
     }
 
     public nint to_
     {
-        get => (nint)NativeMethods.TablePtr->f630((void*)_handle);
-        set => NativeMethods.TablePtr->f631((void*)_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->f896((void*)_handle);
+        set => NativeMethods.TablePtr->f897((void*)_handle, (void*)value);
     }
 }

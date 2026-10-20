@@ -16,29 +16,28 @@ public sealed unsafe partial class ActorExplodeEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f46();
     }
 
     public nint getBlockList_8f4da3d9()
     {
-        return (nint)NativeMethods.TablePtr->f42((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f47((void*)_handle);
     }
 
     public nint getBlockList_4ec91f56()
     {
-        return (nint)NativeMethods.TablePtr->f43((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f48((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f44((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f49((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getLocation()
     {
-        return (nint)NativeMethods.TablePtr->f45((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f50((void*)_handle);
     }
 
     public void Destroy() =>

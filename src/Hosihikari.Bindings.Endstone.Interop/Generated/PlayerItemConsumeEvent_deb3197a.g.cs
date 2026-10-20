@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerItemConsumeEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f868();
     }
 
     public static PlayerItemConsumeEvent Create(nint player, nint item, nint hand) =>
@@ -22,17 +21,17 @@ public sealed unsafe partial class PlayerItemConsumeEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f609((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f869((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getHand()
     {
-        return NativeMethods.TablePtr->f610((void*)_handle);
+        return NativeMethods.TablePtr->f870((void*)_handle);
     }
 
     public nint getItem()
     {
-        return (nint)NativeMethods.TablePtr->f611((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f871((void*)_handle);
     }
 }

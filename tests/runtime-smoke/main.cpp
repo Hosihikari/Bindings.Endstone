@@ -79,9 +79,9 @@ public:
             auto *handle = getServer();
             out << "server.match=" << (handle == &server ? "true" : "false") << "\n";
 
-            const auto nameView = table->f748(handle);
+            const auto nameView = table->f1093(handle);
             const std::string actualName(nameView.data, nameView.size);
-            const auto versionView = table->f760(handle);
+            const auto versionView = table->f1105(handle);
             const std::string actualVersion(versionView.data, versionView.size);
 
             out << "expected_name=" << server.getName() << "\n";

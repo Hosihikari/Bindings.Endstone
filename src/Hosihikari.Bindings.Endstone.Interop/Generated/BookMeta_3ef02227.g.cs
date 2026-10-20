@@ -11,15 +11,14 @@ public sealed unsafe partial class BookMeta
 
     public nint Handle => _handle;
 
-    public static nint MetaType
+    public static int MetaType
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => NativeMethods.TablePtr->f162();
     }
 
     public string getAuthor()
     {
-        var __hs_view = NativeMethods.TablePtr->f120((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f163((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -28,23 +27,23 @@ public sealed unsafe partial class BookMeta
 
     public string getTitle()
     {
-        var __hs_view = NativeMethods.TablePtr->f121((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f164((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool hasAuthor()
     {
-        return NativeMethods.TablePtr->f122((void*)_handle);
+        return NativeMethods.TablePtr->f165((void*)_handle);
     }
 
     public bool hasGeneration()
     {
-        return NativeMethods.TablePtr->f123((void*)_handle);
+        return NativeMethods.TablePtr->f166((void*)_handle);
     }
 
     public bool hasTitle()
     {
-        return NativeMethods.TablePtr->f124((void*)_handle);
+        return NativeMethods.TablePtr->f167((void*)_handle);
     }
 
     public void setAuthor(nint author) =>

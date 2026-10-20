@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerGameModeChangeEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f852();
     }
 
     public static PlayerGameModeChangeEvent Create(nint player, nint new_game_mode) =>
@@ -22,13 +21,13 @@ public sealed unsafe partial class PlayerGameModeChangeEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f596((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f853((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getNewGameMode()
     {
-        return NativeMethods.TablePtr->f597((void*)_handle);
+        return NativeMethods.TablePtr->f854((void*)_handle);
     }
 
     public void Destroy() =>

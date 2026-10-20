@@ -13,33 +13,35 @@ public sealed unsafe partial class AttributeInstance
 
     public void addModifier(global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier modifier)
     {
-        NativeMethods.TablePtr->f58((void*)_handle, (void*)modifier.Handle);
+        NativeMethods.TablePtr->f83((void*)_handle, (void*)modifier.Handle);
     }
 
     public float getBaseValue()
     {
-        return NativeMethods.TablePtr->f59((void*)_handle);
+        return NativeMethods.TablePtr->f84((void*)_handle);
     }
 
     public nint getModifiers() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<endstone::AttributeModifier>' is not a known bindable declaration.");
 
-    public nint getType() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'endstone::Identifier<endstone::Attribute>' has no accessible destructor.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_ getType()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->f85((void*)_handle));
+    }
 
     public float getValue()
     {
-        return NativeMethods.TablePtr->f60((void*)_handle);
+        return NativeMethods.TablePtr->f86((void*)_handle);
     }
 
     public void removeModifier(global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier modifier)
     {
-        NativeMethods.TablePtr->f61((void*)_handle, (void*)modifier.Handle);
+        NativeMethods.TablePtr->f87((void*)_handle, (void*)modifier.Handle);
     }
 
     public void setBaseValue(float value)
     {
-        NativeMethods.TablePtr->f62((void*)_handle, value);
+        NativeMethods.TablePtr->f88((void*)_handle, value);
     }
 
     public void Destroy() =>

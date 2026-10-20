@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class Registry_endstone__BlockType_
+public sealed unsafe partial class Registry_endstone__BlockType_
 {
     private nint _handle;
 
@@ -11,18 +11,28 @@ public sealed partial class Registry_endstone__BlockType_
 
     public nint Handle => _handle;
 
-    public void forEach(nint func) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public void forEach(nint funcInvoke, nint funcUserData, nint funcRelease)
+    {
+        NativeMethods.TablePtr->f1016((void*)_handle, (void*)funcInvoke, (void*)funcUserData, (void*)funcRelease);
+    }
 
-    public nint get_2b7fe892(nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint get_2b7fe892(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
+    {
+        return (nint)NativeMethods.TablePtr->f1017((void*)_handle, (void*)id.Handle);
+    }
 
-    public nint get_2186031d(nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint get_2186031d(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
+    {
+        return (nint)NativeMethods.TablePtr->f1018((void*)_handle, (void*)id.Handle);
+    }
 
-    public nint getOrThrow_c76ca6db(nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint getOrThrow_c76ca6db(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
+    {
+        return (nint)NativeMethods.TablePtr->f1019((void*)_handle, (void*)id.Handle);
+    }
 
-    public nint getOrThrow_03bc5362(nint id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint getOrThrow_03bc5362(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
+    {
+        return (nint)NativeMethods.TablePtr->f1020((void*)_handle, (void*)id.Handle);
+    }
 }

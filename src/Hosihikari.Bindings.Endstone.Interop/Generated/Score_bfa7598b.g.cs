@@ -16,27 +16,27 @@ public sealed unsafe partial class Score
 
     public nint getObjective()
     {
-        return (nint)NativeMethods.TablePtr->f717((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1059((void*)_handle);
     }
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f718((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1060((void*)_handle);
     }
 
     public int getValue()
     {
-        return NativeMethods.TablePtr->f719((void*)_handle);
+        return NativeMethods.TablePtr->f1061((void*)_handle);
     }
 
     public bool isScoreSet()
     {
-        return NativeMethods.TablePtr->f720((void*)_handle);
+        return NativeMethods.TablePtr->f1062((void*)_handle);
     }
 
     public void setValue(int score)
     {
-        NativeMethods.TablePtr->f721((void*)_handle, score);
+        NativeMethods.TablePtr->f1063((void*)_handle, score);
     }
 
     public void Destroy() =>

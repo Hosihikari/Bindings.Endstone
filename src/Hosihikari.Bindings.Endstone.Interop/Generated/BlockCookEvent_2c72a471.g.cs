@@ -16,28 +16,27 @@ public sealed unsafe partial class BlockCookEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f118();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f86((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f119((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getResult()
     {
-        return (nint)NativeMethods.TablePtr->f87((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f120((void*)_handle);
     }
 
     public nint getSource()
     {
-        return (nint)NativeMethods.TablePtr->f88((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f121((void*)_handle);
     }
 
     public void setResult(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack result)
     {
-        NativeMethods.TablePtr->f89((void*)_handle, (void*)result.Handle);
+        NativeMethods.TablePtr->f122((void*)_handle, (void*)result.Handle);
     }
 }

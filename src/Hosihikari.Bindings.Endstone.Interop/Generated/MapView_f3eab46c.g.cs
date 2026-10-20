@@ -16,22 +16,22 @@ public sealed unsafe partial class MapView
 
     public int getCenterX()
     {
-        return NativeMethods.TablePtr->f429((void*)_handle);
+        return NativeMethods.TablePtr->f674((void*)_handle);
     }
 
     public int getCenterZ()
     {
-        return NativeMethods.TablePtr->f430((void*)_handle);
+        return NativeMethods.TablePtr->f675((void*)_handle);
     }
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f431((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f676((void*)_handle);
     }
 
     public long getId()
     {
-        return NativeMethods.TablePtr->f432((void*)_handle);
+        return NativeMethods.TablePtr->f677((void*)_handle);
     }
 
     public nint getRenderers() =>
@@ -39,57 +39,57 @@ public sealed unsafe partial class MapView
 
     public byte getScale()
     {
-        return NativeMethods.TablePtr->f433((void*)_handle);
+        return NativeMethods.TablePtr->f678((void*)_handle);
     }
 
     public bool isLocked()
     {
-        return NativeMethods.TablePtr->f434((void*)_handle);
+        return NativeMethods.TablePtr->f679((void*)_handle);
     }
 
     public bool isUnlimitedTracking()
     {
-        return NativeMethods.TablePtr->f435((void*)_handle);
+        return NativeMethods.TablePtr->f680((void*)_handle);
     }
 
     public bool isVirtual()
     {
-        return NativeMethods.TablePtr->f436((void*)_handle);
+        return NativeMethods.TablePtr->f681((void*)_handle);
     }
 
     public bool removeRenderer(nint renderer)
     {
-        return NativeMethods.TablePtr->f437((void*)_handle, (void*)renderer);
+        return NativeMethods.TablePtr->f682((void*)_handle, (void*)renderer);
     }
 
     public void setCenterX(int x)
     {
-        NativeMethods.TablePtr->f438((void*)_handle, x);
+        NativeMethods.TablePtr->f683((void*)_handle, x);
     }
 
     public void setCenterZ(int z)
     {
-        NativeMethods.TablePtr->f439((void*)_handle, z);
+        NativeMethods.TablePtr->f684((void*)_handle, z);
     }
 
     public void setDimension(global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension dimension)
     {
-        NativeMethods.TablePtr->f440((void*)_handle, (void*)dimension.Handle);
+        NativeMethods.TablePtr->f685((void*)_handle, (void*)dimension.Handle);
     }
 
     public void setLocked(bool locked)
     {
-        NativeMethods.TablePtr->f441((void*)_handle, locked);
+        NativeMethods.TablePtr->f686((void*)_handle, locked);
     }
 
     public void setScale(byte scale)
     {
-        NativeMethods.TablePtr->f442((void*)_handle, scale);
+        NativeMethods.TablePtr->f687((void*)_handle, scale);
     }
 
     public void setUnlimitedTracking(bool unlimited)
     {
-        NativeMethods.TablePtr->f443((void*)_handle, unlimited);
+        NativeMethods.TablePtr->f688((void*)_handle, unlimited);
     }
 
     public void Destroy() =>

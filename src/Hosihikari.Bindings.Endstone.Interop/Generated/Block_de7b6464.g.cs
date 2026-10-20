@@ -22,7 +22,7 @@ public sealed unsafe partial class Block
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f75((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f106((void*)_handle);
     }
 
     public nint getLocation() =>
@@ -39,33 +39,33 @@ public sealed unsafe partial class Block
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f76((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f107((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getX()
     {
-        return NativeMethods.TablePtr->f77((void*)_handle);
+        return NativeMethods.TablePtr->f108((void*)_handle);
     }
 
     public int getY()
     {
-        return NativeMethods.TablePtr->f78((void*)_handle);
+        return NativeMethods.TablePtr->f109((void*)_handle);
     }
 
     public int getZ()
     {
-        return NativeMethods.TablePtr->f79((void*)_handle);
+        return NativeMethods.TablePtr->f110((void*)_handle);
     }
 
     public void setData(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData data)
     {
-        NativeMethods.TablePtr->f80((void*)_handle, (void*)data.Handle);
+        NativeMethods.TablePtr->f111((void*)_handle, (void*)data.Handle);
     }
 
     public void setData(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData data, bool apply_physics)
     {
-        NativeMethods.TablePtr->f81((void*)_handle, (void*)data.Handle, apply_physics);
+        NativeMethods.TablePtr->f112((void*)_handle, (void*)data.Handle, apply_physics);
     }
 
     public void setType(string type)
@@ -73,7 +73,7 @@ public sealed unsafe partial class Block
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f82((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f113((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -82,7 +82,7 @@ public sealed unsafe partial class Block
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f83((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, apply_physics);
+            NativeMethods.TablePtr->f114((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, apply_physics);
         }
     }
 

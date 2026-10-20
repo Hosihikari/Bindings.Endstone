@@ -19,7 +19,7 @@ public sealed unsafe partial class BlockState
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f109((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f149((void*)_handle);
     }
 
     public nint getLocation() =>
@@ -27,28 +27,28 @@ public sealed unsafe partial class BlockState
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f110((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f150((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getX()
     {
-        return NativeMethods.TablePtr->f111((void*)_handle);
+        return NativeMethods.TablePtr->f151((void*)_handle);
     }
 
     public int getY()
     {
-        return NativeMethods.TablePtr->f112((void*)_handle);
+        return NativeMethods.TablePtr->f152((void*)_handle);
     }
 
     public int getZ()
     {
-        return NativeMethods.TablePtr->f113((void*)_handle);
+        return NativeMethods.TablePtr->f153((void*)_handle);
     }
 
     public void setData(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData data)
     {
-        NativeMethods.TablePtr->f114((void*)_handle, (void*)data.Handle);
+        NativeMethods.TablePtr->f154((void*)_handle, (void*)data.Handle);
     }
 
     public void setType(string type)
@@ -56,23 +56,23 @@ public sealed unsafe partial class BlockState
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f115((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f155((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public bool update()
     {
-        return NativeMethods.TablePtr->f116((void*)_handle);
+        return NativeMethods.TablePtr->f156((void*)_handle);
     }
 
     public bool update(bool force)
     {
-        return NativeMethods.TablePtr->f117((void*)_handle, force);
+        return NativeMethods.TablePtr->f157((void*)_handle, force);
     }
 
     public bool update(bool force, bool apply_physics)
     {
-        return NativeMethods.TablePtr->f118((void*)_handle, force, apply_physics);
+        return NativeMethods.TablePtr->f158((void*)_handle, force, apply_physics);
     }
 
     public void Destroy() =>

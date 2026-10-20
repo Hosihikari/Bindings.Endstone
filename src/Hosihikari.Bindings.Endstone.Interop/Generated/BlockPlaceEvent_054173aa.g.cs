@@ -16,34 +16,33 @@ public sealed unsafe partial class BlockPlaceEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f143();
     }
 
     public nint getBlockAgainst()
     {
-        return (nint)NativeMethods.TablePtr->f104((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f144((void*)_handle);
     }
 
     public nint getBlockPlacedState()
     {
-        return (nint)NativeMethods.TablePtr->f105((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f145((void*)_handle);
     }
 
     public nint getBlockReplaced()
     {
-        return (nint)NativeMethods.TablePtr->f106((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f146((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f107((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f147((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f108((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f148((void*)_handle);
     }
 
     public void Destroy() =>

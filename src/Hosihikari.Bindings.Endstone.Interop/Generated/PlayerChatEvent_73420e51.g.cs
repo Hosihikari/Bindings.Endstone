@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerChatEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f825();
     }
 
     public static PlayerChatEvent Create(nint player, nint message, nint recipients, nint format) =>
@@ -22,19 +21,19 @@ public sealed unsafe partial class PlayerChatEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f575((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f826((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getFormat()
     {
-        var __hs_view = NativeMethods.TablePtr->f576((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f827((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f577((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f828((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -46,7 +45,7 @@ public sealed unsafe partial class PlayerChatEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(format);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f578((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f829((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -55,12 +54,12 @@ public sealed unsafe partial class PlayerChatEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f579((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f830((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void setPlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f580((void*)_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f831((void*)_handle, (void*)player.Handle);
     }
 }

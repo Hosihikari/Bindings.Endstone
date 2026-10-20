@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class BanList_endstone__IpBanEntry_
+public sealed unsafe partial class BanList_endstone__IpBanEntry_
 {
     private nint _handle;
 
@@ -12,23 +12,35 @@ public sealed partial class BanList_endstone__IpBanEntry_
     public nint Handle => _handle;
 
     public nint addBan_95d473c7(nint target, nint reason, nint duration, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'endstone::NotNull<endstone::IpBanEntry>' is not a known bindable declaration.");
 
     public nint addBan_ac608f70(nint target, nint reason, nint expires, nint source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'endstone::NotNull<endstone::IpBanEntry>' is not a known bindable declaration.");
 
     public nint getBanEntry(nint target) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'endstone::Nullable<endstone::IpBanEntry>' is not a known bindable declaration.");
 
     public nint getEntries() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<endstone::NotNull<endstone::IpBanEntry>>' is not a known bindable declaration.");
 
-    public bool isBanned(nint target) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public bool isBanned(string target)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(target);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            return NativeMethods.TablePtr->f102((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+        }
+    }
 
-    public void removeBan(nint target) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public void removeBan(string target)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(target);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            NativeMethods.TablePtr->f103((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+        }
+    }
 
     public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

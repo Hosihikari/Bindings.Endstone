@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerPickupItemEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f898();
     }
 
     public static PlayerPickupItemEvent Create(nint player, nint item) =>
@@ -22,12 +21,12 @@ public sealed unsafe partial class PlayerPickupItemEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f632((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f899((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getItem()
     {
-        return (nint)NativeMethods.TablePtr->f633((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f900((void*)_handle);
     }
 }

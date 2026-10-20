@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerEmoteEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f846();
     }
 
     public static PlayerEmoteEvent Create(nint player, nint emote_id, bool muted) =>
@@ -22,24 +21,24 @@ public sealed unsafe partial class PlayerEmoteEvent
 
     public string getEmoteId()
     {
-        var __hs_view = NativeMethods.TablePtr->f591((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f847((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f592((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f848((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isMuted()
     {
-        return NativeMethods.TablePtr->f593((void*)_handle);
+        return NativeMethods.TablePtr->f849((void*)_handle);
     }
 
     public void setMuted(bool muted)
     {
-        NativeMethods.TablePtr->f594((void*)_handle, muted);
+        NativeMethods.TablePtr->f850((void*)_handle, muted);
     }
 
     public void Destroy() =>

@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerRespawnEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f905();
     }
 
     public static PlayerRespawnEvent Create(nint player) =>
@@ -22,7 +21,7 @@ public sealed unsafe partial class PlayerRespawnEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f636((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f906((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 

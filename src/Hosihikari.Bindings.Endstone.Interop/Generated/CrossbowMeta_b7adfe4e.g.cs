@@ -11,15 +11,14 @@ public sealed unsafe partial class CrossbowMeta
 
     public nint Handle => _handle;
 
-    public static nint MetaType
+    public static int MetaType
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => NativeMethods.TablePtr->f326();
     }
 
     public void addChargedProjectile(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        NativeMethods.TablePtr->f225((void*)_handle, (void*)item.Handle);
+        NativeMethods.TablePtr->f327((void*)_handle, (void*)item.Handle);
     }
 
     public nint getChargedProjectiles() =>
@@ -27,7 +26,7 @@ public sealed unsafe partial class CrossbowMeta
 
     public bool hasChargedProjectiles()
     {
-        return NativeMethods.TablePtr->f226((void*)_handle);
+        return NativeMethods.TablePtr->f328((void*)_handle);
     }
 
     public void setChargedProjectiles(nint projectiles) =>

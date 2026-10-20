@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerSkinChangeEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f907();
     }
 
     public static PlayerSkinChangeEvent Create(nint player, nint new_skin, nint message) =>
@@ -22,13 +21,13 @@ public sealed unsafe partial class PlayerSkinChangeEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f637((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f908((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin getNewSkin()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f638((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f909((void*)_handle));
     }
 
     public nint getSkinChangeMessage() =>

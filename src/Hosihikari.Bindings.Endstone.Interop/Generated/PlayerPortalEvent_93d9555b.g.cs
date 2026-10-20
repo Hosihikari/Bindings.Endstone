@@ -13,13 +13,12 @@ public sealed unsafe partial class PlayerPortalEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f901();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f634((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f902((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 }

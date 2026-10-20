@@ -13,7 +13,7 @@ public sealed unsafe partial class Location
 
     public float distance(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
     {
-        return NativeMethods.TablePtr->f358((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f601((void*)_handle, (void*)other.Handle);
     }
 
     public float distanceSquared(nint other) =>
@@ -24,82 +24,82 @@ public sealed unsafe partial class Location
 
     public int getBlockX()
     {
-        return NativeMethods.TablePtr->f359((void*)_handle);
+        return NativeMethods.TablePtr->f602((void*)_handle);
     }
 
     public int getBlockY()
     {
-        return NativeMethods.TablePtr->f360((void*)_handle);
+        return NativeMethods.TablePtr->f603((void*)_handle);
     }
 
     public int getBlockZ()
     {
-        return NativeMethods.TablePtr->f361((void*)_handle);
+        return NativeMethods.TablePtr->f604((void*)_handle);
     }
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f362((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f605((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector getDirection()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f363((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f606((void*)_handle));
     }
 
     public float getPitch()
     {
-        return NativeMethods.TablePtr->f364((void*)_handle);
+        return NativeMethods.TablePtr->f607((void*)_handle);
     }
 
     public float getX()
     {
-        return NativeMethods.TablePtr->f365((void*)_handle);
+        return NativeMethods.TablePtr->f608((void*)_handle);
     }
 
     public float getY()
     {
-        return NativeMethods.TablePtr->f366((void*)_handle);
+        return NativeMethods.TablePtr->f609((void*)_handle);
     }
 
     public float getYaw()
     {
-        return NativeMethods.TablePtr->f367((void*)_handle);
+        return NativeMethods.TablePtr->f610((void*)_handle);
     }
 
     public float getZ()
     {
-        return NativeMethods.TablePtr->f368((void*)_handle);
+        return NativeMethods.TablePtr->f611((void*)_handle);
     }
 
     public float length()
     {
-        return NativeMethods.TablePtr->f369((void*)_handle);
+        return NativeMethods.TablePtr->f612((void*)_handle);
     }
 
     public float lengthSquared()
     {
-        return NativeMethods.TablePtr->f370((void*)_handle);
+        return NativeMethods.TablePtr->f613((void*)_handle);
     }
 
     public static float normalizePitch(float pitch)
     {
-        return NativeMethods.TablePtr->f371(pitch);
+        return NativeMethods.TablePtr->f614(pitch);
     }
 
     public static float normalizeYaw(float yaw)
     {
-        return NativeMethods.TablePtr->f372(yaw);
+        return NativeMethods.TablePtr->f615(yaw);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector operator_Vector()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f373((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f616((void*)_handle));
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
     {
-        return NativeMethods.TablePtr->f374((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f617((void*)_handle, (void*)other.Handle);
     }
 
     public nint operator_add_f3d61120(nint other) =>
@@ -110,12 +110,12 @@ public sealed unsafe partial class Location
 
     public nint operator_operator___4fe0a03f(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
     {
-        return (nint)NativeMethods.TablePtr->f375((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f618((void*)_handle, (void*)other.Handle);
     }
 
     public nint operator_operator___26e794ef(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->f376((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f619((void*)_handle, (void*)other.Handle);
     }
 
     public nint operator_subtract_f44ea418(nint other) =>
@@ -126,41 +126,41 @@ public sealed unsafe partial class Location
 
     public nint operator_operator___8fae509e(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
     {
-        return (nint)NativeMethods.TablePtr->f377((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f620((void*)_handle, (void*)other.Handle);
     }
 
     public nint operator_operator___60c29b11(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->f378((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f621((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
     {
-        return NativeMethods.TablePtr->f379((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f622((void*)_handle, (void*)other.Handle);
     }
 
     public void setDimension(global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension dimension)
     {
-        NativeMethods.TablePtr->f380((void*)_handle, (void*)dimension.Handle);
+        NativeMethods.TablePtr->f623((void*)_handle, (void*)dimension.Handle);
     }
 
     public nint setDirection(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector vector)
     {
-        return (nint)NativeMethods.TablePtr->f381((void*)_handle, (void*)vector.Handle);
+        return (nint)NativeMethods.TablePtr->f624((void*)_handle, (void*)vector.Handle);
     }
 
     public void setPitch(float pitch)
     {
-        NativeMethods.TablePtr->f382((void*)_handle, pitch);
+        NativeMethods.TablePtr->f625((void*)_handle, pitch);
     }
 
     public void setYaw(float yaw)
     {
-        NativeMethods.TablePtr->f383((void*)_handle, yaw);
+        NativeMethods.TablePtr->f626((void*)_handle, yaw);
     }
 
     public nint zero()
     {
-        return (nint)NativeMethods.TablePtr->f384((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f627((void*)_handle);
     }
 }

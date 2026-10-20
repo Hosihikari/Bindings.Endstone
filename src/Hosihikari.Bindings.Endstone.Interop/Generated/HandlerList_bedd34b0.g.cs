@@ -16,7 +16,7 @@ public sealed unsafe partial class HandlerList : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(@event);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f257(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f448(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -34,19 +34,19 @@ public sealed unsafe partial class HandlerList : global::System.IDisposable
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.EventHandler handler)
     {
-        NativeMethods.TablePtr->f258((void*)_handle, (void*)handler.Handle);
+        NativeMethods.TablePtr->f449((void*)_handle, (void*)handler.Handle);
     }
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f259((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f450((void*)_handle, (void*)plugin.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f256((void*)_handle);
+            NativeMethods.TablePtr->f447((void*)_handle);
             _handle = 0;
         }
     }

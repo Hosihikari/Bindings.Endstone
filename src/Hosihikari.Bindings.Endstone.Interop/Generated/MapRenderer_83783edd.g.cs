@@ -16,17 +16,17 @@ public sealed unsafe partial class MapRenderer
 
     public void initialize(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map)
     {
-        NativeMethods.TablePtr->f426((void*)_handle, (void*)map.Handle);
+        NativeMethods.TablePtr->f671((void*)_handle, (void*)map.Handle);
     }
 
     public bool isContextual()
     {
-        return NativeMethods.TablePtr->f427((void*)_handle);
+        return NativeMethods.TablePtr->f672((void*)_handle);
     }
 
     public void render(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map, global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCanvas canvas, global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f428((void*)_handle, (void*)map.Handle, (void*)canvas.Handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f673((void*)_handle, (void*)map.Handle, (void*)canvas.Handle, (void*)player.Handle);
     }
 
     public void Destroy() =>

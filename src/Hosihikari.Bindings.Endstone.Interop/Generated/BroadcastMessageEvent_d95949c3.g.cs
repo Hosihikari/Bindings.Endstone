@@ -16,24 +16,23 @@ public sealed unsafe partial class BroadcastMessageEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f184();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f141((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f185((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getMessage()
     {
-        return (nint)NativeMethods.TablePtr->f142((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f186((void*)_handle);
     }
 
     public nint getRecipients()
     {
-        return (nint)NativeMethods.TablePtr->f143((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f187((void*)_handle);
     }
 
     public void setMessage(nint message) =>

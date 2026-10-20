@@ -16,30 +16,30 @@ public sealed unsafe partial class Skin : global::System.IDisposable
 
     public nint getCapeId()
     {
-        return (nint)NativeMethods.TablePtr->f799((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1147((void*)_handle);
     }
 
     public nint getCapeImage()
     {
-        return (nint)NativeMethods.TablePtr->f800((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1148((void*)_handle);
     }
 
     public string getId()
     {
-        var __hs_view = NativeMethods.TablePtr->f801((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1149((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getImage()
     {
-        return (nint)NativeMethods.TablePtr->f802((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1150((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f798((void*)_handle);
+            NativeMethods.TablePtr->f1146((void*)_handle);
             _handle = 0;
         }
     }

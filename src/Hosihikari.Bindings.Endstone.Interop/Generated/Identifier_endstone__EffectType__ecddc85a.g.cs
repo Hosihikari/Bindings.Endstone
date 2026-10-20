@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class Identifier_endstone__EffectType_
+public sealed unsafe partial class Identifier_endstone__EffectType_ : global::System.IDisposable
 {
     private nint _handle;
 
@@ -12,38 +12,69 @@ public sealed partial class Identifier_endstone__EffectType_
     public nint Handle => _handle;
 
     public static Identifier_endstone__EffectType_ Create_a8bf2e8a(nint s) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
     public static Identifier_endstone__EffectType_ Create_b837d798(nint s) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
     public static Identifier_endstone__EffectType_ Create_afa867a7(nint identifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
     public static Identifier_endstone__EffectType_ Create(nint namespace_, nint key) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
-    public static nint Minecraft
+    public static string Minecraft
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        get
+        {
+            var view = NativeMethods.TablePtr->f474();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
     }
 
-    public nint getKey() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public string getKey()
+    {
+        var __hs_view = NativeMethods.TablePtr->f475((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    public nint getNamespace() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public string getNamespace()
+    {
+        var __hs_view = NativeMethods.TablePtr->f476((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    public static nint minecraft(nint key) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__EffectType_ minecraft(string key)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(key);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__EffectType_((nint)NativeMethods.TablePtr->f477(__hs_stringData, (nuint)__hs_stringBytes.Length));
+        }
+    }
 
-    public nint operator_basic_string() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public string operator_basic_string()
+    {
+        var __hs_view = NativeMethods.TablePtr->f478((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
 
-    public bool operator_not_equal(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__EffectType_ other)
+    {
+        return NativeMethods.TablePtr->f479((void*)_handle, (void*)other.Handle);
+    }
 
-    public bool operator_equal(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__EffectType_ other)
+    {
+        return NativeMethods.TablePtr->f480((void*)_handle, (void*)other.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f473((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

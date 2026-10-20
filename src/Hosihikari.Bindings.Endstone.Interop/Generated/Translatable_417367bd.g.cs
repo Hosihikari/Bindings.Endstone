@@ -16,17 +16,17 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->f831((void*)_handle);
+        return NativeMethods.TablePtr->f1180((void*)_handle);
     }
 
     public nint getParameters()
     {
-        return (nint)NativeMethods.TablePtr->f832((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1181((void*)_handle);
     }
 
     public string getText()
     {
-        var __hs_view = NativeMethods.TablePtr->f833((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1182((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -34,7 +34,7 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f830((void*)_handle);
+            NativeMethods.TablePtr->f1179((void*)_handle);
             _handle = 0;
         }
     }

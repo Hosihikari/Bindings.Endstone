@@ -13,7 +13,7 @@ public sealed unsafe partial class CommandExecutor : global::System.IDisposable
 
     public bool onCommand(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, global::Hosihikari.Bindings.Endstone.Interop.endstone.Command command, nint args)
     {
-        return NativeMethods.TablePtr->f193((void*)_handle, (void*)sender.Handle, (void*)command.Handle, (void*)args);
+        return NativeMethods.TablePtr->f294((void*)_handle, (void*)sender.Handle, (void*)command.Handle, (void*)args);
     }
 
 
@@ -21,7 +21,7 @@ public sealed unsafe partial class CommandExecutor : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f192((void*)_handle);
+            NativeMethods.TablePtr->f293((void*)_handle);
             _handle = 0;
         }
     }

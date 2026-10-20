@@ -13,12 +13,12 @@ public sealed unsafe partial class Objective
 
     public nint getCriteria()
     {
-        return (nint)NativeMethods.TablePtr->f454((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f699((void*)_handle);
     }
 
     public string getDisplayName()
     {
-        var __hs_view = NativeMethods.TablePtr->f455((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f700((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -27,13 +27,13 @@ public sealed unsafe partial class Objective
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f456((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f701((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public byte getRenderType()
     {
-        return NativeMethods.TablePtr->f457((void*)_handle);
+        return NativeMethods.TablePtr->f702((void*)_handle);
     }
 
     public nint getScore(nint entry) =>
@@ -41,7 +41,7 @@ public sealed unsafe partial class Objective
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f458((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f703((void*)_handle);
     }
 
     public nint getSortOrder() =>
@@ -49,22 +49,22 @@ public sealed unsafe partial class Objective
 
     public bool isDisplayed()
     {
-        return NativeMethods.TablePtr->f459((void*)_handle);
+        return NativeMethods.TablePtr->f704((void*)_handle);
     }
 
     public bool isModifiable()
     {
-        return NativeMethods.TablePtr->f460((void*)_handle);
+        return NativeMethods.TablePtr->f705((void*)_handle);
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective other)
     {
-        return NativeMethods.TablePtr->f461((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f706((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective other)
     {
-        return NativeMethods.TablePtr->f462((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f707((void*)_handle, (void*)other.Handle);
     }
 
     public void setDisplay(nint slot, nint order) =>
@@ -75,7 +75,7 @@ public sealed unsafe partial class Objective
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(display_name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f463((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f708((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -84,12 +84,12 @@ public sealed unsafe partial class Objective
 
     public void setSortOrder(int order)
     {
-        NativeMethods.TablePtr->f464((void*)_handle, order);
+        NativeMethods.TablePtr->f709((void*)_handle, order);
     }
 
     public void unregister()
     {
-        NativeMethods.TablePtr->f465((void*)_handle);
+        NativeMethods.TablePtr->f710((void*)_handle);
     }
 
     public void Destroy() =>

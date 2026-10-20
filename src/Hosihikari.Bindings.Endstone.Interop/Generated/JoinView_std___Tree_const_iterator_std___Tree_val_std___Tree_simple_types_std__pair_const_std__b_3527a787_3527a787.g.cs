@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone.detail;
 
-public sealed partial class JoinView_std___Tree_const_iterator_std___Tree_val_std___Tree_simple_types_std__pair_const_std__b_3527a787
+public sealed unsafe partial class JoinView_std___Tree_const_iterator_std___Tree_val_std___Tree_simple_types_std__pair_const_std__b_3527a787 : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,19 +13,29 @@ public sealed partial class JoinView_std___Tree_const_iterator_std___Tree_val_st
 
     public nint begin
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        get => (nint)NativeMethods.TablePtr->f1253((void*)_handle);
     }
 
     public nint end
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        get => (nint)NativeMethods.TablePtr->f1254((void*)_handle);
     }
 
-    public nint sep
+    public string sep
     {
-        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
-        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        get
+        {
+            var view = NativeMethods.TablePtr->f1255((void*)_handle);
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f1252((void*)_handle);
+            _handle = 0;
+        }
     }
 }

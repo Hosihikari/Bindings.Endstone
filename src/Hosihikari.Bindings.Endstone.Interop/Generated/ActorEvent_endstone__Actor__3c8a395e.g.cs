@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class ActorEvent_endstone__Actor_
+public sealed unsafe partial class ActorEvent_endstone__Actor_
 {
     private nint _handle;
 
@@ -12,11 +12,13 @@ public sealed partial class ActorEvent_endstone__Actor_
     public nint Handle => _handle;
 
     public static ActorEvent_endstone__Actor_ Create(nint actor) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
-    public nint getActor() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint getActor()
+    {
+        return (nint)NativeMethods.TablePtr->f44((void*)_handle);
+    }
 
     public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

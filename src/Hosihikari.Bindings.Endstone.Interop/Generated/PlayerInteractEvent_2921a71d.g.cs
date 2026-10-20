@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerInteractEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f858();
     }
 
     public static PlayerInteractEvent Create(nint player, nint action, nint item, nint block_clicked, nint block_face, nint clicked_position) =>
@@ -22,17 +21,17 @@ public sealed unsafe partial class PlayerInteractEvent
 
     public int getAction()
     {
-        return NativeMethods.TablePtr->f600((void*)_handle);
+        return NativeMethods.TablePtr->f859((void*)_handle);
     }
 
     public nint getBlock()
     {
-        return (nint)NativeMethods.TablePtr->f601((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f860((void*)_handle);
     }
 
     public int getBlockFace()
     {
-        return NativeMethods.TablePtr->f602((void*)_handle);
+        return NativeMethods.TablePtr->f861((void*)_handle);
     }
 
     public nint getClickedPosition() =>
@@ -40,22 +39,22 @@ public sealed unsafe partial class PlayerInteractEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f603((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f862((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getItem()
     {
-        return (nint)NativeMethods.TablePtr->f604((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f863((void*)_handle);
     }
 
     public bool hasBlock()
     {
-        return NativeMethods.TablePtr->f605((void*)_handle);
+        return NativeMethods.TablePtr->f864((void*)_handle);
     }
 
     public bool hasItem()
     {
-        return NativeMethods.TablePtr->f606((void*)_handle);
+        return NativeMethods.TablePtr->f865((void*)_handle);
     }
 }

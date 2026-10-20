@@ -16,34 +16,33 @@ public sealed unsafe partial class ActorTeleportEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f60();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f52((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f61((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getFrom()
     {
-        return (nint)NativeMethods.TablePtr->f53((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f62((void*)_handle);
     }
 
     public nint getTo()
     {
-        return (nint)NativeMethods.TablePtr->f54((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f63((void*)_handle);
     }
 
     public void setFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location from)
     {
-        NativeMethods.TablePtr->f55((void*)_handle, (void*)from.Handle);
+        NativeMethods.TablePtr->f64((void*)_handle, (void*)from.Handle);
     }
 
     public void setTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location to)
     {
-        NativeMethods.TablePtr->f56((void*)_handle, (void*)to.Handle);
+        NativeMethods.TablePtr->f65((void*)_handle, (void*)to.Handle);
     }
 
     public void Destroy() =>

@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerQuitEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f903();
     }
 
     public static PlayerQuitEvent Create(nint player, nint quit_message) =>
@@ -22,7 +21,7 @@ public sealed unsafe partial class PlayerQuitEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f635((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f904((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 

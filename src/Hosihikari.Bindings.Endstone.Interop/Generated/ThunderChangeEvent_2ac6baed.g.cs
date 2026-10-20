@@ -13,8 +13,7 @@ public sealed unsafe partial class ThunderChangeEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f1172();
     }
 
     public static ThunderChangeEvent Create(nint level, bool to) =>
@@ -22,13 +21,13 @@ public sealed unsafe partial class ThunderChangeEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f824((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1173((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool toThunderState()
     {
-        return NativeMethods.TablePtr->f825((void*)_handle);
+        return NativeMethods.TablePtr->f1174((void*)_handle);
     }
 
     public void Destroy() =>

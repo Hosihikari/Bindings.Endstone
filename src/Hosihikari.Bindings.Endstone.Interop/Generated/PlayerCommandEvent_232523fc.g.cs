@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerCommandEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f832();
     }
 
     public static PlayerCommandEvent Create(nint player, nint command) =>
@@ -22,13 +21,13 @@ public sealed unsafe partial class PlayerCommandEvent
 
     public string getCommand()
     {
-        var __hs_view = NativeMethods.TablePtr->f581((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f833((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f582((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f834((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -37,7 +36,7 @@ public sealed unsafe partial class PlayerCommandEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(command);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f583((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f835((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 

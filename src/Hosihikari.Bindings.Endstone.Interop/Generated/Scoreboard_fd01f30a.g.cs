@@ -22,7 +22,7 @@ public sealed unsafe partial class Scoreboard
 
     public void clearSlot(int slot)
     {
-        NativeMethods.TablePtr->f722((void*)_handle, slot);
+        NativeMethods.TablePtr->f1064((void*)_handle, slot);
     }
 
     public nint getEntries() =>

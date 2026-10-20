@@ -16,12 +16,12 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public nint asPluginCommand()
     {
-        return (nint)NativeMethods.TablePtr->f181((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f282((void*)_handle);
     }
 
     public bool execute(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, nint args)
     {
-        return NativeMethods.TablePtr->f182((void*)_handle, (void*)sender.Handle, (void*)args);
+        return NativeMethods.TablePtr->f283((void*)_handle, (void*)sender.Handle, (void*)args);
     }
 
     public nint getAliases() =>
@@ -29,13 +29,13 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f183((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f284((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f184((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f285((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -47,12 +47,12 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public bool isRegistered()
     {
-        return NativeMethods.TablePtr->f185((void*)_handle);
+        return NativeMethods.TablePtr->f286((void*)_handle);
     }
 
     public bool registerTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->f186((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->f287((void*)_handle, (void*)command_map.Handle);
     }
 
     public void setDescription(string description)
@@ -60,7 +60,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(description);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f187((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f288((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -69,23 +69,23 @@ public sealed unsafe partial class Command : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f188((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f289((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public bool testPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->f189((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->f290((void*)_handle, (void*)target.Handle);
     }
 
     public bool testPermissionSilently(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->f190((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->f291((void*)_handle, (void*)target.Handle);
     }
 
     public bool unregisterFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->f191((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->f292((void*)_handle, (void*)command_map.Handle);
     }
 
 
@@ -93,7 +93,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f180((void*)_handle);
+            NativeMethods.TablePtr->f281((void*)_handle);
             _handle = 0;
         }
     }

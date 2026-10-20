@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone.nbt;
 
-public sealed partial class ValueTag_std__basic_string_char__
+public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::System.IDisposable
 {
     private nint _handle;
 
@@ -11,18 +11,65 @@ public sealed partial class ValueTag_std__basic_string_char__
 
     public nint Handle => _handle;
 
-    public static ValueTag_std__basic_string_char__ Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public static ValueTag_std__basic_string_char__ Create()
+    {
+        var handle = NativeMethods.TablePtr->f1361();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public static ValueTag_std__basic_string_char__ Create_9148a4df(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        return new ValueTag_std__basic_string_char__((nint)handle);
+    }
 
-    public static ValueTag_std__basic_string_char__ Create_041ea18a(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public static ValueTag_std__basic_string_char__ Create_9148a4df(string v)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(v);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            var handle = NativeMethods.TablePtr->f1362(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
 
-    public nint operator_const_std__basic_string_char___() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+            return new ValueTag_std__basic_string_char__((nint)handle);
+        }
+    }
 
-    public nint value() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public static ValueTag_std__basic_string_char__ Create_041ea18a(string v)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(v);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            var handle = NativeMethods.TablePtr->f1363(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new ValueTag_std__basic_string_char__((nint)handle);
+        }
+    }
+
+    public string operator_const_std__basic_string_char___()
+    {
+        var __hs_view = NativeMethods.TablePtr->f1364((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public string value()
+    {
+        var __hs_view = NativeMethods.TablePtr->f1365((void*)_handle);
+        return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f1360((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

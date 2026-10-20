@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone.nbt;
 
-public sealed partial class ArrayTag_unsigned_char_
+public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDisposable
 {
     private nint _handle;
 
@@ -11,66 +11,103 @@ public sealed partial class ArrayTag_unsigned_char_
 
     public nint Handle => _handle;
 
-    public static ArrayTag_unsigned_char_ Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public static ArrayTag_unsigned_char_ Create()
+    {
+        var handle = NativeMethods.TablePtr->f1301();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ArrayTag_unsigned_char_((nint)handle);
+    }
 
     public static ArrayTag_unsigned_char_ Create_54581f65(nint init) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::initializer_list<unsigned char>' is not a known bindable declaration.");
 
     public static ArrayTag_unsigned_char_ Create_67bce2b5(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::vector<unsigned char>' is not a known bindable declaration.");
 
-    public nint at_738d7d61(ulong i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint at_738d7d61(ulong i)
+    {
+        return (nint)NativeMethods.TablePtr->f1302((void*)_handle, i);
+    }
 
-    public nint at_30c1f2a4(ulong i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint at_30c1f2a4(ulong i)
+    {
+        return (nint)NativeMethods.TablePtr->f1303((void*)_handle, i);
+    }
 
     public nint begin_9219d103() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.");
 
     public nint begin_96e31055() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.");
 
     public nint cbegin() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.");
 
     public nint cend() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.");
 
-    public void clear() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public void clear()
+    {
+        NativeMethods.TablePtr->f1304((void*)_handle);
+    }
 
-    public nint data_79f539d8() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint data_79f539d8()
+    {
+        return (nint)NativeMethods.TablePtr->f1305((void*)_handle);
+    }
 
-    public nint data_539e56bc() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint data_539e56bc()
+    {
+        return (nint)NativeMethods.TablePtr->f1306((void*)_handle);
+    }
 
-    public bool empty() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public bool empty()
+    {
+        return NativeMethods.TablePtr->f1307((void*)_handle);
+    }
 
     public nint end_c109c3d7() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.");
 
     public nint end_7503040c() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.");
 
     public nint erase(nint pos) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.");
 
     public nint insert(nint pos, byte v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.");
 
-    public nint operator_index_d4881781(ulong i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint operator_index_d4881781(ulong i)
+    {
+        return (nint)NativeMethods.TablePtr->f1308((void*)_handle, i);
+    }
 
-    public nint operator_index_4f71a147(ulong i) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint operator_index_4f71a147(ulong i)
+    {
+        return (nint)NativeMethods.TablePtr->f1309((void*)_handle, i);
+    }
 
-    public void push_back(byte v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public void push_back(byte v)
+    {
+        NativeMethods.TablePtr->f1310((void*)_handle, v);
+    }
 
-    public ulong size() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public ulong size()
+    {
+        return NativeMethods.TablePtr->f1311((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f1300((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

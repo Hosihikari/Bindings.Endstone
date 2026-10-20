@@ -16,7 +16,7 @@ public sealed unsafe partial class ItemFactory
 
     public bool equals(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta1, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta2)
     {
-        return NativeMethods.TablePtr->f300((void*)_handle, (void*)meta1.Handle, (void*)meta2.Handle);
+        return NativeMethods.TablePtr->f539((void*)_handle, (void*)meta1.Handle, (void*)meta2.Handle);
     }
 
     public nint getItemMeta(nint type) =>
@@ -24,7 +24,7 @@ public sealed unsafe partial class ItemFactory
 
     public bool isApplicable(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta, global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        return NativeMethods.TablePtr->f301((void*)_handle, (void*)meta.Handle, (void*)type.Handle);
+        return NativeMethods.TablePtr->f540((void*)_handle, (void*)meta.Handle, (void*)type.Handle);
     }
 
     public void Destroy() =>

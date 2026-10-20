@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class Form_endstone__ActionForm_
+public sealed unsafe partial class Form_endstone__ActionForm_ : global::System.IDisposable
 {
     private nint _handle;
 
@@ -11,18 +11,37 @@ public sealed partial class Form_endstone__ActionForm_
 
     public nint Handle => _handle;
 
-    public static Form_endstone__ActionForm_ Create() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public static Form_endstone__ActionForm_ Create()
+    {
+        var handle = NativeMethods.TablePtr->f439();
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Form_endstone__ActionForm_((nint)handle);
+    }
 
     public nint getOnClose() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *)>' is not supported.");
 
     public nint getTitle() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
-    public nint setOnClose(nint on_close) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public nint setOnClose(nint on_closeInvoke, nint on_closeUserData, nint on_closeRelease)
+    {
+        return (nint)NativeMethods.TablePtr->f440((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
+    }
 
     public nint setTitle(nint title) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f438((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

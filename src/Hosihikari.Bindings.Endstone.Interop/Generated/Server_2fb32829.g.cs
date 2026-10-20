@@ -11,16 +11,22 @@ public sealed unsafe partial class Server
 
     public nint Handle => _handle;
 
-    public static nint BroadcastChannelAdmin
+    public static string BroadcastChannelAdmin
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get
+        {
+            var view = NativeMethods.TablePtr->f1070();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
     }
 
-    public static nint BroadcastChannelUser
+    public static string BroadcastChannelUser
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get
+        {
+            var view = NativeMethods.TablePtr->f1071();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
     }
 
     public static Server Create() =>
@@ -31,7 +37,7 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f727((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1072((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -40,13 +46,13 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(permission);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f728((void*)_handle, (void*)message, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f1073((void*)_handle, (void*)message, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void broadcastMessage(nint message)
     {
-        NativeMethods.TablePtr->f729((void*)_handle, (void*)message);
+        NativeMethods.TablePtr->f1074((void*)_handle, (void*)message);
     }
 
     public nint createBlockData(nint type) =>
@@ -63,7 +69,7 @@ public sealed unsafe partial class Server
 
     public nint createMap(global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension dimension)
     {
-        return (nint)NativeMethods.TablePtr->f730((void*)_handle, (void*)dimension.Handle);
+        return (nint)NativeMethods.TablePtr->f1075((void*)_handle, (void*)dimension.Handle);
     }
 
     public nint createScoreboard() =>
@@ -74,100 +80,100 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(command_line);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return NativeMethods.TablePtr->f731((void*)_handle, (void*)sender.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f1076((void*)_handle, (void*)sender.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public float getAverageMillisecondsPerTick()
     {
-        return NativeMethods.TablePtr->f732((void*)_handle);
+        return NativeMethods.TablePtr->f1077((void*)_handle);
     }
 
     public float getAverageTickUsage()
     {
-        return NativeMethods.TablePtr->f733((void*)_handle);
+        return NativeMethods.TablePtr->f1078((void*)_handle);
     }
 
     public float getAverageTicksPerSecond()
     {
-        return NativeMethods.TablePtr->f734((void*)_handle);
+        return NativeMethods.TablePtr->f1079((void*)_handle);
     }
 
     public nint getBanList()
     {
-        return (nint)NativeMethods.TablePtr->f735((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1080((void*)_handle);
     }
 
     public nint getCommandSender()
     {
-        return (nint)NativeMethods.TablePtr->f736((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1081((void*)_handle);
     }
 
     public float getCurrentMillisecondsPerTick()
     {
-        return NativeMethods.TablePtr->f737((void*)_handle);
+        return NativeMethods.TablePtr->f1082((void*)_handle);
     }
 
     public float getCurrentTickUsage()
     {
-        return NativeMethods.TablePtr->f738((void*)_handle);
+        return NativeMethods.TablePtr->f1083((void*)_handle);
     }
 
     public float getCurrentTicksPerSecond()
     {
-        return NativeMethods.TablePtr->f739((void*)_handle);
+        return NativeMethods.TablePtr->f1084((void*)_handle);
     }
 
     public nint getIpBanList()
     {
-        return (nint)NativeMethods.TablePtr->f740((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1085((void*)_handle);
     }
 
     public nint getItemFactory()
     {
-        return (nint)NativeMethods.TablePtr->f741((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1086((void*)_handle);
     }
 
     public nint getLanguage()
     {
-        return (nint)NativeMethods.TablePtr->f742((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1087((void*)_handle);
     }
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f743((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1088((void*)_handle);
     }
 
     public nint getLogger()
     {
-        return (nint)NativeMethods.TablePtr->f744((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1089((void*)_handle);
     }
 
     public nint getMap(long id)
     {
-        return (nint)NativeMethods.TablePtr->f745((void*)_handle, id);
+        return (nint)NativeMethods.TablePtr->f1090((void*)_handle, id);
     }
 
     public int getMaxPlayers()
     {
-        return NativeMethods.TablePtr->f746((void*)_handle);
+        return NativeMethods.TablePtr->f1091((void*)_handle);
     }
 
     public string getMinecraftVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f747((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1092((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f748((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1093((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool getOnlineMode()
     {
-        return NativeMethods.TablePtr->f749((void*)_handle);
+        return NativeMethods.TablePtr->f1094((void*)_handle);
     }
 
     public nint getOnlinePlayers() =>
@@ -175,7 +181,7 @@ public sealed unsafe partial class Server
 
     public nint getPlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID id)
     {
-        return (nint)NativeMethods.TablePtr->f750((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1095((void*)_handle, (void*)id.Handle);
     }
 
     public nint getPlayer(string name)
@@ -183,7 +189,7 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f751((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1096((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -192,43 +198,43 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f752((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1097((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public nint getPluginManager()
     {
-        return (nint)NativeMethods.TablePtr->f753((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1098((void*)_handle);
     }
 
     public int getPort()
     {
-        return NativeMethods.TablePtr->f754((void*)_handle);
+        return NativeMethods.TablePtr->f1099((void*)_handle);
     }
 
     public int getPortV6()
     {
-        return NativeMethods.TablePtr->f755((void*)_handle);
+        return NativeMethods.TablePtr->f1100((void*)_handle);
     }
 
     public int getProtocolVersion()
     {
-        return NativeMethods.TablePtr->f756((void*)_handle);
+        return NativeMethods.TablePtr->f1101((void*)_handle);
     }
 
     public nint getScheduler()
     {
-        return (nint)NativeMethods.TablePtr->f757((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1102((void*)_handle);
     }
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f758((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1103((void*)_handle);
     }
 
     public nint getServiceManager()
     {
-        return (nint)NativeMethods.TablePtr->f759((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1104((void*)_handle);
     }
 
     public nint getStartTime() =>
@@ -236,33 +242,33 @@ public sealed unsafe partial class Server
 
     public string getVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f760((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1105((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isPrimaryThread()
     {
-        return NativeMethods.TablePtr->f761((void*)_handle);
+        return NativeMethods.TablePtr->f1106((void*)_handle);
     }
 
     public void reload()
     {
-        NativeMethods.TablePtr->f762((void*)_handle);
+        NativeMethods.TablePtr->f1107((void*)_handle);
     }
 
     public void reloadData()
     {
-        NativeMethods.TablePtr->f763((void*)_handle);
+        NativeMethods.TablePtr->f1108((void*)_handle);
     }
 
     public void setMaxPlayers(int max_players)
     {
-        NativeMethods.TablePtr->f764((void*)_handle, max_players);
+        NativeMethods.TablePtr->f1109((void*)_handle, max_players);
     }
 
     public void shutdown()
     {
-        NativeMethods.TablePtr->f765((void*)_handle);
+        NativeMethods.TablePtr->f1110((void*)_handle);
     }
 
     public void Destroy() =>

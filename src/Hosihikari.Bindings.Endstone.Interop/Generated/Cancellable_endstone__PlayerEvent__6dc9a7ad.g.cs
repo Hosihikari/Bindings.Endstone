@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class Cancellable_endstone__PlayerEvent_
+public sealed unsafe partial class Cancellable_endstone__PlayerEvent_
 {
     private nint _handle;
 
@@ -11,12 +11,18 @@ public sealed partial class Cancellable_endstone__PlayerEvent_
 
     public nint Handle => _handle;
 
-    public void cancel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public void cancel()
+    {
+        NativeMethods.TablePtr->f201((void*)_handle);
+    }
 
-    public bool isCancelled() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public bool isCancelled()
+    {
+        return NativeMethods.TablePtr->f202((void*)_handle);
+    }
 
-    public void setCancelled(bool cancel) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: template instances require --link-carrier.");
+    public void setCancelled(bool cancel)
+    {
+        NativeMethods.TablePtr->f203((void*)_handle, cancel);
+    }
 }

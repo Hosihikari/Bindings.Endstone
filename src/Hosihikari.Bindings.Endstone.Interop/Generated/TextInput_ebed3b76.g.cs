@@ -13,7 +13,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
 
     public static TextInput Create()
     {
-        var handle = NativeMethods.TablePtr->f823();
+        var handle = NativeMethods.TablePtr->f1171();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -47,7 +47,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f822((void*)_handle);
+            NativeMethods.TablePtr->f1170((void*)_handle);
             _handle = 0;
         }
     }

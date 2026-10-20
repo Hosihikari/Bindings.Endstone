@@ -13,12 +13,12 @@ public sealed unsafe partial class Item
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack getItemStack()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f294((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f533((void*)_handle));
     }
 
     public int getPickupDelay()
     {
-        return NativeMethods.TablePtr->f295((void*)_handle);
+        return NativeMethods.TablePtr->f534((void*)_handle);
     }
 
     public nint getThrower() =>
@@ -26,17 +26,17 @@ public sealed unsafe partial class Item
 
     public bool isUnlimitedLifetime()
     {
-        return NativeMethods.TablePtr->f296((void*)_handle);
+        return NativeMethods.TablePtr->f535((void*)_handle);
     }
 
     public void setItemStack(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack stack)
     {
-        NativeMethods.TablePtr->f297((void*)_handle, (void*)stack.Handle);
+        NativeMethods.TablePtr->f536((void*)_handle, (void*)stack.Handle);
     }
 
     public void setPickupDelay(int delay)
     {
-        NativeMethods.TablePtr->f298((void*)_handle, delay);
+        NativeMethods.TablePtr->f537((void*)_handle, delay);
     }
 
     public void setThrower(nint thrower) =>
@@ -44,6 +44,6 @@ public sealed unsafe partial class Item
 
     public void setUnlimitedLifetime(bool unlimited)
     {
-        NativeMethods.TablePtr->f299((void*)_handle, unlimited);
+        NativeMethods.TablePtr->f538((void*)_handle, unlimited);
     }
 }

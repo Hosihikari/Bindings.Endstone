@@ -13,7 +13,7 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
 
     public static Toggle Create()
     {
-        var handle = NativeMethods.TablePtr->f827();
+        var handle = NativeMethods.TablePtr->f1176();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -27,7 +27,7 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
 
     public bool getDefaultValue()
     {
-        return NativeMethods.TablePtr->f828((void*)_handle);
+        return NativeMethods.TablePtr->f1177((void*)_handle);
     }
 
     public nint getLabel() =>
@@ -35,7 +35,7 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
 
     public nint setDefaultValue(bool value)
     {
-        return (nint)NativeMethods.TablePtr->f829((void*)_handle, value);
+        return (nint)NativeMethods.TablePtr->f1178((void*)_handle, value);
     }
 
     public nint setLabel(nint label) =>
@@ -45,7 +45,7 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f826((void*)_handle);
+            NativeMethods.TablePtr->f1175((void*)_handle);
             _handle = 0;
         }
     }

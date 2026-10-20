@@ -11,10 +11,13 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public static nint DateFormat
+    public static string DateFormat
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get
+        {
+            var view = NativeMethods.TablePtr->f97();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
     }
 
     public nint getCreated() =>
@@ -25,13 +28,13 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
 
     public string getReason()
     {
-        var __hs_view = NativeMethods.TablePtr->f71((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f98((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getSource()
     {
-        var __hs_view = NativeMethods.TablePtr->f72((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f99((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -46,7 +49,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(reason);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f73((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f100((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -55,7 +58,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(source);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f74((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f101((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -63,7 +66,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f70((void*)_handle);
+            NativeMethods.TablePtr->f96((void*)_handle);
             _handle = 0;
         }
     }

@@ -13,7 +13,7 @@ public sealed unsafe partial class Dimension
 
     public nint dropItem(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        return (nint)NativeMethods.TablePtr->f231((void*)_handle, (void*)location.Handle, (void*)item.Handle);
+        return (nint)NativeMethods.TablePtr->f333((void*)_handle, (void*)location.Handle, (void*)item.Handle);
     }
 
     public nint getActors() =>
@@ -33,12 +33,12 @@ public sealed unsafe partial class Dimension
 
     public int getHighestBlockYAt(int x, int z)
     {
-        return NativeMethods.TablePtr->f232((void*)_handle, x, z);
+        return NativeMethods.TablePtr->f334((void*)_handle, x, z);
     }
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f233((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f335((void*)_handle);
     }
 
     public nint getLoadedChunks() =>
@@ -46,13 +46,13 @@ public sealed unsafe partial class Dimension
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f234((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f336((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getType()
     {
-        return NativeMethods.TablePtr->f235((void*)_handle);
+        return NativeMethods.TablePtr->f337((void*)_handle);
     }
 
     public nint spawnActor(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location, string type)
@@ -60,7 +60,7 @@ public sealed unsafe partial class Dimension
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f236((void*)_handle, (void*)location.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f338((void*)_handle, (void*)location.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 

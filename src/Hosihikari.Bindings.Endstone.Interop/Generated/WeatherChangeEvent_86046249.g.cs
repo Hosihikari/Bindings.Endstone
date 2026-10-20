@@ -13,8 +13,7 @@ public sealed unsafe partial class WeatherChangeEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f1235();
     }
 
     public static WeatherChangeEvent Create(nint level, nint to) =>
@@ -22,13 +21,13 @@ public sealed unsafe partial class WeatherChangeEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f886((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1236((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool toWeatherState()
     {
-        return NativeMethods.TablePtr->f887((void*)_handle);
+        return NativeMethods.TablePtr->f1237((void*)_handle);
     }
 
     public void Destroy() =>

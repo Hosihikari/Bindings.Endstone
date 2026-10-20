@@ -16,18 +16,17 @@ public sealed unsafe partial class BlockFromToEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f132();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f97((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f133((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getToBlock()
     {
-        return (nint)NativeMethods.TablePtr->f98((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f134((void*)_handle);
     }
 }

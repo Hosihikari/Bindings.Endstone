@@ -13,8 +13,7 @@ public sealed unsafe partial class ScriptMessageEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f1065();
     }
 
     public static ScriptMessageEvent Create(nint message_id, nint message, nint sender) =>
@@ -22,24 +21,24 @@ public sealed unsafe partial class ScriptMessageEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f723((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1066((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f724((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1067((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessageId()
     {
-        var __hs_view = NativeMethods.TablePtr->f725((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1068((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getSender()
     {
-        return (nint)NativeMethods.TablePtr->f726((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1069((void*)_handle);
     }
 }

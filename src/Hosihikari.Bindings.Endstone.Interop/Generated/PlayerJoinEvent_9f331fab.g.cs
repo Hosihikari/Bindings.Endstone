@@ -13,8 +13,7 @@ public sealed unsafe partial class PlayerJoinEvent
 
     public static nint NAME
     {
-        get => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
-        set => throw new global::System.NotSupportedException("BindingShim does not expose this member.");
+        get => (nint)NativeMethods.TablePtr->f876();
     }
 
     public static PlayerJoinEvent Create(nint player, nint join_message) =>
@@ -22,7 +21,7 @@ public sealed unsafe partial class PlayerJoinEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f615((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f877((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
