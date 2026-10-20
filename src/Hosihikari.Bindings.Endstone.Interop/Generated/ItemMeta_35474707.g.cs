@@ -54,7 +54,7 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
     public string[] getLore()
     {
         var __hs_view = NativeMethods.TablePtr->f629((void*)_handle);
-        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {

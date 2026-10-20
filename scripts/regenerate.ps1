@@ -3,7 +3,8 @@ param(
     [string]$IrDirectory,
     [string]$EndstoneRoot = "C:\Users\root\source\repos\hosihikari\Endstone",
     [string]$GeneratorRoot = "",
-    [string]$Output = "artifacts/regenerated"
+    [string]$Output = "artifacts/regenerated",
+    [string]$AbiRoot = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -23,8 +24,18 @@ if (-not (Test-Path $Manifest)) {
     throw "ir-manifest.json was not found under $IrDirectory."
 }
 
+$AbiRoot = if ([string]::IsNullOrWhiteSpace($AbiRoot)) {
+    Join-Path (Split-Path $RepoRoot -Parent) "Abi"
+} else {
+    (Resolve-Path $AbiRoot).Path
+}
+$AbiHeader = Join-Path $AbiRoot "native\hosihikari_abi.h"
+if (-not (Test-Path $AbiHeader)) {
+    throw "hosihikari_abi.h was not found under $AbiRoot."
+}
+
 $GeneratorProject = Join-Path $GeneratorRoot "src\Hosihikari.Bindings.Generator\Hosihikari.Bindings.Generator.csproj"
-dotnet run --project $GeneratorProject -c Release -- emit $Manifest $IrDirectory $Output --native-root $EndstoneRoot --virtual-dispatch
+dotnet run --project $GeneratorProject -c Release -- emit $Manifest $IrDirectory $Output --native-root $EndstoneRoot --virtual-dispatch --abi-header $AbiHeader
 
 $InteropGenerated = Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated"
 $ShimTarget = Join-Path $RepoRoot "native\BindingShim\generated\win-x64-server\endstone"

@@ -26,7 +26,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
     {
         var __hs_vectorItems = options ?? global::System.Array.Empty<string>();
         var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
-        var __hs_vectorViews = new NativeMethods.StringView[__hs_vectorItems.Length];
+        var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
         var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
         try
         {
@@ -37,9 +37,9 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
                 var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
                 if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
                 __hs_vectorHandles[__hs_i] = __hs_ptr;
-                __hs_vectorViews[__hs_i] = new NativeMethods.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                __hs_vectorViews[__hs_i] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
             }
-            fixed (NativeMethods.StringView* __hs_vectorData = __hs_vectorViews)
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
                 var handle = NativeMethods.TablePtr->f399((void*)label.Handle, default_index ?? default(int), __hs_vectorData, (nuint)__hs_vectorViews.Length, default_index.HasValue);
                 if (handle == null)
@@ -80,7 +80,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
     public string[] getOptions()
     {
         var __hs_view = NativeMethods.TablePtr->f403((void*)_handle);
-        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
@@ -103,7 +103,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
     {
         var __hs_vectorItems = options ?? global::System.Array.Empty<string>();
         var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
-        var __hs_vectorViews = new NativeMethods.StringView[__hs_vectorItems.Length];
+        var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
         var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
         try
         {
@@ -114,9 +114,9 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
                 var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
                 if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
                 __hs_vectorHandles[__hs_i] = __hs_ptr;
-                __hs_vectorViews[__hs_i] = new NativeMethods.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                __hs_vectorViews[__hs_i] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
             }
-            fixed (NativeMethods.StringView* __hs_vectorData = __hs_vectorViews)
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
                 return (nint)NativeMethods.TablePtr->f406((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
             }

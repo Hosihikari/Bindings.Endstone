@@ -2,34 +2,12 @@
 // ir-manifest-sha256: sha256:38004634f9896583be1f576d5481e6c70e1681cb84a6e7094f5ee1b0157e0a08
 #pragma once
 
+#include "hosihikari_abi.h"
+
 #include <cstddef>
 #include <cstdint>
 
-#if defined(_WIN32)
-#define HOSIHIKARI_SHIM_EXPORT __declspec(dllexport)
-#else
-#define HOSIHIKARI_SHIM_EXPORT __attribute__((visibility("default")))
-#endif
-
 extern "C" {
-
-struct HosihikariStringView {
-    const char* data;
-    std::size_t size;
-};
-
-struct HosihikariArrayView {
-    const void* data;
-    std::size_t size;
-};
-
-typedef void (*HosihikariSharedRelease)(void*);
-
-struct HosihikariSharedHandle {
-    void* holder;
-    void* target;
-    HosihikariSharedRelease release;
-};
 
 struct HosihikariBindingTableV1 {
     std::uint32_t version;

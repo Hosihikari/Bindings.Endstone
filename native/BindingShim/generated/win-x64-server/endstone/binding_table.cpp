@@ -19,13 +19,8 @@
 
 namespace {
 
-thread_local std::string g_lastError;
+using hosihikari::abi::setLastError;
 thread_local std::string g_stringResult;
-
-void setLastError(char const* message) noexcept
-{
-    try { g_lastError = message ? message : "unknown native error"; } catch (...) {}
-}
 
 template <class T, class U>
 std::vector<T> hs_make_vector(U const* data, std::size_t count)
@@ -27154,7 +27149,7 @@ extern "C" HOSIHIKARI_SHIM_EXPORT const HosihikariBindingTableV1* hosihikari_get
 
 extern "C" HOSIHIKARI_SHIM_EXPORT const char* hosihikari_get_last_error() noexcept
 {
-    return g_lastError.c_str();
+    return hosihikari::abi::lastError();
 }
 
 extern "C" HOSIHIKARI_SHIM_EXPORT void* hosihikari_endstone_get_server() noexcept

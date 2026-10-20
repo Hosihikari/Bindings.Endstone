@@ -4,13 +4,13 @@
 
 ## 边界
 
-- `Hosihikari.Bindings.Endstone.Interop` 由 `Hosihikari/Bindings.Generator` 从版本化 IR 生成，逐声明镜像 Endstone，类型持 `nint`/不透明句柄。
+- `Hosihikari.Bindings.Endstone.Interop` 由 `Hosihikari/Bindings.Generator` 从版本化 IR 生成，逐声明镜像 Endstone，类型持 `nint`/不透明句柄。ABI 值类型与 shim 加载器来自 `Hosihikari/Bindings.Abi`。
 - `native/BindingShim/` 是 C ABI 投影。Endstone 插件通过 `endstone::detail::getServer()` 获取服务器；shim 使用同一引导方式并直接调用虚接口，因此不需要 Endstone 导入库。
 - 手写 Idiomatic 层后置；当前公开面是生成的 Interop。
 
 ## 当前状态
 
-- Interop：`src/Hosihikari.Bindings.Endstone.Interop/Generated/` 下 209 个生成 C# 文件。
+- Interop：`src/Hosihikari.Bindings.Endstone.Interop/Generated/` 下 208 个生成 C# 文件。
 - BindingShim：`native/BindingShim/generated/win-x64-server/endstone/` 中 1,621 个函数。
 - 覆盖：319 条声明、1,831 条成员已绑定。
 
@@ -24,7 +24,7 @@ shim 以 `--virtual-dispatch` 模式发射：inline 成员、虚方法（含纯�
 
 ```shell
 powershell -File ../Generator/frontend/run-endstone.ps1
-powershell -File scripts/regenerate.ps1 -IrDirectory ..\Generator\artifacts\endstone-ir
+powershell -File scripts/regenerate.ps1 -IrDirectory ..\Generator\artifacts\endstone-ir -AbiRoot ..\Abi
 ```
 
 ## 构建
@@ -43,6 +43,7 @@ powershell -File native/BindingShim/build.ps1
 ## 相关仓库
 
 - `Hosihikari/Bindings.Ir`：schema、模型、读写器与校验器。
+- `Hosihikari/Bindings.Abi`：共享 ABI 值类型、加载器与原生头文件。
 - `Hosihikari/Bindings.Generator`：libTooling 前端与发射器。
 - `Hosihikari/Bindings.LeviLamina`：LeviLamina 表面。
 

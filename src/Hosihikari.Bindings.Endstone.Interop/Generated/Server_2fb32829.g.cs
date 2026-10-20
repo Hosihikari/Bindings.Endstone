@@ -96,10 +96,10 @@ public sealed unsafe partial class Server
         return (nint)NativeMethods.TablePtr->f1272((void*)_handle, (void*)dimension.Handle);
     }
 
-    public global::Hosihikari.Bindings.Endstone.Interop.SharedHandle? createScoreboard()
+    public global::Hosihikari.Bindings.Abi.SharedHandle? createScoreboard()
     {
         var __hs_shared = NativeMethods.TablePtr->f1273((void*)_handle);
-        return __hs_shared.Holder == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.SharedHandle((nint)__hs_shared.Holder, (nint)__hs_shared.Target, __hs_shared.Release);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public bool dispatchCommand(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string command_line)

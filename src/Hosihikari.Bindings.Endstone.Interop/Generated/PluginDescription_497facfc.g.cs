@@ -23,7 +23,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     public string[] getAuthors()
     {
         var __hs_view = NativeMethods.TablePtr->f1096((void*)_handle);
-        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
@@ -38,7 +38,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     public string[] getContributors()
     {
         var __hs_view = NativeMethods.TablePtr->f1097((void*)_handle);
-        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
@@ -55,7 +55,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     public string[] getDepend()
     {
         var __hs_view = NativeMethods.TablePtr->f1099((void*)_handle);
-        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
@@ -84,7 +84,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     public string[] getLoadBefore()
     {
         var __hs_view = NativeMethods.TablePtr->f1103((void*)_handle);
-        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
@@ -111,7 +111,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     public string[] getProvides()
     {
         var __hs_view = NativeMethods.TablePtr->f1106((void*)_handle);
-        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
@@ -123,7 +123,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     public string[] getSoftDepend()
     {
         var __hs_view = NativeMethods.TablePtr->f1107((void*)_handle);
-        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
