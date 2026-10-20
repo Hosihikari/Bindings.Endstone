@@ -13,34 +13,34 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f582();
+        get => NativeMethods.TablePtr->f587();
     }
 
     public bool addEnchant(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id, int level, bool force)
     {
-        return NativeMethods.TablePtr->f583((void*)_handle, (void*)id.Handle, level, force);
+        return NativeMethods.TablePtr->f588((void*)_handle, (void*)id.Handle, level, force);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? clone()
     {
-        var __hs_handle = NativeMethods.TablePtr->f584((void*)_handle);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle);
+        var __hs_handle = NativeMethods.TablePtr->f589((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle) : null;
     }
 
     public int getDamage()
     {
-        return NativeMethods.TablePtr->f585((void*)_handle);
+        return NativeMethods.TablePtr->f590((void*)_handle);
     }
 
     public string getDisplayName()
     {
-        var __hs_view = NativeMethods.TablePtr->f586((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f591((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getEnchantLevel(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return NativeMethods.TablePtr->f587((void*)_handle, (void*)id.Handle);
+        return NativeMethods.TablePtr->f592((void*)_handle, (void*)id.Handle);
     }
 
     public nint getEnchants() =>
@@ -48,7 +48,7 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
 
     public nint getExtras()
     {
-        return (nint)NativeMethods.TablePtr->f588((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f593((void*)_handle);
     }
 
     public nint getLore() =>
@@ -56,67 +56,67 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
 
     public int getRepairCost()
     {
-        return NativeMethods.TablePtr->f589((void*)_handle);
+        return NativeMethods.TablePtr->f594((void*)_handle);
     }
 
     public int getType()
     {
-        return NativeMethods.TablePtr->f590((void*)_handle);
+        return NativeMethods.TablePtr->f595((void*)_handle);
     }
 
     public bool hasConflictingEnchant(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return NativeMethods.TablePtr->f591((void*)_handle, (void*)id.Handle);
+        return NativeMethods.TablePtr->f596((void*)_handle, (void*)id.Handle);
     }
 
     public bool hasDamage()
     {
-        return NativeMethods.TablePtr->f592((void*)_handle);
+        return NativeMethods.TablePtr->f597((void*)_handle);
     }
 
     public bool hasDisplayName()
     {
-        return NativeMethods.TablePtr->f593((void*)_handle);
+        return NativeMethods.TablePtr->f598((void*)_handle);
     }
 
     public bool hasEnchant(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return NativeMethods.TablePtr->f594((void*)_handle, (void*)id.Handle);
+        return NativeMethods.TablePtr->f599((void*)_handle, (void*)id.Handle);
     }
 
     public bool hasEnchants()
     {
-        return NativeMethods.TablePtr->f595((void*)_handle);
+        return NativeMethods.TablePtr->f600((void*)_handle);
     }
 
     public bool hasLore()
     {
-        return NativeMethods.TablePtr->f596((void*)_handle);
+        return NativeMethods.TablePtr->f601((void*)_handle);
     }
 
     public bool hasRepairCost()
     {
-        return NativeMethods.TablePtr->f597((void*)_handle);
+        return NativeMethods.TablePtr->f602((void*)_handle);
     }
 
     public bool isUnbreakable()
     {
-        return NativeMethods.TablePtr->f598((void*)_handle);
+        return NativeMethods.TablePtr->f603((void*)_handle);
     }
 
     public bool removeEnchant(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return NativeMethods.TablePtr->f599((void*)_handle, (void*)id.Handle);
+        return NativeMethods.TablePtr->f604((void*)_handle, (void*)id.Handle);
     }
 
     public void removeEnchants()
     {
-        NativeMethods.TablePtr->f600((void*)_handle);
+        NativeMethods.TablePtr->f605((void*)_handle);
     }
 
     public void setDamage(int damage)
     {
-        NativeMethods.TablePtr->f601((void*)_handle, damage);
+        NativeMethods.TablePtr->f606((void*)_handle, damage);
     }
 
     public void setDisplayName(nint name) =>
@@ -127,12 +127,12 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
 
     public void setRepairCost(int cost)
     {
-        NativeMethods.TablePtr->f602((void*)_handle, cost);
+        NativeMethods.TablePtr->f607((void*)_handle, cost);
     }
 
     public void setUnbreakable(bool unbreakable)
     {
-        NativeMethods.TablePtr->f603((void*)_handle, unbreakable);
+        NativeMethods.TablePtr->f608((void*)_handle, unbreakable);
     }
 
 
@@ -140,7 +140,7 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f581((void*)_handle);
+            NativeMethods.TablePtr->f586((void*)_handle);
             _handle = 0;
         }
     }

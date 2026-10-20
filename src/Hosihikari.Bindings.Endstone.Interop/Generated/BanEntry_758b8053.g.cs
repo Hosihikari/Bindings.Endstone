@@ -24,7 +24,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::chrono::time_point<std::chrono::system_clock>' is not a known bindable declaration.");
 
     public nint getExpiration() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<std::chrono::time_point<std::chrono::system_clock>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::chrono::time_point<std::chrono::system_clock>' is not a known bindable declaration.");
 
     public string getReason()
     {

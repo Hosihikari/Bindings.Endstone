@@ -13,20 +13,24 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
 
     public nint addControl(nint control)
     {
-        return (nint)NativeMethods.TablePtr->f749((void*)_handle, (void*)control);
+        return (nint)NativeMethods.TablePtr->f754((void*)_handle, (void*)control);
     }
 
     public nint getControls() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>>' is not a known bindable declaration.");
 
-    public nint getIcon() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<std::basic_string<char>>' is not a known bindable declaration.");
+    public string? getIcon()
+    {
+        var __hs_hasValue = false;
+        var __hs_view = NativeMethods.TablePtr->f755((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+    }
 
     public nint getOnSubmit() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *, std::basic_string<char>)>' is not supported.");
 
     public nint getSubmitButton() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
     public nint setControls(nint controls) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::vector<std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>>' is not a known bindable declaration.");
@@ -36,7 +40,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f750((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f756((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public nint setSubmitButton(nint text) =>
@@ -46,7 +50,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f748((void*)_handle);
+            NativeMethods.TablePtr->f753((void*)_handle);
             _handle = 0;
         }
     }

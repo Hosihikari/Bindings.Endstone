@@ -16,8 +16,8 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1146((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
-            return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle);
+            var __hs_handle = NativeMethods.TablePtr->f1163((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
 
@@ -29,7 +29,7 @@ public sealed unsafe partial class Scoreboard
 
     public void clearSlot(int slot)
     {
-        NativeMethods.TablePtr->f1147((void*)_handle, slot);
+        NativeMethods.TablePtr->f1164((void*)_handle, slot);
     }
 
     public nint getEntries() =>
@@ -37,8 +37,8 @@ public sealed unsafe partial class Scoreboard
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(int slot)
     {
-        var __hs_handle = NativeMethods.TablePtr->f1148((void*)_handle, slot);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle);
+        var __hs_handle = NativeMethods.TablePtr->f1165((void*)_handle, slot);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(string name)
@@ -46,8 +46,8 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1149((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
-            return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle);
+            var __hs_handle = NativeMethods.TablePtr->f1166((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
 

@@ -13,26 +13,26 @@ public sealed unsafe partial class Registry_endstone__ItemType_
 
     public void forEach(nint funcInvoke, nint funcUserData, nint funcRelease)
     {
-        NativeMethods.TablePtr->f1123((void*)_handle, (void*)funcInvoke, (void*)funcUserData, (void*)funcRelease);
+        NativeMethods.TablePtr->f1140((void*)_handle, (void*)funcInvoke, (void*)funcUserData, (void*)funcRelease);
     }
 
     public nint get_5781d235(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ id)
     {
-        return (nint)NativeMethods.TablePtr->f1124((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1141((void*)_handle, (void*)id.Handle);
     }
 
     public nint get_011f7c17(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ id)
     {
-        return (nint)NativeMethods.TablePtr->f1125((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1142((void*)_handle, (void*)id.Handle);
     }
 
     public nint getOrThrow_04d90caa(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ id)
     {
-        return (nint)NativeMethods.TablePtr->f1126((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1143((void*)_handle, (void*)id.Handle);
     }
 
     public nint getOrThrow_b144bf99(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ id)
     {
-        return (nint)NativeMethods.TablePtr->f1127((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1144((void*)_handle, (void*)id.Handle);
     }
 }

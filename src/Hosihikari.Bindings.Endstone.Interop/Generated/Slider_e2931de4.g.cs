@@ -13,7 +13,7 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public static Slider Create()
     {
-        var handle = NativeMethods.TablePtr->f1243();
+        var handle = NativeMethods.TablePtr->f1260();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -25,25 +25,29 @@ public sealed unsafe partial class Slider : global::System.IDisposable
     public static Slider Create(nint label, float min, float max, float step, nint default_value) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
-    public nint getDefaultValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<float>' is not a known bindable declaration.");
+    public float? getDefaultValue()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->f1261((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (float?)null;
+    }
 
     public nint getLabel() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
     public float getMax()
     {
-        return NativeMethods.TablePtr->f1244((void*)_handle);
+        return NativeMethods.TablePtr->f1262((void*)_handle);
     }
 
     public float getMin()
     {
-        return NativeMethods.TablePtr->f1245((void*)_handle);
+        return NativeMethods.TablePtr->f1263((void*)_handle);
     }
 
     public float getStep()
     {
-        return NativeMethods.TablePtr->f1246((void*)_handle);
+        return NativeMethods.TablePtr->f1264((void*)_handle);
     }
 
     public nint setDefaultValue(nint default_value) =>
@@ -54,24 +58,24 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public nint setMax(float max)
     {
-        return (nint)NativeMethods.TablePtr->f1247((void*)_handle, max);
+        return (nint)NativeMethods.TablePtr->f1265((void*)_handle, max);
     }
 
     public nint setMin(float min)
     {
-        return (nint)NativeMethods.TablePtr->f1248((void*)_handle, min);
+        return (nint)NativeMethods.TablePtr->f1266((void*)_handle, min);
     }
 
     public nint setStep(float step)
     {
-        return (nint)NativeMethods.TablePtr->f1249((void*)_handle, step);
+        return (nint)NativeMethods.TablePtr->f1267((void*)_handle, step);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1242((void*)_handle);
+            NativeMethods.TablePtr->f1259((void*)_handle);
             _handle = 0;
         }
     }

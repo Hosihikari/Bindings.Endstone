@@ -8,6 +8,7 @@
 #include <functional>
 #include <memory>
 #include <new>
+#include <optional>
 #include <string>
 #include <string_view>
 #include "endstone/endstone.hpp"
@@ -3006,6 +3007,25 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static std::int32_t hs_method_ed1b4877(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::BookMeta*>(hs_self)->getGeneration();
+    *hs_hasValue = result.has_value();
+    return result ? static_cast<std::int32_t>(*result) : std::int32_t{};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
+}
+
 static HosihikariStringView hs_method_414649b7(void* hs_self) try
 {
     auto result = static_cast<endstone::BookMeta*>(hs_self)->getTitle();
@@ -3430,6 +3450,26 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_694a6369(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::Button*>(hs_self)->getIcon();
+    *hs_hasValue = result.has_value();
+    g_stringResult.assign(result ? result->data() : "", result ? result->size() : 0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void* hs_method_ebda1615(void* hs_self, const char* icon_data, std::size_t icon_size) try
@@ -5950,6 +5990,25 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static std::int32_t hs_method_06d835d9(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::Dropdown*>(hs_self)->getDefaultIndex();
+    *hs_hasValue = result.has_value();
+    return result ? static_cast<std::int32_t>(*result) : std::int32_t{};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
 }
 
 static void hs_destroy_cb8e5713(void* hs_self) try
@@ -8730,6 +8789,26 @@ catch (...)
     return 0;
 }
 
+static void* hs_method_917b3412(void* hs_self, std::int32_t index, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::Inventory*>(hs_self)->getItem(static_cast<int>(index));
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new endstone::ItemStack(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
 static std::int32_t hs_method_7666f5f7(void* hs_self) try
 {
     return static_cast<std::int32_t>(static_cast<endstone::Inventory*>(hs_self)->getMaxStackSize());
@@ -8909,6 +8988,25 @@ catch (std::exception const& hs_error)
 catch (...)
 {
     setLastError("unknown native exception");
+    return 0;
+}
+
+static std::int64_t hs_method_f43096ca(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::Item*>(hs_self)->getThrower();
+    *hs_hasValue = result.has_value();
+    return result ? static_cast<std::int64_t>(*result) : std::int64_t{};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
     return 0;
 }
 
@@ -11617,6 +11715,26 @@ catch (...)
     return nullptr;
 }
 
+static HosihikariStringView hs_method_e533f412(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::ModalForm*>(hs_self)->getIcon();
+    *hs_hasValue = result.has_value();
+    g_stringResult.assign(result ? result->data() : "", result ? result->size() : 0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return HosihikariStringView{nullptr, 0};
+}
+
 using hs_cb_invoke_hs_method_7a28fda0_cb0 = void (*)(void* userData, void* arg0, const char* arg1_data, std::size_t arg1_size);
 using hs_cb_release_hs_method_7a28fda0_cb0 = void (*)(void*);
 struct hs_cb_state_hs_method_7a28fda0_cb0
@@ -11700,6 +11818,25 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static std::int32_t hs_method_6fabf6ef(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::Objective*>(hs_self)->getDisplaySlot();
+    *hs_hasValue = result.has_value();
+    return result ? static_cast<std::int32_t>(*result) : std::int32_t{};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
+}
+
 static HosihikariStringView hs_method_4f699330(void* hs_self) try
 {
     auto result = static_cast<endstone::Objective*>(hs_self)->getName();
@@ -11745,6 +11882,25 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static std::int32_t hs_method_654c0623(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::Objective*>(hs_self)->getSortOrder();
+    *hs_hasValue = result.has_value();
+    return result ? static_cast<std::int32_t>(*result) : std::int32_t{};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0;
 }
 
 static bool hs_method_cabc5bde(void* hs_self) try
@@ -13522,6 +13678,46 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void* hs_method_80abbf8c(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerBanEntry*>(hs_self)->getUniqueId();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new endstone::UUID(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static HosihikariStringView hs_method_8099d776(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerBanEntry*>(hs_self)->getXuid();
+    *hs_hasValue = result.has_value();
+    g_stringResult.assign(result ? result->data() : "", result ? result->size() : 0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return HosihikariStringView{nullptr, 0};
+}
+
 static bool hs_method_d5b50c77(void* hs_self, const char* name_data, std::size_t name_size) try
 {
     return static_cast<bool>(static_cast<endstone::PlayerBanList*>(hs_self)->isBanned(std::basic_string<char>(name_data, name_size)));
@@ -14390,6 +14586,26 @@ catch (...)
     return 0;
 }
 
+static void* hs_method_9615d72c(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerInteractEvent*>(hs_self)->getClickedPosition();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new endstone::Vector(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
 static HosihikariStringView hs_method_eda76496(void* hs_self) try
 {
     auto result = static_cast<endstone::PlayerInteractEvent*>(hs_self)->getEventName();
@@ -14452,6 +14668,46 @@ catch (...)
     return false;
 }
 
+static void* hs_method_407afba1(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerInventory*>(hs_self)->getBoots();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new endstone::ItemStack(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static void* hs_method_21cdca28(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerInventory*>(hs_self)->getChestplate();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new endstone::ItemStack(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
 static std::int32_t hs_method_2af5838e(void* hs_self) try
 {
     return static_cast<std::int32_t>(static_cast<endstone::PlayerInventory*>(hs_self)->getHeldItemSlot());
@@ -14465,6 +14721,86 @@ catch (...)
 {
     setLastError("unknown native exception");
     return 0;
+}
+
+static void* hs_method_e7852bbe(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerInventory*>(hs_self)->getHelmet();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new endstone::ItemStack(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static void* hs_method_80e17233(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerInventory*>(hs_self)->getItemInMainHand();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new endstone::ItemStack(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static void* hs_method_22b989c4(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerInventory*>(hs_self)->getItemInOffHand();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new endstone::ItemStack(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static void* hs_method_7394574a(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerInventory*>(hs_self)->getLeggings();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new endstone::ItemStack(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
 }
 
 static void hs_method_720209cc(void* hs_self, std::int32_t slot) try
@@ -19305,6 +19641,25 @@ catch (...)
     return nullptr;
 }
 
+static float hs_method_8e97707c(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::Slider*>(hs_self)->getDefaultValue();
+    *hs_hasValue = result.has_value();
+    return result ? static_cast<float>(*result) : float{};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0.0f;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return 0.0f;
+}
+
 static float hs_method_22a14062(void* hs_self) try
 {
     return static_cast<float>(static_cast<endstone::Slider*>(hs_self)->getMax());
@@ -19590,6 +19945,26 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariStringView hs_method_cf086930(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::TextInput*>(hs_self)->getDefaultValue();
+    *hs_hasValue = result.has_value();
+    g_stringResult.assign(result ? result->data() : "", result ? result->size() : 0);
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return HosihikariStringView{nullptr, 0};
 }
 
 static void hs_destroy_2ac6baed(void* hs_self) try
@@ -22854,6 +23229,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_9375ea5f,
     &hs_get_3dbd03f0,
     &hs_method_bc9be099,
+    &hs_method_ed1b4877,
     &hs_method_414649b7,
     &hs_method_a6474ca8,
     &hs_method_9b523c2c,
@@ -22882,6 +23258,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ed51ea87,
     &hs_destroy_a6b80c78,
     &hs_create_a4f12f29,
+    &hs_method_694a6369,
     &hs_method_ebda1615,
     &hs_method_7466e41b,
     &hs_method_23889360,
@@ -23045,6 +23422,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_9c3982da,
     &hs_create_6935619b,
     &hs_method_ef8d8378,
+    &hs_method_06d835d9,
     &hs_destroy_cb8e5713,
     &hs_get_c0fea9c8,
     &hs_get_0fa4a533,
@@ -23223,6 +23601,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_1c4f2943,
     &hs_method_efaa5e3c,
     &hs_method_16338ae0,
+    &hs_method_917b3412,
     &hs_method_7666f5f7,
     &hs_method_03536d24,
     &hs_method_54f1a207,
@@ -23235,6 +23614,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_99fd116a,
     &hs_method_e67805b3,
     &hs_method_cb924d86,
+    &hs_method_f43096ca,
     &hs_method_c38c6e29,
     &hs_method_327ba5e2,
     &hs_method_d4fd9e86,
@@ -23412,13 +23792,16 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_3cecb4b6,
     &hs_destroy_50792e32,
     &hs_method_d6ba0b11,
+    &hs_method_e533f412,
     &hs_method_7a28fda0,
     &hs_destroy_2b13267b,
     &hs_method_84b58b4c,
     &hs_method_9d527bb5,
+    &hs_method_6fabf6ef,
     &hs_method_4f699330,
     &hs_method_a38ef899,
     &hs_method_f4a5b3b4,
+    &hs_method_654c0623,
     &hs_method_cabc5bde,
     &hs_method_ae3a847e,
     &hs_method_57030bb9,
@@ -23534,6 +23917,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2bac054c,
     &hs_destroy_426dca3f,
     &hs_method_6e16ee39,
+    &hs_method_80abbf8c,
+    &hs_method_8099d776,
     &hs_method_d5b50c77,
     &hs_method_97810986,
     &hs_destroy_7b8e6eea,
@@ -23590,11 +23975,18 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_fd32d648,
     &hs_method_50883ffe,
     &hs_method_d9ab8eaf,
+    &hs_method_9615d72c,
     &hs_method_eda76496,
     &hs_method_fd08901a,
     &hs_method_ccde37b2,
     &hs_method_250987aa,
+    &hs_method_407afba1,
+    &hs_method_21cdca28,
     &hs_method_2af5838e,
+    &hs_method_e7852bbe,
+    &hs_method_80e17233,
+    &hs_method_22b989c4,
+    &hs_method_7394574a,
     &hs_method_720209cc,
     &hs_destroy_deb3197a,
     &hs_get_77e0d86d,
@@ -23906,6 +24298,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_adc734db,
     &hs_destroy_e2931de4,
     &hs_create_2b743187,
+    &hs_method_8e97707c,
     &hs_method_22a14062,
     &hs_method_b6202ef6,
     &hs_method_b88065d8,
@@ -23925,6 +24318,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_3838f72f,
     &hs_destroy_ebed3b76,
     &hs_create_3e1ec5c3,
+    &hs_method_cf086930,
     &hs_destroy_2ac6baed,
     &hs_get_5463cf9d,
     &hs_method_86f9ba6f,

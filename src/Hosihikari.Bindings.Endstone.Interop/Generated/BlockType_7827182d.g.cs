@@ -24,7 +24,7 @@ public sealed unsafe partial class BlockType
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? createBlockData()
     {
         var __hs_handle = NativeMethods.TablePtr->f188((void*)_handle);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
     }
 
     public bool hasItemType()

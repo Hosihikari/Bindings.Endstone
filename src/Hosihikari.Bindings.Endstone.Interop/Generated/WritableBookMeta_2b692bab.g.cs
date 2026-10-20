@@ -13,7 +13,7 @@ public sealed unsafe partial class WritableBookMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f1332();
+        get => NativeMethods.TablePtr->f1351();
     }
 
     public void addPage(nint pages) =>
@@ -21,13 +21,13 @@ public sealed unsafe partial class WritableBookMeta
 
     public string getPage(int page)
     {
-        var __hs_view = NativeMethods.TablePtr->f1333((void*)_handle, page);
+        var __hs_view = NativeMethods.TablePtr->f1352((void*)_handle, page);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getPageCount()
     {
-        return NativeMethods.TablePtr->f1334((void*)_handle);
+        return NativeMethods.TablePtr->f1353((void*)_handle);
     }
 
     public nint getPages() =>
@@ -35,7 +35,7 @@ public sealed unsafe partial class WritableBookMeta
 
     public bool hasPages()
     {
-        return NativeMethods.TablePtr->f1335((void*)_handle);
+        return NativeMethods.TablePtr->f1354((void*)_handle);
     }
 
     public void setPage(int page, string data)
@@ -43,7 +43,7 @@ public sealed unsafe partial class WritableBookMeta
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(data);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f1336((void*)_handle, page, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f1355((void*)_handle, page, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 

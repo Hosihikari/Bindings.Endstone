@@ -16,21 +16,29 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f871((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f879((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getUniqueId() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<endstone::UUID>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? getUniqueId()
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->f880((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)__hs_handle) : null;
+    }
 
-    public nint getXuid() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<std::basic_string<char>>' is not a known bindable declaration.");
+    public string? getXuid()
+    {
+        var __hs_hasValue = false;
+        var __hs_view = NativeMethods.TablePtr->f881((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f870((void*)_handle);
+            NativeMethods.TablePtr->f878((void*)_handle);
             _handle = 0;
         }
     }

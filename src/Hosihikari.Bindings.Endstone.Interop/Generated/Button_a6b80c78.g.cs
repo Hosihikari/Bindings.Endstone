@@ -13,7 +13,7 @@ public sealed unsafe partial class Button : global::System.IDisposable
 
     public static Button Create()
     {
-        var handle = NativeMethods.TablePtr->f219();
+        var handle = NativeMethods.TablePtr->f220();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -25,8 +25,12 @@ public sealed unsafe partial class Button : global::System.IDisposable
     public static Button Create(nint text, nint icon, nint on_click) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
-    public nint getIcon() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<std::basic_string<char>>' is not a known bindable declaration.");
+    public string? getIcon()
+    {
+        var __hs_hasValue = false;
+        var __hs_view = NativeMethods.TablePtr->f221((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+    }
 
     public nint getOnClick() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *)>' is not supported.");
@@ -39,13 +43,13 @@ public sealed unsafe partial class Button : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f220((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f222((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public nint setOnClick(nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
     {
-        return (nint)NativeMethods.TablePtr->f221((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
+        return (nint)NativeMethods.TablePtr->f223((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
     }
 
     public nint setText(nint text) =>
@@ -55,7 +59,7 @@ public sealed unsafe partial class Button : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f218((void*)_handle);
+            NativeMethods.TablePtr->f219((void*)_handle);
             _handle = 0;
         }
     }

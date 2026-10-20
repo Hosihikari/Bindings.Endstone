@@ -16,27 +16,27 @@ public sealed unsafe partial class Score : global::System.IDisposable
 
     public nint getObjective()
     {
-        return (nint)NativeMethods.TablePtr->f1141((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1158((void*)_handle);
     }
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f1142((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1159((void*)_handle);
     }
 
     public int getValue()
     {
-        return NativeMethods.TablePtr->f1143((void*)_handle);
+        return NativeMethods.TablePtr->f1160((void*)_handle);
     }
 
     public bool isScoreSet()
     {
-        return NativeMethods.TablePtr->f1144((void*)_handle);
+        return NativeMethods.TablePtr->f1161((void*)_handle);
     }
 
     public void setValue(int score)
     {
-        NativeMethods.TablePtr->f1145((void*)_handle, score);
+        NativeMethods.TablePtr->f1162((void*)_handle, score);
     }
 
 
@@ -44,7 +44,7 @@ public sealed unsafe partial class Score : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1140((void*)_handle);
+            NativeMethods.TablePtr->f1157((void*)_handle);
             _handle = 0;
         }
     }

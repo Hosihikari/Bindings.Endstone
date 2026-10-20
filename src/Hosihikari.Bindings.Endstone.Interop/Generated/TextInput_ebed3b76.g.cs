@@ -13,7 +13,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
 
     public static TextInput Create()
     {
-        var handle = NativeMethods.TablePtr->f1262();
+        var handle = NativeMethods.TablePtr->f1280();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -25,8 +25,12 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
     public static TextInput Create(nint label, nint placeholder, nint default_text) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
-    public nint getDefaultValue() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<std::basic_string<char>>' is not a known bindable declaration.");
+    public string? getDefaultValue()
+    {
+        var __hs_hasValue = false;
+        var __hs_view = NativeMethods.TablePtr->f1281((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
+    }
 
     public nint getLabel() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
@@ -47,7 +51,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1261((void*)_handle);
+            NativeMethods.TablePtr->f1279((void*)_handle);
             _handle = 0;
         }
     }

@@ -13,7 +13,7 @@ public sealed unsafe partial class Form_endstone__ActionForm_ : global::System.I
 
     public static Form_endstone__ActionForm_ Create()
     {
-        var handle = NativeMethods.TablePtr->f477();
+        var handle = NativeMethods.TablePtr->f480();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -30,7 +30,7 @@ public sealed unsafe partial class Form_endstone__ActionForm_ : global::System.I
 
     public nint setOnClose(nint on_closeInvoke, nint on_closeUserData, nint on_closeRelease)
     {
-        return (nint)NativeMethods.TablePtr->f478((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
+        return (nint)NativeMethods.TablePtr->f481((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
     }
 
     public nint setTitle(nint title) =>
@@ -40,7 +40,7 @@ public sealed unsafe partial class Form_endstone__ActionForm_ : global::System.I
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f476((void*)_handle);
+            NativeMethods.TablePtr->f479((void*)_handle);
             _handle = 0;
         }
     }

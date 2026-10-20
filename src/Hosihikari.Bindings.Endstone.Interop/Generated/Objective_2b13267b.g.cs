@@ -13,27 +13,31 @@ public sealed unsafe partial class Objective : global::System.IDisposable
 
     public nint getCriteria()
     {
-        return (nint)NativeMethods.TablePtr->f752((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f758((void*)_handle);
     }
 
     public string getDisplayName()
     {
-        var __hs_view = NativeMethods.TablePtr->f753((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f759((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getDisplaySlot() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<endstone::DisplaySlot>' is not a known bindable declaration.");
+    public int? getDisplaySlot()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->f760((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f754((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f761((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public byte getRenderType()
     {
-        return NativeMethods.TablePtr->f755((void*)_handle);
+        return NativeMethods.TablePtr->f762((void*)_handle);
     }
 
     public nint getScore(nint entry) =>
@@ -41,30 +45,34 @@ public sealed unsafe partial class Objective : global::System.IDisposable
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f756((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f763((void*)_handle);
     }
 
-    public nint getSortOrder() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<endstone::ObjectiveSortOrder>' is not a known bindable declaration.");
+    public int? getSortOrder()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->f764((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
 
     public bool isDisplayed()
     {
-        return NativeMethods.TablePtr->f757((void*)_handle);
+        return NativeMethods.TablePtr->f765((void*)_handle);
     }
 
     public bool isModifiable()
     {
-        return NativeMethods.TablePtr->f758((void*)_handle);
+        return NativeMethods.TablePtr->f766((void*)_handle);
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective other)
     {
-        return NativeMethods.TablePtr->f759((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f767((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective other)
     {
-        return NativeMethods.TablePtr->f760((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f768((void*)_handle, (void*)other.Handle);
     }
 
     public void setDisplay(nint slot, nint order) =>
@@ -75,7 +83,7 @@ public sealed unsafe partial class Objective : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(display_name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f761((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f769((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -84,12 +92,12 @@ public sealed unsafe partial class Objective : global::System.IDisposable
 
     public void setSortOrder(int order)
     {
-        NativeMethods.TablePtr->f762((void*)_handle, order);
+        NativeMethods.TablePtr->f770((void*)_handle, order);
     }
 
     public void unregister()
     {
-        NativeMethods.TablePtr->f763((void*)_handle);
+        NativeMethods.TablePtr->f771((void*)_handle);
     }
 
 
@@ -97,7 +105,7 @@ public sealed unsafe partial class Objective : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f751((void*)_handle);
+            NativeMethods.TablePtr->f757((void*)_handle);
             _handle = 0;
         }
     }

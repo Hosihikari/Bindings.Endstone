@@ -22,28 +22,32 @@ public sealed unsafe partial class BookMeta
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getGeneration() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<endstone::BookMeta::Generation>' is not a known bindable declaration.");
+    public int? getGeneration()
+    {
+        var __hs_hasValue = false;
+        var __hs_value = NativeMethods.TablePtr->f192((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue ? __hs_value : (int?)null;
+    }
 
     public string getTitle()
     {
-        var __hs_view = NativeMethods.TablePtr->f192((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f193((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool hasAuthor()
     {
-        return NativeMethods.TablePtr->f193((void*)_handle);
+        return NativeMethods.TablePtr->f194((void*)_handle);
     }
 
     public bool hasGeneration()
     {
-        return NativeMethods.TablePtr->f194((void*)_handle);
+        return NativeMethods.TablePtr->f195((void*)_handle);
     }
 
     public bool hasTitle()
     {
-        return NativeMethods.TablePtr->f195((void*)_handle);
+        return NativeMethods.TablePtr->f196((void*)_handle);
     }
 
     public void setAuthor(nint author) =>

@@ -14,13 +14,13 @@ public sealed unsafe partial class BlockState : global::System.IDisposable
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getBlock()
     {
         var __hs_handle = NativeMethods.TablePtr->f173((void*)_handle);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? getData()
     {
         var __hs_handle = NativeMethods.TablePtr->f174((void*)_handle);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
     }
 
     public nint getDimension()

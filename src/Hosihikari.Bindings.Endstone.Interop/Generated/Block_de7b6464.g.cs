@@ -14,19 +14,19 @@ public sealed unsafe partial class Block : global::System.IDisposable
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockState? captureState()
     {
         var __hs_handle = NativeMethods.TablePtr->f113((void*)_handle);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockState((nint)__hs_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockState((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? clone()
     {
         var __hs_handle = NativeMethods.TablePtr->f114((void*)_handle);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? getData()
     {
         var __hs_handle = NativeMethods.TablePtr->f115((void*)_handle);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
     }
 
     public nint getDimension()
@@ -42,19 +42,19 @@ public sealed unsafe partial class Block : global::System.IDisposable
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getRelative(int face)
     {
         var __hs_handle = NativeMethods.TablePtr->f118((void*)_handle, face);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getRelative(int face, int distance)
     {
         var __hs_handle = NativeMethods.TablePtr->f119((void*)_handle, face, distance);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getRelative(int offset_x, int offset_y, int offset_z)
     {
         var __hs_handle = NativeMethods.TablePtr->f120((void*)_handle, offset_x, offset_y, offset_z);
-        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public string getType()

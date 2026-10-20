@@ -19,7 +19,7 @@ public sealed unsafe partial class Level
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f640((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f645((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -28,23 +28,23 @@ public sealed unsafe partial class Level
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f641((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f646((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public long getSeed()
     {
-        return NativeMethods.TablePtr->f642((void*)_handle);
+        return NativeMethods.TablePtr->f647((void*)_handle);
     }
 
     public int getTime()
     {
-        return NativeMethods.TablePtr->f643((void*)_handle);
+        return NativeMethods.TablePtr->f648((void*)_handle);
     }
 
     public void setTime(int time)
     {
-        NativeMethods.TablePtr->f644((void*)_handle, time);
+        NativeMethods.TablePtr->f649((void*)_handle, time);
     }
 
     public void Destroy() =>

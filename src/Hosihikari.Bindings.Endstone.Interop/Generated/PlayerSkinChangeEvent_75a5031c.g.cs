@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f985();
+        get => (nint)NativeMethods.TablePtr->f1002();
     }
 
     public static PlayerSkinChangeEvent Create(nint player, nint new_skin, nint message) =>
@@ -21,17 +21,17 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f986((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1003((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin getNewSkin()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f987((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f1004((void*)_handle));
     }
 
     public nint getSkinChangeMessage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
     public void setSkinChangeMessage(nint message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>' is not a known bindable declaration.");
@@ -40,7 +40,7 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f984((void*)_handle);
+            NativeMethods.TablePtr->f1001((void*)_handle);
             _handle = 0;
         }
     }

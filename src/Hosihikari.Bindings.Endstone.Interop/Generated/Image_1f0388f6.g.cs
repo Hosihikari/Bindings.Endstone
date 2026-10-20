@@ -13,7 +13,7 @@ public sealed unsafe partial class Image : global::System.IDisposable
 
     public static Image Create(int type, int width, int height)
     {
-        var handle = NativeMethods.TablePtr->f544(type, width, height);
+        var handle = NativeMethods.TablePtr->f547(type, width, height);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -30,40 +30,40 @@ public sealed unsafe partial class Image : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color getColor(int x, int y)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->f545((void*)_handle, x, y));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->f548((void*)_handle, x, y));
     }
 
     public string getData()
     {
-        var __hs_view = NativeMethods.TablePtr->f546((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f549((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getDepth()
     {
-        return NativeMethods.TablePtr->f547((void*)_handle);
+        return NativeMethods.TablePtr->f550((void*)_handle);
     }
 
     public int getHeight()
     {
-        return NativeMethods.TablePtr->f548((void*)_handle);
+        return NativeMethods.TablePtr->f551((void*)_handle);
     }
 
     public int getWidth()
     {
-        return NativeMethods.TablePtr->f549((void*)_handle);
+        return NativeMethods.TablePtr->f552((void*)_handle);
     }
 
     public void setColor(int x, int y, global::Hosihikari.Bindings.Endstone.Interop.endstone.Color color)
     {
-        NativeMethods.TablePtr->f550((void*)_handle, x, y, (void*)color.Handle);
+        NativeMethods.TablePtr->f553((void*)_handle, x, y, (void*)color.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f543((void*)_handle);
+            NativeMethods.TablePtr->f546((void*)_handle);
             _handle = 0;
         }
     }

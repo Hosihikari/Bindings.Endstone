@@ -13,26 +13,26 @@ public sealed unsafe partial class Mob
 
     public int getHealth()
     {
-        return NativeMethods.TablePtr->f743((void*)_handle);
+        return NativeMethods.TablePtr->f748((void*)_handle);
     }
 
     public int getMaxHealth()
     {
-        return NativeMethods.TablePtr->f744((void*)_handle);
+        return NativeMethods.TablePtr->f749((void*)_handle);
     }
 
     public bool isGliding()
     {
-        return NativeMethods.TablePtr->f745((void*)_handle);
+        return NativeMethods.TablePtr->f750((void*)_handle);
     }
 
     public void setHealth(int health)
     {
-        NativeMethods.TablePtr->f746((void*)_handle, health);
+        NativeMethods.TablePtr->f751((void*)_handle, health);
     }
 
     public void setMaxHealth(int health)
     {
-        NativeMethods.TablePtr->f747((void*)_handle, health);
+        NativeMethods.TablePtr->f752((void*)_handle, health);
     }
 }

@@ -16,7 +16,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getAPIVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f1008((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1025((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -31,7 +31,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public int getDefaultPermission()
     {
-        return NativeMethods.TablePtr->f1009((void*)_handle);
+        return NativeMethods.TablePtr->f1026((void*)_handle);
     }
 
     public nint getDepend() =>
@@ -39,19 +39,19 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f1010((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1027((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getFullName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1011((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1028((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getLoad()
     {
-        return NativeMethods.TablePtr->f1012((void*)_handle);
+        return NativeMethods.TablePtr->f1029((void*)_handle);
     }
 
     public nint getLoadBefore() =>
@@ -59,7 +59,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1013((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1030((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -68,7 +68,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getPrefix()
     {
-        var __hs_view = NativeMethods.TablePtr->f1014((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1031((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -80,13 +80,13 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f1015((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1032((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getWebsite()
     {
-        var __hs_view = NativeMethods.TablePtr->f1016((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1033((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -94,7 +94,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1007((void*)_handle);
+            NativeMethods.TablePtr->f1024((void*)_handle);
             _handle = 0;
         }
     }

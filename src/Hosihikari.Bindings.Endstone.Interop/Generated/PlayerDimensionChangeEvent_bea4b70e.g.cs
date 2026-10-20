@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.I
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f900();
+        get => (nint)NativeMethods.TablePtr->f910();
     }
 
     public static PlayerDimensionChangeEvent Create(nint player, nint from, nint to) =>
@@ -21,25 +21,25 @@ public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.I
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f901((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f911((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getFrom()
     {
-        return (nint)NativeMethods.TablePtr->f902((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f912((void*)_handle);
     }
 
     public nint getTo()
     {
-        return (nint)NativeMethods.TablePtr->f903((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f913((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f899((void*)_handle);
+            NativeMethods.TablePtr->f909((void*)_handle);
             _handle = 0;
         }
     }
