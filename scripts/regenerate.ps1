@@ -49,7 +49,16 @@ Copy-Item (Join-Path $Output "coverage\summary.json") $CoverageTarget -Force
 $Summary = Get-Content (Join-Path $CoverageTarget "summary.json") -Raw | ConvertFrom-Json
 $Header = Join-Path $ShimTarget "binding_table.h"
 $Functions = (Select-String -Path $Header -Pattern '\(\*f' -AllMatches).Count
-$CarrierCommit = (& git -C $EndstoneRoot rev-parse HEAD).Trim()
+$CarrierCommit = "unknown"
+if (Test-Path (Join-Path $EndstoneRoot ".git")) {
+    $CarrierCommit = (& git -C $EndstoneRoot rev-parse HEAD).Trim()
+} else {
+    $VersionFile = Join-Path $EndstoneRoot "include\CMakeLists.txt"
+    if (Test-Path $VersionFile) {
+        $Match = Select-String -Path $VersionFile -Pattern 'project\s*\(\s*endstone\s+VERSION\s+([0-9]+\.[0-9]+\.[0-9]+)' | Select-Object -First 1
+        if ($Match) { $CarrierCommit = "v" + $Match.Matches[0].Groups[1].Value }
+    }
+}
 $GeneratorVersion = (& dotnet run --project $GeneratorProject -c Release -- version).Trim()
 
 $Provenance = [ordered]@{

@@ -10,9 +10,9 @@
 
 ## 当前状态
 
-- Interop：`src/Hosihikari.Bindings.Endstone.Interop/Generated/` 下 356 个生成 C# 文件。
-- BindingShim：`native/BindingShim/generated/win-x64-server/endstone/` 中 1,278 个函数。
-- 覆盖：515 条声明、2,973 条成员已绑定。
+- Interop：`src/Hosihikari.Bindings.Endstone.Interop/Generated/` 下 205 个生成 C# 文件。
+- BindingShim：`native/BindingShim/generated/win-x64-server/endstone/` 中 946 个函数。
+- 覆盖：319 条声明、1,831 条成员已绑定。
 
 shim 以 `--virtual-dispatch` 模式发射：inline 成员与虚方法（含纯虚接口）被投影；非虚 out-of-line 成员保留 Interop stub，并在 `NotSupportedException` 中给出原因。宿主拥有的接口对象不释放；只有 shim 创建的对象生成释放器。
 

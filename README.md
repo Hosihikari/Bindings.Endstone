@@ -10,9 +10,9 @@ The **Endstone** C++ API surface for the Hosihikari bindings: a CI-generated nat
 
 ## Current state
 
-- Interop: 356 generated C# files under `src/Hosihikari.Bindings.Endstone.Interop/Generated/`.
-- BindingShim: 1,278 functions in `native/BindingShim/generated/win-x64-server/endstone/`.
-- Coverage: 515 declarations and 2,973 members bound.
+- Interop: 205 generated C# files under `src/Hosihikari.Bindings.Endstone.Interop/Generated/`.
+- BindingShim: 946 functions in `native/BindingShim/generated/win-x64-server/endstone/`.
+- Coverage: 319 declarations and 1,831 members bound.
 
 The shim is emitted in `--virtual-dispatch` mode. Inline members and virtual methods (including pure virtual interfaces) are projected; non-virtual out-of-line members remain Interop stubs with a reasoned `NotSupportedException` message. Host-owned interface objects are not disposed; only objects created by the shim receive a disposer.
 
