@@ -46,10 +46,10 @@ public sealed unsafe partial class Identifier_endstone__Attribute_ : global::Sys
 
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_ minecraft(string key)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(key);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->f533(__hs_stringData, (nuint)__hs_stringBytes.Length));
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->f533(__hs_stringData0, (nuint)__hs_stringBytes0.Length));
         }
     }
 

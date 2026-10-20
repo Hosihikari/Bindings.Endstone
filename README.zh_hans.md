@@ -11,7 +11,7 @@
 ## 当前状态
 
 - Interop：`src/Hosihikari.Bindings.Endstone.Interop/Generated/` 下 208 个生成 C# 文件。
-- BindingShim：`native/BindingShim/generated/win-x64-server/endstone/` 中 1,621 个函数。
+- BindingShim：`native/BindingShim/generated/win-x64-server/endstone/` 中 1,637 个函数。
 - 覆盖：319 条声明、1,831 条成员已绑定。
 
 shim 以 `--virtual-dispatch` 模式发射：inline 成员、虚方法（含纯虚接口）、符合条件的模板实例、inline/constexpr 静态字段、`std::optional<T>` 参数/结果、`std::vector<T>` 参数/结果、`std::unique_ptr<T>` 结果、`std::shared_ptr<T>` 结果、`nonstd::expected_lite::expected<T, std::string>` 结果与 `std::variant<T...>` 参数/结果被投影；非虚 out-of-line 成员保留 Interop stub，并在 `NotSupportedException` 中给出原因。宿主拥有的接口对象不释放；只有 shim 创建的对象生成释放器。

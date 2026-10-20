@@ -24,10 +24,10 @@ public sealed unsafe partial class Button : global::System.IDisposable
 
     public static Button Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text, string? icon, nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->f228((void*)text.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
+            var handle = NativeMethods.TablePtr->f228((void*)text.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -54,10 +54,10 @@ public sealed unsafe partial class Button : global::System.IDisposable
 
     public nint setIcon(string icon)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(icon);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f231((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f231((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 

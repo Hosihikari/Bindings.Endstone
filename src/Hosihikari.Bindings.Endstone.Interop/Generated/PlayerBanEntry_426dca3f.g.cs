@@ -11,26 +11,42 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public static PlayerBanEntry Create(nint name, nint uuid, nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one string parameter.");
+    public static PlayerBanEntry Create(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? uuid, string? xuid)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(xuid ?? string.Empty);
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                var handle = NativeMethods.TablePtr->f941(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new PlayerBanEntry((nint)handle);
+            }
+        }
+    }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f934((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f942((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? getUniqueId()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f935((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f943((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)__hs_handle) : null;
     }
 
     public string? getXuid()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f936((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f944((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
@@ -38,7 +54,7 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f933((void*)_handle);
+            NativeMethods.TablePtr->f940((void*)_handle);
             _handle = 0;
         }
     }

@@ -90,19 +90,19 @@ public sealed unsafe partial class Block : global::System.IDisposable
 
     public void setType(string type)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f129((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f129((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void setType(string type, bool apply_physics)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f130((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, apply_physics);
+            NativeMethods.TablePtr->f130((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, apply_physics);
         }
     }
 

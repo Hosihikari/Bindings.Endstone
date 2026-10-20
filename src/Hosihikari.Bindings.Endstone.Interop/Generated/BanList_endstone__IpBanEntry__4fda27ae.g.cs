@@ -25,19 +25,19 @@ public sealed unsafe partial class BanList_endstone__IpBanEntry_
 
     public bool isBanned(string target)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(target);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(target);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f110((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f110((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void removeBan(string target)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(target);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(target);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f111((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f111((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 

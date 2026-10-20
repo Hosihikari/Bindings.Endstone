@@ -58,10 +58,10 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public nint addOption(string option)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(option);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(option);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f400((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f400((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 

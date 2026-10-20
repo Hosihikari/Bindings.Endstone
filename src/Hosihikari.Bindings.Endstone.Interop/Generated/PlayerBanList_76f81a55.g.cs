@@ -34,25 +34,45 @@ public sealed unsafe partial class PlayerBanList
 
     public bool isBanned(string name)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f937((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f945((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
-    public bool isBanned(nint name, nint uuid, nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods accept at most one string parameter.");
+    public bool isBanned(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? uuid, string? xuid)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(xuid ?? string.Empty);
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                return NativeMethods.TablePtr->f946((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
+            }
+        }
+    }
 
     public void removeBan(string name)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f938((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f947((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
-    public void removeBan(nint name, nint uuid, nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods accept at most one string parameter.");
+    public void removeBan(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? uuid, string? xuid)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(xuid ?? string.Empty);
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                NativeMethods.TablePtr->f948((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
+            }
+        }
+    }
 }

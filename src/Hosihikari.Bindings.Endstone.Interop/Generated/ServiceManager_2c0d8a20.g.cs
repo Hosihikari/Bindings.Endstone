@@ -13,10 +13,10 @@ public sealed unsafe partial class ServiceManager
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? get(string name)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->f1345((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_shared = NativeMethods.TablePtr->f1359((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
@@ -26,21 +26,21 @@ public sealed unsafe partial class ServiceManager
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
     {
-        NativeMethods.TablePtr->f1346((void*)_handle, (void*)provider.Handle);
+        NativeMethods.TablePtr->f1360((void*)_handle, (void*)provider.Handle);
     }
 
     public void unregister(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1347((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)provider.Handle);
+            NativeMethods.TablePtr->f1361((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)provider.Handle);
         }
     }
 
     public void unregisterAll(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1348((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1362((void*)_handle, (void*)plugin.Handle);
     }
 
     public void Destroy() =>

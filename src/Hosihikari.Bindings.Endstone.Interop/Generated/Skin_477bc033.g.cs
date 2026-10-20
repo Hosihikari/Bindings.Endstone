@@ -11,35 +11,51 @@ public sealed unsafe partial class Skin : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public static Skin Create(nint id, nint image, nint cape_id, nint cape_image) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one string parameter.");
+    public static Skin Create(string id, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image image, string? cape_id, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image? cape_image)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(id);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(cape_id ?? string.Empty);
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                var handle = NativeMethods.TablePtr->f1364(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new Skin((nint)handle);
+            }
+        }
+    }
 
     public nint getCapeId()
     {
-        return (nint)NativeMethods.TablePtr->f1350((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1365((void*)_handle);
     }
 
     public nint getCapeImage()
     {
-        return (nint)NativeMethods.TablePtr->f1351((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1366((void*)_handle);
     }
 
     public string getId()
     {
-        var __hs_view = NativeMethods.TablePtr->f1352((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1367((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getImage()
     {
-        return (nint)NativeMethods.TablePtr->f1353((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1368((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1349((void*)_handle);
+            NativeMethods.TablePtr->f1363((void*)_handle);
             _handle = 0;
         }
     }

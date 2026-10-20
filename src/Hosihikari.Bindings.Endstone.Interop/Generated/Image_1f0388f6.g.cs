@@ -36,10 +36,10 @@ public sealed unsafe partial class Image : global::System.IDisposable
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Image fromBuffer(int type, int width, int height, string buffer)
     {
         var __hs_hasValue = false;
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(buffer);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes3 = global::System.Text.Encoding.UTF8.GetBytes(buffer);
+        fixed (byte* __hs_stringData3 = __hs_stringBytes3)
         {
-            var __hs_expectedResult = NativeMethods.TablePtr->f580(type, width, height, __hs_stringData, (nuint)__hs_stringBytes.Length, &__hs_hasValue);
+            var __hs_expectedResult = NativeMethods.TablePtr->f580(type, width, height, __hs_stringData3, (nuint)__hs_stringBytes3.Length, &__hs_hasValue);
             if (!__hs_hasValue) { throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "Binding API call returned an error."); }
             return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Image((nint)__hs_expectedResult);
         }

@@ -13,40 +13,56 @@ public sealed unsafe partial class ScriptMessageEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1259();
+        get => (nint)NativeMethods.TablePtr->f1271();
     }
 
-    public static ScriptMessageEvent Create(nint message_id, nint message, nint sender) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one string parameter.");
+    public static ScriptMessageEvent Create(string message_id, string message, global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message_id);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(message);
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var handle = NativeMethods.TablePtr->f1272(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)sender.Handle);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new ScriptMessageEvent((nint)handle);
+            }
+        }
+    }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1260((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1273((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f1261((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1274((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessageId()
     {
-        var __hs_view = NativeMethods.TablePtr->f1262((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1275((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getSender()
     {
-        return (nint)NativeMethods.TablePtr->f1263((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1276((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1258((void*)_handle);
+            NativeMethods.TablePtr->f1270((void*)_handle);
             _handle = 0;
         }
     }

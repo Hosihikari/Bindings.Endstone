@@ -24,19 +24,19 @@ public sealed unsafe partial class CommandMap
 
     public bool dispatch(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string command_line)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(command_line);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(command_line);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->f343((void*)_handle, (void*)sender.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f343((void*)_handle, (void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
         }
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? getCommand(string name)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->f344((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_shared = NativeMethods.TablePtr->f344((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }

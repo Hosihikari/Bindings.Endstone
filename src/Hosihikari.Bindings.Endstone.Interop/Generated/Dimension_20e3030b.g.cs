@@ -77,10 +77,10 @@ public sealed unsafe partial class Dimension
 
     public nint spawnActor(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location, string type)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->f393((void*)_handle, (void*)location.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f393((void*)_handle, (void*)location.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
         }
     }
 

@@ -13,10 +13,10 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
 
     public static AttributeModifier Create(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID uuid, float amount, int operation)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->f98(__hs_stringData, (nuint)__hs_stringBytes.Length, (void*)uuid.Handle, amount, operation);
+            var handle = NativeMethods.TablePtr->f98(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)uuid.Handle, amount, operation);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,10 +28,10 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
 
     public static AttributeModifier Create(string name, float amount, int operation)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->f99(__hs_stringData, (nuint)__hs_stringBytes.Length, amount, operation);
+            var handle = NativeMethods.TablePtr->f99(__hs_stringData0, (nuint)__hs_stringBytes0.Length, amount, operation);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

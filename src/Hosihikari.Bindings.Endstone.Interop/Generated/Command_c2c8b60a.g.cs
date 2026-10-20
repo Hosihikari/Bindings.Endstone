@@ -12,7 +12,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
     public nint Handle => _handle;
 
     public static Command Create(nint name, nint description, nint usages, nint aliases, nint permissions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one string parameter.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one vector parameter.");
 
     public nint asPluginCommand()
     {
@@ -107,19 +107,19 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public void setDescription(string description)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(description);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(description);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f335((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f335((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void setName(string name)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f336((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f336((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 

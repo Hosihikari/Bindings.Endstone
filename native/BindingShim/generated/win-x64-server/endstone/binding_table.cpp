@@ -10737,9 +10737,43 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static HosihikariStringView hs_method_99591aec(void* hs_self, const char* text_data, std::size_t text_size, const char* locale_data, std::size_t locale_size) try
+{
+    auto result = static_cast<endstone::Language*>(hs_self)->translate(std::basic_string<char>(text_data, text_size), std::basic_string<char>(locale_data, locale_size));
+    g_stringResult.assign(result.data(), result.size());
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
 static HosihikariStringView hs_method_6b6b40f7(void* hs_self, const char* text_data, std::size_t text_size, const HosihikariStringView* params_data, std::size_t params_count) try
 {
     auto result = static_cast<endstone::Language*>(hs_self)->translate(std::basic_string<char>(text_data, text_size), hs_make_string_vector(params_data, params_count));
+    g_stringResult.assign(result.data(), result.size());
+    return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
+static HosihikariStringView hs_method_e22d8019(void* hs_self, const char* text_data, std::size_t text_size, const char* locale_data, std::size_t locale_size, const HosihikariStringView* params_data, std::size_t params_count) try
+{
+    auto result = static_cast<endstone::Language*>(hs_self)->translate(std::basic_string<char>(text_data, text_size), hs_make_string_vector(params_data, params_count), std::basic_string<char>(locale_data, locale_size));
     g_stringResult.assign(result.data(), result.size());
     return HosihikariStringView{g_stringResult.data(), g_stringResult.size()};
 }
@@ -14381,6 +14415,51 @@ catch (...)
     return;
 }
 
+static void hs_method_19a2aa94(void* hs_self, const char* title_data, std::size_t title_size, const char* subtitle_data, std::size_t subtitle_size) try
+{
+    static_cast<endstone::Player*>(hs_self)->sendTitle(std::basic_string<char>(title_data, title_size), std::basic_string<char>(subtitle_data, subtitle_size));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_efeec355(void* hs_self, const char* title_data, std::size_t title_size, const char* subtitle_data, std::size_t subtitle_size, std::int32_t fade_in, std::int32_t stay, std::int32_t fade_out) try
+{
+    static_cast<endstone::Player*>(hs_self)->sendTitle(std::basic_string<char>(title_data, title_size), std::basic_string<char>(subtitle_data, subtitle_size), static_cast<int>(fade_in), static_cast<int>(stay), static_cast<int>(fade_out));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_140230a4(void* hs_self, const char* title_data, std::size_t title_size, const char* content_data, std::size_t content_size) try
+{
+    static_cast<endstone::Player*>(hs_self)->sendToast(std::basic_string<char>(title_data, title_size), std::basic_string<char>(content_data, content_size));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_58033f21(void* hs_self, bool flight) try
 {
     static_cast<endstone::Player*>(hs_self)->setAllowFlight(static_cast<bool>(flight));
@@ -14561,9 +14640,39 @@ catch (...)
     return;
 }
 
+static void hs_method_49c2d51a(void* hs_self, const char* name_data, std::size_t name_size, void* location, const char* molang_variables_json_data, std::size_t molang_variables_json_size, bool molang_variables_json_hasValue) try
+{
+    static_cast<endstone::Player*>(hs_self)->spawnParticle(std::basic_string<char>(name_data, name_size), *static_cast<const endstone::Location*>(location), (molang_variables_json_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(molang_variables_json_data, molang_variables_json_size)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_e52f1365(void* hs_self, const char* name_data, std::size_t name_size, float x, float y, float z) try
 {
     static_cast<endstone::Player*>(hs_self)->spawnParticle(std::basic_string<char>(name_data, name_size), static_cast<float>(x), static_cast<float>(y), static_cast<float>(z));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_93eb6528(void* hs_self, const char* name_data, std::size_t name_size, float x, float y, float z, const char* molang_variables_json_data, std::size_t molang_variables_json_size, bool molang_variables_json_hasValue) try
+{
+    static_cast<endstone::Player*>(hs_self)->spawnParticle(std::basic_string<char>(name_data, name_size), static_cast<float>(x), static_cast<float>(y), static_cast<float>(z), (molang_variables_json_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(molang_variables_json_data, molang_variables_json_size)} : std::nullopt));
 }
 catch (std::exception const& hs_error)
 {
@@ -14651,6 +14760,21 @@ catch (...)
     return;
 }
 
+static void* hs_create_346d6121(const char* name_data, std::size_t name_size, void* uuid, const char* xuid_data, std::size_t xuid_size, bool uuid_hasValue, bool xuid_hasValue) try
+{
+    return new endstone::PlayerBanEntry(std::basic_string<char>(name_data, name_size), (uuid_hasValue ? std::optional<endstone::UUID>{*static_cast<const endstone::UUID*>(uuid)} : std::nullopt), (xuid_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(xuid_data, xuid_size)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static HosihikariStringView hs_method_6e16ee39(void* hs_self) try
 {
     auto result = static_cast<endstone::PlayerBanEntry*>(hs_self)->getName();
@@ -14723,9 +14847,39 @@ catch (...)
     return false;
 }
 
+static bool hs_method_b5bff8d5(void* hs_self, const char* name_data, std::size_t name_size, void* uuid, const char* xuid_data, std::size_t xuid_size, bool uuid_hasValue, bool xuid_hasValue) try
+{
+    return static_cast<bool>(static_cast<endstone::PlayerBanList*>(hs_self)->isBanned(std::basic_string<char>(name_data, name_size), (uuid_hasValue ? std::optional<endstone::UUID>{*static_cast<const endstone::UUID*>(uuid)} : std::nullopt), (xuid_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(xuid_data, xuid_size)} : std::nullopt)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return false;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return false;
+}
+
 static void hs_method_97810986(void* hs_self, const char* name_data, std::size_t name_size) try
 {
     static_cast<endstone::PlayerBanList*>(hs_self)->removeBan(std::basic_string<char>(name_data, name_size));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_1cd88237(void* hs_self, const char* name_data, std::size_t name_size, void* uuid, const char* xuid_data, std::size_t xuid_size, bool uuid_hasValue, bool xuid_hasValue) try
+{
+    static_cast<endstone::PlayerBanList*>(hs_self)->removeBan(std::basic_string<char>(name_data, name_size), (uuid_hasValue ? std::optional<endstone::UUID>{*static_cast<const endstone::UUID*>(uuid)} : std::nullopt), (xuid_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(xuid_data, xuid_size)} : std::nullopt));
 }
 catch (std::exception const& hs_error)
 {
@@ -19903,6 +20057,38 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_8bbf29af(void* hs_self, const char* name_data, std::size_t name_size, std::int32_t criteria, const char* display_name_data, std::size_t display_name_size) try
+{
+    auto hs_result = static_cast<endstone::Scoreboard*>(hs_self)->addObjective(std::basic_string<char>(name_data, name_size), static_cast<endstone::Criteria::Type>(criteria), std::basic_string<char>(display_name_data, display_name_size));
+    return static_cast<void*>(hs_result.release());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_52814e73(void* hs_self, const char* name_data, std::size_t name_size, std::int32_t criteria, const char* display_name_data, std::size_t display_name_size, std::uint8_t render_type) try
+{
+    auto hs_result = static_cast<endstone::Scoreboard*>(hs_self)->addObjective(std::basic_string<char>(name_data, name_size), static_cast<endstone::Criteria::Type>(criteria), std::basic_string<char>(display_name_data, display_name_size), static_cast<endstone::RenderType>(render_type));
+    return static_cast<void*>(hs_result.release());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void hs_method_ded41b17(void* hs_self, std::int32_t slot) try
 {
     static_cast<endstone::Scoreboard*>(hs_self)->clearSlot(static_cast<endstone::DisplaySlot>(slot));
@@ -19983,6 +20169,21 @@ catch (...)
 static void* hs_get_02d83831() try
 {
     return const_cast<void*>(static_cast<void const*>(&endstone::ScriptMessageEvent::NAME));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_e7aac8a5(const char* message_id_data, std::size_t message_id_size, const char* message_data, std::size_t message_size, void* sender) try
+{
+    return new endstone::ScriptMessageEvent(std::basic_string<char>(message_id_data, message_id_size), std::basic_string<char>(message_data, message_size), *static_cast<const endstone::CommandSender*>(sender));
 }
 catch (std::exception const& hs_error)
 {
@@ -20891,6 +21092,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_8a74906d(void* address, const char* motd_data, std::size_t motd_size, std::int32_t network_protocol_version, const char* minecraft_version_network_data, std::size_t minecraft_version_network_size, std::int32_t num_players, std::int32_t max_players, const char* server_guid_data, std::size_t server_guid_size, const char* level_name_data, std::size_t level_name_size, std::int32_t game_mode, std::int32_t local_port, std::int32_t local_port_v6) try
+{
+    return new endstone::ServerListPingEvent(*static_cast<const endstone::SocketAddress*>(address), std::basic_string<char>(motd_data, motd_size), static_cast<int>(network_protocol_version), std::basic_string<char>(minecraft_version_network_data, minecraft_version_network_size), static_cast<int>(num_players), static_cast<int>(max_players), std::basic_string<char>(server_guid_data, server_guid_size), std::basic_string<char>(level_name_data, level_name_size), static_cast<endstone::GameMode>(game_mode), static_cast<int>(local_port), static_cast<int>(local_port_v6));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_fff45c6f(void* hs_self) try
 {
     return static_cast<void*>(new endstone::SocketAddress(static_cast<endstone::ServerListPingEvent*>(hs_self)->getAddress()));
@@ -21381,6 +21597,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_f80c3f5d(const char* id_data, std::size_t id_size, void* image, const char* cape_id_data, std::size_t cape_id_size, void* cape_image, bool cape_id_hasValue, bool cape_image_hasValue) try
+{
+    return new endstone::Skin(std::basic_string<char>(id_data, id_size), *static_cast<const endstone::Image*>(image), (cape_id_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(cape_id_data, cape_id_size)} : std::nullopt), (cape_image_hasValue ? std::optional<endstone::Image>{*static_cast<const endstone::Image*>(cape_image)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void* hs_method_b76a1d2a(void* hs_self) try
@@ -23597,6 +23828,21 @@ catch (...)
 static void* hs_get_e9584b36(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::detail::PluginDescriptionBuilder*>(hs_self)->authors));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_8e229283(void* hs_self, const char* name_data, std::size_t name_size, const char* version_data, std::size_t version_size) try
+{
+    return static_cast<void*>(new endstone::PluginDescription(static_cast<endstone::detail::PluginDescriptionBuilder*>(hs_self)->build(std::basic_string<char>(name_data, name_size), std::basic_string<char>(version_data, version_size))));
 }
 catch (std::exception const& hs_error)
 {
@@ -26199,7 +26445,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ac56f932,
     &hs_method_0b444435,
     &hs_method_52cb81ab,
+    &hs_method_99591aec,
     &hs_method_6b6b40f7,
+    &hs_method_e22d8019,
     &hs_destroy_bbe78c01,
     &hs_get_5da12fe5,
     &hs_method_c129abd1,
@@ -26433,6 +26681,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_16e86b9c,
     &hs_method_388cfcc3,
     &hs_method_c548d776,
+    &hs_method_19a2aa94,
+    &hs_method_efeec355,
+    &hs_method_140230a4,
     &hs_method_58033f21,
     &hs_method_705e6066,
     &hs_method_8e94d8bb,
@@ -26445,17 +26696,22 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_3e5a7dde,
     &hs_method_64633831,
     &hs_method_4561ad82,
+    &hs_method_49c2d51a,
     &hs_method_e52f1365,
+    &hs_method_93eb6528,
     &hs_method_e4aeae2a,
     &hs_method_d8ac09f3,
     &hs_method_642d5f09,
     &hs_method_2bac054c,
     &hs_destroy_426dca3f,
+    &hs_create_346d6121,
     &hs_method_6e16ee39,
     &hs_method_80abbf8c,
     &hs_method_8099d776,
     &hs_method_d5b50c77,
+    &hs_method_b5bff8d5,
     &hs_method_97810986,
+    &hs_method_1cd88237,
     &hs_destroy_7b8e6eea,
     &hs_get_d7045c4e,
     &hs_method_b59d9235,
@@ -26771,12 +27027,15 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_5e82457b,
     &hs_method_da40729f,
     &hs_method_81207156,
+    &hs_method_8bbf29af,
+    &hs_method_52814e73,
     &hs_method_ded41b17,
     &hs_method_4fb62c4b,
     &hs_method_4f807a3e,
     &hs_method_11736ed0,
     &hs_destroy_696fcc7e,
     &hs_get_02d83831,
+    &hs_create_e7aac8a5,
     &hs_method_f0cee3f8,
     &hs_method_842a4797,
     &hs_method_8d42d6fd,
@@ -26835,6 +27094,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_b06dcb20,
     &hs_destroy_14497b9a,
     &hs_get_68525df2,
+    &hs_create_8a74906d,
     &hs_method_fff45c6f,
     &hs_method_63935e73,
     &hs_method_64a34151,
@@ -26867,6 +27127,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d8e7f62a,
     &hs_method_700a22f6,
     &hs_destroy_477bc033,
+    &hs_create_f80c3f5d,
     &hs_method_b76a1d2a,
     &hs_method_e317c5af,
     &hs_method_268c7ed5,
@@ -27013,6 +27274,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f5492b69,
     &hs_destroy_cd88f598,
     &hs_get_e9584b36,
+    &hs_method_8e229283,
     &hs_method_d253f495,
     &hs_get_9c5b9ebe,
     &hs_get_b05d1a1e,

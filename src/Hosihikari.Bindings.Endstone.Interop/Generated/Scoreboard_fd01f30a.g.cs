@@ -13,23 +13,45 @@ public sealed unsafe partial class Scoreboard
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? addObjective(string name, int criteria)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1253((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
+            var __hs_handle = NativeMethods.TablePtr->f1263((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
 
-    public nint addObjective(nint name, nint criteria, nint display_name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods accept at most one string parameter.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? addObjective(string name, int criteria, string display_name)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(display_name);
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                var __hs_handle = NativeMethods.TablePtr->f1264((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria, __hs_stringData2, (nuint)__hs_stringBytes2.Length);
+                return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
+            }
+        }
+    }
 
-    public nint addObjective(nint name, nint criteria, nint display_name, nint render_type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods accept at most one string parameter.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? addObjective(string name, int criteria, string display_name, byte render_type)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(display_name);
+            fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+            {
+                var __hs_handle = NativeMethods.TablePtr->f1265((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria, __hs_stringData2, (nuint)__hs_stringBytes2.Length, render_type);
+                return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
+            }
+        }
+    }
 
     public void clearSlot(int slot)
     {
-        NativeMethods.TablePtr->f1254((void*)_handle, slot);
+        NativeMethods.TablePtr->f1266((void*)_handle, slot);
     }
 
     public nint getEntries() =>
@@ -37,16 +59,16 @@ public sealed unsafe partial class Scoreboard
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(int slot)
     {
-        var __hs_handle = NativeMethods.TablePtr->f1255((void*)_handle, slot);
+        var __hs_handle = NativeMethods.TablePtr->f1267((void*)_handle, slot);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(string name)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1256((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_handle = NativeMethods.TablePtr->f1268((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
@@ -62,7 +84,7 @@ public sealed unsafe partial class Scoreboard
 
     public void resetScores(global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b entry)
     {
-        NativeMethods.TablePtr->f1257((void*)_handle, (void*)entry.Handle);
+        NativeMethods.TablePtr->f1269((void*)_handle, (void*)entry.Handle);
     }
 
     public void Destroy() =>

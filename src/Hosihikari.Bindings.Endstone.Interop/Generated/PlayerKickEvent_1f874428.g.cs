@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerKickEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1034();
+        get => (nint)NativeMethods.TablePtr->f1044();
     }
 
     public static PlayerKickEvent Create(nint player, nint reason) =>
@@ -21,22 +21,22 @@ public sealed unsafe partial class PlayerKickEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1035((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1045((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getReason()
     {
-        var __hs_view = NativeMethods.TablePtr->f1036((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1046((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void setReason(string reason)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(reason);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(reason);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1037((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f1047((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -44,7 +44,7 @@ public sealed unsafe partial class PlayerKickEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1033((void*)_handle);
+            NativeMethods.TablePtr->f1043((void*)_handle);
             _handle = 0;
         }
     }

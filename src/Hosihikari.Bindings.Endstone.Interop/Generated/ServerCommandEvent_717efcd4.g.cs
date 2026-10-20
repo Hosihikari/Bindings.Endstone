@@ -13,7 +13,7 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1311();
+        get => (nint)NativeMethods.TablePtr->f1324();
     }
 
     public static ServerCommandEvent Create(nint sender, nint command) =>
@@ -21,27 +21,27 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
 
     public string getCommand()
     {
-        var __hs_view = NativeMethods.TablePtr->f1312((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1325((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1313((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1326((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getSender()
     {
-        return (nint)NativeMethods.TablePtr->f1314((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1327((void*)_handle);
     }
 
     public void setCommand(string message)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1315((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f1328((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -49,7 +49,7 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1310((void*)_handle);
+            NativeMethods.TablePtr->f1323((void*)_handle);
             _handle = 0;
         }
     }

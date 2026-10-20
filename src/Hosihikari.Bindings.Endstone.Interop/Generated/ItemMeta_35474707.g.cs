@@ -130,10 +130,10 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
 
     public void setDisplayName(string? name)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name ?? string.Empty);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name ?? string.Empty);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f643((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, name is not null);
+            NativeMethods.TablePtr->f643((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, name is not null);
         }
     }
 

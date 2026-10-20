@@ -52,10 +52,10 @@ public sealed unsafe partial class BookMeta
 
     public void setAuthor(string? author)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(author ?? string.Empty);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(author ?? string.Empty);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f199((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, author is not null);
+            NativeMethods.TablePtr->f199((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, author is not null);
         }
     }
 
@@ -66,10 +66,10 @@ public sealed unsafe partial class BookMeta
 
     public void setTitle(string? title)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(title ?? string.Empty);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title ?? string.Empty);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f201((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, title is not null);
+            NativeMethods.TablePtr->f201((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, title is not null);
         }
     }
 }

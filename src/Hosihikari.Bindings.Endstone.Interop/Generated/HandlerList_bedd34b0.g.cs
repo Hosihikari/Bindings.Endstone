@@ -13,10 +13,10 @@ public sealed unsafe partial class HandlerList : global::System.IDisposable
 
     public static HandlerList Create(string @event)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(@event);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(@event);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->f516(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f516(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

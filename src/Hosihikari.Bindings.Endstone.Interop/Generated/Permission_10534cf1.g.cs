@@ -13,45 +13,45 @@ public sealed unsafe partial class Permission : global::System.IDisposable
 
     public static int DefaultPermission
     {
-        get => NativeMethods.TablePtr->f857();
+        get => NativeMethods.TablePtr->f859();
     }
 
     public static Permission Create(nint name, nint description, nint default_value, nint children) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one string parameter.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<std::basic_string<char>, bool>' is not a known bindable declaration.");
 
     public nint addParent(string name, bool value)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f858((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, value);
+            return (nint)NativeMethods.TablePtr->f860((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, value);
         }
     }
 
     public void addParent(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm, bool value)
     {
-        NativeMethods.TablePtr->f859((void*)_handle, (void*)perm.Handle, value);
+        NativeMethods.TablePtr->f861((void*)_handle, (void*)perm.Handle, value);
     }
 
     public nint getChildren()
     {
-        return (nint)NativeMethods.TablePtr->f860((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f862((void*)_handle);
     }
 
     public int getDefault()
     {
-        return NativeMethods.TablePtr->f861((void*)_handle);
+        return NativeMethods.TablePtr->f863((void*)_handle);
     }
 
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f862((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f864((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f863((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f865((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -60,25 +60,25 @@ public sealed unsafe partial class Permission : global::System.IDisposable
 
     public void init(global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginManager plugin_manager)
     {
-        NativeMethods.TablePtr->f864((void*)_handle, (void*)plugin_manager.Handle);
+        NativeMethods.TablePtr->f866((void*)_handle, (void*)plugin_manager.Handle);
     }
 
     public void recalculatePermissibles()
     {
-        NativeMethods.TablePtr->f865((void*)_handle);
+        NativeMethods.TablePtr->f867((void*)_handle);
     }
 
     public void setDefault(int value)
     {
-        NativeMethods.TablePtr->f866((void*)_handle, value);
+        NativeMethods.TablePtr->f868((void*)_handle, value);
     }
 
     public void setDescription(string value)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(value);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(value);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f867((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f869((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -86,7 +86,7 @@ public sealed unsafe partial class Permission : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f856((void*)_handle);
+            NativeMethods.TablePtr->f858((void*)_handle);
             _handle = 0;
         }
     }

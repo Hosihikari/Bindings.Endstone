@@ -13,7 +13,7 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
 
     public static Toggle Create()
     {
-        var handle = NativeMethods.TablePtr->f1392();
+        var handle = NativeMethods.TablePtr->f1407();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -24,7 +24,7 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
 
     public static Toggle Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label, bool default_value)
     {
-        var handle = NativeMethods.TablePtr->f1393((void*)label.Handle, default_value);
+        var handle = NativeMethods.TablePtr->f1408((void*)label.Handle, default_value);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -35,29 +35,29 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
 
     public bool getDefaultValue()
     {
-        return NativeMethods.TablePtr->f1394((void*)_handle);
+        return NativeMethods.TablePtr->f1409((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1395((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1410((void*)_handle));
     }
 
     public nint setDefaultValue(bool value)
     {
-        return (nint)NativeMethods.TablePtr->f1396((void*)_handle, value);
+        return (nint)NativeMethods.TablePtr->f1411((void*)_handle, value);
     }
 
     public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return (nint)NativeMethods.TablePtr->f1397((void*)_handle, (void*)label.Handle);
+        return (nint)NativeMethods.TablePtr->f1412((void*)_handle, (void*)label.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1391((void*)_handle);
+            NativeMethods.TablePtr->f1406((void*)_handle);
             _handle = 0;
         }
     }

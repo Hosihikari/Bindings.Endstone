@@ -21,10 +21,10 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
 
     public nint addAttachment(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, string name, bool value)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->f356((void*)_handle, (void*)plugin.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length, value);
+            return (nint)NativeMethods.TablePtr->f356((void*)_handle, (void*)plugin.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, value);
         }
     }
 
@@ -74,10 +74,10 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
 
     public bool hasPermission(string name)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f365((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f365((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -88,10 +88,10 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
 
     public bool isPermissionSet(string name)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f367((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f367((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 

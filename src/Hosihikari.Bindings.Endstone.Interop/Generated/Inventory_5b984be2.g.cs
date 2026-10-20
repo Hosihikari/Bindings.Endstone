@@ -42,10 +42,10 @@ public sealed unsafe partial class Inventory
 
     public bool contains(string type)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f591((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f591((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -56,10 +56,10 @@ public sealed unsafe partial class Inventory
 
     public bool containsAtLeast(string type, int amount)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f593((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, amount);
+            return NativeMethods.TablePtr->f593((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, amount);
         }
     }
 
@@ -70,10 +70,10 @@ public sealed unsafe partial class Inventory
 
     public int first(string type)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f595((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f595((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -114,10 +114,10 @@ public sealed unsafe partial class Inventory
 
     public void remove(string type)
     {
-        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
-        fixed (byte* __hs_stringData = __hs_stringBytes)
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f602((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f602((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
