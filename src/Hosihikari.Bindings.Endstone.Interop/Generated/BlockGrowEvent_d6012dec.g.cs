@@ -16,17 +16,17 @@ public sealed unsafe partial class BlockGrowEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f156();
+        get => (nint)NativeMethods.TablePtr->f155();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f157((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f156((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getNewState()
     {
-        return (nint)NativeMethods.TablePtr->f158((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f157((void*)_handle);
     }
 }

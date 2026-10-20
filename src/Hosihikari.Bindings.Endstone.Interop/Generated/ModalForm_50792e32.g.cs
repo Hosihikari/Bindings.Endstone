@@ -33,7 +33,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
     public nint setControls(nint controls) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::vector<std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>' is not supported.");
 
     public nint setIcon(string? icon)
     {

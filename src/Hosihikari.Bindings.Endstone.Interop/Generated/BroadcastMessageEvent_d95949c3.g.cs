@@ -16,23 +16,23 @@ public sealed unsafe partial class BroadcastMessageEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f219();
+        get => (nint)NativeMethods.TablePtr->f218();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f220((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f219((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getMessage()
     {
-        return (nint)NativeMethods.TablePtr->f221((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f220((void*)_handle);
     }
 
     public nint getRecipients()
     {
-        return (nint)NativeMethods.TablePtr->f222((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f221((void*)_handle);
     }
 
     public void setMessage(nint message) =>
@@ -42,7 +42,7 @@ public sealed unsafe partial class BroadcastMessageEvent : global::System.IDispo
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f218((void*)_handle);
+            NativeMethods.TablePtr->f217((void*)_handle);
             _handle = 0;
         }
     }

@@ -13,17 +13,17 @@ public sealed unsafe partial class MapCanvas
 
     public void drawImage(int x, int y, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image image)
     {
-        NativeMethods.TablePtr->f707((void*)_handle, x, y, (void*)image.Handle);
+        NativeMethods.TablePtr->f708((void*)_handle, x, y, (void*)image.Handle);
     }
 
     public uint getBasePixel(int x, int y)
     {
-        return NativeMethods.TablePtr->f708((void*)_handle, x, y);
+        return NativeMethods.TablePtr->f709((void*)_handle, x, y);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color getBasePixelColor(int x, int y)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->f709((void*)_handle, x, y));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->f710((void*)_handle, x, y));
     }
 
     public nint getCursors() =>
@@ -31,23 +31,21 @@ public sealed unsafe partial class MapCanvas
 
     public nint getMapView()
     {
-        return (nint)NativeMethods.TablePtr->f710((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f711((void*)_handle);
     }
 
     public uint getPixel(int x, int y)
     {
-        return NativeMethods.TablePtr->f711((void*)_handle, x, y);
+        return NativeMethods.TablePtr->f712((void*)_handle, x, y);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color getPixelColor(int x, int y)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->f712((void*)_handle, x, y));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->f713((void*)_handle, x, y));
     }
 
-    public void setCursors(nint cursors)
-    {
-        NativeMethods.TablePtr->f713((void*)_handle, (void*)cursors);
-    }
+    public void setCursors(nint cursors) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'endstone::MapCursor' is not supported.");
 
     public void setPixel(int x, int y, uint color)
     {

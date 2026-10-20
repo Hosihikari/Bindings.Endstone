@@ -55,6 +55,25 @@ if (-not $NameMatch.Success -or -not $VersionMatch.Success) {
     throw "Could not find Server::getName/getVersion table indices."
 }
 
+function Get-TableIndex {
+    param([string]$Path, [string]$Pattern, [string]$Description)
+    $File = Get-ChildItem (Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated") -Filter $Path |
+        Select-Object -First 1
+    if (-not $File) { throw "Generated interop for $Description was not found." }
+    $Text = Get-Content $File.FullName -Raw
+    $Match = [regex]::Match($Text, $Pattern)
+    if (-not $Match.Success) { throw "Could not find the $Description table index." }
+    return $Match.Groups[1].Value
+}
+
+$TranslatableCreate = Get-TableIndex "Translatable_*.g.cs" 'Create\(string text, string\[\] @params\)[\s\S]*?TablePtr->f(\d+)' "Translatable::Create"
+$TranslatableEmpty = Get-TableIndex "Translatable_*.g.cs" 'empty\(\)[\s\S]*?TablePtr->f(\d+)' "Translatable::empty"
+$TranslatableText = Get-TableIndex "Translatable_*.g.cs" 'getText\(\)[\s\S]*?TablePtr->f(\d+)' "Translatable::getText"
+$TranslatableDestroy = Get-TableIndex "Translatable_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "Translatable::Dispose"
+$ArrayTagCreate = Get-TableIndex "ArrayTag_int__*.g.cs" 'Create\(int\[\] v\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::Create"
+$ArrayTagSize = Get-TableIndex "ArrayTag_int__*.g.cs" 'size\(\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::size"
+$ArrayTagDestroy = Get-TableIndex "ArrayTag_int__*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::Dispose"
+
 $Args = @(
     "/std:c++20",
     "/EHsc",
@@ -68,6 +87,13 @@ $Args = @(
     "/I", $GeneratedRoot,
     "/DHS_NAME_INDEX=$($NameMatch.Groups[1].Value)",
     "/DHS_VERSION_INDEX=$($VersionMatch.Groups[1].Value)",
+    "/DHS_TRANSLATABLE_CREATE_INDEX=$TranslatableCreate",
+    "/DHS_TRANSLATABLE_EMPTY_INDEX=$TranslatableEmpty",
+    "/DHS_TRANSLATABLE_TEXT_INDEX=$TranslatableText",
+    "/DHS_TRANSLATABLE_DESTROY_INDEX=$TranslatableDestroy",
+    "/DHS_ARRAYTAG_INT_CREATE_INDEX=$ArrayTagCreate",
+    "/DHS_ARRAYTAG_INT_SIZE_INDEX=$ArrayTagSize",
+    "/DHS_ARRAYTAG_INT_DESTROY_INDEX=$ArrayTagDestroy",
     "/I", (Split-Path (Split-Path $Expected.FullName -Parent) -Parent),
     "/I", (Split-Path (Split-Path $Nlohmann.FullName -Parent) -Parent),
     "/imsvc", (Join-Path $Msvc.FullName "include"),

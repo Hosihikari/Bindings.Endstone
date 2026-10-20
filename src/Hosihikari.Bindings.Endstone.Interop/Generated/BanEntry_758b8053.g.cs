@@ -15,7 +15,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f104();
+            var view = NativeMethods.TablePtr->f103();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -28,13 +28,13 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
 
     public string getReason()
     {
-        var __hs_view = NativeMethods.TablePtr->f105((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f104((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getSource()
     {
-        var __hs_view = NativeMethods.TablePtr->f106((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f105((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -49,7 +49,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(reason);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f107((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f106((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -58,7 +58,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(source);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f108((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f107((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -66,7 +66,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f103((void*)_handle);
+            NativeMethods.TablePtr->f102((void*)_handle);
             _handle = 0;
         }
     }

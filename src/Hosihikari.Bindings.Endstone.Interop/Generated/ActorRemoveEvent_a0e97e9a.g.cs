@@ -13,12 +13,12 @@ public sealed unsafe partial class ActorRemoveEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f61();
+        get => (nint)NativeMethods.TablePtr->f60();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f62((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f61((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -26,7 +26,7 @@ public sealed unsafe partial class ActorRemoveEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f60((void*)_handle);
+            NativeMethods.TablePtr->f59((void*)_handle);
             _handle = 0;
         }
     }

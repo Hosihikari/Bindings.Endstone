@@ -7,6 +7,6 @@
     "configuration":  "win-x64-server",
     "mode":  "virtual-dispatch",
     "tableVersion":  1,
-    "functions":  1517,
-    "coverageManifestSha256":  "sha256:9f799a5c12deb94ee681bca659da34314c4cef91ace046b1b8a31faca61b5b35"
+    "functions":  1523,
+    "coverageManifestSha256":  "sha256:c543e701a363d24cf8357037b3d061fb364e1b4cc2c5008ec44e2c41b0f8ddbd"
 }

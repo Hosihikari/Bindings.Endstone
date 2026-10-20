@@ -1,3 +1,4 @@
+#include <cstring>
 #include <fstream>
 #include <string>
 
@@ -11,6 +12,27 @@
 #endif
 #ifndef HS_VERSION_INDEX
 #error "HS_VERSION_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_TRANSLATABLE_CREATE_INDEX
+#error "HS_TRANSLATABLE_CREATE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_TRANSLATABLE_EMPTY_INDEX
+#error "HS_TRANSLATABLE_EMPTY_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_TRANSLATABLE_TEXT_INDEX
+#error "HS_TRANSLATABLE_TEXT_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_TRANSLATABLE_DESTROY_INDEX
+#error "HS_TRANSLATABLE_DESTROY_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ARRAYTAG_INT_CREATE_INDEX
+#error "HS_ARRAYTAG_INT_CREATE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ARRAYTAG_INT_SIZE_INDEX
+#error "HS_ARRAYTAG_INT_SIZE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ARRAYTAG_INT_DESTROY_INDEX
+#error "HS_ARRAYTAG_INT_DESTROY_INDEX must be defined by build.ps1"
 #endif
 
 namespace {
@@ -100,8 +122,53 @@ public:
             out << "expected_version=" << server.getVersion() << "\n";
             out << "name=" << actualName << "\n";
             out << "version=" << actualVersion << "\n";
+            bool vectorsOk = true;
+
+            using CreateTranslatableFn = void *(*)(const char *, std::size_t, const HosihikariStringView *, std::size_t);
+            using CreateArrayTagFn = void *(*)(const int *, std::size_t);
+            using BoolMethodFn = bool (*)(void *);
+            using TextMethodFn = HosihikariStringView (*)(void *);
+            using SizeMethodFn = std::size_t (*)(void *);
+            using DestroyFn = void (*)(void *);
+
+            const char *paramText[] = {"alpha", "", "gamma"};
+            HosihikariStringView paramViews[3]{};
+            for (std::size_t index = 0; index < 3; ++index) {
+                paramViews[index] = {paramText[index], std::strlen(paramText[index])};
+            }
+
+            auto translatable = reinterpret_cast<CreateTranslatableFn>(slots[HS_TRANSLATABLE_CREATE_INDEX])(
+                "vector", 6, paramViews, 3);
+            if (translatable) {
+                const auto isEmpty = reinterpret_cast<BoolMethodFn>(slots[HS_TRANSLATABLE_EMPTY_INDEX])(translatable);
+                const auto textView = reinterpret_cast<TextMethodFn>(slots[HS_TRANSLATABLE_TEXT_INDEX])(translatable);
+                const bool ok = !isEmpty && std::string(textView.data, textView.size) == "vector";
+                out << "translatable.string_vector=" << (ok ? "ok" : "FAIL") << "\n";
+                vectorsOk = vectorsOk && ok;
+                reinterpret_cast<DestroyFn>(slots[HS_TRANSLATABLE_DESTROY_INDEX])(translatable);
+            }
+            else {
+                out << "translatable.string_vector=failed\n";
+                vectorsOk = false;
+            }
+
+            const int values[] = {4, 5, 6};
+            auto arrayTag = reinterpret_cast<CreateArrayTagFn>(slots[HS_ARRAYTAG_INT_CREATE_INDEX])(values, 3);
+            if (arrayTag) {
+                const bool ok = reinterpret_cast<SizeMethodFn>(slots[HS_ARRAYTAG_INT_SIZE_INDEX])(arrayTag) == 3;
+                out << "arraytag.int_vector=" << (ok ? "ok" : "FAIL") << "\n";
+                vectorsOk = vectorsOk && ok;
+                reinterpret_cast<DestroyFn>(slots[HS_ARRAYTAG_INT_DESTROY_INDEX])(arrayTag);
+            }
+            else {
+                out << "arraytag.int_vector=failed\n";
+                vectorsOk = false;
+            }
+
             out << "result="
-                << (actualName == server.getName() && actualVersion == server.getVersion() ? "OK" : "FAIL")
+                << (actualName == server.getName() && actualVersion == server.getVersion() && vectorsOk
+                        ? "OK"
+                        : "FAIL")
                 << "\n";
 
             FreeLibrary(shim);

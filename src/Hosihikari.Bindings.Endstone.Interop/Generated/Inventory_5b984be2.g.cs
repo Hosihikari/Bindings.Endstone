@@ -125,7 +125,7 @@ public sealed unsafe partial class Inventory
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_map<int, endstone::ItemStack>' is not a known bindable declaration.");
 
     public void setContents(nint items) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::vector<std::optional<endstone::ItemStack>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::optional<endstone::ItemStack>' is not supported.");
 
     public void setItem(int index, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? item)
     {

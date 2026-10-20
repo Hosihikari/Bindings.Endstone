@@ -11,22 +11,57 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public static Translatable Create(nint text, nint @params) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::vector<std::basic_string<char>>' is not a known bindable declaration.");
+    public static Translatable Create(string text, string[] @params)
+    {
+        var __hs_vectorItems = @params ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
+        var __hs_vectorViews = new NativeMethods.StringView[__hs_vectorItems.Length];
+        var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        try
+        {
+            for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
+            {
+                __hs_vectorBytes[__hs_i] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems[__hs_i] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes[__hs_i];
+                var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                __hs_vectorHandles[__hs_i] = __hs_ptr;
+                __hs_vectorViews[__hs_i] = new NativeMethods.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+            }
+            fixed (NativeMethods.StringView* __hs_vectorData = __hs_vectorViews)
+            {
+                var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(text);
+                fixed (byte* __hs_stringData = __hs_stringBytes)
+                {
+                    var handle = NativeMethods.TablePtr->f1323(__hs_stringData, (nuint)__hs_stringBytes.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                    if (handle == null)
+                    {
+                        throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                    }
+
+                    return new Translatable((nint)handle);
+                }
+            }
+        }
+        finally
+        {
+            for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++) { if (__hs_vectorHandles[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles[__hs_i]); } }
+        }
+    }
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->f1322((void*)_handle);
+        return NativeMethods.TablePtr->f1324((void*)_handle);
     }
 
     public nint getParameters()
     {
-        return (nint)NativeMethods.TablePtr->f1323((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1325((void*)_handle);
     }
 
     public string getText()
     {
-        var __hs_view = NativeMethods.TablePtr->f1324((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1326((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -34,7 +69,7 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1321((void*)_handle);
+            NativeMethods.TablePtr->f1322((void*)_handle);
             _handle = 0;
         }
     }

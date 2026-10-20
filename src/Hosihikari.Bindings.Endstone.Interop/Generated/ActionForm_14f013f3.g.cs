@@ -60,14 +60,12 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
     public nint setContent(nint text) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
-    public nint setControls(nint controls)
-    {
-        return (nint)NativeMethods.TablePtr->f7((void*)_handle, (void*)controls);
-    }
+    public nint setControls(nint controls) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>' is not supported.");
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f8((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f7((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public void Dispose()

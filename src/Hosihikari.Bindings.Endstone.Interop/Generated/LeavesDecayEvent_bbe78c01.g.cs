@@ -13,12 +13,12 @@ public sealed unsafe partial class LeavesDecayEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f656();
+        get => (nint)NativeMethods.TablePtr->f657();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f657((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f658((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -26,7 +26,7 @@ public sealed unsafe partial class LeavesDecayEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f655((void*)_handle);
+            NativeMethods.TablePtr->f656((void*)_handle);
             _handle = 0;
         }
     }
