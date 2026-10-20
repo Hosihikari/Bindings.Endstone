@@ -8844,6 +8844,56 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_1db0b641(std::int32_t type, std::int32_t width, std::int32_t height, const std::uint8_t* array_data, std::size_t array_count, bool* hs_hasValue) try
+{
+    auto hs_expected = endstone::Image::fromArray(static_cast<endstone::Image::Type>(type), static_cast<const int>(width), static_cast<const int>(height), hs_make_vector<unsigned char>(array_data, array_count));
+    if (!hs_expected)
+    {
+        setLastError(hs_expected.error().c_str());
+        *hs_hasValue = false;
+        return nullptr;
+    }
+    *hs_hasValue = true;
+    return static_cast<void*>(new endstone::Image(std::move(*hs_expected)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static void* hs_method_6e846c30(std::int32_t type, std::int32_t width, std::int32_t height, const char* buffer_data, std::size_t buffer_size, bool* hs_hasValue) try
+{
+    auto hs_expected = endstone::Image::fromBuffer(static_cast<endstone::Image::Type>(type), static_cast<const int>(width), static_cast<const int>(height), std::basic_string_view<char>(buffer_data, buffer_size));
+    if (!hs_expected)
+    {
+        setLastError(hs_expected.error().c_str());
+        *hs_hasValue = false;
+        return nullptr;
+    }
+    *hs_hasValue = true;
+    return static_cast<void*>(new endstone::Image(std::move(*hs_expected)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
 static void* hs_method_88dd3b47(void* hs_self, std::int32_t x, std::int32_t y) try
 {
     return static_cast<void*>(new endstone::Color(static_cast<endstone::Image*>(hs_self)->getColor(static_cast<const int>(x), static_cast<const int>(y))));
@@ -24854,6 +24904,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_6a05846e,
     &hs_destroy_1f0388f6,
     &hs_create_21db8062,
+    &hs_method_1db0b641,
+    &hs_method_6e846c30,
     &hs_method_88dd3b47,
     &hs_method_1a3d1eec,
     &hs_method_a3155781,

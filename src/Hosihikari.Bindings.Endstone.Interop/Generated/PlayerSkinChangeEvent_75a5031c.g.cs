@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1031();
+        get => (nint)NativeMethods.TablePtr->f1033();
     }
 
     public static PlayerSkinChangeEvent Create(nint player, nint new_skin, nint message) =>
@@ -21,13 +21,13 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1032((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1034((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin getNewSkin()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f1033((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f1035((void*)_handle));
     }
 
     public nint getSkinChangeMessage() =>
@@ -40,7 +40,7 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1030((void*)_handle);
+            NativeMethods.TablePtr->f1032((void*)_handle);
             _handle = 0;
         }
     }

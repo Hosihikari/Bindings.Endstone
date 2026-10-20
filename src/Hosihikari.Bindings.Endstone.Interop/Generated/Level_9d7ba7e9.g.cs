@@ -13,7 +13,7 @@ public sealed unsafe partial class Level
 
     public nint[] getActors()
     {
-        var __hs_view = NativeMethods.TablePtr->f663((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f665((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -27,13 +27,13 @@ public sealed unsafe partial class Level
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f664((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f666((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public nint[] getDimensions()
     {
-        var __hs_view = NativeMethods.TablePtr->f665((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f667((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -44,23 +44,23 @@ public sealed unsafe partial class Level
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f666((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f668((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public long getSeed()
     {
-        return NativeMethods.TablePtr->f667((void*)_handle);
+        return NativeMethods.TablePtr->f669((void*)_handle);
     }
 
     public int getTime()
     {
-        return NativeMethods.TablePtr->f668((void*)_handle);
+        return NativeMethods.TablePtr->f670((void*)_handle);
     }
 
     public void setTime(int time)
     {
-        NativeMethods.TablePtr->f669((void*)_handle, time);
+        NativeMethods.TablePtr->f671((void*)_handle, time);
     }
 
     public void Destroy() =>

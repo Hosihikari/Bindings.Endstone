@@ -16,7 +16,7 @@ public sealed unsafe partial class ServiceManager
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_shared = NativeMethods.TablePtr->f1302((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_shared = NativeMethods.TablePtr->f1304((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
             return __hs_shared.Holder == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.SharedHandle((nint)__hs_shared.Holder, (nint)__hs_shared.Target, __hs_shared.Release);
         }
     }
@@ -26,7 +26,7 @@ public sealed unsafe partial class ServiceManager
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
     {
-        NativeMethods.TablePtr->f1303((void*)_handle, (void*)provider.Handle);
+        NativeMethods.TablePtr->f1305((void*)_handle, (void*)provider.Handle);
     }
 
     public void unregister(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
@@ -34,13 +34,13 @@ public sealed unsafe partial class ServiceManager
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f1304((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)provider.Handle);
+            NativeMethods.TablePtr->f1306((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)provider.Handle);
         }
     }
 
     public void unregisterAll(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1305((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1307((void*)_handle, (void*)plugin.Handle);
     }
 
     public void Destroy() =>

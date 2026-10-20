@@ -13,12 +13,12 @@ public sealed unsafe partial class ServerLoadEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1297();
+        get => (nint)NativeMethods.TablePtr->f1299();
     }
 
     public static ServerLoadEvent Create(int type)
     {
-        var handle = NativeMethods.TablePtr->f1298(type);
+        var handle = NativeMethods.TablePtr->f1300(type);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,20 +29,20 @@ public sealed unsafe partial class ServerLoadEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1299((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1301((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getType()
     {
-        return NativeMethods.TablePtr->f1300((void*)_handle);
+        return NativeMethods.TablePtr->f1302((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1296((void*)_handle);
+            NativeMethods.TablePtr->f1298((void*)_handle);
             _handle = 0;
         }
     }
