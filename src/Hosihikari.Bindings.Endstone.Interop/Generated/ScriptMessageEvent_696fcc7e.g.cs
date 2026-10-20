@@ -19,9 +19,9 @@ public sealed unsafe partial class ScriptMessageEvent : global::System.IDisposab
     public static ScriptMessageEvent Create(string message_id, string message, global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message_id);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(message);
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 var handle = NativeMethods.TablePtr->f1272(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)sender.Handle);

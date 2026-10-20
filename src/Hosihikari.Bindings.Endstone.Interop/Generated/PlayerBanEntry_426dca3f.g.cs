@@ -14,9 +14,9 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
     public static PlayerBanEntry Create(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? uuid, string? xuid)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(xuid ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(xuid ?? string.Empty);
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
                 var handle = NativeMethods.TablePtr->f941(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);

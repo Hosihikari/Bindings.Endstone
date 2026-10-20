@@ -217,9 +217,9 @@ public sealed unsafe partial class Player
     public void sendTitle(string title, string subtitle)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(subtitle);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(subtitle);
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 NativeMethods.TablePtr->f918((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
@@ -230,9 +230,9 @@ public sealed unsafe partial class Player
     public void sendTitle(string title, string subtitle, int fade_in, int stay, int fade_out)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(subtitle);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(subtitle);
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 NativeMethods.TablePtr->f919((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, fade_in, stay, fade_out);
@@ -243,9 +243,9 @@ public sealed unsafe partial class Player
     public void sendToast(string title, string content)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(content);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(content);
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 NativeMethods.TablePtr->f920((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
@@ -320,9 +320,9 @@ public sealed unsafe partial class Player
     public void spawnParticle(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location, string? molang_variables_json)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(molang_variables_json ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(molang_variables_json ?? string.Empty);
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
                 NativeMethods.TablePtr->f933((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)location.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, molang_variables_json is not null);
@@ -342,9 +342,9 @@ public sealed unsafe partial class Player
     public void spawnParticle(string name, float x, float y, float z, string? molang_variables_json)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringBytes4 = global::System.Text.Encoding.UTF8.GetBytes(molang_variables_json ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes4 = global::System.Text.Encoding.UTF8.GetBytes(molang_variables_json ?? string.Empty);
             fixed (byte* __hs_stringData4 = __hs_stringBytes4)
             {
                 NativeMethods.TablePtr->f935((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, x, y, z, __hs_stringData4, (nuint)__hs_stringBytes4.Length, molang_variables_json is not null);

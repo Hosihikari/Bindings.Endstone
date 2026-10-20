@@ -19,9 +19,9 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginDescription build(string name, string version)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(version);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(version);
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginDescription((nint)NativeMethods.TablePtr->f1511((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length));

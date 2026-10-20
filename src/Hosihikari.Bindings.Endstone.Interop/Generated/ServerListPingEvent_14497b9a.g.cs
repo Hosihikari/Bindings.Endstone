@@ -19,15 +19,15 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
     public static ServerListPingEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress address, string motd, int network_protocol_version, string minecraft_version_network, int num_players, int max_players, string server_guid, string level_name, int game_mode, int local_port, int local_port_v6)
     {
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(motd);
+        var __hs_stringBytes3 = global::System.Text.Encoding.UTF8.GetBytes(minecraft_version_network);
+        var __hs_stringBytes6 = global::System.Text.Encoding.UTF8.GetBytes(server_guid);
+        var __hs_stringBytes7 = global::System.Text.Encoding.UTF8.GetBytes(level_name);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var __hs_stringBytes3 = global::System.Text.Encoding.UTF8.GetBytes(minecraft_version_network);
             fixed (byte* __hs_stringData3 = __hs_stringBytes3)
             {
-                var __hs_stringBytes6 = global::System.Text.Encoding.UTF8.GetBytes(server_guid);
                 fixed (byte* __hs_stringData6 = __hs_stringBytes6)
                 {
-                    var __hs_stringBytes7 = global::System.Text.Encoding.UTF8.GetBytes(level_name);
                     fixed (byte* __hs_stringData7 = __hs_stringBytes7)
                     {
                         var handle = NativeMethods.TablePtr->f1331((void*)address.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, network_protocol_version, __hs_stringData3, (nuint)__hs_stringBytes3.Length, num_players, max_players, __hs_stringData6, (nuint)__hs_stringBytes6.Length, __hs_stringData7, (nuint)__hs_stringBytes7.Length, game_mode, local_port, local_port_v6);

@@ -46,9 +46,9 @@ public sealed unsafe partial class Language
     public string translate(string text, string locale)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(locale);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(locale);
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
                 var __hs_view = NativeMethods.TablePtr->f682((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
@@ -63,6 +63,7 @@ public sealed unsafe partial class Language
         var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
         var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
         var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text);
         try
         {
             for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
@@ -76,7 +77,6 @@ public sealed unsafe partial class Language
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text);
                 fixed (byte* __hs_stringData0 = __hs_stringBytes0)
                 {
                     var __hs_view = NativeMethods.TablePtr->f683((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
@@ -96,6 +96,8 @@ public sealed unsafe partial class Language
         var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
         var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
         var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text);
+        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(locale);
         try
         {
             for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
@@ -109,10 +111,8 @@ public sealed unsafe partial class Language
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text);
                 fixed (byte* __hs_stringData0 = __hs_stringBytes0)
                 {
-                    var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(locale);
                     fixed (byte* __hs_stringData2 = __hs_stringBytes2)
                     {
                         var __hs_view = NativeMethods.TablePtr->f684((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData2, (nuint)__hs_stringBytes2.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);

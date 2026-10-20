@@ -17,6 +17,7 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
         var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
         var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
         var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text);
         try
         {
             for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
@@ -30,7 +31,6 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text);
                 fixed (byte* __hs_stringData0 = __hs_stringBytes0)
                 {
                     var handle = NativeMethods.TablePtr->f1414(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);

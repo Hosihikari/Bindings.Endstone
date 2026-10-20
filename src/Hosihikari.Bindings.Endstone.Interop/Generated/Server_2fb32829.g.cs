@@ -80,9 +80,9 @@ public sealed unsafe partial class Server
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BossBar? createBossBar(string title, int color, int style, int[] flags)
     {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title);
         fixed (int* __hs_vectorData = flags)
         {
-            var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title);
             fixed (byte* __hs_stringData0 = __hs_stringBytes0)
             {
                 var __hs_handle = NativeMethods.TablePtr->f1284((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, color, style, __hs_vectorData, (nuint)(flags?.Length ?? 0));

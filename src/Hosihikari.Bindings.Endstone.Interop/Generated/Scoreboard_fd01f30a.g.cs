@@ -24,9 +24,9 @@ public sealed unsafe partial class Scoreboard
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? addObjective(string name, int criteria, string display_name)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(display_name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(display_name);
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
                 var __hs_handle = NativeMethods.TablePtr->f1264((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria, __hs_stringData2, (nuint)__hs_stringBytes2.Length);
@@ -38,9 +38,9 @@ public sealed unsafe partial class Scoreboard
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? addObjective(string name, int criteria, string display_name, byte render_type)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(display_name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(display_name);
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
                 var __hs_handle = NativeMethods.TablePtr->f1265((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, criteria, __hs_stringData2, (nuint)__hs_stringBytes2.Length, render_type);

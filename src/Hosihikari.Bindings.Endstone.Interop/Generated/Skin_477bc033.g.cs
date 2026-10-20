@@ -14,9 +14,9 @@ public sealed unsafe partial class Skin : global::System.IDisposable
     public static Skin Create(string id, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image image, string? cape_id, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image? cape_image)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(id);
+        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(cape_id ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(cape_id ?? string.Empty);
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
                 var handle = NativeMethods.TablePtr->f1364(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
