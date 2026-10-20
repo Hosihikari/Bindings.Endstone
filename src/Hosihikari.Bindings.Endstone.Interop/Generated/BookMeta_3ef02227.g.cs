@@ -13,41 +13,41 @@ public sealed unsafe partial class BookMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f205();
+        get => NativeMethods.TablePtr->f206();
     }
 
     public string getAuthor()
     {
-        var __hs_view = NativeMethods.TablePtr->f206((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f207((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int? getGeneration()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f207((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f208((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
     public string getTitle()
     {
-        var __hs_view = NativeMethods.TablePtr->f208((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f209((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool hasAuthor()
     {
-        return NativeMethods.TablePtr->f209((void*)_handle);
+        return NativeMethods.TablePtr->f210((void*)_handle);
     }
 
     public bool hasGeneration()
     {
-        return NativeMethods.TablePtr->f210((void*)_handle);
+        return NativeMethods.TablePtr->f211((void*)_handle);
     }
 
     public bool hasTitle()
     {
-        return NativeMethods.TablePtr->f211((void*)_handle);
+        return NativeMethods.TablePtr->f212((void*)_handle);
     }
 
     public void setAuthor(string? author)
@@ -55,13 +55,13 @@ public sealed unsafe partial class BookMeta
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(author ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f212((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, author is not null);
+            NativeMethods.TablePtr->f213((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, author is not null);
         }
     }
 
     public void setGeneration(int? generation)
     {
-        NativeMethods.TablePtr->f213((void*)_handle, generation ?? default(int), generation.HasValue);
+        NativeMethods.TablePtr->f214((void*)_handle, generation ?? default(int), generation.HasValue);
     }
 
     public void setTitle(string? title)
@@ -69,7 +69,7 @@ public sealed unsafe partial class BookMeta
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f214((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, title is not null);
+            NativeMethods.TablePtr->f215((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, title is not null);
         }
     }
 }

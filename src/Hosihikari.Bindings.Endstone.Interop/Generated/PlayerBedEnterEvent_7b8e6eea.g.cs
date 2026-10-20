@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerBedEnterEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f984();
+        get => (nint)NativeMethods.TablePtr->f988();
     }
 
     public static PlayerBedEnterEvent Create(nint player, nint bed) =>
@@ -21,12 +21,12 @@ public sealed unsafe partial class PlayerBedEnterEvent : global::System.IDisposa
 
     public nint getBed()
     {
-        return (nint)NativeMethods.TablePtr->f985((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f989((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f986((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f990((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -34,7 +34,7 @@ public sealed unsafe partial class PlayerBedEnterEvent : global::System.IDisposa
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f983((void*)_handle);
+            NativeMethods.TablePtr->f987((void*)_handle);
             _handle = 0;
         }
     }

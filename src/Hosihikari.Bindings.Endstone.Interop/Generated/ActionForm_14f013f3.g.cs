@@ -64,12 +64,24 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->f8((void*)_handle, (void*)text.Handle);
     }
 
-    public nint setControls(nint controls) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>' is not supported.");
+    public nint setControls(global::Hosihikari.Bindings.Endstone.Interop.Variant_5bd3e0f1[] controls)
+    {
+        var __hs_vectorItems = controls;
+        var __hs_vectorHandles = new nint[__hs_vectorItems?.Length ?? 0];
+        for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++)
+        {
+            __hs_vectorHandles[__hs_i] = __hs_vectorItems![__hs_i]?.Handle ?? 0;
+        }
+        fixed (nint* __hs_vectorHandleData = __hs_vectorHandles)
+        {
+            var __hs_vectorData = (void**)__hs_vectorHandleData;
+            return (nint)NativeMethods.TablePtr->f9((void*)_handle, __hs_vectorData, (nuint)(controls?.Length ?? 0));
+        }
+    }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f9((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f10((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public void Dispose()

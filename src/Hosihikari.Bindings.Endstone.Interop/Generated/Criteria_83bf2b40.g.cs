@@ -13,18 +13,18 @@ public sealed unsafe partial class Criteria
 
     public byte getDefaultRenderType()
     {
-        return NativeMethods.TablePtr->f388((void*)_handle);
+        return NativeMethods.TablePtr->f389((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f389((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f390((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isReadOnly()
     {
-        return NativeMethods.TablePtr->f390((void*)_handle);
+        return NativeMethods.TablePtr->f391((void*)_handle);
     }
 
     public void Destroy() =>

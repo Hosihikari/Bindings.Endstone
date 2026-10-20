@@ -55,6 +55,31 @@ HosihikariSharedHandle hs_make_shared_handle(std::shared_ptr<T> value)
     return HosihikariSharedHandle{holder, const_cast<void*>(static_cast<void const*>(holder->value.get())), &hs_release_shared_holder<T>};
 }
 
+template <class T>
+std::vector<T> hs_make_record_vector(void const* const* data, std::size_t count)
+{
+    std::vector<T> result;
+    result.reserve(count);
+    for (std::size_t i = 0; i < count; ++i) { result.push_back(*static_cast<T const*>(data[i])); }
+    return result;
+}
+template <class T>
+std::vector<std::optional<T>> hs_make_optional_record_vector(void const* const* data, std::size_t count)
+{
+    std::vector<std::optional<T>> result;
+    result.reserve(count);
+    for (std::size_t i = 0; i < count; ++i) { result.push_back(data[i] ? std::optional<T>(*static_cast<T const*>(data[i])) : std::nullopt); }
+    return result;
+}
+template <class V>
+std::vector<V> hs_make_variant_vector(void const* const* data, std::size_t count)
+{
+    std::vector<V> result;
+    result.reserve(count);
+    for (std::size_t i = 0; i < count; ++i) { result.push_back(*static_cast<V const*>(data[i])); }
+    return result;
+}
+
 inline std::vector<std::basic_string_view<char>> hs_make_string_view_vector(HosihikariStringView const* data, std::size_t count)
 {
     std::vector<std::basic_string_view<char>> result;
@@ -206,6 +231,21 @@ catch (...)
 static void* hs_method_3f77668b(void* hs_self, void* text) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ActionForm*>(hs_self)->setContent(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_0cf944fa(void* hs_self, const void** controls_data, std::size_t controls_count) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ActionForm*>(hs_self)->setControls(hs_make_variant_vector<std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>>(controls_data, controls_count))));
 }
 catch (std::exception const& hs_error)
 {
@@ -6263,6 +6303,21 @@ catch (...)
     return false;
 }
 
+static void hs_method_dc173cf9(void* hs_self, const void** projectiles_data, std::size_t projectiles_count) try
+{
+    static_cast<endstone::CrossbowMeta*>(hs_self)->setChargedProjectiles(hs_make_record_vector<endstone::ItemStack>(projectiles_data, projectiles_count));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void* hs_method_545ff876(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(static_cast<endstone::DamageSource*>(hs_self)->getActor()));
@@ -9827,6 +9882,21 @@ catch (...)
     return;
 }
 
+static void hs_method_93db8198(void* hs_self, const void** items_data, std::size_t items_count) try
+{
+    static_cast<endstone::Inventory*>(hs_self)->setContents(hs_make_optional_record_vector<endstone::ItemStack>(items_data, items_count));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_44d2334c(void* hs_self, std::int32_t index, void* item, bool item_hasValue) try
 {
     static_cast<endstone::Inventory*>(hs_self)->setItem(static_cast<int>(index), (item_hasValue ? std::optional<endstone::ItemStack>{*static_cast<const endstone::ItemStack*>(item)} : std::nullopt));
@@ -12097,6 +12167,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static void hs_method_159de010(void* hs_self, const void** cursors_data, std::size_t cursors_count) try
+{
+    static_cast<endstone::MapCanvas*>(hs_self)->setCursors(hs_make_record_vector<endstone::MapCursor>(cursors_data, cursors_count));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
 }
 
 static void hs_method_8a0b9fe7(void* hs_self, std::int32_t x, std::int32_t y, std::uint32_t color) try
@@ -20784,6 +20869,26 @@ catch (...)
     return;
 }
 
+static HosihikariArrayView hs_method_5e069352(void* hs_self) try
+{
+    thread_local std::vector<void*> hs_arrayResult;
+    auto result = static_cast<endstone::Scoreboard*>(hs_self)->getEntries();
+    hs_arrayResult.clear();
+    hs_arrayResult.reserve(result.size());
+    for (auto const& item : result) { hs_arrayResult.push_back(static_cast<void*>(new std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>(item))); }
+    return HosihikariArrayView{hs_arrayResult.data(), hs_arrayResult.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
 static void* hs_method_4fb62c4b(void* hs_self, std::int32_t slot) try
 {
     auto hs_result = static_cast<endstone::Scoreboard*>(hs_self)->getObjective(static_cast<endstone::DisplaySlot>(slot));
@@ -26163,6 +26268,164 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void* hs_variant_5bd3e0f1_create_0(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>(std::in_place_index<0>, *static_cast<const endstone::Button*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_5bd3e0f1_create_1(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>(std::in_place_index<1>, *static_cast<const endstone::Divider*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_5bd3e0f1_create_2(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>(std::in_place_index<2>, *static_cast<const endstone::Header*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_5bd3e0f1_create_3(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>(std::in_place_index<3>, *static_cast<const endstone::Label*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void hs_variant_5bd3e0f1_destroy(void* hs_self) try
+{
+    delete static_cast<std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void* hs_variant_5bd3e0f1_get_0(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>*>(hs_self);
+    if (hs_value.index() != 0) { return nullptr; }
+    return static_cast<void*>(new endstone::Button(std::get<0>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_5bd3e0f1_get_1(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>*>(hs_self);
+    if (hs_value.index() != 1) { return nullptr; }
+    return static_cast<void*>(new endstone::Divider(std::get<1>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_5bd3e0f1_get_2(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>*>(hs_self);
+    if (hs_value.index() != 2) { return nullptr; }
+    return static_cast<void*>(new endstone::Header(std::get<2>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_5bd3e0f1_get_3(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>*>(hs_self);
+    if (hs_value.index() != 3) { return nullptr; }
+    return static_cast<void*>(new endstone::Label(std::get<3>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static std::int32_t hs_variant_5bd3e0f1_index(void* hs_self) try
+{
+    return static_cast<std::int32_t>(static_cast<const std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>*>(hs_self)->index());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return 0;
+}
+
 static void* hs_variant_e1e3d57e_create_0(void* value) try
 {
     return static_cast<void*>(new std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>(std::in_place_index<0>, *static_cast<const endstone::MessageForm*>(value)));
@@ -26527,6 +26790,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_9d857e16,
     &hs_method_d5090347,
     &hs_method_3f77668b,
+    &hs_method_0cf944fa,
     &hs_method_7a063590,
     &hs_method_96acbd59,
     &hs_method_47bed08e,
@@ -26913,6 +27177,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_6b7cb64c,
     &hs_method_1b51daa8,
     &hs_method_abce5a3b,
+    &hs_method_dc173cf9,
     &hs_method_545ff876,
     &hs_method_b1c82064,
     &hs_method_f28cf75b,
@@ -27139,6 +27404,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_54f1a207,
     &hs_method_2317bda0,
     &hs_method_80807888,
+    &hs_method_93db8198,
     &hs_method_44d2334c,
     &hs_destroy_a7df4d30,
     &hs_create_0c659ed5,
@@ -27286,6 +27552,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_e50e956b,
     &hs_method_dc4744ef,
     &hs_method_1b0673af,
+    &hs_method_159de010,
     &hs_method_8a0b9fe7,
     &hs_method_1e99091f,
     &hs_destroy_e9827695,
@@ -27824,6 +28091,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_8bbf29af,
     &hs_method_52814e73,
     &hs_method_ded41b17,
+    &hs_method_5e069352,
     &hs_method_4fb62c4b,
     &hs_method_4f807a3e,
     &hs_method_afd39739,
@@ -28176,6 +28444,16 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_bc424f4f,
     &hs_destroy_6d952785,
     &hs_get_ffe00fef,
+    &hs_variant_5bd3e0f1_create_0,
+    &hs_variant_5bd3e0f1_create_1,
+    &hs_variant_5bd3e0f1_create_2,
+    &hs_variant_5bd3e0f1_create_3,
+    &hs_variant_5bd3e0f1_destroy,
+    &hs_variant_5bd3e0f1_get_0,
+    &hs_variant_5bd3e0f1_get_1,
+    &hs_variant_5bd3e0f1_get_2,
+    &hs_variant_5bd3e0f1_get_3,
+    &hs_variant_5bd3e0f1_index,
     &hs_variant_e1e3d57e_create_0,
     &hs_variant_e1e3d57e_create_1,
     &hs_variant_e1e3d57e_create_2,

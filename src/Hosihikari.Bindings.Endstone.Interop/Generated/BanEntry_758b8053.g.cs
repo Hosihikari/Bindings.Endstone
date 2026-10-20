@@ -15,43 +15,43 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f106();
+            var view = NativeMethods.TablePtr->f107();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
 
     public long getCreated()
     {
-        return NativeMethods.TablePtr->f107((void*)_handle);
+        return NativeMethods.TablePtr->f108((void*)_handle);
     }
 
     public long? getExpiration()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f108((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f109((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (long?)null;
     }
 
     public string getReason()
     {
-        var __hs_view = NativeMethods.TablePtr->f109((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f110((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getSource()
     {
-        var __hs_view = NativeMethods.TablePtr->f110((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f111((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void setCreated(long created)
     {
-        NativeMethods.TablePtr->f111((void*)_handle, created);
+        NativeMethods.TablePtr->f112((void*)_handle, created);
     }
 
     public void setExpiration(long? expiration)
     {
-        NativeMethods.TablePtr->f112((void*)_handle, expiration ?? default(long), expiration.HasValue);
+        NativeMethods.TablePtr->f113((void*)_handle, expiration ?? default(long), expiration.HasValue);
     }
 
     public void setReason(string reason)
@@ -59,7 +59,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(reason);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f113((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f114((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -68,7 +68,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(source);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f114((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f115((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -76,7 +76,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f105((void*)_handle);
+            NativeMethods.TablePtr->f106((void*)_handle);
             _handle = 0;
         }
     }

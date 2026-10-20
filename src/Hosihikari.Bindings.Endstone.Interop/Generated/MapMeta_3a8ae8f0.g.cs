@@ -13,36 +13,36 @@ public sealed unsafe partial class MapMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f788();
+        get => NativeMethods.TablePtr->f792();
     }
 
     public long getMapId()
     {
-        return NativeMethods.TablePtr->f789((void*)_handle);
+        return NativeMethods.TablePtr->f793((void*)_handle);
     }
 
     public nint getMapView()
     {
-        return (nint)NativeMethods.TablePtr->f790((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f794((void*)_handle);
     }
 
     public bool hasMapId()
     {
-        return NativeMethods.TablePtr->f791((void*)_handle);
+        return NativeMethods.TablePtr->f795((void*)_handle);
     }
 
     public bool hasMapView()
     {
-        return NativeMethods.TablePtr->f792((void*)_handle);
+        return NativeMethods.TablePtr->f796((void*)_handle);
     }
 
     public void setMapId(long id)
     {
-        NativeMethods.TablePtr->f793((void*)_handle, id);
+        NativeMethods.TablePtr->f797((void*)_handle, id);
     }
 
     public void setMapView(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map)
     {
-        NativeMethods.TablePtr->f794((void*)_handle, (void*)map.Handle);
+        NativeMethods.TablePtr->f798((void*)_handle, (void*)map.Handle);
     }
 }

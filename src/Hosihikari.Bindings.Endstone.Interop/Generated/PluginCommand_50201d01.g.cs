@@ -16,7 +16,7 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
 
     public nint asPluginCommand()
     {
-        return (nint)NativeMethods.TablePtr->f1134((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1138((void*)_handle);
     }
 
     public bool execute(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string[] args)
@@ -38,7 +38,7 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                return NativeMethods.TablePtr->f1135((void*)_handle, (void*)sender.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                return NativeMethods.TablePtr->f1139((void*)_handle, (void*)sender.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
             }
         }
         finally
@@ -49,12 +49,12 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
 
     public nint getExecutor()
     {
-        return (nint)NativeMethods.TablePtr->f1136((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1140((void*)_handle);
     }
 
     public nint getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->f1137((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1141((void*)_handle);
     }
 
     public void setExecutor(nint executor) =>
@@ -64,7 +64,7 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1133((void*)_handle);
+            NativeMethods.TablePtr->f1137((void*)_handle);
             _handle = 0;
         }
     }

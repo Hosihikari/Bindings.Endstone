@@ -16,12 +16,12 @@ public sealed unsafe partial class ChunkLoadEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f272();
+        get => (nint)NativeMethods.TablePtr->f273();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f273((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f274((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -30,7 +30,7 @@ public sealed unsafe partial class ChunkLoadEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f271((void*)_handle);
+            NativeMethods.TablePtr->f272((void*)_handle);
             _handle = 0;
         }
     }

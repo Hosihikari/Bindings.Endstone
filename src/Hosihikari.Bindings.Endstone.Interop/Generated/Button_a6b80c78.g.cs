@@ -13,7 +13,7 @@ public sealed unsafe partial class Button : global::System.IDisposable
 
     public static Button Create()
     {
-        var handle = NativeMethods.TablePtr->f240();
+        var handle = NativeMethods.TablePtr->f241();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -27,7 +27,7 @@ public sealed unsafe partial class Button : global::System.IDisposable
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->f241((void*)text.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
+            var handle = NativeMethods.TablePtr->f242((void*)text.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -40,7 +40,7 @@ public sealed unsafe partial class Button : global::System.IDisposable
     public string? getIcon()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f242((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f243((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
@@ -49,7 +49,7 @@ public sealed unsafe partial class Button : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getText()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f243((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f244((void*)_handle));
     }
 
     public nint setIcon(string icon)
@@ -57,25 +57,25 @@ public sealed unsafe partial class Button : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(icon);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f244((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f245((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public nint setOnClick(nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
     {
-        return (nint)NativeMethods.TablePtr->f245((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
+        return (nint)NativeMethods.TablePtr->f246((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
     }
 
     public nint setText(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f246((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->f247((void*)_handle, (void*)text.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f239((void*)_handle);
+            NativeMethods.TablePtr->f240((void*)_handle);
             _handle = 0;
         }
     }

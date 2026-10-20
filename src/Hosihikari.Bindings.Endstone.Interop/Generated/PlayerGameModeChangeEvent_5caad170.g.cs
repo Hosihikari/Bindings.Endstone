@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.ID
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1028();
+        get => (nint)NativeMethods.TablePtr->f1032();
     }
 
     public static PlayerGameModeChangeEvent Create(nint player, nint new_game_mode) =>
@@ -21,13 +21,13 @@ public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.ID
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1029((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1033((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getNewGameMode()
     {
-        return NativeMethods.TablePtr->f1030((void*)_handle);
+        return NativeMethods.TablePtr->f1034((void*)_handle);
     }
 
 
@@ -35,7 +35,7 @@ public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.ID
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1027((void*)_handle);
+            NativeMethods.TablePtr->f1031((void*)_handle);
             _handle = 0;
         }
     }

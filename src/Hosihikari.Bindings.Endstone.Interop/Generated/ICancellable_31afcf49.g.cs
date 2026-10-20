@@ -13,17 +13,17 @@ public sealed unsafe partial class ICancellable
 
     public void cancel()
     {
-        NativeMethods.TablePtr->f542((void*)_handle);
+        NativeMethods.TablePtr->f544((void*)_handle);
     }
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->f543((void*)_handle);
+        return NativeMethods.TablePtr->f545((void*)_handle);
     }
 
     public void setCancelled(bool cancel)
     {
-        NativeMethods.TablePtr->f544((void*)_handle, cancel);
+        NativeMethods.TablePtr->f546((void*)_handle, cancel);
     }
 
     public void Destroy() =>

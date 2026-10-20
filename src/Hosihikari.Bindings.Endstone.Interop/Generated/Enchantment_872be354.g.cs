@@ -13,236 +13,236 @@ public sealed unsafe partial class Enchantment
 
     public static nint AquaAffinity
     {
-        get => (nint)NativeMethods.TablePtr->f462();
+        get => (nint)NativeMethods.TablePtr->f464();
     }
 
     public static nint BaneOfArthropods
     {
-        get => (nint)NativeMethods.TablePtr->f463();
+        get => (nint)NativeMethods.TablePtr->f465();
     }
 
     public static nint BlastProtection
     {
-        get => (nint)NativeMethods.TablePtr->f464();
+        get => (nint)NativeMethods.TablePtr->f466();
     }
 
     public static nint Breach
     {
-        get => (nint)NativeMethods.TablePtr->f465();
+        get => (nint)NativeMethods.TablePtr->f467();
     }
 
     public static nint Channeling
     {
-        get => (nint)NativeMethods.TablePtr->f466();
+        get => (nint)NativeMethods.TablePtr->f468();
     }
 
     public static nint CurseOfBinding
     {
-        get => (nint)NativeMethods.TablePtr->f467();
+        get => (nint)NativeMethods.TablePtr->f469();
     }
 
     public static nint CurseOfVanishing
     {
-        get => (nint)NativeMethods.TablePtr->f468();
+        get => (nint)NativeMethods.TablePtr->f470();
     }
 
     public static nint Density
     {
-        get => (nint)NativeMethods.TablePtr->f469();
+        get => (nint)NativeMethods.TablePtr->f471();
     }
 
     public static nint DepthStrider
     {
-        get => (nint)NativeMethods.TablePtr->f470();
+        get => (nint)NativeMethods.TablePtr->f472();
     }
 
     public static nint Efficiency
     {
-        get => (nint)NativeMethods.TablePtr->f471();
+        get => (nint)NativeMethods.TablePtr->f473();
     }
 
     public static nint FeatherFalling
     {
-        get => (nint)NativeMethods.TablePtr->f472();
+        get => (nint)NativeMethods.TablePtr->f474();
     }
 
     public static nint FireAspect
     {
-        get => (nint)NativeMethods.TablePtr->f473();
+        get => (nint)NativeMethods.TablePtr->f475();
     }
 
     public static nint FireProtection
     {
-        get => (nint)NativeMethods.TablePtr->f474();
+        get => (nint)NativeMethods.TablePtr->f476();
     }
 
     public static nint Flame
     {
-        get => (nint)NativeMethods.TablePtr->f475();
+        get => (nint)NativeMethods.TablePtr->f477();
     }
 
     public static nint Fortune
     {
-        get => (nint)NativeMethods.TablePtr->f476();
+        get => (nint)NativeMethods.TablePtr->f478();
     }
 
     public static nint FrostWalker
     {
-        get => (nint)NativeMethods.TablePtr->f477();
+        get => (nint)NativeMethods.TablePtr->f479();
     }
 
     public static nint Impaling
     {
-        get => (nint)NativeMethods.TablePtr->f478();
+        get => (nint)NativeMethods.TablePtr->f480();
     }
 
     public static nint Infinity
     {
-        get => (nint)NativeMethods.TablePtr->f479();
+        get => (nint)NativeMethods.TablePtr->f481();
     }
 
     public static nint Knockback
     {
-        get => (nint)NativeMethods.TablePtr->f480();
+        get => (nint)NativeMethods.TablePtr->f482();
     }
 
     public static nint Looting
     {
-        get => (nint)NativeMethods.TablePtr->f481();
+        get => (nint)NativeMethods.TablePtr->f483();
     }
 
     public static nint Loyalty
     {
-        get => (nint)NativeMethods.TablePtr->f482();
+        get => (nint)NativeMethods.TablePtr->f484();
     }
 
     public static nint LuckOfTheSea
     {
-        get => (nint)NativeMethods.TablePtr->f483();
+        get => (nint)NativeMethods.TablePtr->f485();
     }
 
     public static nint Lunge
     {
-        get => (nint)NativeMethods.TablePtr->f484();
+        get => (nint)NativeMethods.TablePtr->f486();
     }
 
     public static nint Lure
     {
-        get => (nint)NativeMethods.TablePtr->f485();
+        get => (nint)NativeMethods.TablePtr->f487();
     }
 
     public static nint Mending
     {
-        get => (nint)NativeMethods.TablePtr->f486();
+        get => (nint)NativeMethods.TablePtr->f488();
     }
 
     public static nint Multishot
     {
-        get => (nint)NativeMethods.TablePtr->f487();
+        get => (nint)NativeMethods.TablePtr->f489();
     }
 
     public static nint Piercing
     {
-        get => (nint)NativeMethods.TablePtr->f488();
+        get => (nint)NativeMethods.TablePtr->f490();
     }
 
     public static nint Power
     {
-        get => (nint)NativeMethods.TablePtr->f489();
+        get => (nint)NativeMethods.TablePtr->f491();
     }
 
     public static nint ProjectileProtection
     {
-        get => (nint)NativeMethods.TablePtr->f490();
+        get => (nint)NativeMethods.TablePtr->f492();
     }
 
     public static nint Protection
     {
-        get => (nint)NativeMethods.TablePtr->f491();
+        get => (nint)NativeMethods.TablePtr->f493();
     }
 
     public static nint Punch
     {
-        get => (nint)NativeMethods.TablePtr->f492();
+        get => (nint)NativeMethods.TablePtr->f494();
     }
 
     public static nint QuickCharge
     {
-        get => (nint)NativeMethods.TablePtr->f493();
+        get => (nint)NativeMethods.TablePtr->f495();
     }
 
     public static nint RegistryType
     {
-        get => (nint)NativeMethods.TablePtr->f494();
+        get => (nint)NativeMethods.TablePtr->f496();
     }
 
     public static nint Respiration
     {
-        get => (nint)NativeMethods.TablePtr->f495();
+        get => (nint)NativeMethods.TablePtr->f497();
     }
 
     public static nint Riptide
     {
-        get => (nint)NativeMethods.TablePtr->f496();
+        get => (nint)NativeMethods.TablePtr->f498();
     }
 
     public static nint Sharpness
     {
-        get => (nint)NativeMethods.TablePtr->f497();
+        get => (nint)NativeMethods.TablePtr->f499();
     }
 
     public static nint SilkTouch
     {
-        get => (nint)NativeMethods.TablePtr->f498();
+        get => (nint)NativeMethods.TablePtr->f500();
     }
 
     public static nint Smite
     {
-        get => (nint)NativeMethods.TablePtr->f499();
+        get => (nint)NativeMethods.TablePtr->f501();
     }
 
     public static nint SoulSpeed
     {
-        get => (nint)NativeMethods.TablePtr->f500();
+        get => (nint)NativeMethods.TablePtr->f502();
     }
 
     public static nint SwiftSneak
     {
-        get => (nint)NativeMethods.TablePtr->f501();
+        get => (nint)NativeMethods.TablePtr->f503();
     }
 
     public static nint Thorns
     {
-        get => (nint)NativeMethods.TablePtr->f502();
+        get => (nint)NativeMethods.TablePtr->f504();
     }
 
     public static nint Unbreaking
     {
-        get => (nint)NativeMethods.TablePtr->f503();
+        get => (nint)NativeMethods.TablePtr->f505();
     }
 
     public static nint WindBurst
     {
-        get => (nint)NativeMethods.TablePtr->f504();
+        get => (nint)NativeMethods.TablePtr->f506();
     }
 
     public bool canEnchantItem(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        return NativeMethods.TablePtr->f505((void*)_handle, (void*)item.Handle);
+        return NativeMethods.TablePtr->f507((void*)_handle, (void*)item.Handle);
     }
 
     public bool conflictsWith(global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment other)
     {
-        return NativeMethods.TablePtr->f506((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f508((void*)_handle, (void*)other.Handle);
     }
 
     public int getMaxLevel()
     {
-        return NativeMethods.TablePtr->f507((void*)_handle);
+        return NativeMethods.TablePtr->f509((void*)_handle);
     }
 
     public int getStartLevel()
     {
-        return NativeMethods.TablePtr->f508((void*)_handle);
+        return NativeMethods.TablePtr->f510((void*)_handle);
     }
 }
