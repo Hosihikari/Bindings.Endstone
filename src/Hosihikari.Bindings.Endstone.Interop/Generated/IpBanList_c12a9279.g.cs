@@ -21,14 +21,14 @@ public sealed unsafe partial class IpBanList
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'endstone::Nullable<endstone::IpBanEntry>' is not a known bindable declaration.");
 
     public nint getEntries() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<endstone::NotNull<endstone::IpBanEntry>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::NotNull<endstone::IpBanEntry>' is not supported.");
 
     public bool isBanned(string address)
     {
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(address);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return NativeMethods.TablePtr->f573((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f578((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -37,7 +37,7 @@ public sealed unsafe partial class IpBanList
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(address);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f574((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f579((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 }

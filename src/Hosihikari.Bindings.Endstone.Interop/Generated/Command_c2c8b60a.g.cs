@@ -16,43 +16,70 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public nint asPluginCommand()
     {
-        return (nint)NativeMethods.TablePtr->f316((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f317((void*)_handle);
     }
 
     public bool execute(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, nint args)
     {
-        return NativeMethods.TablePtr->f317((void*)_handle, (void*)sender.Handle, (void*)args);
+        return NativeMethods.TablePtr->f318((void*)_handle, (void*)sender.Handle, (void*)args);
     }
 
-    public nint getAliases() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::basic_string<char>>' is not a known bindable declaration.");
+    public string[] getAliases()
+    {
+        var __hs_view = NativeMethods.TablePtr->f319((void*)_handle);
+        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_result = new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
 
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f318((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f320((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f319((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f321((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getPermissions() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::basic_string<char>>' is not a known bindable declaration.");
+    public string[] getPermissions()
+    {
+        var __hs_view = NativeMethods.TablePtr->f322((void*)_handle);
+        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_result = new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
 
-    public nint getUsages() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::basic_string<char>>' is not a known bindable declaration.");
+    public string[] getUsages()
+    {
+        var __hs_view = NativeMethods.TablePtr->f323((void*)_handle);
+        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_result = new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
 
     public bool isRegistered()
     {
-        return NativeMethods.TablePtr->f320((void*)_handle);
+        return NativeMethods.TablePtr->f324((void*)_handle);
     }
 
     public bool registerTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->f321((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->f325((void*)_handle, (void*)command_map.Handle);
     }
 
     public void setDescription(string description)
@@ -60,7 +87,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(description);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f322((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f326((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -69,23 +96,23 @@ public sealed unsafe partial class Command : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f323((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f327((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public bool testPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->f324((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->f328((void*)_handle, (void*)target.Handle);
     }
 
     public bool testPermissionSilently(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->f325((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->f329((void*)_handle, (void*)target.Handle);
     }
 
     public bool unregisterFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->f326((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->f330((void*)_handle, (void*)command_map.Handle);
     }
 
 
@@ -93,7 +120,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f315((void*)_handle);
+            NativeMethods.TablePtr->f316((void*)_handle);
             _handle = 0;
         }
     }

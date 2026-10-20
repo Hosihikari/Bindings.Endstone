@@ -16,7 +16,7 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1163((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
+            var __hs_handle = NativeMethods.TablePtr->f1176((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
@@ -29,15 +29,15 @@ public sealed unsafe partial class Scoreboard
 
     public void clearSlot(int slot)
     {
-        NativeMethods.TablePtr->f1164((void*)_handle, slot);
+        NativeMethods.TablePtr->f1177((void*)_handle, slot);
     }
 
     public nint getEntries() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>' is not supported.");
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(int slot)
     {
-        var __hs_handle = NativeMethods.TablePtr->f1165((void*)_handle, slot);
+        var __hs_handle = NativeMethods.TablePtr->f1178((void*)_handle, slot);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
     }
 
@@ -46,19 +46,19 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1166((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_handle = NativeMethods.TablePtr->f1179((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
 
     public nint getObjectives() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::unique_ptr<endstone::Objective>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<endstone::Objective>' is not supported.");
 
     public nint getObjectivesByCriteria(nint criteria) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::unique_ptr<endstone::Objective>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<endstone::Objective>' is not supported.");
 
     public nint getScores(nint entry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::unique_ptr<endstone::Score>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<endstone::Score>' is not supported.");
 
     public void resetScores(nint entry) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>' is not a known bindable declaration.");

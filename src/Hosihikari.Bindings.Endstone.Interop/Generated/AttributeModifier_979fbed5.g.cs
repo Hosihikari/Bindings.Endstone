@@ -16,7 +16,7 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f96(__hs_stringData, (nuint)__hs_stringBytes.Length, (void*)uuid.Handle, amount, operation);
+            var handle = NativeMethods.TablePtr->f97(__hs_stringData, (nuint)__hs_stringBytes.Length, (void*)uuid.Handle, amount, operation);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -31,7 +31,7 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f97(__hs_stringData, (nuint)__hs_stringBytes.Length, amount, operation);
+            var handle = NativeMethods.TablePtr->f98(__hs_stringData, (nuint)__hs_stringBytes.Length, amount, operation);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -43,30 +43,30 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
 
     public float getAmount()
     {
-        return NativeMethods.TablePtr->f98((void*)_handle);
+        return NativeMethods.TablePtr->f99((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f99((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f100((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getOperation()
     {
-        return NativeMethods.TablePtr->f100((void*)_handle);
+        return NativeMethods.TablePtr->f101((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID getUniqueId()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->f101((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->f102((void*)_handle));
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f95((void*)_handle);
+            NativeMethods.TablePtr->f96((void*)_handle);
             _handle = 0;
         }
     }

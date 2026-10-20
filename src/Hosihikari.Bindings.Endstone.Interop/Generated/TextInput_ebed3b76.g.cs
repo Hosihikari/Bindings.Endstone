@@ -13,7 +13,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
 
     public static TextInput Create()
     {
-        var handle = NativeMethods.TablePtr->f1280();
+        var handle = NativeMethods.TablePtr->f1293();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,7 +28,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
     public string? getDefaultValue()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f1281((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f1294((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
@@ -51,7 +51,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1279((void*)_handle);
+            NativeMethods.TablePtr->f1292((void*)_handle);
             _handle = 0;
         }
     }

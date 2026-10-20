@@ -14,47 +14,47 @@ public sealed unsafe partial class PlayerInventory
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getBoots()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f943((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f949((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getChestplate()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f944((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f950((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public int getHeldItemSlot()
     {
-        return NativeMethods.TablePtr->f945((void*)_handle);
+        return NativeMethods.TablePtr->f951((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getHelmet()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f946((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f952((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getItemInMainHand()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f947((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f953((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getItemInOffHand()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f948((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f954((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getLeggings()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f949((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f955((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
@@ -66,7 +66,7 @@ public sealed unsafe partial class PlayerInventory
 
     public void setHeldItemSlot(int slot)
     {
-        NativeMethods.TablePtr->f950((void*)_handle, slot);
+        NativeMethods.TablePtr->f956((void*)_handle, slot);
     }
 
     public void setHelmet(nint helmet) =>

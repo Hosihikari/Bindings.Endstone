@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerJoinEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f962();
+        get => (nint)NativeMethods.TablePtr->f968();
     }
 
     public static PlayerJoinEvent Create(nint player, nint join_message) =>
@@ -21,7 +21,7 @@ public sealed unsafe partial class PlayerJoinEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f963((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f969((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -35,7 +35,7 @@ public sealed unsafe partial class PlayerJoinEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f961((void*)_handle);
+            NativeMethods.TablePtr->f967((void*)_handle);
             _handle = 0;
         }
     }

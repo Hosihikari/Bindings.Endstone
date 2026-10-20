@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerInteractEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f934();
+        get => (nint)NativeMethods.TablePtr->f940();
     }
 
     public static PlayerInteractEvent Create(nint player, nint action, nint item, nint block_clicked, nint block_face, nint clicked_position) =>
@@ -21,52 +21,52 @@ public sealed unsafe partial class PlayerInteractEvent : global::System.IDisposa
 
     public int getAction()
     {
-        return NativeMethods.TablePtr->f935((void*)_handle);
+        return NativeMethods.TablePtr->f941((void*)_handle);
     }
 
     public nint getBlock()
     {
-        return (nint)NativeMethods.TablePtr->f936((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f942((void*)_handle);
     }
 
     public int getBlockFace()
     {
-        return NativeMethods.TablePtr->f937((void*)_handle);
+        return NativeMethods.TablePtr->f943((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector? getClickedPosition()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f938((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f944((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)__hs_handle) : null;
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f939((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f945((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getItem()
     {
-        return (nint)NativeMethods.TablePtr->f940((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f946((void*)_handle);
     }
 
     public bool hasBlock()
     {
-        return NativeMethods.TablePtr->f941((void*)_handle);
+        return NativeMethods.TablePtr->f947((void*)_handle);
     }
 
     public bool hasItem()
     {
-        return NativeMethods.TablePtr->f942((void*)_handle);
+        return NativeMethods.TablePtr->f948((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f933((void*)_handle);
+            NativeMethods.TablePtr->f939((void*)_handle);
             _handle = 0;
         }
     }

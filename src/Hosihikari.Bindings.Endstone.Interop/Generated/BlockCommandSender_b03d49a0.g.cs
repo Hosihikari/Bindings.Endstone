@@ -13,7 +13,7 @@ public sealed unsafe partial class BlockCommandSender
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getBlock()
     {
-        var __hs_handle = NativeMethods.TablePtr->f133((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f134((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 }

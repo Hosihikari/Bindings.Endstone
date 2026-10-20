@@ -16,20 +16,29 @@ public sealed unsafe partial class PluginLoader
 
     public void disablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1042((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1054((void*)_handle, (void*)plugin.Handle);
     }
 
     public void enablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1043((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1055((void*)_handle, (void*)plugin.Handle);
     }
 
-    public nint getPluginFileFilters() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::basic_string<char>>' is not a known bindable declaration.");
+    public string[] getPluginFileFilters()
+    {
+        var __hs_view = NativeMethods.TablePtr->f1056((void*)_handle);
+        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_result = new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f1044((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1057((void*)_handle);
     }
 
     public nint loadPlugin(string file)
@@ -37,12 +46,12 @@ public sealed unsafe partial class PluginLoader
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(file);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f1045((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1058((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public nint loadPlugins(nint directory) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<endstone::Plugin *>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::Plugin *' is not supported.");
 
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");

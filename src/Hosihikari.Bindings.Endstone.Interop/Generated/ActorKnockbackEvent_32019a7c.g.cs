@@ -16,35 +16,35 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f54();
+        get => (nint)NativeMethods.TablePtr->f55();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f55((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f56((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector getKnockback()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f56((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f57((void*)_handle));
     }
 
     public nint getSource()
     {
-        return (nint)NativeMethods.TablePtr->f57((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f58((void*)_handle);
     }
 
     public void setKnockback(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
     {
-        NativeMethods.TablePtr->f58((void*)_handle, (void*)knockback.Handle);
+        NativeMethods.TablePtr->f59((void*)_handle, (void*)knockback.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f53((void*)_handle);
+            NativeMethods.TablePtr->f54((void*)_handle);
             _handle = 0;
         }
     }

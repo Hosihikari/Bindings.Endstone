@@ -13,7 +13,7 @@ public sealed unsafe partial class WritableBookMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f1351();
+        get => NativeMethods.TablePtr->f1364();
     }
 
     public void addPage(nint pages) =>
@@ -21,21 +21,30 @@ public sealed unsafe partial class WritableBookMeta
 
     public string getPage(int page)
     {
-        var __hs_view = NativeMethods.TablePtr->f1352((void*)_handle, page);
+        var __hs_view = NativeMethods.TablePtr->f1365((void*)_handle, page);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getPageCount()
     {
-        return NativeMethods.TablePtr->f1353((void*)_handle);
+        return NativeMethods.TablePtr->f1366((void*)_handle);
     }
 
-    public nint getPages() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::basic_string<char>>' is not a known bindable declaration.");
+    public string[] getPages()
+    {
+        var __hs_view = NativeMethods.TablePtr->f1367((void*)_handle);
+        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_result = new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
 
     public bool hasPages()
     {
-        return NativeMethods.TablePtr->f1354((void*)_handle);
+        return NativeMethods.TablePtr->f1368((void*)_handle);
     }
 
     public void setPage(int page, string data)
@@ -43,7 +52,7 @@ public sealed unsafe partial class WritableBookMeta
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(data);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f1355((void*)_handle, page, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f1369((void*)_handle, page, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 

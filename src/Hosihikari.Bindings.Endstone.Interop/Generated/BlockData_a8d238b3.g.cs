@@ -16,12 +16,12 @@ public sealed unsafe partial class BlockData : global::System.IDisposable
 
     public uint getRuntimeId()
     {
-        return NativeMethods.TablePtr->f141((void*)_handle);
+        return NativeMethods.TablePtr->f142((void*)_handle);
     }
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f142((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f143((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -30,7 +30,7 @@ public sealed unsafe partial class BlockData : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f140((void*)_handle);
+            NativeMethods.TablePtr->f141((void*)_handle);
             _handle = 0;
         }
     }

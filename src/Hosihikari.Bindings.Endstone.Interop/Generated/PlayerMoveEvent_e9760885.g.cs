@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerMoveEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f978();
+        get => (nint)NativeMethods.TablePtr->f984();
     }
 
     public static PlayerMoveEvent Create(nint player, nint from, nint to) =>
@@ -21,47 +21,47 @@ public sealed unsafe partial class PlayerMoveEvent : global::System.IDisposable
 
     public nint from_
     {
-        get => (nint)NativeMethods.TablePtr->f979((void*)_handle);
-        set => NativeMethods.TablePtr->f980((void*)_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->f985((void*)_handle);
+        set => NativeMethods.TablePtr->f986((void*)_handle, (void*)value);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f981((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f987((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getFrom()
     {
-        return (nint)NativeMethods.TablePtr->f982((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f988((void*)_handle);
     }
 
     public nint getTo()
     {
-        return (nint)NativeMethods.TablePtr->f983((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f989((void*)_handle);
     }
 
     public void setFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location from)
     {
-        NativeMethods.TablePtr->f984((void*)_handle, (void*)from.Handle);
+        NativeMethods.TablePtr->f990((void*)_handle, (void*)from.Handle);
     }
 
     public void setTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location to)
     {
-        NativeMethods.TablePtr->f985((void*)_handle, (void*)to.Handle);
+        NativeMethods.TablePtr->f991((void*)_handle, (void*)to.Handle);
     }
 
     public nint to_
     {
-        get => (nint)NativeMethods.TablePtr->f986((void*)_handle);
-        set => NativeMethods.TablePtr->f987((void*)_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->f992((void*)_handle);
+        set => NativeMethods.TablePtr->f993((void*)_handle, (void*)value);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f977((void*)_handle);
+            NativeMethods.TablePtr->f983((void*)_handle);
             _handle = 0;
         }
     }

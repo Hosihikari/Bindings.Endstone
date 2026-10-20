@@ -11,6 +11,7 @@
 #include <optional>
 #include <string>
 #include <string_view>
+#include <vector>
 #include "endstone/endstone.hpp"
 #include "endstone/detail.h"
 
@@ -351,6 +352,30 @@ catch (...)
 {
     setLastError("unknown native exception");
     return HosihikariStringView{nullptr, 0};
+}
+
+static HosihikariArrayView hs_method_f4fc1248(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::Actor*>(hs_self)->getScoreboardTags();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static HosihikariStringView hs_method_a25bf094(void* hs_self) try
@@ -4969,6 +4994,30 @@ catch (...)
     return false;
 }
 
+static HosihikariArrayView hs_method_8bdb7033(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::Command*>(hs_self)->getAliases();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
 static HosihikariStringView hs_method_a98b3f00(void* hs_self) try
 {
     auto result = static_cast<endstone::Command*>(hs_self)->getDescription();
@@ -5001,6 +5050,54 @@ catch (...)
 {
     setLastError("unknown native exception");
     return HosihikariStringView{nullptr, 0};
+}
+
+static HosihikariArrayView hs_method_44e86fef(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::Command*>(hs_self)->getPermissions();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
+static HosihikariArrayView hs_method_2139fcb8(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::Command*>(hs_self)->getUsages();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static bool hs_method_a8c29d42(void* hs_self) try
@@ -6009,6 +6106,30 @@ catch (...)
     setLastError("unknown native exception");
     if (hs_hasValue) { *hs_hasValue = false; }
     return 0;
+}
+
+static HosihikariArrayView hs_method_6c265d10(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::Dropdown*>(hs_self)->getOptions();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static void hs_destroy_cb8e5713(void* hs_self) try
@@ -9253,6 +9374,30 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariArrayView hs_method_c11da252(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::ItemMeta*>(hs_self)->getLore();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static std::int32_t hs_method_c6bdbd15(void* hs_self) try
@@ -15977,6 +16122,54 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static HosihikariArrayView hs_method_07a6157f(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::PluginDescription*>(hs_self)->getAuthors();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
+static HosihikariArrayView hs_method_1f3202d7(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::PluginDescription*>(hs_self)->getContributors();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
 static std::int32_t hs_method_3aecb585(void* hs_self) try
 {
     return static_cast<std::int32_t>(static_cast<endstone::PluginDescription*>(hs_self)->getDefaultPermission());
@@ -15990,6 +16183,30 @@ catch (...)
 {
     setLastError("unknown native exception");
     return 0;
+}
+
+static HosihikariArrayView hs_method_3c65a34b(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::PluginDescription*>(hs_self)->getDepend();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static HosihikariStringView hs_method_a5f88620(void* hs_self) try
@@ -16041,6 +16258,30 @@ catch (...)
     return 0;
 }
 
+static HosihikariArrayView hs_method_22243c45(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::PluginDescription*>(hs_self)->getLoadBefore();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
 static HosihikariStringView hs_method_60803d5e(void* hs_self) try
 {
     auto result = static_cast<endstone::PluginDescription*>(hs_self)->getName();
@@ -16073,6 +16314,54 @@ catch (...)
 {
     setLastError("unknown native exception");
     return HosihikariStringView{nullptr, 0};
+}
+
+static HosihikariArrayView hs_method_89b9a91f(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::PluginDescription*>(hs_self)->getProvides();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
+static HosihikariArrayView hs_method_946b5490(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::PluginDescription*>(hs_self)->getSoftDepend();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static HosihikariStringView hs_method_e6575ca2(void* hs_self) try
@@ -16261,6 +16550,30 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariArrayView hs_method_371cc56f(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::PluginLoader*>(hs_self)->getPluginFileFilters();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static void* hs_method_ba0f439a(void* hs_self) try
@@ -21057,6 +21370,30 @@ catch (...)
     return 0;
 }
 
+static HosihikariArrayView hs_method_d2444a6f(void* hs_self) try
+{
+    thread_local std::vector<std::string> hs_arrayStrings;
+    thread_local std::vector<HosihikariStringView> hs_arrayViews;
+    auto result = static_cast<endstone::WritableBookMeta*>(hs_self)->getPages();
+    hs_arrayStrings.clear();
+    hs_arrayViews.clear();
+    hs_arrayStrings.reserve(result.size());
+    for (auto const& item : result) { hs_arrayStrings.emplace_back(item.data(), item.size()); }
+    hs_arrayViews.reserve(hs_arrayStrings.size());
+    for (auto const& item : hs_arrayStrings) { hs_arrayViews.push_back(HosihikariStringView{item.data(), item.size()}); }
+    return HosihikariArrayView{hs_arrayViews.data(), hs_arrayViews.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
 static bool hs_method_9a458a7f(void* hs_self) try
 {
     return static_cast<bool>(static_cast<endstone::WritableBookMeta*>(hs_self)->hasPages());
@@ -23056,6 +23393,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_52274c94,
     &hs_method_421c8c76,
     &hs_method_4f1586fb,
+    &hs_method_f4fc1248,
     &hs_method_a25bf094,
     &hs_method_66649264,
     &hs_method_bd047ad0,
@@ -23355,8 +23693,11 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_c2c8b60a,
     &hs_method_258d436e,
     &hs_method_843e3c70,
+    &hs_method_8bdb7033,
     &hs_method_a98b3f00,
     &hs_method_d90fc989,
+    &hs_method_44e86fef,
+    &hs_method_2139fcb8,
     &hs_method_a8c29d42,
     &hs_method_8293f1a6,
     &hs_method_4936e954,
@@ -23423,6 +23764,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_6935619b,
     &hs_method_ef8d8378,
     &hs_method_06d835d9,
+    &hs_method_6c265d10,
     &hs_destroy_cb8e5713,
     &hs_get_c0fea9c8,
     &hs_get_0fa4a533,
@@ -23631,6 +23973,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f9913330,
     &hs_method_0c8148f2,
     &hs_method_cd47d8f2,
+    &hs_method_c11da252,
     &hs_method_c6bdbd15,
     &hs_method_daac4a2d,
     &hs_method_e4906b2d,
@@ -24063,12 +24406,18 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2476b603,
     &hs_destroy_497facfc,
     &hs_method_a68fa3c7,
+    &hs_method_07a6157f,
+    &hs_method_1f3202d7,
     &hs_method_3aecb585,
+    &hs_method_3c65a34b,
     &hs_method_a5f88620,
     &hs_method_dd0a3c70,
     &hs_method_c384d425,
+    &hs_method_22243c45,
     &hs_method_60803d5e,
     &hs_method_b7c4bc57,
+    &hs_method_89b9a91f,
+    &hs_method_946b5490,
     &hs_method_e6575ca2,
     &hs_method_b8361b96,
     &hs_destroy_754b8d19,
@@ -24081,6 +24430,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_10a06443,
     &hs_method_3fabd36a,
     &hs_method_0dec6e88,
+    &hs_method_371cc56f,
     &hs_method_ba0f439a,
     &hs_method_41bf9b37,
     &hs_method_589ace68,
@@ -24391,6 +24741,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_9fc270c4,
     &hs_method_a4b82fb7,
     &hs_method_40fe9057,
+    &hs_method_d2444a6f,
     &hs_method_9a458a7f,
     &hs_method_8c15c058,
     &hs_destroy_1cdbd0d8,

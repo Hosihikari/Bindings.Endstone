@@ -13,20 +13,20 @@ public sealed unsafe partial class CrossbowMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f362();
+        get => NativeMethods.TablePtr->f366();
     }
 
     public void addChargedProjectile(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        NativeMethods.TablePtr->f363((void*)_handle, (void*)item.Handle);
+        NativeMethods.TablePtr->f367((void*)_handle, (void*)item.Handle);
     }
 
     public nint getChargedProjectiles() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<endstone::ItemStack>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::ItemStack' is not supported.");
 
     public bool hasChargedProjectiles()
     {
-        return NativeMethods.TablePtr->f364((void*)_handle);
+        return NativeMethods.TablePtr->f368((void*)_handle);
     }
 
     public void setChargedProjectiles(nint projectiles) =>

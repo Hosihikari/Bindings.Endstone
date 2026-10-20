@@ -13,25 +13,25 @@ public sealed unsafe partial class Scheduler
 
     public void cancelTask(uint id)
     {
-        NativeMethods.TablePtr->f1153((void*)_handle, id);
+        NativeMethods.TablePtr->f1166((void*)_handle, id);
     }
 
     public void cancelTasks(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1154((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1167((void*)_handle, (void*)plugin.Handle);
     }
 
     public nint getPendingTasks() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<endstone::Task *>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::Task *' is not supported.");
 
     public bool isQueued(uint id)
     {
-        return NativeMethods.TablePtr->f1155((void*)_handle, id);
+        return NativeMethods.TablePtr->f1168((void*)_handle, id);
     }
 
     public bool isRunning(uint id)
     {
-        return NativeMethods.TablePtr->f1156((void*)_handle, id);
+        return NativeMethods.TablePtr->f1169((void*)_handle, id);
     }
 
     public nint runTask(nint plugin, nint task) =>

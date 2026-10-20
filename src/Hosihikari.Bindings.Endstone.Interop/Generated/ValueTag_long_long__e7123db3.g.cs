@@ -13,7 +13,7 @@ public sealed unsafe partial class ValueTag_long_long_ : global::System.IDisposa
 
     public static ValueTag_long_long_ Create()
     {
-        var handle = NativeMethods.TablePtr->f1463();
+        var handle = NativeMethods.TablePtr->f1477();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -24,7 +24,7 @@ public sealed unsafe partial class ValueTag_long_long_ : global::System.IDisposa
 
     public static ValueTag_long_long_ Create_880dd27c(nint v)
     {
-        var handle = NativeMethods.TablePtr->f1464((void*)v);
+        var handle = NativeMethods.TablePtr->f1478((void*)v);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -38,19 +38,19 @@ public sealed unsafe partial class ValueTag_long_long_ : global::System.IDisposa
 
     public nint operator_const_long_long__()
     {
-        return (nint)NativeMethods.TablePtr->f1465((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1479((void*)_handle);
     }
 
     public nint value()
     {
-        return (nint)NativeMethods.TablePtr->f1466((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1480((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1462((void*)_handle);
+            NativeMethods.TablePtr->f1476((void*)_handle);
             _handle = 0;
         }
     }

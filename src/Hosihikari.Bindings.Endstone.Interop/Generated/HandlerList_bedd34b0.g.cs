@@ -16,7 +16,7 @@ public sealed unsafe partial class HandlerList : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(@event);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f489(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f494(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -27,26 +27,26 @@ public sealed unsafe partial class HandlerList : global::System.IDisposable
     }
 
     public nint getHandlers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<endstone::EventHandler *>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::EventHandler *' is not supported.");
 
     public nint registerHandler(nint handler) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::EventHandler>' is not a known bindable declaration.");
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.EventHandler handler)
     {
-        NativeMethods.TablePtr->f490((void*)_handle, (void*)handler.Handle);
+        NativeMethods.TablePtr->f495((void*)_handle, (void*)handler.Handle);
     }
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f491((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f496((void*)_handle, (void*)plugin.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f488((void*)_handle);
+            NativeMethods.TablePtr->f493((void*)_handle);
             _handle = 0;
         }
     }
