@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Hosihikari.Bindings.Endstone.Interop/Hosihikari.Bindings.Endstone.Interop.csproj" />
+  </Folder>
+</Solution>
