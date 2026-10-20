@@ -13,12 +13,12 @@ public sealed unsafe partial class BookMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f162();
+        get => NativeMethods.TablePtr->f190();
     }
 
     public string getAuthor()
     {
-        var __hs_view = NativeMethods.TablePtr->f163((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f191((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -27,23 +27,23 @@ public sealed unsafe partial class BookMeta
 
     public string getTitle()
     {
-        var __hs_view = NativeMethods.TablePtr->f164((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f192((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool hasAuthor()
     {
-        return NativeMethods.TablePtr->f165((void*)_handle);
+        return NativeMethods.TablePtr->f193((void*)_handle);
     }
 
     public bool hasGeneration()
     {
-        return NativeMethods.TablePtr->f166((void*)_handle);
+        return NativeMethods.TablePtr->f194((void*)_handle);
     }
 
     public bool hasTitle()
     {
-        return NativeMethods.TablePtr->f167((void*)_handle);
+        return NativeMethods.TablePtr->f195((void*)_handle);
     }
 
     public void setAuthor(nint author) =>

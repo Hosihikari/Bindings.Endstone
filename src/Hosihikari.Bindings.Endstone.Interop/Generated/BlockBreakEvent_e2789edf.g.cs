@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class BlockBreakEvent
+public sealed unsafe partial class BlockBreakEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,20 +16,27 @@ public sealed unsafe partial class BlockBreakEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f115();
+        get => (nint)NativeMethods.TablePtr->f130();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f116((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f131((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f117((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f132((void*)_handle);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f129((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

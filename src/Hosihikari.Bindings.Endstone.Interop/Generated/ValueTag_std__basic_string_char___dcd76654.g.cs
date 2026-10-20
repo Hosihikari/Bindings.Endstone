@@ -13,7 +13,7 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
 
     public static ValueTag_std__basic_string_char__ Create()
     {
-        var handle = NativeMethods.TablePtr->f1361();
+        var handle = NativeMethods.TablePtr->f1454();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -27,7 +27,7 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(v);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f1362(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f1455(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -42,7 +42,7 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(v);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f1363(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f1456(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -54,13 +54,13 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
 
     public string operator_const_std__basic_string_char___()
     {
-        var __hs_view = NativeMethods.TablePtr->f1364((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1457((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string value()
     {
-        var __hs_view = NativeMethods.TablePtr->f1365((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1458((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -68,7 +68,7 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1360((void*)_handle);
+            NativeMethods.TablePtr->f1453((void*)_handle);
             _handle = 0;
         }
     }

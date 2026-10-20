@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class WeatherChangeEvent
+public sealed unsafe partial class WeatherChangeEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class WeatherChangeEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1235();
+        get => (nint)NativeMethods.TablePtr->f1328();
     }
 
     public static WeatherChangeEvent Create(nint level, nint to) =>
@@ -21,15 +21,22 @@ public sealed unsafe partial class WeatherChangeEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1236((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1329((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool toWeatherState()
     {
-        return NativeMethods.TablePtr->f1237((void*)_handle);
+        return NativeMethods.TablePtr->f1330((void*)_handle);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f1327((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

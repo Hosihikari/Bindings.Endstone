@@ -13,47 +13,47 @@ public sealed unsafe partial class CommandSender
 
     public nint asActor()
     {
-        return (nint)NativeMethods.TablePtr->f297((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f329((void*)_handle);
     }
 
     public nint asBlock()
     {
-        return (nint)NativeMethods.TablePtr->f298((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f330((void*)_handle);
     }
 
     public nint asCommandSender()
     {
-        return (nint)NativeMethods.TablePtr->f299((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f331((void*)_handle);
     }
 
     public nint asConsole()
     {
-        return (nint)NativeMethods.TablePtr->f300((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f332((void*)_handle);
     }
 
     public nint asPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f301((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f333((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f302((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f334((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f303((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f335((void*)_handle);
     }
 
     public void sendErrorMessage(nint message)
     {
-        NativeMethods.TablePtr->f304((void*)_handle, (void*)message);
+        NativeMethods.TablePtr->f336((void*)_handle, (void*)message);
     }
 
     public void sendMessage(nint message)
     {
-        NativeMethods.TablePtr->f305((void*)_handle, (void*)message);
+        NativeMethods.TablePtr->f337((void*)_handle, (void*)message);
     }
 }

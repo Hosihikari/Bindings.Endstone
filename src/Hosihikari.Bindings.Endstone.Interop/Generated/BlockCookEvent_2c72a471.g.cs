@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class BlockCookEvent
+public sealed unsafe partial class BlockCookEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,27 +16,36 @@ public sealed unsafe partial class BlockCookEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f118();
+        get => (nint)NativeMethods.TablePtr->f135();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f119((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f136((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getResult()
     {
-        return (nint)NativeMethods.TablePtr->f120((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f137((void*)_handle);
     }
 
     public nint getSource()
     {
-        return (nint)NativeMethods.TablePtr->f121((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f138((void*)_handle);
     }
 
     public void setResult(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack result)
     {
-        NativeMethods.TablePtr->f122((void*)_handle, (void*)result.Handle);
+        NativeMethods.TablePtr->f139((void*)_handle, (void*)result.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f134((void*)_handle);
+            _handle = 0;
+        }
     }
 }

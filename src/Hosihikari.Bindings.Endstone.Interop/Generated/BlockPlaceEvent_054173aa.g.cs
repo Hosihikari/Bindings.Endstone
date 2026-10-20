@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class BlockPlaceEvent
+public sealed unsafe partial class BlockPlaceEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,35 +16,42 @@ public sealed unsafe partial class BlockPlaceEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f143();
+        get => (nint)NativeMethods.TablePtr->f166();
     }
 
     public nint getBlockAgainst()
     {
-        return (nint)NativeMethods.TablePtr->f144((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f167((void*)_handle);
     }
 
     public nint getBlockPlacedState()
     {
-        return (nint)NativeMethods.TablePtr->f145((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f168((void*)_handle);
     }
 
     public nint getBlockReplaced()
     {
-        return (nint)NativeMethods.TablePtr->f146((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f169((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f147((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f170((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f148((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f171((void*)_handle);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f165((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

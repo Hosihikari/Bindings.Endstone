@@ -16,7 +16,7 @@ public sealed unsafe partial class PlayerEvent
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f851((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f914((void*)_handle);
     }
 
     public void Destroy() =>

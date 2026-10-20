@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerCommandEvent
+public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerCommandEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f832();
+        get => (nint)NativeMethods.TablePtr->f891();
     }
 
     public static PlayerCommandEvent Create(nint player, nint command) =>
@@ -21,13 +21,13 @@ public sealed unsafe partial class PlayerCommandEvent
 
     public string getCommand()
     {
-        var __hs_view = NativeMethods.TablePtr->f833((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f892((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f834((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f893((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -36,10 +36,17 @@ public sealed unsafe partial class PlayerCommandEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(command);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f835((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f894((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f890((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

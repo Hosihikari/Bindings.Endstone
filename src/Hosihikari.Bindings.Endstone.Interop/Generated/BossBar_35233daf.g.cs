@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class BossBar
+public sealed unsafe partial class BossBar : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,17 +13,17 @@ public sealed unsafe partial class BossBar
 
     public void addFlag(int flag)
     {
-        NativeMethods.TablePtr->f168((void*)_handle, flag);
+        NativeMethods.TablePtr->f197((void*)_handle, flag);
     }
 
     public void addPlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f169((void*)_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f198((void*)_handle, (void*)player.Handle);
     }
 
     public int getColor()
     {
-        return NativeMethods.TablePtr->f170((void*)_handle);
+        return NativeMethods.TablePtr->f199((void*)_handle);
     }
 
     public nint getPlayers() =>
@@ -31,58 +31,58 @@ public sealed unsafe partial class BossBar
 
     public float getProgress()
     {
-        return NativeMethods.TablePtr->f171((void*)_handle);
+        return NativeMethods.TablePtr->f200((void*)_handle);
     }
 
     public int getStyle()
     {
-        return NativeMethods.TablePtr->f172((void*)_handle);
+        return NativeMethods.TablePtr->f201((void*)_handle);
     }
 
     public string getTitle()
     {
-        var __hs_view = NativeMethods.TablePtr->f173((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f202((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool hasFlag(int flag)
     {
-        return NativeMethods.TablePtr->f174((void*)_handle, flag);
+        return NativeMethods.TablePtr->f203((void*)_handle, flag);
     }
 
     public bool isVisible()
     {
-        return NativeMethods.TablePtr->f175((void*)_handle);
+        return NativeMethods.TablePtr->f204((void*)_handle);
     }
 
     public void removeAll()
     {
-        NativeMethods.TablePtr->f176((void*)_handle);
+        NativeMethods.TablePtr->f205((void*)_handle);
     }
 
     public void removeFlag(int flag)
     {
-        NativeMethods.TablePtr->f177((void*)_handle, flag);
+        NativeMethods.TablePtr->f206((void*)_handle, flag);
     }
 
     public void removePlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f178((void*)_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f207((void*)_handle, (void*)player.Handle);
     }
 
     public void setColor(int color)
     {
-        NativeMethods.TablePtr->f179((void*)_handle, color);
+        NativeMethods.TablePtr->f208((void*)_handle, color);
     }
 
     public void setProgress(float progress)
     {
-        NativeMethods.TablePtr->f180((void*)_handle, progress);
+        NativeMethods.TablePtr->f209((void*)_handle, progress);
     }
 
     public void setStyle(int style)
     {
-        NativeMethods.TablePtr->f181((void*)_handle, style);
+        NativeMethods.TablePtr->f210((void*)_handle, style);
     }
 
     public void setTitle(string title)
@@ -90,15 +90,22 @@ public sealed unsafe partial class BossBar
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(title);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f182((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f211((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void setVisible(bool visible)
     {
-        NativeMethods.TablePtr->f183((void*)_handle, visible);
+        NativeMethods.TablePtr->f212((void*)_handle, visible);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f196((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

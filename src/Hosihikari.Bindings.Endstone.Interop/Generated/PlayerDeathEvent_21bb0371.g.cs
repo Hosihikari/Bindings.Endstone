@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerDeathEvent
+public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerDeathEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f836();
+        get => (nint)NativeMethods.TablePtr->f896();
     }
 
     public static PlayerDeathEvent Create(nint player, nint damage_source, nint death_message) =>
@@ -24,15 +24,24 @@ public sealed unsafe partial class PlayerDeathEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f837((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f897((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f838((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f898((void*)_handle);
     }
 
     public void setDeathMessage(nint death_message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>' is not a known bindable declaration.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f895((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

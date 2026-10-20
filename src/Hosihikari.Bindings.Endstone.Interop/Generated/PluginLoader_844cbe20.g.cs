@@ -16,12 +16,12 @@ public sealed unsafe partial class PluginLoader
 
     public void disablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f944((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1025((void*)_handle, (void*)plugin.Handle);
     }
 
     public void enablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f945((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1026((void*)_handle, (void*)plugin.Handle);
     }
 
     public nint getPluginFileFilters() =>
@@ -29,7 +29,7 @@ public sealed unsafe partial class PluginLoader
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f946((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1027((void*)_handle);
     }
 
     public nint loadPlugin(string file)
@@ -37,7 +37,7 @@ public sealed unsafe partial class PluginLoader
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(file);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f947((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1028((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 

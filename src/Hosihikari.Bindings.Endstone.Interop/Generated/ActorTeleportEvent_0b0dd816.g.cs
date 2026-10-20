@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class ActorTeleportEvent
+public sealed unsafe partial class ActorTeleportEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,35 +16,42 @@ public sealed unsafe partial class ActorTeleportEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f60();
+        get => (nint)NativeMethods.TablePtr->f66();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f61((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f67((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getFrom()
     {
-        return (nint)NativeMethods.TablePtr->f62((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f68((void*)_handle);
     }
 
     public nint getTo()
     {
-        return (nint)NativeMethods.TablePtr->f63((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f69((void*)_handle);
     }
 
     public void setFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location from)
     {
-        NativeMethods.TablePtr->f64((void*)_handle, (void*)from.Handle);
+        NativeMethods.TablePtr->f70((void*)_handle, (void*)from.Handle);
     }
 
     public void setTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location to)
     {
-        NativeMethods.TablePtr->f65((void*)_handle, (void*)to.Handle);
+        NativeMethods.TablePtr->f71((void*)_handle, (void*)to.Handle);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f65((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

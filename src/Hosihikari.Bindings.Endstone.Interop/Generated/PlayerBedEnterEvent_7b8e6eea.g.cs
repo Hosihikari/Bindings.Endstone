@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerBedEnterEvent
+public sealed unsafe partial class PlayerBedEnterEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerBedEnterEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f819();
+        get => (nint)NativeMethods.TablePtr->f875();
     }
 
     public static PlayerBedEnterEvent Create(nint player, nint bed) =>
@@ -21,12 +21,21 @@ public sealed unsafe partial class PlayerBedEnterEvent
 
     public nint getBed()
     {
-        return (nint)NativeMethods.TablePtr->f820((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f876((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f821((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f877((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f874((void*)_handle);
+            _handle = 0;
+        }
     }
 }

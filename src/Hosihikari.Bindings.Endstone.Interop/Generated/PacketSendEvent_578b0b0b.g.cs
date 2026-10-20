@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PacketSendEvent
+public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PacketSendEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f721();
+        get => (nint)NativeMethods.TablePtr->f776();
     }
 
     public static PacketSendEvent Create(nint player, nint packet_id, nint payload, nint address, nint sub_client_id) =>
@@ -21,34 +21,34 @@ public sealed unsafe partial class PacketSendEvent
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress getAddress()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->f722((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->f777((void*)_handle));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f723((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f778((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getPacketId()
     {
-        return NativeMethods.TablePtr->f724((void*)_handle);
+        return NativeMethods.TablePtr->f779((void*)_handle);
     }
 
     public string getPayload()
     {
-        var __hs_view = NativeMethods.TablePtr->f725((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f780((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f726((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f781((void*)_handle);
     }
 
     public int getSubClientId()
     {
-        return NativeMethods.TablePtr->f727((void*)_handle);
+        return NativeMethods.TablePtr->f782((void*)_handle);
     }
 
     public void setPayload(string payload)
@@ -56,7 +56,16 @@ public sealed unsafe partial class PacketSendEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(payload);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f728((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f783((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+        }
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f775((void*)_handle);
+            _handle = 0;
         }
     }
 }

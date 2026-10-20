@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerGameModeChangeEvent
+public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerGameModeChangeEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f852();
+        get => (nint)NativeMethods.TablePtr->f916();
     }
 
     public static PlayerGameModeChangeEvent Create(nint player, nint new_game_mode) =>
@@ -21,15 +21,22 @@ public sealed unsafe partial class PlayerGameModeChangeEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f853((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f917((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getNewGameMode()
     {
-        return NativeMethods.TablePtr->f854((void*)_handle);
+        return NativeMethods.TablePtr->f918((void*)_handle);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f915((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

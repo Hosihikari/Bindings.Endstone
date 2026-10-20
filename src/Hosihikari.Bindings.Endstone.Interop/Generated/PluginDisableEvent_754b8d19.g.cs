@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PluginDisableEvent
+public sealed unsafe partial class PluginDisableEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PluginDisableEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f938();
+        get => (nint)NativeMethods.TablePtr->f1018();
     }
 
     public static PluginDisableEvent Create(nint plugin) =>
@@ -21,12 +21,21 @@ public sealed unsafe partial class PluginDisableEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f939((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1019((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->f940((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1020((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f1017((void*)_handle);
+            _handle = 0;
+        }
     }
 }

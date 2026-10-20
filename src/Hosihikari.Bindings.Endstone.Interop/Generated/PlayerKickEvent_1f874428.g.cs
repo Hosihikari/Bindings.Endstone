@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerKickEvent
+public sealed unsafe partial class PlayerKickEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerKickEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f880();
+        get => (nint)NativeMethods.TablePtr->f951();
     }
 
     public static PlayerKickEvent Create(nint player, nint reason) =>
@@ -21,13 +21,13 @@ public sealed unsafe partial class PlayerKickEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f881((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f952((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getReason()
     {
-        var __hs_view = NativeMethods.TablePtr->f882((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f953((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -36,7 +36,16 @@ public sealed unsafe partial class PlayerKickEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(reason);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f883((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f954((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+        }
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f950((void*)_handle);
+            _handle = 0;
         }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class Score
+public sealed unsafe partial class Score : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,29 +16,36 @@ public sealed unsafe partial class Score
 
     public nint getObjective()
     {
-        return (nint)NativeMethods.TablePtr->f1059((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1141((void*)_handle);
     }
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f1060((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1142((void*)_handle);
     }
 
     public int getValue()
     {
-        return NativeMethods.TablePtr->f1061((void*)_handle);
+        return NativeMethods.TablePtr->f1143((void*)_handle);
     }
 
     public bool isScoreSet()
     {
-        return NativeMethods.TablePtr->f1062((void*)_handle);
+        return NativeMethods.TablePtr->f1144((void*)_handle);
     }
 
     public void setValue(int score)
     {
-        NativeMethods.TablePtr->f1063((void*)_handle, score);
+        NativeMethods.TablePtr->f1145((void*)_handle, score);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f1140((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

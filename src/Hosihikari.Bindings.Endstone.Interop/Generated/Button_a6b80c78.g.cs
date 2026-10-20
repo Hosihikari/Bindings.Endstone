@@ -13,7 +13,7 @@ public sealed unsafe partial class Button : global::System.IDisposable
 
     public static Button Create()
     {
-        var handle = NativeMethods.TablePtr->f189();
+        var handle = NativeMethods.TablePtr->f219();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -39,13 +39,13 @@ public sealed unsafe partial class Button : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f190((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f220((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public nint setOnClick(nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
     {
-        return (nint)NativeMethods.TablePtr->f191((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
+        return (nint)NativeMethods.TablePtr->f221((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
     }
 
     public nint setText(nint text) =>
@@ -55,7 +55,7 @@ public sealed unsafe partial class Button : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f188((void*)_handle);
+            NativeMethods.TablePtr->f218((void*)_handle);
             _handle = 0;
         }
     }

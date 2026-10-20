@@ -16,6 +16,6 @@ public sealed unsafe partial class LevelEvent
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f600((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f645((void*)_handle);
     }
 }

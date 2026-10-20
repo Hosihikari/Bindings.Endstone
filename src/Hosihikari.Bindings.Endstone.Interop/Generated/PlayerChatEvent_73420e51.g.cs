@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerChatEvent
+public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerChatEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f825();
+        get => (nint)NativeMethods.TablePtr->f883();
     }
 
     public static PlayerChatEvent Create(nint player, nint message, nint recipients, nint format) =>
@@ -21,19 +21,19 @@ public sealed unsafe partial class PlayerChatEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f826((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f884((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getFormat()
     {
-        var __hs_view = NativeMethods.TablePtr->f827((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f885((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f828((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f886((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -45,7 +45,7 @@ public sealed unsafe partial class PlayerChatEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(format);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f829((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f887((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -54,12 +54,21 @@ public sealed unsafe partial class PlayerChatEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f830((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f888((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void setPlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f831((void*)_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f889((void*)_handle, (void*)player.Handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f882((void*)_handle);
+            _handle = 0;
+        }
     }
 }

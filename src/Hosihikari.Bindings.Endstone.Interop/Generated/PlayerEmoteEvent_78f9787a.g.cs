@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerEmoteEvent
+public sealed unsafe partial class PlayerEmoteEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerEmoteEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f846();
+        get => (nint)NativeMethods.TablePtr->f909();
     }
 
     public static PlayerEmoteEvent Create(nint player, nint emote_id, bool muted) =>
@@ -21,26 +21,33 @@ public sealed unsafe partial class PlayerEmoteEvent
 
     public string getEmoteId()
     {
-        var __hs_view = NativeMethods.TablePtr->f847((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f910((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f848((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f911((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isMuted()
     {
-        return NativeMethods.TablePtr->f849((void*)_handle);
+        return NativeMethods.TablePtr->f912((void*)_handle);
     }
 
     public void setMuted(bool muted)
     {
-        NativeMethods.TablePtr->f850((void*)_handle, muted);
+        NativeMethods.TablePtr->f913((void*)_handle, muted);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f908((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

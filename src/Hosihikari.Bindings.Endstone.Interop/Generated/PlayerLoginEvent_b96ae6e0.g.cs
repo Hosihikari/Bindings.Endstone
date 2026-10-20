@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerLoginEvent
+public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerLoginEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f884();
+        get => (nint)NativeMethods.TablePtr->f956();
     }
 
     public static PlayerLoginEvent Create(nint player, nint message) =>
@@ -21,13 +21,13 @@ public sealed unsafe partial class PlayerLoginEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f885((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f957((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getKickMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f886((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f958((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -36,10 +36,17 @@ public sealed unsafe partial class PlayerLoginEvent
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f887((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f959((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f955((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

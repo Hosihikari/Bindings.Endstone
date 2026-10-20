@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class ListTag
+public sealed unsafe partial class ListTag : global::System.IDisposable
 {
     private nint _handle;
 
@@ -67,4 +67,13 @@ public sealed partial class ListTag
 
     public nint type() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f646((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

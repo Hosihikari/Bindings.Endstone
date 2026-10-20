@@ -6,6 +6,13 @@
 #include "endstone/endstone.hpp"
 #include "binding_table.h"
 
+#ifndef HS_NAME_INDEX
+#error "HS_NAME_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_VERSION_INDEX
+#error "HS_VERSION_INDEX must be defined by build.ps1"
+#endif
+
 namespace {
 void pluginAnchor() {}
 }  // namespace
@@ -79,9 +86,14 @@ public:
             auto *handle = getServer();
             out << "server.match=" << (handle == &server ? "true" : "false") << "\n";
 
-            const auto nameView = table->f1093(handle);
+            const auto *slots = reinterpret_cast<void *const *>(
+                reinterpret_cast<const char *>(table) + 2 * sizeof(std::uint32_t)
+            );
+            const auto nameFunction = reinterpret_cast<HosihikariStringView (*)(void *)>(slots[HS_NAME_INDEX]);
+            const auto nameView = nameFunction(handle);
             const std::string actualName(nameView.data, nameView.size);
-            const auto versionView = table->f1105(handle);
+            const auto versionFunction = reinterpret_cast<HosihikariStringView (*)(void *)>(slots[HS_VERSION_INDEX]);
+            const auto versionView = versionFunction(handle);
             const std::string actualVersion(versionView.data, versionView.size);
 
             out << "expected_name=" << server.getName() << "\n";

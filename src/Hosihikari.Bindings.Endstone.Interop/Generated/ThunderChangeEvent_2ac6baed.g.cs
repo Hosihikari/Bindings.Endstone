@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class ThunderChangeEvent
+public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class ThunderChangeEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1172();
+        get => (nint)NativeMethods.TablePtr->f1264();
     }
 
     public static ThunderChangeEvent Create(nint level, bool to) =>
@@ -21,15 +21,22 @@ public sealed unsafe partial class ThunderChangeEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1173((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1265((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool toThunderState()
     {
-        return NativeMethods.TablePtr->f1174((void*)_handle);
+        return NativeMethods.TablePtr->f1266((void*)_handle);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f1263((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

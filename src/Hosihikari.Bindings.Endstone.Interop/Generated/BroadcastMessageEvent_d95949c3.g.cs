@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class BroadcastMessageEvent
+public sealed unsafe partial class BroadcastMessageEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,25 +16,34 @@ public sealed unsafe partial class BroadcastMessageEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f184();
+        get => (nint)NativeMethods.TablePtr->f214();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f185((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f215((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getMessage()
     {
-        return (nint)NativeMethods.TablePtr->f186((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f216((void*)_handle);
     }
 
     public nint getRecipients()
     {
-        return (nint)NativeMethods.TablePtr->f187((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f217((void*)_handle);
     }
 
     public void setMessage(nint message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f213((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

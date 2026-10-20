@@ -11,20 +11,26 @@ public sealed unsafe partial class ItemFactory
 
     public nint Handle => _handle;
 
-    public nint asMetaFor(nint meta, nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::ItemMeta>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? asMetaFor(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta, global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
+    {
+        var __hs_handle = NativeMethods.TablePtr->f577((void*)_handle, (void*)meta.Handle, (void*)type.Handle);
+        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle);
+    }
 
     public bool equals(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta1, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta2)
     {
-        return NativeMethods.TablePtr->f539((void*)_handle, (void*)meta1.Handle, (void*)meta2.Handle);
+        return NativeMethods.TablePtr->f578((void*)_handle, (void*)meta1.Handle, (void*)meta2.Handle);
     }
 
-    public nint getItemMeta(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::ItemMeta>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? getItemMeta(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
+    {
+        var __hs_handle = NativeMethods.TablePtr->f579((void*)_handle, (void*)type.Handle);
+        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle);
+    }
 
     public bool isApplicable(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta, global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        return NativeMethods.TablePtr->f540((void*)_handle, (void*)meta.Handle, (void*)type.Handle);
+        return NativeMethods.TablePtr->f580((void*)_handle, (void*)meta.Handle, (void*)type.Handle);
     }
 
     public void Destroy() =>

@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class BlockExplodeEvent
+public sealed unsafe partial class BlockExplodeEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,25 +16,32 @@ public sealed unsafe partial class BlockExplodeEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f126();
+        get => (nint)NativeMethods.TablePtr->f145();
     }
 
     public nint getBlockList_0b36dd73()
     {
-        return (nint)NativeMethods.TablePtr->f127((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f146((void*)_handle);
     }
 
     public nint getBlockList_c66ca50a()
     {
-        return (nint)NativeMethods.TablePtr->f128((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f147((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f129((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f148((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f144((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

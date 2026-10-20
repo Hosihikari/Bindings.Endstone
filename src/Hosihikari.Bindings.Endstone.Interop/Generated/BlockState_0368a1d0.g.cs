@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class BlockState
+public sealed unsafe partial class BlockState : global::System.IDisposable
 {
     private nint _handle;
 
@@ -11,44 +11,52 @@ public sealed unsafe partial class BlockState
 
     public nint Handle => _handle;
 
-    public nint getBlock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getBlock()
+    {
+        var __hs_handle = NativeMethods.TablePtr->f173((void*)_handle);
+        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle);
+    }
 
-    public nint getData() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::BlockData>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? getData()
+    {
+        var __hs_handle = NativeMethods.TablePtr->f174((void*)_handle);
+        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle);
+    }
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f149((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f175((void*)_handle);
     }
 
-    public nint getLocation() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'endstone::Location' has no accessible destructor.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location getLocation()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->f176((void*)_handle));
+    }
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f150((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f177((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getX()
     {
-        return NativeMethods.TablePtr->f151((void*)_handle);
+        return NativeMethods.TablePtr->f178((void*)_handle);
     }
 
     public int getY()
     {
-        return NativeMethods.TablePtr->f152((void*)_handle);
+        return NativeMethods.TablePtr->f179((void*)_handle);
     }
 
     public int getZ()
     {
-        return NativeMethods.TablePtr->f153((void*)_handle);
+        return NativeMethods.TablePtr->f180((void*)_handle);
     }
 
     public void setData(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData data)
     {
-        NativeMethods.TablePtr->f154((void*)_handle, (void*)data.Handle);
+        NativeMethods.TablePtr->f181((void*)_handle, (void*)data.Handle);
     }
 
     public void setType(string type)
@@ -56,25 +64,32 @@ public sealed unsafe partial class BlockState
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f155((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f182((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public bool update()
     {
-        return NativeMethods.TablePtr->f156((void*)_handle);
+        return NativeMethods.TablePtr->f183((void*)_handle);
     }
 
     public bool update(bool force)
     {
-        return NativeMethods.TablePtr->f157((void*)_handle, force);
+        return NativeMethods.TablePtr->f184((void*)_handle, force);
     }
 
     public bool update(bool force, bool apply_physics)
     {
-        return NativeMethods.TablePtr->f158((void*)_handle, force, apply_physics);
+        return NativeMethods.TablePtr->f185((void*)_handle, force, apply_physics);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f172((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

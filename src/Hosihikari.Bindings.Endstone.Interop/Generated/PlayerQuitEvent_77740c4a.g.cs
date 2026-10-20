@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerQuitEvent
+public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerQuitEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f903();
+        get => (nint)NativeMethods.TablePtr->f979();
     }
 
     public static PlayerQuitEvent Create(nint player, nint quit_message) =>
@@ -21,7 +21,7 @@ public sealed unsafe partial class PlayerQuitEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f904((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f980((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -30,4 +30,13 @@ public sealed unsafe partial class PlayerQuitEvent
 
     public void setQuitMessage(nint message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>' is not a known bindable declaration.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f978((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

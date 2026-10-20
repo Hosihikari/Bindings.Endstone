@@ -16,7 +16,7 @@ public sealed unsafe partial class MapCursor : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(caption);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f648(x, y, direction, type, visible, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f699(x, y, direction, type, visible, __hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,33 +28,33 @@ public sealed unsafe partial class MapCursor : global::System.IDisposable
 
     public string getCaption()
     {
-        var __hs_view = NativeMethods.TablePtr->f649((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f700((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public sbyte getDirection()
     {
-        return NativeMethods.TablePtr->f650((void*)_handle);
+        return NativeMethods.TablePtr->f701((void*)_handle);
     }
 
     public int getType()
     {
-        return NativeMethods.TablePtr->f651((void*)_handle);
+        return NativeMethods.TablePtr->f702((void*)_handle);
     }
 
     public sbyte getX()
     {
-        return NativeMethods.TablePtr->f652((void*)_handle);
+        return NativeMethods.TablePtr->f703((void*)_handle);
     }
 
     public sbyte getY()
     {
-        return NativeMethods.TablePtr->f653((void*)_handle);
+        return NativeMethods.TablePtr->f704((void*)_handle);
     }
 
     public bool isVisible()
     {
-        return NativeMethods.TablePtr->f654((void*)_handle);
+        return NativeMethods.TablePtr->f705((void*)_handle);
     }
 
     public void setCaption(string caption)
@@ -62,40 +62,40 @@ public sealed unsafe partial class MapCursor : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(caption);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f655((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f706((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void setDirection(sbyte direction)
     {
-        NativeMethods.TablePtr->f656((void*)_handle, direction);
+        NativeMethods.TablePtr->f707((void*)_handle, direction);
     }
 
     public void setType(int type)
     {
-        NativeMethods.TablePtr->f657((void*)_handle, type);
+        NativeMethods.TablePtr->f708((void*)_handle, type);
     }
 
     public void setVisible(bool visible)
     {
-        NativeMethods.TablePtr->f658((void*)_handle, visible);
+        NativeMethods.TablePtr->f709((void*)_handle, visible);
     }
 
     public void setX(sbyte x)
     {
-        NativeMethods.TablePtr->f659((void*)_handle, x);
+        NativeMethods.TablePtr->f710((void*)_handle, x);
     }
 
     public void setY(sbyte y)
     {
-        NativeMethods.TablePtr->f660((void*)_handle, y);
+        NativeMethods.TablePtr->f711((void*)_handle, y);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f647((void*)_handle);
+            NativeMethods.TablePtr->f698((void*)_handle);
             _handle = 0;
         }
     }

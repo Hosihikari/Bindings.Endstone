@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerItemHeldEvent
+public sealed unsafe partial class PlayerItemHeldEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerItemHeldEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f872();
+        get => (nint)NativeMethods.TablePtr->f940();
     }
 
     public static PlayerItemHeldEvent Create(nint player, nint previous, nint current) =>
@@ -21,17 +21,26 @@ public sealed unsafe partial class PlayerItemHeldEvent
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f873((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f941((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getNewSlot()
     {
-        return NativeMethods.TablePtr->f874((void*)_handle);
+        return NativeMethods.TablePtr->f942((void*)_handle);
     }
 
     public int getPreviousSlot()
     {
-        return NativeMethods.TablePtr->f875((void*)_handle);
+        return NativeMethods.TablePtr->f943((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f939((void*)_handle);
+            _handle = 0;
+        }
     }
 }

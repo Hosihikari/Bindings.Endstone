@@ -13,7 +13,7 @@ public sealed unsafe partial class Divider : global::System.IDisposable
 
     public static Divider Create()
     {
-        var handle = NativeMethods.TablePtr->f341();
+        var handle = NativeMethods.TablePtr->f379();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -26,7 +26,7 @@ public sealed unsafe partial class Divider : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f340((void*)_handle);
+            NativeMethods.TablePtr->f378((void*)_handle);
             _handle = 0;
         }
     }

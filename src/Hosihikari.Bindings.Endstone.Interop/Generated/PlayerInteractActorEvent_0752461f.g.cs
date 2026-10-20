@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class PlayerInteractActorEvent
+public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerInteractActorEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f855();
+        get => (nint)NativeMethods.TablePtr->f920();
     }
 
     public static PlayerInteractActorEvent Create(nint player, nint actor) =>
@@ -21,15 +21,22 @@ public sealed unsafe partial class PlayerInteractActorEvent
 
     public nint getActor()
     {
-        return (nint)NativeMethods.TablePtr->f856((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f921((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f857((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f922((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f919((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

@@ -13,22 +13,22 @@ public sealed unsafe partial class Chunk
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f210((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f240((void*)_handle);
     }
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f211((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f241((void*)_handle);
     }
 
     public int getX()
     {
-        return NativeMethods.TablePtr->f212((void*)_handle);
+        return NativeMethods.TablePtr->f242((void*)_handle);
     }
 
     public int getZ()
     {
-        return NativeMethods.TablePtr->f213((void*)_handle);
+        return NativeMethods.TablePtr->f243((void*)_handle);
     }
 
     public void Destroy() =>

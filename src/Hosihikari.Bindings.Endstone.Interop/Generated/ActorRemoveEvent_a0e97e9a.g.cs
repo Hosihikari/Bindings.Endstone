@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class ActorRemoveEvent
+public sealed unsafe partial class ActorRemoveEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -13,12 +13,21 @@ public sealed unsafe partial class ActorRemoveEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f56();
+        get => (nint)NativeMethods.TablePtr->f60();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f57((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f61((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f59((void*)_handle);
+            _handle = 0;
+        }
     }
 }

@@ -19,7 +19,7 @@ public sealed unsafe partial class ServiceManager
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
     {
-        NativeMethods.TablePtr->f1143((void*)_handle, (void*)provider.Handle);
+        NativeMethods.TablePtr->f1234((void*)_handle, (void*)provider.Handle);
     }
 
     public void unregister(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
@@ -27,13 +27,13 @@ public sealed unsafe partial class ServiceManager
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f1144((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)provider.Handle);
+            NativeMethods.TablePtr->f1235((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)provider.Handle);
         }
     }
 
     public void unregisterAll(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1145((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1236((void*)_handle, (void*)plugin.Handle);
     }
 
     public void Destroy() =>

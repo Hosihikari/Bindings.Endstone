@@ -15,7 +15,7 @@ public sealed unsafe partial class Server
     {
         get
         {
-            var view = NativeMethods.TablePtr->f1070();
+            var view = NativeMethods.TablePtr->f1156();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -24,7 +24,7 @@ public sealed unsafe partial class Server
     {
         get
         {
-            var view = NativeMethods.TablePtr->f1071();
+            var view = NativeMethods.TablePtr->f1157();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -37,7 +37,7 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f1072((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1158((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -46,30 +46,44 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(permission);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f1073((void*)_handle, (void*)message, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f1159((void*)_handle, (void*)message, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void broadcastMessage(nint message)
     {
-        NativeMethods.TablePtr->f1074((void*)_handle, (void*)message);
+        NativeMethods.TablePtr->f1160((void*)_handle, (void*)message);
     }
 
-    public nint createBlockData(nint type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::BlockData>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? createBlockData(string type)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            var __hs_handle = NativeMethods.TablePtr->f1161((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle);
+        }
+    }
 
     public nint createBlockData(nint type, nint block_states) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::BlockData>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<std::basic_string<char>, std::variant<bool, std::basic_string<char>, int>>' is not a known bindable declaration.");
 
-    public nint createBossBar(nint title, nint color, nint style) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::BossBar>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BossBar? createBossBar(string title, int color, int style)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(title);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            var __hs_handle = NativeMethods.TablePtr->f1162((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, color, style);
+            return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.BossBar((nint)__hs_handle);
+        }
+    }
 
     public nint createBossBar(nint title, nint color, nint style, nint flags) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::BossBar>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::vector<endstone::BarFlag>' is not a known bindable declaration.");
 
     public nint createMap(global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension dimension)
     {
-        return (nint)NativeMethods.TablePtr->f1075((void*)_handle, (void*)dimension.Handle);
+        return (nint)NativeMethods.TablePtr->f1163((void*)_handle, (void*)dimension.Handle);
     }
 
     public nint createScoreboard() =>
@@ -80,100 +94,100 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(command_line);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return NativeMethods.TablePtr->f1076((void*)_handle, (void*)sender.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f1164((void*)_handle, (void*)sender.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public float getAverageMillisecondsPerTick()
     {
-        return NativeMethods.TablePtr->f1077((void*)_handle);
+        return NativeMethods.TablePtr->f1165((void*)_handle);
     }
 
     public float getAverageTickUsage()
     {
-        return NativeMethods.TablePtr->f1078((void*)_handle);
+        return NativeMethods.TablePtr->f1166((void*)_handle);
     }
 
     public float getAverageTicksPerSecond()
     {
-        return NativeMethods.TablePtr->f1079((void*)_handle);
+        return NativeMethods.TablePtr->f1167((void*)_handle);
     }
 
     public nint getBanList()
     {
-        return (nint)NativeMethods.TablePtr->f1080((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1168((void*)_handle);
     }
 
     public nint getCommandSender()
     {
-        return (nint)NativeMethods.TablePtr->f1081((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1169((void*)_handle);
     }
 
     public float getCurrentMillisecondsPerTick()
     {
-        return NativeMethods.TablePtr->f1082((void*)_handle);
+        return NativeMethods.TablePtr->f1170((void*)_handle);
     }
 
     public float getCurrentTickUsage()
     {
-        return NativeMethods.TablePtr->f1083((void*)_handle);
+        return NativeMethods.TablePtr->f1171((void*)_handle);
     }
 
     public float getCurrentTicksPerSecond()
     {
-        return NativeMethods.TablePtr->f1084((void*)_handle);
+        return NativeMethods.TablePtr->f1172((void*)_handle);
     }
 
     public nint getIpBanList()
     {
-        return (nint)NativeMethods.TablePtr->f1085((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1173((void*)_handle);
     }
 
     public nint getItemFactory()
     {
-        return (nint)NativeMethods.TablePtr->f1086((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1174((void*)_handle);
     }
 
     public nint getLanguage()
     {
-        return (nint)NativeMethods.TablePtr->f1087((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1175((void*)_handle);
     }
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f1088((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1176((void*)_handle);
     }
 
     public nint getLogger()
     {
-        return (nint)NativeMethods.TablePtr->f1089((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1177((void*)_handle);
     }
 
     public nint getMap(long id)
     {
-        return (nint)NativeMethods.TablePtr->f1090((void*)_handle, id);
+        return (nint)NativeMethods.TablePtr->f1178((void*)_handle, id);
     }
 
     public int getMaxPlayers()
     {
-        return NativeMethods.TablePtr->f1091((void*)_handle);
+        return NativeMethods.TablePtr->f1179((void*)_handle);
     }
 
     public string getMinecraftVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f1092((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1180((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1093((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1181((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool getOnlineMode()
     {
-        return NativeMethods.TablePtr->f1094((void*)_handle);
+        return NativeMethods.TablePtr->f1182((void*)_handle);
     }
 
     public nint getOnlinePlayers() =>
@@ -181,7 +195,7 @@ public sealed unsafe partial class Server
 
     public nint getPlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID id)
     {
-        return (nint)NativeMethods.TablePtr->f1095((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1183((void*)_handle, (void*)id.Handle);
     }
 
     public nint getPlayer(string name)
@@ -189,7 +203,7 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f1096((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1184((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -198,43 +212,43 @@ public sealed unsafe partial class Server
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f1097((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1185((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public nint getPluginManager()
     {
-        return (nint)NativeMethods.TablePtr->f1098((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1186((void*)_handle);
     }
 
     public int getPort()
     {
-        return NativeMethods.TablePtr->f1099((void*)_handle);
+        return NativeMethods.TablePtr->f1187((void*)_handle);
     }
 
     public int getPortV6()
     {
-        return NativeMethods.TablePtr->f1100((void*)_handle);
+        return NativeMethods.TablePtr->f1188((void*)_handle);
     }
 
     public int getProtocolVersion()
     {
-        return NativeMethods.TablePtr->f1101((void*)_handle);
+        return NativeMethods.TablePtr->f1189((void*)_handle);
     }
 
     public nint getScheduler()
     {
-        return (nint)NativeMethods.TablePtr->f1102((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1190((void*)_handle);
     }
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f1103((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1191((void*)_handle);
     }
 
     public nint getServiceManager()
     {
-        return (nint)NativeMethods.TablePtr->f1104((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1192((void*)_handle);
     }
 
     public nint getStartTime() =>
@@ -242,33 +256,33 @@ public sealed unsafe partial class Server
 
     public string getVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f1105((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1193((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isPrimaryThread()
     {
-        return NativeMethods.TablePtr->f1106((void*)_handle);
+        return NativeMethods.TablePtr->f1194((void*)_handle);
     }
 
     public void reload()
     {
-        NativeMethods.TablePtr->f1107((void*)_handle);
+        NativeMethods.TablePtr->f1195((void*)_handle);
     }
 
     public void reloadData()
     {
-        NativeMethods.TablePtr->f1108((void*)_handle);
+        NativeMethods.TablePtr->f1196((void*)_handle);
     }
 
     public void setMaxPlayers(int max_players)
     {
-        NativeMethods.TablePtr->f1109((void*)_handle, max_players);
+        NativeMethods.TablePtr->f1197((void*)_handle, max_players);
     }
 
     public void shutdown()
     {
-        NativeMethods.TablePtr->f1110((void*)_handle);
+        NativeMethods.TablePtr->f1198((void*)_handle);
     }
 
     public void Destroy() =>

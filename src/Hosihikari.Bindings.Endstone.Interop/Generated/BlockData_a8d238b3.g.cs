@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class BlockData
+public sealed unsafe partial class BlockData : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,15 +16,22 @@ public sealed unsafe partial class BlockData
 
     public uint getRuntimeId()
     {
-        return NativeMethods.TablePtr->f123((void*)_handle);
+        return NativeMethods.TablePtr->f141((void*)_handle);
     }
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f124((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f142((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f140((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

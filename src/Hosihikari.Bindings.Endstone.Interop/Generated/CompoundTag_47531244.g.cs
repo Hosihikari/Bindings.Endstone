@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class CompoundTag
+public sealed unsafe partial class CompoundTag : global::System.IDisposable
 {
     private nint _handle;
 
@@ -73,4 +73,13 @@ public sealed partial class CompoundTag
 
     public void swap(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f356((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

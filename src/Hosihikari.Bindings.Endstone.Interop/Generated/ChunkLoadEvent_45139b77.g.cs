@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class ChunkLoadEvent
+public sealed unsafe partial class ChunkLoadEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,15 +16,22 @@ public sealed unsafe partial class ChunkLoadEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f215();
+        get => (nint)NativeMethods.TablePtr->f246();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f216((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f247((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f245((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

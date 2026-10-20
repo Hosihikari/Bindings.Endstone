@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class ActorExplodeEvent
+public sealed unsafe partial class ActorExplodeEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -16,30 +16,37 @@ public sealed unsafe partial class ActorExplodeEvent
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f46();
+        get => (nint)NativeMethods.TablePtr->f48();
     }
 
     public nint getBlockList_8f4da3d9()
     {
-        return (nint)NativeMethods.TablePtr->f47((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f49((void*)_handle);
     }
 
     public nint getBlockList_4ec91f56()
     {
-        return (nint)NativeMethods.TablePtr->f48((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f50((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f49((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f51((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getLocation()
     {
-        return (nint)NativeMethods.TablePtr->f50((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f52((void*)_handle);
     }
 
-    public void Destroy() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f47((void*)_handle);
+            _handle = 0;
+        }
+    }
 }

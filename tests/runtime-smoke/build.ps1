@@ -45,6 +45,16 @@ $Msvc = Get-ChildItem (Join-Path $VsRoot "VC\Tools\MSVC") | Sort-Object Name | S
 $SdkRoot = "C:\Program Files (x86)\Windows Kits\10\Include"
 $Sdk = Get-ChildItem $SdkRoot | Sort-Object Name | Select-Object -Last 1
 
+$ServerFile = Get-ChildItem (Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated") -Filter "Server_*.g.cs" |
+    Select-Object -First 1
+if (-not $ServerFile) { throw "Generated Server interop was not found." }
+$ServerText = Get-Content $ServerFile.FullName -Raw
+$NameMatch = [regex]::Match($ServerText, 'getName\(\)[\s\S]*?TablePtr->f(\d+)')
+$VersionMatch = [regex]::Match($ServerText, 'getVersion\(\)[\s\S]*?TablePtr->f(\d+)')
+if (-not $NameMatch.Success -or -not $VersionMatch.Success) {
+    throw "Could not find Server::getName/getVersion table indices."
+}
+
 $Args = @(
     "/std:c++20",
     "/EHsc",
@@ -56,6 +66,8 @@ $Args = @(
     "/I", (Join-Path $IncludeRoot "endstone"),
     "/I", (Join-Path $RepoRoot "native\BindingShim\generated\win-x64-server\endstone"),
     "/I", $GeneratedRoot,
+    "/DHS_NAME_INDEX=$($NameMatch.Groups[1].Value)",
+    "/DHS_VERSION_INDEX=$($VersionMatch.Groups[1].Value)",
     "/I", (Split-Path (Split-Path $Expected.FullName -Parent) -Parent),
     "/I", (Split-Path (Split-Path $Nlohmann.FullName -Parent) -Parent),
     "/imsvc", (Join-Path $Msvc.FullName "include"),

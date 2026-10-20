@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class BlockCommandSender
+public sealed unsafe partial class BlockCommandSender
 {
     private nint _handle;
 
@@ -11,6 +11,9 @@ public sealed partial class BlockCommandSender
 
     public nint Handle => _handle;
 
-    public nint getBlock() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getBlock()
+    {
+        var __hs_handle = NativeMethods.TablePtr->f133((void*)_handle);
+        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle);
+    }
 }

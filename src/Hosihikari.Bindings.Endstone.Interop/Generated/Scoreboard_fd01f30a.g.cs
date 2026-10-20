@@ -11,28 +11,45 @@ public sealed unsafe partial class Scoreboard
 
     public nint Handle => _handle;
 
-    public nint addObjective(nint name, nint criteria) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::Objective>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? addObjective(string name, int criteria)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            var __hs_handle = NativeMethods.TablePtr->f1146((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
+            return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle);
+        }
+    }
 
     public nint addObjective(nint name, nint criteria, nint display_name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::Objective>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods accept at most one string parameter.");
 
     public nint addObjective(nint name, nint criteria, nint display_name, nint render_type) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::Objective>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods accept at most one string parameter.");
 
     public void clearSlot(int slot)
     {
-        NativeMethods.TablePtr->f1064((void*)_handle, slot);
+        NativeMethods.TablePtr->f1147((void*)_handle, slot);
     }
 
     public nint getEntries() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>>' is not a known bindable declaration.");
 
-    public nint getObjective_4fb62c4b(nint slot) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::Objective>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(int slot)
+    {
+        var __hs_handle = NativeMethods.TablePtr->f1148((void*)_handle, slot);
+        return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle);
+    }
 
-    public nint getObjective_4f807a3e(nint name) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unique_ptr<endstone::Objective>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(string name)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            var __hs_handle = NativeMethods.TablePtr->f1149((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle);
+        }
+    }
 
     public nint getObjectives() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::vector<std::unique_ptr<endstone::Objective>>' is not a known bindable declaration.");
