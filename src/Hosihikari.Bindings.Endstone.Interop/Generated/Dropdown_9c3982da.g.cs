@@ -13,7 +13,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public static Dropdown Create()
     {
-        var handle = NativeMethods.TablePtr->f387();
+        var handle = NativeMethods.TablePtr->f390();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -30,14 +30,14 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(option);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f388((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f391((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public int? getDefaultIndex()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f389((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f392((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
@@ -46,7 +46,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public string[] getOptions()
     {
-        var __hs_view = NativeMethods.TablePtr->f390((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f393((void*)_handle);
         var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -56,8 +56,10 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         return __hs_result;
     }
 
-    public nint setDefaultIndex(nint default_index) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<int>' is not a known bindable declaration.");
+    public nint setDefaultIndex(int? default_index)
+    {
+        return (nint)NativeMethods.TablePtr->f394((void*)_handle, default_index ?? default(int), default_index.HasValue);
+    }
 
     public nint setLabel(nint label) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
@@ -69,7 +71,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f386((void*)_handle);
+            NativeMethods.TablePtr->f389((void*)_handle);
             _handle = 0;
         }
     }

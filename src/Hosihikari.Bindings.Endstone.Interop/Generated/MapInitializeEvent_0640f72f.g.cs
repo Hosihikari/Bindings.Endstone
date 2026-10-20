@@ -16,25 +16,25 @@ public sealed unsafe partial class MapInitializeEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f724();
+        get => (nint)NativeMethods.TablePtr->f731();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f725((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f732((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getMap()
     {
-        return (nint)NativeMethods.TablePtr->f726((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f733((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f723((void*)_handle);
+            NativeMethods.TablePtr->f730((void*)_handle);
             _handle = 0;
         }
     }

@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f912();
+        get => (nint)NativeMethods.TablePtr->f922();
     }
 
     public static PlayerDeathEvent Create(nint player, nint damage_source, nint death_message) =>
@@ -24,23 +24,23 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f913((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f923((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f914((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f924((void*)_handle);
     }
 
     public void setDeathMessage(nint death_message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is abstract or not copy-constructible.");
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f911((void*)_handle);
+            NativeMethods.TablePtr->f921((void*)_handle);
             _handle = 0;
         }
     }

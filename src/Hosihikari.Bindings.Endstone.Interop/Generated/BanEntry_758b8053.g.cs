@@ -42,7 +42,7 @@ public sealed unsafe partial class BanEntry : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::chrono::time_point<std::chrono::system_clock>' is not a known bindable declaration.");
 
     public void setExpiration(nint expiration) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::chrono::time_point<std::chrono::system_clock>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::chrono::time_point<std::chrono::system_clock>' is abstract or not copy-constructible.");
 
     public void setReason(string reason)
     {

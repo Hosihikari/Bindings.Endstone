@@ -19,7 +19,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f690((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f697((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -28,7 +28,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f691((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f698((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -37,13 +37,13 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f692((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f699((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f693((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f700((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -52,13 +52,13 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f694((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f701((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public bool isEnabledFor(byte level)
     {
-        return NativeMethods.TablePtr->f695((void*)_handle, level);
+        return NativeMethods.TablePtr->f702((void*)_handle, level);
     }
 
     public void log(byte level, string message)
@@ -66,13 +66,13 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f696((void*)_handle, level, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f703((void*)_handle, level, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void setLevel(byte level)
     {
-        NativeMethods.TablePtr->f697((void*)_handle, level);
+        NativeMethods.TablePtr->f704((void*)_handle, level);
     }
 
     public void trace(string message)
@@ -80,7 +80,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f698((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f705((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -89,7 +89,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f699((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f706((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 

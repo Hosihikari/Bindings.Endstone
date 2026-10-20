@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1002();
+        get => (nint)NativeMethods.TablePtr->f1018();
     }
 
     public static PlayerQuitEvent Create(nint player, nint quit_message) =>
@@ -21,7 +21,7 @@ public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1003((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1019((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -29,13 +29,13 @@ public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
     public void setQuitMessage(nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is abstract or not copy-constructible.");
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1001((void*)_handle);
+            NativeMethods.TablePtr->f1017((void*)_handle);
             _handle = 0;
         }
     }

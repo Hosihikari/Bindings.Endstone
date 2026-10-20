@@ -50,12 +50,26 @@ public sealed unsafe partial class BookMeta
         return NativeMethods.TablePtr->f197((void*)_handle);
     }
 
-    public void setAuthor(nint author) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::basic_string<char>>' is not a known bindable declaration.");
+    public void setAuthor(string? author)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(author ?? string.Empty);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            NativeMethods.TablePtr->f198((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, author is not null);
+        }
+    }
 
-    public void setGeneration(nint generation) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::BookMeta::Generation>' is not a known bindable declaration.");
+    public void setGeneration(int? generation)
+    {
+        NativeMethods.TablePtr->f199((void*)_handle, generation ?? default(int), generation.HasValue);
+    }
 
-    public void setTitle(nint title) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::basic_string<char>>' is not a known bindable declaration.");
+    public void setTitle(string? title)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(title ?? string.Empty);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            NativeMethods.TablePtr->f200((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, title is not null);
+        }
+    }
 }

@@ -13,7 +13,7 @@ public sealed unsafe partial class ScriptMessageEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1181();
+        get => (nint)NativeMethods.TablePtr->f1197();
     }
 
     public static ScriptMessageEvent Create(nint message_id, nint message, nint sender) =>
@@ -21,32 +21,32 @@ public sealed unsafe partial class ScriptMessageEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1182((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1198((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f1183((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1199((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessageId()
     {
-        var __hs_view = NativeMethods.TablePtr->f1184((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1200((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getSender()
     {
-        return (nint)NativeMethods.TablePtr->f1185((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1201((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1180((void*)_handle);
+            NativeMethods.TablePtr->f1196((void*)_handle);
             _handle = 0;
         }
     }

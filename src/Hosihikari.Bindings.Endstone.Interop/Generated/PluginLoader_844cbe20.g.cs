@@ -16,17 +16,17 @@ public sealed unsafe partial class PluginLoader
 
     public void disablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1054((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1070((void*)_handle, (void*)plugin.Handle);
     }
 
     public void enablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1055((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1071((void*)_handle, (void*)plugin.Handle);
     }
 
     public string[] getPluginFileFilters()
     {
-        var __hs_view = NativeMethods.TablePtr->f1056((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1072((void*)_handle);
         var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -38,7 +38,7 @@ public sealed unsafe partial class PluginLoader
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f1057((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1073((void*)_handle);
     }
 
     public nint loadPlugin(string file)
@@ -46,7 +46,7 @@ public sealed unsafe partial class PluginLoader
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(file);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f1058((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1074((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 

@@ -14,70 +14,82 @@ public sealed unsafe partial class PlayerInventory
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getBoots()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f949((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f959((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getChestplate()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f950((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f960((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public int getHeldItemSlot()
     {
-        return NativeMethods.TablePtr->f951((void*)_handle);
+        return NativeMethods.TablePtr->f961((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getHelmet()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f952((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f962((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getItemInMainHand()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f953((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f963((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getItemInOffHand()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f954((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f964((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getLeggings()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f955((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f965((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
-    public void setBoots(nint boots) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::ItemStack>' is not a known bindable declaration.");
+    public void setBoots(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? boots)
+    {
+        NativeMethods.TablePtr->f966((void*)_handle, (void*)(boots?.Handle ?? 0), boots is not null);
+    }
 
-    public void setChestplate(nint chestplate) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::ItemStack>' is not a known bindable declaration.");
+    public void setChestplate(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? chestplate)
+    {
+        NativeMethods.TablePtr->f967((void*)_handle, (void*)(chestplate?.Handle ?? 0), chestplate is not null);
+    }
 
     public void setHeldItemSlot(int slot)
     {
-        NativeMethods.TablePtr->f956((void*)_handle, slot);
+        NativeMethods.TablePtr->f968((void*)_handle, slot);
     }
 
-    public void setHelmet(nint helmet) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::ItemStack>' is not a known bindable declaration.");
+    public void setHelmet(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? helmet)
+    {
+        NativeMethods.TablePtr->f969((void*)_handle, (void*)(helmet?.Handle ?? 0), helmet is not null);
+    }
 
-    public void setItemInMainHand(nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::ItemStack>' is not a known bindable declaration.");
+    public void setItemInMainHand(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? item)
+    {
+        NativeMethods.TablePtr->f970((void*)_handle, (void*)(item?.Handle ?? 0), item is not null);
+    }
 
-    public void setItemInOffHand(nint item) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::ItemStack>' is not a known bindable declaration.");
+    public void setItemInOffHand(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? item)
+    {
+        NativeMethods.TablePtr->f971((void*)_handle, (void*)(item?.Handle ?? 0), item is not null);
+    }
 
-    public void setLeggings(nint leggings) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::ItemStack>' is not a known bindable declaration.");
+    public void setLeggings(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? leggings)
+    {
+        NativeMethods.TablePtr->f972((void*)_handle, (void*)(leggings?.Handle ?? 0), leggings is not null);
+    }
 }

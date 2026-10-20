@@ -12,25 +12,25 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
     public nint Handle => _handle;
 
     public static PlayerBanEntry Create(nint name, nint uuid, nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::UUID>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one string parameter.");
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f885((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f895((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? getUniqueId()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f886((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f896((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)__hs_handle) : null;
     }
 
     public string? getXuid()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f887((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f897((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
@@ -38,7 +38,7 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f884((void*)_handle);
+            NativeMethods.TablePtr->f894((void*)_handle);
             _handle = 0;
         }
     }

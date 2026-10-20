@@ -16,7 +16,7 @@ public sealed unsafe partial class WeatherEvent
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f1363((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1381((void*)_handle);
     }
 
     public void Destroy() =>

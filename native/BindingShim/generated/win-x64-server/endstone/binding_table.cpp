@@ -75,9 +75,9 @@ struct hs_cb_closure_hs_method_e3736391_cb2
     }
 };
 
-static void* hs_method_e3736391(void* hs_self, void* text, void* icon, void* on_click_invoke, void* on_click_userData, void* on_click_release) try
+static void* hs_method_e3736391(void* hs_self, void* text, const char* icon_data, std::size_t icon_size, void* on_click_invoke, void* on_click_userData, void* on_click_release, bool icon_hasValue) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ActionForm*>(hs_self)->addButton(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text), *static_cast<const std::optional<std::basic_string<char>>*>(icon), std::function<void (endstone::Player *)>(hs_cb_closure_hs_method_e3736391_cb2{std::make_shared<hs_cb_state_hs_method_e3736391_cb2>(reinterpret_cast<hs_cb_invoke_hs_method_e3736391_cb2>(on_click_invoke), on_click_userData, reinterpret_cast<hs_cb_release_hs_method_e3736391_cb2>(on_click_release))}))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ActionForm*>(hs_self)->addButton(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text), (icon_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(icon_data, icon_size)} : std::nullopt), std::function<void (endstone::Player *)>(hs_cb_closure_hs_method_e3736391_cb2{std::make_shared<hs_cb_state_hs_method_e3736391_cb2>(reinterpret_cast<hs_cb_invoke_hs_method_e3736391_cb2>(on_click_invoke), on_click_userData, reinterpret_cast<hs_cb_release_hs_method_e3736391_cb2>(on_click_release))}))));
 }
 catch (std::exception const& hs_error)
 {
@@ -3113,6 +3113,51 @@ catch (...)
     return false;
 }
 
+static void hs_method_39e461d1(void* hs_self, const char* author_data, std::size_t author_size, bool author_hasValue) try
+{
+    static_cast<endstone::BookMeta*>(hs_self)->setAuthor((author_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(author_data, author_size)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_70cefe27(void* hs_self, std::int32_t generation, bool generation_hasValue) try
+{
+    static_cast<endstone::BookMeta*>(hs_self)->setGeneration((generation_hasValue ? std::optional<endstone::BookMeta::Generation>{static_cast<endstone::BookMeta::Generation>(generation)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_8567bdf4(void* hs_self, const char* title_data, std::size_t title_size, bool title_hasValue) try
+{
+    static_cast<endstone::BookMeta*>(hs_self)->setTitle((title_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(title_data, title_size)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_destroy_35233daf(void* hs_self) try
 {
     delete static_cast<endstone::BossBar*>(hs_self);
@@ -6132,6 +6177,21 @@ catch (...)
     return HosihikariArrayView{nullptr, 0};
 }
 
+static void* hs_method_34be09a0(void* hs_self, std::int32_t default_index, bool default_index_hasValue) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Dropdown*>(hs_self)->setDefaultIndex((default_index_hasValue ? std::optional<int>{static_cast<int>(default_index)} : std::nullopt))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void hs_destroy_cb8e5713(void* hs_self) try
 {
     delete static_cast<endstone::EffectType*>(hs_self);
@@ -9005,6 +9065,21 @@ catch (...)
     return;
 }
 
+static void hs_method_44d2334c(void* hs_self, std::int32_t index, void* item, bool item_hasValue) try
+{
+    static_cast<endstone::Inventory*>(hs_self)->setItem(static_cast<int>(index), (item_hasValue ? std::optional<endstone::ItemStack>{*static_cast<const endstone::ItemStack*>(item)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_destroy_a7df4d30(void* hs_self) try
 {
     delete static_cast<endstone::IpBanEntry*>(hs_self);
@@ -9164,6 +9239,21 @@ catch (...)
 static void hs_method_d4fd9e86(void* hs_self, std::int32_t delay) try
 {
     static_cast<endstone::Item*>(hs_self)->setPickupDelay(static_cast<int>(delay));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_b0a39e74(void* hs_self, std::int64_t thrower, bool thrower_hasValue) try
+{
+    static_cast<endstone::Item*>(hs_self)->setThrower((thrower_hasValue ? std::optional<long long>{static_cast<long long>(thrower)} : std::nullopt));
 }
 catch (std::exception const& hs_error)
 {
@@ -9583,6 +9673,21 @@ catch (...)
 static void hs_method_37a46761(void* hs_self, std::int32_t damage) try
 {
     static_cast<endstone::ItemMeta*>(hs_self)->setDamage(static_cast<int>(damage));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_38f091c4(void* hs_self, const char* name_data, std::size_t name_size, bool name_hasValue) try
+{
+    static_cast<endstone::ItemMeta*>(hs_self)->setDisplayName((name_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(name_data, name_size)} : std::nullopt));
 }
 catch (std::exception const& hs_error)
 {
@@ -11880,6 +11985,21 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void* hs_method_2fd6a4b6(void* hs_self, const char* icon_data, std::size_t icon_size, bool icon_hasValue) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ModalForm*>(hs_self)->setIcon((icon_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(icon_data, icon_size)} : std::nullopt))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 using hs_cb_invoke_hs_method_7a28fda0_cb0 = void (*)(void* userData, void* arg0, const char* arg1_data, std::size_t arg1_size);
 using hs_cb_release_hs_method_7a28fda0_cb0 = void (*)(void*);
 struct hs_cb_state_hs_method_7a28fda0_cb0
@@ -12108,9 +12228,39 @@ catch (...)
     return false;
 }
 
+static void hs_method_7a4cd4a6(void* hs_self, std::int32_t slot, std::int32_t order, bool slot_hasValue) try
+{
+    static_cast<endstone::Objective*>(hs_self)->setDisplay((slot_hasValue ? std::optional<endstone::DisplaySlot>{static_cast<endstone::DisplaySlot>(slot)} : std::nullopt), static_cast<endstone::ObjectiveSortOrder>(order));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_2d7ab63c(void* hs_self, const char* display_name_data, std::size_t display_name_size) try
 {
     static_cast<endstone::Objective*>(hs_self)->setDisplayName(std::basic_string<char>(display_name_data, display_name_size));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_4a5f57fc(void* hs_self, std::int32_t slot, bool slot_hasValue) try
+{
+    static_cast<endstone::Objective*>(hs_self)->setDisplaySlot((slot_hasValue ? std::optional<endstone::DisplaySlot>{static_cast<endstone::DisplaySlot>(slot)} : std::nullopt));
 }
 catch (std::exception const& hs_error)
 {
@@ -14948,9 +15098,99 @@ catch (...)
     return nullptr;
 }
 
+static void hs_method_152a38b3(void* hs_self, void* boots, bool boots_hasValue) try
+{
+    static_cast<endstone::PlayerInventory*>(hs_self)->setBoots((boots_hasValue ? std::optional<endstone::ItemStack>{*static_cast<const endstone::ItemStack*>(boots)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_0c7c03cb(void* hs_self, void* chestplate, bool chestplate_hasValue) try
+{
+    static_cast<endstone::PlayerInventory*>(hs_self)->setChestplate((chestplate_hasValue ? std::optional<endstone::ItemStack>{*static_cast<const endstone::ItemStack*>(chestplate)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_720209cc(void* hs_self, std::int32_t slot) try
 {
     static_cast<endstone::PlayerInventory*>(hs_self)->setHeldItemSlot(static_cast<int>(slot));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_0414afa6(void* hs_self, void* helmet, bool helmet_hasValue) try
+{
+    static_cast<endstone::PlayerInventory*>(hs_self)->setHelmet((helmet_hasValue ? std::optional<endstone::ItemStack>{*static_cast<const endstone::ItemStack*>(helmet)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_06d22994(void* hs_self, void* item, bool item_hasValue) try
+{
+    static_cast<endstone::PlayerInventory*>(hs_self)->setItemInMainHand((item_hasValue ? std::optional<endstone::ItemStack>{*static_cast<const endstone::ItemStack*>(item)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_a50f5807(void* hs_self, void* item, bool item_hasValue) try
+{
+    static_cast<endstone::PlayerInventory*>(hs_self)->setItemInOffHand((item_hasValue ? std::optional<endstone::ItemStack>{*static_cast<const endstone::ItemStack*>(item)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_5339c3c9(void* hs_self, void* leggings, bool leggings_hasValue) try
+{
+    static_cast<endstone::PlayerInventory*>(hs_self)->setLeggings((leggings_hasValue ? std::optional<endstone::ItemStack>{*static_cast<const endstone::ItemStack*>(leggings)} : std::nullopt));
 }
 catch (std::exception const& hs_error)
 {
@@ -20018,6 +20258,21 @@ catch (...)
     return 0.0f;
 }
 
+static void* hs_method_72f50c10(void* hs_self, float default_value, bool default_value_hasValue) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Slider*>(hs_self)->setDefaultValue((default_value_hasValue ? std::optional<float>{static_cast<float>(default_value)} : std::nullopt))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_99d38211(void* hs_self, float max) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Slider*>(hs_self)->setMax(static_cast<float>(max))));
@@ -20278,6 +20533,21 @@ catch (...)
     setLastError("unknown native exception");
     if (hs_hasValue) { *hs_hasValue = false; }
     return HosihikariStringView{nullptr, 0};
+}
+
+static void* hs_method_6724f75c(void* hs_self, const char* text_data, std::size_t text_size, bool text_hasValue) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::TextInput*>(hs_self)->setDefaultValue((text_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(text_data, text_size)} : std::nullopt))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void hs_destroy_2ac6baed(void* hs_self) try
@@ -23572,6 +23842,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a6474ca8,
     &hs_method_9b523c2c,
     &hs_method_8a9362cc,
+    &hs_method_39e461d1,
+    &hs_method_70cefe27,
+    &hs_method_8567bdf4,
     &hs_destroy_35233daf,
     &hs_method_37934231,
     &hs_method_283daeb4,
@@ -23765,6 +24038,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ef8d8378,
     &hs_method_06d835d9,
     &hs_method_6c265d10,
+    &hs_method_34be09a0,
     &hs_destroy_cb8e5713,
     &hs_get_c0fea9c8,
     &hs_get_0fa4a533,
@@ -23949,6 +24223,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_54f1a207,
     &hs_method_2317bda0,
     &hs_method_80807888,
+    &hs_method_44d2334c,
     &hs_destroy_a7df4d30,
     &hs_create_0c659ed5,
     &hs_method_38cbbb5a,
@@ -23960,6 +24235,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_c38c6e29,
     &hs_method_327ba5e2,
     &hs_method_d4fd9e86,
+    &hs_method_b0a39e74,
     &hs_method_faf33d09,
     &hs_method_d6415600,
     &hs_method_c6d96d56,
@@ -23987,6 +24263,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_0cc34e1e,
     &hs_method_65130b8c,
     &hs_method_37a46761,
+    &hs_method_38f091c4,
     &hs_method_8de798e0,
     &hs_method_dc81e9da,
     &hs_destroy_ecc0e998,
@@ -24136,6 +24413,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_50792e32,
     &hs_method_d6ba0b11,
     &hs_method_e533f412,
+    &hs_method_2fd6a4b6,
     &hs_method_7a28fda0,
     &hs_destroy_2b13267b,
     &hs_method_84b58b4c,
@@ -24149,7 +24427,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ae3a847e,
     &hs_method_57030bb9,
     &hs_method_bb751e05,
+    &hs_method_7a4cd4a6,
     &hs_method_2d7ab63c,
+    &hs_method_4a5f57fc,
     &hs_method_03a30016,
     &hs_method_9fe08cbd,
     &hs_method_08805458,
@@ -24330,7 +24610,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_80e17233,
     &hs_method_22b989c4,
     &hs_method_7394574a,
+    &hs_method_152a38b3,
+    &hs_method_0c7c03cb,
     &hs_method_720209cc,
+    &hs_method_0414afa6,
+    &hs_method_06d22994,
+    &hs_method_a50f5807,
+    &hs_method_5339c3c9,
     &hs_destroy_deb3197a,
     &hs_get_77e0d86d,
     &hs_method_9e01e472,
@@ -24652,6 +24938,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_22a14062,
     &hs_method_b6202ef6,
     &hs_method_b88065d8,
+    &hs_method_72f50c10,
     &hs_method_99d38211,
     &hs_method_f4e705dc,
     &hs_method_8c062b7a,
@@ -24669,6 +24956,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_ebed3b76,
     &hs_create_3e1ec5c3,
     &hs_method_cf086930,
+    &hs_method_6724f75c,
     &hs_destroy_2ac6baed,
     &hs_get_5463cf9d,
     &hs_method_86f9ba6f,

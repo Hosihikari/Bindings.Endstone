@@ -13,7 +13,7 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public static Slider Create()
     {
-        var handle = NativeMethods.TablePtr->f1273();
+        var handle = NativeMethods.TablePtr->f1289();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,7 +28,7 @@ public sealed unsafe partial class Slider : global::System.IDisposable
     public float? getDefaultValue()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f1274((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f1290((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (float?)null;
     }
 
@@ -37,45 +37,47 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public float getMax()
     {
-        return NativeMethods.TablePtr->f1275((void*)_handle);
+        return NativeMethods.TablePtr->f1291((void*)_handle);
     }
 
     public float getMin()
     {
-        return NativeMethods.TablePtr->f1276((void*)_handle);
+        return NativeMethods.TablePtr->f1292((void*)_handle);
     }
 
     public float getStep()
     {
-        return NativeMethods.TablePtr->f1277((void*)_handle);
+        return NativeMethods.TablePtr->f1293((void*)_handle);
     }
 
-    public nint setDefaultValue(nint default_value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<float>' is not a known bindable declaration.");
+    public nint setDefaultValue(float? default_value)
+    {
+        return (nint)NativeMethods.TablePtr->f1294((void*)_handle, default_value ?? default(float), default_value.HasValue);
+    }
 
     public nint setLabel(nint label) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
 
     public nint setMax(float max)
     {
-        return (nint)NativeMethods.TablePtr->f1278((void*)_handle, max);
+        return (nint)NativeMethods.TablePtr->f1295((void*)_handle, max);
     }
 
     public nint setMin(float min)
     {
-        return (nint)NativeMethods.TablePtr->f1279((void*)_handle, min);
+        return (nint)NativeMethods.TablePtr->f1296((void*)_handle, min);
     }
 
     public nint setStep(float step)
     {
-        return (nint)NativeMethods.TablePtr->f1280((void*)_handle, step);
+        return (nint)NativeMethods.TablePtr->f1297((void*)_handle, step);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1272((void*)_handle);
+            NativeMethods.TablePtr->f1288((void*)_handle);
             _handle = 0;
         }
     }

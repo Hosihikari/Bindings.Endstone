@@ -13,7 +13,7 @@ public sealed unsafe partial class Label : global::System.IDisposable
 
     public static Label Create()
     {
-        var handle = NativeMethods.TablePtr->f643();
+        var handle = NativeMethods.TablePtr->f650();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -35,7 +35,7 @@ public sealed unsafe partial class Label : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f642((void*)_handle);
+            NativeMethods.TablePtr->f649((void*)_handle);
             _handle = 0;
         }
     }

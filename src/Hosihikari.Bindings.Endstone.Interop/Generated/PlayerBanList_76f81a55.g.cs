@@ -37,22 +37,22 @@ public sealed unsafe partial class PlayerBanList
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return NativeMethods.TablePtr->f888((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f898((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public bool isBanned(nint name, nint uuid, nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::UUID>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods accept at most one string parameter.");
 
     public void removeBan(string name)
     {
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f889((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f899((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void removeBan(nint name, nint uuid, nint xuid) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<endstone::UUID>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: methods accept at most one string parameter.");
 }

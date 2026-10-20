@@ -13,7 +13,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
 
     public nint addControl(nint control)
     {
-        return (nint)NativeMethods.TablePtr->f760((void*)_handle, (void*)control);
+        return (nint)NativeMethods.TablePtr->f767((void*)_handle, (void*)control);
     }
 
     public nint getControls() =>
@@ -22,7 +22,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
     public string? getIcon()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f761((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f768((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
@@ -35,22 +35,28 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
     public nint setControls(nint controls) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::vector<std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>>' is not a known bindable declaration.");
 
-    public nint setIcon(nint icon) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::basic_string<char>>' is not a known bindable declaration.");
+    public nint setIcon(string? icon)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            return (nint)NativeMethods.TablePtr->f769((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, icon is not null);
+        }
+    }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f762((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f770((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public nint setSubmitButton(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is abstract or not copy-constructible.");
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f759((void*)_handle);
+            NativeMethods.TablePtr->f766((void*)_handle);
             _handle = 0;
         }
     }

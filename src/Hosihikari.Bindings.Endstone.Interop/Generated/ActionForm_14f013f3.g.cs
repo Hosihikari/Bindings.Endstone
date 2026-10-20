@@ -22,9 +22,13 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
         return new ActionForm((nint)handle);
     }
 
-    public nint addButton(nint text, nint icon, nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
+    public nint addButton(nint text, string? icon, nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
     {
-        return (nint)NativeMethods.TablePtr->f2((void*)_handle, (void*)text, (void*)icon, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            return (nint)NativeMethods.TablePtr->f2((void*)_handle, (void*)text, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
+        }
     }
 
     public nint addDivider()
