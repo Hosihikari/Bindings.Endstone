@@ -73,6 +73,8 @@ $TranslatableDestroy = Get-TableIndex "Translatable_*.g.cs" 'Dispose\(\)[\s\S]*?
 $ArrayTagCreate = Get-TableIndex "ArrayTag_int__*.g.cs" 'Create\(int\[\] v\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::Create"
 $ArrayTagSize = Get-TableIndex "ArrayTag_int__*.g.cs" 'size\(\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::size"
 $ArrayTagDestroy = Get-TableIndex "ArrayTag_int__*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::Dispose"
+$ServerPluginManager = Get-TableIndex "Server_*.g.cs" 'getPluginManager\(\)[\s\S]*?TablePtr->f(\d+)' "Server::getPluginManager"
+$PluginManagerPlugins = Get-TableIndex "PluginManager_*.g.cs" 'getPlugins\(\)[\s\S]*?TablePtr->f(\d+)' "PluginManager::getPlugins"
 
 $Args = @(
     "/std:c++20",
@@ -94,6 +96,8 @@ $Args = @(
     "/DHS_ARRAYTAG_INT_CREATE_INDEX=$ArrayTagCreate",
     "/DHS_ARRAYTAG_INT_SIZE_INDEX=$ArrayTagSize",
     "/DHS_ARRAYTAG_INT_DESTROY_INDEX=$ArrayTagDestroy",
+    "/DHS_SERVER_PLUGIN_MANAGER_INDEX=$ServerPluginManager",
+    "/DHS_PLUGIN_MANAGER_PLUGINS_INDEX=$PluginManagerPlugins",
     "/I", (Split-Path (Split-Path $Expected.FullName -Parent) -Parent),
     "/I", (Split-Path (Split-Path $Nlohmann.FullName -Parent) -Parent),
     "/imsvc", (Join-Path $Msvc.FullName "include"),

@@ -34,14 +34,14 @@ public sealed unsafe partial class MessageForm : global::System.IDisposable
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f760((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f765((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f759((void*)_handle);
+            NativeMethods.TablePtr->f764((void*)_handle);
             _handle = 0;
         }
     }

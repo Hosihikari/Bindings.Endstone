@@ -13,7 +13,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
 
     public nint addControl(nint control)
     {
-        return (nint)NativeMethods.TablePtr->f767((void*)_handle, (void*)control);
+        return (nint)NativeMethods.TablePtr->f772((void*)_handle, (void*)control);
     }
 
     public nint getControls() =>
@@ -22,7 +22,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
     public string? getIcon()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f768((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f773((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
@@ -40,13 +40,13 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f769((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, icon is not null);
+            return (nint)NativeMethods.TablePtr->f774((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, icon is not null);
         }
     }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f770((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f775((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public nint setSubmitButton(nint text) =>
@@ -56,7 +56,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f766((void*)_handle);
+            NativeMethods.TablePtr->f771((void*)_handle);
             _handle = 0;
         }
     }

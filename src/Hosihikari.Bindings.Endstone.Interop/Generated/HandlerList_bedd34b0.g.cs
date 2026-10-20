@@ -16,7 +16,7 @@ public sealed unsafe partial class HandlerList : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(@event);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f498(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f500(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -26,27 +26,35 @@ public sealed unsafe partial class HandlerList : global::System.IDisposable
         }
     }
 
-    public nint getHandlers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::EventHandler *' is not supported.");
+    public nint[] getHandlers()
+    {
+        var __hs_view = NativeMethods.TablePtr->f501((void*)_handle);
+        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
     public nint registerHandler(nint handler) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::EventHandler>' is not a known bindable declaration.");
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.EventHandler handler)
     {
-        NativeMethods.TablePtr->f499((void*)_handle, (void*)handler.Handle);
+        NativeMethods.TablePtr->f502((void*)_handle, (void*)handler.Handle);
     }
 
     public void unregister(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f500((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f503((void*)_handle, (void*)plugin.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f497((void*)_handle);
+            NativeMethods.TablePtr->f499((void*)_handle);
             _handle = 0;
         }
     }

@@ -34,6 +34,12 @@
 #ifndef HS_ARRAYTAG_INT_DESTROY_INDEX
 #error "HS_ARRAYTAG_INT_DESTROY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_SERVER_PLUGIN_MANAGER_INDEX
+#error "HS_SERVER_PLUGIN_MANAGER_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PLUGIN_MANAGER_PLUGINS_INDEX
+#error "HS_PLUGIN_MANAGER_PLUGINS_INDEX must be defined by build.ps1"
+#endif
 
 namespace {
 void pluginAnchor() {}
@@ -165,8 +171,24 @@ public:
                 vectorsOk = false;
             }
 
+            using GetPluginManagerFn = void *(*)(void *);
+            using GetPluginsFn = HosihikariArrayView (*)(void *);
+            auto pluginManager = reinterpret_cast<GetPluginManagerFn>(slots[HS_SERVER_PLUGIN_MANAGER_INDEX])(handle);
+            bool pluginsOk = false;
+            if (pluginManager) {
+                const auto plugins = reinterpret_cast<GetPluginsFn>(slots[HS_PLUGIN_MANAGER_PLUGINS_INDEX])(pluginManager);
+                const auto items = static_cast<void *const *>(const_cast<void *>(plugins.data));
+                pluginsOk = plugins.size >= 1;
+                for (std::size_t index = 0; index < plugins.size; ++index) {
+                    pluginsOk = pluginsOk && items[index] != nullptr;
+                }
+            }
+
+            out << "plugin_manager.plugin_vector=" << (pluginsOk ? "ok" : "FAIL") << "\n";
+
             out << "result="
                 << (actualName == server.getName() && actualVersion == server.getVersion() && vectorsOk
+                            && pluginsOk
                         ? "OK"
                         : "FAIL")
                 << "\n";

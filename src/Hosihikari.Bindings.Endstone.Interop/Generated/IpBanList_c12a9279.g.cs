@@ -28,7 +28,7 @@ public sealed unsafe partial class IpBanList
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(address);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return NativeMethods.TablePtr->f583((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f586((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -37,7 +37,7 @@ public sealed unsafe partial class IpBanList
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(address);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f584((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f587((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 }

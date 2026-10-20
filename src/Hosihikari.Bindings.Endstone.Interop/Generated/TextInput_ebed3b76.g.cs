@@ -13,7 +13,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
 
     public static TextInput Create()
     {
-        var handle = NativeMethods.TablePtr->f1311();
+        var handle = NativeMethods.TablePtr->f1324();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,7 +28,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
     public string? getDefaultValue()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f1312((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f1325((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
@@ -43,7 +43,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(text ?? string.Empty);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f1313((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, text is not null);
+            return (nint)NativeMethods.TablePtr->f1326((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, text is not null);
         }
     }
 
@@ -57,7 +57,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1310((void*)_handle);
+            NativeMethods.TablePtr->f1323((void*)_handle);
             _handle = 0;
         }
     }

@@ -13,43 +13,43 @@ public sealed unsafe partial class Item
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack getItemStack()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f585((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f588((void*)_handle));
     }
 
     public int getPickupDelay()
     {
-        return NativeMethods.TablePtr->f586((void*)_handle);
+        return NativeMethods.TablePtr->f589((void*)_handle);
     }
 
     public long? getThrower()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f587((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f590((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (long?)null;
     }
 
     public bool isUnlimitedLifetime()
     {
-        return NativeMethods.TablePtr->f588((void*)_handle);
+        return NativeMethods.TablePtr->f591((void*)_handle);
     }
 
     public void setItemStack(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack stack)
     {
-        NativeMethods.TablePtr->f589((void*)_handle, (void*)stack.Handle);
+        NativeMethods.TablePtr->f592((void*)_handle, (void*)stack.Handle);
     }
 
     public void setPickupDelay(int delay)
     {
-        NativeMethods.TablePtr->f590((void*)_handle, delay);
+        NativeMethods.TablePtr->f593((void*)_handle, delay);
     }
 
     public void setThrower(long? thrower)
     {
-        NativeMethods.TablePtr->f591((void*)_handle, thrower ?? default(long), thrower.HasValue);
+        NativeMethods.TablePtr->f594((void*)_handle, thrower ?? default(long), thrower.HasValue);
     }
 
     public void setUnlimitedLifetime(bool unlimited)
     {
-        NativeMethods.TablePtr->f592((void*)_handle, unlimited);
+        NativeMethods.TablePtr->f595((void*)_handle, unlimited);
     }
 }

@@ -26,63 +26,71 @@ public sealed unsafe partial class BossBar : global::System.IDisposable
         return NativeMethods.TablePtr->f203((void*)_handle);
     }
 
-    public nint getPlayers() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::Player *' is not supported.");
-
-    public float getProgress()
+    public nint[] getPlayers()
     {
-        return NativeMethods.TablePtr->f204((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f204((void*)_handle);
+        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
     }
 
-    public int getStyle()
+    public float getProgress()
     {
         return NativeMethods.TablePtr->f205((void*)_handle);
     }
 
+    public int getStyle()
+    {
+        return NativeMethods.TablePtr->f206((void*)_handle);
+    }
+
     public string getTitle()
     {
-        var __hs_view = NativeMethods.TablePtr->f206((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f207((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool hasFlag(int flag)
     {
-        return NativeMethods.TablePtr->f207((void*)_handle, flag);
+        return NativeMethods.TablePtr->f208((void*)_handle, flag);
     }
 
     public bool isVisible()
     {
-        return NativeMethods.TablePtr->f208((void*)_handle);
+        return NativeMethods.TablePtr->f209((void*)_handle);
     }
 
     public void removeAll()
     {
-        NativeMethods.TablePtr->f209((void*)_handle);
+        NativeMethods.TablePtr->f210((void*)_handle);
     }
 
     public void removeFlag(int flag)
     {
-        NativeMethods.TablePtr->f210((void*)_handle, flag);
+        NativeMethods.TablePtr->f211((void*)_handle, flag);
     }
 
     public void removePlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f211((void*)_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f212((void*)_handle, (void*)player.Handle);
     }
 
     public void setColor(int color)
     {
-        NativeMethods.TablePtr->f212((void*)_handle, color);
+        NativeMethods.TablePtr->f213((void*)_handle, color);
     }
 
     public void setProgress(float progress)
     {
-        NativeMethods.TablePtr->f213((void*)_handle, progress);
+        NativeMethods.TablePtr->f214((void*)_handle, progress);
     }
 
     public void setStyle(int style)
     {
-        NativeMethods.TablePtr->f214((void*)_handle, style);
+        NativeMethods.TablePtr->f215((void*)_handle, style);
     }
 
     public void setTitle(string title)
@@ -90,13 +98,13 @@ public sealed unsafe partial class BossBar : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(title);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f215((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f216((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void setVisible(bool visible)
     {
-        NativeMethods.TablePtr->f216((void*)_handle, visible);
+        NativeMethods.TablePtr->f217((void*)_handle, visible);
     }
 
 

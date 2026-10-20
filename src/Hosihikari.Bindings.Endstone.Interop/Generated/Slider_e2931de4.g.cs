@@ -13,7 +13,7 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public static Slider Create()
     {
-        var handle = NativeMethods.TablePtr->f1290();
+        var handle = NativeMethods.TablePtr->f1303();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,7 +28,7 @@ public sealed unsafe partial class Slider : global::System.IDisposable
     public float? getDefaultValue()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f1291((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f1304((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (float?)null;
     }
 
@@ -37,22 +37,22 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public float getMax()
     {
-        return NativeMethods.TablePtr->f1292((void*)_handle);
+        return NativeMethods.TablePtr->f1305((void*)_handle);
     }
 
     public float getMin()
     {
-        return NativeMethods.TablePtr->f1293((void*)_handle);
+        return NativeMethods.TablePtr->f1306((void*)_handle);
     }
 
     public float getStep()
     {
-        return NativeMethods.TablePtr->f1294((void*)_handle);
+        return NativeMethods.TablePtr->f1307((void*)_handle);
     }
 
     public nint setDefaultValue(float? default_value)
     {
-        return (nint)NativeMethods.TablePtr->f1295((void*)_handle, default_value ?? default(float), default_value.HasValue);
+        return (nint)NativeMethods.TablePtr->f1308((void*)_handle, default_value ?? default(float), default_value.HasValue);
     }
 
     public nint setLabel(nint label) =>
@@ -60,24 +60,24 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public nint setMax(float max)
     {
-        return (nint)NativeMethods.TablePtr->f1296((void*)_handle, max);
+        return (nint)NativeMethods.TablePtr->f1309((void*)_handle, max);
     }
 
     public nint setMin(float min)
     {
-        return (nint)NativeMethods.TablePtr->f1297((void*)_handle, min);
+        return (nint)NativeMethods.TablePtr->f1310((void*)_handle, min);
     }
 
     public nint setStep(float step)
     {
-        return (nint)NativeMethods.TablePtr->f1298((void*)_handle, step);
+        return (nint)NativeMethods.TablePtr->f1311((void*)_handle, step);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1289((void*)_handle);
+            NativeMethods.TablePtr->f1302((void*)_handle);
             _handle = 0;
         }
     }

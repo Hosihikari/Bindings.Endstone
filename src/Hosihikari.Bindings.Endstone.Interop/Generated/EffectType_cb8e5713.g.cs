@@ -13,194 +13,194 @@ public sealed unsafe partial class EffectType : global::System.IDisposable
 
     public static nint Absorption
     {
-        get => (nint)NativeMethods.TablePtr->f396();
+        get => (nint)NativeMethods.TablePtr->f398();
     }
 
     public static nint BadOmen
     {
-        get => (nint)NativeMethods.TablePtr->f397();
+        get => (nint)NativeMethods.TablePtr->f399();
     }
 
     public static nint Blindness
     {
-        get => (nint)NativeMethods.TablePtr->f398();
+        get => (nint)NativeMethods.TablePtr->f400();
     }
 
     public static nint BreathOfTheNautilus
     {
-        get => (nint)NativeMethods.TablePtr->f399();
+        get => (nint)NativeMethods.TablePtr->f401();
     }
 
     public static nint ConduitPower
     {
-        get => (nint)NativeMethods.TablePtr->f400();
+        get => (nint)NativeMethods.TablePtr->f402();
     }
 
     public static nint Darkness
     {
-        get => (nint)NativeMethods.TablePtr->f401();
+        get => (nint)NativeMethods.TablePtr->f403();
     }
 
     public static nint FatalPoison
     {
-        get => (nint)NativeMethods.TablePtr->f402();
+        get => (nint)NativeMethods.TablePtr->f404();
     }
 
     public static nint FireResistance
     {
-        get => (nint)NativeMethods.TablePtr->f403();
+        get => (nint)NativeMethods.TablePtr->f405();
     }
 
     public static nint Haste
     {
-        get => (nint)NativeMethods.TablePtr->f404();
+        get => (nint)NativeMethods.TablePtr->f406();
     }
 
     public static nint HealthBoost
     {
-        get => (nint)NativeMethods.TablePtr->f405();
+        get => (nint)NativeMethods.TablePtr->f407();
     }
 
     public static nint HeroOfTheVillage
     {
-        get => (nint)NativeMethods.TablePtr->f406();
+        get => (nint)NativeMethods.TablePtr->f408();
     }
 
     public static nint Hunger
     {
-        get => (nint)NativeMethods.TablePtr->f407();
+        get => (nint)NativeMethods.TablePtr->f409();
     }
 
     public static nint Infested
     {
-        get => (nint)NativeMethods.TablePtr->f408();
+        get => (nint)NativeMethods.TablePtr->f410();
     }
 
     public static nint InstantDamage
     {
-        get => (nint)NativeMethods.TablePtr->f409();
+        get => (nint)NativeMethods.TablePtr->f411();
     }
 
     public static nint InstantHealth
     {
-        get => (nint)NativeMethods.TablePtr->f410();
+        get => (nint)NativeMethods.TablePtr->f412();
     }
 
     public static nint Invisibility
     {
-        get => (nint)NativeMethods.TablePtr->f411();
+        get => (nint)NativeMethods.TablePtr->f413();
     }
 
     public static nint JumpBoost
     {
-        get => (nint)NativeMethods.TablePtr->f412();
+        get => (nint)NativeMethods.TablePtr->f414();
     }
 
     public static nint Levitation
     {
-        get => (nint)NativeMethods.TablePtr->f413();
+        get => (nint)NativeMethods.TablePtr->f415();
     }
 
     public static nint MiningFatigue
     {
-        get => (nint)NativeMethods.TablePtr->f414();
+        get => (nint)NativeMethods.TablePtr->f416();
     }
 
     public static nint Nausea
     {
-        get => (nint)NativeMethods.TablePtr->f415();
+        get => (nint)NativeMethods.TablePtr->f417();
     }
 
     public static nint NightVision
     {
-        get => (nint)NativeMethods.TablePtr->f416();
+        get => (nint)NativeMethods.TablePtr->f418();
     }
 
     public static nint Oozing
     {
-        get => (nint)NativeMethods.TablePtr->f417();
+        get => (nint)NativeMethods.TablePtr->f419();
     }
 
     public static nint Poison
     {
-        get => (nint)NativeMethods.TablePtr->f418();
+        get => (nint)NativeMethods.TablePtr->f420();
     }
 
     public static nint RaidOmen
     {
-        get => (nint)NativeMethods.TablePtr->f419();
+        get => (nint)NativeMethods.TablePtr->f421();
     }
 
     public static nint Regeneration
     {
-        get => (nint)NativeMethods.TablePtr->f420();
+        get => (nint)NativeMethods.TablePtr->f422();
     }
 
     public static nint Resistance
     {
-        get => (nint)NativeMethods.TablePtr->f421();
+        get => (nint)NativeMethods.TablePtr->f423();
     }
 
     public static nint Saturation
     {
-        get => (nint)NativeMethods.TablePtr->f422();
+        get => (nint)NativeMethods.TablePtr->f424();
     }
 
     public static nint SlowFalling
     {
-        get => (nint)NativeMethods.TablePtr->f423();
+        get => (nint)NativeMethods.TablePtr->f425();
     }
 
     public static nint Slowness
     {
-        get => (nint)NativeMethods.TablePtr->f424();
+        get => (nint)NativeMethods.TablePtr->f426();
     }
 
     public static nint Speed
     {
-        get => (nint)NativeMethods.TablePtr->f425();
+        get => (nint)NativeMethods.TablePtr->f427();
     }
 
     public static nint Strength
     {
-        get => (nint)NativeMethods.TablePtr->f426();
+        get => (nint)NativeMethods.TablePtr->f428();
     }
 
     public static nint TrialOmen
     {
-        get => (nint)NativeMethods.TablePtr->f427();
+        get => (nint)NativeMethods.TablePtr->f429();
     }
 
     public static nint WaterBreathing
     {
-        get => (nint)NativeMethods.TablePtr->f428();
+        get => (nint)NativeMethods.TablePtr->f430();
     }
 
     public static nint Weakness
     {
-        get => (nint)NativeMethods.TablePtr->f429();
+        get => (nint)NativeMethods.TablePtr->f431();
     }
 
     public static nint Weaving
     {
-        get => (nint)NativeMethods.TablePtr->f430();
+        get => (nint)NativeMethods.TablePtr->f432();
     }
 
     public static nint WindCharged
     {
-        get => (nint)NativeMethods.TablePtr->f431();
+        get => (nint)NativeMethods.TablePtr->f433();
     }
 
     public static nint Wither
     {
-        get => (nint)NativeMethods.TablePtr->f432();
+        get => (nint)NativeMethods.TablePtr->f434();
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f395((void*)_handle);
+            NativeMethods.TablePtr->f397((void*)_handle);
             _handle = 0;
         }
     }

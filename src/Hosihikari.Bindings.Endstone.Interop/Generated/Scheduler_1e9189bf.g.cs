@@ -13,25 +13,33 @@ public sealed unsafe partial class Scheduler
 
     public void cancelTask(uint id)
     {
-        NativeMethods.TablePtr->f1182((void*)_handle, id);
+        NativeMethods.TablePtr->f1193((void*)_handle, id);
     }
 
     public void cancelTasks(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1183((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1194((void*)_handle, (void*)plugin.Handle);
     }
 
-    public nint getPendingTasks() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'endstone::Task *' is not supported.");
+    public nint[] getPendingTasks()
+    {
+        var __hs_view = NativeMethods.TablePtr->f1195((void*)_handle);
+        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        if (__hs_view.Size > 0)
+        {
+            new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
+        }
+        return __hs_result;
+    }
 
     public bool isQueued(uint id)
     {
-        return NativeMethods.TablePtr->f1184((void*)_handle, id);
+        return NativeMethods.TablePtr->f1196((void*)_handle, id);
     }
 
     public bool isRunning(uint id)
     {
-        return NativeMethods.TablePtr->f1185((void*)_handle, id);
+        return NativeMethods.TablePtr->f1197((void*)_handle, id);
     }
 
     public nint runTask(nint plugin, nint task) =>

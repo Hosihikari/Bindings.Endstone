@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f922();
+        get => (nint)NativeMethods.TablePtr->f928();
     }
 
     public static PlayerDeathEvent Create(nint player, nint damage_source, nint death_message) =>
@@ -24,13 +24,13 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f923((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f929((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f924((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f930((void*)_handle);
     }
 
     public void setDeathMessage(nint death_message) =>
@@ -40,7 +40,7 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f921((void*)_handle);
+            NativeMethods.TablePtr->f927((void*)_handle);
             _handle = 0;
         }
     }

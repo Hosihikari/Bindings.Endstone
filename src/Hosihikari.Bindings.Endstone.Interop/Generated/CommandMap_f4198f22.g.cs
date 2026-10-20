@@ -19,7 +19,7 @@ public sealed unsafe partial class CommandMap
 
     public void clearCommands()
     {
-        NativeMethods.TablePtr->f335((void*)_handle);
+        NativeMethods.TablePtr->f336((void*)_handle);
     }
 
     public bool dispatch(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string command_line)
@@ -27,7 +27,7 @@ public sealed unsafe partial class CommandMap
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(command_line);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return NativeMethods.TablePtr->f336((void*)_handle, (void*)sender.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f337((void*)_handle, (void*)sender.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
