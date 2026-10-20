@@ -2,6 +2,7 @@
 #include <cstring>
 #include <fstream>
 #include <string>
+#include <variant>
 
 #include <windows.h>
 
@@ -103,6 +104,33 @@
 #endif
 #ifndef HS_CONTROL_VARIANT_DESTROY_INDEX
 #error "HS_CONTROL_VARIANT_DESTROY_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PERMISSION_CREATE_INDEX
+#error "HS_PERMISSION_CREATE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PERMISSION_GET_CHILDREN_INDEX
+#error "HS_PERMISSION_GET_CHILDREN_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PERMISSION_DESTROY_INDEX
+#error "HS_PERMISSION_DESTROY_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_SERVER_CREATE_BLOCK_DATA_INDEX
+#error "HS_SERVER_CREATE_BLOCK_DATA_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_BLOCK_DATA_GET_BLOCK_STATES_INDEX
+#error "HS_BLOCK_DATA_GET_BLOCK_STATES_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_BLOCK_DATA_DESTROY_INDEX
+#error "HS_BLOCK_DATA_DESTROY_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_BOOL_VARIANT_INDEX_INDEX
+#error "HS_BOOL_VARIANT_INDEX_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_BOOL_VARIANT_AS_BOOL_INDEX
+#error "HS_BOOL_VARIANT_AS_BOOL_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_BOOL_VARIANT_DESTROY_INDEX
+#error "HS_BOOL_VARIANT_DESTROY_INDEX must be defined by build.ps1"
 #endif
 #ifndef HS_ACTION_FORM_CREATE_INDEX
 #error "HS_ACTION_FORM_CREATE_INDEX must be defined by build.ps1"
@@ -431,6 +459,71 @@ public:
             }
 
             out << "modal_form.controls=" << (modalControlOk ? "ok" : "FAIL") << "\n";
+
+            using PermissionCreateFn = void *(*)(const char *, std::size_t, const char *, std::size_t, std::int32_t, HosihikariArrayView);
+            using GetChildrenFn = HosihikariArrayView (*)(void *);
+            bool permissionMapOk = false;
+            {
+                const std::string permissionName = "hosihikari.smoke.permission";
+                const std::string description = "smoke";
+                const char *childName = "child";
+                HosihikariMapEntry children[1]{};
+                children[0].key = reinterpret_cast<std::uint64_t>(childName);
+                children[0].keySize = std::strlen(childName);
+                children[0].value = 1;
+                auto *permission = reinterpret_cast<PermissionCreateFn>(slots[HS_PERMISSION_CREATE_INDEX])(
+                    permissionName.data(), permissionName.size(), description.data(), description.size(), 1,
+                    HosihikariArrayView{children, 1});
+                if (permission) {
+                    const auto result = reinterpret_cast<GetChildrenFn>(
+                        slots[HS_PERMISSION_GET_CHILDREN_INDEX])(permission);
+                    const auto *entries = static_cast<HosihikariMapEntry const *>(result.data);
+                    permissionMapOk = result.size == 1 && entries[0].keySize == std::strlen(childName)
+                        && std::string(reinterpret_cast<const char *>(entries[0].key), entries[0].keySize) == childName
+                        && entries[0].value != 0;
+                    reinterpret_cast<DestroyFn>(slots[HS_PERMISSION_DESTROY_INDEX])(permission);
+                }
+            }
+
+            out << "permission.map=" << (permissionMapOk ? "ok" : "FAIL") << "\n";
+
+            using CreateBlockDataFn = void *(*)(void *, const char *, std::size_t, HosihikariArrayView);
+            using GetBlockStatesFn = HosihikariArrayView (*)(void *);
+            using VariantAsBoolFn = bool (*)(void *);
+            bool blockStateMapOk = false;
+            {
+                const std::string blockType = "minecraft:oak_leaves";
+                const std::string stateKey = "persistent_bit";
+                std::variant<bool, std::string, int> stateValue = true;
+                HosihikariMapEntry states[1]{};
+                states[0].key = reinterpret_cast<std::uint64_t>(stateKey.data());
+                states[0].keySize = stateKey.size();
+                states[0].value = reinterpret_cast<std::uint64_t>(&stateValue);
+                auto *blockData = reinterpret_cast<CreateBlockDataFn>(slots[HS_SERVER_CREATE_BLOCK_DATA_INDEX])(
+                    handle, blockType.data(), blockType.size(), HosihikariArrayView{states, 1});
+                if (blockData) {
+                    const auto result = reinterpret_cast<GetBlockStatesFn>(
+                        slots[HS_BLOCK_DATA_GET_BLOCK_STATES_INDEX])(blockData);
+                    const auto *entries = static_cast<HosihikariMapEntry const *>(result.data);
+                    for (std::size_t index = 0; index < result.size; ++index) {
+                        auto *state = reinterpret_cast<void *>(entries[index].value);
+                        if (entries[index].keySize == stateKey.size()
+                            && std::string(reinterpret_cast<const char *>(entries[index].key), entries[index].keySize) == stateKey) {
+                            blockStateMapOk = state != nullptr
+                                && reinterpret_cast<VariantReadIndexFn>(
+                                    slots[HS_BOOL_VARIANT_INDEX_INDEX])(state) == 0
+                                && reinterpret_cast<VariantAsBoolFn>(
+                                    slots[HS_BOOL_VARIANT_AS_BOOL_INDEX])(state);
+                        }
+                        if (state) {
+                            reinterpret_cast<DestroyFn>(slots[HS_BOOL_VARIANT_DESTROY_INDEX])(state);
+                        }
+                    }
+                    reinterpret_cast<DestroyFn>(slots[HS_BLOCK_DATA_DESTROY_INDEX])(blockData);
+                }
+            }
+
+            out << "block_data.map=" << (blockStateMapOk ? "ok" : "FAIL") << "\n";
 
             using CreateActionFormFn = void *(*)();
             using SetContentFn = void *(*)(void *, void *);

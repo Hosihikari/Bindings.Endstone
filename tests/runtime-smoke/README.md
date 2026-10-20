@@ -35,6 +35,8 @@ The plugin verifies:
 - `addBan` with a 60-second duration, lookup, `isBanned`, and `removeBan` round-trip through `SharedHandle`;
 - `ItemMeta::getEnchants()` returns the added enchantment as a map entry through `HosihikariMapEntry`;
 - a `Dropdown` control round-trips through the typed form-control variant into `ModalForm::addControl` and back out of `getControls`;
+- a `Dictionary<string, bool>` argument reaches `Permission::Create` and `getChildren()` returns the same entry;
+- `Server::createBlockData` accepts a block-state map, and `BlockData::getBlockStates()` returns the boolean entry with its variant value intact;
 - a string `std::variant` round-trips through `ActionForm::setContent`/`getContent`, including index and string accessors;
 - `ActionForm::setOnSubmit`/`getOnSubmit` round-trips a `std::function`: the returned callable invokes the managed handler exactly once and releases its shared state once.
 
@@ -56,6 +58,8 @@ ban_list.shared_array=ok
 ban_list.add_remove=ok
 item_meta.map=ok
 modal_form.controls=ok
+permission.map=ok
+block_data.map=ok
 action_form.string_variant=ok
 callable.round_trip=ok
 result=OK

@@ -105,6 +105,23 @@ $ControlVariantDestroy = [regex]::Match($ControlVariantText, 'Dispose\(\)[\s\S]*
 if (-not $ControlVariantCreateDropdown -or -not $ControlVariantIndex -or -not $ControlVariantAsDropdown -or -not $ControlVariantDestroy) {
     throw "Could not find the form-control variant table indices."
 }
+$PermissionCreate = Get-TableIndex "Permission_*.g.cs" 'Create\(string name, [\s\S]*?TablePtr->f(\d+)' "Permission::Create"
+$PermissionGetChildren = Get-TableIndex "Permission_*.g.cs" 'getChildren\(\)[\s\S]*?TablePtr->f(\d+)' "Permission::getChildren"
+$PermissionDestroy = Get-TableIndex "Permission_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "Permission::Dispose"
+$ServerCreateBlockData = Get-TableIndex "Server_*.g.cs" 'createBlockData\(string type, [\s\S]*?TablePtr->f(\d+)' "Server::createBlockData"
+$BlockDataGetBlockStates = Get-TableIndex "BlockData_*.g.cs" 'getBlockStates\(\)[\s\S]*?TablePtr->f(\d+)' "BlockData::getBlockStates"
+$BlockDataDestroy = Get-TableIndex "BlockData_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "BlockData::Dispose"
+$BoolVariantFile = Get-ChildItem $GeneratedDirectory -Filter "Variant_*.g.cs" |
+    Where-Object { (Get-Content $_.FullName -Raw) -match 'AsInt32' -and (Get-Content $_.FullName -Raw) -match 'AsBool' } |
+    Select-Object -First 1
+if (-not $BoolVariantFile) { throw "The bool/string/int variant wrapper was not found." }
+$BoolVariantText = Get-Content $BoolVariantFile.FullName -Raw
+$BoolVariantIndex = [regex]::Match($BoolVariantText, 'public int Index => NativeMethods\.TablePtr->f(\d+)').Groups[1].Value
+$BoolVariantAsBool = [regex]::Match($BoolVariantText, 'AsBool\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$BoolVariantDestroy = [regex]::Match($BoolVariantText, 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+if (-not $BoolVariantIndex -or -not $BoolVariantAsBool -or -not $BoolVariantDestroy) {
+    throw "Could not find the bool/string/int variant table indices."
+}
 
 $GeneratedDirectory = Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated"
 $ActionFormCreate = Get-TableIndex "ActionForm_*.g.cs" 'Create\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::Create"
@@ -181,6 +198,15 @@ $Args = @(
     "/DHS_CONTROL_VARIANT_INDEX_INDEX=$ControlVariantIndex",
     "/DHS_CONTROL_VARIANT_AS_DROPDOWN_INDEX=$ControlVariantAsDropdown",
     "/DHS_CONTROL_VARIANT_DESTROY_INDEX=$ControlVariantDestroy",
+    "/DHS_PERMISSION_CREATE_INDEX=$PermissionCreate",
+    "/DHS_PERMISSION_GET_CHILDREN_INDEX=$PermissionGetChildren",
+    "/DHS_PERMISSION_DESTROY_INDEX=$PermissionDestroy",
+    "/DHS_SERVER_CREATE_BLOCK_DATA_INDEX=$ServerCreateBlockData",
+    "/DHS_BLOCK_DATA_GET_BLOCK_STATES_INDEX=$BlockDataGetBlockStates",
+    "/DHS_BLOCK_DATA_DESTROY_INDEX=$BlockDataDestroy",
+    "/DHS_BOOL_VARIANT_INDEX_INDEX=$BoolVariantIndex",
+    "/DHS_BOOL_VARIANT_AS_BOOL_INDEX=$BoolVariantAsBool",
+    "/DHS_BOOL_VARIANT_DESTROY_INDEX=$BoolVariantDestroy",
     "/DHS_ACTION_FORM_CREATE_INDEX=$ActionFormCreate",
     "/DHS_ACTION_FORM_SET_CONTENT_INDEX=$ActionFormSetContent",
     "/DHS_ACTION_FORM_GET_CONTENT_INDEX=$ActionFormGetContent",
