@@ -11,6 +11,7 @@ public sealed unsafe partial class ChunkEvent
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class is abstract.", false)]
     public static ChunkEvent Create(nint chunk) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 

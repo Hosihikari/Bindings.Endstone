@@ -16,6 +16,7 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->f902();
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static PacketSendEvent Create(nint player, nint packet_id, nint payload, nint address, nint sub_client_id) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 

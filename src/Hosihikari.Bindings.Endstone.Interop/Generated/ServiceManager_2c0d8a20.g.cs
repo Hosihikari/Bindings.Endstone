@@ -49,6 +49,7 @@ public sealed unsafe partial class ServiceManager
         NativeMethods.TablePtr->f1475((void*)_handle, (void*)plugin.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -96,9 +96,11 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return NativeMethods.TablePtr->f711((void*)_handle, (void*)other.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
     public nint operator_assign_f452cd9a(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
     public nint operator_assign_d00055a6(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
 

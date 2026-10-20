@@ -16,6 +16,7 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->f1052();
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::DamageSource>' is not a known bindable declaration.", false)]
     public static PlayerDeathEvent Create(nint player, nint damage_source, nint death_message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::DamageSource>' is not a known bindable declaration.");
 

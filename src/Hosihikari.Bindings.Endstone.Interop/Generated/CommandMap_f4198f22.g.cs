@@ -11,9 +11,11 @@ public sealed unsafe partial class CommandMap
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static CommandMap Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static CommandMap Create(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
@@ -41,6 +43,7 @@ public sealed unsafe partial class CommandMap
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
     public nint operator_assign(nint arg0) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
 
@@ -49,6 +52,7 @@ public sealed unsafe partial class CommandMap
         return NativeMethods.TablePtr->f376((void*)_handle, command?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

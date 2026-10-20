@@ -11,6 +11,7 @@ public sealed unsafe partial class BroadcastMessageEvent : global::System.IDispo
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unordered_set<const endstone::CommandSender *>' is not a known bindable declaration.", false)]
     public static BroadcastMessageEvent Create(bool async, nint message, nint recipients) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unordered_set<const endstone::CommandSender *>' is not a known bindable declaration.");
 

@@ -199,9 +199,11 @@ public sealed unsafe partial class Vector : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->f1578((void*)_handle, (void*)other.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
     public nint operator_assign_682756f6(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
     public nint operator_assign_17143b18(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
 

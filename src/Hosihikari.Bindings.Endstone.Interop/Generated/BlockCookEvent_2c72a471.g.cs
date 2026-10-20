@@ -11,6 +11,7 @@ public sealed unsafe partial class BlockCookEvent : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.", false)]
     public static BlockCookEvent Create(nint block, nint source, nint result) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.");
 

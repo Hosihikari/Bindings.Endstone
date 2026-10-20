@@ -78,6 +78,7 @@ public sealed unsafe partial class MapCanvas
         NativeMethods.TablePtr->f801((void*)_handle, x, y, (void*)color.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

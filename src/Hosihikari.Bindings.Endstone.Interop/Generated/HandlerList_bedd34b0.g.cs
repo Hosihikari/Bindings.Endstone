@@ -37,6 +37,7 @@ public sealed unsafe partial class HandlerList : global::System.IDisposable
         return __hs_result;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::EventHandler>' is not a known bindable declaration.", false)]
     public nint registerHandler(nint handler) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::EventHandler>' is not a known bindable declaration.");
 

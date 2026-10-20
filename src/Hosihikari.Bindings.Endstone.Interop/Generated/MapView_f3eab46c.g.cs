@@ -103,6 +103,7 @@ public sealed unsafe partial class MapView
         NativeMethods.TablePtr->f847((void*)_handle, unlimited);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

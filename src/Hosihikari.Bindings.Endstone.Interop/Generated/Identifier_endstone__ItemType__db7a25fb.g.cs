@@ -11,15 +11,19 @@ public sealed unsafe partial class Identifier_endstone__ItemType_ : global::Syst
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static Identifier_endstone__ItemType_ Create_59ab2bc4(nint s) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static Identifier_endstone__ItemType_ Create_e7ef4bcf(nint s) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static Identifier_endstone__ItemType_ Create_db0af3b8(nint identifier) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static Identifier_endstone__ItemType_ Create(nint namespace_, nint key) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 

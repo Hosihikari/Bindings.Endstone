@@ -11,60 +11,79 @@ public sealed unsafe partial class ListTag : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static ListTag Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint at_32c719f8(ulong i) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint at_8b672895(ulong i) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint begin_7ad4decc() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint begin_2d61b1d1() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint cbegin() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint cend() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public void clear() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public bool empty() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint end_3c74298e() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint end_a3269a75() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint erase(nint pos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint erase(nint first, nint last) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint operator_index_59464a3a(ulong i) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint operator_index_51244beb(ulong i) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public void push_back_e8d84c85(nint v) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public void push_back_f20ea0aa(nint v) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public ulong size() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint type() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 

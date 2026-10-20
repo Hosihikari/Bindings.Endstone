@@ -11,6 +11,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: constructors accept at most one vector parameter.", false)]
     public static Command Create(nint name, nint description, nint usages, nint aliases, nint permissions) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one vector parameter.");
 

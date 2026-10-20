@@ -22,6 +22,7 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
         return new ArrayTag_int_((nint)handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::initializer_list<int>' is not a known bindable declaration.", false)]
     public static ArrayTag_int_ Create(nint init) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::initializer_list<int>' is not a known bindable declaration.");
 
@@ -49,15 +50,19 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->f1649((void*)_handle, i);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
     public nint begin_23383855() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
     public nint begin_5fdfd2ac() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
     public nint cbegin() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
     public nint cend() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.");
 
@@ -81,15 +86,19 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
         return NativeMethods.TablePtr->f1653((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
     public nint end_02e32247() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
     public nint end_3ce81213() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
     public nint erase(nint pos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]
     public nint insert(nint pos, int v) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.");
 

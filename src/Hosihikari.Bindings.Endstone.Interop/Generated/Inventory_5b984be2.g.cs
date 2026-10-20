@@ -226,6 +226,7 @@ public sealed unsafe partial class Inventory
         NativeMethods.TablePtr->f650((void*)_handle, index, (void*)(item?.Handle ?? 0), item is not null);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

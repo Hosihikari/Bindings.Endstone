@@ -11,6 +11,7 @@ public sealed unsafe partial class ActorExplodeEvent : global::System.IDisposabl
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<endstone::Block>' is not supported.", false)]
     public static ActorExplodeEvent Create(nint actor, nint location, nint blocks) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::unique_ptr<endstone::Block>' is not supported.");
 

@@ -11,15 +11,19 @@ public sealed unsafe partial class Identifier_endstone__PotionType_ : global::Sy
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static Identifier_endstone__PotionType_ Create_7a613bcf(nint s) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static Identifier_endstone__PotionType_ Create_1e37c9fe(nint s) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static Identifier_endstone__PotionType_ Create_90ebf2af(nint identifier) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static Identifier_endstone__PotionType_ Create(nint namespace_, nint key) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
 

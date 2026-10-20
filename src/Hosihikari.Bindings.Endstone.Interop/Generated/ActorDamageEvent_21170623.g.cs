@@ -11,6 +11,7 @@ public sealed unsafe partial class ActorDamageEvent
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::DamageSource>' is not a known bindable declaration.", false)]
     public static ActorDamageEvent Create(nint actor, nint damage_source, nint damage) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::DamageSource>' is not a known bindable declaration.");
 

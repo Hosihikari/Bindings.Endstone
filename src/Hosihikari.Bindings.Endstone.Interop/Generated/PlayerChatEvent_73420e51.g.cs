@@ -16,6 +16,7 @@ public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
         get => (nint)NativeMethods.TablePtr->f1037();
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::vector<endstone::Player *>' is abstract or not copy-constructible.", false)]
     public static PlayerChatEvent Create(nint player, nint message, nint recipients, nint format) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<endstone::Player *>' is abstract or not copy-constructible.");
 

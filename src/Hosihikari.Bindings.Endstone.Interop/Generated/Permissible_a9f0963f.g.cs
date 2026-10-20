@@ -84,6 +84,7 @@ public sealed unsafe partial class Permissible
         return NativeMethods.TablePtr->f920((void*)_handle, (void*)attachment.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

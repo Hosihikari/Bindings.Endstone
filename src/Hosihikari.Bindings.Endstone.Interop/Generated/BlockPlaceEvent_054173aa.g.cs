@@ -11,6 +11,7 @@ public sealed unsafe partial class BlockPlaceEvent : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::BlockState>' is not a known bindable declaration.", false)]
     public static BlockPlaceEvent Create(nint placed_block, nint replaced_block, nint placed_against, nint player) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::BlockState>' is not a known bindable declaration.");
 

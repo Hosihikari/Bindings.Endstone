@@ -11,66 +11,87 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static CompoundTag Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the constructor requires linking against the carrier.", false)]
     public static CompoundTag Create(nint init) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the constructor requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint at_8c20061d(nint key) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint at_7dcad8a1(nint key) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint begin_3461ad24() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint begin_1bdef002() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint cbegin() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint cend() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public void clear() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public bool contains(nint key) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public bool empty() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint end_bb03da3c() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint end_1b606230() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint erase_ea08cafc(nint pos) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint erase(nint first, nint last) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public ulong erase_b1b84138(nint key) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public void merge_16fdd585(nint source) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public void merge_1459df00(nint source) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint operator_index(nint key) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public ulong size() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public void swap(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 

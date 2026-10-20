@@ -11,9 +11,11 @@ public sealed unsafe partial class PluginManager
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static PluginManager Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Permission>' is not a known bindable declaration.", false)]
     public nint addPermission(nint perm) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Permission>' is not a known bindable declaration.");
 
@@ -210,6 +212,7 @@ public sealed unsafe partial class PluginManager
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::PluginLoader>' is not a known bindable declaration.", false)]
     public void registerLoader(nint loader) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::PluginLoader>' is not a known bindable declaration.");
 
@@ -255,6 +258,7 @@ public sealed unsafe partial class PluginManager
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

@@ -33,6 +33,7 @@ public sealed unsafe partial class ValueTag_int_ : global::System.IDisposable
         return new ValueTag_int_((nint)handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.", false)]
     public static ValueTag_int_ Create_c206d7b2(nint v) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
 

@@ -11,6 +11,7 @@ public sealed unsafe partial class ActorEvent_endstone__Mob_
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class is abstract.", false)]
     public static ActorEvent_endstone__Mob_ Create(nint actor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
@@ -19,6 +20,7 @@ public sealed unsafe partial class ActorEvent_endstone__Mob_
         return (nint)NativeMethods.TablePtr->f58((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

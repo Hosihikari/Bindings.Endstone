@@ -11,6 +11,7 @@ public sealed unsafe partial class DimensionEvent
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class is abstract.", false)]
     public static DimensionEvent Create(nint dimension) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 

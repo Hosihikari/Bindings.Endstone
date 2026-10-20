@@ -149,6 +149,7 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
         }
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char>>' is abstract or not copy-constructible.", false)]
     public void setLore(nint lore) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<std::basic_string<char>>' is abstract or not copy-constructible.");
 

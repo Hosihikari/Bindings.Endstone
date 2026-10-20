@@ -11,6 +11,7 @@ public sealed unsafe partial class LevelEvent
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class is abstract.", false)]
     public static LevelEvent Create(nint level) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 

@@ -32,6 +32,7 @@ public sealed unsafe partial class DamageSource
         return NativeMethods.TablePtr->f418((void*)_handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

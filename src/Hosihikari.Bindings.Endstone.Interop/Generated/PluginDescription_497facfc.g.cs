@@ -11,6 +11,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public nint Handle => _handle;
 
+    [global::System.Obsolete("BindingShim cannot project this member: constructors accept at most one vector parameter.", false)]
     public static PluginDescription Create(nint name, nint version, nint description, nint load, nint authors, nint contributors, nint website, nint prefix, nint provides, nint depend, nint soft_depend, nint load_before, nint default_permission, nint commands, nint permissions) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one vector parameter.");
 

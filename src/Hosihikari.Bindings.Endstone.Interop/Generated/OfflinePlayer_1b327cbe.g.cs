@@ -22,6 +22,7 @@ public sealed unsafe partial class OfflinePlayer
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->f891((void*)_handle));
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 }

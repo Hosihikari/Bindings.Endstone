@@ -16,9 +16,11 @@ public sealed unsafe partial class Location : global::System.IDisposable
         return NativeMethods.TablePtr->f751((void*)_handle, (void*)other.Handle);
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public float distanceSquared(nint other) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    [global::System.Obsolete("BindingShim cannot project this member: the member requires linking against the carrier.", false)]
     public nint getBlock() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
