@@ -72,7 +72,7 @@ public sealed unsafe partial class ListTag : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f740((void*)_handle);
+            NativeMethods.TablePtr->f748((void*)_handle);
             _handle = 0;
         }
     }

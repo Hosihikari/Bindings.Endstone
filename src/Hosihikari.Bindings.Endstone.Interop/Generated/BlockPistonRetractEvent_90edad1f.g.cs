@@ -13,12 +13,12 @@ public sealed unsafe partial class BlockPistonRetractEvent : global::System.IDis
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f189();
+        get => (nint)NativeMethods.TablePtr->f192();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f190((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f193((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -26,7 +26,7 @@ public sealed unsafe partial class BlockPistonRetractEvent : global::System.IDis
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f188((void*)_handle);
+            NativeMethods.TablePtr->f191((void*)_handle);
             _handle = 0;
         }
     }

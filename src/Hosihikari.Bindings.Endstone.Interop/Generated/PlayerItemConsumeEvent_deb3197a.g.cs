@@ -13,33 +13,41 @@ public sealed unsafe partial class PlayerItemConsumeEvent : global::System.IDisp
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1090();
+        get => (nint)NativeMethods.TablePtr->f1110();
     }
 
-    public static PlayerItemConsumeEvent Create(nint player, nint item, nint hand) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static PlayerItemConsumeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item, int hand)
+    {
+        var handle = NativeMethods.TablePtr->f1111((void*)player.Handle, (void*)item.Handle, hand);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerItemConsumeEvent((nint)handle);
+    }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1091((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1112((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getHand()
     {
-        return NativeMethods.TablePtr->f1092((void*)_handle);
+        return NativeMethods.TablePtr->f1113((void*)_handle);
     }
 
     public nint getItem()
     {
-        return (nint)NativeMethods.TablePtr->f1093((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1114((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1089((void*)_handle);
+            NativeMethods.TablePtr->f1109((void*)_handle);
             _handle = 0;
         }
     }

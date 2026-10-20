@@ -13,33 +13,33 @@ public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1022();
+        get => (nint)NativeMethods.TablePtr->f1035();
     }
 
     public static PlayerChatEvent Create(nint player, nint message, nint recipients, nint format) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::vector<endstone::Player *>' is abstract or not copy-constructible.");
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1023((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1036((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getFormat()
     {
-        var __hs_view = NativeMethods.TablePtr->f1024((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1037((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f1025((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1038((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint[] getRecipients()
     {
-        var __hs_view = NativeMethods.TablePtr->f1026((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1039((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -53,7 +53,7 @@ public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(format);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1027((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f1040((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -62,20 +62,20 @@ public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1028((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f1041((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void setPlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f1029((void*)_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f1042((void*)_handle, (void*)player.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1021((void*)_handle);
+            NativeMethods.TablePtr->f1034((void*)_handle);
             _handle = 0;
         }
     }

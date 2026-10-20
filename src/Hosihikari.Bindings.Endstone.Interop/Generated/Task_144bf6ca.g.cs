@@ -13,27 +13,27 @@ public sealed unsafe partial class Task
 
     public void cancel()
     {
-        NativeMethods.TablePtr->f1464((void*)_handle);
+        NativeMethods.TablePtr->f1498((void*)_handle);
     }
 
     public nint getOwner()
     {
-        return (nint)NativeMethods.TablePtr->f1465((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1499((void*)_handle);
     }
 
     public uint getTaskId()
     {
-        return NativeMethods.TablePtr->f1466((void*)_handle);
+        return NativeMethods.TablePtr->f1500((void*)_handle);
     }
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->f1467((void*)_handle);
+        return NativeMethods.TablePtr->f1501((void*)_handle);
     }
 
     public bool isSync()
     {
-        return NativeMethods.TablePtr->f1468((void*)_handle);
+        return NativeMethods.TablePtr->f1502((void*)_handle);
     }
 
     public void Destroy() =>

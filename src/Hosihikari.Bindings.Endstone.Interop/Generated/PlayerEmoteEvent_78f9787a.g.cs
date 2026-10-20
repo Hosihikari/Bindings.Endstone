@@ -13,32 +13,44 @@ public sealed unsafe partial class PlayerEmoteEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1051();
+        get => (nint)NativeMethods.TablePtr->f1067();
     }
 
-    public static PlayerEmoteEvent Create(nint player, nint emote_id, bool muted) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static PlayerEmoteEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, string emote_id, bool muted)
+    {
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(emote_id);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var handle = NativeMethods.TablePtr->f1068((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, muted);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new PlayerEmoteEvent((nint)handle);
+        }
+    }
 
     public string getEmoteId()
     {
-        var __hs_view = NativeMethods.TablePtr->f1052((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1069((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1053((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1070((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isMuted()
     {
-        return NativeMethods.TablePtr->f1054((void*)_handle);
+        return NativeMethods.TablePtr->f1071((void*)_handle);
     }
 
     public void setMuted(bool muted)
     {
-        NativeMethods.TablePtr->f1055((void*)_handle, muted);
+        NativeMethods.TablePtr->f1072((void*)_handle, muted);
     }
 
 
@@ -46,7 +58,7 @@ public sealed unsafe partial class PlayerEmoteEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1050((void*)_handle);
+            NativeMethods.TablePtr->f1066((void*)_handle);
             _handle = 0;
         }
     }

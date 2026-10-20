@@ -13,22 +13,22 @@ public sealed unsafe partial class Chunk : global::System.IDisposable
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f278((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f281((void*)_handle);
     }
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f279((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f282((void*)_handle);
     }
 
     public int getX()
     {
-        return NativeMethods.TablePtr->f280((void*)_handle);
+        return NativeMethods.TablePtr->f283((void*)_handle);
     }
 
     public int getZ()
     {
-        return NativeMethods.TablePtr->f281((void*)_handle);
+        return NativeMethods.TablePtr->f284((void*)_handle);
     }
 
 
@@ -36,7 +36,7 @@ public sealed unsafe partial class Chunk : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f277((void*)_handle);
+            NativeMethods.TablePtr->f280((void*)_handle);
             _handle = 0;
         }
     }

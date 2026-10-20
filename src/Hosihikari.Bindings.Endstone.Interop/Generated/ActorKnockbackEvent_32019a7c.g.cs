@@ -11,33 +11,41 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
 
     public nint Handle => _handle;
 
-    public static ActorKnockbackEvent Create(nint mob, nint source, nint knockback) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static ActorKnockbackEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob mob, global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor source, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
+    {
+        var handle = NativeMethods.TablePtr->f66((void*)mob.Handle, (void*)source.Handle, (void*)knockback.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorKnockbackEvent((nint)handle);
+    }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f66();
+        get => (nint)NativeMethods.TablePtr->f67();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f67((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f68((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector getKnockback()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f68((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f69((void*)_handle));
     }
 
     public nint getSource()
     {
-        return (nint)NativeMethods.TablePtr->f69((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f70((void*)_handle);
     }
 
     public void setKnockback(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
     {
-        NativeMethods.TablePtr->f70((void*)_handle, (void*)knockback.Handle);
+        NativeMethods.TablePtr->f71((void*)_handle, (void*)knockback.Handle);
     }
 
     public void Dispose()

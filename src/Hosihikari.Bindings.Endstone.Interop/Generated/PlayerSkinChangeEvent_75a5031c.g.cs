@@ -13,40 +13,48 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1144();
+        get => (nint)NativeMethods.TablePtr->f1173();
     }
 
-    public static PlayerSkinChangeEvent Create(nint player, nint new_skin, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static PlayerSkinChangeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin new_skin, global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? message)
+    {
+        var handle = NativeMethods.TablePtr->f1174((void*)player.Handle, (void*)new_skin.Handle, (void*)(message?.Handle ?? 0), message is not null);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerSkinChangeEvent((nint)handle);
+    }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1145((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1175((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin getNewSkin()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f1146((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f1176((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getSkinChangeMessage()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1147((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f1177((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
     public void setSkinChangeMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? message)
     {
-        NativeMethods.TablePtr->f1148((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
+        NativeMethods.TablePtr->f1178((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1143((void*)_handle);
+            NativeMethods.TablePtr->f1172((void*)_handle);
             _handle = 0;
         }
     }

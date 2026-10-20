@@ -13,7 +13,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public static Dropdown Create()
     {
-        var handle = NativeMethods.TablePtr->f428();
+        var handle = NativeMethods.TablePtr->f434();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -41,7 +41,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                var handle = NativeMethods.TablePtr->f429((void*)label.Handle, default_index ?? default(int), __hs_vectorData, (nuint)__hs_vectorViews.Length, default_index.HasValue);
+                var handle = NativeMethods.TablePtr->f435((void*)label.Handle, default_index ?? default(int), __hs_vectorData, (nuint)__hs_vectorViews.Length, default_index.HasValue);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -61,25 +61,25 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(option);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f430((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f436((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public int? getDefaultIndex()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f431((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f437((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f432((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f438((void*)_handle));
     }
 
     public string[] getOptions()
     {
-        var __hs_view = NativeMethods.TablePtr->f433((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f439((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -91,12 +91,12 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public nint setDefaultIndex(int? default_index)
     {
-        return (nint)NativeMethods.TablePtr->f434((void*)_handle, default_index ?? default(int), default_index.HasValue);
+        return (nint)NativeMethods.TablePtr->f440((void*)_handle, default_index ?? default(int), default_index.HasValue);
     }
 
     public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return (nint)NativeMethods.TablePtr->f435((void*)_handle, (void*)label.Handle);
+        return (nint)NativeMethods.TablePtr->f441((void*)_handle, (void*)label.Handle);
     }
 
     public nint setOptions(string[] options)
@@ -118,7 +118,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                return (nint)NativeMethods.TablePtr->f436((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                return (nint)NativeMethods.TablePtr->f442((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
             }
         }
         finally
@@ -131,7 +131,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f427((void*)_handle);
+            NativeMethods.TablePtr->f433((void*)_handle);
             _handle = 0;
         }
     }

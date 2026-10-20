@@ -13,33 +13,41 @@ public sealed unsafe partial class PlayerItemHeldEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1095();
+        get => (nint)NativeMethods.TablePtr->f1116();
     }
 
-    public static PlayerItemHeldEvent Create(nint player, nint previous, nint current) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static PlayerItemHeldEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, int previous, int current)
+    {
+        var handle = NativeMethods.TablePtr->f1117((void*)player.Handle, previous, current);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerItemHeldEvent((nint)handle);
+    }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1096((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1118((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getNewSlot()
     {
-        return NativeMethods.TablePtr->f1097((void*)_handle);
+        return NativeMethods.TablePtr->f1119((void*)_handle);
     }
 
     public int getPreviousSlot()
     {
-        return NativeMethods.TablePtr->f1098((void*)_handle);
+        return NativeMethods.TablePtr->f1120((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1094((void*)_handle);
+            NativeMethods.TablePtr->f1115((void*)_handle);
             _handle = 0;
         }
     }

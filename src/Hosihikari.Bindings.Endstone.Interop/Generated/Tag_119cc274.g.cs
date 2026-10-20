@@ -13,7 +13,7 @@ public sealed unsafe partial class Tag : global::System.IDisposable
 
     public static Tag Create()
     {
-        var handle = NativeMethods.TablePtr->f1631();
+        var handle = NativeMethods.TablePtr->f1668();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -22,9 +22,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag v)
+    public static Tag Create_baf972b8(global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag v)
     {
-        var handle = NativeMethods.TablePtr->f1632((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1669((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -33,9 +33,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.ListTag v)
+    public static Tag Create_819cb27e(global::Hosihikari.Bindings.Endstone.Interop.endstone.ListTag v)
     {
-        var handle = NativeMethods.TablePtr->f1633((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1670((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -44,9 +44,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ v)
+    public static Tag Create_8211f649(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ v)
     {
-        var handle = NativeMethods.TablePtr->f1634((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1671((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -55,9 +55,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ v)
+    public static Tag Create_1484bf0a(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ v)
     {
-        var handle = NativeMethods.TablePtr->f1635((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1672((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -66,9 +66,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ v)
+    public static Tag Create_d6360907(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ v)
     {
-        var handle = NativeMethods.TablePtr->f1636((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1673((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -77,9 +77,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ v)
+    public static Tag Create_457becef(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ v)
     {
-        var handle = NativeMethods.TablePtr->f1637((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1674((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -88,9 +88,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ v)
+    public static Tag Create_09dba799(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ v)
     {
-        var handle = NativeMethods.TablePtr->f1638((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1675((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -99,9 +99,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_long_long_ v)
+    public static Tag Create_4770da7f(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_long_long_ v)
     {
-        var handle = NativeMethods.TablePtr->f1639((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1676((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -110,9 +110,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ v)
+    public static Tag Create_e1ad6f1d(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ v)
     {
-        var handle = NativeMethods.TablePtr->f1640((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1677((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -121,9 +121,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ v)
+    public static Tag Create_ae7af231(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ v)
     {
-        var handle = NativeMethods.TablePtr->f1641((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1678((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -132,9 +132,9 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_unsigned_char_ v)
+    public static Tag Create_20f00e82(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_unsigned_char_ v)
     {
-        var handle = NativeMethods.TablePtr->f1642((void*)v.Handle);
+        var handle = NativeMethods.TablePtr->f1679((void*)v.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -143,51 +143,139 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public static Tag Create_0323cf45(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static Tag Create_0323cf45(global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag v)
+    {
+        var handle = NativeMethods.TablePtr->f1680((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public static Tag Create_cf057e04(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+        return new Tag((nint)handle);
+    }
 
-    public static Tag Create_d1ed5c87(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static Tag Create_cf057e04(global::Hosihikari.Bindings.Endstone.Interop.endstone.ListTag v)
+    {
+        var handle = NativeMethods.TablePtr->f1681((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public static Tag Create_9b18580d(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+        return new Tag((nint)handle);
+    }
 
-    public static Tag Create_3ff7d4ef(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static Tag Create_d1ed5c87(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_int_ v)
+    {
+        var handle = NativeMethods.TablePtr->f1682((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public static Tag Create_c968d7f8(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+        return new Tag((nint)handle);
+    }
 
-    public static Tag Create_5dbcd3d5(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static Tag Create_9b18580d(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ArrayTag_unsigned_char_ v)
+    {
+        var handle = NativeMethods.TablePtr->f1683((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public static Tag Create_46f59296(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+        return new Tag((nint)handle);
+    }
 
-    public static Tag Create_58ec9c16(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static Tag Create_3ff7d4ef(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_double_ v)
+    {
+        var handle = NativeMethods.TablePtr->f1684((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public static Tag Create_465cf618(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+        return new Tag((nint)handle);
+    }
 
-    public static Tag Create_54fd6f8b(nint v) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static Tag Create_c968d7f8(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_float_ v)
+    {
+        var handle = NativeMethods.TablePtr->f1685((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Tag((nint)handle);
+    }
+
+    public static Tag Create_5dbcd3d5(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_int_ v)
+    {
+        var handle = NativeMethods.TablePtr->f1686((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Tag((nint)handle);
+    }
+
+    public static Tag Create_46f59296(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_long_long_ v)
+    {
+        var handle = NativeMethods.TablePtr->f1687((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Tag((nint)handle);
+    }
+
+    public static Tag Create_58ec9c16(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_short_ v)
+    {
+        var handle = NativeMethods.TablePtr->f1688((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Tag((nint)handle);
+    }
+
+    public static Tag Create_465cf618(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_std__basic_string_char__ v)
+    {
+        var handle = NativeMethods.TablePtr->f1689((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Tag((nint)handle);
+    }
+
+    public static Tag Create_54fd6f8b(global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.ValueTag_unsigned_char_ v)
+    {
+        var handle = NativeMethods.TablePtr->f1690((void*)v.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Tag((nint)handle);
+    }
 
     public nint at_6243cae4(string key)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1643((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f1691((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public nint at_44225e41(ulong index)
     {
-        return (nint)NativeMethods.TablePtr->f1644((void*)_handle, index);
+        return (nint)NativeMethods.TablePtr->f1692((void*)_handle, index);
     }
 
     public nint at_c69bd34e(string key)
@@ -195,13 +283,13 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1645((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f1693((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public nint at_6379b79e(ulong index)
     {
-        return (nint)NativeMethods.TablePtr->f1646((void*)_handle, index);
+        return (nint)NativeMethods.TablePtr->f1694((void*)_handle, index);
     }
 
     public bool contains(string key)
@@ -209,13 +297,13 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f1647((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f1695((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->f1648((void*)_handle);
+        return NativeMethods.TablePtr->f1696((void*)_handle);
     }
 
     public nint operator_index(string key)
@@ -223,30 +311,30 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1649((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f1697((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public nint operator_index(ulong index)
     {
-        return (nint)NativeMethods.TablePtr->f1650((void*)_handle, index);
+        return (nint)NativeMethods.TablePtr->f1698((void*)_handle, index);
     }
 
     public ulong size()
     {
-        return NativeMethods.TablePtr->f1651((void*)_handle);
+        return NativeMethods.TablePtr->f1699((void*)_handle);
     }
 
     public byte type()
     {
-        return NativeMethods.TablePtr->f1652((void*)_handle);
+        return NativeMethods.TablePtr->f1700((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1630((void*)_handle);
+            NativeMethods.TablePtr->f1667((void*)_handle);
             _handle = 0;
         }
     }

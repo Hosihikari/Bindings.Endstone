@@ -13,21 +13,33 @@ public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1113();
+        get => (nint)NativeMethods.TablePtr->f1137();
     }
 
-    public static PlayerLoginEvent Create(nint player, nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static PlayerLoginEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, string message)
+    {
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(message);
+        fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+        {
+            var handle = NativeMethods.TablePtr->f1138((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new PlayerLoginEvent((nint)handle);
+        }
+    }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1114((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1139((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getKickMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f1115((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1140((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -36,7 +48,7 @@ public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1116((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f1141((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -45,7 +57,7 @@ public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1112((void*)_handle);
+            NativeMethods.TablePtr->f1136((void*)_handle);
             _handle = 0;
         }
     }

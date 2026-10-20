@@ -11,30 +11,38 @@ public sealed unsafe partial class MapInitializeEvent : global::System.IDisposab
 
     public nint Handle => _handle;
 
-    public static MapInitializeEvent Create(nint map) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static MapInitializeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map)
+    {
+        var handle = NativeMethods.TablePtr->f816((void*)map.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new MapInitializeEvent((nint)handle);
+    }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f808();
+        get => (nint)NativeMethods.TablePtr->f817();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f809((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f818((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getMap()
     {
-        return (nint)NativeMethods.TablePtr->f810((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f819((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f807((void*)_handle);
+            NativeMethods.TablePtr->f815((void*)_handle);
             _handle = 0;
         }
     }

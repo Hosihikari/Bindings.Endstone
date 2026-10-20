@@ -11,12 +11,20 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public static PluginCommand Create(nint command, nint owner) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static PluginCommand Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Command command, global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin owner)
+    {
+        var handle = NativeMethods.TablePtr->f1194((void*)command.Handle, (void*)owner.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PluginCommand((nint)handle);
+    }
 
     public nint asPluginCommand()
     {
-        return (nint)NativeMethods.TablePtr->f1164((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1195((void*)_handle);
     }
 
     public bool execute(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string[] args)
@@ -38,7 +46,7 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                return NativeMethods.TablePtr->f1165((void*)_handle, (void*)sender.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                return NativeMethods.TablePtr->f1196((void*)_handle, (void*)sender.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
             }
         }
         finally
@@ -49,12 +57,12 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
 
     public nint getExecutor()
     {
-        return (nint)NativeMethods.TablePtr->f1166((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1197((void*)_handle);
     }
 
     public nint getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->f1167((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1198((void*)_handle);
     }
 
     public void setExecutor(nint executor) =>
@@ -64,7 +72,7 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1163((void*)_handle);
+            NativeMethods.TablePtr->f1193((void*)_handle);
             _handle = 0;
         }
     }

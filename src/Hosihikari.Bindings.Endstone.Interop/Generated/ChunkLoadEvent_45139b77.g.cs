@@ -11,17 +11,25 @@ public sealed unsafe partial class ChunkLoadEvent : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public static ChunkLoadEvent Create(nint chunk) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static ChunkLoadEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Chunk chunk)
+    {
+        var handle = NativeMethods.TablePtr->f287((void*)chunk.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ChunkLoadEvent((nint)handle);
+    }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f284();
+        get => (nint)NativeMethods.TablePtr->f288();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f285((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f289((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -30,7 +38,7 @@ public sealed unsafe partial class ChunkLoadEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f283((void*)_handle);
+            NativeMethods.TablePtr->f286((void*)_handle);
             _handle = 0;
         }
     }

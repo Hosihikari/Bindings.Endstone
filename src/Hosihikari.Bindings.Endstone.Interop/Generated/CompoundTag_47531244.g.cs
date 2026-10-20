@@ -78,7 +78,7 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f399((void*)_handle);
+            NativeMethods.TablePtr->f405((void*)_handle);
             _handle = 0;
         }
     }

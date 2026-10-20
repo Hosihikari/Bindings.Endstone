@@ -13,20 +13,28 @@ public sealed unsafe partial class PlayerBedLeaveEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1018();
+        get => (nint)NativeMethods.TablePtr->f1030();
     }
 
-    public static PlayerBedLeaveEvent Create(nint player, nint bed) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
+    public static PlayerBedLeaveEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Block bed)
+    {
+        var handle = NativeMethods.TablePtr->f1031((void*)player.Handle, (void*)bed.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new PlayerBedLeaveEvent((nint)handle);
+    }
 
     public nint getBed()
     {
-        return (nint)NativeMethods.TablePtr->f1019((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1032((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1020((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1033((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -35,7 +43,7 @@ public sealed unsafe partial class PlayerBedLeaveEvent : global::System.IDisposa
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1017((void*)_handle);
+            NativeMethods.TablePtr->f1029((void*)_handle);
             _handle = 0;
         }
     }

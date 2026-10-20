@@ -13,7 +13,7 @@ public sealed unsafe partial class BlockData : global::System.IDisposable
 
     public global::System.Collections.Generic.Dictionary<string, global::Hosihikari.Bindings.Endstone.Interop.Variant_7c287813> getBlockStates()
     {
-        var __hs_view = NativeMethods.TablePtr->f166((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f169((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.MapEntry*)__hs_view.Data;
         var __hs_result = new global::System.Collections.Generic.Dictionary<string, global::Hosihikari.Bindings.Endstone.Interop.Variant_7c287813>(checked((int)__hs_view.Size));
         for (var __hs_i = 0; __hs_i < checked((int)__hs_view.Size); __hs_i++)
@@ -28,12 +28,12 @@ public sealed unsafe partial class BlockData : global::System.IDisposable
 
     public uint getRuntimeId()
     {
-        return NativeMethods.TablePtr->f167((void*)_handle);
+        return NativeMethods.TablePtr->f170((void*)_handle);
     }
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f168((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f171((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -42,7 +42,7 @@ public sealed unsafe partial class BlockData : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f165((void*)_handle);
+            NativeMethods.TablePtr->f168((void*)_handle);
             _handle = 0;
         }
     }
