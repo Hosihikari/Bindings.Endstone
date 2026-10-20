@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1134();
+        get => (nint)NativeMethods.TablePtr->f1140();
     }
 
     public static PlayerSkinChangeEvent Create(nint player, nint new_skin, nint message) =>
@@ -21,32 +21,32 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1135((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1141((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin getNewSkin()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f1136((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f1142((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getSkinChangeMessage()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1137((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f1143((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
     public void setSkinChangeMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? message)
     {
-        NativeMethods.TablePtr->f1138((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
+        NativeMethods.TablePtr->f1144((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1133((void*)_handle);
+            NativeMethods.TablePtr->f1139((void*)_handle);
             _handle = 0;
         }
     }

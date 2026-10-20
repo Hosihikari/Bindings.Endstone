@@ -13,13 +13,13 @@ public sealed unsafe partial class OfflinePlayer
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f871((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f876((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID getUniqueId()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->f872((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->f877((void*)_handle));
     }
 
     public void Destroy() =>

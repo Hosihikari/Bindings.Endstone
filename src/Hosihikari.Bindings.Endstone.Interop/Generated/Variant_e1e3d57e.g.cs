@@ -13,7 +13,7 @@ public sealed unsafe class Variant_e1e3d57e : global::System.IDisposable
 
     public static Variant_e1e3d57e CreateMessageForm(global::Hosihikari.Bindings.Endstone.Interop.endstone.MessageForm value)
     {
-        var handle = NativeMethods.TablePtr->f1689((void*)value.Handle);
+        var handle = NativeMethods.TablePtr->f1695((void*)value.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -23,7 +23,7 @@ public sealed unsafe class Variant_e1e3d57e : global::System.IDisposable
 
     public static Variant_e1e3d57e CreateActionForm(global::Hosihikari.Bindings.Endstone.Interop.endstone.ActionForm value)
     {
-        var handle = NativeMethods.TablePtr->f1690((void*)value.Handle);
+        var handle = NativeMethods.TablePtr->f1696((void*)value.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -33,7 +33,7 @@ public sealed unsafe class Variant_e1e3d57e : global::System.IDisposable
 
     public static Variant_e1e3d57e CreateModalForm(global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm value)
     {
-        var handle = NativeMethods.TablePtr->f1691((void*)value.Handle);
+        var handle = NativeMethods.TablePtr->f1697((void*)value.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -41,7 +41,7 @@ public sealed unsafe class Variant_e1e3d57e : global::System.IDisposable
         return new Variant_e1e3d57e((nint)handle);
     }
 
-    public int Index => NativeMethods.TablePtr->f1696((void*)_handle);
+    public int Index => NativeMethods.TablePtr->f1702((void*)_handle);
 
     public bool IsMessageForm => Index == 0;
 
@@ -56,7 +56,7 @@ public sealed unsafe class Variant_e1e3d57e : global::System.IDisposable
             return null;
         }
 
-        var __hs_handle = NativeMethods.TablePtr->f1693((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f1699((void*)_handle);
         return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.MessageForm((nint)__hs_handle);
     }
 
@@ -67,7 +67,7 @@ public sealed unsafe class Variant_e1e3d57e : global::System.IDisposable
             return null;
         }
 
-        var __hs_handle = NativeMethods.TablePtr->f1694((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f1700((void*)_handle);
         return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActionForm((nint)__hs_handle);
     }
 
@@ -78,7 +78,7 @@ public sealed unsafe class Variant_e1e3d57e : global::System.IDisposable
             return null;
         }
 
-        var __hs_handle = NativeMethods.TablePtr->f1695((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f1701((void*)_handle);
         return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm((nint)__hs_handle);
     }
 
@@ -86,7 +86,7 @@ public sealed unsafe class Variant_e1e3d57e : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1692((void*)_handle);
+            NativeMethods.TablePtr->f1698((void*)_handle);
             _handle = 0;
         }
     }

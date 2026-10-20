@@ -12,7 +12,7 @@ public sealed unsafe partial class BlockData : global::System.IDisposable
     public nint Handle => _handle;
 
     public nint getBlockStates() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::unordered_map<std::basic_string<char>, std::variant<bool, std::basic_string<char>, int>>' is not a known bindable declaration.");
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::variant<bool, std::basic_string<char>, int>' is not supported.");
 
     public uint getRuntimeId()
     {

@@ -9813,6 +9813,93 @@ catch (...)
     return;
 }
 
+static HosihikariArrayView hs_method_7dafaf57(void* hs_self, const void** items_data, std::size_t items_count) try
+{
+    thread_local std::vector<HosihikariMapEntry> hs_mapEntries;
+    thread_local std::vector<std::string> hs_mapStrings;
+    auto result = static_cast<endstone::Inventory*>(hs_self)->addItem(hs_make_record_vector<endstone::ItemStack>(items_data, items_count));
+    hs_mapEntries.clear();
+    hs_mapEntries.reserve(result.size());
+    hs_mapStrings.clear();
+    hs_mapStrings.reserve(result.size() * 2);
+    for (auto const& item : result)
+    {
+        HosihikariMapEntry entry{};
+        entry.key = static_cast<std::uint64_t>(static_cast<std::int64_t>(item.first));
+        entry.value = reinterpret_cast<std::uint64_t>(static_cast<void*>(new endstone::ItemStack(item.second)));
+        hs_mapEntries.push_back(entry);
+    }
+    return HosihikariArrayView{hs_mapEntries.data(), hs_mapEntries.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
+static HosihikariArrayView hs_method_360446fb(void* hs_self, void* item) try
+{
+    thread_local std::vector<HosihikariMapEntry> hs_mapEntries;
+    thread_local std::vector<std::string> hs_mapStrings;
+    auto result = static_cast<endstone::Inventory*>(hs_self)->all(*static_cast<const endstone::ItemStack*>(item));
+    hs_mapEntries.clear();
+    hs_mapEntries.reserve(result.size());
+    hs_mapStrings.clear();
+    hs_mapStrings.reserve(result.size() * 2);
+    for (auto const& item : result)
+    {
+        HosihikariMapEntry entry{};
+        entry.key = static_cast<std::uint64_t>(static_cast<std::int64_t>(item.first));
+        entry.value = reinterpret_cast<std::uint64_t>(static_cast<void*>(new endstone::ItemStack(item.second)));
+        hs_mapEntries.push_back(entry);
+    }
+    return HosihikariArrayView{hs_mapEntries.data(), hs_mapEntries.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
+static HosihikariArrayView hs_method_ca0ae1bc(void* hs_self, const char* type_data, std::size_t type_size) try
+{
+    thread_local std::vector<HosihikariMapEntry> hs_mapEntries;
+    thread_local std::vector<std::string> hs_mapStrings;
+    auto result = static_cast<endstone::Inventory*>(hs_self)->all(std::basic_string<char>(type_data, type_size));
+    hs_mapEntries.clear();
+    hs_mapEntries.reserve(result.size());
+    hs_mapStrings.clear();
+    hs_mapStrings.reserve(result.size() * 2);
+    for (auto const& item : result)
+    {
+        HosihikariMapEntry entry{};
+        entry.key = static_cast<std::uint64_t>(static_cast<std::int64_t>(item.first));
+        entry.value = reinterpret_cast<std::uint64_t>(static_cast<void*>(new endstone::ItemStack(item.second)));
+        hs_mapEntries.push_back(entry);
+    }
+    return HosihikariArrayView{hs_mapEntries.data(), hs_mapEntries.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
+}
+
 static void hs_method_110ad5d5(void* hs_self) try
 {
     static_cast<endstone::Inventory*>(hs_self)->clear();
@@ -10076,6 +10163,35 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static HosihikariArrayView hs_method_a7ff981b(void* hs_self, const void** items_data, std::size_t items_count) try
+{
+    thread_local std::vector<HosihikariMapEntry> hs_mapEntries;
+    thread_local std::vector<std::string> hs_mapStrings;
+    auto result = static_cast<endstone::Inventory*>(hs_self)->removeItem(hs_make_record_vector<endstone::ItemStack>(items_data, items_count));
+    hs_mapEntries.clear();
+    hs_mapEntries.reserve(result.size());
+    hs_mapStrings.clear();
+    hs_mapStrings.reserve(result.size() * 2);
+    for (auto const& item : result)
+    {
+        HosihikariMapEntry entry{};
+        entry.key = static_cast<std::uint64_t>(static_cast<std::int64_t>(item.first));
+        entry.value = reinterpret_cast<std::uint64_t>(static_cast<void*>(new endstone::ItemStack(item.second)));
+        hs_mapEntries.push_back(entry);
+    }
+    return HosihikariArrayView{hs_mapEntries.data(), hs_mapEntries.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static void hs_method_93db8198(void* hs_self, const void** items_data, std::size_t items_count) try
@@ -10542,6 +10658,35 @@ catch (...)
 {
     setLastError("unknown native exception");
     return 0;
+}
+
+static HosihikariArrayView hs_method_477df617(void* hs_self) try
+{
+    thread_local std::vector<HosihikariMapEntry> hs_mapEntries;
+    thread_local std::vector<std::string> hs_mapStrings;
+    auto result = static_cast<endstone::ItemMeta*>(hs_self)->getEnchants();
+    hs_mapEntries.clear();
+    hs_mapEntries.reserve(result.size());
+    hs_mapStrings.clear();
+    hs_mapStrings.reserve(result.size() * 2);
+    for (auto const& item : result)
+    {
+        HosihikariMapEntry entry{};
+        entry.key = reinterpret_cast<std::uint64_t>(const_cast<void*>(static_cast<void const*>(item.first)));
+        entry.value = static_cast<std::uint64_t>(static_cast<std::int64_t>(item.second));
+        hs_mapEntries.push_back(entry);
+    }
+    return HosihikariArrayView{hs_mapEntries.data(), hs_mapEntries.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static void* hs_method_cd47d8f2(void* hs_self) try
@@ -14455,6 +14600,38 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static HosihikariArrayView hs_method_5e0b211d(void* hs_self) try
+{
+    thread_local std::vector<HosihikariMapEntry> hs_mapEntries;
+    thread_local std::vector<std::string> hs_mapStrings;
+    auto result = static_cast<endstone::PermissionAttachment*>(hs_self)->getPermissions();
+    hs_mapEntries.clear();
+    hs_mapEntries.reserve(result.size());
+    hs_mapStrings.clear();
+    hs_mapStrings.reserve(result.size() * 2);
+    for (auto const& item : result)
+    {
+        HosihikariMapEntry entry{};
+        hs_mapStrings.emplace_back(item.first.data(), item.first.size());
+        auto const& hs_stored = hs_mapStrings.back();
+        entry.key = reinterpret_cast<std::uint64_t>(hs_stored.data());
+        entry.keySize = static_cast<std::uint64_t>(hs_stored.size());
+        entry.value = static_cast<std::uint64_t>(item.second);
+        hs_mapEntries.push_back(entry);
+    }
+    return HosihikariArrayView{hs_mapEntries.data(), hs_mapEntries.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariArrayView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariArrayView{nullptr, 0};
 }
 
 static void* hs_method_bafd887c(void* hs_self) try
@@ -27641,6 +27818,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_fb8c5d13,
     &hs_method_e57a6d79,
     &hs_method_8453ba94,
+    &hs_method_7dafaf57,
+    &hs_method_360446fb,
+    &hs_method_ca0ae1bc,
     &hs_method_110ad5d5,
     &hs_method_de53c816,
     &hs_method_7f00f8a3,
@@ -27658,6 +27838,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_54f1a207,
     &hs_method_2317bda0,
     &hs_method_80807888,
+    &hs_method_a7ff981b,
     &hs_method_93db8198,
     &hs_method_44d2334c,
     &hs_destroy_a7df4d30,
@@ -27688,6 +27869,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_7f56ac29,
     &hs_method_f9913330,
     &hs_method_0c8148f2,
+    &hs_method_477df617,
     &hs_method_cd47d8f2,
     &hs_method_c11da252,
     &hs_method_c6bdbd15,
@@ -27939,6 +28121,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_0a1fef83,
     &hs_destroy_66cc8237,
     &hs_method_0db6400b,
+    &hs_method_5e0b211d,
     &hs_method_bafd887c,
     &hs_method_1561e66f,
     &hs_method_5aae78fb,

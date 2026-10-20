@@ -13,43 +13,43 @@ public sealed unsafe partial class ItemType
 
     public static nint Air
     {
-        get => (nint)NativeMethods.TablePtr->f703();
+        get => (nint)NativeMethods.TablePtr->f708();
     }
 
     public static nint RegistryType
     {
-        get => (nint)NativeMethods.TablePtr->f704();
+        get => (nint)NativeMethods.TablePtr->f709();
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack createItemStack()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f705((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f710((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack createItemStack(int amount)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f706((void*)_handle, amount));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f711((void*)_handle, amount));
     }
 
     public int getMaxDurability()
     {
-        return NativeMethods.TablePtr->f707((void*)_handle);
+        return NativeMethods.TablePtr->f712((void*)_handle);
     }
 
     public int getMaxStackSize()
     {
-        return NativeMethods.TablePtr->f708((void*)_handle);
+        return NativeMethods.TablePtr->f713((void*)_handle);
     }
 
     public string getTranslationKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f709((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f714((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getTranslationKey(int data)
     {
-        var __hs_view = NativeMethods.TablePtr->f710((void*)_handle, data);
+        var __hs_view = NativeMethods.TablePtr->f715((void*)_handle, data);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 }
