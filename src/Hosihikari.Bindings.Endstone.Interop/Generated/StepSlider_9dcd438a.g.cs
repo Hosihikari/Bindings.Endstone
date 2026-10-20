@@ -15,7 +15,7 @@ public sealed unsafe partial class StepSlider : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1460((void*)_handle);
+            NativeMethods.TablePtr->f1463((void*)_handle);
             _handle = 0;
         }
     }

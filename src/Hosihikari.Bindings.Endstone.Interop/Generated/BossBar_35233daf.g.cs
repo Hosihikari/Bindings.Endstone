@@ -13,22 +13,22 @@ public sealed unsafe partial class BossBar : global::System.IDisposable
 
     public void addFlag(int flag)
     {
-        NativeMethods.TablePtr->f226((void*)_handle, flag);
+        NativeMethods.TablePtr->f227((void*)_handle, flag);
     }
 
     public void addPlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f227((void*)_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f228((void*)_handle, (void*)player.Handle);
     }
 
     public int getColor()
     {
-        return NativeMethods.TablePtr->f228((void*)_handle);
+        return NativeMethods.TablePtr->f229((void*)_handle);
     }
 
     public nint[] getPlayers()
     {
-        var __hs_view = NativeMethods.TablePtr->f229((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f230((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -39,58 +39,58 @@ public sealed unsafe partial class BossBar : global::System.IDisposable
 
     public float getProgress()
     {
-        return NativeMethods.TablePtr->f230((void*)_handle);
+        return NativeMethods.TablePtr->f231((void*)_handle);
     }
 
     public int getStyle()
     {
-        return NativeMethods.TablePtr->f231((void*)_handle);
+        return NativeMethods.TablePtr->f232((void*)_handle);
     }
 
     public string getTitle()
     {
-        var __hs_view = NativeMethods.TablePtr->f232((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f233((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool hasFlag(int flag)
     {
-        return NativeMethods.TablePtr->f233((void*)_handle, flag);
+        return NativeMethods.TablePtr->f234((void*)_handle, flag);
     }
 
     public bool isVisible()
     {
-        return NativeMethods.TablePtr->f234((void*)_handle);
+        return NativeMethods.TablePtr->f235((void*)_handle);
     }
 
     public void removeAll()
     {
-        NativeMethods.TablePtr->f235((void*)_handle);
+        NativeMethods.TablePtr->f236((void*)_handle);
     }
 
     public void removeFlag(int flag)
     {
-        NativeMethods.TablePtr->f236((void*)_handle, flag);
+        NativeMethods.TablePtr->f237((void*)_handle, flag);
     }
 
     public void removePlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f237((void*)_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f238((void*)_handle, (void*)player.Handle);
     }
 
     public void setColor(int color)
     {
-        NativeMethods.TablePtr->f238((void*)_handle, color);
+        NativeMethods.TablePtr->f239((void*)_handle, color);
     }
 
     public void setProgress(float progress)
     {
-        NativeMethods.TablePtr->f239((void*)_handle, progress);
+        NativeMethods.TablePtr->f240((void*)_handle, progress);
     }
 
     public void setStyle(int style)
     {
-        NativeMethods.TablePtr->f240((void*)_handle, style);
+        NativeMethods.TablePtr->f241((void*)_handle, style);
     }
 
     public void setTitle(string title)
@@ -98,13 +98,13 @@ public sealed unsafe partial class BossBar : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f241((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f242((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void setVisible(bool visible)
     {
-        NativeMethods.TablePtr->f242((void*)_handle, visible);
+        NativeMethods.TablePtr->f243((void*)_handle, visible);
     }
 
 
@@ -112,7 +112,7 @@ public sealed unsafe partial class BossBar : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f225((void*)_handle);
+            NativeMethods.TablePtr->f226((void*)_handle);
             _handle = 0;
         }
     }

@@ -19,7 +19,7 @@ public sealed unsafe partial class Skin : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var handle = NativeMethods.TablePtr->f1436(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
+                var handle = NativeMethods.TablePtr->f1439(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -32,30 +32,30 @@ public sealed unsafe partial class Skin : global::System.IDisposable
 
     public nint getCapeId()
     {
-        return (nint)NativeMethods.TablePtr->f1437((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1440((void*)_handle);
     }
 
     public nint getCapeImage()
     {
-        return (nint)NativeMethods.TablePtr->f1438((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1441((void*)_handle);
     }
 
     public string getId()
     {
-        var __hs_view = NativeMethods.TablePtr->f1439((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1442((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getImage()
     {
-        return (nint)NativeMethods.TablePtr->f1440((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1443((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1435((void*)_handle);
+            NativeMethods.TablePtr->f1438((void*)_handle);
             _handle = 0;
         }
     }

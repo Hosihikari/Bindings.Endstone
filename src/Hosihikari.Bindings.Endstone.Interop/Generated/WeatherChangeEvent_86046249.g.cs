@@ -13,7 +13,7 @@ public sealed unsafe partial class WeatherChangeEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1544();
+        get => (nint)NativeMethods.TablePtr->f1547();
     }
 
     public static WeatherChangeEvent Create(nint level, nint to) =>
@@ -21,13 +21,13 @@ public sealed unsafe partial class WeatherChangeEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1545((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1548((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool toWeatherState()
     {
-        return NativeMethods.TablePtr->f1546((void*)_handle);
+        return NativeMethods.TablePtr->f1549((void*)_handle);
     }
 
 
@@ -35,7 +35,7 @@ public sealed unsafe partial class WeatherChangeEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1543((void*)_handle);
+            NativeMethods.TablePtr->f1546((void*)_handle);
             _handle = 0;
         }
     }

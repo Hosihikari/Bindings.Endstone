@@ -22,7 +22,7 @@ public sealed unsafe partial class Inventory
         fixed (nint* __hs_vectorHandleData = __hs_vectorHandles)
         {
             var __hs_vectorData = (void**)__hs_vectorHandleData;
-            var __hs_view = NativeMethods.TablePtr->f619((void*)_handle, __hs_vectorData, (nuint)(items?.Length ?? 0));
+            var __hs_view = NativeMethods.TablePtr->f620((void*)_handle, __hs_vectorData, (nuint)(items?.Length ?? 0));
             var __hs_items = (global::Hosihikari.Bindings.Abi.MapEntry*)__hs_view.Data;
             var __hs_result = new global::System.Collections.Generic.Dictionary<int, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack>(checked((int)__hs_view.Size));
             for (var __hs_i = 0; __hs_i < checked((int)__hs_view.Size); __hs_i++)
@@ -38,7 +38,7 @@ public sealed unsafe partial class Inventory
 
     public global::System.Collections.Generic.Dictionary<int, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack> all(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        var __hs_view = NativeMethods.TablePtr->f620((void*)_handle, (void*)item.Handle);
+        var __hs_view = NativeMethods.TablePtr->f621((void*)_handle, (void*)item.Handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.MapEntry*)__hs_view.Data;
         var __hs_result = new global::System.Collections.Generic.Dictionary<int, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack>(checked((int)__hs_view.Size));
         for (var __hs_i = 0; __hs_i < checked((int)__hs_view.Size); __hs_i++)
@@ -56,7 +56,7 @@ public sealed unsafe partial class Inventory
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->f621((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_view = NativeMethods.TablePtr->f622((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             var __hs_items = (global::Hosihikari.Bindings.Abi.MapEntry*)__hs_view.Data;
             var __hs_result = new global::System.Collections.Generic.Dictionary<int, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack>(checked((int)__hs_view.Size));
             for (var __hs_i = 0; __hs_i < checked((int)__hs_view.Size); __hs_i++)
@@ -72,22 +72,22 @@ public sealed unsafe partial class Inventory
 
     public void clear()
     {
-        NativeMethods.TablePtr->f622((void*)_handle);
+        NativeMethods.TablePtr->f623((void*)_handle);
     }
 
     public void clear(int index)
     {
-        NativeMethods.TablePtr->f623((void*)_handle, index);
+        NativeMethods.TablePtr->f624((void*)_handle, index);
     }
 
     public bool contains(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        return NativeMethods.TablePtr->f624((void*)_handle, (void*)item.Handle);
+        return NativeMethods.TablePtr->f625((void*)_handle, (void*)item.Handle);
     }
 
     public bool contains(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item, int amount)
     {
-        return NativeMethods.TablePtr->f625((void*)_handle, (void*)item.Handle, amount);
+        return NativeMethods.TablePtr->f626((void*)_handle, (void*)item.Handle, amount);
     }
 
     public bool contains(string type)
@@ -95,13 +95,13 @@ public sealed unsafe partial class Inventory
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f626((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f627((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool containsAtLeast(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item, int amount)
     {
-        return NativeMethods.TablePtr->f627((void*)_handle, (void*)item.Handle, amount);
+        return NativeMethods.TablePtr->f628((void*)_handle, (void*)item.Handle, amount);
     }
 
     public bool containsAtLeast(string type, int amount)
@@ -109,13 +109,13 @@ public sealed unsafe partial class Inventory
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f628((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, amount);
+            return NativeMethods.TablePtr->f629((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, amount);
         }
     }
 
     public int first(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        return NativeMethods.TablePtr->f629((void*)_handle, (void*)item.Handle);
+        return NativeMethods.TablePtr->f630((void*)_handle, (void*)item.Handle);
     }
 
     public int first(string type)
@@ -123,18 +123,18 @@ public sealed unsafe partial class Inventory
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f630((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f631((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public int firstEmpty()
     {
-        return NativeMethods.TablePtr->f631((void*)_handle);
+        return NativeMethods.TablePtr->f632((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack?[] getContents()
     {
-        var __hs_view = NativeMethods.TablePtr->f632((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f633((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack?[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -148,28 +148,28 @@ public sealed unsafe partial class Inventory
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? getItem(int index)
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f633((void*)_handle, index, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f634((void*)_handle, index, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)__hs_handle) : null;
     }
 
     public int getMaxStackSize()
     {
-        return NativeMethods.TablePtr->f634((void*)_handle);
+        return NativeMethods.TablePtr->f635((void*)_handle);
     }
 
     public int getSize()
     {
-        return NativeMethods.TablePtr->f635((void*)_handle);
+        return NativeMethods.TablePtr->f636((void*)_handle);
     }
 
     public bool isEmpty()
     {
-        return NativeMethods.TablePtr->f636((void*)_handle);
+        return NativeMethods.TablePtr->f637((void*)_handle);
     }
 
     public void remove(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        NativeMethods.TablePtr->f637((void*)_handle, (void*)item.Handle);
+        NativeMethods.TablePtr->f638((void*)_handle, (void*)item.Handle);
     }
 
     public void remove(string type)
@@ -177,7 +177,7 @@ public sealed unsafe partial class Inventory
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f638((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f639((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -192,7 +192,7 @@ public sealed unsafe partial class Inventory
         fixed (nint* __hs_vectorHandleData = __hs_vectorHandles)
         {
             var __hs_vectorData = (void**)__hs_vectorHandleData;
-            var __hs_view = NativeMethods.TablePtr->f639((void*)_handle, __hs_vectorData, (nuint)(items?.Length ?? 0));
+            var __hs_view = NativeMethods.TablePtr->f640((void*)_handle, __hs_vectorData, (nuint)(items?.Length ?? 0));
             var __hs_items = (global::Hosihikari.Bindings.Abi.MapEntry*)__hs_view.Data;
             var __hs_result = new global::System.Collections.Generic.Dictionary<int, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack>(checked((int)__hs_view.Size));
             for (var __hs_i = 0; __hs_i < checked((int)__hs_view.Size); __hs_i++)
@@ -217,13 +217,13 @@ public sealed unsafe partial class Inventory
         fixed (nint* __hs_vectorHandleData = __hs_vectorHandles)
         {
             var __hs_vectorData = (void**)__hs_vectorHandleData;
-            NativeMethods.TablePtr->f640((void*)_handle, __hs_vectorData, (nuint)(items?.Length ?? 0));
+            NativeMethods.TablePtr->f641((void*)_handle, __hs_vectorData, (nuint)(items?.Length ?? 0));
         }
     }
 
     public void setItem(int index, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? item)
     {
-        NativeMethods.TablePtr->f641((void*)_handle, index, (void*)(item?.Handle ?? 0), item is not null);
+        NativeMethods.TablePtr->f642((void*)_handle, index, (void*)(item?.Handle ?? 0), item is not null);
     }
 
     public void Destroy() =>

@@ -13,51 +13,107 @@ public sealed unsafe partial class Permission : global::System.IDisposable
 
     public static int DefaultPermission
     {
-        get => NativeMethods.TablePtr->f910();
+        get => NativeMethods.TablePtr->f911();
     }
 
-    public static Permission Create(nint name, nint description, nint default_value, nint children) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unordered_map<std::basic_string<char>, bool>' is not a known bindable declaration.");
+    public static Permission Create(string name, string description, int default_value, global::System.Collections.Generic.Dictionary<string, bool>? children)
+    {
+        var __hs_map3Items = children;
+        var __hs_map3Count = __hs_map3Items?.Count ?? 0;
+        var __hs_map3Entries = (global::Hosihikari.Bindings.Abi.MapEntry*)global::System.Runtime.InteropServices.Marshal.AllocHGlobal((__hs_map3Count == 0 ? 1 : __hs_map3Count) * sizeof(global::Hosihikari.Bindings.Abi.MapEntry));
+        var __hs_map3Strings = new nint[__hs_map3Count * 1];
+        var __hs_map3StringCount = 0;
+        var __hs_map3Index = 0;
+        if (__hs_map3Items is not null)
+        {
+            foreach (var __hs_pair in __hs_map3Items)
+            {
+                var __hs_entry = new global::Hosihikari.Bindings.Abi.MapEntry();
+                var __hs_KeyBytes = global::System.Text.Encoding.UTF8.GetBytes(__hs_pair.Key ?? string.Empty);
+                var __hs_KeyPtr = global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_KeyBytes.Length == 0 ? 1 : __hs_KeyBytes.Length);
+                if (__hs_KeyBytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_KeyBytes, 0, __hs_KeyPtr, __hs_KeyBytes.Length); }
+                __hs_map3Strings[__hs_map3StringCount++] = __hs_KeyPtr;
+                __hs_entry.Key = (ulong)__hs_KeyPtr;
+                __hs_entry.KeySize = (ulong)__hs_KeyBytes.Length;
+                __hs_entry.Value = (__hs_pair.Value) ? 1UL : 0UL;
+                __hs_map3Entries[__hs_map3Index++] = __hs_entry;
+            }
+        }
+        var __hs_map3View = new global::Hosihikari.Bindings.Abi.ArrayView { Data = __hs_map3Entries, Size = (nuint)__hs_map3Count };
+        try
+        {
+            var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+            var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(description);
+            fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+            {
+                fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+                {
+                    var handle = NativeMethods.TablePtr->f912(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, default_value, __hs_map3View);
+                    if (handle == null)
+                    {
+                        throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                    }
+
+                    return new Permission((nint)handle);
+                }
+            }
+        }
+        finally
+        {
+            for (var __hs_i = 0; __hs_i < __hs_map3StringCount; __hs_i++) { if (__hs_map3Strings[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal(__hs_map3Strings[__hs_i]); } }
+            global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_map3Entries);
+        }
+    }
 
     public nint addParent(string name, bool value)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f911((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, value);
+            return (nint)NativeMethods.TablePtr->f913((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, value);
         }
     }
 
     public void addParent(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm, bool value)
     {
-        NativeMethods.TablePtr->f912((void*)_handle, (void*)perm.Handle, value);
+        NativeMethods.TablePtr->f914((void*)_handle, (void*)perm.Handle, value);
     }
 
-    public nint getChildren()
+    public global::System.Collections.Generic.Dictionary<string, bool> getChildren()
     {
-        return (nint)NativeMethods.TablePtr->f913((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f915((void*)_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.MapEntry*)__hs_view.Data;
+        var __hs_result = new global::System.Collections.Generic.Dictionary<string, bool>(checked((int)__hs_view.Size));
+        for (var __hs_i = 0; __hs_i < checked((int)__hs_view.Size); __hs_i++)
+        {
+            var __hs_entry = __hs_items[__hs_i];
+            var __hs_key = global::System.Runtime.InteropServices.Marshal.PtrToStringUTF8((nint)__hs_entry.Key, checked((int)__hs_entry.KeySize))!;
+            var __hs_value = __hs_entry.Value != 0;
+            __hs_result[__hs_key] = __hs_value;
+        }
+        return __hs_result;
     }
 
     public int getDefault()
     {
-        return NativeMethods.TablePtr->f914((void*)_handle);
+        return NativeMethods.TablePtr->f916((void*)_handle);
     }
 
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f915((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f917((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f916((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f918((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint[] getPermissibles()
     {
-        var __hs_view = NativeMethods.TablePtr->f917((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f919((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -68,17 +124,17 @@ public sealed unsafe partial class Permission : global::System.IDisposable
 
     public void init(global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginManager plugin_manager)
     {
-        NativeMethods.TablePtr->f918((void*)_handle, (void*)plugin_manager.Handle);
+        NativeMethods.TablePtr->f920((void*)_handle, (void*)plugin_manager.Handle);
     }
 
     public void recalculatePermissibles()
     {
-        NativeMethods.TablePtr->f919((void*)_handle);
+        NativeMethods.TablePtr->f921((void*)_handle);
     }
 
     public void setDefault(int value)
     {
-        NativeMethods.TablePtr->f920((void*)_handle, value);
+        NativeMethods.TablePtr->f922((void*)_handle, value);
     }
 
     public void setDescription(string value)
@@ -86,7 +142,7 @@ public sealed unsafe partial class Permission : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(value);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f921((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f923((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -94,7 +150,7 @@ public sealed unsafe partial class Permission : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f909((void*)_handle);
+            NativeMethods.TablePtr->f910((void*)_handle);
             _handle = 0;
         }
     }

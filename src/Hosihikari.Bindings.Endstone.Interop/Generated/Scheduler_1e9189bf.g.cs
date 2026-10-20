@@ -13,17 +13,17 @@ public sealed unsafe partial class Scheduler
 
     public void cancelTask(uint id)
     {
-        NativeMethods.TablePtr->f1312((void*)_handle, id);
+        NativeMethods.TablePtr->f1314((void*)_handle, id);
     }
 
     public void cancelTasks(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1313((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1315((void*)_handle, (void*)plugin.Handle);
     }
 
     public nint[] getPendingTasks()
     {
-        var __hs_view = NativeMethods.TablePtr->f1314((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1316((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -34,47 +34,47 @@ public sealed unsafe partial class Scheduler
 
     public bool isQueued(uint id)
     {
-        return NativeMethods.TablePtr->f1315((void*)_handle, id);
+        return NativeMethods.TablePtr->f1317((void*)_handle, id);
     }
 
     public bool isRunning(uint id)
     {
-        return NativeMethods.TablePtr->f1316((void*)_handle, id);
+        return NativeMethods.TablePtr->f1318((void*)_handle, id);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? runTask(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease)
     {
-        var __hs_shared = NativeMethods.TablePtr->f1317((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease);
+        var __hs_shared = NativeMethods.TablePtr->f1319((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? runTaskAsync(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease)
     {
-        var __hs_shared = NativeMethods.TablePtr->f1318((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease);
+        var __hs_shared = NativeMethods.TablePtr->f1320((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? runTaskLater(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease, ulong delay)
     {
-        var __hs_shared = NativeMethods.TablePtr->f1319((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay);
+        var __hs_shared = NativeMethods.TablePtr->f1321((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? runTaskLaterAsync(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease, ulong delay)
     {
-        var __hs_shared = NativeMethods.TablePtr->f1320((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay);
+        var __hs_shared = NativeMethods.TablePtr->f1322((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? runTaskTimer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease, ulong delay, ulong period)
     {
-        var __hs_shared = NativeMethods.TablePtr->f1321((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay, period);
+        var __hs_shared = NativeMethods.TablePtr->f1323((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay, period);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? runTaskTimerAsync(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease, ulong delay, ulong period)
     {
-        var __hs_shared = NativeMethods.TablePtr->f1322((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay, period);
+        var __hs_shared = NativeMethods.TablePtr->f1324((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay, period);
         return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
     }
 

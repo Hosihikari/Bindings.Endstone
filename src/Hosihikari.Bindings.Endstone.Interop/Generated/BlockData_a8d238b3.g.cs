@@ -11,17 +11,29 @@ public sealed unsafe partial class BlockData : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public nint getBlockStates() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: map value type 'std::variant<bool, std::basic_string<char>, int>' is not supported.");
+    public global::System.Collections.Generic.Dictionary<string, global::Hosihikari.Bindings.Endstone.Interop.Variant_7c287813> getBlockStates()
+    {
+        var __hs_view = NativeMethods.TablePtr->f166((void*)_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.MapEntry*)__hs_view.Data;
+        var __hs_result = new global::System.Collections.Generic.Dictionary<string, global::Hosihikari.Bindings.Endstone.Interop.Variant_7c287813>(checked((int)__hs_view.Size));
+        for (var __hs_i = 0; __hs_i < checked((int)__hs_view.Size); __hs_i++)
+        {
+            var __hs_entry = __hs_items[__hs_i];
+            var __hs_key = global::System.Runtime.InteropServices.Marshal.PtrToStringUTF8((nint)__hs_entry.Key, checked((int)__hs_entry.KeySize))!;
+            var __hs_value = new global::Hosihikari.Bindings.Endstone.Interop.Variant_7c287813((nint)__hs_entry.Value);
+            __hs_result[__hs_key] = __hs_value;
+        }
+        return __hs_result;
+    }
 
     public uint getRuntimeId()
     {
-        return NativeMethods.TablePtr->f166((void*)_handle);
+        return NativeMethods.TablePtr->f167((void*)_handle);
     }
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f167((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f168((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 

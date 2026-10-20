@@ -16,6 +16,6 @@ public sealed unsafe partial class BlockEvent
 
     public nint getBlock()
     {
-        return (nint)NativeMethods.TablePtr->f168((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f169((void*)_handle);
     }
 }

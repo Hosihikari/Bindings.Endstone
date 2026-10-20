@@ -13,47 +13,47 @@ public sealed unsafe partial class CommandSender
 
     public nint asActor()
     {
-        return (nint)NativeMethods.TablePtr->f370((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f371((void*)_handle);
     }
 
     public nint asBlock()
     {
-        return (nint)NativeMethods.TablePtr->f371((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f372((void*)_handle);
     }
 
     public nint asCommandSender()
     {
-        return (nint)NativeMethods.TablePtr->f372((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f373((void*)_handle);
     }
 
     public nint asConsole()
     {
-        return (nint)NativeMethods.TablePtr->f373((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f374((void*)_handle);
     }
 
     public nint asPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f374((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f375((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f375((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f376((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f376((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f377((void*)_handle);
     }
 
     public void sendErrorMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)
     {
-        NativeMethods.TablePtr->f377((void*)_handle, (void*)message.Handle);
+        NativeMethods.TablePtr->f378((void*)_handle, (void*)message.Handle);
     }
 
     public void sendMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)
     {
-        NativeMethods.TablePtr->f378((void*)_handle, (void*)message.Handle);
+        NativeMethods.TablePtr->f379((void*)_handle, (void*)message.Handle);
     }
 }

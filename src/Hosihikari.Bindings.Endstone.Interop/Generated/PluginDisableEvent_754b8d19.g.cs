@@ -13,7 +13,7 @@ public sealed unsafe partial class PluginDisableEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1185();
+        get => (nint)NativeMethods.TablePtr->f1187();
     }
 
     public static PluginDisableEvent Create(nint plugin) =>
@@ -21,20 +21,20 @@ public sealed unsafe partial class PluginDisableEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1186((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1188((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->f1187((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1189((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1184((void*)_handle);
+            NativeMethods.TablePtr->f1186((void*)_handle);
             _handle = 0;
         }
     }
