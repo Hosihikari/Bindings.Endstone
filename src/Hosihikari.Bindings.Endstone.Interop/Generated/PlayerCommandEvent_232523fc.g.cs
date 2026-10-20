@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f923();
+        get => (nint)NativeMethods.TablePtr->f924();
     }
 
     public static PlayerCommandEvent Create(nint player, nint command) =>
@@ -21,13 +21,13 @@ public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposab
 
     public string getCommand()
     {
-        var __hs_view = NativeMethods.TablePtr->f924((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f925((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f925((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f926((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -36,7 +36,7 @@ public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposab
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(command);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f926((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f927((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -45,7 +45,7 @@ public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f922((void*)_handle);
+            NativeMethods.TablePtr->f923((void*)_handle);
             _handle = 0;
         }
     }

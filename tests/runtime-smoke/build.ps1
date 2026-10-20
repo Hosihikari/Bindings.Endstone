@@ -75,6 +75,8 @@ $ArrayTagSize = Get-TableIndex "ArrayTag_int__*.g.cs" 'size\(\)[\s\S]*?TablePtr-
 $ArrayTagDestroy = Get-TableIndex "ArrayTag_int__*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::Dispose"
 $ServerPluginManager = Get-TableIndex "Server_*.g.cs" 'getPluginManager\(\)[\s\S]*?TablePtr->f(\d+)' "Server::getPluginManager"
 $PluginManagerPlugins = Get-TableIndex "PluginManager_*.g.cs" 'getPlugins\(\)[\s\S]*?TablePtr->f(\d+)' "PluginManager::getPlugins"
+$ServerCreateScoreboard = Get-TableIndex "Server_*.g.cs" 'createScoreboard\(\)[\s\S]*?TablePtr->f(\d+)' "Server::createScoreboard"
+$ScoreboardClearSlot = Get-TableIndex "Scoreboard_*.g.cs" 'clearSlot\(int slot\)[\s\S]*?TablePtr->f(\d+)' "Scoreboard::clearSlot"
 
 $Args = @(
     "/std:c++20",
@@ -98,6 +100,8 @@ $Args = @(
     "/DHS_ARRAYTAG_INT_DESTROY_INDEX=$ArrayTagDestroy",
     "/DHS_SERVER_PLUGIN_MANAGER_INDEX=$ServerPluginManager",
     "/DHS_PLUGIN_MANAGER_PLUGINS_INDEX=$PluginManagerPlugins",
+    "/DHS_SERVER_CREATE_SCOREBOARD_INDEX=$ServerCreateScoreboard",
+    "/DHS_SCOREBOARD_CLEAR_SLOT_INDEX=$ScoreboardClearSlot",
     "/I", (Split-Path (Split-Path $Expected.FullName -Parent) -Parent),
     "/I", (Split-Path (Split-Path $Nlohmann.FullName -Parent) -Parent),
     "/imsvc", (Join-Path $Msvc.FullName "include"),

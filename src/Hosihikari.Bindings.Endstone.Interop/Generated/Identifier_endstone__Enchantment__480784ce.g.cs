@@ -27,20 +27,20 @@ public sealed unsafe partial class Identifier_endstone__Enchantment_ : global::S
     {
         get
         {
-            var view = NativeMethods.TablePtr->f535();
+            var view = NativeMethods.TablePtr->f536();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
 
     public string getKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f536((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f537((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getNamespace()
     {
-        var __hs_view = NativeMethods.TablePtr->f537((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f538((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -49,31 +49,31 @@ public sealed unsafe partial class Identifier_endstone__Enchantment_ : global::S
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_((nint)NativeMethods.TablePtr->f538(__hs_stringData, (nuint)__hs_stringBytes.Length));
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_((nint)NativeMethods.TablePtr->f539(__hs_stringData, (nuint)__hs_stringBytes.Length));
         }
     }
 
     public string operator_basic_string()
     {
-        var __hs_view = NativeMethods.TablePtr->f539((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f540((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ other)
     {
-        return NativeMethods.TablePtr->f540((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f541((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ other)
     {
-        return NativeMethods.TablePtr->f541((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f542((void*)_handle, (void*)other.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f534((void*)_handle);
+            NativeMethods.TablePtr->f535((void*)_handle);
             _handle = 0;
         }
     }

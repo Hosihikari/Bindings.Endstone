@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f914();
+        get => (nint)NativeMethods.TablePtr->f915();
     }
 
     public static PlayerChatEvent Create(nint player, nint message, nint recipients, nint format) =>
@@ -21,25 +21,25 @@ public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f915((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f916((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getFormat()
     {
-        var __hs_view = NativeMethods.TablePtr->f916((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f917((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f917((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f918((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint[] getRecipients()
     {
-        var __hs_view = NativeMethods.TablePtr->f918((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f919((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -53,7 +53,7 @@ public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(format);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f919((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f920((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -62,20 +62,20 @@ public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            NativeMethods.TablePtr->f920((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            NativeMethods.TablePtr->f921((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public void setPlayer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f921((void*)_handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f922((void*)_handle, (void*)player.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f913((void*)_handle);
+            NativeMethods.TablePtr->f914((void*)_handle);
             _handle = 0;
         }
     }

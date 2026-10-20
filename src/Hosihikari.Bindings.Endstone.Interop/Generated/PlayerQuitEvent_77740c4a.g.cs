@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1024();
+        get => (nint)NativeMethods.TablePtr->f1025();
     }
 
     public static PlayerQuitEvent Create(nint player, nint quit_message) =>
@@ -21,7 +21,7 @@ public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1025((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1026((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -35,7 +35,7 @@ public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1023((void*)_handle);
+            NativeMethods.TablePtr->f1024((void*)_handle);
             _handle = 0;
         }
     }

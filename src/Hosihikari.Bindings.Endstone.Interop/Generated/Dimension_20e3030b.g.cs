@@ -13,12 +13,12 @@ public sealed unsafe partial class Dimension
 
     public nint dropItem(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        return (nint)NativeMethods.TablePtr->f376((void*)_handle, (void*)location.Handle, (void*)item.Handle);
+        return (nint)NativeMethods.TablePtr->f377((void*)_handle, (void*)location.Handle, (void*)item.Handle);
     }
 
     public nint[] getActors()
     {
-        var __hs_view = NativeMethods.TablePtr->f377((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f378((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -29,36 +29,36 @@ public sealed unsafe partial class Dimension
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getBlockAt(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location)
     {
-        var __hs_handle = NativeMethods.TablePtr->f378((void*)_handle, (void*)location.Handle);
+        var __hs_handle = NativeMethods.TablePtr->f379((void*)_handle, (void*)location.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getBlockAt(int x, int y, int z)
     {
-        var __hs_handle = NativeMethods.TablePtr->f379((void*)_handle, x, y, z);
+        var __hs_handle = NativeMethods.TablePtr->f380((void*)_handle, x, y, z);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getHighestBlockAt(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location)
     {
-        var __hs_handle = NativeMethods.TablePtr->f380((void*)_handle, (void*)location.Handle);
+        var __hs_handle = NativeMethods.TablePtr->f381((void*)_handle, (void*)location.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getHighestBlockAt(int x, int z)
     {
-        var __hs_handle = NativeMethods.TablePtr->f381((void*)_handle, x, z);
+        var __hs_handle = NativeMethods.TablePtr->f382((void*)_handle, x, z);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public int getHighestBlockYAt(int x, int z)
     {
-        return NativeMethods.TablePtr->f382((void*)_handle, x, z);
+        return NativeMethods.TablePtr->f383((void*)_handle, x, z);
     }
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f383((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f384((void*)_handle);
     }
 
     public nint getLoadedChunks() =>
@@ -66,13 +66,13 @@ public sealed unsafe partial class Dimension
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f384((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f385((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getType()
     {
-        return NativeMethods.TablePtr->f385((void*)_handle);
+        return NativeMethods.TablePtr->f386((void*)_handle);
     }
 
     public nint spawnActor(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location, string type)
@@ -80,7 +80,7 @@ public sealed unsafe partial class Dimension
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f386((void*)_handle, (void*)location.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f387((void*)_handle, (void*)location.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 

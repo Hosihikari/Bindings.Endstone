@@ -16,7 +16,7 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1204((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
+            var __hs_handle = NativeMethods.TablePtr->f1211((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
@@ -29,7 +29,7 @@ public sealed unsafe partial class Scoreboard
 
     public void clearSlot(int slot)
     {
-        NativeMethods.TablePtr->f1205((void*)_handle, slot);
+        NativeMethods.TablePtr->f1212((void*)_handle, slot);
     }
 
     public nint getEntries() =>
@@ -37,7 +37,7 @@ public sealed unsafe partial class Scoreboard
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(int slot)
     {
-        var __hs_handle = NativeMethods.TablePtr->f1206((void*)_handle, slot);
+        var __hs_handle = NativeMethods.TablePtr->f1213((void*)_handle, slot);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
     }
 
@@ -46,7 +46,7 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1207((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_handle = NativeMethods.TablePtr->f1214((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }

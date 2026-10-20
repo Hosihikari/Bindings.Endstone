@@ -13,7 +13,7 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public static ArrayTag_unsigned_char_ Create()
     {
-        var handle = NativeMethods.TablePtr->f1463();
+        var handle = NativeMethods.TablePtr->f1472();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,7 +29,7 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
     {
         fixed (byte* __hs_vectorData = v)
         {
-            var handle = NativeMethods.TablePtr->f1464(__hs_vectorData, (nuint)(v?.Length ?? 0));
+            var handle = NativeMethods.TablePtr->f1473(__hs_vectorData, (nuint)(v?.Length ?? 0));
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -41,12 +41,12 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public nint at_738d7d61(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->f1465((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->f1474((void*)_handle, i);
     }
 
     public nint at_30c1f2a4(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->f1466((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->f1475((void*)_handle, i);
     }
 
     public nint begin_9219d103() =>
@@ -63,22 +63,22 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public void clear()
     {
-        NativeMethods.TablePtr->f1467((void*)_handle);
+        NativeMethods.TablePtr->f1476((void*)_handle);
     }
 
     public nint data_79f539d8()
     {
-        return (nint)NativeMethods.TablePtr->f1468((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1477((void*)_handle);
     }
 
     public nint data_539e56bc()
     {
-        return (nint)NativeMethods.TablePtr->f1469((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1478((void*)_handle);
     }
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->f1470((void*)_handle);
+        return NativeMethods.TablePtr->f1479((void*)_handle);
     }
 
     public nint end_c109c3d7() =>
@@ -95,29 +95,29 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public nint operator_index_d4881781(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->f1471((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->f1480((void*)_handle, i);
     }
 
     public nint operator_index_4f71a147(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->f1472((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->f1481((void*)_handle, i);
     }
 
     public void push_back(byte v)
     {
-        NativeMethods.TablePtr->f1473((void*)_handle, v);
+        NativeMethods.TablePtr->f1482((void*)_handle, v);
     }
 
     public ulong size()
     {
-        return NativeMethods.TablePtr->f1474((void*)_handle);
+        return NativeMethods.TablePtr->f1483((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1462((void*)_handle);
+            NativeMethods.TablePtr->f1471((void*)_handle);
             _handle = 0;
         }
     }

@@ -26,7 +26,10 @@ The plugin verifies:
 
 - the shim DLL loads from the Endstone plugin cache;
 - `hosihikari_endstone_get_server()` returns the same `Server&` as the plugin API;
-- `Server::getName()` and `Server::getVersion()` through the BindingShim match the native calls.
+- `Server::getName()` and `Server::getVersion()` through the BindingShim match the native calls;
+- string and integer vector parameters reach `Translatable::Create` and `ArrayTag<int>::Create`;
+- `PluginManager::getPlugins()` returns borrowed `Plugin*` addresses;
+- `Server::createScoreboard()` returns a `shared_ptr` handle whose target serves `Scoreboard::clearSlot` and releases cleanly.
 
 Expected result:
 
@@ -37,6 +40,10 @@ expected_name=Endstone
 expected_version=0.11.14
 name=Endstone
 version=0.11.14
+translatable.string_vector=ok
+arraytag.int_vector=ok
+plugin_manager.plugin_vector=ok
+scoreboard.shared_handle=ok
 result=OK
 ```
 

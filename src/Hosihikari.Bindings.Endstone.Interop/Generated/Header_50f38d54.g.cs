@@ -13,7 +13,7 @@ public sealed unsafe partial class Header : global::System.IDisposable
 
     public static Header Create()
     {
-        var handle = NativeMethods.TablePtr->f505();
+        var handle = NativeMethods.TablePtr->f506();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -35,7 +35,7 @@ public sealed unsafe partial class Header : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f504((void*)_handle);
+            NativeMethods.TablePtr->f505((void*)_handle);
             _handle = 0;
         }
     }

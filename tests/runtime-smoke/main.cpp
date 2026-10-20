@@ -40,6 +40,12 @@
 #ifndef HS_PLUGIN_MANAGER_PLUGINS_INDEX
 #error "HS_PLUGIN_MANAGER_PLUGINS_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_SERVER_CREATE_SCOREBOARD_INDEX
+#error "HS_SERVER_CREATE_SCOREBOARD_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_SCOREBOARD_CLEAR_SLOT_INDEX
+#error "HS_SCOREBOARD_CLEAR_SLOT_INDEX must be defined by build.ps1"
+#endif
 
 namespace {
 void pluginAnchor() {}
@@ -186,9 +192,20 @@ public:
 
             out << "plugin_manager.plugin_vector=" << (pluginsOk ? "ok" : "FAIL") << "\n";
 
+            using CreateScoreboardFn = HosihikariSharedHandle (*)(void *);
+            using ClearSlotFn = void (*)(void *, std::int32_t);
+            auto shared = reinterpret_cast<CreateScoreboardFn>(slots[HS_SERVER_CREATE_SCOREBOARD_INDEX])(handle);
+            bool sharedOk = shared.holder != nullptr && shared.target != nullptr && shared.release != nullptr;
+            if (sharedOk) {
+                reinterpret_cast<ClearSlotFn>(slots[HS_SCOREBOARD_CLEAR_SLOT_INDEX])(shared.target, 0);
+                shared.release(shared.holder);
+            }
+
+            out << "scoreboard.shared_handle=" << (sharedOk ? "ok" : "FAIL") << "\n";
+
             out << "result="
                 << (actualName == server.getName() && actualVersion == server.getVersion() && vectorsOk
-                            && pluginsOk
+                            && pluginsOk && sharedOk
                         ? "OK"
                         : "FAIL")
                 << "\n";

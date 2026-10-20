@@ -13,23 +13,23 @@ public sealed unsafe partial class DamageSource
 
     public nint getActor()
     {
-        return (nint)NativeMethods.TablePtr->f372((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f373((void*)_handle);
     }
 
     public nint getDamagingActor()
     {
-        return (nint)NativeMethods.TablePtr->f373((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f374((void*)_handle);
     }
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f374((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f375((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isIndirect()
     {
-        return NativeMethods.TablePtr->f375((void*)_handle);
+        return NativeMethods.TablePtr->f376((void*)_handle);
     }
 
     public void Destroy() =>

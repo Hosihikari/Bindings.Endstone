@@ -13,17 +13,17 @@ public sealed unsafe partial class Scheduler
 
     public void cancelTask(uint id)
     {
-        NativeMethods.TablePtr->f1193((void*)_handle, id);
+        NativeMethods.TablePtr->f1194((void*)_handle, id);
     }
 
     public void cancelTasks(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1194((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1195((void*)_handle, (void*)plugin.Handle);
     }
 
     public nint[] getPendingTasks()
     {
-        var __hs_view = NativeMethods.TablePtr->f1195((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1196((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -34,31 +34,49 @@ public sealed unsafe partial class Scheduler
 
     public bool isQueued(uint id)
     {
-        return NativeMethods.TablePtr->f1196((void*)_handle, id);
+        return NativeMethods.TablePtr->f1197((void*)_handle, id);
     }
 
     public bool isRunning(uint id)
     {
-        return NativeMethods.TablePtr->f1197((void*)_handle, id);
+        return NativeMethods.TablePtr->f1198((void*)_handle, id);
     }
 
-    public nint runTask(nint plugin, nint task) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::shared_ptr<endstone::Task>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.SharedHandle? runTask(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease)
+    {
+        var __hs_shared = NativeMethods.TablePtr->f1199((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease);
+        return __hs_shared.Holder == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.SharedHandle((nint)__hs_shared.Holder, (nint)__hs_shared.Target, __hs_shared.Release);
+    }
 
-    public nint runTaskAsync(nint plugin, nint task) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::shared_ptr<endstone::Task>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.SharedHandle? runTaskAsync(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease)
+    {
+        var __hs_shared = NativeMethods.TablePtr->f1200((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease);
+        return __hs_shared.Holder == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.SharedHandle((nint)__hs_shared.Holder, (nint)__hs_shared.Target, __hs_shared.Release);
+    }
 
-    public nint runTaskLater(nint plugin, nint task, ulong delay) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::shared_ptr<endstone::Task>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.SharedHandle? runTaskLater(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease, ulong delay)
+    {
+        var __hs_shared = NativeMethods.TablePtr->f1201((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay);
+        return __hs_shared.Holder == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.SharedHandle((nint)__hs_shared.Holder, (nint)__hs_shared.Target, __hs_shared.Release);
+    }
 
-    public nint runTaskLaterAsync(nint plugin, nint task, ulong delay) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::shared_ptr<endstone::Task>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.SharedHandle? runTaskLaterAsync(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease, ulong delay)
+    {
+        var __hs_shared = NativeMethods.TablePtr->f1202((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay);
+        return __hs_shared.Holder == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.SharedHandle((nint)__hs_shared.Holder, (nint)__hs_shared.Target, __hs_shared.Release);
+    }
 
-    public nint runTaskTimer(nint plugin, nint task, ulong delay, ulong period) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::shared_ptr<endstone::Task>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.SharedHandle? runTaskTimer(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease, ulong delay, ulong period)
+    {
+        var __hs_shared = NativeMethods.TablePtr->f1203((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay, period);
+        return __hs_shared.Holder == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.SharedHandle((nint)__hs_shared.Holder, (nint)__hs_shared.Target, __hs_shared.Release);
+    }
 
-    public nint runTaskTimerAsync(nint plugin, nint task, ulong delay, ulong period) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::shared_ptr<endstone::Task>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.SharedHandle? runTaskTimerAsync(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease, ulong delay, ulong period)
+    {
+        var __hs_shared = NativeMethods.TablePtr->f1204((void*)_handle, (void*)plugin.Handle, (void*)taskInvoke, (void*)taskUserData, (void*)taskRelease, delay, period);
+        return __hs_shared.Holder == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.SharedHandle((nint)__hs_shared.Holder, (nint)__hs_shared.Target, __hs_shared.Release);
+    }
 
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");

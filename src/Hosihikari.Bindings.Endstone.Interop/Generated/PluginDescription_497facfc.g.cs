@@ -16,13 +16,13 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getAPIVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f1053((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1054((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string[] getAuthors()
     {
-        var __hs_view = NativeMethods.TablePtr->f1054((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1055((void*)_handle);
         var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -37,7 +37,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string[] getContributors()
     {
-        var __hs_view = NativeMethods.TablePtr->f1055((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1056((void*)_handle);
         var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -49,12 +49,12 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public int getDefaultPermission()
     {
-        return NativeMethods.TablePtr->f1056((void*)_handle);
+        return NativeMethods.TablePtr->f1057((void*)_handle);
     }
 
     public string[] getDepend()
     {
-        var __hs_view = NativeMethods.TablePtr->f1057((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1058((void*)_handle);
         var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -66,24 +66,24 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f1058((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1059((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getFullName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1059((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1060((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getLoad()
     {
-        return NativeMethods.TablePtr->f1060((void*)_handle);
+        return NativeMethods.TablePtr->f1061((void*)_handle);
     }
 
     public string[] getLoadBefore()
     {
-        var __hs_view = NativeMethods.TablePtr->f1061((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1062((void*)_handle);
         var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -95,7 +95,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1062((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1063((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -104,23 +104,11 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getPrefix()
     {
-        var __hs_view = NativeMethods.TablePtr->f1063((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1064((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string[] getProvides()
-    {
-        var __hs_view = NativeMethods.TablePtr->f1064((void*)_handle);
-        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
-        var __hs_result = new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    public string[] getSoftDepend()
     {
         var __hs_view = NativeMethods.TablePtr->f1065((void*)_handle);
         var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
@@ -132,15 +120,27 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
         return __hs_result;
     }
 
-    public string getVersion()
+    public string[] getSoftDepend()
     {
         var __hs_view = NativeMethods.TablePtr->f1066((void*)_handle);
+        var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
+        var __hs_result = new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
+    public string getVersion()
+    {
+        var __hs_view = NativeMethods.TablePtr->f1067((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getWebsite()
     {
-        var __hs_view = NativeMethods.TablePtr->f1067((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1068((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -148,7 +148,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1052((void*)_handle);
+            NativeMethods.TablePtr->f1053((void*)_handle);
             _handle = 0;
         }
     }
