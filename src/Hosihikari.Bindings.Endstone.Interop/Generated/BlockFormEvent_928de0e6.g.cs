@@ -13,12 +13,12 @@ public sealed unsafe partial class BlockFormEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f150();
+        get => (nint)NativeMethods.TablePtr->f152();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f151((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f153((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -26,7 +26,7 @@ public sealed unsafe partial class BlockFormEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f149((void*)_handle);
+            NativeMethods.TablePtr->f151((void*)_handle);
             _handle = 0;
         }
     }

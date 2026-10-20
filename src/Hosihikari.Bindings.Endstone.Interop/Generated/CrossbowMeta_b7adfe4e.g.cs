@@ -13,12 +13,12 @@ public sealed unsafe partial class CrossbowMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f370();
+        get => NativeMethods.TablePtr->f376();
     }
 
     public void addChargedProjectile(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        NativeMethods.TablePtr->f371((void*)_handle, (void*)item.Handle);
+        NativeMethods.TablePtr->f377((void*)_handle, (void*)item.Handle);
     }
 
     public nint getChargedProjectiles() =>
@@ -26,7 +26,7 @@ public sealed unsafe partial class CrossbowMeta
 
     public bool hasChargedProjectiles()
     {
-        return NativeMethods.TablePtr->f372((void*)_handle);
+        return NativeMethods.TablePtr->f378((void*)_handle);
     }
 
     public void setChargedProjectiles(nint projectiles) =>

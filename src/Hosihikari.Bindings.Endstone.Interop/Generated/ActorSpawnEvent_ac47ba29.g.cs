@@ -16,12 +16,12 @@ public sealed unsafe partial class ActorSpawnEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f63();
+        get => (nint)NativeMethods.TablePtr->f65();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f64((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f66((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -30,7 +30,7 @@ public sealed unsafe partial class ActorSpawnEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f62((void*)_handle);
+            NativeMethods.TablePtr->f64((void*)_handle);
             _handle = 0;
         }
     }

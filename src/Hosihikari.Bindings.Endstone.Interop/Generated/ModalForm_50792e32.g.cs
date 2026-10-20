@@ -13,7 +13,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
 
     public nint addControl(nint control)
     {
-        return (nint)NativeMethods.TablePtr->f775((void*)_handle, (void*)control);
+        return (nint)NativeMethods.TablePtr->f802((void*)_handle, (void*)control);
     }
 
     public nint getControls() =>
@@ -22,15 +22,19 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
     public string? getIcon()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f776((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f803((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
     public nint getOnSubmit() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *, std::basic_string<char>)>' is not supported.");
 
-    public nint getSubmitButton() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getSubmitButton()
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->f804((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
+    }
 
     public nint setControls(nint controls) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::variant<endstone::Dropdown, endstone::Label, endstone::Slider, endstone::StepSlider, endstone::TextInput, endstone::Toggle, endstone::Divider, endstone::Header>' is not supported.");
@@ -40,23 +44,25 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f777((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, icon is not null);
+            return (nint)NativeMethods.TablePtr->f805((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, icon is not null);
         }
     }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f778((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f806((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
-    public nint setSubmitButton(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is abstract or not copy-constructible.");
+    public nint setSubmitButton(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? text)
+    {
+        return (nint)NativeMethods.TablePtr->f807((void*)_handle, (void*)(text?.Handle ?? 0), text is not null);
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f774((void*)_handle);
+            NativeMethods.TablePtr->f801((void*)_handle);
             _handle = 0;
         }
     }

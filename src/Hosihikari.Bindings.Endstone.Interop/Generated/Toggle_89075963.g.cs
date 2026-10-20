@@ -13,7 +13,7 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
 
     public static Toggle Create()
     {
-        var handle = NativeMethods.TablePtr->f1343();
+        var handle = NativeMethods.TablePtr->f1392();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -22,30 +22,42 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
         return new Toggle((nint)handle);
     }
 
-    public static Toggle Create(nint label, bool default_value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public static Toggle Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label, bool default_value)
+    {
+        var handle = NativeMethods.TablePtr->f1393((void*)label.Handle, default_value);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Toggle((nint)handle);
+    }
 
     public bool getDefaultValue()
     {
-        return NativeMethods.TablePtr->f1344((void*)_handle);
+        return NativeMethods.TablePtr->f1394((void*)_handle);
     }
 
-    public nint getLabel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1395((void*)_handle));
+    }
 
     public nint setDefaultValue(bool value)
     {
-        return (nint)NativeMethods.TablePtr->f1345((void*)_handle, value);
+        return (nint)NativeMethods.TablePtr->f1396((void*)_handle, value);
     }
 
-    public nint setLabel(nint label) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
+    {
+        return (nint)NativeMethods.TablePtr->f1397((void*)_handle, (void*)label.Handle);
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1342((void*)_handle);
+            NativeMethods.TablePtr->f1391((void*)_handle);
             _handle = 0;
         }
     }

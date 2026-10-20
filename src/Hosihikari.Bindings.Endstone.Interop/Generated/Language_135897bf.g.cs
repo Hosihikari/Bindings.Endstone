@@ -13,13 +13,13 @@ public sealed unsafe partial class Language
 
     public string getLocale()
     {
-        var __hs_view = NativeMethods.TablePtr->f657((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f678((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string translate(global::Hosihikari.Bindings.Endstone.Interop.endstone.Translatable translatable)
     {
-        var __hs_view = NativeMethods.TablePtr->f658((void*)_handle, (void*)translatable.Handle);
+        var __hs_view = NativeMethods.TablePtr->f679((void*)_handle, (void*)translatable.Handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -28,7 +28,7 @@ public sealed unsafe partial class Language
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(locale);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_view = NativeMethods.TablePtr->f659((void*)_handle, (void*)translatable.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_view = NativeMethods.TablePtr->f680((void*)_handle, (void*)translatable.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
@@ -38,7 +38,7 @@ public sealed unsafe partial class Language
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(text);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_view = NativeMethods.TablePtr->f660((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_view = NativeMethods.TablePtr->f681((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
             return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
         }
     }
@@ -68,7 +68,7 @@ public sealed unsafe partial class Language
                 var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(text);
                 fixed (byte* __hs_stringData = __hs_stringBytes)
                 {
-                    var __hs_view = NativeMethods.TablePtr->f661((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                    var __hs_view = NativeMethods.TablePtr->f682((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, __hs_vectorData, (nuint)__hs_vectorViews.Length);
                     return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
                 }
             }

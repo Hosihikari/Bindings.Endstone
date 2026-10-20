@@ -13,7 +13,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public static Dropdown Create()
     {
-        var handle = NativeMethods.TablePtr->f392();
+        var handle = NativeMethods.TablePtr->f398();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -22,31 +22,64 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         return new Dropdown((nint)handle);
     }
 
-    public static Dropdown Create(nint label, nint options, nint default_index) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public static Dropdown Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label, string[] options, int? default_index)
+    {
+        var __hs_vectorItems = options ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
+        var __hs_vectorViews = new NativeMethods.StringView[__hs_vectorItems.Length];
+        var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        try
+        {
+            for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
+            {
+                __hs_vectorBytes[__hs_i] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems[__hs_i] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes[__hs_i];
+                var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                __hs_vectorHandles[__hs_i] = __hs_ptr;
+                __hs_vectorViews[__hs_i] = new NativeMethods.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+            }
+            fixed (NativeMethods.StringView* __hs_vectorData = __hs_vectorViews)
+            {
+                var handle = NativeMethods.TablePtr->f399((void*)label.Handle, default_index ?? default(int), __hs_vectorData, (nuint)__hs_vectorViews.Length, default_index.HasValue);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new Dropdown((nint)handle);
+            }
+        }
+        finally
+        {
+            for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++) { if (__hs_vectorHandles[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles[__hs_i]); } }
+        }
+    }
 
     public nint addOption(string option)
     {
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(option);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f393((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f400((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public int? getDefaultIndex()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f394((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f401((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
-    public nint getLabel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f402((void*)_handle));
+    }
 
     public string[] getOptions()
     {
-        var __hs_view = NativeMethods.TablePtr->f395((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f403((void*)_handle);
         var __hs_items = (NativeMethods.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -58,11 +91,13 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public nint setDefaultIndex(int? default_index)
     {
-        return (nint)NativeMethods.TablePtr->f396((void*)_handle, default_index ?? default(int), default_index.HasValue);
+        return (nint)NativeMethods.TablePtr->f404((void*)_handle, default_index ?? default(int), default_index.HasValue);
     }
 
-    public nint setLabel(nint label) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
+    {
+        return (nint)NativeMethods.TablePtr->f405((void*)_handle, (void*)label.Handle);
+    }
 
     public nint setOptions(string[] options)
     {
@@ -83,7 +118,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
             }
             fixed (NativeMethods.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                return (nint)NativeMethods.TablePtr->f397((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                return (nint)NativeMethods.TablePtr->f406((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
             }
         }
         finally
@@ -96,7 +131,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f391((void*)_handle);
+            NativeMethods.TablePtr->f397((void*)_handle);
             _handle = 0;
         }
     }

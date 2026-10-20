@@ -13,244 +13,244 @@ public sealed unsafe partial class PotionType : global::System.IDisposable
 
     public static nint Awkward
     {
-        get => (nint)NativeMethods.TablePtr->f1109();
+        get => (nint)NativeMethods.TablePtr->f1148();
     }
 
     public static nint FireResistance
     {
-        get => (nint)NativeMethods.TablePtr->f1110();
+        get => (nint)NativeMethods.TablePtr->f1149();
     }
 
     public static nint Harming
     {
-        get => (nint)NativeMethods.TablePtr->f1111();
+        get => (nint)NativeMethods.TablePtr->f1150();
     }
 
     public static nint Healing
     {
-        get => (nint)NativeMethods.TablePtr->f1112();
+        get => (nint)NativeMethods.TablePtr->f1151();
     }
 
     public static nint Infested
     {
-        get => (nint)NativeMethods.TablePtr->f1113();
+        get => (nint)NativeMethods.TablePtr->f1152();
     }
 
     public static nint Invisibility
     {
-        get => (nint)NativeMethods.TablePtr->f1114();
+        get => (nint)NativeMethods.TablePtr->f1153();
     }
 
     public static nint Leaping
     {
-        get => (nint)NativeMethods.TablePtr->f1115();
+        get => (nint)NativeMethods.TablePtr->f1154();
     }
 
     public static nint LongFireResistance
     {
-        get => (nint)NativeMethods.TablePtr->f1116();
+        get => (nint)NativeMethods.TablePtr->f1155();
     }
 
     public static nint LongInvisibility
     {
-        get => (nint)NativeMethods.TablePtr->f1117();
+        get => (nint)NativeMethods.TablePtr->f1156();
     }
 
     public static nint LongLeaping
     {
-        get => (nint)NativeMethods.TablePtr->f1118();
+        get => (nint)NativeMethods.TablePtr->f1157();
     }
 
     public static nint LongMundane
     {
-        get => (nint)NativeMethods.TablePtr->f1119();
+        get => (nint)NativeMethods.TablePtr->f1158();
     }
 
     public static nint LongNightvision
     {
-        get => (nint)NativeMethods.TablePtr->f1120();
+        get => (nint)NativeMethods.TablePtr->f1159();
     }
 
     public static nint LongPoison
     {
-        get => (nint)NativeMethods.TablePtr->f1121();
+        get => (nint)NativeMethods.TablePtr->f1160();
     }
 
     public static nint LongRegeneration
     {
-        get => (nint)NativeMethods.TablePtr->f1122();
+        get => (nint)NativeMethods.TablePtr->f1161();
     }
 
     public static nint LongSlowFalling
     {
-        get => (nint)NativeMethods.TablePtr->f1123();
+        get => (nint)NativeMethods.TablePtr->f1162();
     }
 
     public static nint LongSlowness
     {
-        get => (nint)NativeMethods.TablePtr->f1124();
+        get => (nint)NativeMethods.TablePtr->f1163();
     }
 
     public static nint LongStrength
     {
-        get => (nint)NativeMethods.TablePtr->f1125();
+        get => (nint)NativeMethods.TablePtr->f1164();
     }
 
     public static nint LongSwiftness
     {
-        get => (nint)NativeMethods.TablePtr->f1126();
+        get => (nint)NativeMethods.TablePtr->f1165();
     }
 
     public static nint LongTurtleMaster
     {
-        get => (nint)NativeMethods.TablePtr->f1127();
+        get => (nint)NativeMethods.TablePtr->f1166();
     }
 
     public static nint LongWaterBreathing
     {
-        get => (nint)NativeMethods.TablePtr->f1128();
+        get => (nint)NativeMethods.TablePtr->f1167();
     }
 
     public static nint LongWeakness
     {
-        get => (nint)NativeMethods.TablePtr->f1129();
+        get => (nint)NativeMethods.TablePtr->f1168();
     }
 
     public static nint Mundane
     {
-        get => (nint)NativeMethods.TablePtr->f1130();
+        get => (nint)NativeMethods.TablePtr->f1169();
     }
 
     public static nint Nightvision
     {
-        get => (nint)NativeMethods.TablePtr->f1131();
+        get => (nint)NativeMethods.TablePtr->f1170();
     }
 
     public static nint Oozing
     {
-        get => (nint)NativeMethods.TablePtr->f1132();
+        get => (nint)NativeMethods.TablePtr->f1171();
     }
 
     public static nint Poison
     {
-        get => (nint)NativeMethods.TablePtr->f1133();
+        get => (nint)NativeMethods.TablePtr->f1172();
     }
 
     public static nint Regeneration
     {
-        get => (nint)NativeMethods.TablePtr->f1134();
+        get => (nint)NativeMethods.TablePtr->f1173();
     }
 
     public static nint SlowFalling
     {
-        get => (nint)NativeMethods.TablePtr->f1135();
+        get => (nint)NativeMethods.TablePtr->f1174();
     }
 
     public static nint Slowness
     {
-        get => (nint)NativeMethods.TablePtr->f1136();
+        get => (nint)NativeMethods.TablePtr->f1175();
     }
 
     public static nint Strength
     {
-        get => (nint)NativeMethods.TablePtr->f1137();
+        get => (nint)NativeMethods.TablePtr->f1176();
     }
 
     public static nint StrongHarming
     {
-        get => (nint)NativeMethods.TablePtr->f1138();
+        get => (nint)NativeMethods.TablePtr->f1177();
     }
 
     public static nint StrongHealing
     {
-        get => (nint)NativeMethods.TablePtr->f1139();
+        get => (nint)NativeMethods.TablePtr->f1178();
     }
 
     public static nint StrongLeaping
     {
-        get => (nint)NativeMethods.TablePtr->f1140();
+        get => (nint)NativeMethods.TablePtr->f1179();
     }
 
     public static nint StrongPoison
     {
-        get => (nint)NativeMethods.TablePtr->f1141();
+        get => (nint)NativeMethods.TablePtr->f1180();
     }
 
     public static nint StrongRegeneration
     {
-        get => (nint)NativeMethods.TablePtr->f1142();
+        get => (nint)NativeMethods.TablePtr->f1181();
     }
 
     public static nint StrongSlowness
     {
-        get => (nint)NativeMethods.TablePtr->f1143();
+        get => (nint)NativeMethods.TablePtr->f1182();
     }
 
     public static nint StrongStrength
     {
-        get => (nint)NativeMethods.TablePtr->f1144();
+        get => (nint)NativeMethods.TablePtr->f1183();
     }
 
     public static nint StrongSwiftness
     {
-        get => (nint)NativeMethods.TablePtr->f1145();
+        get => (nint)NativeMethods.TablePtr->f1184();
     }
 
     public static nint StrongTurtleMaster
     {
-        get => (nint)NativeMethods.TablePtr->f1146();
+        get => (nint)NativeMethods.TablePtr->f1185();
     }
 
     public static nint Swiftness
     {
-        get => (nint)NativeMethods.TablePtr->f1147();
+        get => (nint)NativeMethods.TablePtr->f1186();
     }
 
     public static nint Thick
     {
-        get => (nint)NativeMethods.TablePtr->f1148();
+        get => (nint)NativeMethods.TablePtr->f1187();
     }
 
     public static nint TurtleMaster
     {
-        get => (nint)NativeMethods.TablePtr->f1149();
+        get => (nint)NativeMethods.TablePtr->f1188();
     }
 
     public static nint Water
     {
-        get => (nint)NativeMethods.TablePtr->f1150();
+        get => (nint)NativeMethods.TablePtr->f1189();
     }
 
     public static nint WaterBreathing
     {
-        get => (nint)NativeMethods.TablePtr->f1151();
+        get => (nint)NativeMethods.TablePtr->f1190();
     }
 
     public static nint Weakness
     {
-        get => (nint)NativeMethods.TablePtr->f1152();
+        get => (nint)NativeMethods.TablePtr->f1191();
     }
 
     public static nint Weaving
     {
-        get => (nint)NativeMethods.TablePtr->f1153();
+        get => (nint)NativeMethods.TablePtr->f1192();
     }
 
     public static nint WindCharged
     {
-        get => (nint)NativeMethods.TablePtr->f1154();
+        get => (nint)NativeMethods.TablePtr->f1193();
     }
 
     public static nint Wither
     {
-        get => (nint)NativeMethods.TablePtr->f1155();
+        get => (nint)NativeMethods.TablePtr->f1194();
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1108((void*)_handle);
+            NativeMethods.TablePtr->f1147((void*)_handle);
             _handle = 0;
         }
     }

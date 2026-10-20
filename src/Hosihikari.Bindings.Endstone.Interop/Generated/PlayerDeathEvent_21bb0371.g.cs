@@ -13,34 +13,40 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f931();
+        get => (nint)NativeMethods.TablePtr->f962();
     }
 
     public static PlayerDeathEvent Create(nint player, nint damage_source, nint death_message) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors with mutable reference parameters are not projected.");
 
-    public nint getDeathMessage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getDeathMessage()
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->f963((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
+    }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f932((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f964((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f933((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f965((void*)_handle);
     }
 
-    public void setDeathMessage(nint death_message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is abstract or not copy-constructible.");
+    public void setDeathMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? death_message)
+    {
+        NativeMethods.TablePtr->f966((void*)_handle, (void*)(death_message?.Handle ?? 0), death_message is not null);
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f930((void*)_handle);
+            NativeMethods.TablePtr->f961((void*)_handle);
             _handle = 0;
         }
     }

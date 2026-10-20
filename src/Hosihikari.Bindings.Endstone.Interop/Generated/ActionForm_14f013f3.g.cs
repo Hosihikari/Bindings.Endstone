@@ -22,12 +22,12 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
         return new ActionForm((nint)handle);
     }
 
-    public nint addButton(nint text, string? icon, nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
+    public nint addButton(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text, string? icon, nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
     {
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f2((void*)_handle, (void*)text, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
+            return (nint)NativeMethods.TablePtr->f2((void*)_handle, (void*)text.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
         }
     }
 
@@ -36,36 +36,40 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->f3((void*)_handle);
     }
 
-    public nint addHeader(nint text)
+    public nint addHeader(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f4((void*)_handle, (void*)text);
+        return (nint)NativeMethods.TablePtr->f4((void*)_handle, (void*)text.Handle);
     }
 
-    public nint addLabel(nint text)
+    public nint addLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f5((void*)_handle, (void*)text);
+        return (nint)NativeMethods.TablePtr->f5((void*)_handle, (void*)text.Handle);
     }
 
-    public nint getContent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getContent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f6((void*)_handle));
+    }
 
     public nint getControls()
     {
-        return (nint)NativeMethods.TablePtr->f6((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f7((void*)_handle);
     }
 
     public nint getOnSubmit() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *, int)>' is not supported.");
 
-    public nint setContent(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setContent(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
+    {
+        return (nint)NativeMethods.TablePtr->f8((void*)_handle, (void*)text.Handle);
+    }
 
     public nint setControls(nint controls) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector parameter type 'std::variant<endstone::Button, endstone::Divider, endstone::Header, endstone::Label>' is not supported.");
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f7((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f9((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public void Dispose()

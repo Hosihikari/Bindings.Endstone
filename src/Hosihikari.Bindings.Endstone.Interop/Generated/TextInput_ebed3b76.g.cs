@@ -13,7 +13,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
 
     public static TextInput Create()
     {
-        var handle = NativeMethods.TablePtr->f1335();
+        var handle = NativeMethods.TablePtr->f1379();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -22,42 +22,62 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
         return new TextInput((nint)handle);
     }
 
-    public static TextInput Create(nint label, nint placeholder, nint default_text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public static TextInput Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label, global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 placeholder, string? default_text)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(default_text ?? string.Empty);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            var handle = NativeMethods.TablePtr->f1380((void*)label.Handle, (void*)placeholder.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length, default_text is not null);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new TextInput((nint)handle);
+        }
+    }
 
     public string? getDefaultValue()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f1336((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f1381((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
-    public nint getLabel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1382((void*)_handle));
+    }
 
-    public nint getPlaceholder() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getPlaceholder()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1383((void*)_handle));
+    }
 
     public nint setDefaultValue(string? text)
     {
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(text ?? string.Empty);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f1337((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, text is not null);
+            return (nint)NativeMethods.TablePtr->f1384((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, text is not null);
         }
     }
 
-    public nint setLabel(nint label) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
+    {
+        return (nint)NativeMethods.TablePtr->f1385((void*)_handle, (void*)label.Handle);
+    }
 
-    public nint setPlaceholder(nint placeholder) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setPlaceholder(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 placeholder)
+    {
+        return (nint)NativeMethods.TablePtr->f1386((void*)_handle, (void*)placeholder.Handle);
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1334((void*)_handle);
+            NativeMethods.TablePtr->f1378((void*)_handle);
             _handle = 0;
         }
     }

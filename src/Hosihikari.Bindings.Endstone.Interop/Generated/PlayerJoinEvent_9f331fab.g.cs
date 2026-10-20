@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerJoinEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f993();
+        get => (nint)NativeMethods.TablePtr->f1026();
     }
 
     public static PlayerJoinEvent Create(nint player, nint join_message) =>
@@ -21,21 +21,27 @@ public sealed unsafe partial class PlayerJoinEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f994((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1027((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getJoinMessage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getJoinMessage()
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->f1028((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
+    }
 
-    public void setJoinMessage(nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is abstract or not copy-constructible.");
+    public void setJoinMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? message)
+    {
+        NativeMethods.TablePtr->f1029((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f992((void*)_handle);
+            NativeMethods.TablePtr->f1025((void*)_handle);
             _handle = 0;
         }
     }

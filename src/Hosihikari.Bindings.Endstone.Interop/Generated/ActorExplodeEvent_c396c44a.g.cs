@@ -16,28 +16,28 @@ public sealed unsafe partial class ActorExplodeEvent : global::System.IDisposabl
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f48();
+        get => (nint)NativeMethods.TablePtr->f50();
     }
 
     public nint getBlockList_8f4da3d9()
     {
-        return (nint)NativeMethods.TablePtr->f49((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f51((void*)_handle);
     }
 
     public nint getBlockList_4ec91f56()
     {
-        return (nint)NativeMethods.TablePtr->f50((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f52((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f51((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f53((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getLocation()
     {
-        return (nint)NativeMethods.TablePtr->f52((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f54((void*)_handle);
     }
 
 
@@ -45,7 +45,7 @@ public sealed unsafe partial class ActorExplodeEvent : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f47((void*)_handle);
+            NativeMethods.TablePtr->f49((void*)_handle);
             _handle = 0;
         }
     }

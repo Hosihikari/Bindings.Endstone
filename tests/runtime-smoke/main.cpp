@@ -1,3 +1,4 @@
+#include <cstdint>
 #include <cstring>
 #include <fstream>
 #include <string>
@@ -45,6 +46,30 @@
 #endif
 #ifndef HS_SCOREBOARD_CLEAR_SLOT_INDEX
 #error "HS_SCOREBOARD_CLEAR_SLOT_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ACTION_FORM_CREATE_INDEX
+#error "HS_ACTION_FORM_CREATE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ACTION_FORM_SET_CONTENT_INDEX
+#error "HS_ACTION_FORM_SET_CONTENT_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ACTION_FORM_GET_CONTENT_INDEX
+#error "HS_ACTION_FORM_GET_CONTENT_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ACTION_FORM_DESTROY_INDEX
+#error "HS_ACTION_FORM_DESTROY_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_VARIANT_CREATE_STRING_INDEX
+#error "HS_VARIANT_CREATE_STRING_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_VARIANT_INDEX_INDEX
+#error "HS_VARIANT_INDEX_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_VARIANT_GET_STRING_INDEX
+#error "HS_VARIANT_GET_STRING_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_VARIANT_DESTROY_INDEX
+#error "HS_VARIANT_DESTROY_INDEX must be defined by build.ps1"
 #endif
 
 namespace {
@@ -203,9 +228,45 @@ public:
 
             out << "scoreboard.shared_handle=" << (sharedOk ? "ok" : "FAIL") << "\n";
 
+            using CreateActionFormFn = void *(*)();
+            using SetContentFn = void *(*)(void *, void *);
+            using GetContentFn = void *(*)(void *);
+            using VariantCreateStringFn = void *(*)(const char *, std::size_t);
+            using VariantIndexFn = std::int32_t (*)(void *);
+            using VariantGetStringFn = HosihikariStringView (*)(void *);
+            using DestroyFn = void (*)(void *);
+
+            auto *actionForm = reinterpret_cast<CreateActionFormFn>(slots[HS_ACTION_FORM_CREATE_INDEX])();
+            auto *content = reinterpret_cast<VariantCreateStringFn>(slots[HS_VARIANT_CREATE_STRING_INDEX])("hello", 5);
+            bool variantOk = actionForm != nullptr && content != nullptr;
+            if (variantOk) {
+                reinterpret_cast<SetContentFn>(slots[HS_ACTION_FORM_SET_CONTENT_INDEX])(actionForm, content);
+                auto *returned = reinterpret_cast<GetContentFn>(slots[HS_ACTION_FORM_GET_CONTENT_INDEX])(actionForm);
+                variantOk = returned != nullptr
+                    && reinterpret_cast<VariantIndexFn>(slots[HS_VARIANT_INDEX_INDEX])(returned) == 0;
+                if (variantOk) {
+                    const auto text = reinterpret_cast<VariantGetStringFn>(slots[HS_VARIANT_GET_STRING_INDEX])(returned);
+                    variantOk = std::string(text.data, text.size) == "hello";
+                }
+
+                if (returned) {
+                    reinterpret_cast<DestroyFn>(slots[HS_VARIANT_DESTROY_INDEX])(returned);
+                }
+            }
+
+            if (content) {
+                reinterpret_cast<DestroyFn>(slots[HS_VARIANT_DESTROY_INDEX])(content);
+            }
+
+            if (actionForm) {
+                reinterpret_cast<DestroyFn>(slots[HS_ACTION_FORM_DESTROY_INDEX])(actionForm);
+            }
+
+            out << "action_form.string_variant=" << (variantOk ? "ok" : "FAIL") << "\n";
+
             out << "result="
                 << (actualName == server.getName() && actualVersion == server.getVersion() && vectorsOk
-                            && pluginsOk && sharedOk
+                            && pluginsOk && sharedOk && variantOk
                         ? "OK"
                         : "FAIL")
                 << "\n";

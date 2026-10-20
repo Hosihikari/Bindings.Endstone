@@ -16,7 +16,7 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1213((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
+            var __hs_handle = NativeMethods.TablePtr->f1253((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, criteria);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
@@ -29,7 +29,7 @@ public sealed unsafe partial class Scoreboard
 
     public void clearSlot(int slot)
     {
-        NativeMethods.TablePtr->f1214((void*)_handle, slot);
+        NativeMethods.TablePtr->f1254((void*)_handle, slot);
     }
 
     public nint getEntries() =>
@@ -37,7 +37,7 @@ public sealed unsafe partial class Scoreboard
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective? getObjective(int slot)
     {
-        var __hs_handle = NativeMethods.TablePtr->f1215((void*)_handle, slot);
+        var __hs_handle = NativeMethods.TablePtr->f1255((void*)_handle, slot);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
     }
 
@@ -46,7 +46,7 @@ public sealed unsafe partial class Scoreboard
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_handle = NativeMethods.TablePtr->f1216((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_handle = NativeMethods.TablePtr->f1256((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_handle) : null;
         }
     }
@@ -60,8 +60,10 @@ public sealed unsafe partial class Scoreboard
     public nint getScores(nint entry) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: vector return type 'std::unique_ptr<endstone::Score>' is not supported.");
 
-    public void resetScores(nint entry) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>' is not a known bindable declaration.");
+    public void resetScores(global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b entry)
+    {
+        NativeMethods.TablePtr->f1257((void*)_handle, (void*)entry.Handle);
+    }
 
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");

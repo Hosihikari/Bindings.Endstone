@@ -13,7 +13,7 @@ public sealed unsafe partial class Slider : global::System.IDisposable
 
     public static Slider Create()
     {
-        var handle = NativeMethods.TablePtr->f1314();
+        var handle = NativeMethods.TablePtr->f1355();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -22,62 +22,74 @@ public sealed unsafe partial class Slider : global::System.IDisposable
         return new Slider((nint)handle);
     }
 
-    public static Slider Create(nint label, float min, float max, float step, nint default_value) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public static Slider Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label, float min, float max, float step, float? default_value)
+    {
+        var handle = NativeMethods.TablePtr->f1356((void*)label.Handle, min, max, step, default_value ?? default(float), default_value.HasValue);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new Slider((nint)handle);
+    }
 
     public float? getDefaultValue()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f1315((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f1357((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (float?)null;
     }
 
-    public nint getLabel() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1358((void*)_handle));
+    }
 
     public float getMax()
     {
-        return NativeMethods.TablePtr->f1316((void*)_handle);
+        return NativeMethods.TablePtr->f1359((void*)_handle);
     }
 
     public float getMin()
     {
-        return NativeMethods.TablePtr->f1317((void*)_handle);
+        return NativeMethods.TablePtr->f1360((void*)_handle);
     }
 
     public float getStep()
     {
-        return NativeMethods.TablePtr->f1318((void*)_handle);
+        return NativeMethods.TablePtr->f1361((void*)_handle);
     }
 
     public nint setDefaultValue(float? default_value)
     {
-        return (nint)NativeMethods.TablePtr->f1319((void*)_handle, default_value ?? default(float), default_value.HasValue);
+        return (nint)NativeMethods.TablePtr->f1362((void*)_handle, default_value ?? default(float), default_value.HasValue);
     }
 
-    public nint setLabel(nint label) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
+    {
+        return (nint)NativeMethods.TablePtr->f1363((void*)_handle, (void*)label.Handle);
+    }
 
     public nint setMax(float max)
     {
-        return (nint)NativeMethods.TablePtr->f1320((void*)_handle, max);
+        return (nint)NativeMethods.TablePtr->f1364((void*)_handle, max);
     }
 
     public nint setMin(float min)
     {
-        return (nint)NativeMethods.TablePtr->f1321((void*)_handle, min);
+        return (nint)NativeMethods.TablePtr->f1365((void*)_handle, min);
     }
 
     public nint setStep(float step)
     {
-        return (nint)NativeMethods.TablePtr->f1322((void*)_handle, step);
+        return (nint)NativeMethods.TablePtr->f1366((void*)_handle, step);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1313((void*)_handle);
+            NativeMethods.TablePtr->f1354((void*)_handle);
             _handle = 0;
         }
     }

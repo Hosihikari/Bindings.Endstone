@@ -19,7 +19,7 @@ public sealed unsafe partial class CommandMap
 
     public void clearCommands()
     {
-        NativeMethods.TablePtr->f336((void*)_handle);
+        NativeMethods.TablePtr->f342((void*)_handle);
     }
 
     public bool dispatch(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string command_line)
@@ -27,7 +27,7 @@ public sealed unsafe partial class CommandMap
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(command_line);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return NativeMethods.TablePtr->f337((void*)_handle, (void*)sender.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return NativeMethods.TablePtr->f343((void*)_handle, (void*)sender.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -36,7 +36,7 @@ public sealed unsafe partial class CommandMap
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var __hs_shared = NativeMethods.TablePtr->f338((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            var __hs_shared = NativeMethods.TablePtr->f344((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
             return __hs_shared.Holder == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.SharedHandle((nint)__hs_shared.Holder, (nint)__hs_shared.Target, __hs_shared.Release);
         }
     }

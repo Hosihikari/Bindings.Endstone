@@ -11,37 +11,49 @@ public sealed unsafe partial class MessageForm : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public nint getButton1() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getButton1()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f789((void*)_handle));
+    }
 
-    public nint getButton2() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getButton2()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f790((void*)_handle));
+    }
 
-    public nint getContent() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getContent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f791((void*)_handle));
+    }
 
     public nint getOnSubmit() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *, int)>' is not supported.");
 
-    public nint setButton1(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setButton1(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
+    {
+        return (nint)NativeMethods.TablePtr->f792((void*)_handle, (void*)text.Handle);
+    }
 
-    public nint setButton2(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setButton2(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
+    {
+        return (nint)NativeMethods.TablePtr->f793((void*)_handle, (void*)text.Handle);
+    }
 
-    public nint setContent(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setContent(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
+    {
+        return (nint)NativeMethods.TablePtr->f794((void*)_handle, (void*)text.Handle);
+    }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f768((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->f795((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f767((void*)_handle);
+            NativeMethods.TablePtr->f788((void*)_handle);
             _handle = 0;
         }
     }

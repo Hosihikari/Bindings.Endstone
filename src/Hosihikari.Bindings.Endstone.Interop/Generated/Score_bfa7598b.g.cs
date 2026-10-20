@@ -11,32 +11,34 @@ public sealed unsafe partial class Score : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    public nint getEntry() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b getEntry()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b((nint)NativeMethods.TablePtr->f1247((void*)_handle));
+    }
 
     public nint getObjective()
     {
-        return (nint)NativeMethods.TablePtr->f1208((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1248((void*)_handle);
     }
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f1209((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1249((void*)_handle);
     }
 
     public int getValue()
     {
-        return NativeMethods.TablePtr->f1210((void*)_handle);
+        return NativeMethods.TablePtr->f1250((void*)_handle);
     }
 
     public bool isScoreSet()
     {
-        return NativeMethods.TablePtr->f1211((void*)_handle);
+        return NativeMethods.TablePtr->f1251((void*)_handle);
     }
 
     public void setValue(int score)
     {
-        NativeMethods.TablePtr->f1212((void*)_handle, score);
+        NativeMethods.TablePtr->f1252((void*)_handle, score);
     }
 
 
@@ -44,7 +46,7 @@ public sealed unsafe partial class Score : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1207((void*)_handle);
+            NativeMethods.TablePtr->f1246((void*)_handle);
             _handle = 0;
         }
     }

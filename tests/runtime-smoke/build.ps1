@@ -78,6 +78,25 @@ $PluginManagerPlugins = Get-TableIndex "PluginManager_*.g.cs" 'getPlugins\(\)[\s
 $ServerCreateScoreboard = Get-TableIndex "Server_*.g.cs" 'createScoreboard\(\)[\s\S]*?TablePtr->f(\d+)' "Server::createScoreboard"
 $ScoreboardClearSlot = Get-TableIndex "Scoreboard_*.g.cs" 'clearSlot\(int slot\)[\s\S]*?TablePtr->f(\d+)' "Scoreboard::clearSlot"
 
+$GeneratedDirectory = Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated"
+$ActionFormCreate = Get-TableIndex "ActionForm_*.g.cs" 'Create\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::Create"
+$ActionFormSetContent = Get-TableIndex "ActionForm_*.g.cs" 'setContent\([\s\S]*?TablePtr->f(\d+)' "ActionForm::setContent"
+$ActionFormGetContent = Get-TableIndex "ActionForm_*.g.cs" 'getContent\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::getContent"
+$ActionFormDestroy = Get-TableIndex "ActionForm_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::Dispose"
+
+$VariantFile = Get-ChildItem $GeneratedDirectory -Filter "Variant_*.g.cs" |
+    Where-Object { (Get-Content $_.FullName -Raw) -match 'CreateTranslatable' } |
+    Select-Object -First 1
+if (-not $VariantFile) { throw "The string/Translatable variant wrapper was not found." }
+$VariantText = Get-Content $VariantFile.FullName -Raw
+$VariantCreateString = [regex]::Match($VariantText, 'CreateString\(string value\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$VariantIndex = [regex]::Match($VariantText, 'public int Index => NativeMethods\.TablePtr->f(\d+)').Groups[1].Value
+$VariantGetString = [regex]::Match($VariantText, 'AsString\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$VariantDestroy = [regex]::Match($VariantText, 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+if (-not $VariantCreateString -or -not $VariantIndex -or -not $VariantGetString -or -not $VariantDestroy) {
+    throw "Could not find the string/Translatable variant table indices."
+}
+
 $Args = @(
     "/std:c++20",
     "/EHsc",
@@ -102,6 +121,14 @@ $Args = @(
     "/DHS_PLUGIN_MANAGER_PLUGINS_INDEX=$PluginManagerPlugins",
     "/DHS_SERVER_CREATE_SCOREBOARD_INDEX=$ServerCreateScoreboard",
     "/DHS_SCOREBOARD_CLEAR_SLOT_INDEX=$ScoreboardClearSlot",
+    "/DHS_ACTION_FORM_CREATE_INDEX=$ActionFormCreate",
+    "/DHS_ACTION_FORM_SET_CONTENT_INDEX=$ActionFormSetContent",
+    "/DHS_ACTION_FORM_GET_CONTENT_INDEX=$ActionFormGetContent",
+    "/DHS_ACTION_FORM_DESTROY_INDEX=$ActionFormDestroy",
+    "/DHS_VARIANT_CREATE_STRING_INDEX=$VariantCreateString",
+    "/DHS_VARIANT_INDEX_INDEX=$VariantIndex",
+    "/DHS_VARIANT_GET_STRING_INDEX=$VariantGetString",
+    "/DHS_VARIANT_DESTROY_INDEX=$VariantDestroy",
     "/I", (Split-Path (Split-Path $Expected.FullName -Parent) -Parent),
     "/I", (Split-Path (Split-Path $Nlohmann.FullName -Parent) -Parent),
     "/imsvc", (Join-Path $Msvc.FullName "include"),

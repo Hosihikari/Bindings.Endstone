@@ -13,7 +13,7 @@ public sealed unsafe partial class Form_endstone__ActionForm_ : global::System.I
 
     public static Form_endstone__ActionForm_ Create()
     {
-        var handle = NativeMethods.TablePtr->f492();
+        var handle = NativeMethods.TablePtr->f501();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -25,22 +25,26 @@ public sealed unsafe partial class Form_endstone__ActionForm_ : global::System.I
     public nint getOnClose() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *)>' is not supported.");
 
-    public nint getTitle() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getTitle()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f502((void*)_handle));
+    }
 
     public nint setOnClose(nint on_closeInvoke, nint on_closeUserData, nint on_closeRelease)
     {
-        return (nint)NativeMethods.TablePtr->f493((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
+        return (nint)NativeMethods.TablePtr->f503((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
     }
 
-    public nint setTitle(nint title) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setTitle(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 title)
+    {
+        return (nint)NativeMethods.TablePtr->f504((void*)_handle, (void*)title.Handle);
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f491((void*)_handle);
+            NativeMethods.TablePtr->f500((void*)_handle);
             _handle = 0;
         }
     }

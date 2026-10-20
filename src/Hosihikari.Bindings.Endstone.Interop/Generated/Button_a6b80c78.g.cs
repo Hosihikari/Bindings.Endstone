@@ -13,7 +13,7 @@ public sealed unsafe partial class Button : global::System.IDisposable
 
     public static Button Create()
     {
-        var handle = NativeMethods.TablePtr->f224();
+        var handle = NativeMethods.TablePtr->f227();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -22,44 +22,60 @@ public sealed unsafe partial class Button : global::System.IDisposable
         return new Button((nint)handle);
     }
 
-    public static Button Create(nint text, nint icon, nint on_click) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public static Button Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text, string? icon, nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
+    {
+        var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
+        fixed (byte* __hs_stringData = __hs_stringBytes)
+        {
+            var handle = NativeMethods.TablePtr->f228((void*)text.Handle, __hs_stringData, (nuint)__hs_stringBytes.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new Button((nint)handle);
+        }
+    }
 
     public string? getIcon()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f225((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f229((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
     public nint getOnClick() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: return type 'std::function<void (endstone::Player *)>' is not supported.");
 
-    public nint getText() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getText()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f230((void*)_handle));
+    }
 
     public nint setIcon(string icon)
     {
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(icon);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f226((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f231((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
     public nint setOnClick(nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
     {
-        return (nint)NativeMethods.TablePtr->f227((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
+        return (nint)NativeMethods.TablePtr->f232((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
     }
 
-    public nint setText(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public nint setText(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
+    {
+        return (nint)NativeMethods.TablePtr->f233((void*)_handle, (void*)text.Handle);
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f223((void*)_handle);
+            NativeMethods.TablePtr->f226((void*)_handle);
             _handle = 0;
         }
     }

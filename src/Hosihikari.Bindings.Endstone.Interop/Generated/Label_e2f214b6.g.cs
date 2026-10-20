@@ -13,7 +13,7 @@ public sealed unsafe partial class Label : global::System.IDisposable
 
     public static Label Create()
     {
-        var handle = NativeMethods.TablePtr->f656();
+        var handle = NativeMethods.TablePtr->f674();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -22,20 +22,32 @@ public sealed unsafe partial class Label : global::System.IDisposable
         return new Label((nint)handle);
     }
 
-    public static Label Create(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public static Label Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
+    {
+        var handle = NativeMethods.TablePtr->f675((void*)text.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
 
-    public nint getText() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+        return new Label((nint)handle);
+    }
 
-    public nint setText(nint text) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getText()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f676((void*)_handle));
+    }
+
+    public nint setText(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
+    {
+        return (nint)NativeMethods.TablePtr->f677((void*)_handle, (void*)text.Handle);
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f655((void*)_handle);
+            NativeMethods.TablePtr->f673((void*)_handle);
             _handle = 0;
         }
     }

@@ -16,7 +16,7 @@ public sealed unsafe partial class IpBanEntry : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(address);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f587(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f605(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,7 +28,7 @@ public sealed unsafe partial class IpBanEntry : global::System.IDisposable
 
     public string getAddress()
     {
-        var __hs_view = NativeMethods.TablePtr->f588((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f606((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -36,7 +36,7 @@ public sealed unsafe partial class IpBanEntry : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f586((void*)_handle);
+            NativeMethods.TablePtr->f604((void*)_handle);
             _handle = 0;
         }
     }

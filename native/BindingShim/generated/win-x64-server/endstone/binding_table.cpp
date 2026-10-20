@@ -12,6 +12,7 @@
 #include <string>
 #include <string_view>
 #include <utility>
+#include <variant>
 #include <vector>
 #include "endstone/endstone.hpp"
 #include "endstone/detail.h"
@@ -176,9 +177,39 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_9d857e16(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::ActionForm*>(hs_self)->getContent()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_d5090347(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ActionForm*>(hs_self)->getControls()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_3f77668b(void* hs_self, void* text) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ActionForm*>(hs_self)->setContent(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text))));
 }
 catch (std::exception const& hs_error)
 {
@@ -3538,6 +3569,21 @@ catch (...)
     return nullptr;
 }
 
+static void hs_method_4c0b7fcf(void* hs_self, void* message) try
+{
+    static_cast<endstone::BroadcastMessageEvent*>(hs_self)->setMessage(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(message));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_destroy_a6b80c78(void* hs_self) try
 {
     delete static_cast<endstone::Button*>(hs_self);
@@ -3568,6 +3614,41 @@ catch (...)
     return nullptr;
 }
 
+using hs_cb_invoke_hs_create_ed5746f6_cb2 = void (*)(void* userData, void* arg0);
+using hs_cb_release_hs_create_ed5746f6_cb2 = void (*)(void*);
+struct hs_cb_state_hs_create_ed5746f6_cb2
+{
+    hs_cb_invoke_hs_create_ed5746f6_cb2 invoke;
+    void* userData;
+    hs_cb_release_hs_create_ed5746f6_cb2 release;
+    hs_cb_state_hs_create_ed5746f6_cb2(hs_cb_invoke_hs_create_ed5746f6_cb2 invoke_, void* userData_, hs_cb_release_hs_create_ed5746f6_cb2 release_)
+        : invoke(invoke_), userData(userData_), release(release_) {}
+    ~hs_cb_state_hs_create_ed5746f6_cb2() { if (release) { release(userData); } }
+};
+struct hs_cb_closure_hs_create_ed5746f6_cb2
+{
+    std::shared_ptr<hs_cb_state_hs_create_ed5746f6_cb2> state;
+    void operator()(endstone::Player * arg0) const
+    {
+        state->invoke(state->userData, static_cast<void*>(arg0));
+    }
+};
+
+static void* hs_create_ed5746f6(void* text, const char* icon_data, std::size_t icon_size, void* on_click_invoke, void* on_click_userData, void* on_click_release, bool icon_hasValue) try
+{
+    return new endstone::Button(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text), (icon_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(icon_data, icon_size)} : std::nullopt), std::function<void (endstone::Player *)>(hs_cb_closure_hs_create_ed5746f6_cb2{std::make_shared<hs_cb_state_hs_create_ed5746f6_cb2>(reinterpret_cast<hs_cb_invoke_hs_create_ed5746f6_cb2>(on_click_invoke), on_click_userData, reinterpret_cast<hs_cb_release_hs_create_ed5746f6_cb2>(on_click_release))}));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static HosihikariStringView hs_method_694a6369(void* hs_self, bool* hs_hasValue) try
 {
     auto result = static_cast<endstone::Button*>(hs_self)->getIcon();
@@ -3586,6 +3667,21 @@ catch (...)
     setLastError("unknown native exception");
     if (hs_hasValue) { *hs_hasValue = false; }
     return HosihikariStringView{nullptr, 0};
+}
+
+static void* hs_method_b2627229(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Button*>(hs_self)->getText()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void* hs_method_ebda1615(void* hs_self, const char* icon_data, std::size_t icon_size) try
@@ -3626,6 +3722,21 @@ struct hs_cb_closure_hs_method_7466e41b_cb0
 static void* hs_method_7466e41b(void* hs_self, void* on_click_invoke, void* on_click_userData, void* on_click_release) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Button*>(hs_self)->setOnClick(std::function<void (endstone::Player *)>(hs_cb_closure_hs_method_7466e41b_cb0{std::make_shared<hs_cb_state_hs_method_7466e41b_cb0>(reinterpret_cast<hs_cb_invoke_hs_method_7466e41b_cb0>(on_click_invoke), on_click_userData, reinterpret_cast<hs_cb_release_hs_method_7466e41b_cb0>(on_click_release))}))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_0ae373e7(void* hs_self, void* text) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Button*>(hs_self)->setText(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text))));
 }
 catch (std::exception const& hs_error)
 {
@@ -6200,6 +6311,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_6d3c42f7(void* label, std::int32_t default_index, const HosihikariStringView* options_data, std::size_t options_count, bool default_index_hasValue) try
+{
+    return new endstone::Dropdown(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label), hs_make_string_vector(options_data, options_count), (default_index_hasValue ? std::optional<int>{static_cast<int>(default_index)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_ef8d8378(void* hs_self, const char* option_data, std::size_t option_size) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Dropdown*>(hs_self)->addOption(std::basic_string<char>(option_data, option_size))));
@@ -6234,6 +6360,21 @@ catch (...)
     return 0;
 }
 
+static void* hs_method_adf3c2be(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Dropdown*>(hs_self)->getLabel()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static HosihikariArrayView hs_method_6c265d10(void* hs_self) try
 {
     thread_local std::vector<std::string> hs_arrayStrings;
@@ -6261,6 +6402,21 @@ catch (...)
 static void* hs_method_34be09a0(void* hs_self, std::int32_t default_index, bool default_index_hasValue) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Dropdown*>(hs_self)->setDefaultIndex((default_index_hasValue ? std::optional<int>{static_cast<int>(default_index)} : std::nullopt))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_dd40b665(void* hs_self, void* label) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Dropdown*>(hs_self)->setLabel(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label))));
 }
 catch (std::exception const& hs_error)
 {
@@ -7717,6 +7873,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_3eb60709(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Form<endstone::ActionForm>*>(hs_self)->getTitle()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 using hs_cb_invoke_hs_method_dd992244_cb0 = void (*)(void* userData, void* arg0);
 using hs_cb_release_hs_method_dd992244_cb0 = void (*)(void*);
 struct hs_cb_state_hs_method_dd992244_cb0
@@ -7752,6 +7923,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_8541389a(void* hs_self, void* title) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Form<endstone::ActionForm>*>(hs_self)->setTitle(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(title))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void hs_destroy_1ad4d711(void* hs_self) try
 {
     delete static_cast<endstone::Form<endstone::MessageForm>*>(hs_self);
@@ -7770,6 +7956,21 @@ catch (...)
 static void* hs_create_26427ab1() try
 {
     return new endstone::Form<endstone::MessageForm>();
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_200d5e7a(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Form<endstone::MessageForm>*>(hs_self)->getTitle()));
 }
 catch (std::exception const& hs_error)
 {
@@ -7817,6 +8018,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_3aab670c(void* hs_self, void* title) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Form<endstone::MessageForm>*>(hs_self)->setTitle(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(title))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void hs_destroy_42131b78(void* hs_self) try
 {
     delete static_cast<endstone::Form<endstone::ModalForm>*>(hs_self);
@@ -7835,6 +8051,21 @@ catch (...)
 static void* hs_create_5911bb43() try
 {
     return new endstone::Form<endstone::ModalForm>();
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_ffd54804(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Form<endstone::ModalForm>*>(hs_self)->getTitle()));
 }
 catch (std::exception const& hs_error)
 {
@@ -7870,6 +8101,21 @@ struct hs_cb_closure_hs_method_560b2e39_cb0
 static void* hs_method_560b2e39(void* hs_self, void* on_close_invoke, void* on_close_userData, void* on_close_release) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Form<endstone::ModalForm>*>(hs_self)->setOnClose(std::function<void (endstone::Player *)>(hs_cb_closure_hs_method_560b2e39_cb0{std::make_shared<hs_cb_state_hs_method_560b2e39_cb0>(reinterpret_cast<hs_cb_invoke_hs_method_560b2e39_cb0>(on_close_invoke), on_close_userData, reinterpret_cast<hs_cb_release_hs_method_560b2e39_cb0>(on_close_release))}))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_689a3327(void* hs_self, void* title) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Form<endstone::ModalForm>*>(hs_self)->setTitle(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(title))));
 }
 catch (std::exception const& hs_error)
 {
@@ -7980,6 +8226,51 @@ catch (...)
 static void* hs_create_bd8f2c0e() try
 {
     return new endstone::Header();
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_1dfe588b(void* label) try
+{
+    return new endstone::Header(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_94ba2884(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Header*>(hs_self)->getLabel()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_a434230f(void* hs_self, void* label) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Header*>(hs_self)->setLabel(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label))));
 }
 catch (std::exception const& hs_error)
 {
@@ -10338,6 +10629,51 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_8da6dd40(void* text) try
+{
+    return new endstone::Label(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_6dbcb5f6(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Label*>(hs_self)->getText()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_b5ad9dfd(void* hs_self, void* text) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Label*>(hs_self)->setText(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static HosihikariStringView hs_method_7013216f(void* hs_self) try
 {
     auto result = static_cast<endstone::Language*>(hs_self)->getLocale();
@@ -12033,6 +12369,96 @@ catch (...)
     return;
 }
 
+static void* hs_method_b37b9bbb(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::MessageForm*>(hs_self)->getButton1()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_2db27c2d(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::MessageForm*>(hs_self)->getButton2()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_e035040a(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::MessageForm*>(hs_self)->getContent()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_41da86fb(void* hs_self, void* text) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::MessageForm*>(hs_self)->setButton1(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_046c33b1(void* hs_self, void* text) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::MessageForm*>(hs_self)->setButton2(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_d9b782ea(void* hs_self, void* text) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::MessageForm*>(hs_self)->setContent(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 using hs_cb_invoke_hs_method_6eb29429_cb0 = void (*)(void* userData, void* arg0, std::int32_t arg1);
 using hs_cb_release_hs_method_6eb29429_cb0 = void (*)(void*);
 struct hs_cb_state_hs_method_6eb29429_cb0
@@ -12193,6 +12619,26 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void* hs_method_87da21ad(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::ModalForm*>(hs_self)->getSubmitButton();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
 static void* hs_method_2fd6a4b6(void* hs_self, const char* icon_data, std::size_t icon_size, bool icon_hasValue) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ModalForm*>(hs_self)->setIcon((icon_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(icon_data, icon_size)} : std::nullopt))));
@@ -12232,6 +12678,21 @@ struct hs_cb_closure_hs_method_7a28fda0_cb0
 static void* hs_method_7a28fda0(void* hs_self, void* on_submit_invoke, void* on_submit_userData, void* on_submit_release) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ModalForm*>(hs_self)->setOnSubmit(std::function<void (endstone::Player *, std::basic_string<char>)>(hs_cb_closure_hs_method_7a28fda0_cb0{std::make_shared<hs_cb_state_hs_method_7a28fda0_cb0>(reinterpret_cast<hs_cb_invoke_hs_method_7a28fda0_cb0>(on_submit_invoke), on_submit_userData, reinterpret_cast<hs_cb_release_hs_method_7a28fda0_cb0>(on_submit_release))}))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_b175a990(void* hs_self, void* text, bool text_hasValue) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ModalForm*>(hs_self)->setSubmitButton((text_hasValue ? std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>{*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(text)} : std::nullopt))));
 }
 catch (std::exception const& hs_error)
 {
@@ -12340,6 +12801,22 @@ catch (...)
 {
     setLastError("unknown native exception");
     return 0;
+}
+
+static void* hs_method_6d50e0da(void* hs_self, void* entry) try
+{
+    auto hs_result = static_cast<endstone::Objective*>(hs_self)->getScore(*static_cast<const std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>*>(entry));
+    return static_cast<void*>(hs_result.release());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void* hs_method_f4a5b3b4(void* hs_self) try
@@ -13834,6 +14311,21 @@ catch (...)
     return;
 }
 
+static void hs_method_f582f838(void* hs_self, void* form) try
+{
+    static_cast<endstone::Player*>(hs_self)->sendForm(*static_cast<const std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>*>(form));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_method_7ba4e40a(void* hs_self, void* map) try
 {
     static_cast<endstone::Player*>(hs_self)->sendMap(*static_cast<endstone::MapView*>(map));
@@ -14630,6 +15122,26 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_09a43d68(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerDeathEvent*>(hs_self)->getDeathMessage();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
 static HosihikariStringView hs_method_a73c6a4f(void* hs_self) try
 {
     auto result = static_cast<endstone::PlayerDeathEvent*>(hs_self)->getEventName();
@@ -14660,6 +15172,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static void hs_method_7b4a723d(void* hs_self, void* death_message, bool death_message_hasValue) try
+{
+    static_cast<endstone::PlayerDeathEvent*>(hs_self)->setDeathMessage((death_message_hasValue ? std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>{*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(death_message)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
 }
 
 static void hs_destroy_bea4b70e(void* hs_self) try
@@ -15632,6 +16159,41 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void* hs_method_af275668(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerJoinEvent*>(hs_self)->getJoinMessage();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static void hs_method_a3832a8c(void* hs_self, void* message, bool message_hasValue) try
+{
+    static_cast<endstone::PlayerJoinEvent*>(hs_self)->setJoinMessage((message_hasValue ? std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>{*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(message)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_destroy_2fa323f1(void* hs_self) try
 {
     delete static_cast<endstone::PlayerJumpEvent*>(hs_self);
@@ -16160,6 +16722,41 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void* hs_method_a21f1046(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerQuitEvent*>(hs_self)->getQuitMessage();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static void hs_method_221a79aa(void* hs_self, void* message, bool message_hasValue) try
+{
+    static_cast<endstone::PlayerQuitEvent*>(hs_self)->setQuitMessage((message_hasValue ? std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>{*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(message)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
 static void hs_destroy_b301f523(void* hs_self) try
 {
     delete static_cast<endstone::PlayerRespawnEvent*>(hs_self);
@@ -16267,6 +16864,41 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static void* hs_method_3c0a13be(void* hs_self, bool* hs_hasValue) try
+{
+    auto result = static_cast<endstone::PlayerSkinChangeEvent*>(hs_self)->getSkinChangeMessage();
+    *hs_hasValue = result.has_value();
+    if (!result) { return nullptr; }
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(std::move(*result)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    if (hs_hasValue) { *hs_hasValue = false; }
+    return nullptr;
+}
+
+static void hs_method_56fe64c4(void* hs_self, void* message, bool message_hasValue) try
+{
+    static_cast<endstone::PlayerSkinChangeEvent*>(hs_self)->setSkinChangeMessage((message_hasValue ? std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>{*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(message)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
 }
 
 static void hs_destroy_20eb43b0(void* hs_self) try
@@ -19170,6 +19802,21 @@ catch (...)
     return;
 }
 
+static void* hs_method_8475b818(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>(static_cast<endstone::Score*>(hs_self)->getEntry()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_56a25a01(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Score*>(hs_self)->getObjective()));
@@ -19306,6 +19953,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return nullptr;
+}
+
+static void hs_method_11736ed0(void* hs_self, void* entry) try
+{
+    static_cast<endstone::Scoreboard*>(hs_self)->resetScores(*static_cast<const std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>*>(entry));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
 }
 
 static void hs_destroy_696fcc7e(void* hs_self) try
@@ -20818,6 +21480,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_9345eac1(void* label, float min, float max, float step, float default_value, bool default_value_hasValue) try
+{
+    return new endstone::Slider(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label), static_cast<float>(min), static_cast<float>(max), static_cast<float>(step), (default_value_hasValue ? std::optional<float>{static_cast<float>(default_value)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static float hs_method_8e97707c(void* hs_self, bool* hs_hasValue) try
 {
     auto result = static_cast<endstone::Slider*>(hs_self)->getDefaultValue();
@@ -20835,6 +21512,21 @@ catch (...)
     setLastError("unknown native exception");
     if (hs_hasValue) { *hs_hasValue = false; }
     return 0.0f;
+}
+
+static void* hs_method_7f85a854(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Slider*>(hs_self)->getLabel()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static float hs_method_22a14062(void* hs_self) try
@@ -20885,6 +21577,21 @@ catch (...)
 static void* hs_method_72f50c10(void* hs_self, float default_value, bool default_value_hasValue) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Slider*>(hs_self)->setDefaultValue((default_value_hasValue ? std::optional<float>{static_cast<float>(default_value)} : std::nullopt))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_8dc48b84(void* hs_self, void* label) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Slider*>(hs_self)->setLabel(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label))));
 }
 catch (std::exception const& hs_error)
 {
@@ -21139,6 +21846,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_cef8ea66(void* label, void* placeholder, const char* default_text_data, std::size_t default_text_size, bool default_text_hasValue) try
+{
+    return new endstone::TextInput(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label), *static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(placeholder), (default_text_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(default_text_data, default_text_size)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static HosihikariStringView hs_method_cf086930(void* hs_self, bool* hs_hasValue) try
 {
     auto result = static_cast<endstone::TextInput*>(hs_self)->getDefaultValue();
@@ -21159,9 +21881,69 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void* hs_method_1aaed7fb(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::TextInput*>(hs_self)->getLabel()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_59614a43(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::TextInput*>(hs_self)->getPlaceholder()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_6724f75c(void* hs_self, const char* text_data, std::size_t text_size, bool text_hasValue) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::TextInput*>(hs_self)->setDefaultValue((text_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(text_data, text_size)} : std::nullopt))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_3b9571f3(void* hs_self, void* label) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::TextInput*>(hs_self)->setLabel(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_f393b4d4(void* hs_self, void* placeholder) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::TextInput*>(hs_self)->setPlaceholder(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(placeholder))));
 }
 catch (std::exception const& hs_error)
 {
@@ -21266,6 +22048,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_b1da0fb9(void* label, bool default_value) try
+{
+    return new endstone::Toggle(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label), static_cast<bool>(default_value));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static bool hs_method_7807e4ae(void* hs_self) try
 {
     return static_cast<bool>(static_cast<endstone::Toggle*>(hs_self)->getDefaultValue());
@@ -21281,9 +22078,39 @@ catch (...)
     return false;
 }
 
+static void* hs_method_eb915f8b(void* hs_self) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(static_cast<endstone::Toggle*>(hs_self)->getLabel()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_99548109(void* hs_self, bool value) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Toggle*>(hs_self)->setDefaultValue(static_cast<bool>(value))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_959dbcab(void* hs_self, void* label) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Toggle*>(hs_self)->setLabel(*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(label))));
 }
 catch (std::exception const& hs_error)
 {
@@ -24340,6 +25167,358 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void* hs_variant_e1e3d57e_create_0(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>(std::in_place_index<0>, *static_cast<const endstone::MessageForm*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_e1e3d57e_create_1(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>(std::in_place_index<1>, *static_cast<const endstone::ActionForm*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_e1e3d57e_create_2(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>(std::in_place_index<2>, *static_cast<const endstone::ModalForm*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void hs_variant_e1e3d57e_destroy(void* hs_self) try
+{
+    delete static_cast<std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void* hs_variant_e1e3d57e_get_0(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>*>(hs_self);
+    if (hs_value.index() != 0) { return nullptr; }
+    return static_cast<void*>(new endstone::MessageForm(std::get<0>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_e1e3d57e_get_1(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>*>(hs_self);
+    if (hs_value.index() != 1) { return nullptr; }
+    return static_cast<void*>(new endstone::ActionForm(std::get<1>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_e1e3d57e_get_2(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>*>(hs_self);
+    if (hs_value.index() != 2) { return nullptr; }
+    return static_cast<void*>(new endstone::ModalForm(std::get<2>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static std::int32_t hs_variant_e1e3d57e_index(void* hs_self) try
+{
+    return static_cast<std::int32_t>(static_cast<const std::variant<endstone::MessageForm, endstone::ActionForm, endstone::ModalForm>*>(hs_self)->index());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return 0;
+}
+
+static void* hs_variant_ad84296b_create_0(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>(std::in_place_index<0>, static_cast<endstone::Player *>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_ad84296b_create_1(void* value) try
+{
+    return static_cast<void*>(new std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>(std::in_place_index<1>, static_cast<endstone::Actor *>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_ad84296b_create_2(const char* value_data, std::size_t value_size) try
+{
+    return static_cast<void*>(new std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>(std::in_place_index<2>, std::string(value_data, value_size)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void hs_variant_ad84296b_destroy(void* hs_self) try
+{
+    delete static_cast<std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void* hs_variant_ad84296b_get_0(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>*>(hs_self);
+    if (hs_value.index() != 0) { return nullptr; }
+    return const_cast<void*>(static_cast<void const*>(std::get<0>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_ad84296b_get_1(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>*>(hs_self);
+    if (hs_value.index() != 1) { return nullptr; }
+    return const_cast<void*>(static_cast<void const*>(std::get<1>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static HosihikariStringView hs_variant_ad84296b_get_2(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>*>(hs_self);
+    thread_local std::string hs_variantString;
+    if (hs_value.index() != 2) { return HosihikariStringView{nullptr, 0}; }
+    auto const& hs_text = std::get<2>(hs_value);
+    hs_variantString.assign(hs_text.data(), hs_text.size());
+    return HosihikariStringView{hs_variantString.data(), hs_variantString.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
+static std::int32_t hs_variant_ad84296b_index(void* hs_self) try
+{
+    return static_cast<std::int32_t>(static_cast<const std::variant<endstone::Player *, endstone::Actor *, std::basic_string<char>>*>(hs_self)->index());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return 0;
+}
+
+static void* hs_variant_228e24a8_create_0(const char* value_data, std::size_t value_size) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(std::in_place_index<0>, std::string(value_data, value_size)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_variant_228e24a8_create_1(void* value) try
+{
+    return static_cast<void*>(new std::variant<std::basic_string<char>, endstone::Translatable>(std::in_place_index<1>, *static_cast<const endstone::Translatable*>(value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void hs_variant_228e24a8_destroy(void* hs_self) try
+{
+    delete static_cast<std::variant<std::basic_string<char>, endstone::Translatable>*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static HosihikariStringView hs_variant_228e24a8_get_0(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(hs_self);
+    thread_local std::string hs_variantString;
+    if (hs_value.index() != 0) { return HosihikariStringView{nullptr, 0}; }
+    auto const& hs_text = std::get<0>(hs_value);
+    hs_variantString.assign(hs_text.data(), hs_text.size());
+    return HosihikariStringView{hs_variantString.data(), hs_variantString.size()};
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariStringView{nullptr, 0};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariStringView{nullptr, 0};
+}
+
+static void* hs_variant_228e24a8_get_1(void* hs_self) try
+{
+    auto const& hs_value = *static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(hs_self);
+    if (hs_value.index() != 1) { return nullptr; }
+    return static_cast<void*>(new endstone::Translatable(std::get<1>(hs_value)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static std::int32_t hs_variant_228e24a8_index(void* hs_self) try
+{
+    return static_cast<std::int32_t>(static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(hs_self)->index());
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return 0;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return 0;
+}
+
 const HosihikariBindingTableV1 kTable{
     std::uint32_t{1},
     static_cast<std::uint32_t>(sizeof(HosihikariBindingTableV1)),
@@ -24349,7 +25528,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_9ff2f0da,
     &hs_method_b8b47588,
     &hs_method_20c60f83,
+    &hs_method_9d857e16,
     &hs_method_d5090347,
+    &hs_method_3f77668b,
     &hs_method_7a063590,
     &hs_method_96acbd59,
     &hs_method_47bed08e,
@@ -24566,11 +25747,15 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_403b3efd,
     &hs_method_e5bc84d3,
     &hs_method_ed51ea87,
+    &hs_method_4c0b7fcf,
     &hs_destroy_a6b80c78,
     &hs_create_a4f12f29,
+    &hs_create_ed5746f6,
     &hs_method_694a6369,
+    &hs_method_b2627229,
     &hs_method_ebda1615,
     &hs_method_7466e41b,
+    &hs_method_0ae373e7,
     &hs_method_23889360,
     &hs_method_625b3e48,
     &hs_method_75a0221d,
@@ -24736,10 +25921,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_create_461c2f46,
     &hs_destroy_9c3982da,
     &hs_create_6935619b,
+    &hs_create_6d3c42f7,
     &hs_method_ef8d8378,
     &hs_method_06d835d9,
+    &hs_method_adf3c2be,
     &hs_method_6c265d10,
     &hs_method_34be09a0,
+    &hs_method_dd40b665,
     &hs_method_e876541b,
     &hs_destroy_cb8e5713,
     &hs_get_c0fea9c8,
@@ -24836,13 +26024,19 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f53a20bc,
     &hs_destroy_ba9f438f,
     &hs_create_3f90e3e1,
+    &hs_method_3eb60709,
     &hs_method_dd992244,
+    &hs_method_8541389a,
     &hs_destroy_1ad4d711,
     &hs_create_26427ab1,
+    &hs_method_200d5e7a,
     &hs_method_dab04cb1,
+    &hs_method_3aab670c,
     &hs_destroy_42131b78,
     &hs_create_5911bb43,
+    &hs_method_ffd54804,
     &hs_method_560b2e39,
+    &hs_method_689a3327,
     &hs_destroy_bedd34b0,
     &hs_create_8d9494ee,
     &hs_method_afbf70d8,
@@ -24850,6 +26044,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_9b6e74ba,
     &hs_destroy_50f38d54,
     &hs_create_bd8f2c0e,
+    &hs_create_1dfe588b,
+    &hs_method_94ba2884,
+    &hs_method_a434230f,
     &hs_method_4eb9a2e8,
     &hs_method_297a2019,
     &hs_method_f20cf498,
@@ -25000,6 +26197,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_d6685e73,
     &hs_destroy_e2f214b6,
     &hs_create_5f9e6485,
+    &hs_create_8da6dd40,
+    &hs_method_6dbcb5f6,
+    &hs_method_b5ad9dfd,
     &hs_method_7013216f,
     &hs_method_ac56f932,
     &hs_method_0b444435,
@@ -25111,6 +26311,12 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_08c724c1,
     &hs_method_ea998821,
     &hs_destroy_8a5a7653,
+    &hs_method_b37b9bbb,
+    &hs_method_2db27c2d,
+    &hs_method_e035040a,
+    &hs_method_41da86fb,
+    &hs_method_046c33b1,
+    &hs_method_d9b782ea,
     &hs_method_6eb29429,
     &hs_method_fcf492e7,
     &hs_method_480f4712,
@@ -25120,14 +26326,17 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_50792e32,
     &hs_method_d6ba0b11,
     &hs_method_e533f412,
+    &hs_method_87da21ad,
     &hs_method_2fd6a4b6,
     &hs_method_7a28fda0,
+    &hs_method_b175a990,
     &hs_destroy_2b13267b,
     &hs_method_84b58b4c,
     &hs_method_9d527bb5,
     &hs_method_6fabf6ef,
     &hs_method_4f699330,
     &hs_method_a38ef899,
+    &hs_method_6d50e0da,
     &hs_method_f4a5b3b4,
     &hs_method_654c0623,
     &hs_method_cabc5bde,
@@ -25224,6 +26433,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_66e6556f,
     &hs_method_dcb8d8fd,
     &hs_method_d7922873,
+    &hs_method_f582f838,
     &hs_method_7ba4e40a,
     &hs_method_16e86b9c,
     &hs_method_388cfcc3,
@@ -25275,8 +26485,10 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_3e202e96,
     &hs_destroy_21bb0371,
     &hs_get_6c21fa68,
+    &hs_method_09a43d68,
     &hs_method_a73c6a4f,
     &hs_method_0f3fb098,
+    &hs_method_7b4a723d,
     &hs_destroy_bea4b70e,
     &hs_get_da0bdd12,
     &hs_method_662d6064,
@@ -25338,6 +26550,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_9f331fab,
     &hs_get_0935792e,
     &hs_method_9a7837cb,
+    &hs_method_af275668,
+    &hs_method_a3832a8c,
     &hs_destroy_2fa323f1,
     &hs_get_80302a8e,
     &hs_method_408857f5,
@@ -25372,6 +26586,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_77740c4a,
     &hs_get_6dd8ba88,
     &hs_method_dcf52f89,
+    &hs_method_a21f1046,
+    &hs_method_221a79aa,
     &hs_destroy_b301f523,
     &hs_get_88e469cd,
     &hs_method_9a200629,
@@ -25379,6 +26595,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_9305609b,
     &hs_method_5c33ba79,
     &hs_method_d73a652d,
+    &hs_method_3c0a13be,
+    &hs_method_56fe64c4,
     &hs_destroy_20eb43b0,
     &hs_get_6c5522fa,
     &hs_method_46454b3c,
@@ -25551,6 +26769,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_09c640a2,
     &hs_method_3ac36e45,
     &hs_destroy_bfa7598b,
+    &hs_method_8475b818,
     &hs_method_56a25a01,
     &hs_method_53fb01c6,
     &hs_method_50e19cf7,
@@ -25560,6 +26779,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ded41b17,
     &hs_method_4fb62c4b,
     &hs_method_4f807a3e,
+    &hs_method_11736ed0,
     &hs_destroy_696fcc7e,
     &hs_get_02d83831,
     &hs_method_f0cee3f8,
@@ -25658,11 +26878,14 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_adc734db,
     &hs_destroy_e2931de4,
     &hs_create_2b743187,
+    &hs_create_9345eac1,
     &hs_method_8e97707c,
+    &hs_method_7f85a854,
     &hs_method_22a14062,
     &hs_method_b6202ef6,
     &hs_method_b88065d8,
     &hs_method_72f50c10,
+    &hs_method_8dc48b84,
     &hs_method_99d38211,
     &hs_method_f4e705dc,
     &hs_method_8c062b7a,
@@ -25679,16 +26902,24 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_3838f72f,
     &hs_destroy_ebed3b76,
     &hs_create_3e1ec5c3,
+    &hs_create_cef8ea66,
     &hs_method_cf086930,
+    &hs_method_1aaed7fb,
+    &hs_method_59614a43,
     &hs_method_6724f75c,
+    &hs_method_3b9571f3,
+    &hs_method_f393b4d4,
     &hs_destroy_2ac6baed,
     &hs_get_5463cf9d,
     &hs_method_86f9ba6f,
     &hs_method_00fa4571,
     &hs_destroy_89075963,
     &hs_create_370c6b21,
+    &hs_create_b1da0fb9,
     &hs_method_7807e4ae,
+    &hs_method_eb915f8b,
     &hs_method_99548109,
+    &hs_method_959dbcab,
     &hs_destroy_417367bd,
     &hs_create_6641a0a9,
     &hs_method_32afdbcb,
@@ -25890,6 +27121,28 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_bc424f4f,
     &hs_destroy_6d952785,
     &hs_get_ffe00fef,
+    &hs_variant_e1e3d57e_create_0,
+    &hs_variant_e1e3d57e_create_1,
+    &hs_variant_e1e3d57e_create_2,
+    &hs_variant_e1e3d57e_destroy,
+    &hs_variant_e1e3d57e_get_0,
+    &hs_variant_e1e3d57e_get_1,
+    &hs_variant_e1e3d57e_get_2,
+    &hs_variant_e1e3d57e_index,
+    &hs_variant_ad84296b_create_0,
+    &hs_variant_ad84296b_create_1,
+    &hs_variant_ad84296b_create_2,
+    &hs_variant_ad84296b_destroy,
+    &hs_variant_ad84296b_get_0,
+    &hs_variant_ad84296b_get_1,
+    &hs_variant_ad84296b_get_2,
+    &hs_variant_ad84296b_index,
+    &hs_variant_228e24a8_create_0,
+    &hs_variant_228e24a8_create_1,
+    &hs_variant_228e24a8_destroy,
+    &hs_variant_228e24a8_get_0,
+    &hs_variant_228e24a8_get_1,
+    &hs_variant_228e24a8_index,
 };
 
 }  // namespace

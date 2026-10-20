@@ -16,7 +16,7 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f1437(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f1489(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,7 +28,7 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission build()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission((nint)NativeMethods.TablePtr->f1438((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission((nint)NativeMethods.TablePtr->f1490((void*)_handle));
     }
 
     public nint children(string name, bool value)
@@ -36,13 +36,13 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f1439((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, value);
+            return (nint)NativeMethods.TablePtr->f1491((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length, value);
         }
     }
 
     public nint default_(int default_value)
     {
-        return (nint)NativeMethods.TablePtr->f1440((void*)_handle, default_value);
+        return (nint)NativeMethods.TablePtr->f1492((void*)_handle, default_value);
     }
 
     public nint description(string description)
@@ -50,7 +50,7 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(description);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            return (nint)NativeMethods.TablePtr->f1441((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
+            return (nint)NativeMethods.TablePtr->f1493((void*)_handle, __hs_stringData, (nuint)__hs_stringBytes.Length);
         }
     }
 
@@ -58,7 +58,7 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1436((void*)_handle);
+            NativeMethods.TablePtr->f1488((void*)_handle);
             _handle = 0;
         }
     }

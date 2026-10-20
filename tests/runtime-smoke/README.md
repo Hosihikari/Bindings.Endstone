@@ -29,7 +29,8 @@ The plugin verifies:
 - `Server::getName()` and `Server::getVersion()` through the BindingShim match the native calls;
 - string and integer vector parameters reach `Translatable::Create` and `ArrayTag<int>::Create`;
 - `PluginManager::getPlugins()` returns borrowed `Plugin*` addresses;
-- `Server::createScoreboard()` returns a `shared_ptr` handle whose target serves `Scoreboard::clearSlot` and releases cleanly.
+- `Server::createScoreboard()` returns a `shared_ptr` handle whose target serves `Scoreboard::clearSlot` and releases cleanly;
+- a string `std::variant` round-trips through `ActionForm::setContent`/`getContent`, including index and string accessors.
 
 Expected result:
 
@@ -44,6 +45,7 @@ translatable.string_vector=ok
 arraytag.int_vector=ok
 plugin_manager.plugin_vector=ok
 scoreboard.shared_handle=ok
+action_form.string_variant=ok
 result=OK
 ```
 

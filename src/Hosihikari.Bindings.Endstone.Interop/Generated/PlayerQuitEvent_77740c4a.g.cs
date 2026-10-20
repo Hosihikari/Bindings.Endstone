@@ -13,7 +13,7 @@ public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1027();
+        get => (nint)NativeMethods.TablePtr->f1062();
     }
 
     public static PlayerQuitEvent Create(nint player, nint quit_message) =>
@@ -21,21 +21,27 @@ public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1028((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1063((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getQuitMessage() =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional return type 'std::variant<std::basic_string<char>, endstone::Translatable>' is not a known bindable declaration.");
+    public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getQuitMessage()
+    {
+        var __hs_hasValue = false;
+        var __hs_handle = NativeMethods.TablePtr->f1064((void*)_handle, &__hs_hasValue);
+        return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
+    }
 
-    public void setQuitMessage(nint message) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: optional record parameter 'std::variant<std::basic_string<char>, endstone::Translatable>' is abstract or not copy-constructible.");
+    public void setQuitMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? message)
+    {
+        NativeMethods.TablePtr->f1065((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
+    }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1026((void*)_handle);
+            NativeMethods.TablePtr->f1061((void*)_handle);
             _handle = 0;
         }
     }
