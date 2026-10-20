@@ -89,6 +89,22 @@ $ItemFactoryGetMeta = Get-TableIndex "ItemFactory_*.g.cs" 'getItemMeta\([\s\S]*?
 $ItemMetaAddEnchant = Get-TableIndex "ItemMeta_*.g.cs" 'addEnchant\([\s\S]*?TablePtr->f(\d+)' "ItemMeta::addEnchant"
 $ItemMetaGetEnchants = Get-TableIndex "ItemMeta_*.g.cs" 'getEnchants\(\)[\s\S]*?TablePtr->f(\d+)' "ItemMeta::getEnchants"
 $ItemMetaDestroy = Get-TableIndex "ItemMeta_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "ItemMeta::Dispose"
+$ModalFormAddControl = Get-TableIndex "ModalForm_*.g.cs" 'addControl\([\s\S]*?TablePtr->f(\d+)' "ModalForm::addControl"
+$ModalFormGetControls = Get-TableIndex "ModalForm_*.g.cs" 'getControls\(\)[\s\S]*?TablePtr->f(\d+)' "ModalForm::getControls"
+$DropdownDestroy = Get-TableIndex "Dropdown_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "Dropdown::Dispose"
+$GeneratedDirectory = Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated"
+$ControlVariantFile = Get-ChildItem $GeneratedDirectory -Filter "Variant_*.g.cs" |
+    Where-Object { (Get-Content $_.FullName -Raw) -match 'AsStepSlider' } |
+    Select-Object -First 1
+if (-not $ControlVariantFile) { throw "The form-control variant wrapper was not found." }
+$ControlVariantText = Get-Content $ControlVariantFile.FullName -Raw
+$ControlVariantCreateDropdown = [regex]::Match($ControlVariantText, 'CreateDropdown\([\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$ControlVariantIndex = [regex]::Match($ControlVariantText, 'public int Index => NativeMethods\.TablePtr->f(\d+)').Groups[1].Value
+$ControlVariantAsDropdown = [regex]::Match($ControlVariantText, 'AsDropdown\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$ControlVariantDestroy = [regex]::Match($ControlVariantText, 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+if (-not $ControlVariantCreateDropdown -or -not $ControlVariantIndex -or -not $ControlVariantAsDropdown -or -not $ControlVariantDestroy) {
+    throw "Could not find the form-control variant table indices."
+}
 
 $GeneratedDirectory = Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated"
 $ActionFormCreate = Get-TableIndex "ActionForm_*.g.cs" 'Create\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::Create"
@@ -158,6 +174,13 @@ $Args = @(
     "/DHS_ITEM_META_ADD_ENCHANT_INDEX=$ItemMetaAddEnchant",
     "/DHS_ITEM_META_GET_ENCHANTS_INDEX=$ItemMetaGetEnchants",
     "/DHS_ITEM_META_DESTROY_INDEX=$ItemMetaDestroy",
+    "/DHS_MODAL_FORM_ADD_CONTROL_INDEX=$ModalFormAddControl",
+    "/DHS_MODAL_FORM_GET_CONTROLS_INDEX=$ModalFormGetControls",
+    "/DHS_DROPDOWN_DESTROY_INDEX=$DropdownDestroy",
+    "/DHS_CONTROL_VARIANT_CREATE_DROPDOWN_INDEX=$ControlVariantCreateDropdown",
+    "/DHS_CONTROL_VARIANT_INDEX_INDEX=$ControlVariantIndex",
+    "/DHS_CONTROL_VARIANT_AS_DROPDOWN_INDEX=$ControlVariantAsDropdown",
+    "/DHS_CONTROL_VARIANT_DESTROY_INDEX=$ControlVariantDestroy",
     "/DHS_ACTION_FORM_CREATE_INDEX=$ActionFormCreate",
     "/DHS_ACTION_FORM_SET_CONTENT_INDEX=$ActionFormSetContent",
     "/DHS_ACTION_FORM_GET_CONTENT_INDEX=$ActionFormGetContent",

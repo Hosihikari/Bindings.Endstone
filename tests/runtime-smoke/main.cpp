@@ -83,6 +83,27 @@
 #ifndef HS_ITEM_META_DESTROY_INDEX
 #error "HS_ITEM_META_DESTROY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_MODAL_FORM_ADD_CONTROL_INDEX
+#error "HS_MODAL_FORM_ADD_CONTROL_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_MODAL_FORM_GET_CONTROLS_INDEX
+#error "HS_MODAL_FORM_GET_CONTROLS_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_DROPDOWN_DESTROY_INDEX
+#error "HS_DROPDOWN_DESTROY_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_CONTROL_VARIANT_CREATE_DROPDOWN_INDEX
+#error "HS_CONTROL_VARIANT_CREATE_DROPDOWN_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_CONTROL_VARIANT_INDEX_INDEX
+#error "HS_CONTROL_VARIANT_INDEX_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_CONTROL_VARIANT_AS_DROPDOWN_INDEX
+#error "HS_CONTROL_VARIANT_AS_DROPDOWN_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_CONTROL_VARIANT_DESTROY_INDEX
+#error "HS_CONTROL_VARIANT_DESTROY_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_ACTION_FORM_CREATE_INDEX
 #error "HS_ACTION_FORM_CREATE_INDEX must be defined by build.ps1"
 #endif
@@ -373,6 +394,43 @@ public:
             }
 
             out << "item_meta.map=" << (itemMetaMapOk ? "ok" : "FAIL") << "\n";
+
+            using ModalAddControlFn = void *(*)(void *, void *);
+            using ModalGetControlsFn = HosihikariArrayView (*)(void *);
+            using VariantCreateDropdownFn = void *(*)(void *);
+            using VariantReadIndexFn = std::int32_t (*)(void *);
+            using VariantAsDropdownFn = void *(*)(void *);
+            bool modalControlOk = false;
+            {
+                endstone::ModalForm modal;
+                endstone::Dropdown dropdown;
+                auto *control = reinterpret_cast<VariantCreateDropdownFn>(
+                    slots[HS_CONTROL_VARIANT_CREATE_DROPDOWN_INDEX])(&dropdown);
+                if (control) {
+                    auto *added = reinterpret_cast<ModalAddControlFn>(slots[HS_MODAL_FORM_ADD_CONTROL_INDEX])(
+                        &modal, control);
+                    const auto controls = reinterpret_cast<ModalGetControlsFn>(
+                        slots[HS_MODAL_FORM_GET_CONTROLS_INDEX])(&modal);
+                    auto *const *items = static_cast<void *const *>(controls.data);
+                    modalControlOk = added != nullptr && controls.size == 1 && items[0] != nullptr
+                        && reinterpret_cast<VariantReadIndexFn>(
+                            slots[HS_CONTROL_VARIANT_INDEX_INDEX])(items[0]) == 0;
+                    if (controls.size == 1 && items[0] != nullptr) {
+                        auto *copy = reinterpret_cast<VariantAsDropdownFn>(
+                            slots[HS_CONTROL_VARIANT_AS_DROPDOWN_INDEX])(items[0]);
+                        modalControlOk = modalControlOk && copy != nullptr;
+                        if (copy) {
+                            reinterpret_cast<DestroyFn>(slots[HS_DROPDOWN_DESTROY_INDEX])(copy);
+                        }
+                    }
+                    for (std::size_t index = 0; index < controls.size; ++index) {
+                        reinterpret_cast<DestroyFn>(slots[HS_CONTROL_VARIANT_DESTROY_INDEX])(items[index]);
+                    }
+                    reinterpret_cast<DestroyFn>(slots[HS_CONTROL_VARIANT_DESTROY_INDEX])(control);
+                }
+            }
+
+            out << "modal_form.controls=" << (modalControlOk ? "ok" : "FAIL") << "\n";
 
             using CreateActionFormFn = void *(*)();
             using SetContentFn = void *(*)(void *, void *);
