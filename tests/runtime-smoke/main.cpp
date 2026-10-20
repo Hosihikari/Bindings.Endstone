@@ -68,6 +68,21 @@
 #ifndef HS_PLAYER_BANNED_INDEX
 #error "HS_PLAYER_BANNED_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_SERVER_ITEM_FACTORY_INDEX
+#error "HS_SERVER_ITEM_FACTORY_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_FACTORY_GET_META_INDEX
+#error "HS_ITEM_FACTORY_GET_META_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_META_ADD_ENCHANT_INDEX
+#error "HS_ITEM_META_ADD_ENCHANT_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_META_GET_ENCHANTS_INDEX
+#error "HS_ITEM_META_GET_ENCHANTS_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_META_DESTROY_INDEX
+#error "HS_ITEM_META_DESTROY_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_ACTION_FORM_CREATE_INDEX
 #error "HS_ACTION_FORM_CREATE_INDEX must be defined by build.ps1"
 #endif
@@ -336,6 +351,28 @@ public:
 
             out << "ban_list.shared_array=" << (containersOk ? "ok" : "FAIL") << "\n";
             out << "ban_list.add_remove=" << (banRoundTripOk ? "ok" : "FAIL") << "\n";
+
+            using GetItemFactoryFn = void *(*)(void *);
+            using GetItemMetaFn = void *(*)(void *, void *);
+            using AddEnchantFn = bool (*)(void *, void *, std::int32_t, bool);
+            using GetEnchantsFn = HosihikariArrayView (*)(void *);
+            bool itemMetaMapOk = false;
+            if (auto *factory = reinterpret_cast<GetItemFactoryFn>(slots[HS_SERVER_ITEM_FACTORY_INDEX])(handle)) {
+                endstone::ItemTypeId itemType("minecraft:diamond_sword");
+                auto *meta = reinterpret_cast<GetItemMetaFn>(slots[HS_ITEM_FACTORY_GET_META_INDEX])(factory, &itemType);
+                if (meta) {
+                    endstone::EnchantmentId enchantment("minecraft:sharpness");
+                    const bool added = reinterpret_cast<AddEnchantFn>(slots[HS_ITEM_META_ADD_ENCHANT_INDEX])(
+                        meta, &enchantment, 5, true);
+                    const auto enchants = reinterpret_cast<GetEnchantsFn>(slots[HS_ITEM_META_GET_ENCHANTS_INDEX])(meta);
+                    const auto *entries = static_cast<HosihikariMapEntry const *>(enchants.data);
+                    itemMetaMapOk = added && enchants.size == 1 && entries[0].key != 0
+                        && static_cast<int>(entries[0].value) == 5;
+                    reinterpret_cast<DestroyFn>(slots[HS_ITEM_META_DESTROY_INDEX])(meta);
+                }
+            }
+
+            out << "item_meta.map=" << (itemMetaMapOk ? "ok" : "FAIL") << "\n";
 
             using CreateActionFormFn = void *(*)();
             using SetContentFn = void *(*)(void *, void *);

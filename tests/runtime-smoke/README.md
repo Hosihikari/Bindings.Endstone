@@ -33,6 +33,7 @@ The plugin verifies:
 - `Scoreboard::getObjectives()` returns an owned `Objective[]` (empty on a fresh scoreboard);
 - `PlayerBanList::getEntries()` returns `SharedHandle[]` and `getBanEntry("missing")` returns null;
 - `addBan` with a 60-second duration, lookup, `isBanned`, and `removeBan` round-trip through `SharedHandle`;
+- `ItemMeta::getEnchants()` returns the added enchantment as a map entry through `HosihikariMapEntry`;
 - a string `std::variant` round-trips through `ActionForm::setContent`/`getContent`, including index and string accessors;
 - `ActionForm::setOnSubmit`/`getOnSubmit` round-trips a `std::function`: the returned callable invokes the managed handler exactly once and releases its shared state once.
 
@@ -52,6 +53,7 @@ scoreboard.shared_handle=ok
 scoreboard.owned_array=ok
 ban_list.shared_array=ok
 ban_list.add_remove=ok
+item_meta.map=ok
 action_form.string_variant=ok
 callable.round_trip=ok
 result=OK
