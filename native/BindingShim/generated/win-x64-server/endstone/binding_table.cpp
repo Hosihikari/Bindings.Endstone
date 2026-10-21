@@ -2526,7 +2526,7 @@ catch (...)
 
 static HosihikariSharedHandle hs_method_95d473c7(void* hs_self, const char* target_data, std::size_t target_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool reason_hasValue, bool source_hasValue) try
 {
-    return hs_make_shared_handle((static_cast<endstone::BanList<endstone::IpBanEntry>*>(hs_self)->addBan(std::basic_string<char>(target_data, target_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+    return hs_make_shared_handle((static_cast<endstone::BanList<endstone::IpBanEntry>*>(hs_self)->addBan(std::basic_string<char>(target_data, target_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<std::int64_t>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
 }
 catch (std::exception const& hs_error)
 {
@@ -2636,7 +2636,7 @@ catch (...)
 
 static HosihikariSharedHandle hs_method_a1c47b93(void* hs_self, const char* target_data, std::size_t target_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool reason_hasValue, bool source_hasValue) try
 {
-    return hs_make_shared_handle((static_cast<endstone::BanList<endstone::PlayerBanEntry>*>(hs_self)->addBan(std::basic_string<char>(target_data, target_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+    return hs_make_shared_handle((static_cast<endstone::BanList<endstone::PlayerBanEntry>*>(hs_self)->addBan(std::basic_string<char>(target_data, target_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<std::int64_t>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
 }
 catch (std::exception const& hs_error)
 {
@@ -12946,7 +12946,7 @@ catch (...)
 
 static HosihikariSharedHandle hs_method_4c6dbde4(void* hs_self, const char* address_data, std::size_t address_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool reason_hasValue, bool source_hasValue) try
 {
-    return hs_make_shared_handle((static_cast<endstone::IpBanList*>(hs_self)->addBan(std::basic_string<char>(address_data, address_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+    return hs_make_shared_handle((static_cast<endstone::IpBanList*>(hs_self)->addBan(std::basic_string<char>(address_data, address_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<std::int64_t>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
 }
 catch (std::exception const& hs_error)
 {
@@ -13150,7 +13150,7 @@ catch (...)
 
 static void hs_method_b0a39e74(void* hs_self, std::int64_t thrower, bool thrower_hasValue) try
 {
-    static_cast<endstone::Item*>(hs_self)->setThrower((thrower_hasValue ? std::optional<long long>{static_cast<long long>(thrower)} : std::nullopt));
+    static_cast<endstone::Item*>(hs_self)->setThrower((thrower_hasValue ? std::optional<std::int64_t>{static_cast<std::int64_t>(thrower)} : std::nullopt));
 }
 catch (std::exception const& hs_error)
 {
@@ -15789,7 +15789,7 @@ catch (...)
 
 static void hs_method_9ee58155(void* hs_self, std::int64_t id) try
 {
-    static_cast<endstone::MapMeta*>(hs_self)->setMapId(static_cast<long long>(id));
+    static_cast<endstone::MapMeta*>(hs_self)->setMapId(static_cast<std::int64_t>(id));
 }
 catch (std::exception const& hs_error)
 {
@@ -19069,7 +19069,7 @@ catch (...)
 
 static HosihikariSharedHandle hs_method_402af978(void* hs_self, const char* name_data, std::size_t name_size, void* uuid, const char* xuid_data, std::size_t xuid_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool uuid_hasValue, bool xuid_hasValue, bool reason_hasValue, bool source_hasValue) try
 {
-    return hs_make_shared_handle((static_cast<endstone::PlayerBanList*>(hs_self)->addBan(std::basic_string<char>(name_data, name_size), (uuid_hasValue ? std::optional<endstone::UUID>{*static_cast<const endstone::UUID*>(uuid)} : std::nullopt), (xuid_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(xuid_data, xuid_size)} : std::nullopt), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+    return hs_make_shared_handle((static_cast<endstone::PlayerBanList*>(hs_self)->addBan(std::basic_string<char>(name_data, name_size), (uuid_hasValue ? std::optional<endstone::UUID>{*static_cast<const endstone::UUID*>(uuid)} : std::nullopt), (xuid_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(xuid_data, xuid_size)} : std::nullopt), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<std::int64_t>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
 }
 catch (std::exception const& hs_error)
 {
@@ -19099,7 +19099,7 @@ catch (...)
 
 static HosihikariSharedHandle hs_method_d3942874(void* hs_self, const char* name_data, std::size_t name_size, const char* reason_data, std::size_t reason_size, std::int64_t duration, const char* source_data, std::size_t source_size, bool reason_hasValue, bool source_hasValue) try
 {
-    return hs_make_shared_handle((static_cast<endstone::PlayerBanList*>(hs_self)->addBan(std::basic_string<char>(name_data, name_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<long long>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
+    return hs_make_shared_handle((static_cast<endstone::PlayerBanList*>(hs_self)->addBan(std::basic_string<char>(name_data, name_size), (reason_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(reason_data, reason_size)} : std::nullopt), std::chrono::duration<std::int64_t>(duration), (source_hasValue ? std::optional<std::basic_string<char>>{std::basic_string<char>(source_data, source_size)} : std::nullopt))).get());
 }
 catch (std::exception const& hs_error)
 {
@@ -25345,7 +25345,7 @@ struct hs_cb_closure_hs_method_77093da2_cb1
 
 static HosihikariSharedHandle hs_method_77093da2(void* hs_self, void* plugin, void* task_invoke, void* task_userData, void* task_release, std::uint64_t delay) try
 {
-    return hs_make_shared_handle(static_cast<endstone::Scheduler*>(hs_self)->runTaskLater(*static_cast<endstone::Plugin*>(plugin), std::function<void ()>(hs_cb_closure_hs_method_77093da2_cb1{std::make_shared<hs_cb_state_hs_method_77093da2_cb1>(reinterpret_cast<hs_cb_invoke_hs_method_77093da2_cb1>(task_invoke), task_userData, reinterpret_cast<hs_cb_release_hs_method_77093da2_cb1>(task_release))}), static_cast<unsigned long long>(delay)));
+    return hs_make_shared_handle(static_cast<endstone::Scheduler*>(hs_self)->runTaskLater(*static_cast<endstone::Plugin*>(plugin), std::function<void ()>(hs_cb_closure_hs_method_77093da2_cb1{std::make_shared<hs_cb_state_hs_method_77093da2_cb1>(reinterpret_cast<hs_cb_invoke_hs_method_77093da2_cb1>(task_invoke), task_userData, reinterpret_cast<hs_cb_release_hs_method_77093da2_cb1>(task_release))}), static_cast<std::uint64_t>(delay)));
 }
 catch (std::exception const& hs_error)
 {
@@ -25380,7 +25380,7 @@ struct hs_cb_closure_hs_method_43ceab8e_cb1
 
 static HosihikariSharedHandle hs_method_43ceab8e(void* hs_self, void* plugin, void* task_invoke, void* task_userData, void* task_release, std::uint64_t delay) try
 {
-    return hs_make_shared_handle(static_cast<endstone::Scheduler*>(hs_self)->runTaskLaterAsync(*static_cast<endstone::Plugin*>(plugin), std::function<void ()>(hs_cb_closure_hs_method_43ceab8e_cb1{std::make_shared<hs_cb_state_hs_method_43ceab8e_cb1>(reinterpret_cast<hs_cb_invoke_hs_method_43ceab8e_cb1>(task_invoke), task_userData, reinterpret_cast<hs_cb_release_hs_method_43ceab8e_cb1>(task_release))}), static_cast<unsigned long long>(delay)));
+    return hs_make_shared_handle(static_cast<endstone::Scheduler*>(hs_self)->runTaskLaterAsync(*static_cast<endstone::Plugin*>(plugin), std::function<void ()>(hs_cb_closure_hs_method_43ceab8e_cb1{std::make_shared<hs_cb_state_hs_method_43ceab8e_cb1>(reinterpret_cast<hs_cb_invoke_hs_method_43ceab8e_cb1>(task_invoke), task_userData, reinterpret_cast<hs_cb_release_hs_method_43ceab8e_cb1>(task_release))}), static_cast<std::uint64_t>(delay)));
 }
 catch (std::exception const& hs_error)
 {
@@ -25415,7 +25415,7 @@ struct hs_cb_closure_hs_method_09c640a2_cb1
 
 static HosihikariSharedHandle hs_method_09c640a2(void* hs_self, void* plugin, void* task_invoke, void* task_userData, void* task_release, std::uint64_t delay, std::uint64_t period) try
 {
-    return hs_make_shared_handle(static_cast<endstone::Scheduler*>(hs_self)->runTaskTimer(*static_cast<endstone::Plugin*>(plugin), std::function<void ()>(hs_cb_closure_hs_method_09c640a2_cb1{std::make_shared<hs_cb_state_hs_method_09c640a2_cb1>(reinterpret_cast<hs_cb_invoke_hs_method_09c640a2_cb1>(task_invoke), task_userData, reinterpret_cast<hs_cb_release_hs_method_09c640a2_cb1>(task_release))}), static_cast<unsigned long long>(delay), static_cast<unsigned long long>(period)));
+    return hs_make_shared_handle(static_cast<endstone::Scheduler*>(hs_self)->runTaskTimer(*static_cast<endstone::Plugin*>(plugin), std::function<void ()>(hs_cb_closure_hs_method_09c640a2_cb1{std::make_shared<hs_cb_state_hs_method_09c640a2_cb1>(reinterpret_cast<hs_cb_invoke_hs_method_09c640a2_cb1>(task_invoke), task_userData, reinterpret_cast<hs_cb_release_hs_method_09c640a2_cb1>(task_release))}), static_cast<std::uint64_t>(delay), static_cast<std::uint64_t>(period)));
 }
 catch (std::exception const& hs_error)
 {
@@ -25450,7 +25450,7 @@ struct hs_cb_closure_hs_method_3ac36e45_cb1
 
 static HosihikariSharedHandle hs_method_3ac36e45(void* hs_self, void* plugin, void* task_invoke, void* task_userData, void* task_release, std::uint64_t delay, std::uint64_t period) try
 {
-    return hs_make_shared_handle(static_cast<endstone::Scheduler*>(hs_self)->runTaskTimerAsync(*static_cast<endstone::Plugin*>(plugin), std::function<void ()>(hs_cb_closure_hs_method_3ac36e45_cb1{std::make_shared<hs_cb_state_hs_method_3ac36e45_cb1>(reinterpret_cast<hs_cb_invoke_hs_method_3ac36e45_cb1>(task_invoke), task_userData, reinterpret_cast<hs_cb_release_hs_method_3ac36e45_cb1>(task_release))}), static_cast<unsigned long long>(delay), static_cast<unsigned long long>(period)));
+    return hs_make_shared_handle(static_cast<endstone::Scheduler*>(hs_self)->runTaskTimerAsync(*static_cast<endstone::Plugin*>(plugin), std::function<void ()>(hs_cb_closure_hs_method_3ac36e45_cb1{std::make_shared<hs_cb_state_hs_method_3ac36e45_cb1>(reinterpret_cast<hs_cb_invoke_hs_method_3ac36e45_cb1>(task_invoke), task_userData, reinterpret_cast<hs_cb_release_hs_method_3ac36e45_cb1>(task_release))}), static_cast<std::uint64_t>(delay), static_cast<std::uint64_t>(period)));
 }
 catch (std::exception const& hs_error)
 {
@@ -26277,7 +26277,7 @@ catch (...)
 
 static void* hs_method_4866e309(void* hs_self, std::int64_t id) try
 {
-    return const_cast<void*>(static_cast<void const*>(static_cast<endstone::Server*>(hs_self)->getMap(static_cast<long long>(id))));
+    return const_cast<void*>(static_cast<void const*>(static_cast<endstone::Server*>(hs_self)->getMap(static_cast<std::int64_t>(id))));
 }
 catch (std::exception const& hs_error)
 {
@@ -29911,7 +29911,7 @@ catch (...)
 
 static void* hs_method_47e2aef5(void* hs_self, std::uint64_t i) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<int>*>(hs_self)->at(static_cast<unsigned long long>(i))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<int>*>(hs_self)->at(static_cast<std::uint64_t>(i))));
 }
 catch (std::exception const& hs_error)
 {
@@ -29926,7 +29926,7 @@ catch (...)
 
 static void* hs_method_351288e4(void* hs_self, std::uint64_t i) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<int>*>(hs_self)->at(static_cast<unsigned long long>(i))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<int>*>(hs_self)->at(static_cast<std::uint64_t>(i))));
 }
 catch (std::exception const& hs_error)
 {
@@ -30001,7 +30001,7 @@ catch (...)
 
 static void* hs_method_ba0c8eb2(void* hs_self, std::uint64_t i) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<int>*>(hs_self)->operator[](static_cast<unsigned long long>(i))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<int>*>(hs_self)->operator[](static_cast<std::uint64_t>(i))));
 }
 catch (std::exception const& hs_error)
 {
@@ -30016,7 +30016,7 @@ catch (...)
 
 static void* hs_method_b98815f4(void* hs_self, std::uint64_t i) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<int>*>(hs_self)->operator[](static_cast<unsigned long long>(i))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<int>*>(hs_self)->operator[](static_cast<std::uint64_t>(i))));
 }
 catch (std::exception const& hs_error)
 {
@@ -30121,7 +30121,7 @@ catch (...)
 
 static void* hs_method_738d7d61(void* hs_self, std::uint64_t i) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<unsigned char>*>(hs_self)->at(static_cast<unsigned long long>(i))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<unsigned char>*>(hs_self)->at(static_cast<std::uint64_t>(i))));
 }
 catch (std::exception const& hs_error)
 {
@@ -30136,7 +30136,7 @@ catch (...)
 
 static void* hs_method_30c1f2a4(void* hs_self, std::uint64_t i) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<unsigned char>*>(hs_self)->at(static_cast<unsigned long long>(i))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<unsigned char>*>(hs_self)->at(static_cast<std::uint64_t>(i))));
 }
 catch (std::exception const& hs_error)
 {
@@ -30211,7 +30211,7 @@ catch (...)
 
 static void* hs_method_d4881781(void* hs_self, std::uint64_t i) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<unsigned char>*>(hs_self)->operator[](static_cast<unsigned long long>(i))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<unsigned char>*>(hs_self)->operator[](static_cast<std::uint64_t>(i))));
 }
 catch (std::exception const& hs_error)
 {
@@ -30226,7 +30226,7 @@ catch (...)
 
 static void* hs_method_4f71a147(void* hs_self, std::uint64_t i) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<unsigned char>*>(hs_self)->operator[](static_cast<unsigned long long>(i))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ArrayTag<unsigned char>*>(hs_self)->operator[](static_cast<std::uint64_t>(i))));
 }
 catch (std::exception const& hs_error)
 {
@@ -30406,7 +30406,7 @@ catch (...)
 
 static void* hs_create_4770da7f(void* v) try
 {
-    return new endstone::nbt::Tag(*static_cast<const endstone::nbt::ValueTag<long long>*>(v));
+    return new endstone::nbt::Tag(*static_cast<const endstone::nbt::ValueTag<std::int64_t>*>(v));
 }
 catch (std::exception const& hs_error)
 {
@@ -30571,7 +30571,7 @@ catch (...)
 
 static void* hs_create_46f59296(void* v) try
 {
-    return new endstone::nbt::Tag(std::move(*static_cast<endstone::nbt::ValueTag<long long>*>(v)));
+    return new endstone::nbt::Tag(std::move(*static_cast<endstone::nbt::ValueTag<std::int64_t>*>(v)));
 }
 catch (std::exception const& hs_error)
 {
@@ -30646,7 +30646,7 @@ catch (...)
 
 static void* hs_method_44225e41(void* hs_self, std::uint64_t index) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::Tag*>(hs_self)->at(static_cast<unsigned long long>(index))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::Tag*>(hs_self)->at(static_cast<std::uint64_t>(index))));
 }
 catch (std::exception const& hs_error)
 {
@@ -30676,7 +30676,7 @@ catch (...)
 
 static void* hs_method_6379b79e(void* hs_self, std::uint64_t index) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::Tag*>(hs_self)->at(static_cast<unsigned long long>(index))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::Tag*>(hs_self)->at(static_cast<std::uint64_t>(index))));
 }
 catch (std::exception const& hs_error)
 {
@@ -30736,7 +30736,7 @@ catch (...)
 
 static void* hs_method_17890e30(void* hs_self, std::uint64_t index) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::Tag*>(hs_self)->operator[](static_cast<unsigned long long>(index))));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::Tag*>(hs_self)->operator[](static_cast<std::uint64_t>(index))));
 }
 catch (std::exception const& hs_error)
 {
@@ -31051,7 +31051,7 @@ catch (...)
 
 static void hs_destroy_e7123db3(void* hs_self) try
 {
-    delete static_cast<endstone::nbt::ValueTag<long long>*>(hs_self);
+    delete static_cast<endstone::nbt::ValueTag<std::int64_t>*>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -31066,7 +31066,7 @@ catch (...)
 
 static void* hs_cast_b845cbd1(void* hs_self) try
 {
-    return static_cast<endstone::nbt::TagBase*>(static_cast<endstone::nbt::ValueTag<long long>*>(hs_self));
+    return static_cast<endstone::nbt::TagBase*>(static_cast<endstone::nbt::ValueTag<std::int64_t>*>(hs_self));
 }
 catch (std::exception const& hs_error)
 {
@@ -31081,7 +31081,7 @@ catch (...)
 
 static void* hs_create_6bcd9d43() try
 {
-    return new endstone::nbt::ValueTag<long long>();
+    return new endstone::nbt::ValueTag<std::int64_t>();
 }
 catch (std::exception const& hs_error)
 {
@@ -31096,7 +31096,7 @@ catch (...)
 
 static void* hs_create_880dd27c(void* v) try
 {
-    return new endstone::nbt::ValueTag<long long>(*static_cast<const long long*>(v));
+    return new endstone::nbt::ValueTag<std::int64_t>(*static_cast<const std::int64_t*>(v));
 }
 catch (std::exception const& hs_error)
 {
@@ -31111,7 +31111,7 @@ catch (...)
 
 static void* hs_method_2d2759c7(void* hs_self) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ValueTag<long long>*>(hs_self)->operator const long long &()));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ValueTag<std::int64_t>*>(hs_self)->operator const std::int64_t &()));
 }
 catch (std::exception const& hs_error)
 {
@@ -31126,7 +31126,7 @@ catch (...)
 
 static void* hs_method_b7abc577(void* hs_self) try
 {
-    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ValueTag<long long>*>(hs_self)->value()));
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::nbt::ValueTag<std::int64_t>*>(hs_self)->value()));
 }
 catch (std::exception const& hs_error)
 {
