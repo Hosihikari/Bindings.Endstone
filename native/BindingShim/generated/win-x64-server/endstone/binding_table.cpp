@@ -15817,6 +15817,43 @@ catch (...)
     return;
 }
 
+static HosihikariSharedHandle hs_director_06c8f948(bool is_contextual, void* invoke, void* userData, void* release) try
+{
+    struct hs_director final : endstone::MapRenderer
+    {
+        using hs_invoke_type = void (*)(void*, void*, void*, void*);
+        void* hs_userData;
+        hs_invoke_type hs_invoke;
+        void (*hs_release)(void*);
+
+        hs_director(bool is_contextual, void* invoke, void* userData, void* release)
+            : endstone::MapRenderer(static_cast<const bool>(is_contextual)), hs_invoke(reinterpret_cast<hs_invoke_type>(invoke)), hs_userData(userData), hs_release(static_cast<void (*)(void*)>(release))
+        {
+        }
+
+        ~hs_director() override
+        {
+            if (hs_release) { hs_release(hs_userData); }
+        }
+
+        void render(endstone::MapView & hs_arg0, endstone::MapCanvas & hs_arg1, endstone::Player & hs_arg2) override
+        {
+            if (hs_invoke) { hs_invoke(hs_userData, const_cast<void*>(static_cast<void const*>(&hs_arg0)), const_cast<void*>(static_cast<void const*>(&hs_arg1)), const_cast<void*>(static_cast<void const*>(&hs_arg2))); }
+        }
+    };
+    return hs_make_shared_handle(std::static_pointer_cast<endstone::MapRenderer>(std::make_shared<hs_director>(is_contextual, invoke, userData, release)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return HosihikariSharedHandle{nullptr, nullptr, nullptr};
+}
+
 static void hs_method_e56656e4(void* hs_self, void* map) try
 {
     static_cast<endstone::MapRenderer*>(hs_self)->initialize(*static_cast<endstone::MapView*>(map));
@@ -33539,6 +33576,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a04ea49e,
     &hs_method_9ee58155,
     &hs_method_1052b284,
+    &hs_director_06c8f948,
     &hs_method_e56656e4,
     &hs_method_adda0eac,
     &hs_method_224059bb,

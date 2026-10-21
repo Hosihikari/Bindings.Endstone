@@ -1004,6 +1004,7 @@ struct HosihikariBindingTableV1 {
     bool (*hs_method_a04ea49e)(void*);
     void (*hs_method_9ee58155)(void*, std::int64_t);
     void (*hs_method_1052b284)(void*, void*);
+    HosihikariSharedHandle (*hs_director_06c8f948)(bool, void*, void*, void*);
     void (*hs_method_e56656e4)(void*, void*);
     bool (*hs_method_adda0eac)(void*);
     void (*hs_method_224059bb)(void*, void*, void*, void*);

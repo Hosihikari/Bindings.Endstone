@@ -59,4 +59,10 @@ public sealed unsafe partial class MapRenderer
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public static global::Hosihikari.Bindings.Abi.SharedHandle? CreateDirector(bool is_contextual, nint invoke, nint userData, nint release)
+    {
+        var __hs_shared = NativeMethods.TablePtr->hs_director_06c8f948(is_contextual, (void*)invoke, (void*)userData, (void*)release);
+        return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
+    }
 }
