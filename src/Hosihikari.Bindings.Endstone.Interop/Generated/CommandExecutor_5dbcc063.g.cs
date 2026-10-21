@@ -40,28 +40,26 @@ public sealed unsafe partial class CommandExecutor : global::System.IDisposable
     public bool onCommand(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, global::Hosihikari.Bindings.Endstone.Interop.endstone.Command command, string[] args)
     {
         var __hs_vectorItems2 = args ?? global::System.Array.Empty<string>();
-        var __hs_vectorBytes2 = new byte[__hs_vectorItems2.Length][];
-        var __hs_vectorViews2 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems2.Length];
-        var __hs_vectorHandles2 = new nint[__hs_vectorItems2.Length];
-        try
+        var __hs_vectorCount2 = __hs_vectorItems2.Length;
+        var __hs_vectorByteTotal2 = 0;
+        for (var __hs_i2 = 0; __hs_i2 < __hs_vectorCount2; __hs_i2++) { __hs_vectorByteTotal2 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems2[__hs_i2] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena2;
+        if (__hs_vectorByteTotal2 <= 1024) { __hs_vectorArena2 = stackalloc byte[__hs_vectorByteTotal2 == 0 ? 1 : __hs_vectorByteTotal2]; } else { __hs_vectorArena2 = new byte[__hs_vectorByteTotal2]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews2;
+        if (__hs_vectorCount2 <= 64) { __hs_vectorViews2 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount2 == 0 ? 1 : __hs_vectorCount2]; } else { __hs_vectorViews2 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount2]; }
+        fixed (byte* __hs_vectorArenaPtr2 = __hs_vectorArena2)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData2 = __hs_vectorViews2)
         {
-            for (var __hs_i2 = 0; __hs_i2 < __hs_vectorItems2.Length; __hs_i2++)
+            var __hs_vectorOffset2 = 0;
+            for (var __hs_i2 = 0; __hs_i2 < __hs_vectorCount2; __hs_i2++)
             {
-                __hs_vectorBytes2[__hs_i2] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems2[__hs_i2] ?? string.Empty);
-                var __hs_bytes = __hs_vectorBytes2[__hs_i2];
-                var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
-                if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
-                __hs_vectorHandles2[__hs_i2] = __hs_ptr;
-                __hs_vectorViews2[__hs_i2] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                var __hs_item2 = __hs_vectorItems2[__hs_i2] ?? string.Empty;
+                var __hs_length2 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item2);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item2, __hs_vectorArena2.Slice(__hs_vectorOffset2, __hs_length2));
+                __hs_vectorData2[__hs_i2] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr2 + __hs_vectorOffset2, Size = (nuint)__hs_length2 };
+                __hs_vectorOffset2 += __hs_length2;
             }
-            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData2 = __hs_vectorViews2)
-            {
-                return NativeMethods.TablePtr->hs_method_13fd8943((void*)_handle, (void*)sender.Handle, (void*)command.Handle, __hs_vectorData2, (nuint)(args?.Length ?? 0));
-            }
-        }
-        finally
-        {
-            for (var __hs_i2 = 0; __hs_i2 < __hs_vectorHandles2.Length; __hs_i2++) { if (__hs_vectorHandles2[__hs_i2] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles2[__hs_i2]); } }
+            return NativeMethods.TablePtr->hs_method_13fd8943((void*)_handle, (void*)sender.Handle, (void*)command.Handle, __hs_vectorData2, (nuint)(args?.Length ?? 0));
         }
     }
 

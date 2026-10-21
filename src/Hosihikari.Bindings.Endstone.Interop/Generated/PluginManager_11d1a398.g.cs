@@ -257,34 +257,32 @@ public sealed unsafe partial class PluginManager
     public nint[] loadPlugins(string[] files)
     {
         var __hs_vectorItems0 = files ?? global::System.Array.Empty<string>();
-        var __hs_vectorBytes0 = new byte[__hs_vectorItems0.Length][];
-        var __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems0.Length];
-        var __hs_vectorHandles0 = new nint[__hs_vectorItems0.Length];
-        try
+        var __hs_vectorCount0 = __hs_vectorItems0.Length;
+        var __hs_vectorByteTotal0 = 0;
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++) { __hs_vectorByteTotal0 += global::System.Text.Encoding.UTF8.GetByteCount(__hs_vectorItems0[__hs_i0] ?? string.Empty); }
+        scoped global::System.Span<byte> __hs_vectorArena0;
+        if (__hs_vectorByteTotal0 <= 1024) { __hs_vectorArena0 = stackalloc byte[__hs_vectorByteTotal0 == 0 ? 1 : __hs_vectorByteTotal0]; } else { __hs_vectorArena0 = new byte[__hs_vectorByteTotal0]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.StringView> __hs_vectorViews0;
+        if (__hs_vectorCount0 <= 64) { __hs_vectorViews0 = stackalloc global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0 == 0 ? 1 : __hs_vectorCount0]; } else { __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorCount0]; }
+        fixed (byte* __hs_vectorArenaPtr0 = __hs_vectorArena0)
+        fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
         {
-            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorItems0.Length; __hs_i0++)
+            var __hs_vectorOffset0 = 0;
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorCount0; __hs_i0++)
             {
-                __hs_vectorBytes0[__hs_i0] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems0[__hs_i0] ?? string.Empty);
-                var __hs_bytes = __hs_vectorBytes0[__hs_i0];
-                var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
-                if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
-                __hs_vectorHandles0[__hs_i0] = __hs_ptr;
-                __hs_vectorViews0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                var __hs_item0 = __hs_vectorItems0[__hs_i0] ?? string.Empty;
+                var __hs_length0 = global::System.Text.Encoding.UTF8.GetByteCount(__hs_item0);
+                global::System.Text.Encoding.UTF8.GetBytes(__hs_item0, __hs_vectorArena0.Slice(__hs_vectorOffset0, __hs_length0));
+                __hs_vectorData0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr0 + __hs_vectorOffset0, Size = (nuint)__hs_length0 };
+                __hs_vectorOffset0 += __hs_length0;
             }
-            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
+            var __hs_view = NativeMethods.TablePtr->hs_method_a6c745c0((void*)_handle, __hs_vectorData0, (nuint)(files?.Length ?? 0));
+            var __hs_result = new nint[checked((int)__hs_view.Size)];
+            if (__hs_view.Size > 0)
             {
-                var __hs_view = NativeMethods.TablePtr->hs_method_a6c745c0((void*)_handle, __hs_vectorData0, (nuint)(files?.Length ?? 0));
-                var __hs_result = new nint[checked((int)__hs_view.Size)];
-                if (__hs_view.Size > 0)
-                {
-                    new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
-                }
-                return __hs_result;
+                new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
             }
-        }
-        finally
-        {
-            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++) { if (__hs_vectorHandles0[__hs_i0] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles0[__hs_i0]); } }
+            return __hs_result;
         }
     }
 
