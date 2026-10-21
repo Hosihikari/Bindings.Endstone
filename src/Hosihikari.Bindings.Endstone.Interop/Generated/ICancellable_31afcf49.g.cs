@@ -25,17 +25,17 @@ public sealed unsafe partial class ICancellable
 
     public void cancel()
     {
-        NativeMethods.TablePtr->f579((void*)_handle);
+        NativeMethods.TablePtr->hs_method_4eb9a2e8((void*)_handle);
     }
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->f580((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_297a2019((void*)_handle);
     }
 
     public void setCancelled(bool cancel)
     {
-        NativeMethods.TablePtr->f581((void*)_handle, cancel);
+        NativeMethods.TablePtr->hs_method_f20cf498((void*)_handle, cancel);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

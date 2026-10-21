@@ -13,7 +13,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
 
     public static Variant_5bd3e0f1 CreateButton(global::Hosihikari.Bindings.Endstone.Interop.endstone.Button value)
     {
-        var handle = NativeMethods.TablePtr->f1788((void*)value.Handle);
+        var handle = NativeMethods.TablePtr->hs_variant_5bd3e0f1_create_0((void*)value.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -23,7 +23,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
 
     public static Variant_5bd3e0f1 CreateDivider(global::Hosihikari.Bindings.Endstone.Interop.endstone.Divider value)
     {
-        var handle = NativeMethods.TablePtr->f1789((void*)value.Handle);
+        var handle = NativeMethods.TablePtr->hs_variant_5bd3e0f1_create_1((void*)value.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -33,7 +33,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
 
     public static Variant_5bd3e0f1 CreateHeader(global::Hosihikari.Bindings.Endstone.Interop.endstone.Header value)
     {
-        var handle = NativeMethods.TablePtr->f1790((void*)value.Handle);
+        var handle = NativeMethods.TablePtr->hs_variant_5bd3e0f1_create_2((void*)value.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -43,7 +43,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
 
     public static Variant_5bd3e0f1 CreateLabel(global::Hosihikari.Bindings.Endstone.Interop.endstone.Label value)
     {
-        var handle = NativeMethods.TablePtr->f1791((void*)value.Handle);
+        var handle = NativeMethods.TablePtr->hs_variant_5bd3e0f1_create_3((void*)value.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -51,7 +51,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
         return new Variant_5bd3e0f1((nint)handle);
     }
 
-    public int Index => NativeMethods.TablePtr->f1797((void*)_handle);
+    public int Index => NativeMethods.TablePtr->hs_variant_5bd3e0f1_index((void*)_handle);
 
     public bool IsButton => Index == 0;
 
@@ -68,7 +68,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
             return null;
         }
 
-        var __hs_handle = NativeMethods.TablePtr->f1793((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_variant_5bd3e0f1_get_0((void*)_handle);
         return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Button((nint)__hs_handle);
     }
 
@@ -79,7 +79,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
             return null;
         }
 
-        var __hs_handle = NativeMethods.TablePtr->f1794((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_variant_5bd3e0f1_get_1((void*)_handle);
         return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Divider((nint)__hs_handle);
     }
 
@@ -90,7 +90,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
             return null;
         }
 
-        var __hs_handle = NativeMethods.TablePtr->f1795((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_variant_5bd3e0f1_get_2((void*)_handle);
         return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Header((nint)__hs_handle);
     }
 
@@ -101,7 +101,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
             return null;
         }
 
-        var __hs_handle = NativeMethods.TablePtr->f1796((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_variant_5bd3e0f1_get_3((void*)_handle);
         return __hs_handle == null ? null : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Label((nint)__hs_handle);
     }
 
@@ -109,7 +109,7 @@ public sealed unsafe class Variant_5bd3e0f1 : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1792((void*)_handle);
+            NativeMethods.TablePtr->hs_variant_5bd3e0f1_destroy((void*)_handle);
             _handle = 0;
         }
     }

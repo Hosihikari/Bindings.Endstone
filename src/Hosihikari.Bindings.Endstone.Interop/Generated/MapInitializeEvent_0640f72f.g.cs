@@ -25,7 +25,7 @@ public sealed unsafe partial class MapInitializeEvent : global::System.IDisposab
 
     public static MapInitializeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map)
     {
-        var handle = NativeMethods.TablePtr->f848((void*)map.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_3723564a((void*)map.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,25 +36,25 @@ public sealed unsafe partial class MapInitializeEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f849();
+        get => (nint)NativeMethods.TablePtr->hs_get_448d8f46();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f850((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_a75b8b71((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getMap()
     {
-        return (nint)NativeMethods.TablePtr->f851((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_faa396d6((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f847((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_0640f72f((void*)_handle);
             _handle = 0;
         }
     }

@@ -25,47 +25,47 @@ public sealed unsafe partial class CommandSender
 
     public nint asActor()
     {
-        return (nint)NativeMethods.TablePtr->f389((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_92d89af7((void*)_handle);
     }
 
     public nint asBlock()
     {
-        return (nint)NativeMethods.TablePtr->f390((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_e3076cf4((void*)_handle);
     }
 
     public nint asCommandSender()
     {
-        return (nint)NativeMethods.TablePtr->f391((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_5cb0ae2a((void*)_handle);
     }
 
     public nint asConsole()
     {
-        return (nint)NativeMethods.TablePtr->f392((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_397dcadc((void*)_handle);
     }
 
     public nint asPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f393((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_b645d8d4((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f394((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_37a0b111((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f395((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_b41b201e((void*)_handle);
     }
 
     public void sendErrorMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)
     {
-        NativeMethods.TablePtr->f396((void*)_handle, (void*)message.Handle);
+        NativeMethods.TablePtr->hs_method_dad2680f((void*)_handle, (void*)message.Handle);
     }
 
     public void sendMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)
     {
-        NativeMethods.TablePtr->f397((void*)_handle, (void*)message.Handle);
+        NativeMethods.TablePtr->hs_method_0d00119e((void*)_handle, (void*)message.Handle);
     }
 }

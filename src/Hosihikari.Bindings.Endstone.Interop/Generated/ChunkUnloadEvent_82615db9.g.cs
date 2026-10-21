@@ -25,7 +25,7 @@ public sealed unsafe partial class ChunkUnloadEvent : global::System.IDisposable
 
     public static ChunkUnloadEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Chunk chunk)
     {
-        var handle = NativeMethods.TablePtr->f302((void*)chunk.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_aae5a1d9((void*)chunk.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,12 +36,12 @@ public sealed unsafe partial class ChunkUnloadEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f303();
+        get => (nint)NativeMethods.TablePtr->hs_get_178f4963();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f304((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_a8e1a5dd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -50,7 +50,7 @@ public sealed unsafe partial class ChunkUnloadEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f301((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_82615db9((void*)_handle);
             _handle = 0;
         }
     }

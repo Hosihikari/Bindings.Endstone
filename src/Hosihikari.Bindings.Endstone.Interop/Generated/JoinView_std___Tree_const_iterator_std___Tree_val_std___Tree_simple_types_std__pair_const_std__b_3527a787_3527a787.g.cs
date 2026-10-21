@@ -25,19 +25,19 @@ public sealed unsafe partial class JoinView_std___Tree_const_iterator_std___Tree
 
     public nint begin
     {
-        get => (nint)NativeMethods.TablePtr->f1646((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_b630dcf9((void*)_handle);
     }
 
     public nint end
     {
-        get => (nint)NativeMethods.TablePtr->f1647((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_b1ada702((void*)_handle);
     }
 
     public string sep
     {
         get
         {
-            var view = NativeMethods.TablePtr->f1648((void*)_handle);
+            var view = NativeMethods.TablePtr->hs_get_2bea48e3((void*)_handle);
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -46,7 +46,7 @@ public sealed unsafe partial class JoinView_std___Tree_const_iterator_std___Tree
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1645((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_3527a787((void*)_handle);
             _handle = 0;
         }
     }

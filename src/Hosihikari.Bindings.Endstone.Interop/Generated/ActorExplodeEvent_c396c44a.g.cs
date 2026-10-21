@@ -29,28 +29,28 @@ public sealed unsafe partial class ActorExplodeEvent : global::System.IDisposabl
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f64();
+        get => (nint)NativeMethods.TablePtr->hs_get_c597e7fd();
     }
 
     public nint getBlockList_8f4da3d9()
     {
-        return (nint)NativeMethods.TablePtr->f65((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_8f4da3d9((void*)_handle);
     }
 
     public nint getBlockList_4ec91f56()
     {
-        return (nint)NativeMethods.TablePtr->f66((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_4ec91f56((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f67((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_f00b792d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getLocation()
     {
-        return (nint)NativeMethods.TablePtr->f68((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_7039c3d9((void*)_handle);
     }
 
 
@@ -58,7 +58,7 @@ public sealed unsafe partial class ActorExplodeEvent : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f63((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_c396c44a((void*)_handle);
             _handle = 0;
         }
     }

@@ -25,7 +25,7 @@ public sealed unsafe partial class Header : global::System.IDisposable
 
     public static Header Create()
     {
-        var handle = NativeMethods.TablePtr->f575();
+        var handle = NativeMethods.TablePtr->hs_create_bd8f2c0e();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,7 +36,7 @@ public sealed unsafe partial class Header : global::System.IDisposable
 
     public static Header Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        var handle = NativeMethods.TablePtr->f576((void*)label.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_1dfe588b((void*)label.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -47,19 +47,19 @@ public sealed unsafe partial class Header : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f577((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_94ba2884((void*)_handle));
     }
 
     public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return (nint)NativeMethods.TablePtr->f578((void*)_handle, (void*)label.Handle);
+        return (nint)NativeMethods.TablePtr->hs_method_a434230f((void*)_handle, (void*)label.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f574((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_50f38d54((void*)_handle);
             _handle = 0;
         }
     }

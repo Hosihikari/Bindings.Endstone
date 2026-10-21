@@ -25,7 +25,7 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
 
     public static ActorKnockbackEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob mob, global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor source, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
     {
-        var handle = NativeMethods.TablePtr->f70((void*)mob.Handle, (void*)source.Handle, (void*)knockback.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_30f49ae6((void*)mob.Handle, (void*)source.Handle, (void*)knockback.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,35 +36,35 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f71();
+        get => (nint)NativeMethods.TablePtr->hs_get_153427e7();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f72((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_7da699f1((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector getKnockback()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f73((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->hs_method_9ffe5f0b((void*)_handle));
     }
 
     public nint getSource()
     {
-        return (nint)NativeMethods.TablePtr->f74((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_825022fe((void*)_handle);
     }
 
     public void setKnockback(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
     {
-        NativeMethods.TablePtr->f75((void*)_handle, (void*)knockback.Handle);
+        NativeMethods.TablePtr->hs_method_c1270265((void*)_handle, (void*)knockback.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f69((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_32019a7c((void*)_handle);
             _handle = 0;
         }
     }

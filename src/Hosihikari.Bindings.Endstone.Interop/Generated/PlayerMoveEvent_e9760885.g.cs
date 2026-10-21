@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerMoveEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1179();
+        get => (nint)NativeMethods.TablePtr->hs_get_4223d5c1();
     }
 
     public static PlayerMoveEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Location from, global::Hosihikari.Bindings.Endstone.Interop.endstone.Location to)
     {
-        var handle = NativeMethods.TablePtr->f1180((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_a4643fb8((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -41,47 +41,47 @@ public sealed unsafe partial class PlayerMoveEvent : global::System.IDisposable
 
     public nint from_
     {
-        get => (nint)NativeMethods.TablePtr->f1181((void*)_handle);
-        set => NativeMethods.TablePtr->f1182((void*)_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->hs_get_92a2823f((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_92a2823f((void*)_handle, (void*)value);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1183((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_a1d2aae6((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getFrom()
     {
-        return (nint)NativeMethods.TablePtr->f1184((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_0f5ff6d1((void*)_handle);
     }
 
     public nint getTo()
     {
-        return (nint)NativeMethods.TablePtr->f1185((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_28cb48e3((void*)_handle);
     }
 
     public void setFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location from)
     {
-        NativeMethods.TablePtr->f1186((void*)_handle, (void*)from.Handle);
+        NativeMethods.TablePtr->hs_method_f580d61f((void*)_handle, (void*)from.Handle);
     }
 
     public void setTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location to)
     {
-        NativeMethods.TablePtr->f1187((void*)_handle, (void*)to.Handle);
+        NativeMethods.TablePtr->hs_method_0de8af6d((void*)_handle, (void*)to.Handle);
     }
 
     public nint to_
     {
-        get => (nint)NativeMethods.TablePtr->f1188((void*)_handle);
-        set => NativeMethods.TablePtr->f1189((void*)_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->hs_get_ce3f8806((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_ce3f8806((void*)_handle, (void*)value);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1178((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_e9760885((void*)_handle);
             _handle = 0;
         }
     }

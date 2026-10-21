@@ -25,236 +25,236 @@ public sealed unsafe partial class Enchantment
 
     public static nint AquaAffinity
     {
-        get => (nint)NativeMethods.TablePtr->f494();
+        get => (nint)NativeMethods.TablePtr->hs_get_cb19badc();
     }
 
     public static nint BaneOfArthropods
     {
-        get => (nint)NativeMethods.TablePtr->f495();
+        get => (nint)NativeMethods.TablePtr->hs_get_52397ef4();
     }
 
     public static nint BlastProtection
     {
-        get => (nint)NativeMethods.TablePtr->f496();
+        get => (nint)NativeMethods.TablePtr->hs_get_4055435f();
     }
 
     public static nint Breach
     {
-        get => (nint)NativeMethods.TablePtr->f497();
+        get => (nint)NativeMethods.TablePtr->hs_get_29c2284e();
     }
 
     public static nint Channeling
     {
-        get => (nint)NativeMethods.TablePtr->f498();
+        get => (nint)NativeMethods.TablePtr->hs_get_c2fc4f58();
     }
 
     public static nint CurseOfBinding
     {
-        get => (nint)NativeMethods.TablePtr->f499();
+        get => (nint)NativeMethods.TablePtr->hs_get_4a15a899();
     }
 
     public static nint CurseOfVanishing
     {
-        get => (nint)NativeMethods.TablePtr->f500();
+        get => (nint)NativeMethods.TablePtr->hs_get_e45abced();
     }
 
     public static nint Density
     {
-        get => (nint)NativeMethods.TablePtr->f501();
+        get => (nint)NativeMethods.TablePtr->hs_get_391a4e72();
     }
 
     public static nint DepthStrider
     {
-        get => (nint)NativeMethods.TablePtr->f502();
+        get => (nint)NativeMethods.TablePtr->hs_get_1468f05d();
     }
 
     public static nint Efficiency
     {
-        get => (nint)NativeMethods.TablePtr->f503();
+        get => (nint)NativeMethods.TablePtr->hs_get_19cb8272();
     }
 
     public static nint FeatherFalling
     {
-        get => (nint)NativeMethods.TablePtr->f504();
+        get => (nint)NativeMethods.TablePtr->hs_get_ad95fd46();
     }
 
     public static nint FireAspect
     {
-        get => (nint)NativeMethods.TablePtr->f505();
+        get => (nint)NativeMethods.TablePtr->hs_get_c2daaa4d();
     }
 
     public static nint FireProtection
     {
-        get => (nint)NativeMethods.TablePtr->f506();
+        get => (nint)NativeMethods.TablePtr->hs_get_00a64c9c();
     }
 
     public static nint Flame
     {
-        get => (nint)NativeMethods.TablePtr->f507();
+        get => (nint)NativeMethods.TablePtr->hs_get_1d0e51c3();
     }
 
     public static nint Fortune
     {
-        get => (nint)NativeMethods.TablePtr->f508();
+        get => (nint)NativeMethods.TablePtr->hs_get_15ec6b69();
     }
 
     public static nint FrostWalker
     {
-        get => (nint)NativeMethods.TablePtr->f509();
+        get => (nint)NativeMethods.TablePtr->hs_get_0e829759();
     }
 
     public static nint Impaling
     {
-        get => (nint)NativeMethods.TablePtr->f510();
+        get => (nint)NativeMethods.TablePtr->hs_get_325b9913();
     }
 
     public static nint Infinity
     {
-        get => (nint)NativeMethods.TablePtr->f511();
+        get => (nint)NativeMethods.TablePtr->hs_get_a89ec1c9();
     }
 
     public static nint Knockback
     {
-        get => (nint)NativeMethods.TablePtr->f512();
+        get => (nint)NativeMethods.TablePtr->hs_get_0e4898e6();
     }
 
     public static nint Looting
     {
-        get => (nint)NativeMethods.TablePtr->f513();
+        get => (nint)NativeMethods.TablePtr->hs_get_586511ee();
     }
 
     public static nint Loyalty
     {
-        get => (nint)NativeMethods.TablePtr->f514();
+        get => (nint)NativeMethods.TablePtr->hs_get_ea32e7e9();
     }
 
     public static nint LuckOfTheSea
     {
-        get => (nint)NativeMethods.TablePtr->f515();
+        get => (nint)NativeMethods.TablePtr->hs_get_adb448a6();
     }
 
     public static nint Lunge
     {
-        get => (nint)NativeMethods.TablePtr->f516();
+        get => (nint)NativeMethods.TablePtr->hs_get_4db1bcb7();
     }
 
     public static nint Lure
     {
-        get => (nint)NativeMethods.TablePtr->f517();
+        get => (nint)NativeMethods.TablePtr->hs_get_3f603056();
     }
 
     public static nint Mending
     {
-        get => (nint)NativeMethods.TablePtr->f518();
+        get => (nint)NativeMethods.TablePtr->hs_get_1754856b();
     }
 
     public static nint Multishot
     {
-        get => (nint)NativeMethods.TablePtr->f519();
+        get => (nint)NativeMethods.TablePtr->hs_get_afdfb1e7();
     }
 
     public static nint Piercing
     {
-        get => (nint)NativeMethods.TablePtr->f520();
+        get => (nint)NativeMethods.TablePtr->hs_get_684403e6();
     }
 
     public static nint Power
     {
-        get => (nint)NativeMethods.TablePtr->f521();
+        get => (nint)NativeMethods.TablePtr->hs_get_7e31743d();
     }
 
     public static nint ProjectileProtection
     {
-        get => (nint)NativeMethods.TablePtr->f522();
+        get => (nint)NativeMethods.TablePtr->hs_get_3bdd60c3();
     }
 
     public static nint Protection
     {
-        get => (nint)NativeMethods.TablePtr->f523();
+        get => (nint)NativeMethods.TablePtr->hs_get_92f0cf42();
     }
 
     public static nint Punch
     {
-        get => (nint)NativeMethods.TablePtr->f524();
+        get => (nint)NativeMethods.TablePtr->hs_get_8a287471();
     }
 
     public static nint QuickCharge
     {
-        get => (nint)NativeMethods.TablePtr->f525();
+        get => (nint)NativeMethods.TablePtr->hs_get_dcbab3c3();
     }
 
     public static nint RegistryType
     {
-        get => (nint)NativeMethods.TablePtr->f526();
+        get => (nint)NativeMethods.TablePtr->hs_get_1033e670();
     }
 
     public static nint Respiration
     {
-        get => (nint)NativeMethods.TablePtr->f527();
+        get => (nint)NativeMethods.TablePtr->hs_get_9b25f965();
     }
 
     public static nint Riptide
     {
-        get => (nint)NativeMethods.TablePtr->f528();
+        get => (nint)NativeMethods.TablePtr->hs_get_d854aa52();
     }
 
     public static nint Sharpness
     {
-        get => (nint)NativeMethods.TablePtr->f529();
+        get => (nint)NativeMethods.TablePtr->hs_get_566b32e8();
     }
 
     public static nint SilkTouch
     {
-        get => (nint)NativeMethods.TablePtr->f530();
+        get => (nint)NativeMethods.TablePtr->hs_get_564c5cbf();
     }
 
     public static nint Smite
     {
-        get => (nint)NativeMethods.TablePtr->f531();
+        get => (nint)NativeMethods.TablePtr->hs_get_8fcf8a73();
     }
 
     public static nint SoulSpeed
     {
-        get => (nint)NativeMethods.TablePtr->f532();
+        get => (nint)NativeMethods.TablePtr->hs_get_67671d69();
     }
 
     public static nint SwiftSneak
     {
-        get => (nint)NativeMethods.TablePtr->f533();
+        get => (nint)NativeMethods.TablePtr->hs_get_5fda73bb();
     }
 
     public static nint Thorns
     {
-        get => (nint)NativeMethods.TablePtr->f534();
+        get => (nint)NativeMethods.TablePtr->hs_get_2d4842ba();
     }
 
     public static nint Unbreaking
     {
-        get => (nint)NativeMethods.TablePtr->f535();
+        get => (nint)NativeMethods.TablePtr->hs_get_84a62466();
     }
 
     public static nint WindBurst
     {
-        get => (nint)NativeMethods.TablePtr->f536();
+        get => (nint)NativeMethods.TablePtr->hs_get_7e61d5a3();
     }
 
     public bool canEnchantItem(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        return NativeMethods.TablePtr->f537((void*)_handle, (void*)item.Handle);
+        return NativeMethods.TablePtr->hs_method_e509f229((void*)_handle, (void*)item.Handle);
     }
 
     public bool conflictsWith(global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment other)
     {
-        return NativeMethods.TablePtr->f538((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_b77af417((void*)_handle, (void*)other.Handle);
     }
 
     public int getMaxLevel()
     {
-        return NativeMethods.TablePtr->f539((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f4b98c86((void*)_handle);
     }
 
     public int getStartLevel()
     {
-        return NativeMethods.TablePtr->f540((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_51220b54((void*)_handle);
     }
 }

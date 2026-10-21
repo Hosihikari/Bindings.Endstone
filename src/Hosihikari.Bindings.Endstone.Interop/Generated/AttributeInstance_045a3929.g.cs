@@ -25,17 +25,17 @@ public sealed unsafe partial class AttributeInstance
 
     public void addModifier(global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier modifier)
     {
-        NativeMethods.TablePtr->f108((void*)_handle, (void*)modifier.Handle);
+        NativeMethods.TablePtr->hs_method_ddfdbac7((void*)_handle, (void*)modifier.Handle);
     }
 
     public float getBaseValue()
     {
-        return NativeMethods.TablePtr->f109((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_cf3e205f((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier[] getModifiers()
     {
-        var __hs_view = NativeMethods.TablePtr->f110((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_71e01c4c((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -47,22 +47,22 @@ public sealed unsafe partial class AttributeInstance
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_ getType()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->f111((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->hs_method_755320b4((void*)_handle));
     }
 
     public float getValue()
     {
-        return NativeMethods.TablePtr->f112((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8f965183((void*)_handle);
     }
 
     public void removeModifier(global::Hosihikari.Bindings.Endstone.Interop.endstone.AttributeModifier modifier)
     {
-        NativeMethods.TablePtr->f113((void*)_handle, (void*)modifier.Handle);
+        NativeMethods.TablePtr->hs_method_249dba4a((void*)_handle, (void*)modifier.Handle);
     }
 
     public void setBaseValue(float value)
     {
-        NativeMethods.TablePtr->f114((void*)_handle, value);
+        NativeMethods.TablePtr->hs_method_b338dd40((void*)_handle, value);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

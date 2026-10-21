@@ -25,89 +25,89 @@ public sealed unsafe partial class Attribute : global::System.IDisposable
 
     public static nint Absorption
     {
-        get => (nint)NativeMethods.TablePtr->f92();
+        get => (nint)NativeMethods.TablePtr->hs_get_4fab2d92();
     }
 
     public static nint AttackDamage
     {
-        get => (nint)NativeMethods.TablePtr->f93();
+        get => (nint)NativeMethods.TablePtr->hs_get_5927a00f();
     }
 
     public static nint FollowRange
     {
-        get => (nint)NativeMethods.TablePtr->f94();
+        get => (nint)NativeMethods.TablePtr->hs_get_ec511ed2();
     }
 
     public static nint Health
     {
-        get => (nint)NativeMethods.TablePtr->f95();
+        get => (nint)NativeMethods.TablePtr->hs_get_12310918();
     }
 
     public static nint JumpStrength
     {
-        get => (nint)NativeMethods.TablePtr->f96();
+        get => (nint)NativeMethods.TablePtr->hs_get_dc5f4e60();
     }
 
     public static nint KnockbackResistance
     {
-        get => (nint)NativeMethods.TablePtr->f97();
+        get => (nint)NativeMethods.TablePtr->hs_get_d8f19f0e();
     }
 
     public static nint LavaMovementSpeed
     {
-        get => (nint)NativeMethods.TablePtr->f98();
+        get => (nint)NativeMethods.TablePtr->hs_get_2ca6212f();
     }
 
     public static nint Luck
     {
-        get => (nint)NativeMethods.TablePtr->f99();
+        get => (nint)NativeMethods.TablePtr->hs_get_b34c877e();
     }
 
     public static nint MovementSpeed
     {
-        get => (nint)NativeMethods.TablePtr->f100();
+        get => (nint)NativeMethods.TablePtr->hs_get_8223e6fc();
     }
 
     public static nint PlayerExhaustion
     {
-        get => (nint)NativeMethods.TablePtr->f101();
+        get => (nint)NativeMethods.TablePtr->hs_get_5833d34f();
     }
 
     public static nint PlayerExperience
     {
-        get => (nint)NativeMethods.TablePtr->f102();
+        get => (nint)NativeMethods.TablePtr->hs_get_76aa44cd();
     }
 
     public static nint PlayerHunger
     {
-        get => (nint)NativeMethods.TablePtr->f103();
+        get => (nint)NativeMethods.TablePtr->hs_get_30029577();
     }
 
     public static nint PlayerLevel
     {
-        get => (nint)NativeMethods.TablePtr->f104();
+        get => (nint)NativeMethods.TablePtr->hs_get_55d7f312();
     }
 
     public static nint PlayerSaturation
     {
-        get => (nint)NativeMethods.TablePtr->f105();
+        get => (nint)NativeMethods.TablePtr->hs_get_28d152da();
     }
 
     public static nint UnderwaterMovementSpeed
     {
-        get => (nint)NativeMethods.TablePtr->f106();
+        get => (nint)NativeMethods.TablePtr->hs_get_96098024();
     }
 
     public static nint ZombieSpawnReinforcements
     {
-        get => (nint)NativeMethods.TablePtr->f107();
+        get => (nint)NativeMethods.TablePtr->hs_get_31db4d4e();
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f91((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_23714257((void*)_handle);
             _handle = 0;
         }
     }

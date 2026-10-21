@@ -25,22 +25,22 @@ public sealed unsafe partial class MapCanvas
 
     public void drawImage(int x, int y, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image image)
     {
-        NativeMethods.TablePtr->f823((void*)_handle, x, y, (void*)image.Handle);
+        NativeMethods.TablePtr->hs_method_cb7dcf5e((void*)_handle, x, y, (void*)image.Handle);
     }
 
     public uint getBasePixel(int x, int y)
     {
-        return NativeMethods.TablePtr->f824((void*)_handle, x, y);
+        return NativeMethods.TablePtr->hs_method_fcf827c1((void*)_handle, x, y);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color getBasePixelColor(int x, int y)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->f825((void*)_handle, x, y));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_9a8bcddf((void*)_handle, x, y));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCursor[] getCursors()
     {
-        var __hs_view = NativeMethods.TablePtr->f826((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_1548e67e((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCursor[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -52,17 +52,17 @@ public sealed unsafe partial class MapCanvas
 
     public nint getMapView()
     {
-        return (nint)NativeMethods.TablePtr->f827((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_e50e956b((void*)_handle);
     }
 
     public uint getPixel(int x, int y)
     {
-        return NativeMethods.TablePtr->f828((void*)_handle, x, y);
+        return NativeMethods.TablePtr->hs_method_dc4744ef((void*)_handle, x, y);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color getPixelColor(int x, int y)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->f829((void*)_handle, x, y));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_1b0673af((void*)_handle, x, y));
     }
 
     public void setCursors(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCursor[] cursors)
@@ -76,18 +76,18 @@ public sealed unsafe partial class MapCanvas
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            NativeMethods.TablePtr->f830((void*)_handle, __hs_vectorData0, (nuint)(cursors?.Length ?? 0));
+            NativeMethods.TablePtr->hs_method_159de010((void*)_handle, __hs_vectorData0, (nuint)(cursors?.Length ?? 0));
         }
     }
 
     public void setPixel(int x, int y, uint color)
     {
-        NativeMethods.TablePtr->f831((void*)_handle, x, y, color);
+        NativeMethods.TablePtr->hs_method_8a0b9fe7((void*)_handle, x, y, color);
     }
 
     public void setPixelColor(int x, int y, global::Hosihikari.Bindings.Endstone.Interop.endstone.Color color)
     {
-        NativeMethods.TablePtr->f832((void*)_handle, x, y, (void*)color.Handle);
+        NativeMethods.TablePtr->hs_method_1e99091f((void*)_handle, x, y, (void*)color.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

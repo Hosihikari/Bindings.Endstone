@@ -25,36 +25,36 @@ public sealed unsafe partial class MapMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f852();
+        get => NativeMethods.TablePtr->hs_get_2da2fd06();
     }
 
     public long getMapId()
     {
-        return NativeMethods.TablePtr->f853((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_ef46ef88((void*)_handle);
     }
 
     public nint getMapView()
     {
-        return (nint)NativeMethods.TablePtr->f854((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_53bc778b((void*)_handle);
     }
 
     public bool hasMapId()
     {
-        return NativeMethods.TablePtr->f855((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_06b88344((void*)_handle);
     }
 
     public bool hasMapView()
     {
-        return NativeMethods.TablePtr->f856((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a04ea49e((void*)_handle);
     }
 
     public void setMapId(long id)
     {
-        NativeMethods.TablePtr->f857((void*)_handle, id);
+        NativeMethods.TablePtr->hs_method_9ee58155((void*)_handle, id);
     }
 
     public void setMapView(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map)
     {
-        NativeMethods.TablePtr->f858((void*)_handle, (void*)map.Handle);
+        NativeMethods.TablePtr->hs_method_1052b284((void*)_handle, (void*)map.Handle);
     }
 }

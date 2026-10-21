@@ -25,17 +25,17 @@ public sealed unsafe partial class CrossbowMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f422();
+        get => NativeMethods.TablePtr->hs_get_ac57d345();
     }
 
     public void addChargedProjectile(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        NativeMethods.TablePtr->f423((void*)_handle, (void*)item.Handle);
+        NativeMethods.TablePtr->hs_method_6b7cb64c((void*)_handle, (void*)item.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[] getChargedProjectiles()
     {
-        var __hs_view = NativeMethods.TablePtr->f424((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_1b51daa8((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -47,7 +47,7 @@ public sealed unsafe partial class CrossbowMeta
 
     public bool hasChargedProjectiles()
     {
-        return NativeMethods.TablePtr->f425((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_abce5a3b((void*)_handle);
     }
 
     public void setChargedProjectiles(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[] projectiles)
@@ -61,7 +61,7 @@ public sealed unsafe partial class CrossbowMeta
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            NativeMethods.TablePtr->f426((void*)_handle, __hs_vectorData0, (nuint)(projectiles?.Length ?? 0));
+            NativeMethods.TablePtr->hs_method_dc173cf9((void*)_handle, __hs_vectorData0, (nuint)(projectiles?.Length ?? 0));
         }
     }
 }

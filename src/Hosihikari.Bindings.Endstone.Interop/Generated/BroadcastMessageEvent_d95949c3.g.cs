@@ -29,35 +29,35 @@ public sealed unsafe partial class BroadcastMessageEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f259();
+        get => (nint)NativeMethods.TablePtr->hs_get_f24197ce();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f260((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_403b3efd((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getMessage()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f261((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_e5bc84d3((void*)_handle));
     }
 
     public nint getRecipients()
     {
-        return (nint)NativeMethods.TablePtr->f262((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_ed51ea87((void*)_handle);
     }
 
     public void setMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)
     {
-        NativeMethods.TablePtr->f263((void*)_handle, (void*)message.Handle);
+        NativeMethods.TablePtr->hs_method_4c0b7fcf((void*)_handle, (void*)message.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f258((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_d95949c3((void*)_handle);
             _handle = 0;
         }
     }

@@ -13,14 +13,14 @@ public sealed unsafe class Function_e874b0c2 : global::System.IDisposable
 
     public void Invoke(nint arg0, int arg1)
     {
-        NativeMethods.TablePtr->f5((void*)_handle, (void*)arg0, arg1);
+        NativeMethods.TablePtr->hs_callable_e874b0c2_invoke((void*)_handle, (void*)arg0, arg1);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f4((void*)_handle);
+            NativeMethods.TablePtr->hs_callable_e874b0c2_destroy((void*)_handle);
             _handle = 0;
         }
     }

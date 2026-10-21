@@ -25,7 +25,7 @@ public sealed unsafe partial class Level
 
     public nint[] getActors()
     {
-        var __hs_view = NativeMethods.TablePtr->f772((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_270292cc((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -39,13 +39,13 @@ public sealed unsafe partial class Level
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f773((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->hs_method_08076e18((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public nint[] getDimensions()
     {
-        var __hs_view = NativeMethods.TablePtr->f774((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_454cbadf((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -56,23 +56,23 @@ public sealed unsafe partial class Level
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f775((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_3aa0a1c5((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public long getSeed()
     {
-        return NativeMethods.TablePtr->f776((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_68956a20((void*)_handle);
     }
 
     public int getTime()
     {
-        return NativeMethods.TablePtr->f777((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_00cfe7f2((void*)_handle);
     }
 
     public void setTime(int time)
     {
-        NativeMethods.TablePtr->f778((void*)_handle, time);
+        NativeMethods.TablePtr->hs_method_694008cf((void*)_handle, time);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

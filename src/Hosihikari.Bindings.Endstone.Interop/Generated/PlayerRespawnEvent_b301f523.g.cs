@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerRespawnEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1205();
+        get => (nint)NativeMethods.TablePtr->hs_get_88e469cd();
     }
 
     public static PlayerRespawnEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        var handle = NativeMethods.TablePtr->f1206((void*)player.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_d61df892((void*)player.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -41,7 +41,7 @@ public sealed unsafe partial class PlayerRespawnEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1207((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_9a200629((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -50,7 +50,7 @@ public sealed unsafe partial class PlayerRespawnEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1204((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_b301f523((void*)_handle);
             _handle = 0;
         }
     }

@@ -25,43 +25,43 @@ public sealed unsafe partial class ItemType
 
     public static nint Air
     {
-        get => (nint)NativeMethods.TablePtr->f749();
+        get => (nint)NativeMethods.TablePtr->hs_get_6aad1cda();
     }
 
     public static nint RegistryType
     {
-        get => (nint)NativeMethods.TablePtr->f750();
+        get => (nint)NativeMethods.TablePtr->hs_get_83ae15ec();
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack createItemStack()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f751((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->hs_method_efd88a4c((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack createItemStack(int amount)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f752((void*)_handle, amount));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->hs_method_64d1e9b9((void*)_handle, amount));
     }
 
     public int getMaxDurability()
     {
-        return NativeMethods.TablePtr->f753((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_99c63aca((void*)_handle);
     }
 
     public int getMaxStackSize()
     {
-        return NativeMethods.TablePtr->f754((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8541145d((void*)_handle);
     }
 
     public string getTranslationKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f755((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_04596f49((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getTranslationKey(int data)
     {
-        var __hs_view = NativeMethods.TablePtr->f756((void*)_handle, data);
+        var __hs_view = NativeMethods.TablePtr->hs_method_d6685e73((void*)_handle, data);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 }

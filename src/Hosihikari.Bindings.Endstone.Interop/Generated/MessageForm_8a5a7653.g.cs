@@ -25,49 +25,49 @@ public sealed unsafe partial class MessageForm : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getButton1()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f880((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_b37b9bbb((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getButton2()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f881((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_2db27c2d((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getContent()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f882((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_e035040a((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Function_e874b0c2 getOnSubmit()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Function_e874b0c2((nint)NativeMethods.TablePtr->f883((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Function_e874b0c2((nint)NativeMethods.TablePtr->hs_method_9826e082((void*)_handle));
     }
 
     public nint setButton1(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f884((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->hs_method_41da86fb((void*)_handle, (void*)text.Handle);
     }
 
     public nint setButton2(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f885((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->hs_method_046c33b1((void*)_handle, (void*)text.Handle);
     }
 
     public nint setContent(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f886((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->hs_method_d9b782ea((void*)_handle, (void*)text.Handle);
     }
 
     public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->f887((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return (nint)NativeMethods.TablePtr->hs_method_6eb29429((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f879((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_8a5a7653((void*)_handle);
             _handle = 0;
         }
     }

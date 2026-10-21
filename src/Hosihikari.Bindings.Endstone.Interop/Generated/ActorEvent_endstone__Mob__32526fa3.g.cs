@@ -29,7 +29,7 @@ public sealed unsafe partial class ActorEvent_endstone__Mob_
 
     public nint getActor()
     {
-        return (nint)NativeMethods.TablePtr->f62((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_42208d88((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

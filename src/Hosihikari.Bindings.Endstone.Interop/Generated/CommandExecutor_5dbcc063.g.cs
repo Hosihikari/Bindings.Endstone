@@ -42,7 +42,7 @@ public sealed unsafe partial class CommandExecutor : global::System.IDisposable
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData2 = __hs_vectorViews2)
             {
-                return NativeMethods.TablePtr->f384((void*)_handle, (void*)sender.Handle, (void*)command.Handle, __hs_vectorData2, (nuint)(args?.Length ?? 0));
+                return NativeMethods.TablePtr->hs_method_13fd8943((void*)_handle, (void*)sender.Handle, (void*)command.Handle, __hs_vectorData2, (nuint)(args?.Length ?? 0));
             }
         }
         finally
@@ -56,7 +56,7 @@ public sealed unsafe partial class CommandExecutor : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f383((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_5dbcc063((void*)_handle);
             _handle = 0;
         }
     }

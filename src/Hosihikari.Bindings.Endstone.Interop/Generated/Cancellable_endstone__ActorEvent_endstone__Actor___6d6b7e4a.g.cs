@@ -25,16 +25,16 @@ public sealed unsafe partial class Cancellable_endstone__ActorEvent_endstone__Ac
 
     public void cancel()
     {
-        NativeMethods.TablePtr->f273((void*)_handle);
+        NativeMethods.TablePtr->hs_method_23889360((void*)_handle);
     }
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->f274((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_625b3e48((void*)_handle);
     }
 
     public void setCancelled(bool cancel)
     {
-        NativeMethods.TablePtr->f275((void*)_handle, cancel);
+        NativeMethods.TablePtr->hs_method_75a0221d((void*)_handle, cancel);
     }
 }

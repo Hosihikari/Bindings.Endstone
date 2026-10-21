@@ -25,43 +25,43 @@ public sealed unsafe partial class Type
 
     public static nint get(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return (nint)NativeMethods.TablePtr->f1366((void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->hs_method_496348c8((void*)id.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ getId()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_((nint)NativeMethods.TablePtr->f1367((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_((nint)NativeMethods.TablePtr->hs_method_00d2ceb7((void*)_handle));
     }
 
     public string getTranslationKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f1368((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_dd1477bf((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ operator_Identifier()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_((nint)NativeMethods.TablePtr->f1369((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_((nint)NativeMethods.TablePtr->hs_method_0a44bc09((void*)_handle));
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment other)
     {
-        return NativeMethods.TablePtr->f1370((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_8ef9db8d((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ other)
     {
-        return NativeMethods.TablePtr->f1371((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_91998a59((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment other)
     {
-        return NativeMethods.TablePtr->f1372((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_3f276808((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ other)
     {
-        return NativeMethods.TablePtr->f1373((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_02ebb8ba((void*)_handle, (void*)other.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

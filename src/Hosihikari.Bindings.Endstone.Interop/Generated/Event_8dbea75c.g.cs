@@ -33,13 +33,13 @@ public sealed unsafe partial class Event
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f541((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_5521cc7d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isAsynchronous()
     {
-        return NativeMethods.TablePtr->f542((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_828d94d9((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]

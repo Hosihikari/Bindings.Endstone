@@ -25,43 +25,43 @@ public sealed unsafe partial class Item
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack getItemStack()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f691((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->hs_method_e67805b3((void*)_handle));
     }
 
     public int getPickupDelay()
     {
-        return NativeMethods.TablePtr->f692((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_cb924d86((void*)_handle);
     }
 
     public long? getThrower()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f693((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->hs_method_f43096ca((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (long?)null;
     }
 
     public bool isUnlimitedLifetime()
     {
-        return NativeMethods.TablePtr->f694((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c38c6e29((void*)_handle);
     }
 
     public void setItemStack(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack stack)
     {
-        NativeMethods.TablePtr->f695((void*)_handle, (void*)stack.Handle);
+        NativeMethods.TablePtr->hs_method_327ba5e2((void*)_handle, (void*)stack.Handle);
     }
 
     public void setPickupDelay(int delay)
     {
-        NativeMethods.TablePtr->f696((void*)_handle, delay);
+        NativeMethods.TablePtr->hs_method_d4fd9e86((void*)_handle, delay);
     }
 
     public void setThrower(long? thrower)
     {
-        NativeMethods.TablePtr->f697((void*)_handle, thrower ?? default(long), thrower.HasValue);
+        NativeMethods.TablePtr->hs_method_b0a39e74((void*)_handle, thrower ?? default(long), thrower.HasValue);
     }
 
     public void setUnlimitedLifetime(bool unlimited)
     {
-        NativeMethods.TablePtr->f698((void*)_handle, unlimited);
+        NativeMethods.TablePtr->hs_method_faf33d09((void*)_handle, unlimited);
     }
 }

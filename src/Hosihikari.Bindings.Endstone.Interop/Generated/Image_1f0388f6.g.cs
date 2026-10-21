@@ -25,7 +25,7 @@ public sealed unsafe partial class Image : global::System.IDisposable
 
     public static Image Create(int type, int width, int height)
     {
-        var handle = NativeMethods.TablePtr->f650(type, width, height);
+        var handle = NativeMethods.TablePtr->hs_create_21db8062(type, width, height);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -39,7 +39,7 @@ public sealed unsafe partial class Image : global::System.IDisposable
         var __hs_hasValue = false;
         fixed (byte* __hs_vectorData3 = array)
         {
-            var __hs_expectedResult = NativeMethods.TablePtr->f651(type, width, height, __hs_vectorData3, (nuint)(array?.Length ?? 0), &__hs_hasValue);
+            var __hs_expectedResult = NativeMethods.TablePtr->hs_method_1db0b641(type, width, height, __hs_vectorData3, (nuint)(array?.Length ?? 0), &__hs_hasValue);
             if (!__hs_hasValue) { throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "Binding API call returned an error."); }
             return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Image((nint)__hs_expectedResult);
         }
@@ -51,7 +51,7 @@ public sealed unsafe partial class Image : global::System.IDisposable
         var __hs_stringBytes3 = global::System.Text.Encoding.UTF8.GetBytes(buffer);
         fixed (byte* __hs_stringData3 = __hs_stringBytes3)
         {
-            var __hs_expectedResult = NativeMethods.TablePtr->f652(type, width, height, __hs_stringData3, (nuint)__hs_stringBytes3.Length, &__hs_hasValue);
+            var __hs_expectedResult = NativeMethods.TablePtr->hs_method_6e846c30(type, width, height, __hs_stringData3, (nuint)__hs_stringBytes3.Length, &__hs_hasValue);
             if (!__hs_hasValue) { throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "Binding API call returned an error."); }
             return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Image((nint)__hs_expectedResult);
         }
@@ -59,40 +59,40 @@ public sealed unsafe partial class Image : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color getColor(int x, int y)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->f653((void*)_handle, x, y));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Color((nint)NativeMethods.TablePtr->hs_method_88dd3b47((void*)_handle, x, y));
     }
 
     public string getData()
     {
-        var __hs_view = NativeMethods.TablePtr->f654((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_1a3d1eec((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getDepth()
     {
-        return NativeMethods.TablePtr->f655((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a3155781((void*)_handle);
     }
 
     public int getHeight()
     {
-        return NativeMethods.TablePtr->f656((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_fb8c5d13((void*)_handle);
     }
 
     public int getWidth()
     {
-        return NativeMethods.TablePtr->f657((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e57a6d79((void*)_handle);
     }
 
     public void setColor(int x, int y, global::Hosihikari.Bindings.Endstone.Interop.endstone.Color color)
     {
-        NativeMethods.TablePtr->f658((void*)_handle, x, y, (void*)color.Handle);
+        NativeMethods.TablePtr->hs_method_8453ba94((void*)_handle, x, y, (void*)color.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f649((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_1f0388f6((void*)_handle);
             _handle = 0;
         }
     }

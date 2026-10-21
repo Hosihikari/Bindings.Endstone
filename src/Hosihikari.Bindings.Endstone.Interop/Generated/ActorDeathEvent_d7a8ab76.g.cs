@@ -25,7 +25,7 @@ public sealed unsafe partial class ActorDeathEvent : global::System.IDisposable
 
     public static ActorDeathEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob actor, global::Hosihikari.Bindings.Endstone.Interop.endstone.DamageSource damage_source)
     {
-        var handle = NativeMethods.TablePtr->f57((void*)actor.Handle, (void*)damage_source.ReleaseHandle());
+        var handle = NativeMethods.TablePtr->hs_create_b1e7cfa9((void*)actor.Handle, (void*)damage_source.ReleaseHandle());
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,17 +36,17 @@ public sealed unsafe partial class ActorDeathEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f58();
+        get => (nint)NativeMethods.TablePtr->hs_get_e04f0f07();
     }
 
     public nint getDamageSource()
     {
-        return (nint)NativeMethods.TablePtr->f59((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_a099264e((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f60((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_3767e45d((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -54,7 +54,7 @@ public sealed unsafe partial class ActorDeathEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f56((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_d7a8ab76((void*)_handle);
             _handle = 0;
         }
     }

@@ -25,13 +25,13 @@ public sealed unsafe partial class OfflinePlayer
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f921((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_08805458((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID getUniqueId()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->f922((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->hs_method_4b50ef7b((void*)_handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

@@ -27,7 +27,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f331();
+            var view = NativeMethods.TablePtr->hs_get_0ed3f23e();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -36,7 +36,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f332();
+            var view = NativeMethods.TablePtr->hs_get_14adc916();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -45,7 +45,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f333();
+            var view = NativeMethods.TablePtr->hs_get_3c1eda75();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -54,7 +54,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f334();
+            var view = NativeMethods.TablePtr->hs_get_36dd6716();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -63,7 +63,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f335();
+            var view = NativeMethods.TablePtr->hs_get_1f79dc85();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -72,7 +72,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f336();
+            var view = NativeMethods.TablePtr->hs_get_82bcc8f4();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -81,7 +81,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f337();
+            var view = NativeMethods.TablePtr->hs_get_1e22adf9();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -90,7 +90,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f338();
+            var view = NativeMethods.TablePtr->hs_get_f029ff10();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -99,7 +99,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f339();
+            var view = NativeMethods.TablePtr->hs_get_a4018898();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -108,7 +108,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f340();
+            var view = NativeMethods.TablePtr->hs_get_f8d96684();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -117,7 +117,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f341();
+            var view = NativeMethods.TablePtr->hs_get_b34a26d1();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -126,7 +126,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f342();
+            var view = NativeMethods.TablePtr->hs_get_f5e9ef43();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -135,7 +135,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f343();
+            var view = NativeMethods.TablePtr->hs_get_24576ca4();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -144,7 +144,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f344();
+            var view = NativeMethods.TablePtr->hs_get_efc40a36();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -153,7 +153,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f345();
+            var view = NativeMethods.TablePtr->hs_get_898594f9();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -162,7 +162,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f346();
+            var view = NativeMethods.TablePtr->hs_get_a786d9ad();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -171,7 +171,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f347();
+            var view = NativeMethods.TablePtr->hs_get_5cbaee0c();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -180,7 +180,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f348();
+            var view = NativeMethods.TablePtr->hs_get_954a9c6e();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -189,7 +189,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f349();
+            var view = NativeMethods.TablePtr->hs_get_96372f7e();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -198,7 +198,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f350();
+            var view = NativeMethods.TablePtr->hs_get_4c0a39d3();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -207,7 +207,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f351();
+            var view = NativeMethods.TablePtr->hs_get_d23bd69b();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -216,7 +216,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f352();
+            var view = NativeMethods.TablePtr->hs_get_20b8eca5();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -225,7 +225,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f353();
+            var view = NativeMethods.TablePtr->hs_get_676ef46d();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -234,7 +234,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f354();
+            var view = NativeMethods.TablePtr->hs_get_6b330d46();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -243,7 +243,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f355();
+            var view = NativeMethods.TablePtr->hs_get_4a7abe1d();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -252,7 +252,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f356();
+            var view = NativeMethods.TablePtr->hs_get_87e75156();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -261,7 +261,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f357();
+            var view = NativeMethods.TablePtr->hs_get_cc94656c();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -270,7 +270,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f358();
+            var view = NativeMethods.TablePtr->hs_get_1f30cd41();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -279,7 +279,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f359();
+            var view = NativeMethods.TablePtr->hs_get_d112355e();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -288,7 +288,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f360();
+            var view = NativeMethods.TablePtr->hs_get_69d027ff();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -297,7 +297,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f361();
+            var view = NativeMethods.TablePtr->hs_get_2bf28927();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -306,7 +306,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f362();
+            var view = NativeMethods.TablePtr->hs_get_a1ec8371();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -315,7 +315,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f363();
+            var view = NativeMethods.TablePtr->hs_get_2e5d1ba5();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -324,7 +324,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f330((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_34a5fade((void*)_handle);
             _handle = 0;
         }
     }

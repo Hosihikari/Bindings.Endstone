@@ -160,7 +160,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
                                                                             {
                                                                                 fixed (byte* __hs_stringData7 = __hs_stringBytes7)
                                                                                 {
-                                                                                    var handle = NativeMethods.TablePtr->f1237(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, __hs_stringData2, (nuint)__hs_stringBytes2.Length, load, __hs_stringData6, (nuint)__hs_stringBytes6.Length, __hs_stringData7, (nuint)__hs_stringBytes7.Length, default_permission, __hs_vectorData4, (nuint)(authors?.Length ?? 0), __hs_vectorData5, (nuint)(contributors?.Length ?? 0), __hs_vectorData8, (nuint)(provides?.Length ?? 0), __hs_vectorData9, (nuint)(depend?.Length ?? 0), __hs_vectorData10, (nuint)(soft_depend?.Length ?? 0), __hs_vectorData11, (nuint)(load_before?.Length ?? 0), __hs_vectorData13, (nuint)(commands?.Length ?? 0), __hs_vectorData14, (nuint)(permissions?.Length ?? 0));
+                                                                                    var handle = NativeMethods.TablePtr->hs_create_f5310a99(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, __hs_stringData2, (nuint)__hs_stringBytes2.Length, load, __hs_stringData6, (nuint)__hs_stringBytes6.Length, __hs_stringData7, (nuint)__hs_stringBytes7.Length, default_permission, __hs_vectorData4, (nuint)(authors?.Length ?? 0), __hs_vectorData5, (nuint)(contributors?.Length ?? 0), __hs_vectorData8, (nuint)(provides?.Length ?? 0), __hs_vectorData9, (nuint)(depend?.Length ?? 0), __hs_vectorData10, (nuint)(soft_depend?.Length ?? 0), __hs_vectorData11, (nuint)(load_before?.Length ?? 0), __hs_vectorData13, (nuint)(commands?.Length ?? 0), __hs_vectorData14, (nuint)(permissions?.Length ?? 0));
                                                                                     if (handle == null)
                                                                                     {
                                                                                         throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -214,13 +214,13 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getAPIVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f1238((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_a68fa3c7((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string[] getAuthors()
     {
-        var __hs_view = NativeMethods.TablePtr->f1239((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_07a6157f((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -232,7 +232,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Command[] getCommands()
     {
-        var __hs_view = NativeMethods.TablePtr->f1240((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_8741d6ed((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -244,7 +244,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string[] getContributors()
     {
-        var __hs_view = NativeMethods.TablePtr->f1241((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_1f3202d7((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -256,12 +256,12 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public int getDefaultPermission()
     {
-        return NativeMethods.TablePtr->f1242((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_3aecb585((void*)_handle);
     }
 
     public string[] getDepend()
     {
-        var __hs_view = NativeMethods.TablePtr->f1243((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_3c65a34b((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -273,24 +273,24 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f1244((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_a5f88620((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getFullName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1245((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_dd0a3c70((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getLoad()
     {
-        return NativeMethods.TablePtr->f1246((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c384d425((void*)_handle);
     }
 
     public string[] getLoadBefore()
     {
-        var __hs_view = NativeMethods.TablePtr->f1247((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_22243c45((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -302,13 +302,13 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1248((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_60803d5e((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission[] getPermissions()
     {
-        var __hs_view = NativeMethods.TablePtr->f1249((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_d0208aa9((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -320,13 +320,13 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getPrefix()
     {
-        var __hs_view = NativeMethods.TablePtr->f1250((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_b7c4bc57((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string[] getProvides()
     {
-        var __hs_view = NativeMethods.TablePtr->f1251((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_89b9a91f((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -338,7 +338,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string[] getSoftDepend()
     {
-        var __hs_view = NativeMethods.TablePtr->f1252((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_946b5490((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -350,13 +350,13 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f1253((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_e6575ca2((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getWebsite()
     {
-        var __hs_view = NativeMethods.TablePtr->f1254((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_b8361b96((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -364,7 +364,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1236((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_497facfc((void*)_handle);
             _handle = 0;
         }
     }

@@ -25,7 +25,7 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1479();
+        get => (nint)NativeMethods.TablePtr->hs_get_68525df2();
     }
 
     public static ServerListPingEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress address, string motd, int network_protocol_version, string minecraft_version_network, int num_players, int max_players, string server_guid, string level_name, int game_mode, int local_port, int local_port_v6)
@@ -42,7 +42,7 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
                 {
                     fixed (byte* __hs_stringData7 = __hs_stringBytes7)
                     {
-                        var handle = NativeMethods.TablePtr->f1480((void*)address.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, network_protocol_version, __hs_stringData3, (nuint)__hs_stringBytes3.Length, num_players, max_players, __hs_stringData6, (nuint)__hs_stringBytes6.Length, __hs_stringData7, (nuint)__hs_stringBytes7.Length, game_mode, local_port, local_port_v6);
+                        var handle = NativeMethods.TablePtr->hs_create_8a74906d((void*)address.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, network_protocol_version, __hs_stringData3, (nuint)__hs_stringBytes3.Length, num_players, max_players, __hs_stringData6, (nuint)__hs_stringBytes6.Length, __hs_stringData7, (nuint)__hs_stringBytes7.Length, game_mode, local_port, local_port_v6);
                         if (handle == null)
                         {
                             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -57,72 +57,72 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress getAddress()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->f1481((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->hs_method_fff45c6f((void*)_handle));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1482((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_63935e73((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getGameMode()
     {
-        return NativeMethods.TablePtr->f1483((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_64a34151((void*)_handle);
     }
 
     public string getLevelName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1484((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_7029d579((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getLocalPort()
     {
-        return NativeMethods.TablePtr->f1485((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e72124b9((void*)_handle);
     }
 
     public int getLocalPortV6()
     {
-        return NativeMethods.TablePtr->f1486((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_870dfec1((void*)_handle);
     }
 
     public int getMaxPlayers()
     {
-        return NativeMethods.TablePtr->f1487((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7b19ec4f((void*)_handle);
     }
 
     public string getMinecraftVersionNetwork()
     {
-        var __hs_view = NativeMethods.TablePtr->f1488((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_19b5f2ad((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getMotd()
     {
-        var __hs_view = NativeMethods.TablePtr->f1489((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_5fa8bbd6((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getNetworkProtocolVersion()
     {
-        return NativeMethods.TablePtr->f1490((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_ab83fae1((void*)_handle);
     }
 
     public int getNumPlayers()
     {
-        return NativeMethods.TablePtr->f1491((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_45897812((void*)_handle);
     }
 
     public string getServerGuid()
     {
-        var __hs_view = NativeMethods.TablePtr->f1492((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_29ae1c45((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void setGameMode(int game_mode)
     {
-        NativeMethods.TablePtr->f1493((void*)_handle, game_mode);
+        NativeMethods.TablePtr->hs_method_c9b262c1((void*)_handle, game_mode);
     }
 
     public void setLevelName(string level_name)
@@ -130,23 +130,23 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(level_name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1494((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_6b596bb9((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void setLocalPort(int port)
     {
-        NativeMethods.TablePtr->f1495((void*)_handle, port);
+        NativeMethods.TablePtr->hs_method_e98c8586((void*)_handle, port);
     }
 
     public void setLocalPortV6(int port)
     {
-        NativeMethods.TablePtr->f1496((void*)_handle, port);
+        NativeMethods.TablePtr->hs_method_419b1cf8((void*)_handle, port);
     }
 
     public void setMaxPlayers(int max_players)
     {
-        NativeMethods.TablePtr->f1497((void*)_handle, max_players);
+        NativeMethods.TablePtr->hs_method_6f01eb50((void*)_handle, max_players);
     }
 
     public void setMinecraftVersionNetwork(string minecraft_version_network)
@@ -154,7 +154,7 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(minecraft_version_network);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1498((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_34191d60((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -163,13 +163,13 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(motd);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1499((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_5d1b4853((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void setNumPlayers(int num_players)
     {
-        NativeMethods.TablePtr->f1500((void*)_handle, num_players);
+        NativeMethods.TablePtr->hs_method_8b8714cc((void*)_handle, num_players);
     }
 
     public void setServerGuid(string guid)
@@ -177,7 +177,7 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(guid);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1501((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_b358f345((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -185,7 +185,7 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1478((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_14497b9a((void*)_handle);
             _handle = 0;
         }
     }

@@ -27,7 +27,7 @@ public sealed unsafe partial class escape_view : global::System.IDisposable
     {
         get
         {
-            var view = NativeMethods.TablePtr->f1779((void*)_handle);
+            var view = NativeMethods.TablePtr->hs_get_ffe00fef((void*)_handle);
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -36,7 +36,7 @@ public sealed unsafe partial class escape_view : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1778((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_6d952785((void*)_handle);
             _handle = 0;
         }
     }

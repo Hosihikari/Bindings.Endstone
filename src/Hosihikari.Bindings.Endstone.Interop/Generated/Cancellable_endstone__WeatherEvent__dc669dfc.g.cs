@@ -25,16 +25,16 @@ public sealed unsafe partial class Cancellable_endstone__WeatherEvent_
 
     public void cancel()
     {
-        NativeMethods.TablePtr->f288((void*)_handle);
+        NativeMethods.TablePtr->hs_method_2f9c52de((void*)_handle);
     }
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->f289((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_6db9fa6c((void*)_handle);
     }
 
     public void setCancelled(bool cancel)
     {
-        NativeMethods.TablePtr->f290((void*)_handle, cancel);
+        NativeMethods.TablePtr->hs_method_1c30a25b((void*)_handle, cancel);
     }
 }

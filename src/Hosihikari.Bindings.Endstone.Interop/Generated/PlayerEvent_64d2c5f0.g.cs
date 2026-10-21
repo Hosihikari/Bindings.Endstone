@@ -29,7 +29,7 @@ public sealed unsafe partial class PlayerEvent
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f1109((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_3db1e9dc((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

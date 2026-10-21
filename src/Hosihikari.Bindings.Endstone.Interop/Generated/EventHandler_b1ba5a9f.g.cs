@@ -28,7 +28,7 @@ public sealed unsafe partial class EventHandler : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(@event);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->f544(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)executorInvoke, (void*)executorUserData, (void*)executorRelease, priority, (void*)plugin.Handle, ignore_cancelled);
+            var handle = NativeMethods.TablePtr->hs_create_821d4cdc(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)executorInvoke, (void*)executorUserData, (void*)executorRelease, priority, (void*)plugin.Handle, ignore_cancelled);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -40,35 +40,35 @@ public sealed unsafe partial class EventHandler : global::System.IDisposable
 
     public void callEvent(global::Hosihikari.Bindings.Endstone.Interop.endstone.Event @event)
     {
-        NativeMethods.TablePtr->f545((void*)_handle, (void*)@event.Handle);
+        NativeMethods.TablePtr->hs_method_9a78ce22((void*)_handle, (void*)@event.Handle);
     }
 
     public string getEventType()
     {
-        var __hs_view = NativeMethods.TablePtr->f546((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_90b375e3((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->f547((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_856d4bae((void*)_handle);
     }
 
     public int getPriority()
     {
-        return NativeMethods.TablePtr->f548((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_4a2a82af((void*)_handle);
     }
 
     public bool isIgnoreCancelled()
     {
-        return NativeMethods.TablePtr->f549((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f53a20bc((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f543((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_b1ba5a9f((void*)_handle);
             _handle = 0;
         }
     }

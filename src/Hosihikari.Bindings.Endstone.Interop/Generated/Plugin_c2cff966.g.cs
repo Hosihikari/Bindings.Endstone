@@ -32,60 +32,60 @@ public sealed unsafe partial class Plugin
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1218((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->hs_method_b198102d((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public string getDataFolder()
     {
-        var __hs_view = NativeMethods.TablePtr->f1219((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_775a44b0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getDescription()
     {
-        return (nint)NativeMethods.TablePtr->f1220((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_f1bd0b1c((void*)_handle);
     }
 
     public nint getLogger()
     {
-        return (nint)NativeMethods.TablePtr->f1221((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_68ae4547((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1222((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_3e0154f0((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPluginLoader()
     {
-        return (nint)NativeMethods.TablePtr->f1223((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_43488e75((void*)_handle);
     }
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f1224((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_a6bd72ae((void*)_handle);
     }
 
     public bool isEnabled()
     {
-        return NativeMethods.TablePtr->f1225((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_1f11e477((void*)_handle);
     }
 
     public void onDisable()
     {
-        NativeMethods.TablePtr->f1226((void*)_handle);
+        NativeMethods.TablePtr->hs_method_bd51770f((void*)_handle);
     }
 
     public void onEnable()
     {
-        NativeMethods.TablePtr->f1227((void*)_handle);
+        NativeMethods.TablePtr->hs_method_ce3da367((void*)_handle);
     }
 
     public void onLoad()
     {
-        NativeMethods.TablePtr->f1228((void*)_handle);
+        NativeMethods.TablePtr->hs_method_85847eff((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

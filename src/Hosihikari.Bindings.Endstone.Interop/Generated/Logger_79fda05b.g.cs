@@ -32,7 +32,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f813((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_930a76c1((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -41,7 +41,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f814((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_ffcad596((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -50,13 +50,13 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f815((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_788fde20((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f816((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_c7c832ab((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -65,13 +65,13 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f817((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_046652ba((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool isEnabledFor(byte level)
     {
-        return NativeMethods.TablePtr->f818((void*)_handle, level);
+        return NativeMethods.TablePtr->hs_method_fa5a7e03((void*)_handle, level);
     }
 
     public void log(byte level, string message)
@@ -79,13 +79,13 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->f819((void*)_handle, level, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            NativeMethods.TablePtr->hs_method_976ee1e7((void*)_handle, level, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
         }
     }
 
     public void setLevel(byte level)
     {
-        NativeMethods.TablePtr->f820((void*)_handle, level);
+        NativeMethods.TablePtr->hs_method_e4550d82((void*)_handle, level);
     }
 
     public void trace(string message)
@@ -93,7 +93,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f821((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_033cc665((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -102,7 +102,7 @@ public sealed unsafe partial class Logger
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f822((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_2ffebdc2((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 

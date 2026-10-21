@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerTeleportEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1216();
+        get => (nint)NativeMethods.TablePtr->hs_get_6c5522fa();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1217((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_46454b3c((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -38,7 +38,7 @@ public sealed unsafe partial class PlayerTeleportEvent : global::System.IDisposa
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1215((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_20eb43b0((void*)_handle);
             _handle = 0;
         }
     }

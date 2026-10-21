@@ -25,7 +25,7 @@ public sealed unsafe partial class ActorSpawnEvent : global::System.IDisposable
 
     public static ActorSpawnEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor actor)
     {
-        var handle = NativeMethods.TablePtr->f80((void*)actor.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_bacc530a((void*)actor.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,12 +36,12 @@ public sealed unsafe partial class ActorSpawnEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f81();
+        get => (nint)NativeMethods.TablePtr->hs_get_6f6cab33();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f82((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_e43e08f7((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -50,7 +50,7 @@ public sealed unsafe partial class ActorSpawnEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f79((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_ac47ba29((void*)_handle);
             _handle = 0;
         }
     }

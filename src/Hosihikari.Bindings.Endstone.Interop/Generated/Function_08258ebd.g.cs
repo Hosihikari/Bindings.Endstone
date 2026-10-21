@@ -16,7 +16,7 @@ public sealed unsafe class Function_08258ebd : global::System.IDisposable
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(arg1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->f7((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            NativeMethods.TablePtr->hs_callable_08258ebd_invoke((void*)_handle, (void*)arg0, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
         }
     }
 
@@ -24,7 +24,7 @@ public sealed unsafe class Function_08258ebd : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f6((void*)_handle);
+            NativeMethods.TablePtr->hs_callable_08258ebd_destroy((void*)_handle);
             _handle = 0;
         }
     }

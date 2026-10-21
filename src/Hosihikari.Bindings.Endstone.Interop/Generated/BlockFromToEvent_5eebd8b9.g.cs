@@ -25,7 +25,7 @@ public sealed unsafe partial class BlockFromToEvent : global::System.IDisposable
 
     public static BlockFromToEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Block block, global::Hosihikari.Bindings.Endstone.Interop.endstone.Block to_block)
     {
-        var handle = NativeMethods.TablePtr->f188((void*)block.ReleaseHandle(), (void*)to_block.ReleaseHandle());
+        var handle = NativeMethods.TablePtr->hs_create_075bf555((void*)block.ReleaseHandle(), (void*)to_block.ReleaseHandle());
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,25 +36,25 @@ public sealed unsafe partial class BlockFromToEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f189();
+        get => (nint)NativeMethods.TablePtr->hs_get_a76524aa();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f190((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_54b34f20((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getToBlock()
     {
-        return (nint)NativeMethods.TablePtr->f191((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_2b60a963((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f187((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_5eebd8b9((void*)_handle);
             _handle = 0;
         }
     }

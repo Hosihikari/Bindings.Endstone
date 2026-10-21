@@ -29,6 +29,6 @@ public sealed unsafe partial class BlockPistonEvent
 
     public int getDirection()
     {
-        return NativeMethods.TablePtr->f197((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_6b2d2c9f((void*)_handle);
     }
 }

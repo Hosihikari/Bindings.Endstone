@@ -59,7 +59,7 @@ Copy-Item (Join-Path $Output "coverage\summary.json") $CoverageTarget -Force
 
 $Summary = Get-Content (Join-Path $CoverageTarget "summary.json") -Raw | ConvertFrom-Json
 $Header = Join-Path $ShimTarget "binding_table.h"
-$Functions = (Select-String -Path $Header -Pattern '\(\*f' -AllMatches).Count
+$Functions = (Select-String -Path $Header -Pattern '\(\*hs_' -AllMatches).Count
 $CarrierCommit = "unknown"
 if (Test-Path (Join-Path $EndstoneRoot ".git")) {
     $CarrierCommit = (& git -C $EndstoneRoot rev-parse HEAD).Trim()

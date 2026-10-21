@@ -34,7 +34,7 @@ public sealed unsafe partial class BanList_endstone__IpBanEntry_
             {
                 fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                 {
-                    var __hs_shared = NativeMethods.TablePtr->f132((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, duration, __hs_stringData3, (nuint)__hs_stringBytes3.Length, reason is not null, source is not null);
+                    var __hs_shared = NativeMethods.TablePtr->hs_method_95d473c7((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, duration, __hs_stringData3, (nuint)__hs_stringBytes3.Length, reason is not null, source is not null);
                     return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                 }
             }
@@ -52,7 +52,7 @@ public sealed unsafe partial class BanList_endstone__IpBanEntry_
             {
                 fixed (byte* __hs_stringData3 = __hs_stringBytes3)
                 {
-                    var __hs_shared = NativeMethods.TablePtr->f133((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, expires ?? default(long), __hs_stringData3, (nuint)__hs_stringBytes3.Length, reason is not null, expires.HasValue, source is not null);
+                    var __hs_shared = NativeMethods.TablePtr->hs_method_ac608f70((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, expires ?? default(long), __hs_stringData3, (nuint)__hs_stringBytes3.Length, reason is not null, expires.HasValue, source is not null);
                     return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
                 }
             }
@@ -64,14 +64,14 @@ public sealed unsafe partial class BanList_endstone__IpBanEntry_
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(target);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->f134((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_shared = NativeMethods.TablePtr->hs_method_9c067d7e((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle[] getEntries()
     {
-        var __hs_view = NativeMethods.TablePtr->f135((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_744f42c5((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.SharedHandleData*)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Abi.SharedHandle[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -86,7 +86,7 @@ public sealed unsafe partial class BanList_endstone__IpBanEntry_
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(target);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f136((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->hs_method_2b4b4759((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -95,7 +95,7 @@ public sealed unsafe partial class BanList_endstone__IpBanEntry_
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(target);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f137((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_34e4c2c5((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 

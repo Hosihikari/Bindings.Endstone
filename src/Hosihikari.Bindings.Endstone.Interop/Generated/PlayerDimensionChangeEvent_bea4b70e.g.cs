@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.I
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1092();
+        get => (nint)NativeMethods.TablePtr->hs_get_da0bdd12();
     }
 
     public static PlayerDimensionChangeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension from, global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension to)
     {
-        var handle = NativeMethods.TablePtr->f1093((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_eb5beb30((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -41,25 +41,25 @@ public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.I
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1094((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_662d6064((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getFrom()
     {
-        return (nint)NativeMethods.TablePtr->f1095((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_41d9abc5((void*)_handle);
     }
 
     public nint getTo()
     {
-        return (nint)NativeMethods.TablePtr->f1096((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_1c7ecf07((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1091((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_bea4b70e((void*)_handle);
             _handle = 0;
         }
     }

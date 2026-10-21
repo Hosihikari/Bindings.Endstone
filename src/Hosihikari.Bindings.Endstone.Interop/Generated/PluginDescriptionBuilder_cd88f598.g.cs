@@ -25,7 +25,7 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
 
     public nint authors
     {
-        get => (nint)NativeMethods.TablePtr->f1664((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_e9584b36((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginDescription build(string name, string version)
@@ -36,7 +36,7 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginDescription((nint)NativeMethods.TablePtr->f1665((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length));
+                return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginDescription((nint)NativeMethods.TablePtr->hs_method_8e229283((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length));
             }
         }
     }
@@ -46,49 +46,49 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1666((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->hs_method_d253f495((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public nint commands
     {
-        get => (nint)NativeMethods.TablePtr->f1667((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_9c5b9ebe((void*)_handle);
     }
 
     public nint contributors
     {
-        get => (nint)NativeMethods.TablePtr->f1668((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_b05d1a1e((void*)_handle);
     }
 
     public int default_permission
     {
-        get => NativeMethods.TablePtr->f1669((void*)_handle);
-        set => NativeMethods.TablePtr->f1670((void*)_handle, value);
+        get => NativeMethods.TablePtr->hs_get_32498812((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_32498812((void*)_handle, value);
     }
 
     public nint depend
     {
-        get => (nint)NativeMethods.TablePtr->f1671((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_7cb8b078((void*)_handle);
     }
 
     public string description
     {
         get
         {
-            var view = NativeMethods.TablePtr->f1672((void*)_handle);
+            var view = NativeMethods.TablePtr->hs_get_a20be6a0((void*)_handle);
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
 
     public int load
     {
-        get => NativeMethods.TablePtr->f1673((void*)_handle);
-        set => NativeMethods.TablePtr->f1674((void*)_handle, value);
+        get => NativeMethods.TablePtr->hs_get_e75200bb((void*)_handle);
+        set => NativeMethods.TablePtr->hs_set_e75200bb((void*)_handle, value);
     }
 
     public nint load_before
     {
-        get => (nint)NativeMethods.TablePtr->f1675((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_aa6fe5da((void*)_handle);
     }
 
     public nint permission(string name)
@@ -96,39 +96,39 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1676((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->hs_method_af0e7391((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public nint permissions
     {
-        get => (nint)NativeMethods.TablePtr->f1677((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_2b0c65dd((void*)_handle);
     }
 
     public string prefix
     {
         get
         {
-            var view = NativeMethods.TablePtr->f1678((void*)_handle);
+            var view = NativeMethods.TablePtr->hs_get_ce2e4097((void*)_handle);
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
 
     public nint provides
     {
-        get => (nint)NativeMethods.TablePtr->f1679((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_61f17630((void*)_handle);
     }
 
     public nint soft_depend
     {
-        get => (nint)NativeMethods.TablePtr->f1680((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_2c478d94((void*)_handle);
     }
 
     public string website
     {
         get
         {
-            var view = NativeMethods.TablePtr->f1681((void*)_handle);
+            var view = NativeMethods.TablePtr->hs_get_891735e3((void*)_handle);
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -137,7 +137,7 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1663((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_cd88f598((void*)_handle);
             _handle = 0;
         }
     }

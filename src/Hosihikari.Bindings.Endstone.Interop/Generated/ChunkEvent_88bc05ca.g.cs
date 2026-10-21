@@ -29,6 +29,6 @@ public sealed unsafe partial class ChunkEvent
 
     public nint getChunk()
     {
-        return (nint)NativeMethods.TablePtr->f296((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_c7604b5b((void*)_handle);
     }
 }

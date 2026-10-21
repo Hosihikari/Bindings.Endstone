@@ -25,19 +25,19 @@ public sealed unsafe partial class JoinView_std___List_const_iterator_std___List
 
     public nint begin
     {
-        get => (nint)NativeMethods.TablePtr->f1642((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_4e99b612((void*)_handle);
     }
 
     public nint end
     {
-        get => (nint)NativeMethods.TablePtr->f1643((void*)_handle);
+        get => (nint)NativeMethods.TablePtr->hs_get_20f90d2e((void*)_handle);
     }
 
     public string sep
     {
         get
         {
-            var view = NativeMethods.TablePtr->f1644((void*)_handle);
+            var view = NativeMethods.TablePtr->hs_get_0b96ffb6((void*)_handle);
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -46,7 +46,7 @@ public sealed unsafe partial class JoinView_std___List_const_iterator_std___List
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1641((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_a9643a4f((void*)_handle);
             _handle = 0;
         }
     }

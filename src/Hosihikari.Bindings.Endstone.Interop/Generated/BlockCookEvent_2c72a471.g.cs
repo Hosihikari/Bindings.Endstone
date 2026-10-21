@@ -25,7 +25,7 @@ public sealed unsafe partial class BlockCookEvent : global::System.IDisposable
 
     public static BlockCookEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Block block, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack source, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack result)
     {
-        var handle = NativeMethods.TablePtr->f168((void*)block.ReleaseHandle(), (void*)source.Handle, (void*)result.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_9a05ed4b((void*)block.ReleaseHandle(), (void*)source.Handle, (void*)result.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,35 +36,35 @@ public sealed unsafe partial class BlockCookEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f169();
+        get => (nint)NativeMethods.TablePtr->hs_get_b09a94a0();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f170((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_5825985b((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getResult()
     {
-        return (nint)NativeMethods.TablePtr->f171((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_0689da9d((void*)_handle);
     }
 
     public nint getSource()
     {
-        return (nint)NativeMethods.TablePtr->f172((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_6cf59d58((void*)_handle);
     }
 
     public void setResult(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack result)
     {
-        NativeMethods.TablePtr->f173((void*)_handle, (void*)result.Handle);
+        NativeMethods.TablePtr->hs_method_f91e83e3((void*)_handle, (void*)result.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f167((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_2c72a471((void*)_handle);
             _handle = 0;
         }
     }

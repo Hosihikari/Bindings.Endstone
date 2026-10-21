@@ -32,7 +32,7 @@ public sealed unsafe partial class Identifier_endstone__Attribute_ : global::Sys
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(s);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->f584(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var handle = NativeMethods.TablePtr->hs_create_89e4c122(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -47,7 +47,7 @@ public sealed unsafe partial class Identifier_endstone__Attribute_ : global::Sys
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(identifier);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->f585(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var handle = NativeMethods.TablePtr->hs_create_f0c72e68(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,7 +65,7 @@ public sealed unsafe partial class Identifier_endstone__Attribute_ : global::Sys
         {
             fixed (byte* __hs_stringData1 = __hs_stringBytes1)
             {
-                var handle = NativeMethods.TablePtr->f586(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+                var handle = NativeMethods.TablePtr->hs_create_d8db6b11(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -80,20 +80,20 @@ public sealed unsafe partial class Identifier_endstone__Attribute_ : global::Sys
     {
         get
         {
-            var view = NativeMethods.TablePtr->f587();
+            var view = NativeMethods.TablePtr->hs_get_5c45f524();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
 
     public string getKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f588((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_8fbdaacf((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getNamespace()
     {
-        var __hs_view = NativeMethods.TablePtr->f589((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_de387ceb((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -102,31 +102,31 @@ public sealed unsafe partial class Identifier_endstone__Attribute_ : global::Sys
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->f590(__hs_stringData0, (nuint)__hs_stringBytes0.Length));
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_((nint)NativeMethods.TablePtr->hs_method_dc58d608(__hs_stringData0, (nuint)__hs_stringBytes0.Length));
         }
     }
 
     public string operator_basic_string()
     {
-        var __hs_view = NativeMethods.TablePtr->f591((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_1aacf4c7((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_ other)
     {
-        return NativeMethods.TablePtr->f592((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_e93a0167((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Attribute_ other)
     {
-        return NativeMethods.TablePtr->f593((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_99905309((void*)_handle, (void*)other.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f583((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_f0254b86((void*)_handle);
             _handle = 0;
         }
     }

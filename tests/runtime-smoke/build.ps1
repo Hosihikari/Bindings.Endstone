@@ -45,114 +45,130 @@ $Msvc = Get-ChildItem (Join-Path $VsRoot "VC\Tools\MSVC") | Sort-Object Name | S
 $SdkRoot = "C:\Program Files (x86)\Windows Kits\10\Include"
 $Sdk = Get-ChildItem $SdkRoot | Sort-Object Name | Select-Object -Last 1
 
+$GeneratedDirectory = Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated"
+$NativeMethodsFile = Get-ChildItem $GeneratedDirectory -Filter "NativeMethods.g.cs" | Select-Object -First 1
+if (-not $NativeMethodsFile) { throw "NativeMethods.g.cs was not found." }
+$NativeMethodsText = Get-Content $NativeMethodsFile.FullName -Raw
+$TableFieldMatches = [regex]::Matches($NativeMethodsText, 'public delegate\* unmanaged\[Cdecl\]<[^;]+> (hs_[A-Za-z0-9_]+);')
+$TableFieldIndex = @{}
+for ($FieldIndex = 0; $FieldIndex -lt $TableFieldMatches.Count; $FieldIndex++) {
+    $TableFieldIndex[$TableFieldMatches[$FieldIndex].Groups[1].Value] = $FieldIndex
+}
+if ($TableFieldIndex.Count -eq 0) { throw "No table fields were found in NativeMethods.g.cs." }
+
+function Resolve-TableField {
+    param([string]$Name)
+    if ([string]::IsNullOrEmpty($Name)) { return "" }
+    if (-not $TableFieldIndex.ContainsKey($Name)) { throw "Unknown table field '$Name'." }
+    return [string]$TableFieldIndex[$Name]
+}
+
 $ServerFile = Get-ChildItem (Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated") -Filter "Server_*.g.cs" |
     Select-Object -First 1
 if (-not $ServerFile) { throw "Generated Server interop was not found." }
 $ServerText = Get-Content $ServerFile.FullName -Raw
-$NameMatch = [regex]::Match($ServerText, 'getName\(\)[\s\S]*?TablePtr->f(\d+)')
-$VersionMatch = [regex]::Match($ServerText, 'getVersion\(\)[\s\S]*?TablePtr->f(\d+)')
+$NameMatch = [regex]::Match($ServerText, 'getName\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)')
+$VersionMatch = [regex]::Match($ServerText, 'getVersion\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)')
 if (-not $NameMatch.Success -or -not $VersionMatch.Success) {
     throw "Could not find Server::getName/getVersion table indices."
 }
 
 function Get-TableIndex {
     param([string]$Path, [string]$Pattern, [string]$Description)
-    $File = Get-ChildItem (Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated") -Filter $Path |
+    $File = Get-ChildItem $GeneratedDirectory -Filter $Path |
         Select-Object -First 1
     if (-not $File) { throw "Generated interop for $Description was not found." }
     $Text = Get-Content $File.FullName -Raw
     $Match = [regex]::Match($Text, $Pattern)
     if (-not $Match.Success) { throw "Could not find the $Description table index." }
-    return $Match.Groups[1].Value
+    return Resolve-TableField $Match.Groups[1].Value
 }
 
-$TranslatableCreate = Get-TableIndex "Translatable_*.g.cs" 'Create\(string text, string\[\] @params\)[\s\S]*?TablePtr->f(\d+)' "Translatable::Create"
-$TranslatableEmpty = Get-TableIndex "Translatable_*.g.cs" 'empty\(\)[\s\S]*?TablePtr->f(\d+)' "Translatable::empty"
-$TranslatableText = Get-TableIndex "Translatable_*.g.cs" 'getText\(\)[\s\S]*?TablePtr->f(\d+)' "Translatable::getText"
-$TranslatableDestroy = Get-TableIndex "Translatable_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "Translatable::Dispose"
-$ArrayTagCreate = Get-TableIndex "ArrayTag_int__*.g.cs" 'Create\(int\[\] v\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::Create"
-$ArrayTagSize = Get-TableIndex "ArrayTag_int__*.g.cs" 'size\(\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::size"
-$ArrayTagDestroy = Get-TableIndex "ArrayTag_int__*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "ArrayTag_int_::Dispose"
-$ServerPluginManager = Get-TableIndex "Server_*.g.cs" 'getPluginManager\(\)[\s\S]*?TablePtr->f(\d+)' "Server::getPluginManager"
-$PluginManagerPlugins = Get-TableIndex "PluginManager_*.g.cs" 'getPlugins\(\)[\s\S]*?TablePtr->f(\d+)' "PluginManager::getPlugins"
-$ServerCreateScoreboard = Get-TableIndex "Server_*.g.cs" 'createScoreboard\(\)[\s\S]*?TablePtr->f(\d+)' "Server::createScoreboard"
-$ScoreboardClearSlot = Get-TableIndex "Scoreboard_*.g.cs" 'clearSlot\(int slot\)[\s\S]*?TablePtr->f(\d+)' "Scoreboard::clearSlot"
-$ScoreboardObjectives = Get-TableIndex "Scoreboard_*.g.cs" 'getObjectives\(\)[\s\S]*?TablePtr->f(\d+)' "Scoreboard::getObjectives"
-$ServerBanList = Get-TableIndex "Server_*.g.cs" 'getBanList\(\)[\s\S]*?TablePtr->f(\d+)' "Server::getBanList"
-$PlayerBanEntries = Get-TableIndex "PlayerBanList_*.g.cs" 'getEntries\(\)[\s\S]*?TablePtr->f(\d+)' "PlayerBanList::getEntries"
-$PlayerBanEntry = Get-TableIndex "PlayerBanList_*.g.cs" 'getBanEntry\(string name\)[\s\S]*?TablePtr->f(\d+)' "PlayerBanList::getBanEntry"
-$PlayerBanAdd = Get-TableIndex "PlayerBanList_*.g.cs" 'addBan\(string name, string\? reason, long duration, string\? source\)[\s\S]*?TablePtr->f(\d+)' "PlayerBanList::addBan"
-$PlayerBanRemove = Get-TableIndex "PlayerBanList_*.g.cs" 'removeBan\(string name\)[\s\S]*?TablePtr->f(\d+)' "PlayerBanList::removeBan"
-$PlayerBanned = Get-TableIndex "PlayerBanList_*.g.cs" 'isBanned\(string name\)[\s\S]*?TablePtr->f(\d+)' "PlayerBanList::isBanned"
-$ServerItemFactory = Get-TableIndex "Server_*.g.cs" 'getItemFactory\(\)[\s\S]*?TablePtr->f(\d+)' "Server::getItemFactory"
-$ItemFactoryGetMeta = Get-TableIndex "ItemFactory_*.g.cs" 'getItemMeta\([\s\S]*?TablePtr->f(\d+)' "ItemFactory::getItemMeta"
-$ItemMetaAddEnchant = Get-TableIndex "ItemMeta_*.g.cs" 'addEnchant\([\s\S]*?TablePtr->f(\d+)' "ItemMeta::addEnchant"
-$ItemMetaGetEnchants = Get-TableIndex "ItemMeta_*.g.cs" 'getEnchants\(\)[\s\S]*?TablePtr->f(\d+)' "ItemMeta::getEnchants"
-$ItemMetaDestroy = Get-TableIndex "ItemMeta_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "ItemMeta::Dispose"
-$ModalFormAddControl = Get-TableIndex "ModalForm_*.g.cs" 'addControl\([\s\S]*?TablePtr->f(\d+)' "ModalForm::addControl"
-$ModalFormGetControls = Get-TableIndex "ModalForm_*.g.cs" 'getControls\(\)[\s\S]*?TablePtr->f(\d+)' "ModalForm::getControls"
-$DropdownDestroy = Get-TableIndex "Dropdown_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "Dropdown::Dispose"
-$GeneratedDirectory = Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated"
+$TranslatableCreate = Get-TableIndex "Translatable_*.g.cs" 'Create\(string text, string\[\] @params\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Translatable::Create"
+$TranslatableEmpty = Get-TableIndex "Translatable_*.g.cs" 'empty\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Translatable::empty"
+$TranslatableText = Get-TableIndex "Translatable_*.g.cs" 'getText\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Translatable::getText"
+$TranslatableDestroy = Get-TableIndex "Translatable_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Translatable::Dispose"
+$ArrayTagCreate = Get-TableIndex "ArrayTag_int__*.g.cs" 'Create\(int\[\] v\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ArrayTag_int_::Create"
+$ArrayTagSize = Get-TableIndex "ArrayTag_int__*.g.cs" 'size\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ArrayTag_int_::size"
+$ArrayTagDestroy = Get-TableIndex "ArrayTag_int__*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ArrayTag_int_::Dispose"
+$ServerPluginManager = Get-TableIndex "Server_*.g.cs" 'getPluginManager\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Server::getPluginManager"
+$PluginManagerPlugins = Get-TableIndex "PluginManager_*.g.cs" 'getPlugins\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "PluginManager::getPlugins"
+$ServerCreateScoreboard = Get-TableIndex "Server_*.g.cs" 'createScoreboard\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Server::createScoreboard"
+$ScoreboardClearSlot = Get-TableIndex "Scoreboard_*.g.cs" 'clearSlot\(int slot\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Scoreboard::clearSlot"
+$ScoreboardObjectives = Get-TableIndex "Scoreboard_*.g.cs" 'getObjectives\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Scoreboard::getObjectives"
+$ServerBanList = Get-TableIndex "Server_*.g.cs" 'getBanList\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Server::getBanList"
+$PlayerBanEntries = Get-TableIndex "PlayerBanList_*.g.cs" 'getEntries\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "PlayerBanList::getEntries"
+$PlayerBanEntry = Get-TableIndex "PlayerBanList_*.g.cs" 'getBanEntry\(string name\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "PlayerBanList::getBanEntry"
+$PlayerBanAdd = Get-TableIndex "PlayerBanList_*.g.cs" 'addBan\(string name, string\? reason, long duration, string\? source\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "PlayerBanList::addBan"
+$PlayerBanRemove = Get-TableIndex "PlayerBanList_*.g.cs" 'removeBan\(string name\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "PlayerBanList::removeBan"
+$PlayerBanned = Get-TableIndex "PlayerBanList_*.g.cs" 'isBanned\(string name\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "PlayerBanList::isBanned"
+$ServerItemFactory = Get-TableIndex "Server_*.g.cs" 'getItemFactory\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Server::getItemFactory"
+$ItemFactoryGetMeta = Get-TableIndex "ItemFactory_*.g.cs" 'getItemMeta\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemFactory::getItemMeta"
+$ItemMetaAddEnchant = Get-TableIndex "ItemMeta_*.g.cs" 'addEnchant\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemMeta::addEnchant"
+$ItemMetaGetEnchants = Get-TableIndex "ItemMeta_*.g.cs" 'getEnchants\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemMeta::getEnchants"
+$ItemMetaDestroy = Get-TableIndex "ItemMeta_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemMeta::Dispose"
+$ModalFormAddControl = Get-TableIndex "ModalForm_*.g.cs" 'addControl\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ModalForm::addControl"
+$ModalFormGetControls = Get-TableIndex "ModalForm_*.g.cs" 'getControls\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ModalForm::getControls"
+$DropdownDestroy = Get-TableIndex "Dropdown_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Dropdown::Dispose"
 $ControlVariantFile = Get-ChildItem $GeneratedDirectory -Filter "Variant_*.g.cs" |
     Where-Object { (Get-Content $_.FullName -Raw) -match 'AsStepSlider' } |
     Select-Object -First 1
 if (-not $ControlVariantFile) { throw "The form-control variant wrapper was not found." }
 $ControlVariantText = Get-Content $ControlVariantFile.FullName -Raw
-$ControlVariantCreateDropdown = [regex]::Match($ControlVariantText, 'CreateDropdown\([\s\S]*?TablePtr->f(\d+)').Groups[1].Value
-$ControlVariantIndex = [regex]::Match($ControlVariantText, 'public int Index => NativeMethods\.TablePtr->f(\d+)').Groups[1].Value
-$ControlVariantAsDropdown = [regex]::Match($ControlVariantText, 'AsDropdown\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
-$ControlVariantDestroy = [regex]::Match($ControlVariantText, 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$ControlVariantCreateDropdown = Resolve-TableField ([regex]::Match($ControlVariantText, 'CreateDropdown\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+$ControlVariantIndex = Resolve-TableField ([regex]::Match($ControlVariantText, 'public int Index => NativeMethods\.TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+$ControlVariantAsDropdown = Resolve-TableField ([regex]::Match($ControlVariantText, 'AsDropdown\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+$ControlVariantDestroy = Resolve-TableField ([regex]::Match($ControlVariantText, 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
 if (-not $ControlVariantCreateDropdown -or -not $ControlVariantIndex -or -not $ControlVariantAsDropdown -or -not $ControlVariantDestroy) {
     throw "Could not find the form-control variant table indices."
 }
-$PermissionCreate = Get-TableIndex "Permission_*.g.cs" 'Create\(string name, [\s\S]*?TablePtr->f(\d+)' "Permission::Create"
-$PermissionGetChildren = Get-TableIndex "Permission_*.g.cs" 'getChildren\(\)[\s\S]*?TablePtr->f(\d+)' "Permission::getChildren"
-$PermissionDestroy = Get-TableIndex "Permission_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "Permission::Dispose"
-$PermissionName = Get-TableIndex "Permission_*.g.cs" 'getName\(\)[\s\S]*?TablePtr->f(\d+)' "Permission::getName"
-$PluginManagerAddPermission = Get-TableIndex "PluginManager_*.g.cs" 'addPermission\([\s\S]*?TablePtr->f(\d+)' "PluginManager::addPermission"
-$CommandCreate = Get-TableIndex "Command_*.g.cs" 'Create\(string name, [\s\S]*?TablePtr->f(\d+)' "Command::Create"
-$CommandGetAliases = Get-TableIndex "Command_*.g.cs" 'getAliases\(\)[\s\S]*?TablePtr->f(\d+)' "Command::getAliases"
-$CommandDestroy = Get-TableIndex "Command_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "Command::Dispose"
-$ItemTypeIdCreate = Get-TableIndex "Identifier_endstone__ItemType_*.g.cs" 'Create[A-Za-z0-9_]*\(string s\)[\s\S]*?TablePtr->f(\d+)' "Identifier<ItemType>::Create"
-$ItemTypeIdKey = Get-TableIndex "Identifier_endstone__ItemType_*.g.cs" 'getKey\(\)[\s\S]*?TablePtr->f(\d+)' "Identifier<ItemType>::getKey"
-$ItemTypeIdDestroy = Get-TableIndex "Identifier_endstone__ItemType_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "Identifier<ItemType>::Dispose"
-$ServerCreateBlockData = Get-TableIndex "Server_*.g.cs" 'createBlockData\(string type, [\s\S]*?TablePtr->f(\d+)' "Server::createBlockData"
-$BlockDataGetBlockStates = Get-TableIndex "BlockData_*.g.cs" 'getBlockStates\(\)[\s\S]*?TablePtr->f(\d+)' "BlockData::getBlockStates"
-$BlockDataDestroy = Get-TableIndex "BlockData_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "BlockData::Dispose"
+$PermissionCreate = Get-TableIndex "Permission_*.g.cs" 'Create\(string name, [\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Permission::Create"
+$PermissionGetChildren = Get-TableIndex "Permission_*.g.cs" 'getChildren\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Permission::getChildren"
+$PermissionDestroy = Get-TableIndex "Permission_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Permission::Dispose"
+$PermissionName = Get-TableIndex "Permission_*.g.cs" 'getName\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Permission::getName"
+$PluginManagerAddPermission = Get-TableIndex "PluginManager_*.g.cs" 'addPermission\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "PluginManager::addPermission"
+$CommandCreate = Get-TableIndex "Command_*.g.cs" 'Create\(string name, [\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Command::Create"
+$CommandGetAliases = Get-TableIndex "Command_*.g.cs" 'getAliases\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Command::getAliases"
+$CommandDestroy = Get-TableIndex "Command_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Command::Dispose"
+$ItemTypeIdCreate = Get-TableIndex "Identifier_endstone__ItemType_*.g.cs" 'Create[A-Za-z0-9_]*\(string s\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Identifier<ItemType>::Create"
+$ItemTypeIdKey = Get-TableIndex "Identifier_endstone__ItemType_*.g.cs" 'getKey\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Identifier<ItemType>::getKey"
+$ItemTypeIdDestroy = Get-TableIndex "Identifier_endstone__ItemType_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Identifier<ItemType>::Dispose"
+$ServerCreateBlockData = Get-TableIndex "Server_*.g.cs" 'createBlockData\(string type, [\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Server::createBlockData"
+$BlockDataGetBlockStates = Get-TableIndex "BlockData_*.g.cs" 'getBlockStates\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "BlockData::getBlockStates"
+$BlockDataDestroy = Get-TableIndex "BlockData_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "BlockData::Dispose"
 $BoolVariantFile = Get-ChildItem $GeneratedDirectory -Filter "Variant_*.g.cs" |
     Where-Object { (Get-Content $_.FullName -Raw) -match 'AsInt32' -and (Get-Content $_.FullName -Raw) -match 'AsBool' } |
     Select-Object -First 1
 if (-not $BoolVariantFile) { throw "The bool/string/int variant wrapper was not found." }
 $BoolVariantText = Get-Content $BoolVariantFile.FullName -Raw
-$BoolVariantIndex = [regex]::Match($BoolVariantText, 'public int Index => NativeMethods\.TablePtr->f(\d+)').Groups[1].Value
-$BoolVariantAsBool = [regex]::Match($BoolVariantText, 'AsBool\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
-$BoolVariantDestroy = [regex]::Match($BoolVariantText, 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$BoolVariantIndex = Resolve-TableField ([regex]::Match($BoolVariantText, 'public int Index => NativeMethods\.TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+$BoolVariantAsBool = Resolve-TableField ([regex]::Match($BoolVariantText, 'AsBool\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+$BoolVariantDestroy = Resolve-TableField ([regex]::Match($BoolVariantText, 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
 if (-not $BoolVariantIndex -or -not $BoolVariantAsBool -or -not $BoolVariantDestroy) {
     throw "Could not find the bool/string/int variant table indices."
 }
-$ServerCommandSender = Get-TableIndex "Server_*.g.cs" 'getCommandSender\(\)[\s\S]*?TablePtr->f(\d+)' "Server::getCommandSender"
-$PermissiblePermissionLevel = Get-TableIndex "Permissible_*.g.cs" 'getPermissionLevel\(\)[\s\S]*?TablePtr->f(\d+)' "Permissible::getPermissionLevel"
-$CommandSenderName = Get-TableIndex "CommandSender_*.g.cs" 'getName\(\)[\s\S]*?TablePtr->f(\d+)' "CommandSender::getName"
-$WrapperCreate = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'Create\([\s\S]*?TablePtr->f(\d+)' "CommandSenderWrapper::Create"
-$WrapperPermissionLevel = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'getPermissionLevel\(\)[\s\S]*?TablePtr->f(\d+)' "CommandSenderWrapper::getPermissionLevel"
-$WrapperName = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'getName\(\)[\s\S]*?TablePtr->f(\d+)' "CommandSenderWrapper::getName"
-$WrapperDestroy = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "CommandSenderWrapper::Dispose"
+$ServerCommandSender = Get-TableIndex "Server_*.g.cs" 'getCommandSender\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Server::getCommandSender"
+$PermissiblePermissionLevel = Get-TableIndex "Permissible_*.g.cs" 'getPermissionLevel\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Permissible::getPermissionLevel"
+$CommandSenderName = Get-TableIndex "CommandSender_*.g.cs" 'getName\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "CommandSender::getName"
+$WrapperCreate = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'Create\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "CommandSenderWrapper::Create"
+$WrapperPermissionLevel = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'getPermissionLevel\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "CommandSenderWrapper::getPermissionLevel"
+$WrapperName = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'getName\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "CommandSenderWrapper::getName"
+$WrapperDestroy = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "CommandSenderWrapper::Dispose"
 
-$GeneratedDirectory = Join-Path $RepoRoot "src\Hosihikari.Bindings.Endstone.Interop\Generated"
-$ActionFormCreate = Get-TableIndex "ActionForm_*.g.cs" 'Create\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::Create"
-$ActionFormSetContent = Get-TableIndex "ActionForm_*.g.cs" 'setContent\([\s\S]*?TablePtr->f(\d+)' "ActionForm::setContent"
-$ActionFormGetContent = Get-TableIndex "ActionForm_*.g.cs" 'getContent\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::getContent"
-$ActionFormDestroy = Get-TableIndex "ActionForm_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::Dispose"
-$ActionFormSetOnSubmit = Get-TableIndex "ActionForm_*.g.cs" 'setOnSubmit\([\s\S]*?TablePtr->f(\d+)' "ActionForm::setOnSubmit"
-$ActionFormGetOnSubmit = Get-TableIndex "ActionForm_*.g.cs" 'getOnSubmit\(\)[\s\S]*?TablePtr->f(\d+)' "ActionForm::getOnSubmit"
+$ActionFormCreate = Get-TableIndex "ActionForm_*.g.cs" 'Create\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::Create"
+$ActionFormSetContent = Get-TableIndex "ActionForm_*.g.cs" 'setContent\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::setContent"
+$ActionFormGetContent = Get-TableIndex "ActionForm_*.g.cs" 'getContent\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::getContent"
+$ActionFormDestroy = Get-TableIndex "ActionForm_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::Dispose"
+$ActionFormSetOnSubmit = Get-TableIndex "ActionForm_*.g.cs" 'setOnSubmit\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::setOnSubmit"
+$ActionFormGetOnSubmit = Get-TableIndex "ActionForm_*.g.cs" 'getOnSubmit\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::getOnSubmit"
 
 $CallableFile = Get-ChildItem $GeneratedDirectory -Filter "Function_*.g.cs" |
     Where-Object { (Get-Content $_.FullName -Raw) -match 'Invoke\(nint arg0, int arg1\)' } |
     Select-Object -First 1
 if (-not $CallableFile) { throw "The Player*/int callable wrapper was not found." }
 $CallableText = Get-Content $CallableFile.FullName -Raw
-$CallableInvoke = [regex]::Match($CallableText, 'Invoke\(nint arg0, int arg1\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
-$CallableDestroy = [regex]::Match($CallableText, 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$CallableInvoke = Resolve-TableField ([regex]::Match($CallableText, 'Invoke\(nint arg0, int arg1\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+$CallableDestroy = Resolve-TableField ([regex]::Match($CallableText, 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
 if (-not $CallableInvoke -or -not $CallableDestroy) {
     throw "Could not find the Player*/int callable table indices."
 }
@@ -162,10 +178,10 @@ $VariantFile = Get-ChildItem $GeneratedDirectory -Filter "Variant_*.g.cs" |
     Select-Object -First 1
 if (-not $VariantFile) { throw "The string/Translatable variant wrapper was not found." }
 $VariantText = Get-Content $VariantFile.FullName -Raw
-$VariantCreateString = [regex]::Match($VariantText, 'CreateString\(string value\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
-$VariantIndex = [regex]::Match($VariantText, 'public int Index => NativeMethods\.TablePtr->f(\d+)').Groups[1].Value
-$VariantGetString = [regex]::Match($VariantText, 'AsString\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
-$VariantDestroy = [regex]::Match($VariantText, 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)').Groups[1].Value
+$VariantCreateString = Resolve-TableField ([regex]::Match($VariantText, 'CreateString\(string value\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+$VariantIndex = Resolve-TableField ([regex]::Match($VariantText, 'public int Index => NativeMethods\.TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+$VariantGetString = Resolve-TableField ([regex]::Match($VariantText, 'AsString\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+$VariantDestroy = Resolve-TableField ([regex]::Match($VariantText, 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
 if (-not $VariantCreateString -or -not $VariantIndex -or -not $VariantGetString -or -not $VariantDestroy) {
     throw "Could not find the string/Translatable variant table indices."
 }
@@ -181,8 +197,8 @@ $Args = @(
     "/I", (Join-Path $IncludeRoot "endstone"),
     "/I", (Join-Path $RepoRoot "native\BindingShim\generated\win-x64-server\endstone"),
     "/I", $GeneratedRoot,
-    "/DHS_NAME_INDEX=$($NameMatch.Groups[1].Value)",
-    "/DHS_VERSION_INDEX=$($VersionMatch.Groups[1].Value)",
+    "/DHS_NAME_INDEX=$(Resolve-TableField $NameMatch.Groups[1].Value)",
+    "/DHS_VERSION_INDEX=$(Resolve-TableField $VersionMatch.Groups[1].Value)",
     "/DHS_TRANSLATABLE_CREATE_INDEX=$TranslatableCreate",
     "/DHS_TRANSLATABLE_EMPTY_INDEX=$TranslatableEmpty",
     "/DHS_TRANSLATABLE_TEXT_INDEX=$TranslatableText",

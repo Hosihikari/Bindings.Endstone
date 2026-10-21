@@ -25,7 +25,7 @@ public sealed unsafe partial class ActorDamageEvent : global::System.IDisposable
 
     public static ActorDamageEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob actor, global::Hosihikari.Bindings.Endstone.Interop.endstone.DamageSource damage_source, float damage)
     {
-        var handle = NativeMethods.TablePtr->f50((void*)actor.Handle, (void*)damage_source.ReleaseHandle(), damage);
+        var handle = NativeMethods.TablePtr->hs_create_1c528cbf((void*)actor.Handle, (void*)damage_source.ReleaseHandle(), damage);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,35 +36,35 @@ public sealed unsafe partial class ActorDamageEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f51();
+        get => (nint)NativeMethods.TablePtr->hs_get_6558493f();
     }
 
     public float getDamage()
     {
-        return NativeMethods.TablePtr->f52((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9c13068e((void*)_handle);
     }
 
     public nint getDamageSource()
     {
-        return (nint)NativeMethods.TablePtr->f53((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_cb6b8ac2((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f54((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_68e835a4((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void setDamage(float damage)
     {
-        NativeMethods.TablePtr->f55((void*)_handle, damage);
+        NativeMethods.TablePtr->hs_method_f5f8691f((void*)_handle, damage);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f49((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_21170623((void*)_handle);
             _handle = 0;
         }
     }

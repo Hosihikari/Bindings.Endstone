@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerPickupItemEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1191();
+        get => (nint)NativeMethods.TablePtr->hs_get_ee377252();
     }
 
     public static PlayerPickupItemEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Item item)
     {
-        var handle = NativeMethods.TablePtr->f1192((void*)player.Handle, (void*)item.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_352fb381((void*)player.Handle, (void*)item.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -41,20 +41,20 @@ public sealed unsafe partial class PlayerPickupItemEvent : global::System.IDispo
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1193((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_7dbbe6d9((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getItem()
     {
-        return (nint)NativeMethods.TablePtr->f1194((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_91dd524f((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1190((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_46c72fe0((void*)_handle);
             _handle = 0;
         }
     }

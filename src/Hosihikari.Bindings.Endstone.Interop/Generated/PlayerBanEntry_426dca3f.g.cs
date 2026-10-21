@@ -31,7 +31,7 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var handle = NativeMethods.TablePtr->f1044(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
+                var handle = NativeMethods.TablePtr->hs_create_346d6121(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -44,21 +44,21 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1045((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_6e16ee39((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? getUniqueId()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1046((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_80abbf8c((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)__hs_handle) : null;
     }
 
     public string? getXuid()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f1047((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->hs_method_8099d776((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
@@ -66,7 +66,7 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1043((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_426dca3f((void*)_handle);
             _handle = 0;
         }
     }

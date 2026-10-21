@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerPortalEvent : global::System.IDisposabl
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1196();
+        get => (nint)NativeMethods.TablePtr->hs_get_91479d0d();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1197((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->hs_method_6a286f65((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -38,7 +38,7 @@ public sealed unsafe partial class PlayerPortalEvent : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1195((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_93d9555b((void*)_handle);
             _handle = 0;
         }
     }

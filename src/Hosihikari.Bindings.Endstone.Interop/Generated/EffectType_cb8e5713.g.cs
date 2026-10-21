@@ -25,194 +25,194 @@ public sealed unsafe partial class EffectType : global::System.IDisposable
 
     public static nint Absorption
     {
-        get => (nint)NativeMethods.TablePtr->f457();
+        get => (nint)NativeMethods.TablePtr->hs_get_c0fea9c8();
     }
 
     public static nint BadOmen
     {
-        get => (nint)NativeMethods.TablePtr->f458();
+        get => (nint)NativeMethods.TablePtr->hs_get_0fa4a533();
     }
 
     public static nint Blindness
     {
-        get => (nint)NativeMethods.TablePtr->f459();
+        get => (nint)NativeMethods.TablePtr->hs_get_a6f5a902();
     }
 
     public static nint BreathOfTheNautilus
     {
-        get => (nint)NativeMethods.TablePtr->f460();
+        get => (nint)NativeMethods.TablePtr->hs_get_07a7fd58();
     }
 
     public static nint ConduitPower
     {
-        get => (nint)NativeMethods.TablePtr->f461();
+        get => (nint)NativeMethods.TablePtr->hs_get_cacdda5f();
     }
 
     public static nint Darkness
     {
-        get => (nint)NativeMethods.TablePtr->f462();
+        get => (nint)NativeMethods.TablePtr->hs_get_8c88c9d5();
     }
 
     public static nint FatalPoison
     {
-        get => (nint)NativeMethods.TablePtr->f463();
+        get => (nint)NativeMethods.TablePtr->hs_get_a0a8bd2e();
     }
 
     public static nint FireResistance
     {
-        get => (nint)NativeMethods.TablePtr->f464();
+        get => (nint)NativeMethods.TablePtr->hs_get_e6dfd97b();
     }
 
     public static nint Haste
     {
-        get => (nint)NativeMethods.TablePtr->f465();
+        get => (nint)NativeMethods.TablePtr->hs_get_19f8bc6c();
     }
 
     public static nint HealthBoost
     {
-        get => (nint)NativeMethods.TablePtr->f466();
+        get => (nint)NativeMethods.TablePtr->hs_get_499dd14d();
     }
 
     public static nint HeroOfTheVillage
     {
-        get => (nint)NativeMethods.TablePtr->f467();
+        get => (nint)NativeMethods.TablePtr->hs_get_8432efe9();
     }
 
     public static nint Hunger
     {
-        get => (nint)NativeMethods.TablePtr->f468();
+        get => (nint)NativeMethods.TablePtr->hs_get_99c3f8ce();
     }
 
     public static nint Infested
     {
-        get => (nint)NativeMethods.TablePtr->f469();
+        get => (nint)NativeMethods.TablePtr->hs_get_3b02faac();
     }
 
     public static nint InstantDamage
     {
-        get => (nint)NativeMethods.TablePtr->f470();
+        get => (nint)NativeMethods.TablePtr->hs_get_d479e900();
     }
 
     public static nint InstantHealth
     {
-        get => (nint)NativeMethods.TablePtr->f471();
+        get => (nint)NativeMethods.TablePtr->hs_get_2827fba7();
     }
 
     public static nint Invisibility
     {
-        get => (nint)NativeMethods.TablePtr->f472();
+        get => (nint)NativeMethods.TablePtr->hs_get_68b1b776();
     }
 
     public static nint JumpBoost
     {
-        get => (nint)NativeMethods.TablePtr->f473();
+        get => (nint)NativeMethods.TablePtr->hs_get_904b520e();
     }
 
     public static nint Levitation
     {
-        get => (nint)NativeMethods.TablePtr->f474();
+        get => (nint)NativeMethods.TablePtr->hs_get_562e0fce();
     }
 
     public static nint MiningFatigue
     {
-        get => (nint)NativeMethods.TablePtr->f475();
+        get => (nint)NativeMethods.TablePtr->hs_get_dee2d487();
     }
 
     public static nint Nausea
     {
-        get => (nint)NativeMethods.TablePtr->f476();
+        get => (nint)NativeMethods.TablePtr->hs_get_c57c1d75();
     }
 
     public static nint NightVision
     {
-        get => (nint)NativeMethods.TablePtr->f477();
+        get => (nint)NativeMethods.TablePtr->hs_get_27b73aef();
     }
 
     public static nint Oozing
     {
-        get => (nint)NativeMethods.TablePtr->f478();
+        get => (nint)NativeMethods.TablePtr->hs_get_2ef25e36();
     }
 
     public static nint Poison
     {
-        get => (nint)NativeMethods.TablePtr->f479();
+        get => (nint)NativeMethods.TablePtr->hs_get_5b81a67c();
     }
 
     public static nint RaidOmen
     {
-        get => (nint)NativeMethods.TablePtr->f480();
+        get => (nint)NativeMethods.TablePtr->hs_get_cc94bc60();
     }
 
     public static nint Regeneration
     {
-        get => (nint)NativeMethods.TablePtr->f481();
+        get => (nint)NativeMethods.TablePtr->hs_get_11fb477c();
     }
 
     public static nint Resistance
     {
-        get => (nint)NativeMethods.TablePtr->f482();
+        get => (nint)NativeMethods.TablePtr->hs_get_f8dbcb49();
     }
 
     public static nint Saturation
     {
-        get => (nint)NativeMethods.TablePtr->f483();
+        get => (nint)NativeMethods.TablePtr->hs_get_00d82263();
     }
 
     public static nint SlowFalling
     {
-        get => (nint)NativeMethods.TablePtr->f484();
+        get => (nint)NativeMethods.TablePtr->hs_get_a15af17d();
     }
 
     public static nint Slowness
     {
-        get => (nint)NativeMethods.TablePtr->f485();
+        get => (nint)NativeMethods.TablePtr->hs_get_4e0efdfb();
     }
 
     public static nint Speed
     {
-        get => (nint)NativeMethods.TablePtr->f486();
+        get => (nint)NativeMethods.TablePtr->hs_get_384da66b();
     }
 
     public static nint Strength
     {
-        get => (nint)NativeMethods.TablePtr->f487();
+        get => (nint)NativeMethods.TablePtr->hs_get_9d95c6d3();
     }
 
     public static nint TrialOmen
     {
-        get => (nint)NativeMethods.TablePtr->f488();
+        get => (nint)NativeMethods.TablePtr->hs_get_c70b1e67();
     }
 
     public static nint WaterBreathing
     {
-        get => (nint)NativeMethods.TablePtr->f489();
+        get => (nint)NativeMethods.TablePtr->hs_get_df3bf9ed();
     }
 
     public static nint Weakness
     {
-        get => (nint)NativeMethods.TablePtr->f490();
+        get => (nint)NativeMethods.TablePtr->hs_get_bab3ecdf();
     }
 
     public static nint Weaving
     {
-        get => (nint)NativeMethods.TablePtr->f491();
+        get => (nint)NativeMethods.TablePtr->hs_get_b01fc8eb();
     }
 
     public static nint WindCharged
     {
-        get => (nint)NativeMethods.TablePtr->f492();
+        get => (nint)NativeMethods.TablePtr->hs_get_67711143();
     }
 
     public static nint Wither
     {
-        get => (nint)NativeMethods.TablePtr->f493();
+        get => (nint)NativeMethods.TablePtr->hs_get_fc557aed();
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f456((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_cb8e5713((void*)_handle);
             _handle = 0;
         }
     }

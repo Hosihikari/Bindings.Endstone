@@ -25,32 +25,32 @@ public sealed unsafe partial class Score : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b getEntry()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b((nint)NativeMethods.TablePtr->f1399((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b((nint)NativeMethods.TablePtr->hs_method_8475b818((void*)_handle));
     }
 
     public nint getObjective()
     {
-        return (nint)NativeMethods.TablePtr->f1400((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_56a25a01((void*)_handle);
     }
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f1401((void*)_handle);
+        return (nint)NativeMethods.TablePtr->hs_method_53fb01c6((void*)_handle);
     }
 
     public int getValue()
     {
-        return NativeMethods.TablePtr->f1402((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_50e19cf7((void*)_handle);
     }
 
     public bool isScoreSet()
     {
-        return NativeMethods.TablePtr->f1403((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5e82457b((void*)_handle);
     }
 
     public void setValue(int score)
     {
-        NativeMethods.TablePtr->f1404((void*)_handle, score);
+        NativeMethods.TablePtr->hs_method_da40729f((void*)_handle, score);
     }
 
 
@@ -58,7 +58,7 @@ public sealed unsafe partial class Score : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1398((void*)_handle);
+            NativeMethods.TablePtr->hs_destroy_bfa7598b((void*)_handle);
             _handle = 0;
         }
     }
