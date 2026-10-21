@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class PermissionAttachmentInfo : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PermissionAttachmentInfo(nint handle) => _handle = handle;
+    public PermissionAttachmentInfo(nint handle) : this(handle, true) { }
+
+    internal PermissionAttachmentInfo(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PermissionAttachmentInfo : global::System.IDi
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -38,14 +50,15 @@ public sealed unsafe partial class PermissionAttachmentInfo : global::System.IDi
         }
     }
 
-    public nint getAttachment()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PermissionAttachment? getAttachment()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6807d29a((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_6807d29a((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PermissionAttachment((nint)__hs_handle, false) : null;
     }
 
-    public nint getPermissible()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible getPermissible()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c49d73e5((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->hs_method_c49d73e5((void*)_handle), false);
     }
 
     public string getPermission()
@@ -63,7 +76,11 @@ public sealed unsafe partial class PermissionAttachmentInfo : global::System.IDi
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_6691e8ec((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_6691e8ec((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

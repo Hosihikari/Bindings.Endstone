@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Actor
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Actor(nint handle) => _handle = handle;
+    public Actor(nint handle) : this(handle, true) { }
+
+    internal Actor(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Actor
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -32,19 +44,21 @@ public sealed unsafe partial class Actor
         }
     }
 
-    public nint asItem()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Item? asItem()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_47bed08e((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_47bed08e((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Item((nint)__hs_handle, false) : null;
     }
 
-    public nint asMob()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob? asMob()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_cbd9f7e3((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_cbd9f7e3((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob((nint)__hs_handle, false) : null;
     }
 
-    public nint getDimension()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension getDimension()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_90c185c9((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->hs_method_90c185c9((void*)_handle), false);
     }
 
     public long getId()
@@ -52,9 +66,9 @@ public sealed unsafe partial class Actor
         return NativeMethods.TablePtr->hs_method_e75fec06((void*)_handle);
     }
 
-    public nint getLevel()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Level getLevel()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2c4264aa((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Level((nint)NativeMethods.TablePtr->hs_method_2c4264aa((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location getLocation()

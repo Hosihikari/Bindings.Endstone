@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PlayerDeathEvent(nint handle) => _handle = handle;
+    public PlayerDeathEvent(nint handle) : this(handle, true) { }
+
+    internal PlayerDeathEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -52,9 +64,9 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getPlayer()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0f3fb098((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)NativeMethods.TablePtr->hs_method_0f3fb098((void*)_handle), false);
     }
 
     public void setDeathMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? death_message)
@@ -66,7 +78,11 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_21bb0371((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_21bb0371((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class ActorTeleportEvent : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public ActorTeleportEvent(nint handle) => _handle = handle;
+    public ActorTeleportEvent(nint handle) : this(handle, true) { }
+
+    internal ActorTeleportEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class ActorTeleportEvent : global::System.IDisposab
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -45,14 +57,14 @@ public sealed unsafe partial class ActorTeleportEvent : global::System.IDisposab
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getFrom()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location getFrom()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_eb5fe6a7((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_eb5fe6a7((void*)_handle), false);
     }
 
-    public nint getTo()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location getTo()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bdc1a24d((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_bdc1a24d((void*)_handle), false);
     }
 
     public void setFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location from)
@@ -70,7 +82,11 @@ public sealed unsafe partial class ActorTeleportEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_0b0dd816((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_0b0dd816((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

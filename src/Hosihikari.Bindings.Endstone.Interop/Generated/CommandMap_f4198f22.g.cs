@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class CommandMap
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public CommandMap(nint handle) => _handle = handle;
+    public CommandMap(nint handle) : this(handle, true) { }
+
+    internal CommandMap(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class CommandMap
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -55,9 +67,9 @@ public sealed unsafe partial class CommandMap
         }
     }
 
-    public nint operator_assign(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap arg0)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap operator_assign(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d998e156((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap((nint)NativeMethods.TablePtr->hs_method_d998e156((void*)_handle, (void*)arg0.Handle), false);
     }
 
     public bool registerCommand(global::Hosihikari.Bindings.Abi.SharedHandle? command)

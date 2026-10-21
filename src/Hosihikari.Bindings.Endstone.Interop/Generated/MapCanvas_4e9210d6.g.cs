@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class MapCanvas
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public MapCanvas(nint handle) => _handle = handle;
+    public MapCanvas(nint handle) : this(handle, true) { }
+
+    internal MapCanvas(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class MapCanvas
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -50,9 +62,9 @@ public sealed unsafe partial class MapCanvas
         return __hs_result;
     }
 
-    public nint getMapView()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView getMapView()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_e50e956b((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView((nint)NativeMethods.TablePtr->hs_method_e50e956b((void*)_handle), false);
     }
 
     public uint getPixel(int x, int y)

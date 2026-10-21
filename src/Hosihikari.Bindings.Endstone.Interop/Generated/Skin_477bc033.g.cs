@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Skin : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Skin(nint handle) => _handle = handle;
+    public Skin(nint handle) : this(handle, true) { }
+
+    internal Skin(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Skin : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -47,9 +59,10 @@ public sealed unsafe partial class Skin : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_b76a1d2a((void*)_handle);
     }
 
-    public nint getCapeImage()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Image? getCapeImage()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_e317c5af((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_e317c5af((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Image((nint)__hs_handle, false) : null;
     }
 
     public string getId()
@@ -58,16 +71,20 @@ public sealed unsafe partial class Skin : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getImage()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Image getImage()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_adc734db((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Image((nint)NativeMethods.TablePtr->hs_method_adc734db((void*)_handle), false);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_477bc033((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_477bc033((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

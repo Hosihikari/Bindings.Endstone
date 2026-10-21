@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Event
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Event(nint handle) => _handle = handle;
+    public Event(nint handle) : this(handle, true) { }
+
+    internal Event(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Event
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -42,9 +54,9 @@ public sealed unsafe partial class Event
         return NativeMethods.TablePtr->hs_method_828d94d9((void*)_handle);
     }
 
-    public nint operator_assign(global::Hosihikari.Bindings.Endstone.Interop.endstone.Event arg0)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event operator_assign(global::Hosihikari.Bindings.Endstone.Interop.endstone.Event arg0)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_604c4ba6((void*)_handle, (void*)arg0.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_method_604c4ba6((void*)_handle, (void*)arg0.Handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Player
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Player(nint handle) => _handle = handle;
+    public Player(nint handle) : this(handle, true) { }
+
+    internal Player(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Player
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -50,9 +62,9 @@ public sealed unsafe partial class Player
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getEnderChest()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Inventory getEnderChest()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_56851ace((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Inventory((nint)NativeMethods.TablePtr->hs_method_56851ace((void*)_handle), false);
     }
 
     public int getExpLevel()
@@ -81,9 +93,9 @@ public sealed unsafe partial class Player
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getInventory()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerInventory getInventory()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a3acd946((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerInventory((nint)NativeMethods.TablePtr->hs_method_a3acd946((void*)_handle), false);
     }
 
     public string getLocale()
@@ -103,9 +115,9 @@ public sealed unsafe partial class Player
         return NativeMethods.TablePtr->hs_method_9cb6513a((void*)_handle);
     }
 
-    public nint getScoreboard()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Scoreboard getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d95fa490((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Scoreboard((nint)NativeMethods.TablePtr->hs_method_d95fa490((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin getSkin()

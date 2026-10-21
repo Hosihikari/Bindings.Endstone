@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__Block
 public sealed unsafe partial class Type
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Type(nint handle) => _handle = handle;
+    public Type(nint handle) : this(handle, true) { }
+
+    internal Type(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -18,14 +25,20 @@ public sealed unsafe partial class Type
             throw new global::System.ObjectDisposedException("handle");
         }
 
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
+        }
+
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
     }
 
-    public static nint get(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
+    public static global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockType? get(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_df567989((void*)id.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_df567989((void*)id.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockType((nint)__hs_handle, false) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ getId()

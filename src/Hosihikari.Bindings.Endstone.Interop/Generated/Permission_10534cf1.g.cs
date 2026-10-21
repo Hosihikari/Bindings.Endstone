@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Permission : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Permission(nint handle) => _handle = handle;
+    public Permission(nint handle) : this(handle, true) { }
+
+    internal Permission(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Permission : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -77,12 +89,13 @@ public sealed unsafe partial class Permission : global::System.IDisposable
         }
     }
 
-    public nint addParent(string name, bool value)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission? addParent(string name, bool value)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_b77c7c2d((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, value);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_b77c7c2d((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, value);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission((nint)__hs_handle, false) : null;
         }
     }
 
@@ -162,7 +175,11 @@ public sealed unsafe partial class Permission : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_10534cf1((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_10534cf1((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

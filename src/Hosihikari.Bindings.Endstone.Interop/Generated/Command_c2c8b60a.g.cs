@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Command : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Command(nint handle) => _handle = handle;
+    public Command(nint handle) : this(handle, true) { }
+
+    internal Command(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Command : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -111,9 +123,10 @@ public sealed unsafe partial class Command : global::System.IDisposable
         }
     }
 
-    public nint asPluginCommand()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginCommand? asPluginCommand()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_258d436e((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_258d436e((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginCommand((nint)__hs_handle, false) : null;
     }
 
     public bool execute(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string[] args)
@@ -240,7 +253,11 @@ public sealed unsafe partial class Command : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_c2c8b60a((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_c2c8b60a((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PacketSendEvent(nint handle) => _handle = handle;
+    public PacketSendEvent(nint handle) : this(handle, true) { }
+
+    internal PacketSendEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -65,9 +77,10 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getPlayer()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_19c260f4((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_19c260f4((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)__hs_handle, false) : null;
     }
 
     public int getSubClientId()
@@ -88,7 +101,11 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_578b0b0b((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_578b0b0b((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

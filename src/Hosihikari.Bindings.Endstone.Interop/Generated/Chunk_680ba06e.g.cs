@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Chunk : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Chunk(nint handle) => _handle = handle;
+    public Chunk(nint handle) : this(handle, true) { }
+
+    internal Chunk(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -18,19 +25,24 @@ public sealed unsafe partial class Chunk : global::System.IDisposable
             throw new global::System.ObjectDisposedException("handle");
         }
 
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
+        }
+
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
     }
 
-    public nint getDimension()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension getDimension()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_23a6e21d((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->hs_method_23a6e21d((void*)_handle), false);
     }
 
-    public nint getLevel()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Level getLevel()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_45353431((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Level((nint)NativeMethods.TablePtr->hs_method_45353431((void*)_handle), false);
     }
 
     public int getX()
@@ -48,7 +60,11 @@ public sealed unsafe partial class Chunk : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_680ba06e((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_680ba06e((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

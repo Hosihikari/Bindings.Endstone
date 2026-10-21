@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Location : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Location(nint handle) => _handle = handle;
+    public Location(nint handle) : this(handle, true) { }
+
+    internal Location(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Location : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -51,9 +63,9 @@ public sealed unsafe partial class Location : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_e9f07d2b((void*)_handle);
     }
 
-    public nint getDimension()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension getDimension()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5ecb0a21((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->hs_method_5ecb0a21((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector getDirection()
@@ -126,14 +138,14 @@ public sealed unsafe partial class Location : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_e49ec4d5((void*)_handle, (void*)other.Handle));
     }
 
-    public nint operator_operator___4fe0a03f(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location operator_operator___4fe0a03f(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_4fe0a03f((void*)_handle, (void*)other.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_4fe0a03f((void*)_handle, (void*)other.Handle), false);
     }
 
-    public nint operator_operator___26e794ef(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location operator_operator___26e794ef(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_26e794ef((void*)_handle, (void*)other.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_26e794ef((void*)_handle, (void*)other.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location operator_subtract(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
@@ -146,14 +158,14 @@ public sealed unsafe partial class Location : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_5353323f((void*)_handle, (void*)other.Handle));
     }
 
-    public nint operator_operator___8fae509e(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location operator_operator___8fae509e(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_8fae509e((void*)_handle, (void*)other.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_8fae509e((void*)_handle, (void*)other.Handle), false);
     }
 
-    public nint operator_operator___60c29b11(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location operator_operator___60c29b11(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_60c29b11((void*)_handle, (void*)other.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_60c29b11((void*)_handle, (void*)other.Handle), false);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
@@ -166,9 +178,9 @@ public sealed unsafe partial class Location : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_7656eb88((void*)_handle, (void*)dimension.Handle);
     }
 
-    public nint setDirection(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector vector)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location setDirection(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector vector)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_96f26f4c((void*)_handle, (void*)vector.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_96f26f4c((void*)_handle, (void*)vector.Handle), false);
     }
 
     public void setPitch(float pitch)
@@ -181,16 +193,20 @@ public sealed unsafe partial class Location : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_5171b718((void*)_handle, yaw);
     }
 
-    public nint zero()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location zero()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f6c3888d((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->hs_method_f6c3888d((void*)_handle), false);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_6642e54c((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_6642e54c((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

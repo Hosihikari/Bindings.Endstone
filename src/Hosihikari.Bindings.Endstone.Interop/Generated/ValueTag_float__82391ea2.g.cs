@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone.nbt;
 public sealed unsafe partial class ValueTag_float_ : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public ValueTag_float_(nint handle) => _handle = handle;
+    public ValueTag_float_(nint handle) : this(handle, true) { }
+
+    internal ValueTag_float_(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class ValueTag_float_ : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -63,7 +75,11 @@ public sealed unsafe partial class ValueTag_float_ : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_82391ea2((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_82391ea2((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

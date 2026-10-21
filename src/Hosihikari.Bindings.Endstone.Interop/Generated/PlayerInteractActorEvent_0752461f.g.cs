@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PlayerInteractActorEvent(nint handle) => _handle = handle;
+    public PlayerInteractActorEvent(nint handle) : this(handle, true) { }
+
+    internal PlayerInteractActorEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDi
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -39,9 +51,9 @@ public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDi
         return new PlayerInteractActorEvent((nint)handle);
     }
 
-    public nint getActor()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor getActor()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bcc3954e((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)NativeMethods.TablePtr->hs_method_bcc3954e((void*)_handle), false);
     }
 
     public string getEventName()
@@ -55,7 +67,11 @@ public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDi
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_0752461f((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_0752461f((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

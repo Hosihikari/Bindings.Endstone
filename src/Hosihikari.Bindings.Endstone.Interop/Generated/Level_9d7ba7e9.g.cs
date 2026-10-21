@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Level
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Level(nint handle) => _handle = handle;
+    public Level(nint handle) : this(handle, true) { }
+
+    internal Level(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Level
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -34,12 +46,13 @@ public sealed unsafe partial class Level
         return __hs_result;
     }
 
-    public nint getDimension(string name)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension? getDimension(string name)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_08076e18((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_08076e18((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)__hs_handle, false) : null;
         }
     }
 

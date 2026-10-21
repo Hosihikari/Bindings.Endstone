@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Cancellable_endstone__ActorEvent_endstone__Actor__
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Cancellable_endstone__ActorEvent_endstone__Actor__(nint handle) => _handle = handle;
+    public Cancellable_endstone__ActorEvent_endstone__Actor__(nint handle) : this(handle, true) { }
+
+    internal Cancellable_endstone__ActorEvent_endstone__Actor__(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Cancellable_endstone__ActorEvent_endstone__Ac
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;

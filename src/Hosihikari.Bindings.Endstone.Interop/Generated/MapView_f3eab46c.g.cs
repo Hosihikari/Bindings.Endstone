@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class MapView
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public MapView(nint handle) => _handle = handle;
+    public MapView(nint handle) : this(handle, true) { }
+
+    internal MapView(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class MapView
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -38,9 +50,10 @@ public sealed unsafe partial class MapView
         return NativeMethods.TablePtr->hs_method_90396455((void*)_handle);
     }
 
-    public nint getDimension()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension? getDimension()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_2816961f((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_2816961f((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)__hs_handle, false) : null;
     }
 
     public long getId()

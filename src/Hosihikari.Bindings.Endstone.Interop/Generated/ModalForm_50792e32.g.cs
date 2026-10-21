@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class ModalForm : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public ModalForm(nint handle) => _handle = handle;
+    public ModalForm(nint handle) : this(handle, true) { }
+
+    internal ModalForm(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -18,14 +25,19 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
             throw new global::System.ObjectDisposedException("handle");
         }
 
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
+        }
+
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
     }
 
-    public nint addControl(global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872 control)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm addControl(global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872 control)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d6ba0b11((void*)_handle, (void*)control.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm((nint)NativeMethods.TablePtr->hs_method_d6ba0b11((void*)_handle, (void*)control.Handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872[] getControls()
@@ -59,7 +71,7 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
-    public nint setControls(global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872[] controls)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm setControls(global::Hosihikari.Bindings.Endstone.Interop.Variant_27d5b872[] controls)
     {
         var __hs_vectorItems0 = controls;
         var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
@@ -70,34 +82,38 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
         fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
             var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
-            return (nint)NativeMethods.TablePtr->hs_method_e8d9d3b9((void*)_handle, __hs_vectorData0, (nuint)(controls?.Length ?? 0));
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm((nint)NativeMethods.TablePtr->hs_method_e8d9d3b9((void*)_handle, __hs_vectorData0, (nuint)(controls?.Length ?? 0)), false);
         }
     }
 
-    public nint setIcon(string? icon)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm setIcon(string? icon)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_2fd6a4b6((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, icon is not null);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm((nint)NativeMethods.TablePtr->hs_method_2fd6a4b6((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, icon is not null), false);
         }
     }
 
-    public nint setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm setOnSubmit(nint on_submitInvoke, nint on_submitUserData, nint on_submitRelease)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7a28fda0((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm((nint)NativeMethods.TablePtr->hs_method_7a28fda0((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease), false);
     }
 
-    public nint setSubmitButton(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? text)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm setSubmitButton(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? text)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b175a990((void*)_handle, (void*)(text?.Handle ?? 0), text is not null);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm((nint)NativeMethods.TablePtr->hs_method_b175a990((void*)_handle, (void*)(text?.Handle ?? 0), text is not null), false);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_50792e32((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_50792e32((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

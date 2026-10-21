@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class BlockBreakEvent : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public BlockBreakEvent(nint handle) => _handle = handle;
+    public BlockBreakEvent(nint handle) : this(handle, true) { }
+
+    internal BlockBreakEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class BlockBreakEvent : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -45,9 +57,9 @@ public sealed unsafe partial class BlockBreakEvent : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getPlayer()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_24767f40((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)NativeMethods.TablePtr->hs_method_24767f40((void*)_handle), false);
     }
 
 
@@ -55,7 +67,11 @@ public sealed unsafe partial class BlockBreakEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_e2789edf((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e2789edf((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

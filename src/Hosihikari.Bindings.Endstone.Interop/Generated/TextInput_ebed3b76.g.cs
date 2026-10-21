@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class TextInput : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public TextInput(nint handle) => _handle = handle;
+    public TextInput(nint handle) : this(handle, true) { }
+
+    internal TextInput(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -66,30 +78,34 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_59614a43((void*)_handle));
     }
 
-    public nint setDefaultValue(string? text)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.TextInput setDefaultValue(string? text)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_6724f75c((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, text is not null);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.TextInput((nint)NativeMethods.TablePtr->hs_method_6724f75c((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, text is not null), false);
         }
     }
 
-    public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.TextInput setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3b9571f3((void*)_handle, (void*)label.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.TextInput((nint)NativeMethods.TablePtr->hs_method_3b9571f3((void*)_handle, (void*)label.Handle), false);
     }
 
-    public nint setPlaceholder(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 placeholder)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.TextInput setPlaceholder(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 placeholder)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f393b4d4((void*)_handle, (void*)placeholder.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.TextInput((nint)NativeMethods.TablePtr->hs_method_f393b4d4((void*)_handle, (void*)placeholder.Handle), false);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_ebed3b76((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ebed3b76((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

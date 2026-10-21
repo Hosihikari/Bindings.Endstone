@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Score : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Score(nint handle) => _handle = handle;
+    public Score(nint handle) : this(handle, true) { }
+
+    internal Score(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Score : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -28,14 +40,14 @@ public sealed unsafe partial class Score : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b((nint)NativeMethods.TablePtr->hs_method_8475b818((void*)_handle));
     }
 
-    public nint getObjective()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective getObjective()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_56a25a01((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)NativeMethods.TablePtr->hs_method_56a25a01((void*)_handle), false);
     }
 
-    public nint getScoreboard()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Scoreboard getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_53fb01c6((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Scoreboard((nint)NativeMethods.TablePtr->hs_method_53fb01c6((void*)_handle), false);
     }
 
     public int getValue()
@@ -58,7 +70,11 @@ public sealed unsafe partial class Score : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_bfa7598b((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_bfa7598b((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

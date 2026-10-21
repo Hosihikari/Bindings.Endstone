@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Dropdown : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Dropdown(nint handle) => _handle = handle;
+    public Dropdown(nint handle) : this(handle, true) { }
+
+    internal Dropdown(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -68,12 +80,12 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         }
     }
 
-    public nint addOption(string option)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown addOption(string option)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(option);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_ef8d8378((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_ef8d8378((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
         }
     }
 
@@ -101,17 +113,17 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         return __hs_result;
     }
 
-    public nint setDefaultIndex(int? default_index)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown setDefaultIndex(int? default_index)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_34be09a0((void*)_handle, default_index ?? default(int), default_index.HasValue);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_34be09a0((void*)_handle, default_index ?? default(int), default_index.HasValue), false);
     }
 
-    public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_dd40b665((void*)_handle, (void*)label.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_dd40b665((void*)_handle, (void*)label.Handle), false);
     }
 
-    public nint setOptions(string[] options)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown setOptions(string[] options)
     {
         var __hs_vectorItems0 = options ?? global::System.Array.Empty<string>();
         var __hs_vectorBytes0 = new byte[__hs_vectorItems0.Length][];
@@ -130,7 +142,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
             {
-                return (nint)NativeMethods.TablePtr->hs_method_e876541b((void*)_handle, __hs_vectorData0, (nuint)(options?.Length ?? 0));
+                return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_e876541b((void*)_handle, __hs_vectorData0, (nuint)(options?.Length ?? 0)), false);
             }
         }
         finally
@@ -143,7 +155,11 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_9c3982da((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_9c3982da((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

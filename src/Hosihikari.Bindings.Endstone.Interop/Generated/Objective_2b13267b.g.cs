@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Objective : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Objective(nint handle) => _handle = handle;
+    public Objective(nint handle) : this(handle, true) { }
+
+    internal Objective(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -18,14 +25,19 @@ public sealed unsafe partial class Objective : global::System.IDisposable
             throw new global::System.ObjectDisposedException("handle");
         }
 
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
+        }
+
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
     }
 
-    public nint getCriteria()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Criteria getCriteria()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_84b58b4c((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Criteria((nint)NativeMethods.TablePtr->hs_method_84b58b4c((void*)_handle), false);
     }
 
     public string getDisplayName()
@@ -58,9 +70,9 @@ public sealed unsafe partial class Objective : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Score((nint)__hs_handle) : null;
     }
 
-    public nint getScoreboard()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Scoreboard getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f4a5b3b4((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Scoreboard((nint)NativeMethods.TablePtr->hs_method_f4a5b3b4((void*)_handle), false);
     }
 
     public int? getSortOrder()
@@ -124,7 +136,11 @@ public sealed unsafe partial class Objective : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_2b13267b((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_2b13267b((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

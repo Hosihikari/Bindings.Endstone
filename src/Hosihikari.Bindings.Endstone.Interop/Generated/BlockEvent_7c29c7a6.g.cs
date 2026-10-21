@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class BlockEvent
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public BlockEvent(nint handle) => _handle = handle;
+    public BlockEvent(nint handle) : this(handle, true) { }
+
+    internal BlockEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class BlockEvent
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -27,8 +39,8 @@ public sealed unsafe partial class BlockEvent
     public static BlockEvent Create(nint block) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
-    public nint getBlock()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block getBlock()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bfa4698d((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)NativeMethods.TablePtr->hs_method_bfa4698d((void*)_handle), false);
     }
 }

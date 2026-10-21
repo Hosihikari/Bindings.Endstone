@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Label : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Label(nint handle) => _handle = handle;
+    public Label(nint handle) : this(handle, true) { }
+
+    internal Label(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Label : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -50,16 +62,20 @@ public sealed unsafe partial class Label : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_6dbcb5f6((void*)_handle));
     }
 
-    public nint setText(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Label setText(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b5ad9dfd((void*)_handle, (void*)text.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Label((nint)NativeMethods.TablePtr->hs_method_b5ad9dfd((void*)_handle, (void*)text.Handle), false);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_e2f214b6((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_e2f214b6((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

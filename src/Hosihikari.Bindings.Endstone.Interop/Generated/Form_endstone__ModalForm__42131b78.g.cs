@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Form_endstone__ModalForm_ : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Form_endstone__ModalForm_(nint handle) => _handle = handle;
+    public Form_endstone__ModalForm_(nint handle) : this(handle, true) { }
+
+    internal Form_endstone__ModalForm_(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Form_endstone__ModalForm_ : global::System.ID
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -44,21 +56,25 @@ public sealed unsafe partial class Form_endstone__ModalForm_ : global::System.ID
         return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_ffd54804((void*)_handle));
     }
 
-    public nint setOnClose(nint on_closeInvoke, nint on_closeUserData, nint on_closeRelease)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm setOnClose(nint on_closeInvoke, nint on_closeUserData, nint on_closeRelease)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_560b2e39((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm((nint)NativeMethods.TablePtr->hs_method_560b2e39((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease), false);
     }
 
-    public nint setTitle(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 title)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm setTitle(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 title)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_689a3327((void*)_handle, (void*)title.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm((nint)NativeMethods.TablePtr->hs_method_689a3327((void*)_handle, (void*)title.Handle), false);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_42131b78((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_42131b78((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

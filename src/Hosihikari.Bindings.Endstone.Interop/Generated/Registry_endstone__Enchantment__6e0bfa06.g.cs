@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Registry_endstone__Enchantment_
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Registry_endstone__Enchantment_(nint handle) => _handle = handle;
+    public Registry_endstone__Enchantment_(nint handle) : this(handle, true) { }
+
+    internal Registry_endstone__Enchantment_(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Registry_endstone__Enchantment_
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -28,23 +40,25 @@ public sealed unsafe partial class Registry_endstone__Enchantment_
         NativeMethods.TablePtr->hs_method_3150959d((void*)_handle, (void*)funcInvoke, (void*)funcUserData, (void*)funcRelease);
     }
 
-    public nint get_9824d7b2(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment? get_9824d7b2(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_9824d7b2((void*)_handle, (void*)id.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_9824d7b2((void*)_handle, (void*)id.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment((nint)__hs_handle, false) : null;
     }
 
-    public nint get_b0d6a1a6(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment? get_b0d6a1a6(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b0d6a1a6((void*)_handle, (void*)id.Handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_b0d6a1a6((void*)_handle, (void*)id.Handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment((nint)__hs_handle, false) : null;
     }
 
-    public nint getOrThrow_5ff0cfea(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment getOrThrow_5ff0cfea(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_5ff0cfea((void*)_handle, (void*)id.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment((nint)NativeMethods.TablePtr->hs_method_5ff0cfea((void*)_handle, (void*)id.Handle), false);
     }
 
-    public nint getOrThrow_a1e9c09b(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment getOrThrow_a1e9c09b(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_a1e9c09b((void*)_handle, (void*)id.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment((nint)NativeMethods.TablePtr->hs_method_a1e9c09b((void*)_handle, (void*)id.Handle), false);
     }
 }

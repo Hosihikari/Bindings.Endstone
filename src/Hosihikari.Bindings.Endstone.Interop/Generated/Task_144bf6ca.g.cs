@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Task
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Task(nint handle) => _handle = handle;
+    public Task(nint handle) : this(handle, true) { }
+
+    internal Task(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Task
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -28,9 +40,10 @@ public sealed unsafe partial class Task
         NativeMethods.TablePtr->hs_method_34195476((void*)_handle);
     }
 
-    public nint getOwner()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin? getOwner()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_53f1a0f6((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_53f1a0f6((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin((nint)__hs_handle, false) : null;
     }
 
     public uint getTaskId()

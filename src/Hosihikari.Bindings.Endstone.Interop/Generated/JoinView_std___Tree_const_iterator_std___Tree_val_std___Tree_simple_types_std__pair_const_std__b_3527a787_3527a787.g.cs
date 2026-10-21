@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone.detail;
 public sealed unsafe partial class JoinView_std___Tree_const_iterator_std___Tree_val_std___Tree_simple_types_std__pair_const_std__b_3527a787 : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public JoinView_std___Tree_const_iterator_std___Tree_val_std___Tree_simple_types_std__pair_const_std__b_3527a787(nint handle) => _handle = handle;
+    public JoinView_std___Tree_const_iterator_std___Tree_val_std___Tree_simple_types_std__pair_const_std__b_3527a787(nint handle) : this(handle, true) { }
+
+    internal JoinView_std___Tree_const_iterator_std___Tree_val_std___Tree_simple_types_std__pair_const_std__b_3527a787(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class JoinView_std___Tree_const_iterator_std___Tree
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -46,7 +58,11 @@ public sealed unsafe partial class JoinView_std___Tree_const_iterator_std___Tree
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_3527a787((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_3527a787((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

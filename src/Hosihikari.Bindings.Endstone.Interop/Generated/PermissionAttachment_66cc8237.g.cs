@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class PermissionAttachment : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PermissionAttachment(nint handle) => _handle = handle;
+    public PermissionAttachment(nint handle) : this(handle, true) { }
+
+    internal PermissionAttachment(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -34,9 +46,9 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
         return new PermissionAttachment((nint)handle);
     }
 
-    public nint getPermissible()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible getPermissible()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0db6400b((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->hs_method_0db6400b((void*)_handle), false);
     }
 
     public global::System.Collections.Generic.Dictionary<string, bool> getPermissions()
@@ -54,9 +66,9 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
         return __hs_result;
     }
 
-    public nint getPlugin()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_bafd887c((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin((nint)NativeMethods.TablePtr->hs_method_bafd887c((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Function_7a4e965f getRemovalCallback()
@@ -106,7 +118,11 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_66cc8237((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_66cc8237((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

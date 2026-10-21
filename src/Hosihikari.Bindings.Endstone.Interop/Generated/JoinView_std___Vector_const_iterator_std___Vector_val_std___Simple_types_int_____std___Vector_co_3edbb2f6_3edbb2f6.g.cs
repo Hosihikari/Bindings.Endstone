@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone.detail;
 public sealed unsafe partial class JoinView_std___Vector_const_iterator_std___Vector_val_std___Simple_types_int_____std___Vector_co_3edbb2f6 : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public JoinView_std___Vector_const_iterator_std___Vector_val_std___Simple_types_int_____std___Vector_co_3edbb2f6(nint handle) => _handle = handle;
+    public JoinView_std___Vector_const_iterator_std___Vector_val_std___Simple_types_int_____std___Vector_co_3edbb2f6(nint handle) : this(handle, true) { }
+
+    internal JoinView_std___Vector_const_iterator_std___Vector_val_std___Simple_types_int_____std___Vector_co_3edbb2f6(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class JoinView_std___Vector_const_iterator_std___Ve
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -46,7 +58,11 @@ public sealed unsafe partial class JoinView_std___Vector_const_iterator_std___Ve
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_3edbb2f6((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_3edbb2f6((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

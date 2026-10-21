@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class Button : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Button(nint handle) => _handle = handle;
+    public Button(nint handle) : this(handle, true) { }
+
+    internal Button(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Button : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -66,30 +78,34 @@ public sealed unsafe partial class Button : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->hs_method_b2627229((void*)_handle));
     }
 
-    public nint setIcon(string icon)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Button setIcon(string icon)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(icon);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_ebda1615((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Button((nint)NativeMethods.TablePtr->hs_method_ebda1615((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
         }
     }
 
-    public nint setOnClick(nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Button setOnClick(nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_7466e41b((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Button((nint)NativeMethods.TablePtr->hs_method_7466e41b((void*)_handle, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease), false);
     }
 
-    public nint setText(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Button setText(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_0ae373e7((void*)_handle, (void*)text.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Button((nint)NativeMethods.TablePtr->hs_method_0ae373e7((void*)_handle, (void*)text.Handle), false);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_a6b80c78((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_a6b80c78((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

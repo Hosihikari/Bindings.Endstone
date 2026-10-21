@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public ActorKnockbackEvent(nint handle) => _handle = handle;
+    public ActorKnockbackEvent(nint handle) : this(handle, true) { }
+
+    internal ActorKnockbackEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -50,9 +62,10 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->hs_method_9ffe5f0b((void*)_handle));
     }
 
-    public nint getSource()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor? getSource()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_825022fe((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_825022fe((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)__hs_handle, false) : null;
     }
 
     public void setKnockback(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
@@ -64,7 +77,11 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_32019a7c((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_32019a7c((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

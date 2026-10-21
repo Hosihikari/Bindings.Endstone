@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class ItemStack : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public ItemStack(nint handle) => _handle = handle;
+    public ItemStack(nint handle) : this(handle, true) { }
+
+    internal ItemStack(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -88,9 +100,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getType()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType getType()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_3d4ba86e((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType((nint)NativeMethods.TablePtr->hs_method_3d4ba86e((void*)_handle), false);
     }
 
     public bool hasItemMeta()
@@ -108,14 +120,14 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_6d85c46f((void*)_handle, (void*)other.Handle);
     }
 
-    public nint operator_assign_f452cd9a(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack operator_assign_f452cd9a(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_f452cd9a((void*)_handle, (void*)other.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->hs_method_f452cd9a((void*)_handle, (void*)other.Handle), false);
     }
 
-    public nint operator_assign_d00055a6(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack operator_assign_d00055a6(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_d00055a6((void*)_handle, (void*)other.Handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->hs_method_d00055a6((void*)_handle, (void*)other.Handle), false);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
@@ -153,7 +165,11 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_ecc0e998((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_ecc0e998((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

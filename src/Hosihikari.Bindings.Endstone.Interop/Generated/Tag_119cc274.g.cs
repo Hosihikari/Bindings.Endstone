@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone.nbt;
 public sealed unsafe partial class Tag : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public Tag(nint handle) => _handle = handle;
+    public Tag(nint handle) : this(handle, true) { }
+
+    internal Tag(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -276,32 +288,32 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return new Tag((nint)handle);
     }
 
-    public nint at_6243cae4(string key)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag at_6243cae4(string key)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_6243cae4((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_6243cae4((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
         }
     }
 
-    public nint at_44225e41(ulong index)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag at_44225e41(ulong index)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_44225e41((void*)_handle, index);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_44225e41((void*)_handle, index), false);
     }
 
-    public nint at_c69bd34e(string key)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag at_c69bd34e(string key)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_c69bd34e((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_c69bd34e((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
         }
     }
 
-    public nint at_6379b79e(ulong index)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag at_6379b79e(ulong index)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_6379b79e((void*)_handle, index);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_6379b79e((void*)_handle, index), false);
     }
 
     public bool contains(string key)
@@ -318,18 +330,18 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_c6fd8bde((void*)_handle);
     }
 
-    public nint operator_index(string key)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag operator_index(string key)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_2d42e86c((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_2d42e86c((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
         }
     }
 
-    public nint operator_index(ulong index)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag operator_index(ulong index)
     {
-        return (nint)NativeMethods.TablePtr->hs_method_17890e30((void*)_handle, index);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_17890e30((void*)_handle, index), false);
     }
 
     public ulong size()
@@ -346,7 +358,11 @@ public sealed unsafe partial class Tag : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_119cc274((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_119cc274((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

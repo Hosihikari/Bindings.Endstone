@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PlayerGameModeChangeEvent(nint handle) => _handle = handle;
+    public PlayerGameModeChangeEvent(nint handle) : this(handle, true) { }
+
+    internal PlayerGameModeChangeEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.ID
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -55,7 +67,11 @@ public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.ID
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_5caad170((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_5caad170((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

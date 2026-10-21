@@ -4,7 +4,7 @@
 
 ## 边界
 
-- `Hosihikari.Bindings.Endstone.Interop` 由 `Hosihikari/Bindings.Generator` 从版本化 IR 生成，逐声明镜像 Endstone，类型持 `nint`/不透明句柄。ABI 值类型与 shim 加载器来自 `Hosihikari/Bindings.Abi`。
+- `Hosihikari.Bindings.Endstone.Interop` 由 `Hosihikari/Bindings.Generator` 从版本化 IR 生成，逐声明镜像 Endstone：一层指针与引用返回投影为类型化借用包装，其余不透明句柄保留 `nint`。ABI 值类型与 shim 加载器来自 `Hosihikari/Bindings.Abi`。
 - `native/BindingShim/` 是 C ABI 投影。Endstone 插件通过 `endstone::detail::getServer()` 获取服务器；shim 使用同一引导方式并直接调用虚接口，因此不需要 Endstone 导入库。
 - 手写 Idiomatic 层后置；当前公开面是生成的 Interop。
 

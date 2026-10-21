@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class BlockState : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public BlockState(nint handle) => _handle = handle;
+    public BlockState(nint handle) : this(handle, true) { }
+
+    internal BlockState(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class BlockState : global::System.IDisposable
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -35,9 +47,9 @@ public sealed unsafe partial class BlockState : global::System.IDisposable
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
     }
 
-    public nint getDimension()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension getDimension()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_364f3508((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->hs_method_364f3508((void*)_handle), false);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location getLocation()
@@ -100,7 +112,11 @@ public sealed unsafe partial class BlockState : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_0368a1d0((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_0368a1d0((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

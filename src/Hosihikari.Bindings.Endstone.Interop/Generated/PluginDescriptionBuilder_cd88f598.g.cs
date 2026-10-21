@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone.detail;
 public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PluginDescriptionBuilder(nint handle) => _handle = handle;
+    public PluginDescriptionBuilder(nint handle) : this(handle, true) { }
+
+    internal PluginDescriptionBuilder(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -41,12 +53,12 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
         }
     }
 
-    public nint command(string name)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.CommandBuilder command(string name)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_d253f495((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.CommandBuilder((nint)NativeMethods.TablePtr->hs_method_d253f495((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
         }
     }
 
@@ -91,12 +103,12 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
         get => (nint)NativeMethods.TablePtr->hs_get_aa6fe5da((void*)_handle);
     }
 
-    public nint permission(string name)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder permission(string name)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_af0e7391((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->hs_method_af0e7391((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
         }
     }
 
@@ -137,7 +149,11 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_cd88f598((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_cd88f598((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

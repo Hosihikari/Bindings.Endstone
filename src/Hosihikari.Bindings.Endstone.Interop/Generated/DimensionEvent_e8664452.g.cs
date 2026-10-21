@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class DimensionEvent
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public DimensionEvent(nint handle) => _handle = handle;
+    public DimensionEvent(nint handle) : this(handle, true) { }
+
+    internal DimensionEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class DimensionEvent
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -27,8 +39,8 @@ public sealed unsafe partial class DimensionEvent
     public static DimensionEvent Create(nint dimension) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
-    public nint getDimension()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension getDimension()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_c99ca150((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->hs_method_c99ca150((void*)_handle), false);
     }
 }

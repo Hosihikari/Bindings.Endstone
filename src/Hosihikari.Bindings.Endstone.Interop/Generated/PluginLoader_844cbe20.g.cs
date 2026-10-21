@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class PluginLoader
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PluginLoader(nint handle) => _handle = handle;
+    public PluginLoader(nint handle) : this(handle, true) { }
+
+    internal PluginLoader(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PluginLoader
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -49,17 +61,18 @@ public sealed unsafe partial class PluginLoader
         return __hs_result;
     }
 
-    public nint getServer()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Server getServer()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_ba0f439a((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Server((nint)NativeMethods.TablePtr->hs_method_ba0f439a((void*)_handle), false);
     }
 
-    public nint loadPlugin(string file)
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin? loadPlugin(string file)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(file);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->hs_method_41bf9b37((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_41bf9b37((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin((nint)__hs_handle, false) : null;
         }
     }
 

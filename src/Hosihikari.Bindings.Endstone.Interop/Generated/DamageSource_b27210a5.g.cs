@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class DamageSource
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public DamageSource(nint handle) => _handle = handle;
+    public DamageSource(nint handle) : this(handle, true) { }
+
+    internal DamageSource(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -18,19 +25,26 @@ public sealed unsafe partial class DamageSource
             throw new global::System.ObjectDisposedException("handle");
         }
 
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
+        }
+
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
     }
 
-    public nint getActor()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor? getActor()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_545ff876((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_545ff876((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)__hs_handle, false) : null;
     }
 
-    public nint getDamagingActor()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor? getDamagingActor()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b1c82064((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->hs_method_b1c82064((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)__hs_handle, false) : null;
     }
 
     public string getType()

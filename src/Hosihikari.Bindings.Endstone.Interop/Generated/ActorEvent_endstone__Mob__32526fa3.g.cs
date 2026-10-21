@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class ActorEvent_endstone__Mob_
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public ActorEvent_endstone__Mob_(nint handle) => _handle = handle;
+    public ActorEvent_endstone__Mob_(nint handle) : this(handle, true) { }
+
+    internal ActorEvent_endstone__Mob_(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class ActorEvent_endstone__Mob_
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -27,9 +39,9 @@ public sealed unsafe partial class ActorEvent_endstone__Mob_
     public static ActorEvent_endstone__Mob_ Create(nint actor) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
-    public nint getActor()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob getActor()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_42208d88((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob((nint)NativeMethods.TablePtr->hs_method_42208d88((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

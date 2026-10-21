@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class PlayerBedEnterEvent : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PlayerBedEnterEvent(nint handle) => _handle = handle;
+    public PlayerBedEnterEvent(nint handle) : this(handle, true) { }
+
+    internal PlayerBedEnterEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PlayerBedEnterEvent : global::System.IDisposa
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -39,9 +51,9 @@ public sealed unsafe partial class PlayerBedEnterEvent : global::System.IDisposa
         return new PlayerBedEnterEvent((nint)handle);
     }
 
-    public nint getBed()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block getBed()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_b59d9235((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)NativeMethods.TablePtr->hs_method_b59d9235((void*)_handle), false);
     }
 
     public string getEventName()
@@ -54,7 +66,11 @@ public sealed unsafe partial class PlayerBedEnterEvent : global::System.IDisposa
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_7b8e6eea((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_7b8e6eea((void*)_handle);
+            }
+
             _handle = 0;
         }
     }

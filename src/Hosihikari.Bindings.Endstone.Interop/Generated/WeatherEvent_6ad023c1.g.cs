@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class WeatherEvent
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public WeatherEvent(nint handle) => _handle = handle;
+    public WeatherEvent(nint handle) : this(handle, true) { }
+
+    internal WeatherEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class WeatherEvent
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -27,9 +39,9 @@ public sealed unsafe partial class WeatherEvent
     public static WeatherEvent Create(nint level) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
-    public nint getLevel()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Level getLevel()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_fa1f866e((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Level((nint)NativeMethods.TablePtr->hs_method_fa1f866e((void*)_handle), false);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

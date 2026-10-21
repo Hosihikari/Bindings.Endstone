@@ -6,8 +6,15 @@ namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 public sealed unsafe partial class PlayerPickupItemEvent : global::System.IDisposable
 {
     private nint _handle;
+    private readonly bool _ownsHandle;
 
-    public PlayerPickupItemEvent(nint handle) => _handle = handle;
+    public PlayerPickupItemEvent(nint handle) : this(handle, true) { }
+
+    internal PlayerPickupItemEvent(nint handle, bool ownsHandle)
+    {
+        _handle = handle;
+        _ownsHandle = ownsHandle;
+    }
 
     public nint Handle => _handle;
 
@@ -16,6 +23,11 @@ public sealed unsafe partial class PlayerPickupItemEvent : global::System.IDispo
         if (_handle == 0)
         {
             throw new global::System.ObjectDisposedException("handle");
+        }
+
+        if (!_ownsHandle)
+        {
+            throw new global::System.InvalidOperationException("A borrowed handle cannot be released.");
         }
 
         var __hs_handle = _handle;
@@ -45,16 +57,20 @@ public sealed unsafe partial class PlayerPickupItemEvent : global::System.IDispo
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
-    public nint getItem()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Item getItem()
     {
-        return (nint)NativeMethods.TablePtr->hs_method_91dd524f((void*)_handle);
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Item((nint)NativeMethods.TablePtr->hs_method_91dd524f((void*)_handle), false);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->hs_destroy_46c72fe0((void*)_handle);
+            if (_ownsHandle)
+            {
+                NativeMethods.TablePtr->hs_destroy_46c72fe0((void*)_handle);
+            }
+
             _handle = 0;
         }
     }
