@@ -19,20 +19,24 @@ build.ps1                                    clang-cl build against the Endstone
 build.sh                                     g++/clang++ build for Linux
 ```
 
-Generated sources are produced by `Hosihikari/Bindings.Generator` with `--virtual-dispatch` and committed here; `scripts/regenerate.ps1` and `scripts/verify_generated.py` maintain the integration.
+The committed `generated/win-x64-server/endstone` sources are produced by `Hosihikari/Bindings.Generator` with `--virtual-dispatch`; `scripts/regenerate.ps1` and `scripts/verify_generated.py` maintain that integration. The `linux-x64-server` configuration is generated from the Endstone headers on Linux at CI time and is not committed.
 
 ## Linux build
 
-`build.sh` compiles the committed table against an Endstone checkout and the expected-lite/nlohmann_json headers. It generates `artifacts/endstone-generated/include/endstone/version.h` from the Endstone `include/CMakeLists.txt`, links a position-independent shared library, and checks that both entry points are exported.
+The CI `linux-shim` job builds the libTooling frontend, generates `linux-x64-server` IR from Endstone `v0.11.14`, emits the Interop and shim from that IR, compares the emitted Interop with the committed Windows-IR output, and compiles the shim.
+
+`build.sh` compiles a generated `binding_table.cpp` against an Endstone checkout and the expected-lite/nlohmann_json headers. It generates `artifacts/endstone-generated/include/endstone/version.h` from the Endstone `include/CMakeLists.txt`, links a position-independent shared library, and checks that both entry points are exported.
 
 ```shell
 ./native/BindingShim/build.sh \
   --endstone-root /path/to/endstone \
   --expected-lite-include /path/to/expected-lite/include \
-  --nlohmann-include /path/to/json/include
+  --nlohmann-include /path/to/json/include \
+  --generated-include /path/to/endstone-generated/include \
+  --shim-source /path/to/emitted-linux/shim/linux-x64-server/endstone/binding_table.cpp
 ```
 
-The CI `linux-shim` job checks out Endstone `v0.11.14` and pinned expected-lite/nlohmann_json tags, then runs this script. The Windows and Linux shims expose the same versioned table.
+`--shim-source` and `--generated-include` default to the committed Windows configuration. The Windows and Linux shims expose the same versioned table and identical Interop surface.
 
 ## Status
 

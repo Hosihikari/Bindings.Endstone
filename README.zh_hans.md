@@ -6,7 +6,7 @@
 
 - `Hosihikari.Bindings.Endstone.Interop` 由 `Hosihikari/Bindings.Generator` 从版本化 IR 生成，逐声明镜像 Endstone：一层指针与引用返回投影为类型化借用包装，`optional_ref<T>` 结果复用同一包装，其余不透明句柄保留 `nint`。ABI 值类型与 shim 加载器来自 `Hosihikari/Bindings.Abi`。
 - `native/BindingShim/` 是 C ABI 投影。Endstone 插件通过 `endstone::detail::getServer()` 获取服务器；shim 使用同一引导方式并直接调用虚接口，因此不需要 Endstone 导入库。
-- shim 在 Windows x64 上用 clang-cl 构建，在 Linux x64 上用 g++ 通过 `native/BindingShim/build.sh` 构建；CI 同时编译两者。
+- shim 在 Windows x64 上用 clang-cl 构建。Linux x64 上，CI 构建 libTooling 前端，从 Endstone 头文件生成 `linux-x64-server` IR，用同一 IR 发射相同的 Interop 面，并通过 `native/BindingShim/build.sh` 用 g++ 编译 shim。
 - 手写 Idiomatic 层后置；当前公开面是生成的 Interop。
 
 ## 当前状态

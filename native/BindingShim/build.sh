@@ -11,6 +11,10 @@ Options:
   --nlohmann-include <dir>        Directory containing nlohmann/json.hpp (required).
   --output <file>                 Output shared library.
                                   Default: artifacts/native/libHosihikari.Bindings.Endstone.Shim.so
+  --shim-source <file>            Generated binding_table.cpp to compile.
+                                  Default: generated/win-x64-server/endstone/binding_table.cpp
+  --generated-include <dir>       Directory holding the generated endstone/version.h.
+                                  Default: artifacts/endstone-generated/include
   --cxx <compiler>                C++ compiler. Default: g++, or the CXX environment variable.
 EOF
 }
@@ -21,6 +25,8 @@ endstone_root=""
 expected_lite_include=""
 nlohmann_include=""
 output="$repo_root/artifacts/native/libHosihikari.Bindings.Endstone.Shim.so"
+shim_source=""
+generated_include=""
 cxx="${CXX:-g++}"
 
 while [ "$#" -gt 0 ]; do
@@ -39,6 +45,14 @@ while [ "$#" -gt 0 ]; do
             ;;
         --output)
             output="${2:-}"
+            shift 2
+            ;;
+        --shim-source)
+            shim_source="${2:-}"
+            shift 2
+            ;;
+        --generated-include)
+            generated_include="${2:-}"
             shift 2
             ;;
         --cxx)
@@ -67,7 +81,10 @@ expected_lite_include="$(cd "$expected_lite_include" && pwd)"
 nlohmann_include="$(cd "$nlohmann_include" && pwd)"
 
 shim_dir="$script_root/generated/win-x64-server/endstone"
-source_file="$shim_dir/binding_table.cpp"
+if [ -z "$shim_source" ]; then
+    shim_source="$shim_dir/binding_table.cpp"
+fi
+source_file="$(cd "$(dirname "$shim_source")" && pwd)/$(basename "$shim_source")"
 if [ ! -f "$source_file" ]; then
     echo "Generated BindingShim sources are missing: $source_file" >&2
     exit 1
@@ -93,7 +110,11 @@ major="${major:-0}"
 minor="${minor:-0}"
 patch="${patch:-0}"
 
-generated_root="$repo_root/artifacts/endstone-generated/include"
+if [ -n "$generated_include" ]; then
+    generated_root="$(mkdir -p "$generated_include" && cd "$generated_include" && pwd)"
+else
+    generated_root="$repo_root/artifacts/endstone-generated/include"
+fi
 mkdir -p "$generated_root/endstone" "$(dirname "$output")"
 cat > "$generated_root/endstone/version.h" <<EOF
 #pragma once
