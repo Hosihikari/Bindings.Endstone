@@ -162,6 +162,8 @@ $WrapperDestroy = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'Dispose\(\)[\s\S
 $WrapperAsCommandSender = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'AsCommandSender\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "CommandSenderWrapper::AsCommandSender"
 $CommandSenderTryAsWrapper = Get-TableIndex "CommandSender_*.g.cs" 'TryAsCommandSenderWrapper\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "CommandSender::TryAsCommandSenderWrapper"
 $CommandSenderTryAsActor = Get-TableIndex "CommandSender_*.g.cs" 'TryAsActor\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "CommandSender::TryAsActor"
+$WrapperAsPermissible = Get-TableIndex "CommandSenderWrapper_*.g.cs" 'AsPermissible\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "CommandSenderWrapper::AsPermissible"
+$PermissibleTryAsWrapper = Get-TableIndex "Permissible_*.g.cs" 'TryAsCommandSenderWrapper\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Permissible::TryAsCommandSenderWrapper"
 
 $ActionFormCreate = Get-TableIndex "ActionForm_*.g.cs" 'Create\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::Create"
 $ActionFormSetContent = Get-TableIndex "ActionForm_*.g.cs" 'setContent\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::setContent"
@@ -277,6 +279,8 @@ $Args = @(
     "/DHS_COMMAND_SENDER_WRAPPER_AS_COMMAND_SENDER_INDEX=$WrapperAsCommandSender",
     "/DHS_COMMAND_SENDER_TRY_AS_WRAPPER_INDEX=$CommandSenderTryAsWrapper",
     "/DHS_COMMAND_SENDER_TRY_AS_ACTOR_INDEX=$CommandSenderTryAsActor",
+    "/DHS_WRAPPER_AS_PERMISSIBLE_INDEX=$WrapperAsPermissible",
+    "/DHS_PERMISSIBLE_TRY_AS_WRAPPER_INDEX=$PermissibleTryAsWrapper",
     "/DHS_ACTION_FORM_CREATE_INDEX=$ActionFormCreate",
     "/DHS_ACTION_FORM_SET_CONTENT_INDEX=$ActionFormSetContent",
     "/DHS_ACTION_FORM_GET_CONTENT_INDEX=$ActionFormGetContent",

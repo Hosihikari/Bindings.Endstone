@@ -55,15 +55,33 @@ public sealed unsafe partial class ActorEvent_endstone__Mob_
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_2b9e800a((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDamageEvent? TryAsActorDamageEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_6dd46b06((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDamageEvent((nint)__hs_handle, false) : null;
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDeathEvent? TryAsActorDeathEvent()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_cast_5bfe5838((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDeathEvent((nint)__hs_handle, false) : null;
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorKnockbackEvent? TryAsActorKnockbackEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_b859f555((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorKnockbackEvent((nint)__hs_handle, false) : null;
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Mob__? TryAsCancellable_endstone__ActorEvent_endstone__Mob__()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_cast_6cc7495b((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Mob__((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDeathEvent? TryAsPlayerDeathEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_50b4a481((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDeathEvent((nint)__hs_handle, false) : null;
     }
 }

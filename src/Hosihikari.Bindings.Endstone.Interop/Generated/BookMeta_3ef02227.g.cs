@@ -99,6 +99,11 @@ public sealed unsafe partial class BookMeta
         }
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta AsItemMeta()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->hs_cast_598461ef((void*)_handle), false);
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.WritableBookMeta AsWritableBookMeta()
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.WritableBookMeta((nint)NativeMethods.TablePtr->hs_cast_bc4d3831((void*)_handle), false);

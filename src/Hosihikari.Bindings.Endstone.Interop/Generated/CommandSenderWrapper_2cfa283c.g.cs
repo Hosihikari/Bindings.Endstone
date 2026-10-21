@@ -168,6 +168,11 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_16573b99((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible AsPermissible()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->hs_cast_c9674ee4((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

@@ -117,9 +117,51 @@ public sealed unsafe partial class Permissible
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor? TryAsActor()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_aea46c80((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockCommandSender? TryAsBlockCommandSender()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_cf4129a5((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockCommandSender((nint)__hs_handle, false) : null;
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender? TryAsCommandSender()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_cast_8e3aa52b((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSenderWrapper? TryAsCommandSenderWrapper()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_59a15001((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSenderWrapper((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ConsoleCommandSender? TryAsConsoleCommandSender()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_23bd673e((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ConsoleCommandSender((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Item? TryAsItem()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_3a3032b7((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Item((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob? TryAsMob()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_ac188479((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? TryAsPlayer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_a6460721((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)__hs_handle, false) : null;
     }
 }

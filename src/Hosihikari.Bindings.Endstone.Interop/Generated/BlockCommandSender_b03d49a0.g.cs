@@ -47,4 +47,9 @@ public sealed unsafe partial class BlockCommandSender
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_3875f743((void*)_handle), false);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible AsPermissible()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->hs_cast_ef5a0ff9((void*)_handle), false);
+    }
 }

@@ -64,6 +64,11 @@ public sealed unsafe partial class ServerLoadEvent : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_d0f9781a((void*)_handle);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_79401993((void*)_handle), false);
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent AsServerEvent()
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->hs_cast_71f4f11c((void*)_handle), false);

@@ -52,6 +52,11 @@ public sealed unsafe partial class Cancellable_endstone__ServerEvent_
         NativeMethods.TablePtr->hs_method_7f41c6c9((void*)_handle, cancel);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_5adb7a71((void*)_handle), false);
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable AsICancellable()
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->hs_cast_6e1e506e((void*)_handle), false);

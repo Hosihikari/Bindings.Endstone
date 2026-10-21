@@ -215,6 +215,11 @@ public sealed unsafe partial class Actor
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_cf1bff98((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible AsPermissible()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->hs_cast_14b00461((void*)_handle), false);
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Item? TryAsItem()
     {
         var __hs_handle = NativeMethods.TablePtr->hs_cast_048d2bdd((void*)_handle);
@@ -225,5 +230,11 @@ public sealed unsafe partial class Actor
     {
         var __hs_handle = NativeMethods.TablePtr->hs_cast_558c95a0((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? TryAsPlayer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_b16f589d((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)__hs_handle, false) : null;
     }
 }

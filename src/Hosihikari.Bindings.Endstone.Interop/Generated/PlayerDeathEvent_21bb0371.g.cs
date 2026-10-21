@@ -81,6 +81,16 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDeathEvent((nint)NativeMethods.TablePtr->hs_cast_0187d923((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Mob_ AsActorEvent_endstone__Mob_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Mob_((nint)NativeMethods.TablePtr->hs_cast_c6415699((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_358bbcc3((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

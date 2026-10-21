@@ -52,6 +52,11 @@ public sealed unsafe partial class Cancellable_endstone__WeatherEvent_
         NativeMethods.TablePtr->hs_method_1c30a25b((void*)_handle, cancel);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_2bdad3c2((void*)_handle), false);
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable AsICancellable()
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->hs_cast_5c6d48cb((void*)_handle), false);

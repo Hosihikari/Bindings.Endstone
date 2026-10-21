@@ -41,4 +41,9 @@ public sealed unsafe partial class ConsoleCommandSender
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_84d6876f((void*)_handle), false);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible AsPermissible()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->hs_cast_40b83e85((void*)_handle), false);
+    }
 }

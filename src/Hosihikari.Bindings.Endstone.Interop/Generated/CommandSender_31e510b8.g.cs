@@ -116,4 +116,22 @@ public sealed unsafe partial class CommandSender
         var __hs_handle = NativeMethods.TablePtr->hs_cast_f5da92a1((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ConsoleCommandSender((nint)__hs_handle, false) : null;
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Item? TryAsItem()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_2af5e44c((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Item((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob? TryAsMob()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_97dbdca5((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? TryAsPlayer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_7c735a41((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)__hs_handle, false) : null;
+    }
 }

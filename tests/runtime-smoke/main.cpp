@@ -204,6 +204,12 @@
 #ifndef HS_COMMAND_SENDER_TRY_AS_ACTOR_INDEX
 #error "HS_COMMAND_SENDER_TRY_AS_ACTOR_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_WRAPPER_AS_PERMISSIBLE_INDEX
+#error "HS_WRAPPER_AS_PERMISSIBLE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PERMISSIBLE_TRY_AS_WRAPPER_INDEX
+#error "HS_PERMISSIBLE_TRY_AS_WRAPPER_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_ACTION_FORM_CREATE_INDEX
 #error "HS_ACTION_FORM_CREATE_INDEX must be defined by build.ps1"
 #endif
@@ -726,6 +732,7 @@ public:
             using CastFn = void *(*)(void *);
             bool mutableReferenceCtorOk = false;
             bool inheritanceCastOk = false;
+            bool transitiveCastOk = false;
             if (auto *sender = reinterpret_cast<GetCommandSenderFn>(slots[HS_SERVER_COMMAND_SENDER_INDEX])(handle)) {
                 auto *wrapper = reinterpret_cast<WrapperCreateFn>(slots[HS_COMMAND_SENDER_WRAPPER_CREATE_INDEX])(
                     sender,
@@ -761,12 +768,23 @@ public:
                         && notActor == nullptr
                         && std::string(upcastName.data, upcastName.size)
                             == std::string(senderName.data, senderName.size);
+
+                    auto *permissible = reinterpret_cast<CastFn>(
+                        slots[HS_WRAPPER_AS_PERMISSIBLE_INDEX])(wrapper);
+                    auto *permissibleRoundtrip = reinterpret_cast<CastFn>(
+                        slots[HS_PERMISSIBLE_TRY_AS_WRAPPER_INDEX])(permissible);
+                    auto *nativePermissible = static_cast<endstone::Permissible *>(
+                        static_cast<endstone::CommandSenderWrapper *>(wrapper));
+                    transitiveCastOk = permissible != nullptr
+                        && permissible == nativePermissible
+                        && permissibleRoundtrip == wrapper;
                     reinterpret_cast<DestroyFn>(slots[HS_COMMAND_SENDER_WRAPPER_DESTROY_INDEX])(wrapper);
                 }
             }
 
             out << "mutable_reference.ctor=" << (mutableReferenceCtorOk ? "ok" : "FAIL") << "\n";
             out << "inheritance.cast=" << (inheritanceCastOk ? "ok" : "FAIL") << "\n";
+            out << "inheritance.transitive=" << (transitiveCastOk ? "ok" : "FAIL") << "\n";
 
             using CreateActionFormFn = void *(*)();
             using SetContentFn = void *(*)(void *, void *);

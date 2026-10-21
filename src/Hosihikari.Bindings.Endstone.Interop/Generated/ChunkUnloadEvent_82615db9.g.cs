@@ -65,6 +65,21 @@ public sealed unsafe partial class ChunkUnloadEvent : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ChunkEvent((nint)NativeMethods.TablePtr->hs_cast_45153e33((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.DimensionEvent AsDimensionEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.DimensionEvent((nint)NativeMethods.TablePtr->hs_cast_6ba8799d((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_69686c7a((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.LevelEvent AsLevelEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.LevelEvent((nint)NativeMethods.TablePtr->hs_cast_75c81851((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

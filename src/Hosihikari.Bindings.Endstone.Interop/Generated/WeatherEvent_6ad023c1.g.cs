@@ -60,4 +60,16 @@ public sealed unsafe partial class WeatherEvent
         var __hs_handle = NativeMethods.TablePtr->hs_cast_e692f3ea((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__WeatherEvent_((nint)__hs_handle, false) : null;
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ThunderChangeEvent? TryAsThunderChangeEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_24d176e1((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ThunderChangeEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.WeatherChangeEvent? TryAsWeatherChangeEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_10b8635d((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.WeatherChangeEvent((nint)__hs_handle, false) : null;
+    }
 }

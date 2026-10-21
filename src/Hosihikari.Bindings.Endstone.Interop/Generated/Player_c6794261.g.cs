@@ -408,6 +408,16 @@ public sealed unsafe partial class Player
         NativeMethods.TablePtr->hs_method_2bac054c((void*)_handle);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor AsActor()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)NativeMethods.TablePtr->hs_cast_09b64297((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender AsCommandSender()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_b042a59f((void*)_handle), false);
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob AsMob()
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob((nint)NativeMethods.TablePtr->hs_cast_9484548d((void*)_handle), false);
@@ -416,5 +426,10 @@ public sealed unsafe partial class Player
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.OfflinePlayer AsOfflinePlayer()
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.OfflinePlayer((nint)NativeMethods.TablePtr->hs_cast_25c37ab2((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible AsPermissible()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->hs_cast_c47d6a7f((void*)_handle), false);
     }
 }
