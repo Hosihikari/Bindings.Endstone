@@ -47,6 +47,13 @@ New-Item -ItemType Directory -Force -Path $PayloadTarget | Out-Null
 Copy-Item $PluginDll (Join-Path $PluginsTarget "shim_benchmarks.dll") -Force
 Copy-Item (Join-Path $BenchmarkDirectory "hosihikari-benchmarks\*") $PayloadTarget -Recurse -Force
 
+$LocalPlugins = Join-Path $PluginsTarget ".local"
+if (Test-Path $LocalPlugins) {
+    Get-ChildItem $LocalPlugins -Filter "shim_benchmarks-*.dll" -ErrorAction SilentlyContinue | Remove-Item -Force
+    Get-ChildItem $LocalPlugins -Filter "shim_smoke-*.dll" -ErrorAction SilentlyContinue | Remove-Item -Force
+}
+Remove-Item (Join-Path $PluginsTarget "shim_smoke.dll") -Force -ErrorAction SilentlyContinue
+
 $ShimDll = Join-Path $RepoRoot "artifacts\native\Hosihikari.Bindings.Endstone.Shim.dll"
 $PayloadShim = Join-Path $PayloadTarget "Hosihikari.Bindings.Endstone.Shim.dll"
 Copy-Item $ShimDll $PayloadShim -Force
