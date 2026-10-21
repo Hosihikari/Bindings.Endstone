@@ -28,6 +28,7 @@ The plugin verifies:
 - `hosihikari_endstone_get_server()` returns the same `Server&` as the plugin API;
 - `Server::getName()` and `Server::getVersion()` through the BindingShim match the native calls;
 - string and integer vector parameters reach `Translatable::Create` and `ArrayTag<int>::Create`;
+- the free-function table entry for `endstone::hash_value` returns the same value as the native inline call;
 - `PluginManager::getPlugins()` returns borrowed `Plugin*` addresses;
 - `Server::createScoreboard()` returns a `shared_ptr` handle whose target serves `Scoreboard::clearSlot` and releases cleanly;
 - `Scoreboard::getObjectives()` returns an owned `Objective[]` (empty on a fresh scoreboard);
@@ -55,6 +56,7 @@ expected_name=Endstone
 expected_version=0.11.14
 name=Endstone
 version=0.11.14
+function.hash=ok
 translatable.string_vector=ok
 arraytag.int_vector=ok
 plugin_manager.plugin_vector=ok

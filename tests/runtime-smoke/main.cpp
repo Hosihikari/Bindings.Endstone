@@ -153,6 +153,9 @@
 #ifndef HS_ITEM_STACK_DESTROY_INDEX
 #error "HS_ITEM_STACK_DESTROY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_FUNCTION_HASH_VALUE_INDEX
+#error "HS_FUNCTION_HASH_VALUE_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_SERVER_CREATE_BLOCK_DATA_INDEX
 #error "HS_SERVER_CREATE_BLOCK_DATA_INDEX must be defined by build.ps1"
 #endif
@@ -332,6 +335,13 @@ public:
             out << "expected_version=" << server.getVersion() << "\n";
             out << "name=" << actualName << "\n";
             out << "version=" << actualVersion << "\n";
+
+            using HashValueFn = std::uint64_t (*)(const void *);
+            const endstone::UUID uuid{};
+            const auto shimHash = reinterpret_cast<HashValueFn>(slots[HS_FUNCTION_HASH_VALUE_INDEX])(&uuid);
+            const auto nativeHash = endstone::hash_value(uuid);
+            out << "function.hash=" << (shimHash == nativeHash ? "ok" : "FAIL") << "\n";
+
             bool vectorsOk = true;
 
             using CreateTranslatableFn = void *(*)(const char *, std::size_t, const HosihikariStringView *, std::size_t);

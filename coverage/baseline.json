@@ -1,7 +1,7 @@
 {
-  "irVersion": "1.2.0",
+  "irVersion": "1.3.0",
   "configuration": "win-x64-server",
   "declarationsBound": 319,
   "membersBound": 1831,
-  "functions": 2052
+  "functions": 2056
 }

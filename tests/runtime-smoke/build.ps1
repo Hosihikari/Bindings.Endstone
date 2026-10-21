@@ -170,6 +170,13 @@ $ActionFormDestroy = Get-TableIndex "ActionForm_*.g.cs" 'Dispose\(\)[\s\S]*?Tabl
 $ActionFormSetOnSubmit = Get-TableIndex "ActionForm_*.g.cs" 'setOnSubmit\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::setOnSubmit"
 $ActionFormGetOnSubmit = Get-TableIndex "ActionForm_*.g.cs" 'getOnSubmit\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ActionForm::getOnSubmit"
 
+$HashValueFile = Get-ChildItem $GeneratedDirectory -Filter "Functions_*.g.cs" |
+    Where-Object { (Get-Content $_.FullName -Raw) -match 'hash_value\(' } |
+    Select-Object -First 1
+if (-not $HashValueFile) { throw "The free-function wrapper containing hash_value was not found." }
+$HashValueText = Get-Content $HashValueFile.FullName -Raw
+$HashValue = Resolve-TableField ([regex]::Match($HashValueText, 'hash_value\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)').Groups[1].Value)
+if (-not $HashValue) { throw "Could not find the Functions::hash_value table index." }
 $CallableFile = Get-ChildItem $GeneratedDirectory -Filter "Function_*.g.cs" |
     Where-Object { (Get-Content $_.FullName -Raw) -match 'Invoke\(nint arg0, int arg1\)' } |
     Select-Object -First 1
@@ -253,6 +260,7 @@ $Args = @(
     "/DHS_ITEM_STACK_GET_DATA_INDEX=$ItemStackGetData",
     "/DHS_ITEM_STACK_ASSIGN_INDEX=$ItemStackAssign",
     "/DHS_ITEM_STACK_DESTROY_INDEX=$ItemStackDestroy",
+    "/DHS_FUNCTION_HASH_VALUE_INDEX=$HashValue",
     "/DHS_SERVER_CREATE_BLOCK_DATA_INDEX=$ServerCreateBlockData",
     "/DHS_BLOCK_DATA_GET_BLOCK_STATES_INDEX=$BlockDataGetBlockStates",
     "/DHS_BLOCK_DATA_DESTROY_INDEX=$BlockDataDestroy",
