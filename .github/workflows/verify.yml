@@ -126,6 +126,13 @@ jobs:
             --compat-include "${{ github.workspace }}/native/BindingShim/linux-compat.h" \
             --output artifacts/endstone-linux-ir
 
+      - name: Upload Linux IR
+        uses: actions/upload-artifact@v4
+        with:
+          name: endstone-linux-x64-server-ir
+          path: Generator/artifacts/endstone-linux-ir
+          retention-days: 3
+
       - name: Emit from Linux IR
         working-directory: Generator
         run: |
