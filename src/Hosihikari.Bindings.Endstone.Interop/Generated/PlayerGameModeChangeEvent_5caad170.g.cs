@@ -16,6 +16,8 @@ public sealed unsafe partial class PlayerGameModeChangeEvent : global::System.ID
         _ownsHandle = ownsHandle;
     }
 
+    public static PlayerGameModeChangeEvent Borrow(nint handle) => new PlayerGameModeChangeEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
         _ownsHandle = ownsHandle;
     }
 
+    public static ActorKnockbackEvent Borrow(nint handle) => new ActorKnockbackEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

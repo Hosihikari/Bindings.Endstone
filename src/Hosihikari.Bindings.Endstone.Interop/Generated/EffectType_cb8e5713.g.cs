@@ -16,6 +16,8 @@ public sealed unsafe partial class EffectType : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static EffectType Borrow(nint handle) => new EffectType(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

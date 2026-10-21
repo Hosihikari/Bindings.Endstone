@@ -16,6 +16,8 @@ public sealed unsafe partial class JoinView_std___Tree_const_iterator_std___Tree
         _ownsHandle = ownsHandle;
     }
 
+    public static JoinView_std___Tree_const_iterator_std___Tree_val_std___Tree_simple_types_std__pair_const_std__b_3527a787 Borrow(nint handle) => new JoinView_std___Tree_const_iterator_std___Tree_val_std___Tree_simple_types_std__pair_const_std__b_3527a787(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

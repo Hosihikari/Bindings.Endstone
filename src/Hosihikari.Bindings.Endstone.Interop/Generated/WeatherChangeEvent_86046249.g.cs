@@ -16,6 +16,8 @@ public sealed unsafe partial class WeatherChangeEvent : global::System.IDisposab
         _ownsHandle = ownsHandle;
     }
 
+    public static WeatherChangeEvent Borrow(nint handle) => new WeatherChangeEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

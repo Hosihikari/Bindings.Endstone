@@ -16,6 +16,8 @@ public sealed unsafe partial class ListTag : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static ListTag Borrow(nint handle) => new ListTag(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

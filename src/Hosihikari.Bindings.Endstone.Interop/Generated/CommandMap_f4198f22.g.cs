@@ -16,6 +16,8 @@ public sealed unsafe partial class CommandMap
         _ownsHandle = ownsHandle;
     }
 
+    public static CommandMap Borrow(nint handle) => new CommandMap(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

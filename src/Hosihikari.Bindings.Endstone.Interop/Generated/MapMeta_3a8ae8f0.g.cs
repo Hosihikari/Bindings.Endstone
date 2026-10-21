@@ -16,6 +16,8 @@ public sealed unsafe partial class MapMeta
         _ownsHandle = ownsHandle;
     }
 
+    public static MapMeta Borrow(nint handle) => new MapMeta(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

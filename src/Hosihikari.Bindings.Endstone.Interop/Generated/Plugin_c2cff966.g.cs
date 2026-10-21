@@ -16,6 +16,8 @@ public sealed unsafe partial class Plugin
         _ownsHandle = ownsHandle;
     }
 
+    public static Plugin Borrow(nint handle) => new Plugin(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

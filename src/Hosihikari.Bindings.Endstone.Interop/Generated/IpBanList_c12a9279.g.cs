@@ -16,6 +16,8 @@ public sealed unsafe partial class IpBanList
         _ownsHandle = ownsHandle;
     }
 
+    public static IpBanList Borrow(nint handle) => new IpBanList(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

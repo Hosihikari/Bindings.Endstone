@@ -16,6 +16,8 @@ public sealed unsafe partial class Level
         _ownsHandle = ownsHandle;
     }
 
+    public static Level Borrow(nint handle) => new Level(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

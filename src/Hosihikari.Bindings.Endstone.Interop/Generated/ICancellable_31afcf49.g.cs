@@ -16,6 +16,8 @@ public sealed unsafe partial class ICancellable
         _ownsHandle = ownsHandle;
     }
 
+    public static ICancellable Borrow(nint handle) => new ICancellable(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class JoinView_std___Vector_const_iterator_std___Ve
         _ownsHandle = ownsHandle;
     }
 
+    public static JoinView_std___Vector_const_iterator_std___Vector_val_std___Simple_types_int_____std___Vector_co_3edbb2f6 Borrow(nint handle) => new JoinView_std___Vector_const_iterator_std___Vector_val_std___Simple_types_int_____std___Vector_co_3edbb2f6(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

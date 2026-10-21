@@ -16,6 +16,8 @@ public sealed unsafe partial class BlockCommandSender
         _ownsHandle = ownsHandle;
     }
 
+    public static BlockCommandSender Borrow(nint handle) => new BlockCommandSender(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

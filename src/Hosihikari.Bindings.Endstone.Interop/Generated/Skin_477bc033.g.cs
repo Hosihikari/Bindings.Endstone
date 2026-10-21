@@ -16,6 +16,8 @@ public sealed unsafe partial class Skin : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Skin Borrow(nint handle) => new Skin(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

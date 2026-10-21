@@ -16,6 +16,8 @@ public sealed unsafe partial class Cancellable_endstone__BlockEvent_
         _ownsHandle = ownsHandle;
     }
 
+    public static Cancellable_endstone__BlockEvent_ Borrow(nint handle) => new Cancellable_endstone__BlockEvent_(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

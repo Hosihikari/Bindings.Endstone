@@ -16,6 +16,8 @@ public sealed unsafe partial class PlayerEmoteEvent : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static PlayerEmoteEvent Borrow(nint handle) => new PlayerEmoteEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

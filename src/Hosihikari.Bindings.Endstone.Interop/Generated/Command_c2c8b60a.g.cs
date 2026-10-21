@@ -16,6 +16,8 @@ public sealed unsafe partial class Command : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Command Borrow(nint handle) => new Command(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

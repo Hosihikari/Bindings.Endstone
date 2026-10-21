@@ -16,6 +16,8 @@ public sealed unsafe partial class PlayerItemHeldEvent : global::System.IDisposa
         _ownsHandle = ownsHandle;
     }
 
+    public static PlayerItemHeldEvent Borrow(nint handle) => new PlayerItemHeldEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

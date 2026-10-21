@@ -16,6 +16,8 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
         _ownsHandle = ownsHandle;
     }
 
+    public static ServerListPingEvent Borrow(nint handle) => new ServerListPingEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

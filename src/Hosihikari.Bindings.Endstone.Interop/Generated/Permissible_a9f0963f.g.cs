@@ -16,6 +16,8 @@ public sealed unsafe partial class Permissible
         _ownsHandle = ownsHandle;
     }
 
+    public static Permissible Borrow(nint handle) => new Permissible(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

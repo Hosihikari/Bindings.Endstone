@@ -16,6 +16,8 @@ public sealed unsafe partial class ServerEvent
         _ownsHandle = ownsHandle;
     }
 
+    public static ServerEvent Borrow(nint handle) => new ServerEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

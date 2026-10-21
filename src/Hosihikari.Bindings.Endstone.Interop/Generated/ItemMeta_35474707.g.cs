@@ -16,6 +16,8 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static ItemMeta Borrow(nint handle) => new ItemMeta(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class Image : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Image Borrow(nint handle) => new Image(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

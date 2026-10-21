@@ -16,6 +16,8 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Toggle Borrow(nint handle) => new Toggle(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

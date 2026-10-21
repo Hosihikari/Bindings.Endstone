@@ -16,6 +16,8 @@ public sealed unsafe partial class BroadcastMessageEvent : global::System.IDispo
         _ownsHandle = ownsHandle;
     }
 
+    public static BroadcastMessageEvent Borrow(nint handle) => new BroadcastMessageEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

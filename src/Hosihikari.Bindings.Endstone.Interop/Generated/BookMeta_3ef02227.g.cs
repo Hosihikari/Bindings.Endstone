@@ -16,6 +16,8 @@ public sealed unsafe partial class BookMeta
         _ownsHandle = ownsHandle;
     }
 
+    public static BookMeta Borrow(nint handle) => new BookMeta(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

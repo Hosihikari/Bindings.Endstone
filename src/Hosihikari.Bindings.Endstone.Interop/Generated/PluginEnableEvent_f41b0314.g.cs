@@ -16,6 +16,8 @@ public sealed unsafe partial class PluginEnableEvent : global::System.IDisposabl
         _ownsHandle = ownsHandle;
     }
 
+    public static PluginEnableEvent Borrow(nint handle) => new PluginEnableEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

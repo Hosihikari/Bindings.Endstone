@@ -16,6 +16,8 @@ public sealed unsafe partial class IRegistry : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static IRegistry Borrow(nint handle) => new IRegistry(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

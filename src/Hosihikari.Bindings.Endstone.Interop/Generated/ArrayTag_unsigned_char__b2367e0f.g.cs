@@ -16,6 +16,8 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
         _ownsHandle = ownsHandle;
     }
 
+    public static ArrayTag_unsigned_char_ Borrow(nint handle) => new ArrayTag_unsigned_char_(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

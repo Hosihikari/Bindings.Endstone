@@ -16,6 +16,8 @@ public sealed unsafe partial class AttributeInstance
         _ownsHandle = ownsHandle;
     }
 
+    public static AttributeInstance Borrow(nint handle) => new AttributeInstance(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

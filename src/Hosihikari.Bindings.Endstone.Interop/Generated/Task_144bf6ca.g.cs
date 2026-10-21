@@ -16,6 +16,8 @@ public sealed unsafe partial class Task
         _ownsHandle = ownsHandle;
     }
 
+    public static Task Borrow(nint handle) => new Task(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

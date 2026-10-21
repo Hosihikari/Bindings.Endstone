@@ -16,6 +16,8 @@ public sealed unsafe partial class StepSlider : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static StepSlider Borrow(nint handle) => new StepSlider(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

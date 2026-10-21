@@ -16,6 +16,8 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static ItemStack Borrow(nint handle) => new ItemStack(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

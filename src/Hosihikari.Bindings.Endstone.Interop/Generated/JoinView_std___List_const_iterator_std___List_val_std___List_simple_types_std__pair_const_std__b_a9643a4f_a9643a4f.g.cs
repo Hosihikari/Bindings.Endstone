@@ -16,6 +16,8 @@ public sealed unsafe partial class JoinView_std___List_const_iterator_std___List
         _ownsHandle = ownsHandle;
     }
 
+    public static JoinView_std___List_const_iterator_std___List_val_std___List_simple_types_std__pair_const_std__b_a9643a4f Borrow(nint handle) => new JoinView_std___List_const_iterator_std___List_val_std___List_simple_types_std__pair_const_std__b_a9643a4f(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

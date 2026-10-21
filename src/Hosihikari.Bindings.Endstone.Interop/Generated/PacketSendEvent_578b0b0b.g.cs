@@ -16,6 +16,8 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static PacketSendEvent Borrow(nint handle) => new PacketSendEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

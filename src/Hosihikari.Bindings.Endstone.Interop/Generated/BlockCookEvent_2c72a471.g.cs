@@ -16,6 +16,8 @@ public sealed unsafe partial class BlockCookEvent : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static BlockCookEvent Borrow(nint handle) => new BlockCookEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

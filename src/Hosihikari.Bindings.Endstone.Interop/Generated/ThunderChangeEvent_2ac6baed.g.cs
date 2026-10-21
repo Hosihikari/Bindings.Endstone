@@ -16,6 +16,8 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
         _ownsHandle = ownsHandle;
     }
 
+    public static ThunderChangeEvent Borrow(nint handle) => new ThunderChangeEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

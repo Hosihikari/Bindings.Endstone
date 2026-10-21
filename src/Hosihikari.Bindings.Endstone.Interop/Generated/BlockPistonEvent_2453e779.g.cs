@@ -16,6 +16,8 @@ public sealed unsafe partial class BlockPistonEvent
         _ownsHandle = ownsHandle;
     }
 
+    public static BlockPistonEvent Borrow(nint handle) => new BlockPistonEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class Score : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Score Borrow(nint handle) => new Score(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class DimensionEvent
         _ownsHandle = ownsHandle;
     }
 
+    public static DimensionEvent Borrow(nint handle) => new DimensionEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

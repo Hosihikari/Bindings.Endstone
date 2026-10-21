@@ -16,6 +16,8 @@ public sealed unsafe partial class MapRenderer
         _ownsHandle = ownsHandle;
     }
 
+    public static MapRenderer Borrow(nint handle) => new MapRenderer(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

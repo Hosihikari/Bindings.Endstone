@@ -16,6 +16,8 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static CompoundTag Borrow(nint handle) => new CompoundTag(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

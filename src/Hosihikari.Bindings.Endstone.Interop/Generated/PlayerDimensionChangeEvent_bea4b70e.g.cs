@@ -16,6 +16,8 @@ public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.I
         _ownsHandle = ownsHandle;
     }
 
+    public static PlayerDimensionChangeEvent Borrow(nint handle) => new PlayerDimensionChangeEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

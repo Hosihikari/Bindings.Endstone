@@ -16,6 +16,8 @@ public sealed unsafe partial class Permission : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Permission Borrow(nint handle) => new Permission(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

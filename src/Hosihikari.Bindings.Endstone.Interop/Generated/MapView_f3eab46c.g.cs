@@ -16,6 +16,8 @@ public sealed unsafe partial class MapView
         _ownsHandle = ownsHandle;
     }
 
+    public static MapView Borrow(nint handle) => new MapView(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

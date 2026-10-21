@@ -16,6 +16,8 @@ public sealed unsafe partial class Scoreboard
         _ownsHandle = ownsHandle;
     }
 
+    public static Scoreboard Borrow(nint handle) => new Scoreboard(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

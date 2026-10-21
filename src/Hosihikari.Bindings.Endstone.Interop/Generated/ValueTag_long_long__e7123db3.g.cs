@@ -16,6 +16,8 @@ public sealed unsafe partial class ValueTag_long_long_ : global::System.IDisposa
         _ownsHandle = ownsHandle;
     }
 
+    public static ValueTag_long_long_ Borrow(nint handle) => new ValueTag_long_long_(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

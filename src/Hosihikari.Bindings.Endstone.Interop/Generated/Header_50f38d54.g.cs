@@ -16,6 +16,8 @@ public sealed unsafe partial class Header : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Header Borrow(nint handle) => new Header(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

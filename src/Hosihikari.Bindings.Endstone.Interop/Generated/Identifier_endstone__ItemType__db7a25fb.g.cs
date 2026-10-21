@@ -16,6 +16,8 @@ public sealed unsafe partial class Identifier_endstone__ItemType_ : global::Syst
         _ownsHandle = ownsHandle;
     }
 
+    public static Identifier_endstone__ItemType_ Borrow(nint handle) => new Identifier_endstone__ItemType_(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

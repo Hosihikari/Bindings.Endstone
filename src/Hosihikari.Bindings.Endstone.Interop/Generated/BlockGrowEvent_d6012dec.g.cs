@@ -16,6 +16,8 @@ public sealed unsafe partial class BlockGrowEvent : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static BlockGrowEvent Borrow(nint handle) => new BlockGrowEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class IpBanEntry : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static IpBanEntry Borrow(nint handle) => new IpBanEntry(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

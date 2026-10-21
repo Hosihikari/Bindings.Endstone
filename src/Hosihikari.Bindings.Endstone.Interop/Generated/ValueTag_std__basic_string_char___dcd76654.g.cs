@@ -16,6 +16,8 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
         _ownsHandle = ownsHandle;
     }
 
+    public static ValueTag_std__basic_string_char__ Borrow(nint handle) => new ValueTag_std__basic_string_char__(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

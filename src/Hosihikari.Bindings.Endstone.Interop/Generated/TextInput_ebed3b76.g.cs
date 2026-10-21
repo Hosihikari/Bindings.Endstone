@@ -16,6 +16,8 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static TextInput Borrow(nint handle) => new TextInput(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

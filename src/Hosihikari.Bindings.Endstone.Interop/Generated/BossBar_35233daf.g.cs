@@ -16,6 +16,8 @@ public sealed unsafe partial class BossBar : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static BossBar Borrow(nint handle) => new BossBar(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

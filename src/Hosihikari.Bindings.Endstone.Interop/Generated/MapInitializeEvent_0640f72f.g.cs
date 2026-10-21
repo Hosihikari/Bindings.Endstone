@@ -16,6 +16,8 @@ public sealed unsafe partial class MapInitializeEvent : global::System.IDisposab
         _ownsHandle = ownsHandle;
     }
 
+    public static MapInitializeEvent Borrow(nint handle) => new MapInitializeEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

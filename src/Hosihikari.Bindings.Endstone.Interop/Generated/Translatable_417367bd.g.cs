@@ -16,6 +16,8 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Translatable Borrow(nint handle) => new Translatable(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

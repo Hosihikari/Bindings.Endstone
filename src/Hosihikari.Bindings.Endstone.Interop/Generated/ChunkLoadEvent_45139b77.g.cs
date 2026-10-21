@@ -16,6 +16,8 @@ public sealed unsafe partial class ChunkLoadEvent : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static ChunkLoadEvent Borrow(nint handle) => new ChunkLoadEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class Language
         _ownsHandle = ownsHandle;
     }
 
+    public static Language Borrow(nint handle) => new Language(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class PluginDescriptionBuilder : global::System.IDi
         _ownsHandle = ownsHandle;
     }
 
+    public static PluginDescriptionBuilder Borrow(nint handle) => new PluginDescriptionBuilder(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

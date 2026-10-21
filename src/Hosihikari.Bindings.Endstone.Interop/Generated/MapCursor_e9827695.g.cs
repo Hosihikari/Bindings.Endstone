@@ -16,6 +16,8 @@ public sealed unsafe partial class MapCursor : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static MapCursor Borrow(nint handle) => new MapCursor(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

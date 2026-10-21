@@ -16,6 +16,8 @@ public sealed unsafe partial class PlayerInventory
         _ownsHandle = ownsHandle;
     }
 
+    public static PlayerInventory Borrow(nint handle) => new PlayerInventory(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class ValueTag_unsigned_char_ : global::System.IDis
         _ownsHandle = ownsHandle;
     }
 
+    public static ValueTag_unsigned_char_ Borrow(nint handle) => new ValueTag_unsigned_char_(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

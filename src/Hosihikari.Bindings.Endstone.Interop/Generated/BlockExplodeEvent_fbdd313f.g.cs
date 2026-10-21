@@ -16,6 +16,8 @@ public sealed unsafe partial class BlockExplodeEvent : global::System.IDisposabl
         _ownsHandle = ownsHandle;
     }
 
+    public static BlockExplodeEvent Borrow(nint handle) => new BlockExplodeEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

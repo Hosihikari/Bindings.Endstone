@@ -16,6 +16,8 @@ public sealed unsafe partial class Recipe
         _ownsHandle = ownsHandle;
     }
 
+    public static Recipe Borrow(nint handle) => new Recipe(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

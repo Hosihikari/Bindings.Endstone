@@ -16,6 +16,8 @@ public sealed unsafe partial class BlockFromToEvent : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static BlockFromToEvent Borrow(nint handle) => new BlockFromToEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

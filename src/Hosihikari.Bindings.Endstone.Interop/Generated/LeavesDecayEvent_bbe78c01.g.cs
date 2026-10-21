@@ -16,6 +16,8 @@ public sealed unsafe partial class LeavesDecayEvent : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static LeavesDecayEvent Borrow(nint handle) => new LeavesDecayEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

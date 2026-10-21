@@ -16,6 +16,8 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static ArrayTag_int_ Borrow(nint handle) => new ArrayTag_int_(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

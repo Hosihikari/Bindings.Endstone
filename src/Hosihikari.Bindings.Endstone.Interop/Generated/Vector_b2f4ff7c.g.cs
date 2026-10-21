@@ -16,6 +16,8 @@ public sealed unsafe partial class Vector : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Vector Borrow(nint handle) => new Vector(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

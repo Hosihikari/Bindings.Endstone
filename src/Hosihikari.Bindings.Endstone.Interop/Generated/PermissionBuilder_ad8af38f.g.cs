@@ -16,6 +16,8 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
         _ownsHandle = ownsHandle;
     }
 
+    public static PermissionBuilder Borrow(nint handle) => new PermissionBuilder(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

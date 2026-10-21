@@ -16,6 +16,8 @@ public sealed unsafe partial class ConsoleCommandSender
         _ownsHandle = ownsHandle;
     }
 
+    public static ConsoleCommandSender Borrow(nint handle) => new ConsoleCommandSender(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

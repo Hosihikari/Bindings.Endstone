@@ -16,6 +16,8 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
         _ownsHandle = ownsHandle;
     }
 
+    public static PlayerSkinChangeEvent Borrow(nint handle) => new PlayerSkinChangeEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

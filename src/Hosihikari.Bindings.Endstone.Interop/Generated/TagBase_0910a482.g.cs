@@ -16,6 +16,8 @@ public sealed partial class TagBase
         _ownsHandle = ownsHandle;
     }
 
+    public static TagBase Borrow(nint handle) => new TagBase(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

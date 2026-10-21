@@ -16,6 +16,8 @@ public sealed partial class Preconditions
         _ownsHandle = ownsHandle;
     }
 
+    public static Preconditions Borrow(nint handle) => new Preconditions(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

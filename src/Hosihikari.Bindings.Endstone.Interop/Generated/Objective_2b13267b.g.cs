@@ -16,6 +16,8 @@ public sealed unsafe partial class Objective : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Objective Borrow(nint handle) => new Objective(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

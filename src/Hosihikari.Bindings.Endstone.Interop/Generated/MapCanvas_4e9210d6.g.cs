@@ -16,6 +16,8 @@ public sealed unsafe partial class MapCanvas
         _ownsHandle = ownsHandle;
     }
 
+    public static MapCanvas Borrow(nint handle) => new MapCanvas(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

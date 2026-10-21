@@ -16,6 +16,8 @@ public sealed unsafe partial class WritableBookMeta
         _ownsHandle = ownsHandle;
     }
 
+    public static WritableBookMeta Borrow(nint handle) => new WritableBookMeta(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

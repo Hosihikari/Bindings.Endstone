@@ -16,6 +16,8 @@ public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static PlayerLoginEvent Borrow(nint handle) => new PlayerLoginEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

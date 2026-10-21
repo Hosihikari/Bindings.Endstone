@@ -16,6 +16,8 @@ public sealed unsafe partial class MessageForm : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static MessageForm Borrow(nint handle) => new MessageForm(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

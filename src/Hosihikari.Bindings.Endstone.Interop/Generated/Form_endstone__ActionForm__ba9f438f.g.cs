@@ -16,6 +16,8 @@ public sealed unsafe partial class Form_endstone__ActionForm_ : global::System.I
         _ownsHandle = ownsHandle;
     }
 
+    public static Form_endstone__ActionForm_ Borrow(nint handle) => new Form_endstone__ActionForm_(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

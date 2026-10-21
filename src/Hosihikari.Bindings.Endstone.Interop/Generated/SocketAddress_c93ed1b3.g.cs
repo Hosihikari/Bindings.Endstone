@@ -16,6 +16,8 @@ public sealed unsafe partial class SocketAddress : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static SocketAddress Borrow(nint handle) => new SocketAddress(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

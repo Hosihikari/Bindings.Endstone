@@ -16,6 +16,8 @@ public sealed unsafe partial class Location : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Location Borrow(nint handle) => new Location(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

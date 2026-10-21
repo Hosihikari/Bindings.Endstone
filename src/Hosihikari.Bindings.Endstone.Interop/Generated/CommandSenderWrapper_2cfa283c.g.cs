@@ -16,6 +16,8 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
         _ownsHandle = ownsHandle;
     }
 
+    public static CommandSenderWrapper Borrow(nint handle) => new CommandSenderWrapper(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

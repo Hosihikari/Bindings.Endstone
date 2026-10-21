@@ -16,6 +16,8 @@ public sealed unsafe partial class Enchantment
         _ownsHandle = ownsHandle;
     }
 
+    public static Enchantment Borrow(nint handle) => new Enchantment(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

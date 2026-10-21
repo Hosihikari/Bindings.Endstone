@@ -16,6 +16,8 @@ public sealed unsafe partial class escape_view : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static escape_view Borrow(nint handle) => new escape_view(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class BlockPistonRetractEvent : global::System.IDis
         _ownsHandle = ownsHandle;
     }
 
+    public static BlockPistonRetractEvent Borrow(nint handle) => new BlockPistonRetractEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

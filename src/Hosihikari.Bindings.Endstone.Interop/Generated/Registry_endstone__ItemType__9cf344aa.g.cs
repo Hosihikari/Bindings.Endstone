@@ -16,6 +16,8 @@ public sealed unsafe partial class Registry_endstone__ItemType_
         _ownsHandle = ownsHandle;
     }
 
+    public static Registry_endstone__ItemType_ Borrow(nint handle) => new Registry_endstone__ItemType_(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

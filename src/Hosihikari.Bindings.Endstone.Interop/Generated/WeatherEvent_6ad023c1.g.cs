@@ -16,6 +16,8 @@ public sealed unsafe partial class WeatherEvent
         _ownsHandle = ownsHandle;
     }
 
+    public static WeatherEvent Borrow(nint handle) => new WeatherEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

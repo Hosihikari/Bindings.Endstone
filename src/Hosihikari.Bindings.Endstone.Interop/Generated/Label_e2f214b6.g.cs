@@ -16,6 +16,8 @@ public sealed unsafe partial class Label : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Label Borrow(nint handle) => new Label(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

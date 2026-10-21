@@ -16,6 +16,8 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
         _ownsHandle = ownsHandle;
     }
 
+    public static PermissionAttachment Borrow(nint handle) => new PermissionAttachment(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

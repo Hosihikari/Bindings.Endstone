@@ -16,6 +16,8 @@ public sealed unsafe partial class ActorTeleportEvent : global::System.IDisposab
         _ownsHandle = ownsHandle;
     }
 
+    public static ActorTeleportEvent Borrow(nint handle) => new ActorTeleportEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

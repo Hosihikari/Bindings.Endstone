@@ -16,6 +16,8 @@ public sealed unsafe partial class BlockType
         _ownsHandle = ownsHandle;
     }
 
+    public static BlockType Borrow(nint handle) => new BlockType(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

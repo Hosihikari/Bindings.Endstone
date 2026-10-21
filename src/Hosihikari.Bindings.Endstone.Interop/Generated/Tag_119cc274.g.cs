@@ -16,6 +16,8 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Tag Borrow(nint handle) => new Tag(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

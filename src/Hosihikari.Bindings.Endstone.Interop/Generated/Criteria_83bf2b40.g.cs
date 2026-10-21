@@ -16,6 +16,8 @@ public sealed unsafe partial class Criteria
         _ownsHandle = ownsHandle;
     }
 
+    public static Criteria Borrow(nint handle) => new Criteria(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

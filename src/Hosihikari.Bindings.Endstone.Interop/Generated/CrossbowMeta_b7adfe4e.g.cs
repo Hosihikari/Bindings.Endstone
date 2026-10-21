@@ -16,6 +16,8 @@ public sealed unsafe partial class CrossbowMeta
         _ownsHandle = ownsHandle;
     }
 
+    public static CrossbowMeta Borrow(nint handle) => new CrossbowMeta(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

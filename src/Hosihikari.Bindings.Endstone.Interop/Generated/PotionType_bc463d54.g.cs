@@ -16,6 +16,8 @@ public sealed unsafe partial class PotionType : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static PotionType Borrow(nint handle) => new PotionType(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

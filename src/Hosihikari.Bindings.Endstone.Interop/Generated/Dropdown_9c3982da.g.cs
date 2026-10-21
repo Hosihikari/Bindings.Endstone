@@ -16,6 +16,8 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Dropdown Borrow(nint handle) => new Dropdown(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

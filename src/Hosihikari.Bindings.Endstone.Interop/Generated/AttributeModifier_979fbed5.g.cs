@@ -16,6 +16,8 @@ public sealed unsafe partial class AttributeModifier : global::System.IDisposabl
         _ownsHandle = ownsHandle;
     }
 
+    public static AttributeModifier Borrow(nint handle) => new AttributeModifier(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

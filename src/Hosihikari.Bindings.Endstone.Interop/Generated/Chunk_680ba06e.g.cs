@@ -16,6 +16,8 @@ public sealed unsafe partial class Chunk : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Chunk Borrow(nint handle) => new Chunk(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

@@ -16,6 +16,8 @@ public sealed unsafe partial class Color : global::System.IDisposable
         _ownsHandle = ownsHandle;
     }
 
+    public static Color Borrow(nint handle) => new Color(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

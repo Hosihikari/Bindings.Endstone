@@ -16,6 +16,8 @@ public sealed unsafe partial class DamageSource
         _ownsHandle = ownsHandle;
     }
 
+    public static DamageSource Borrow(nint handle) => new DamageSource(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

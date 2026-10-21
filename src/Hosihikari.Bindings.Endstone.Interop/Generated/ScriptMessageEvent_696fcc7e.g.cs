@@ -16,6 +16,8 @@ public sealed unsafe partial class ScriptMessageEvent : global::System.IDisposab
         _ownsHandle = ownsHandle;
     }
 
+    public static ScriptMessageEvent Borrow(nint handle) => new ScriptMessageEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

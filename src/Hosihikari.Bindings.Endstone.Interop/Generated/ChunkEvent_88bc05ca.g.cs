@@ -16,6 +16,8 @@ public sealed unsafe partial class ChunkEvent
         _ownsHandle = ownsHandle;
     }
 
+    public static ChunkEvent Borrow(nint handle) => new ChunkEvent(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()

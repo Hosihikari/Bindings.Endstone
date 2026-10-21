@@ -16,6 +16,8 @@ public sealed unsafe partial class Scheduler
         _ownsHandle = ownsHandle;
     }
 
+    public static Scheduler Borrow(nint handle) => new Scheduler(handle, false);
+
     public nint Handle => _handle;
 
     internal nint ReleaseHandle()
