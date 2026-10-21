@@ -44,10 +44,50 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
 
     public static ServerListPingEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress address, string motd, int network_protocol_version, string minecraft_version_network, int num_players, int max_players, string server_guid, string level_name, int game_mode, int local_port, int local_port_v6)
     {
-        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(motd);
-        var __hs_stringBytes3 = global::System.Text.Encoding.UTF8.GetBytes(minecraft_version_network);
-        var __hs_stringBytes6 = global::System.Text.Encoding.UTF8.GetBytes(server_guid);
-        var __hs_stringBytes7 = global::System.Text.Encoding.UTF8.GetBytes(level_name);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(motd);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(motd, __hs_stringBytes1);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(minecraft_version_network);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(minecraft_version_network, __hs_stringBytes3);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(server_guid);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(server_guid, __hs_stringBytes6);
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(level_name);
+        scoped global::System.Span<byte> __hs_stringBytes7;
+        if (__hs_stringByteCount7 <= 256)
+        {
+            __hs_stringBytes7 = stackalloc byte[__hs_stringByteCount7 == 0 ? 1 : __hs_stringByteCount7];
+        }
+        else
+        {
+            __hs_stringBytes7 = new byte[__hs_stringByteCount7];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(level_name, __hs_stringBytes7);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
             fixed (byte* __hs_stringData3 = __hs_stringBytes3)
@@ -56,7 +96,7 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
                 {
                     fixed (byte* __hs_stringData7 = __hs_stringBytes7)
                     {
-                        var handle = NativeMethods.TablePtr->hs_create_8a74906d((void*)address.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, network_protocol_version, __hs_stringData3, (nuint)__hs_stringBytes3.Length, num_players, max_players, __hs_stringData6, (nuint)__hs_stringBytes6.Length, __hs_stringData7, (nuint)__hs_stringBytes7.Length, game_mode, local_port, local_port_v6);
+                        var handle = NativeMethods.TablePtr->hs_create_8a74906d((void*)address.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, network_protocol_version, __hs_stringData3, (nuint)__hs_stringByteCount3, num_players, max_players, __hs_stringData6, (nuint)__hs_stringByteCount6, __hs_stringData7, (nuint)__hs_stringByteCount7, game_mode, local_port, local_port_v6);
                         if (handle == null)
                         {
                             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -141,10 +181,20 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
 
     public void setLevelName(string level_name)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(level_name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(level_name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(level_name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_6b596bb9((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_6b596bb9((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -165,19 +215,39 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
 
     public void setMinecraftVersionNetwork(string minecraft_version_network)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(minecraft_version_network);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(minecraft_version_network);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(minecraft_version_network, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_34191d60((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_34191d60((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void setMotd(string motd)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(motd);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(motd);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(motd, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_5d1b4853((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_5d1b4853((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -188,10 +258,20 @@ public sealed unsafe partial class ServerListPingEvent : global::System.IDisposa
 
     public void setServerGuid(string guid)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(guid);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(guid);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(guid, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_b358f345((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_b358f345((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 

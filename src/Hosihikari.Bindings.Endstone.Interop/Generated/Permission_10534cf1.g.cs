@@ -68,13 +68,33 @@ public sealed unsafe partial class Permission : global::System.IDisposable
         var __hs_map3View = new global::Hosihikari.Bindings.Abi.ArrayView { Data = __hs_map3Entries, Size = (nuint)__hs_map3Count };
         try
         {
-            var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
-            var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(description);
+            var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+            scoped global::System.Span<byte> __hs_stringBytes0;
+            if (__hs_stringByteCount0 <= 256)
+            {
+                __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            }
+            else
+            {
+                __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+            }
+            global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+            var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+            scoped global::System.Span<byte> __hs_stringBytes1;
+            if (__hs_stringByteCount1 <= 256)
+            {
+                __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+            }
+            else
+            {
+                __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+            }
+            global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes1);
             fixed (byte* __hs_stringData0 = __hs_stringBytes0)
             {
                 fixed (byte* __hs_stringData1 = __hs_stringBytes1)
                 {
-                    var handle = NativeMethods.TablePtr->hs_create_2e599a1a(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, default_value, __hs_map3View);
+                    var handle = NativeMethods.TablePtr->hs_create_2e599a1a(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, default_value, __hs_map3View);
                     if (handle == null)
                     {
                         throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -93,10 +113,20 @@ public sealed unsafe partial class Permission : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission? addParent(string name, bool value)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_b77c7c2d((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, value);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_b77c7c2d((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, value);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission((nint)__hs_handle, false) : null;
         }
     }
@@ -166,10 +196,20 @@ public sealed unsafe partial class Permission : global::System.IDisposable
 
     public void setDescription(string value)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(value);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(value);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(value, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_0a1fef83((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_0a1fef83((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 

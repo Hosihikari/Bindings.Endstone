@@ -116,19 +116,39 @@ public sealed unsafe partial class Block : global::System.IDisposable
 
     public void setType(string type)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_2379ca17((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_2379ca17((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
     public void setType(string type, bool apply_physics)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_bd1506a8((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, apply_physics);
+            NativeMethods.TablePtr->hs_method_bd1506a8((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, apply_physics);
         }
     }
 

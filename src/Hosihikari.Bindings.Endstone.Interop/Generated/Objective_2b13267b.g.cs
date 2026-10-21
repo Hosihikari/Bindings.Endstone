@@ -111,10 +111,20 @@ public sealed unsafe partial class Objective : global::System.IDisposable
 
     public void setDisplayName(string display_name)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(display_name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(display_name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(display_name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_2d7ab63c((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_2d7ab63c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 

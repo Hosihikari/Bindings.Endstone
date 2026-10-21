@@ -61,20 +61,40 @@ public sealed unsafe partial class Server
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.IRegistry? _getRegistry(string type)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_094184dd((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_094184dd((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.IRegistry((nint)__hs_handle, false) : null;
         }
     }
 
     public void broadcast(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message, string permission)
     {
-        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(permission);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(permission);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(permission, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_ebcb26df((void*)_handle, (void*)message.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            NativeMethods.TablePtr->hs_method_ebcb26df((void*)_handle, (void*)message.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
@@ -85,10 +105,20 @@ public sealed unsafe partial class Server
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? createBlockData(string type)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_c5b87e08((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_c5b87e08((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
         }
     }
@@ -119,10 +149,20 @@ public sealed unsafe partial class Server
         var __hs_map1View = new global::Hosihikari.Bindings.Abi.ArrayView { Data = __hs_map1Entries, Size = (nuint)__hs_map1Count };
         try
         {
-            var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+            var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+            scoped global::System.Span<byte> __hs_stringBytes0;
+            if (__hs_stringByteCount0 <= 256)
+            {
+                __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+            }
+            else
+            {
+                __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+            }
+            global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
             fixed (byte* __hs_stringData0 = __hs_stringBytes0)
             {
-                var __hs_handle = NativeMethods.TablePtr->hs_method_22dd6517((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_map1View);
+                var __hs_handle = NativeMethods.TablePtr->hs_method_22dd6517((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_map1View);
                 return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
             }
         }
@@ -135,22 +175,42 @@ public sealed unsafe partial class Server
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BossBar? createBossBar(string title, int color, int style)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(title);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(title, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_44f12b17((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, color, style);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_44f12b17((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, color, style);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BossBar((nint)__hs_handle) : null;
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BossBar? createBossBar(string title, int color, int style, int[] flags)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(title);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(title, __hs_stringBytes0);
         fixed (int* __hs_vectorData3 = flags)
         {
             fixed (byte* __hs_stringData0 = __hs_stringBytes0)
             {
-                var __hs_handle = NativeMethods.TablePtr->hs_method_1d4d7fac((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, color, style, __hs_vectorData3, (nuint)(flags?.Length ?? 0));
+                var __hs_handle = NativeMethods.TablePtr->hs_method_1d4d7fac((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, color, style, __hs_vectorData3, (nuint)(flags?.Length ?? 0));
                 return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BossBar((nint)__hs_handle) : null;
             }
         }
@@ -169,10 +229,20 @@ public sealed unsafe partial class Server
 
     public bool dispatchCommand(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string command_line)
     {
-        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(command_line);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(command_line);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(command_line, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_1e44a472((void*)_handle, (void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            return NativeMethods.TablePtr->hs_method_1e44a472((void*)_handle, (void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 
@@ -289,20 +359,40 @@ public sealed unsafe partial class Server
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? getPlayer(string name)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_3ba2eecb((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_3ba2eecb((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)__hs_handle, false) : null;
         }
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginCommand? getPluginCommand(string name)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_bb9efb5e((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_bb9efb5e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginCommand((nint)__hs_handle, false) : null;
         }
     }

@@ -44,10 +44,20 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
 
     public static PacketSendEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? player, int packet_id, string payload, global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress address, int sub_client_id)
     {
-        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(payload);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(payload);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(payload, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            var handle = NativeMethods.TablePtr->hs_create_8d8f9b72((void*)(player?.Handle ?? 0), packet_id, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)address.Handle, sub_client_id);
+            var handle = NativeMethods.TablePtr->hs_create_8d8f9b72((void*)(player?.Handle ?? 0), packet_id, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)address.Handle, sub_client_id);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -92,10 +102,20 @@ public sealed unsafe partial class PacketSendEvent : global::System.IDisposable
 
     public void setPayload(string payload)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(payload);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(payload);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(payload, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_950a5c86((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_950a5c86((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 

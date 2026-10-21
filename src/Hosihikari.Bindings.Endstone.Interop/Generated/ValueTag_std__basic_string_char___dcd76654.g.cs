@@ -50,10 +50,20 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
 
     public static ValueTag_std__basic_string_char__ Create_9148a4df(string v)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(v);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(v);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_9148a4df(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var handle = NativeMethods.TablePtr->hs_create_9148a4df(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -65,10 +75,20 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
 
     public static ValueTag_std__basic_string_char__ Create_041ea18a(string v)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(v);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(v);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(v, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_041ea18a(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var handle = NativeMethods.TablePtr->hs_create_041ea18a(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

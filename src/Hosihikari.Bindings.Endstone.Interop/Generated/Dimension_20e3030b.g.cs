@@ -112,10 +112,20 @@ public sealed unsafe partial class Dimension
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor? spawnActor(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location, string type)
     {
-        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var __hs_handle = NativeMethods.TablePtr->hs_method_9b8dee0d((void*)_handle, (void*)location.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            var __hs_handle = NativeMethods.TablePtr->hs_method_9b8dee0d((void*)_handle, (void*)location.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
             return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)__hs_handle, false) : null;
         }
     }

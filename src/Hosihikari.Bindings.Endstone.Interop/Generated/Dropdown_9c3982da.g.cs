@@ -84,10 +84,20 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown addOption(string option)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(option);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(option);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(option, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_ef8d8378((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dropdown((nint)NativeMethods.TablePtr->hs_method_ef8d8378((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 

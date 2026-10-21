@@ -39,7 +39,17 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
 
     public static Translatable Create(string text, string[] @params)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(text);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(text, __hs_stringBytes0);
         var __hs_vectorItems1 = @params ?? global::System.Array.Empty<string>();
         var __hs_vectorBytes1 = new byte[__hs_vectorItems1.Length][];
         var __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems1.Length];
@@ -59,7 +69,7 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
             {
                 fixed (byte* __hs_stringData0 = __hs_stringBytes0)
                 {
-                    var handle = NativeMethods.TablePtr->hs_create_6641a0a9(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_vectorData1, (nuint)(@params?.Length ?? 0));
+                    var handle = NativeMethods.TablePtr->hs_create_6641a0a9(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_vectorData1, (nuint)(@params?.Length ?? 0));
                     if (handle == null)
                     {
                         throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

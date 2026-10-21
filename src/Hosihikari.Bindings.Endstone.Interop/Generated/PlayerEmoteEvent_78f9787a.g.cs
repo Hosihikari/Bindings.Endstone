@@ -44,10 +44,20 @@ public sealed unsafe partial class PlayerEmoteEvent : global::System.IDisposable
 
     public static PlayerEmoteEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, string emote_id, bool muted)
     {
-        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(emote_id);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(emote_id);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(emote_id, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->hs_create_7fffb4c9((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, muted);
+            var handle = NativeMethods.TablePtr->hs_create_7fffb4c9((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, muted);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

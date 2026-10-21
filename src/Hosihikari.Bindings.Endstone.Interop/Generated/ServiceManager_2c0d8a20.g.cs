@@ -39,20 +39,40 @@ public sealed unsafe partial class ServiceManager
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? get(string name)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_shared = NativeMethods.TablePtr->hs_method_5a82ad36((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_shared = NativeMethods.TablePtr->hs_method_5a82ad36((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             return global::Hosihikari.Bindings.Abi.SharedHandle.FromNative(__hs_shared);
         }
     }
 
     public void registerService(string name, global::Hosihikari.Bindings.Abi.SharedHandle? provider, global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, int priority)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_5e0e663b((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, provider?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)plugin.Handle, priority);
+            NativeMethods.TablePtr->hs_method_5e0e663b((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, provider?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData), (void*)plugin.Handle, priority);
         }
     }
 
@@ -63,10 +83,20 @@ public sealed unsafe partial class ServiceManager
 
     public void unregister(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.Service provider)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_d8e7f62a((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)provider.Handle);
+            NativeMethods.TablePtr->hs_method_d8e7f62a((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)provider.Handle);
         }
     }
 

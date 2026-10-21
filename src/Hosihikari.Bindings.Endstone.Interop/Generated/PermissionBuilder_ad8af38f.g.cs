@@ -39,10 +39,20 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
 
     public static PermissionBuilder Create(string name)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->hs_create_b4ef4553(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var handle = NativeMethods.TablePtr->hs_create_b4ef4553(__hs_stringData0, (nuint)__hs_stringByteCount0);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -59,10 +69,20 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder children(string name, bool value)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->hs_method_a61badb4((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, value), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->hs_method_a61badb4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, value), false);
         }
     }
 
@@ -73,10 +93,20 @@ public sealed unsafe partial class PermissionBuilder : global::System.IDisposabl
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder description(string description)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(description);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->hs_method_f5492b69((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.detail.PermissionBuilder((nint)NativeMethods.TablePtr->hs_method_f5492b69((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 

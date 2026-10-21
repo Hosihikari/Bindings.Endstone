@@ -79,10 +79,20 @@ public sealed unsafe partial class Inventory
 
     public global::System.Collections.Generic.Dictionary<int, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack> all(string type)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->hs_method_ca0ae1bc((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_view = NativeMethods.TablePtr->hs_method_ca0ae1bc((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
             var __hs_items = (global::Hosihikari.Bindings.Abi.MapEntry*)__hs_view.Data;
             var __hs_result = new global::System.Collections.Generic.Dictionary<int, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack>(checked((int)__hs_view.Size));
             for (var __hs_i = 0; __hs_i < checked((int)__hs_view.Size); __hs_i++)
@@ -118,10 +128,20 @@ public sealed unsafe partial class Inventory
 
     public bool contains(string type)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_376fa141((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->hs_method_376fa141((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -132,10 +152,20 @@ public sealed unsafe partial class Inventory
 
     public bool containsAtLeast(string type, int amount)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_6b032e11((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, amount);
+            return NativeMethods.TablePtr->hs_method_6b032e11((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, amount);
         }
     }
 
@@ -146,10 +176,20 @@ public sealed unsafe partial class Inventory
 
     public int first(string type)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_efaa5e3c((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->hs_method_efaa5e3c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -200,10 +240,20 @@ public sealed unsafe partial class Inventory
 
     public void remove(string type)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_80807888((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->hs_method_80807888((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 

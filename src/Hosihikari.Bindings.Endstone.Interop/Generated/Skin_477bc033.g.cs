@@ -39,13 +39,33 @@ public sealed unsafe partial class Skin : global::System.IDisposable
 
     public static Skin Create(string id, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image image, string? cape_id, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image? cape_image)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(id);
-        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(cape_id ?? string.Empty);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(id);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(id, __hs_stringBytes0);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(cape_id ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(cape_id ?? string.Empty, __hs_stringBytes2);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var handle = NativeMethods.TablePtr->hs_create_f80c3f5d(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
+                var handle = NativeMethods.TablePtr->hs_create_f80c3f5d(__hs_stringData0, (nuint)__hs_stringByteCount0, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

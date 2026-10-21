@@ -292,10 +292,20 @@ public sealed unsafe partial class Tag : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag at_6243cae4(string key)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_6243cae4((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_6243cae4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
@@ -306,10 +316,20 @@ public sealed unsafe partial class Tag : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag at_c69bd34e(string key)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_c69bd34e((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_c69bd34e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 
@@ -320,10 +340,20 @@ public sealed unsafe partial class Tag : global::System.IDisposable
 
     public bool contains(string key)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_c9fa7570((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->hs_method_c9fa7570((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
         }
     }
 
@@ -334,10 +364,20 @@ public sealed unsafe partial class Tag : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag operator_index(string key)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(key);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_2d42e86c((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag((nint)NativeMethods.TablePtr->hs_method_2d42e86c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0), false);
         }
     }
 

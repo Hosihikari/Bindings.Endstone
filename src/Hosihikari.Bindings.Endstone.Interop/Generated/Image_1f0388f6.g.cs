@@ -62,10 +62,20 @@ public sealed unsafe partial class Image : global::System.IDisposable
     public static global::Hosihikari.Bindings.Endstone.Interop.endstone.Image fromBuffer(int type, int width, int height, string buffer)
     {
         var __hs_hasValue = false;
-        var __hs_stringBytes3 = global::System.Text.Encoding.UTF8.GetBytes(buffer);
+        var __hs_stringByteCount3 = global::System.Text.Encoding.UTF8.GetByteCount(buffer);
+        scoped global::System.Span<byte> __hs_stringBytes3;
+        if (__hs_stringByteCount3 <= 256)
+        {
+            __hs_stringBytes3 = stackalloc byte[__hs_stringByteCount3 == 0 ? 1 : __hs_stringByteCount3];
+        }
+        else
+        {
+            __hs_stringBytes3 = new byte[__hs_stringByteCount3];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(buffer, __hs_stringBytes3);
         fixed (byte* __hs_stringData3 = __hs_stringBytes3)
         {
-            var __hs_expectedResult = NativeMethods.TablePtr->hs_method_6e846c30(type, width, height, __hs_stringData3, (nuint)__hs_stringBytes3.Length, &__hs_hasValue);
+            var __hs_expectedResult = NativeMethods.TablePtr->hs_method_6e846c30(type, width, height, __hs_stringData3, (nuint)__hs_stringByteCount3, &__hs_hasValue);
             if (!__hs_hasValue) { throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "Binding API call returned an error."); }
             return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Image((nint)__hs_expectedResult);
         }

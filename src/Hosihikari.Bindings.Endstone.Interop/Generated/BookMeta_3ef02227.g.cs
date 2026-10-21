@@ -78,10 +78,20 @@ public sealed unsafe partial class BookMeta
 
     public void setAuthor(string? author)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(author ?? string.Empty);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(author ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(author ?? string.Empty, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_39e461d1((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, author is not null);
+            NativeMethods.TablePtr->hs_method_39e461d1((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, author is not null);
         }
     }
 
@@ -92,10 +102,20 @@ public sealed unsafe partial class BookMeta
 
     public void setTitle(string? title)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(title ?? string.Empty);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(title ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(title ?? string.Empty, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->hs_method_8567bdf4((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, title is not null);
+            NativeMethods.TablePtr->hs_method_8567bdf4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, title is not null);
         }
     }
 

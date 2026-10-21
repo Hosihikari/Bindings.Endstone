@@ -100,10 +100,20 @@ public sealed unsafe partial class WritableBookMeta
 
     public void setPage(int page, string data)
     {
-        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(data);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(data);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(data, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->hs_method_8c15c058((void*)_handle, page, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            NativeMethods.TablePtr->hs_method_8c15c058((void*)_handle, page, __hs_stringData1, (nuint)__hs_stringByteCount1);
         }
     }
 

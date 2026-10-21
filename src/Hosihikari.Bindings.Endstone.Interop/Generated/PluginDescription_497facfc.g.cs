@@ -39,11 +39,61 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public static PluginDescription Create(string name, string version, string description, int load, string[] authors, string[] contributors, string website, string prefix, string[] provides, string[] depend, string[] soft_depend, string[] load_before, int default_permission, global::Hosihikari.Bindings.Endstone.Interop.endstone.Command[] commands, global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission[] permissions)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
-        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(version);
-        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(description);
-        var __hs_stringBytes6 = global::System.Text.Encoding.UTF8.GetBytes(website);
-        var __hs_stringBytes7 = global::System.Text.Encoding.UTF8.GetBytes(prefix);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(name);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(version);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(version, __hs_stringBytes1);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(description);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(description, __hs_stringBytes2);
+        var __hs_stringByteCount6 = global::System.Text.Encoding.UTF8.GetByteCount(website);
+        scoped global::System.Span<byte> __hs_stringBytes6;
+        if (__hs_stringByteCount6 <= 256)
+        {
+            __hs_stringBytes6 = stackalloc byte[__hs_stringByteCount6 == 0 ? 1 : __hs_stringByteCount6];
+        }
+        else
+        {
+            __hs_stringBytes6 = new byte[__hs_stringByteCount6];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(website, __hs_stringBytes6);
+        var __hs_stringByteCount7 = global::System.Text.Encoding.UTF8.GetByteCount(prefix);
+        scoped global::System.Span<byte> __hs_stringBytes7;
+        if (__hs_stringByteCount7 <= 256)
+        {
+            __hs_stringBytes7 = stackalloc byte[__hs_stringByteCount7 == 0 ? 1 : __hs_stringByteCount7];
+        }
+        else
+        {
+            __hs_stringBytes7 = new byte[__hs_stringByteCount7];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(prefix, __hs_stringBytes7);
         var __hs_vectorItems4 = authors ?? global::System.Array.Empty<string>();
         var __hs_vectorBytes4 = new byte[__hs_vectorItems4.Length][];
         var __hs_vectorViews4 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems4.Length];
@@ -174,7 +224,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
                                                                             {
                                                                                 fixed (byte* __hs_stringData7 = __hs_stringBytes7)
                                                                                 {
-                                                                                    var handle = NativeMethods.TablePtr->hs_create_f5310a99(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, __hs_stringData2, (nuint)__hs_stringBytes2.Length, load, __hs_stringData6, (nuint)__hs_stringBytes6.Length, __hs_stringData7, (nuint)__hs_stringBytes7.Length, default_permission, __hs_vectorData4, (nuint)(authors?.Length ?? 0), __hs_vectorData5, (nuint)(contributors?.Length ?? 0), __hs_vectorData8, (nuint)(provides?.Length ?? 0), __hs_vectorData9, (nuint)(depend?.Length ?? 0), __hs_vectorData10, (nuint)(soft_depend?.Length ?? 0), __hs_vectorData11, (nuint)(load_before?.Length ?? 0), __hs_vectorData13, (nuint)(commands?.Length ?? 0), __hs_vectorData14, (nuint)(permissions?.Length ?? 0));
+                                                                                    var handle = NativeMethods.TablePtr->hs_create_f5310a99(__hs_stringData0, (nuint)__hs_stringByteCount0, __hs_stringData1, (nuint)__hs_stringByteCount1, __hs_stringData2, (nuint)__hs_stringByteCount2, load, __hs_stringData6, (nuint)__hs_stringByteCount6, __hs_stringData7, (nuint)__hs_stringByteCount7, default_permission, __hs_vectorData4, (nuint)(authors?.Length ?? 0), __hs_vectorData5, (nuint)(contributors?.Length ?? 0), __hs_vectorData8, (nuint)(provides?.Length ?? 0), __hs_vectorData9, (nuint)(depend?.Length ?? 0), __hs_vectorData10, (nuint)(soft_depend?.Length ?? 0), __hs_vectorData11, (nuint)(load_before?.Length ?? 0), __hs_vectorData13, (nuint)(commands?.Length ?? 0), __hs_vectorData14, (nuint)(permissions?.Length ?? 0));
                                                                                     if (handle == null)
                                                                                     {
                                                                                         throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

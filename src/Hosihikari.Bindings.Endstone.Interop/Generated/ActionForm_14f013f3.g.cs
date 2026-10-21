@@ -50,10 +50,20 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActionForm addButton(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text, string? icon, nint on_clickInvoke, nint on_clickUserData, nint on_clickRelease)
     {
-        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty);
+        var __hs_stringByteCount1 = global::System.Text.Encoding.UTF8.GetByteCount(icon ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes1;
+        if (__hs_stringByteCount1 <= 256)
+        {
+            __hs_stringBytes1 = stackalloc byte[__hs_stringByteCount1 == 0 ? 1 : __hs_stringByteCount1];
+        }
+        else
+        {
+            __hs_stringBytes1 = new byte[__hs_stringByteCount1];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(icon ?? string.Empty, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActionForm((nint)NativeMethods.TablePtr->hs_method_e3736391((void*)_handle, (void*)text.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActionForm((nint)NativeMethods.TablePtr->hs_method_e3736391((void*)_handle, (void*)text.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1, (void*)on_clickInvoke, (void*)on_clickUserData, (void*)on_clickRelease, icon is not null), false);
         }
     }
 

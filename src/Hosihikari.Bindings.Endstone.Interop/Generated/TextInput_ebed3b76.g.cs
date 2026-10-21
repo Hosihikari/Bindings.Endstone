@@ -50,10 +50,20 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
 
     public static TextInput Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label, global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 placeholder, string? default_text)
     {
-        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(default_text ?? string.Empty);
+        var __hs_stringByteCount2 = global::System.Text.Encoding.UTF8.GetByteCount(default_text ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes2;
+        if (__hs_stringByteCount2 <= 256)
+        {
+            __hs_stringBytes2 = stackalloc byte[__hs_stringByteCount2 == 0 ? 1 : __hs_stringByteCount2];
+        }
+        else
+        {
+            __hs_stringBytes2 = new byte[__hs_stringByteCount2];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(default_text ?? string.Empty, __hs_stringBytes2);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            var handle = NativeMethods.TablePtr->hs_create_cef8ea66((void*)label.Handle, (void*)placeholder.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, default_text is not null);
+            var handle = NativeMethods.TablePtr->hs_create_cef8ea66((void*)label.Handle, (void*)placeholder.Handle, __hs_stringData2, (nuint)__hs_stringByteCount2, default_text is not null);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -82,10 +92,20 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.TextInput setDefaultValue(string? text)
     {
-        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text ?? string.Empty);
+        var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(text ?? string.Empty);
+        scoped global::System.Span<byte> __hs_stringBytes0;
+        if (__hs_stringByteCount0 <= 256)
+        {
+            __hs_stringBytes0 = stackalloc byte[__hs_stringByteCount0 == 0 ? 1 : __hs_stringByteCount0];
+        }
+        else
+        {
+            __hs_stringBytes0 = new byte[__hs_stringByteCount0];
+        }
+        global::System.Text.Encoding.UTF8.GetBytes(text ?? string.Empty, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.TextInput((nint)NativeMethods.TablePtr->hs_method_6724f75c((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, text is not null), false);
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.TextInput((nint)NativeMethods.TablePtr->hs_method_6724f75c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, text is not null), false);
         }
     }
 
