@@ -134,7 +134,7 @@ public sealed unsafe partial class Scoreboard
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_5e069352((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b>() : new global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
             __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b((nint)__hs_items[__hs_i]);
@@ -172,7 +172,7 @@ public sealed unsafe partial class Scoreboard
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_afd39739((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective>() : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
             __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_items[__hs_i]);
@@ -184,7 +184,7 @@ public sealed unsafe partial class Scoreboard
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_127d144b((void*)_handle, criteria);
         var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective>() : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
             __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective((nint)__hs_items[__hs_i]);
@@ -196,7 +196,7 @@ public sealed unsafe partial class Scoreboard
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c84052b6((void*)_handle, (void*)entry.Handle);
         var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Score[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Endstone.Interop.endstone.Score>() : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Score[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
             __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Score((nint)__hs_items[__hs_i]);

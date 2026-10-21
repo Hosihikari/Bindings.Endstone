@@ -45,7 +45,7 @@ public sealed unsafe partial class Dimension
     public nint[] getActors()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_c360259f((void*)_handle);
-        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
             new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
@@ -91,7 +91,7 @@ public sealed unsafe partial class Dimension
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_04e7b449((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Chunk[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Endstone.Interop.endstone.Chunk>() : new global::Hosihikari.Bindings.Endstone.Interop.endstone.Chunk[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
             __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Chunk((nint)__hs_items[__hs_i]);

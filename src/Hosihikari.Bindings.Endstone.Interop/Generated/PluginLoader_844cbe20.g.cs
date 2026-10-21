@@ -55,7 +55,7 @@ public sealed unsafe partial class PluginLoader
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_371cc56f((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = new string[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<string>() : new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
             __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
@@ -104,7 +104,7 @@ public sealed unsafe partial class PluginLoader
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             var __hs_view = NativeMethods.TablePtr->hs_method_5f1e701c((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            var __hs_result = new nint[checked((int)__hs_view.Size)];
+            var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
             if (__hs_view.Size > 0)
             {
                 new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);

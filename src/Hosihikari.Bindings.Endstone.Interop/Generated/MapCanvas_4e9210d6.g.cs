@@ -56,7 +56,7 @@ public sealed unsafe partial class MapCanvas
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_1548e67e((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCursor[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCursor>() : new global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCursor[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
         {
             __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCursor((nint)__hs_items[__hs_i]);

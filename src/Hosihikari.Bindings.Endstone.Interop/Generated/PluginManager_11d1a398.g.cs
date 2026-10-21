@@ -79,7 +79,7 @@ public sealed unsafe partial class PluginManager
     public nint[] getDefaultPermSubscriptions(int level)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_f8a94bea((void*)_handle, level);
-        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
             new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
@@ -90,7 +90,7 @@ public sealed unsafe partial class PluginManager
     public nint[] getDefaultPermissions(int level)
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_3488946b((void*)_handle, level);
-        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
             new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
@@ -134,7 +134,7 @@ public sealed unsafe partial class PluginManager
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             var __hs_view = NativeMethods.TablePtr->hs_method_4a749daa((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            var __hs_result = new nint[checked((int)__hs_view.Size)];
+            var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
             if (__hs_view.Size > 0)
             {
                 new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
@@ -146,7 +146,7 @@ public sealed unsafe partial class PluginManager
     public nint[] getPermissions()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_a6414b23((void*)_handle);
-        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
             new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
@@ -177,7 +177,7 @@ public sealed unsafe partial class PluginManager
     public nint[] getPlugins()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_5a06eb75((void*)_handle);
-        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
             new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
@@ -245,7 +245,7 @@ public sealed unsafe partial class PluginManager
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
             var __hs_view = NativeMethods.TablePtr->hs_method_9235e6e5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
-            var __hs_result = new nint[checked((int)__hs_view.Size)];
+            var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
             if (__hs_view.Size > 0)
             {
                 new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
@@ -277,7 +277,7 @@ public sealed unsafe partial class PluginManager
                 __hs_vectorOffset0 += __hs_length0;
             }
             var __hs_view = NativeMethods.TablePtr->hs_method_a6c745c0((void*)_handle, __hs_vectorData0, (nuint)(files?.Length ?? 0));
-            var __hs_result = new nint[checked((int)__hs_view.Size)];
+            var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
             if (__hs_view.Size > 0)
             {
                 new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);

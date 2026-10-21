@@ -65,7 +65,7 @@ public sealed unsafe partial class HandlerList : global::System.IDisposable
     public nint[] getHandlers()
     {
         var __hs_view = NativeMethods.TablePtr->hs_method_afbf70d8((void*)_handle);
-        var __hs_result = new nint[checked((int)__hs_view.Size)];
+        var __hs_result = __hs_view.Size == 0 ? global::System.Array.Empty<nint>() : new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
             new global::System.ReadOnlySpan<nint>(__hs_view.Data, checked((int)__hs_view.Size)).CopyTo(__hs_result);
