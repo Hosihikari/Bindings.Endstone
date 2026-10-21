@@ -28,7 +28,7 @@ public sealed unsafe partial class Service : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1485((void*)_handle);
+            NativeMethods.TablePtr->f1487((void*)_handle);
             _handle = 0;
         }
     }

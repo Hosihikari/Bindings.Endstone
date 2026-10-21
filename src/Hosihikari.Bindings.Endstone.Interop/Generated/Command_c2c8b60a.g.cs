@@ -23,46 +23,130 @@ public sealed unsafe partial class Command : global::System.IDisposable
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: constructors accept at most one vector parameter.", false)]
-    public static Command Create(nint name, nint description, nint usages, nint aliases, nint permissions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one vector parameter.");
-
-    public nint asPluginCommand()
+    public static Command Create(string name, string description, string[] usages, string[] aliases, string[] permissions)
     {
-        return (nint)NativeMethods.TablePtr->f368((void*)_handle);
-    }
-
-    public bool execute(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string[] args)
-    {
-        var __hs_vectorItems = args ?? global::System.Array.Empty<string>();
-        var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
-        var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
-        var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(description);
+        var __hs_vectorItems2 = usages ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes2 = new byte[__hs_vectorItems2.Length][];
+        var __hs_vectorViews2 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems2.Length];
+        var __hs_vectorHandles2 = new nint[__hs_vectorItems2.Length];
         try
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
+            for (var __hs_i2 = 0; __hs_i2 < __hs_vectorItems2.Length; __hs_i2++)
             {
-                __hs_vectorBytes[__hs_i] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems[__hs_i] ?? string.Empty);
-                var __hs_bytes = __hs_vectorBytes[__hs_i];
+                __hs_vectorBytes2[__hs_i2] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems2[__hs_i2] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes2[__hs_i2];
                 var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
                 if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
-                __hs_vectorHandles[__hs_i] = __hs_ptr;
-                __hs_vectorViews[__hs_i] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                __hs_vectorHandles2[__hs_i2] = __hs_ptr;
+                __hs_vectorViews2[__hs_i2] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
             }
-            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData2 = __hs_vectorViews2)
             {
-                return NativeMethods.TablePtr->f369((void*)_handle, (void*)sender.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                var __hs_vectorItems3 = aliases ?? global::System.Array.Empty<string>();
+                var __hs_vectorBytes3 = new byte[__hs_vectorItems3.Length][];
+                var __hs_vectorViews3 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems3.Length];
+                var __hs_vectorHandles3 = new nint[__hs_vectorItems3.Length];
+                try
+                {
+                    for (var __hs_i3 = 0; __hs_i3 < __hs_vectorItems3.Length; __hs_i3++)
+                    {
+                        __hs_vectorBytes3[__hs_i3] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems3[__hs_i3] ?? string.Empty);
+                        var __hs_bytes = __hs_vectorBytes3[__hs_i3];
+                        var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                        if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                        __hs_vectorHandles3[__hs_i3] = __hs_ptr;
+                        __hs_vectorViews3[__hs_i3] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                    }
+                    fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData3 = __hs_vectorViews3)
+                    {
+                        var __hs_vectorItems4 = permissions ?? global::System.Array.Empty<string>();
+                        var __hs_vectorBytes4 = new byte[__hs_vectorItems4.Length][];
+                        var __hs_vectorViews4 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems4.Length];
+                        var __hs_vectorHandles4 = new nint[__hs_vectorItems4.Length];
+                        try
+                        {
+                            for (var __hs_i4 = 0; __hs_i4 < __hs_vectorItems4.Length; __hs_i4++)
+                            {
+                                __hs_vectorBytes4[__hs_i4] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems4[__hs_i4] ?? string.Empty);
+                                var __hs_bytes = __hs_vectorBytes4[__hs_i4];
+                                var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                                if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                                __hs_vectorHandles4[__hs_i4] = __hs_ptr;
+                                __hs_vectorViews4[__hs_i4] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                            }
+                            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData4 = __hs_vectorViews4)
+                            {
+                                fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+                                {
+                                    fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+                                    {
+                                        var handle = NativeMethods.TablePtr->f368(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, __hs_vectorData2, (nuint)(usages?.Length ?? 0), __hs_vectorData3, (nuint)(aliases?.Length ?? 0), __hs_vectorData4, (nuint)(permissions?.Length ?? 0));
+                                        if (handle == null)
+                                        {
+                                            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                                        }
+
+                                        return new Command((nint)handle);
+                                    }
+                                }
+                            }
+                        }
+                        finally
+                        {
+                            for (var __hs_i4 = 0; __hs_i4 < __hs_vectorHandles4.Length; __hs_i4++) { if (__hs_vectorHandles4[__hs_i4] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles4[__hs_i4]); } }
+                        }
+                    }
+                }
+                finally
+                {
+                    for (var __hs_i3 = 0; __hs_i3 < __hs_vectorHandles3.Length; __hs_i3++) { if (__hs_vectorHandles3[__hs_i3] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles3[__hs_i3]); } }
+                }
             }
         }
         finally
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++) { if (__hs_vectorHandles[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles[__hs_i]); } }
+            for (var __hs_i2 = 0; __hs_i2 < __hs_vectorHandles2.Length; __hs_i2++) { if (__hs_vectorHandles2[__hs_i2] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles2[__hs_i2]); } }
+        }
+    }
+
+    public nint asPluginCommand()
+    {
+        return (nint)NativeMethods.TablePtr->f369((void*)_handle);
+    }
+
+    public bool execute(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string[] args)
+    {
+        var __hs_vectorItems1 = args ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes1 = new byte[__hs_vectorItems1.Length][];
+        var __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems1.Length];
+        var __hs_vectorHandles1 = new nint[__hs_vectorItems1.Length];
+        try
+        {
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorItems1.Length; __hs_i1++)
+            {
+                __hs_vectorBytes1[__hs_i1] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems1[__hs_i1] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes1[__hs_i1];
+                var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                __hs_vectorHandles1[__hs_i1] = __hs_ptr;
+                __hs_vectorViews1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+            }
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
+            {
+                return NativeMethods.TablePtr->f370((void*)_handle, (void*)sender.Handle, __hs_vectorData1, (nuint)(args?.Length ?? 0));
+            }
+        }
+        finally
+        {
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++) { if (__hs_vectorHandles1[__hs_i1] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles1[__hs_i1]); } }
         }
     }
 
     public string[] getAliases()
     {
-        var __hs_view = NativeMethods.TablePtr->f370((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f371((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -74,29 +158,17 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f371((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f372((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f372((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f373((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string[] getPermissions()
-    {
-        var __hs_view = NativeMethods.TablePtr->f373((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    public string[] getUsages()
     {
         var __hs_view = NativeMethods.TablePtr->f374((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -108,14 +180,26 @@ public sealed unsafe partial class Command : global::System.IDisposable
         return __hs_result;
     }
 
+    public string[] getUsages()
+    {
+        var __hs_view = NativeMethods.TablePtr->f375((void*)_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
     public bool isRegistered()
     {
-        return NativeMethods.TablePtr->f375((void*)_handle);
+        return NativeMethods.TablePtr->f376((void*)_handle);
     }
 
     public bool registerTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->f376((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->f377((void*)_handle, (void*)command_map.Handle);
     }
 
     public void setDescription(string description)
@@ -123,7 +207,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(description);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f377((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f378((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -132,23 +216,23 @@ public sealed unsafe partial class Command : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f378((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f379((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool testPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->f379((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->f380((void*)_handle, (void*)target.Handle);
     }
 
     public bool testPermissionSilently(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->f380((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->f381((void*)_handle, (void*)target.Handle);
     }
 
     public bool unregisterFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->f381((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->f382((void*)_handle, (void*)command_map.Handle);
     }
 
 

@@ -28,7 +28,7 @@ public sealed unsafe partial class IRegistry : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f581((void*)_handle);
+            NativeMethods.TablePtr->f582((void*)_handle);
             _handle = 0;
         }
     }

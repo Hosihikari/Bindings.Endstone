@@ -25,7 +25,7 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public static ArrayTag_unsigned_char_ Create()
     {
-        var handle = NativeMethods.TablePtr->f1674();
+        var handle = NativeMethods.TablePtr->f1676();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -40,9 +40,9 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public static ArrayTag_unsigned_char_ Create(byte[] v)
     {
-        fixed (byte* __hs_vectorData = v)
+        fixed (byte* __hs_vectorData0 = v)
         {
-            var handle = NativeMethods.TablePtr->f1675(__hs_vectorData, (nuint)(v?.Length ?? 0));
+            var handle = NativeMethods.TablePtr->f1677(__hs_vectorData0, (nuint)(v?.Length ?? 0));
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -54,12 +54,12 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public nint at_738d7d61(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->f1676((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->f1678((void*)_handle, i);
     }
 
     public nint at_30c1f2a4(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->f1677((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->f1679((void*)_handle, i);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.", false)]
@@ -80,22 +80,22 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public void clear()
     {
-        NativeMethods.TablePtr->f1678((void*)_handle);
+        NativeMethods.TablePtr->f1680((void*)_handle);
     }
 
     public nint data_79f539d8()
     {
-        return (nint)NativeMethods.TablePtr->f1679((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1681((void*)_handle);
     }
 
     public nint data_539e56bc()
     {
-        return (nint)NativeMethods.TablePtr->f1680((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1682((void*)_handle);
     }
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->f1681((void*)_handle);
+        return NativeMethods.TablePtr->f1683((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.", false)]
@@ -116,29 +116,29 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public nint operator_index_d4881781(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->f1682((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->f1684((void*)_handle, i);
     }
 
     public nint operator_index_4f71a147(ulong i)
     {
-        return (nint)NativeMethods.TablePtr->f1683((void*)_handle, i);
+        return (nint)NativeMethods.TablePtr->f1685((void*)_handle, i);
     }
 
     public void push_back(byte v)
     {
-        NativeMethods.TablePtr->f1684((void*)_handle, v);
+        NativeMethods.TablePtr->f1686((void*)_handle, v);
     }
 
     public ulong size()
     {
-        return NativeMethods.TablePtr->f1685((void*)_handle);
+        return NativeMethods.TablePtr->f1687((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1673((void*)_handle);
+            NativeMethods.TablePtr->f1675((void*)_handle);
             _handle = 0;
         }
     }

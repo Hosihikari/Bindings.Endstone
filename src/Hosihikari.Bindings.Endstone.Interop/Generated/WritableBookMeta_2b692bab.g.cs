@@ -25,51 +25,51 @@ public sealed unsafe partial class WritableBookMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f1607();
+        get => NativeMethods.TablePtr->f1609();
     }
 
     public void addPage(string[] pages)
     {
-        var __hs_vectorItems = pages ?? global::System.Array.Empty<string>();
-        var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
-        var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
-        var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_vectorItems0 = pages ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes0 = new byte[__hs_vectorItems0.Length][];
+        var __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems0.Length];
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0.Length];
         try
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorItems0.Length; __hs_i0++)
             {
-                __hs_vectorBytes[__hs_i] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems[__hs_i] ?? string.Empty);
-                var __hs_bytes = __hs_vectorBytes[__hs_i];
+                __hs_vectorBytes0[__hs_i0] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems0[__hs_i0] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes0[__hs_i0];
                 var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
                 if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
-                __hs_vectorHandles[__hs_i] = __hs_ptr;
-                __hs_vectorViews[__hs_i] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                __hs_vectorHandles0[__hs_i0] = __hs_ptr;
+                __hs_vectorViews0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
             }
-            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
             {
-                NativeMethods.TablePtr->f1608((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                NativeMethods.TablePtr->f1610((void*)_handle, __hs_vectorData0, (nuint)(pages?.Length ?? 0));
             }
         }
         finally
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++) { if (__hs_vectorHandles[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles[__hs_i]); } }
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++) { if (__hs_vectorHandles0[__hs_i0] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles0[__hs_i0]); } }
         }
     }
 
     public string getPage(int page)
     {
-        var __hs_view = NativeMethods.TablePtr->f1609((void*)_handle, page);
+        var __hs_view = NativeMethods.TablePtr->f1611((void*)_handle, page);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getPageCount()
     {
-        return NativeMethods.TablePtr->f1610((void*)_handle);
+        return NativeMethods.TablePtr->f1612((void*)_handle);
     }
 
     public string[] getPages()
     {
-        var __hs_view = NativeMethods.TablePtr->f1611((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1613((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -81,7 +81,7 @@ public sealed unsafe partial class WritableBookMeta
 
     public bool hasPages()
     {
-        return NativeMethods.TablePtr->f1612((void*)_handle);
+        return NativeMethods.TablePtr->f1614((void*)_handle);
     }
 
     public void setPage(int page, string data)
@@ -89,35 +89,35 @@ public sealed unsafe partial class WritableBookMeta
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(data);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->f1613((void*)_handle, page, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            NativeMethods.TablePtr->f1615((void*)_handle, page, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
         }
     }
 
     public void setPages(string[] pages)
     {
-        var __hs_vectorItems = pages ?? global::System.Array.Empty<string>();
-        var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
-        var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
-        var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_vectorItems0 = pages ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes0 = new byte[__hs_vectorItems0.Length][];
+        var __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems0.Length];
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0.Length];
         try
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorItems0.Length; __hs_i0++)
             {
-                __hs_vectorBytes[__hs_i] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems[__hs_i] ?? string.Empty);
-                var __hs_bytes = __hs_vectorBytes[__hs_i];
+                __hs_vectorBytes0[__hs_i0] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems0[__hs_i0] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes0[__hs_i0];
                 var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
                 if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
-                __hs_vectorHandles[__hs_i] = __hs_ptr;
-                __hs_vectorViews[__hs_i] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                __hs_vectorHandles0[__hs_i0] = __hs_ptr;
+                __hs_vectorViews0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
             }
-            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
             {
-                NativeMethods.TablePtr->f1614((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                NativeMethods.TablePtr->f1616((void*)_handle, __hs_vectorData0, (nuint)(pages?.Length ?? 0));
             }
         }
         finally
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++) { if (__hs_vectorHandles[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles[__hs_i]); } }
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++) { if (__hs_vectorHandles0[__hs_i0] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles0[__hs_i0]); } }
         }
     }
 }

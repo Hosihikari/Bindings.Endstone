@@ -25,7 +25,7 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
 
     public static PluginCommand Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Command command, global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin owner)
     {
-        var handle = NativeMethods.TablePtr->f1209((void*)command.Handle, (void*)owner.Handle);
+        var handle = NativeMethods.TablePtr->f1210((void*)command.Handle, (void*)owner.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,57 +36,57 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
 
     public nint asPluginCommand()
     {
-        return (nint)NativeMethods.TablePtr->f1210((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1211((void*)_handle);
     }
 
     public bool execute(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string[] args)
     {
-        var __hs_vectorItems = args ?? global::System.Array.Empty<string>();
-        var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
-        var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
-        var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_vectorItems1 = args ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes1 = new byte[__hs_vectorItems1.Length][];
+        var __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems1.Length];
+        var __hs_vectorHandles1 = new nint[__hs_vectorItems1.Length];
         try
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorItems1.Length; __hs_i1++)
             {
-                __hs_vectorBytes[__hs_i] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems[__hs_i] ?? string.Empty);
-                var __hs_bytes = __hs_vectorBytes[__hs_i];
+                __hs_vectorBytes1[__hs_i1] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems1[__hs_i1] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes1[__hs_i1];
                 var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
                 if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
-                __hs_vectorHandles[__hs_i] = __hs_ptr;
-                __hs_vectorViews[__hs_i] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                __hs_vectorHandles1[__hs_i1] = __hs_ptr;
+                __hs_vectorViews1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
             }
-            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
             {
-                return NativeMethods.TablePtr->f1211((void*)_handle, (void*)sender.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                return NativeMethods.TablePtr->f1212((void*)_handle, (void*)sender.Handle, __hs_vectorData1, (nuint)(args?.Length ?? 0));
             }
         }
         finally
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++) { if (__hs_vectorHandles[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles[__hs_i]); } }
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++) { if (__hs_vectorHandles1[__hs_i1] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles1[__hs_i1]); } }
         }
     }
 
     public nint getExecutor()
     {
-        return (nint)NativeMethods.TablePtr->f1212((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1213((void*)_handle);
     }
 
     public nint getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->f1213((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1214((void*)_handle);
     }
 
     public void setExecutor(global::Hosihikari.Bindings.Abi.SharedHandle? executor)
     {
-        NativeMethods.TablePtr->f1214((void*)_handle, executor?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        NativeMethods.TablePtr->f1215((void*)_handle, executor?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1208((void*)_handle);
+            NativeMethods.TablePtr->f1209((void*)_handle);
             _handle = 0;
         }
     }

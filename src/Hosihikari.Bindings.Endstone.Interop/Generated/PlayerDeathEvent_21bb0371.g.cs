@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1064();
+        get => (nint)NativeMethods.TablePtr->f1065();
     }
 
     public static PlayerDeathEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.DamageSource damage_source, global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? death_message)
     {
-        var handle = NativeMethods.TablePtr->f1065((void*)player.Handle, (void*)damage_source.ReleaseHandle(), (void*)(death_message?.Handle ?? 0), death_message is not null);
+        var handle = NativeMethods.TablePtr->f1066((void*)player.Handle, (void*)damage_source.ReleaseHandle(), (void*)(death_message?.Handle ?? 0), death_message is not null);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -42,31 +42,31 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getDeathMessage()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1066((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f1067((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1067((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1068((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f1068((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1069((void*)_handle);
     }
 
     public void setDeathMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? death_message)
     {
-        NativeMethods.TablePtr->f1069((void*)_handle, (void*)(death_message?.Handle ?? 0), death_message is not null);
+        NativeMethods.TablePtr->f1070((void*)_handle, (void*)(death_message?.Handle ?? 0), death_message is not null);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1063((void*)_handle);
+            NativeMethods.TablePtr->f1064((void*)_handle);
             _handle = 0;
         }
     }

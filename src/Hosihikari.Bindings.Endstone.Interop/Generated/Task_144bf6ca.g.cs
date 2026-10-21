@@ -25,27 +25,27 @@ public sealed unsafe partial class Task
 
     public void cancel()
     {
-        NativeMethods.TablePtr->f1517((void*)_handle);
+        NativeMethods.TablePtr->f1519((void*)_handle);
     }
 
     public nint getOwner()
     {
-        return (nint)NativeMethods.TablePtr->f1518((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1520((void*)_handle);
     }
 
     public uint getTaskId()
     {
-        return NativeMethods.TablePtr->f1519((void*)_handle);
+        return NativeMethods.TablePtr->f1521((void*)_handle);
     }
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->f1520((void*)_handle);
+        return NativeMethods.TablePtr->f1522((void*)_handle);
     }
 
     public bool isSync()
     {
-        return NativeMethods.TablePtr->f1521((void*)_handle);
+        return NativeMethods.TablePtr->f1523((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

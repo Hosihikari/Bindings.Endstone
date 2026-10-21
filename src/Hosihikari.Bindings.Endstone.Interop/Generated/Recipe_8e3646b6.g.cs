@@ -25,7 +25,7 @@ public sealed unsafe partial class Recipe
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack getResult()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f1325((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f1327((void*)_handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

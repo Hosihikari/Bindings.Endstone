@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDi
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1095();
+        get => (nint)NativeMethods.TablePtr->f1096();
     }
 
     public static PlayerInteractActorEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor actor)
     {
-        var handle = NativeMethods.TablePtr->f1096((void*)player.Handle, (void*)actor.Handle);
+        var handle = NativeMethods.TablePtr->f1097((void*)player.Handle, (void*)actor.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -41,12 +41,12 @@ public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDi
 
     public nint getActor()
     {
-        return (nint)NativeMethods.TablePtr->f1097((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1098((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1098((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1099((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -55,7 +55,7 @@ public sealed unsafe partial class PlayerInteractActorEvent : global::System.IDi
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1094((void*)_handle);
+            NativeMethods.TablePtr->f1095((void*)_handle);
             _handle = 0;
         }
     }

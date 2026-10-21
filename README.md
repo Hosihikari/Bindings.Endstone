@@ -11,7 +11,7 @@ The **Endstone** C++ API surface for the Hosihikari bindings: a CI-generated nat
 ## Current state
 
 - Interop: 215 generated C# files under `src/Hosihikari.Bindings.Endstone.Interop/Generated/`.
-- BindingShim: 1,816 functions in `native/BindingShim/generated/win-x64-server/endstone/`.
+- BindingShim: 1,818 functions in `native/BindingShim/generated/win-x64-server/endstone/`.
 - Coverage: 319 declarations and 1,831 members bound.
 
 The shim is emitted in `--virtual-dispatch` mode. Inline members, virtual methods (including pure virtual interfaces), eligible template instances, inline/constexpr static fields, `std::optional<T>` parameters/results, `std::vector<T>` parameters/results, `std::unique_ptr<T>` results, `std::shared_ptr<T>` results, `nonstd::expected_lite::expected<T, std::string>` results, `std::variant<T...>` parameters/results, `NotNull`/`Nullable` shared handles, borrowed pointer sets, owned/shared element arrays, chrono time values, returned `std::function` callables, `unordered_map` parameters and results as dictionaries, `shared_ptr` parameters as shared handles, `unique_ptr` parameters as ownership transfers, and `ModalForm` controls through the typed form-control variant are projected; non-virtual out-of-line members remain Interop stubs with a reasoned `NotSupportedException` message and an `[Obsolete]` marker that raises CS0618 when called. Host-owned interface objects are not disposed; only objects created by the shim receive a disposer.

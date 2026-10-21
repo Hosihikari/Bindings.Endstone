@@ -25,17 +25,17 @@ public sealed unsafe partial class CrossbowMeta
 
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f421();
+        get => NativeMethods.TablePtr->f422();
     }
 
     public void addChargedProjectile(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        NativeMethods.TablePtr->f422((void*)_handle, (void*)item.Handle);
+        NativeMethods.TablePtr->f423((void*)_handle, (void*)item.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[] getChargedProjectiles()
     {
-        var __hs_view = NativeMethods.TablePtr->f423((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f424((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -47,21 +47,21 @@ public sealed unsafe partial class CrossbowMeta
 
     public bool hasChargedProjectiles()
     {
-        return NativeMethods.TablePtr->f424((void*)_handle);
+        return NativeMethods.TablePtr->f425((void*)_handle);
     }
 
     public void setChargedProjectiles(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[] projectiles)
     {
-        var __hs_vectorItems = projectiles;
-        var __hs_vectorHandles = new nint[__hs_vectorItems?.Length ?? 0];
-        for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++)
+        var __hs_vectorItems0 = projectiles;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
         {
-            __hs_vectorHandles[__hs_i] = __hs_vectorItems![__hs_i]?.Handle ?? 0;
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
         }
-        fixed (nint* __hs_vectorHandleData = __hs_vectorHandles)
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
-            var __hs_vectorData = (void**)__hs_vectorHandleData;
-            NativeMethods.TablePtr->f425((void*)_handle, __hs_vectorData, (nuint)(projectiles?.Length ?? 0));
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            NativeMethods.TablePtr->f426((void*)_handle, __hs_vectorData0, (nuint)(projectiles?.Length ?? 0));
         }
     }
 }

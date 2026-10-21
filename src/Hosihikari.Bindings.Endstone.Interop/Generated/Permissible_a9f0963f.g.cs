@@ -25,7 +25,7 @@ public sealed unsafe partial class Permissible
 
     public nint addAttachment(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        return (nint)NativeMethods.TablePtr->f922((void*)_handle, (void*)plugin.Handle);
+        return (nint)NativeMethods.TablePtr->f923((void*)_handle, (void*)plugin.Handle);
     }
 
     public nint addAttachment(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, string name, bool value)
@@ -33,18 +33,18 @@ public sealed unsafe partial class Permissible
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return (nint)NativeMethods.TablePtr->f923((void*)_handle, (void*)plugin.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, value);
+            return (nint)NativeMethods.TablePtr->f924((void*)_handle, (void*)plugin.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, value);
         }
     }
 
     public nint asCommandSender()
     {
-        return (nint)NativeMethods.TablePtr->f924((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f925((void*)_handle);
     }
 
     public nint[] getEffectivePermissions()
     {
-        var __hs_view = NativeMethods.TablePtr->f925((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f926((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -55,12 +55,12 @@ public sealed unsafe partial class Permissible
 
     public int getPermissionLevel()
     {
-        return NativeMethods.TablePtr->f926((void*)_handle);
+        return NativeMethods.TablePtr->f927((void*)_handle);
     }
 
     public bool hasPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        return NativeMethods.TablePtr->f927((void*)_handle, (void*)perm.Handle);
+        return NativeMethods.TablePtr->f928((void*)_handle, (void*)perm.Handle);
     }
 
     public bool hasPermission(string name)
@@ -68,13 +68,13 @@ public sealed unsafe partial class Permissible
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f928((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f929((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool isPermissionSet(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        return NativeMethods.TablePtr->f929((void*)_handle, (void*)perm.Handle);
+        return NativeMethods.TablePtr->f930((void*)_handle, (void*)perm.Handle);
     }
 
     public bool isPermissionSet(string name)
@@ -82,18 +82,18 @@ public sealed unsafe partial class Permissible
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f930((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f931((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void recalculatePermissions()
     {
-        NativeMethods.TablePtr->f931((void*)_handle);
+        NativeMethods.TablePtr->f932((void*)_handle);
     }
 
     public bool removeAttachment(global::Hosihikari.Bindings.Endstone.Interop.endstone.PermissionAttachment attachment)
     {
-        return NativeMethods.TablePtr->f932((void*)_handle, (void*)attachment.Handle);
+        return NativeMethods.TablePtr->f933((void*)_handle, (void*)attachment.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

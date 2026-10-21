@@ -25,18 +25,18 @@ public sealed unsafe partial class Criteria
 
     public byte getDefaultRenderType()
     {
-        return NativeMethods.TablePtr->f418((void*)_handle);
+        return NativeMethods.TablePtr->f419((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f419((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f420((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isReadOnly()
     {
-        return NativeMethods.TablePtr->f420((void*)_handle);
+        return NativeMethods.TablePtr->f421((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

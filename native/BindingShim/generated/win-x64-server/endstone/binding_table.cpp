@@ -5896,6 +5896,21 @@ catch (...)
     return;
 }
 
+static void* hs_create_82cb42ed(const char* name_data, std::size_t name_size, const char* description_data, std::size_t description_size, const HosihikariStringView* usages_data, std::size_t usages_count, const HosihikariStringView* aliases_data, std::size_t aliases_count, const HosihikariStringView* permissions_data, std::size_t permissions_count) try
+{
+    return new endstone::Command(std::basic_string<char>(name_data, name_size), std::basic_string<char>(description_data, description_size), hs_make_string_vector(usages_data, usages_count), hs_make_string_vector(aliases_data, aliases_count), hs_make_string_vector(permissions_data, permissions_count));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_258d436e(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(static_cast<endstone::Command*>(hs_self)->asPluginCommand()));
@@ -19355,6 +19370,21 @@ catch (...)
     return;
 }
 
+static void* hs_create_f5310a99(const char* name_data, std::size_t name_size, const char* version_data, std::size_t version_size, const char* description_data, std::size_t description_size, std::int32_t load, const char* website_data, std::size_t website_size, const char* prefix_data, std::size_t prefix_size, std::int32_t default_permission, const HosihikariStringView* authors_data, std::size_t authors_count, const HosihikariStringView* contributors_data, std::size_t contributors_count, const HosihikariStringView* provides_data, std::size_t provides_count, const HosihikariStringView* depend_data, std::size_t depend_count, const HosihikariStringView* soft_depend_data, std::size_t soft_depend_count, const HosihikariStringView* load_before_data, std::size_t load_before_count, const void** commands_data, std::size_t commands_count, const void** permissions_data, std::size_t permissions_count) try
+{
+    return new endstone::PluginDescription(std::basic_string<char>(name_data, name_size), std::basic_string<char>(version_data, version_size), std::basic_string<char>(description_data, description_size), static_cast<endstone::PluginLoadOrder>(load), hs_make_string_vector(authors_data, authors_count), hs_make_string_vector(contributors_data, contributors_count), std::basic_string<char>(website_data, website_size), std::basic_string<char>(prefix_data, prefix_size), hs_make_string_vector(provides_data, provides_count), hs_make_string_vector(depend_data, depend_count), hs_make_string_vector(soft_depend_data, soft_depend_count), hs_make_string_vector(load_before_data, load_before_count), static_cast<endstone::PermissionDefault>(default_permission), hs_make_record_vector<endstone::Command>(commands_data, commands_count), hs_make_record_vector<endstone::Permission>(permissions_data, permissions_count));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static HosihikariStringView hs_method_a68fa3c7(void* hs_self) try
 {
     auto result = static_cast<endstone::PluginDescription*>(hs_self)->getAPIVersion();
@@ -29241,6 +29271,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_67ca1265,
     &hs_get_25b875e3,
     &hs_destroy_c2c8b60a,
+    &hs_create_82cb42ed,
     &hs_method_258d436e,
     &hs_method_843e3c70,
     &hs_method_8bdb7033,
@@ -30089,6 +30120,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2476b603,
     &hs_method_3aac26f3,
     &hs_destroy_497facfc,
+    &hs_create_f5310a99,
     &hs_method_a68fa3c7,
     &hs_method_07a6157f,
     &hs_method_8741d6ed,

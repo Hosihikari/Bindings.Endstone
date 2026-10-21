@@ -29,42 +29,42 @@ public sealed unsafe partial class PluginManager
 
     public nint addPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        return (nint)NativeMethods.TablePtr->f1249((void*)_handle, (void*)perm.ReleaseHandle());
+        return (nint)NativeMethods.TablePtr->f1251((void*)_handle, (void*)perm.ReleaseHandle());
     }
 
     public void callEvent(global::Hosihikari.Bindings.Endstone.Interop.endstone.Event @event)
     {
-        NativeMethods.TablePtr->f1250((void*)_handle, (void*)@event.Handle);
+        NativeMethods.TablePtr->f1252((void*)_handle, (void*)@event.Handle);
     }
 
     public void clearPlugins()
     {
-        NativeMethods.TablePtr->f1251((void*)_handle);
+        NativeMethods.TablePtr->f1253((void*)_handle);
     }
 
     public void disablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1252((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1254((void*)_handle, (void*)plugin.Handle);
     }
 
     public void disablePlugins()
     {
-        NativeMethods.TablePtr->f1253((void*)_handle);
+        NativeMethods.TablePtr->f1255((void*)_handle);
     }
 
     public void enablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1254((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1256((void*)_handle, (void*)plugin.Handle);
     }
 
     public void enablePlugins()
     {
-        NativeMethods.TablePtr->f1255((void*)_handle);
+        NativeMethods.TablePtr->f1257((void*)_handle);
     }
 
     public nint[] getDefaultPermSubscriptions(int level)
     {
-        var __hs_view = NativeMethods.TablePtr->f1256((void*)_handle, level);
+        var __hs_view = NativeMethods.TablePtr->f1258((void*)_handle, level);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -75,7 +75,7 @@ public sealed unsafe partial class PluginManager
 
     public nint[] getDefaultPermissions(int level)
     {
-        var __hs_view = NativeMethods.TablePtr->f1257((void*)_handle, level);
+        var __hs_view = NativeMethods.TablePtr->f1259((void*)_handle, level);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -89,7 +89,7 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1258((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f1260((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -98,7 +98,7 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(permission);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->f1259((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_view = NativeMethods.TablePtr->f1261((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             var __hs_result = new nint[checked((int)__hs_view.Size)];
             if (__hs_view.Size > 0)
             {
@@ -110,7 +110,7 @@ public sealed unsafe partial class PluginManager
 
     public nint[] getPermissions()
     {
-        var __hs_view = NativeMethods.TablePtr->f1260((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1262((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -124,13 +124,13 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1261((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f1263((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public nint[] getPlugins()
     {
-        var __hs_view = NativeMethods.TablePtr->f1262((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1264((void*)_handle);
         var __hs_result = new nint[checked((int)__hs_view.Size)];
         if (__hs_view.Size > 0)
         {
@@ -144,13 +144,13 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->f1263((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return NativeMethods.TablePtr->f1265((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool isPluginEnabled(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        return NativeMethods.TablePtr->f1264((void*)_handle, (void*)plugin.Handle);
+        return NativeMethods.TablePtr->f1266((void*)_handle, (void*)plugin.Handle);
     }
 
     public nint loadPlugin(string file)
@@ -158,7 +158,7 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(file);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1265((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f1267((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -167,7 +167,7 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(directory);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->f1266((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_view = NativeMethods.TablePtr->f1268((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             var __hs_result = new nint[checked((int)__hs_view.Size)];
             if (__hs_view.Size > 0)
             {
@@ -179,24 +179,24 @@ public sealed unsafe partial class PluginManager
 
     public nint[] loadPlugins(string[] files)
     {
-        var __hs_vectorItems = files ?? global::System.Array.Empty<string>();
-        var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
-        var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
-        var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_vectorItems0 = files ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes0 = new byte[__hs_vectorItems0.Length][];
+        var __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems0.Length];
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0.Length];
         try
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorItems0.Length; __hs_i0++)
             {
-                __hs_vectorBytes[__hs_i] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems[__hs_i] ?? string.Empty);
-                var __hs_bytes = __hs_vectorBytes[__hs_i];
+                __hs_vectorBytes0[__hs_i0] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems0[__hs_i0] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes0[__hs_i0];
                 var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
                 if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
-                __hs_vectorHandles[__hs_i] = __hs_ptr;
-                __hs_vectorViews[__hs_i] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                __hs_vectorHandles0[__hs_i0] = __hs_ptr;
+                __hs_vectorViews0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
             }
-            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
             {
-                var __hs_view = NativeMethods.TablePtr->f1267((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                var __hs_view = NativeMethods.TablePtr->f1269((void*)_handle, __hs_vectorData0, (nuint)(files?.Length ?? 0));
                 var __hs_result = new nint[checked((int)__hs_view.Size)];
                 if (__hs_view.Size > 0)
                 {
@@ -207,13 +207,13 @@ public sealed unsafe partial class PluginManager
         }
         finally
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++) { if (__hs_vectorHandles[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles[__hs_i]); } }
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++) { if (__hs_vectorHandles0[__hs_i0] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles0[__hs_i0]); } }
         }
     }
 
     public void recalculatePermissionDefaults(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        NativeMethods.TablePtr->f1268((void*)_handle, (void*)perm.Handle);
+        NativeMethods.TablePtr->f1270((void*)_handle, (void*)perm.Handle);
     }
 
     public void registerEvent(string @event, nint executorInvoke, nint executorUserData, nint executorRelease, int priority, global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, bool ignore_cancelled)
@@ -221,18 +221,18 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(@event);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1269((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)executorInvoke, (void*)executorUserData, (void*)executorRelease, priority, (void*)plugin.Handle, ignore_cancelled);
+            NativeMethods.TablePtr->f1271((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)executorInvoke, (void*)executorUserData, (void*)executorRelease, priority, (void*)plugin.Handle, ignore_cancelled);
         }
     }
 
     public void registerLoader(global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginLoader loader)
     {
-        NativeMethods.TablePtr->f1270((void*)_handle, (void*)loader.ReleaseHandle());
+        NativeMethods.TablePtr->f1272((void*)_handle, (void*)loader.ReleaseHandle());
     }
 
     public void removePermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        NativeMethods.TablePtr->f1271((void*)_handle, (void*)perm.Handle);
+        NativeMethods.TablePtr->f1273((void*)_handle, (void*)perm.Handle);
     }
 
     public void removePermission(string name)
@@ -240,13 +240,13 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1272((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f1274((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public void subscribeToDefaultPerms(int level, global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible permissible)
     {
-        NativeMethods.TablePtr->f1273((void*)_handle, level, (void*)permissible.Handle);
+        NativeMethods.TablePtr->f1275((void*)_handle, level, (void*)permissible.Handle);
     }
 
     public void subscribeToPermission(string permission, global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible permissible)
@@ -254,13 +254,13 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(permission);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1274((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)permissible.Handle);
+            NativeMethods.TablePtr->f1276((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)permissible.Handle);
         }
     }
 
     public void unsubscribeFromDefaultPerms(int level, global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible permissible)
     {
-        NativeMethods.TablePtr->f1275((void*)_handle, level, (void*)permissible.Handle);
+        NativeMethods.TablePtr->f1277((void*)_handle, level, (void*)permissible.Handle);
     }
 
     public void unsubscribeFromPermission(string permission, global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible permissible)
@@ -268,7 +268,7 @@ public sealed unsafe partial class PluginManager
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(permission);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1276((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)permissible.Handle);
+            NativeMethods.TablePtr->f1278((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)permissible.Handle);
         }
     }
 

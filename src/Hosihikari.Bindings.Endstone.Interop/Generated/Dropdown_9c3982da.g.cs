@@ -25,7 +25,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public static Dropdown Create()
     {
-        var handle = NativeMethods.TablePtr->f446();
+        var handle = NativeMethods.TablePtr->f447();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,24 +36,24 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public static Dropdown Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label, string[] options, int? default_index)
     {
-        var __hs_vectorItems = options ?? global::System.Array.Empty<string>();
-        var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
-        var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
-        var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_vectorItems1 = options ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes1 = new byte[__hs_vectorItems1.Length][];
+        var __hs_vectorViews1 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems1.Length];
+        var __hs_vectorHandles1 = new nint[__hs_vectorItems1.Length];
         try
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorItems1.Length; __hs_i1++)
             {
-                __hs_vectorBytes[__hs_i] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems[__hs_i] ?? string.Empty);
-                var __hs_bytes = __hs_vectorBytes[__hs_i];
+                __hs_vectorBytes1[__hs_i1] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems1[__hs_i1] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes1[__hs_i1];
                 var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
                 if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
-                __hs_vectorHandles[__hs_i] = __hs_ptr;
-                __hs_vectorViews[__hs_i] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                __hs_vectorHandles1[__hs_i1] = __hs_ptr;
+                __hs_vectorViews1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
             }
-            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData1 = __hs_vectorViews1)
             {
-                var handle = NativeMethods.TablePtr->f447((void*)label.Handle, default_index ?? default(int), __hs_vectorData, (nuint)__hs_vectorViews.Length, default_index.HasValue);
+                var handle = NativeMethods.TablePtr->f448((void*)label.Handle, default_index ?? default(int), __hs_vectorData1, (nuint)(options?.Length ?? 0), default_index.HasValue);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -64,7 +64,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         }
         finally
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++) { if (__hs_vectorHandles[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles[__hs_i]); } }
+            for (var __hs_i1 = 0; __hs_i1 < __hs_vectorHandles1.Length; __hs_i1++) { if (__hs_vectorHandles1[__hs_i1] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles1[__hs_i1]); } }
         }
     }
 
@@ -73,25 +73,25 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(option);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f448((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f449((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public int? getDefaultIndex()
     {
         var __hs_hasValue = false;
-        var __hs_value = NativeMethods.TablePtr->f449((void*)_handle, &__hs_hasValue);
+        var __hs_value = NativeMethods.TablePtr->f450((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? __hs_value : (int?)null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f450((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f451((void*)_handle));
     }
 
     public string[] getOptions()
     {
-        var __hs_view = NativeMethods.TablePtr->f451((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f452((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -103,39 +103,39 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
 
     public nint setDefaultIndex(int? default_index)
     {
-        return (nint)NativeMethods.TablePtr->f452((void*)_handle, default_index ?? default(int), default_index.HasValue);
+        return (nint)NativeMethods.TablePtr->f453((void*)_handle, default_index ?? default(int), default_index.HasValue);
     }
 
     public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return (nint)NativeMethods.TablePtr->f453((void*)_handle, (void*)label.Handle);
+        return (nint)NativeMethods.TablePtr->f454((void*)_handle, (void*)label.Handle);
     }
 
     public nint setOptions(string[] options)
     {
-        var __hs_vectorItems = options ?? global::System.Array.Empty<string>();
-        var __hs_vectorBytes = new byte[__hs_vectorItems.Length][];
-        var __hs_vectorViews = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems.Length];
-        var __hs_vectorHandles = new nint[__hs_vectorItems.Length];
+        var __hs_vectorItems0 = options ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes0 = new byte[__hs_vectorItems0.Length][];
+        var __hs_vectorViews0 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems0.Length];
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0.Length];
         try
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorItems.Length; __hs_i++)
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorItems0.Length; __hs_i0++)
             {
-                __hs_vectorBytes[__hs_i] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems[__hs_i] ?? string.Empty);
-                var __hs_bytes = __hs_vectorBytes[__hs_i];
+                __hs_vectorBytes0[__hs_i0] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems0[__hs_i0] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes0[__hs_i0];
                 var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
                 if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
-                __hs_vectorHandles[__hs_i] = __hs_ptr;
-                __hs_vectorViews[__hs_i] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                __hs_vectorHandles0[__hs_i0] = __hs_ptr;
+                __hs_vectorViews0[__hs_i0] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
             }
-            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData0 = __hs_vectorViews0)
             {
-                return (nint)NativeMethods.TablePtr->f454((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                return (nint)NativeMethods.TablePtr->f455((void*)_handle, __hs_vectorData0, (nuint)(options?.Length ?? 0));
             }
         }
         finally
         {
-            for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++) { if (__hs_vectorHandles[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles[__hs_i]); } }
+            for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++) { if (__hs_vectorHandles0[__hs_i0] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles0[__hs_i0]); } }
         }
     }
 
@@ -143,7 +143,7 @@ public sealed unsafe partial class Dropdown : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f445((void*)_handle);
+            NativeMethods.TablePtr->f446((void*)_handle);
             _handle = 0;
         }
     }

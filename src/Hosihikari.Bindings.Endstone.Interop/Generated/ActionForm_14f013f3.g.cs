@@ -80,16 +80,16 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
 
     public nint setControls(global::Hosihikari.Bindings.Endstone.Interop.Variant_5bd3e0f1[] controls)
     {
-        var __hs_vectorItems = controls;
-        var __hs_vectorHandles = new nint[__hs_vectorItems?.Length ?? 0];
-        for (var __hs_i = 0; __hs_i < __hs_vectorHandles.Length; __hs_i++)
+        var __hs_vectorItems0 = controls;
+        var __hs_vectorHandles0 = new nint[__hs_vectorItems0?.Length ?? 0];
+        for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++)
         {
-            __hs_vectorHandles[__hs_i] = __hs_vectorItems![__hs_i]?.Handle ?? 0;
+            __hs_vectorHandles0[__hs_i0] = __hs_vectorItems0![__hs_i0]?.Handle ?? 0;
         }
-        fixed (nint* __hs_vectorHandleData = __hs_vectorHandles)
+        fixed (nint* __hs_vectorHandleData0 = __hs_vectorHandles0)
         {
-            var __hs_vectorData = (void**)__hs_vectorHandleData;
-            return (nint)NativeMethods.TablePtr->f18((void*)_handle, __hs_vectorData, (nuint)(controls?.Length ?? 0));
+            var __hs_vectorData0 = (void**)__hs_vectorHandleData0;
+            return (nint)NativeMethods.TablePtr->f18((void*)_handle, __hs_vectorData0, (nuint)(controls?.Length ?? 0));
         }
     }
 

@@ -23,41 +23,202 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: constructors accept at most one vector parameter.", false)]
-    public static PluginDescription Create(nint name, nint version, nint description, nint load, nint authors, nint contributors, nint website, nint prefix, nint provides, nint depend, nint soft_depend, nint load_before, nint default_permission, nint commands, nint permissions) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one vector parameter.");
+    public static PluginDescription Create(string name, string version, string description, int load, string[] authors, string[] contributors, string website, string prefix, string[] provides, string[] depend, string[] soft_depend, string[] load_before, int default_permission, global::Hosihikari.Bindings.Endstone.Interop.endstone.Command[] commands, global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission[] permissions)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(version);
+        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(description);
+        var __hs_stringBytes6 = global::System.Text.Encoding.UTF8.GetBytes(website);
+        var __hs_stringBytes7 = global::System.Text.Encoding.UTF8.GetBytes(prefix);
+        var __hs_vectorItems4 = authors ?? global::System.Array.Empty<string>();
+        var __hs_vectorBytes4 = new byte[__hs_vectorItems4.Length][];
+        var __hs_vectorViews4 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems4.Length];
+        var __hs_vectorHandles4 = new nint[__hs_vectorItems4.Length];
+        try
+        {
+            for (var __hs_i4 = 0; __hs_i4 < __hs_vectorItems4.Length; __hs_i4++)
+            {
+                __hs_vectorBytes4[__hs_i4] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems4[__hs_i4] ?? string.Empty);
+                var __hs_bytes = __hs_vectorBytes4[__hs_i4];
+                var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                __hs_vectorHandles4[__hs_i4] = __hs_ptr;
+                __hs_vectorViews4[__hs_i4] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+            }
+            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData4 = __hs_vectorViews4)
+            {
+                var __hs_vectorItems5 = contributors ?? global::System.Array.Empty<string>();
+                var __hs_vectorBytes5 = new byte[__hs_vectorItems5.Length][];
+                var __hs_vectorViews5 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems5.Length];
+                var __hs_vectorHandles5 = new nint[__hs_vectorItems5.Length];
+                try
+                {
+                    for (var __hs_i5 = 0; __hs_i5 < __hs_vectorItems5.Length; __hs_i5++)
+                    {
+                        __hs_vectorBytes5[__hs_i5] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems5[__hs_i5] ?? string.Empty);
+                        var __hs_bytes = __hs_vectorBytes5[__hs_i5];
+                        var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                        if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                        __hs_vectorHandles5[__hs_i5] = __hs_ptr;
+                        __hs_vectorViews5[__hs_i5] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                    }
+                    fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData5 = __hs_vectorViews5)
+                    {
+                        var __hs_vectorItems8 = provides ?? global::System.Array.Empty<string>();
+                        var __hs_vectorBytes8 = new byte[__hs_vectorItems8.Length][];
+                        var __hs_vectorViews8 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems8.Length];
+                        var __hs_vectorHandles8 = new nint[__hs_vectorItems8.Length];
+                        try
+                        {
+                            for (var __hs_i8 = 0; __hs_i8 < __hs_vectorItems8.Length; __hs_i8++)
+                            {
+                                __hs_vectorBytes8[__hs_i8] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems8[__hs_i8] ?? string.Empty);
+                                var __hs_bytes = __hs_vectorBytes8[__hs_i8];
+                                var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                                if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                                __hs_vectorHandles8[__hs_i8] = __hs_ptr;
+                                __hs_vectorViews8[__hs_i8] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                            }
+                            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData8 = __hs_vectorViews8)
+                            {
+                                var __hs_vectorItems9 = depend ?? global::System.Array.Empty<string>();
+                                var __hs_vectorBytes9 = new byte[__hs_vectorItems9.Length][];
+                                var __hs_vectorViews9 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems9.Length];
+                                var __hs_vectorHandles9 = new nint[__hs_vectorItems9.Length];
+                                try
+                                {
+                                    for (var __hs_i9 = 0; __hs_i9 < __hs_vectorItems9.Length; __hs_i9++)
+                                    {
+                                        __hs_vectorBytes9[__hs_i9] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems9[__hs_i9] ?? string.Empty);
+                                        var __hs_bytes = __hs_vectorBytes9[__hs_i9];
+                                        var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                                        if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                                        __hs_vectorHandles9[__hs_i9] = __hs_ptr;
+                                        __hs_vectorViews9[__hs_i9] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                                    }
+                                    fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData9 = __hs_vectorViews9)
+                                    {
+                                        var __hs_vectorItems10 = soft_depend ?? global::System.Array.Empty<string>();
+                                        var __hs_vectorBytes10 = new byte[__hs_vectorItems10.Length][];
+                                        var __hs_vectorViews10 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems10.Length];
+                                        var __hs_vectorHandles10 = new nint[__hs_vectorItems10.Length];
+                                        try
+                                        {
+                                            for (var __hs_i10 = 0; __hs_i10 < __hs_vectorItems10.Length; __hs_i10++)
+                                            {
+                                                __hs_vectorBytes10[__hs_i10] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems10[__hs_i10] ?? string.Empty);
+                                                var __hs_bytes = __hs_vectorBytes10[__hs_i10];
+                                                var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                                                if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                                                __hs_vectorHandles10[__hs_i10] = __hs_ptr;
+                                                __hs_vectorViews10[__hs_i10] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                                            }
+                                            fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData10 = __hs_vectorViews10)
+                                            {
+                                                var __hs_vectorItems11 = load_before ?? global::System.Array.Empty<string>();
+                                                var __hs_vectorBytes11 = new byte[__hs_vectorItems11.Length][];
+                                                var __hs_vectorViews11 = new global::Hosihikari.Bindings.Abi.StringView[__hs_vectorItems11.Length];
+                                                var __hs_vectorHandles11 = new nint[__hs_vectorItems11.Length];
+                                                try
+                                                {
+                                                    for (var __hs_i11 = 0; __hs_i11 < __hs_vectorItems11.Length; __hs_i11++)
+                                                    {
+                                                        __hs_vectorBytes11[__hs_i11] = global::System.Text.Encoding.UTF8.GetBytes(__hs_vectorItems11[__hs_i11] ?? string.Empty);
+                                                        var __hs_bytes = __hs_vectorBytes11[__hs_i11];
+                                                        var __hs_ptr = (nint)global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_bytes.Length == 0 ? 1 : __hs_bytes.Length);
+                                                        if (__hs_bytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_bytes, 0, (nint)__hs_ptr, __hs_bytes.Length); }
+                                                        __hs_vectorHandles11[__hs_i11] = __hs_ptr;
+                                                        __hs_vectorViews11[__hs_i11] = new global::Hosihikari.Bindings.Abi.StringView { Data = (byte*)__hs_ptr, Size = (nuint)__hs_bytes.Length };
+                                                    }
+                                                    fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData11 = __hs_vectorViews11)
+                                                    {
+                                                        var __hs_vectorItems13 = commands;
+                                                        var __hs_vectorHandles13 = new nint[__hs_vectorItems13?.Length ?? 0];
+                                                        for (var __hs_i13 = 0; __hs_i13 < __hs_vectorHandles13.Length; __hs_i13++)
+                                                        {
+                                                            __hs_vectorHandles13[__hs_i13] = __hs_vectorItems13![__hs_i13]?.Handle ?? 0;
+                                                        }
+                                                        fixed (nint* __hs_vectorHandleData13 = __hs_vectorHandles13)
+                                                        {
+                                                            var __hs_vectorData13 = (void**)__hs_vectorHandleData13;
+                                                            var __hs_vectorItems14 = permissions;
+                                                            var __hs_vectorHandles14 = new nint[__hs_vectorItems14?.Length ?? 0];
+                                                            for (var __hs_i14 = 0; __hs_i14 < __hs_vectorHandles14.Length; __hs_i14++)
+                                                            {
+                                                                __hs_vectorHandles14[__hs_i14] = __hs_vectorItems14![__hs_i14]?.Handle ?? 0;
+                                                            }
+                                                            fixed (nint* __hs_vectorHandleData14 = __hs_vectorHandles14)
+                                                            {
+                                                                var __hs_vectorData14 = (void**)__hs_vectorHandleData14;
+                                                                fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+                                                                {
+                                                                    fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+                                                                    {
+                                                                        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+                                                                        {
+                                                                            fixed (byte* __hs_stringData6 = __hs_stringBytes6)
+                                                                            {
+                                                                                fixed (byte* __hs_stringData7 = __hs_stringBytes7)
+                                                                                {
+                                                                                    var handle = NativeMethods.TablePtr->f1217(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length, __hs_stringData2, (nuint)__hs_stringBytes2.Length, load, __hs_stringData6, (nuint)__hs_stringBytes6.Length, __hs_stringData7, (nuint)__hs_stringBytes7.Length, default_permission, __hs_vectorData4, (nuint)(authors?.Length ?? 0), __hs_vectorData5, (nuint)(contributors?.Length ?? 0), __hs_vectorData8, (nuint)(provides?.Length ?? 0), __hs_vectorData9, (nuint)(depend?.Length ?? 0), __hs_vectorData10, (nuint)(soft_depend?.Length ?? 0), __hs_vectorData11, (nuint)(load_before?.Length ?? 0), __hs_vectorData13, (nuint)(commands?.Length ?? 0), __hs_vectorData14, (nuint)(permissions?.Length ?? 0));
+                                                                                    if (handle == null)
+                                                                                    {
+                                                                                        throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                                                                                    }
+
+                                                                                    return new PluginDescription((nint)handle);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                finally
+                                                {
+                                                    for (var __hs_i11 = 0; __hs_i11 < __hs_vectorHandles11.Length; __hs_i11++) { if (__hs_vectorHandles11[__hs_i11] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles11[__hs_i11]); } }
+                                                }
+                                            }
+                                        }
+                                        finally
+                                        {
+                                            for (var __hs_i10 = 0; __hs_i10 < __hs_vectorHandles10.Length; __hs_i10++) { if (__hs_vectorHandles10[__hs_i10] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles10[__hs_i10]); } }
+                                        }
+                                    }
+                                }
+                                finally
+                                {
+                                    for (var __hs_i9 = 0; __hs_i9 < __hs_vectorHandles9.Length; __hs_i9++) { if (__hs_vectorHandles9[__hs_i9] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles9[__hs_i9]); } }
+                                }
+                            }
+                        }
+                        finally
+                        {
+                            for (var __hs_i8 = 0; __hs_i8 < __hs_vectorHandles8.Length; __hs_i8++) { if (__hs_vectorHandles8[__hs_i8] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles8[__hs_i8]); } }
+                        }
+                    }
+                }
+                finally
+                {
+                    for (var __hs_i5 = 0; __hs_i5 < __hs_vectorHandles5.Length; __hs_i5++) { if (__hs_vectorHandles5[__hs_i5] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles5[__hs_i5]); } }
+                }
+            }
+        }
+        finally
+        {
+            for (var __hs_i4 = 0; __hs_i4 < __hs_vectorHandles4.Length; __hs_i4++) { if (__hs_vectorHandles4[__hs_i4] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles4[__hs_i4]); } }
+        }
+    }
 
     public string getAPIVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f1216((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1218((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string[] getAuthors()
-    {
-        var __hs_view = NativeMethods.TablePtr->f1217((void*)_handle);
-        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
-        var __hs_result = new string[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
-        }
-        return __hs_result;
-    }
-
-    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Command[] getCommands()
-    {
-        var __hs_view = NativeMethods.TablePtr->f1218((void*)_handle);
-        var __hs_items = (void**)__hs_view.Data;
-        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command[checked((int)__hs_view.Size)];
-        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
-        {
-            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command((nint)__hs_items[__hs_i]);
-        }
-        return __hs_result;
-    }
-
-    public string[] getContributors()
     {
         var __hs_view = NativeMethods.TablePtr->f1219((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -69,12 +230,19 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
         return __hs_result;
     }
 
-    public int getDefaultPermission()
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Command[] getCommands()
     {
-        return NativeMethods.TablePtr->f1220((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1220((void*)_handle);
+        var __hs_items = (void**)__hs_view.Data;
+        var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command((nint)__hs_items[__hs_i]);
+        }
+        return __hs_result;
     }
 
-    public string[] getDepend()
+    public string[] getContributors()
     {
         var __hs_view = NativeMethods.TablePtr->f1221((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
@@ -86,26 +254,43 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
         return __hs_result;
     }
 
+    public int getDefaultPermission()
+    {
+        return NativeMethods.TablePtr->f1222((void*)_handle);
+    }
+
+    public string[] getDepend()
+    {
+        var __hs_view = NativeMethods.TablePtr->f1223((void*)_handle);
+        var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
+        var __hs_result = new string[checked((int)__hs_view.Size)];
+        for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
+        {
+            __hs_result[__hs_i] = global::System.Text.Encoding.UTF8.GetString(__hs_items[__hs_i].Data, checked((int)__hs_items[__hs_i].Size));
+        }
+        return __hs_result;
+    }
+
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f1222((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1224((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getFullName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1223((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1225((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getLoad()
     {
-        return NativeMethods.TablePtr->f1224((void*)_handle);
+        return NativeMethods.TablePtr->f1226((void*)_handle);
     }
 
     public string[] getLoadBefore()
     {
-        var __hs_view = NativeMethods.TablePtr->f1225((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1227((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -117,13 +302,13 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1226((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1228((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission[] getPermissions()
     {
-        var __hs_view = NativeMethods.TablePtr->f1227((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1229((void*)_handle);
         var __hs_items = (void**)__hs_view.Data;
         var __hs_result = new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -135,13 +320,13 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getPrefix()
     {
-        var __hs_view = NativeMethods.TablePtr->f1228((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1230((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string[] getProvides()
     {
-        var __hs_view = NativeMethods.TablePtr->f1229((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1231((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -153,7 +338,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string[] getSoftDepend()
     {
-        var __hs_view = NativeMethods.TablePtr->f1230((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1232((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -165,13 +350,13 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
 
     public string getVersion()
     {
-        var __hs_view = NativeMethods.TablePtr->f1231((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1233((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getWebsite()
     {
-        var __hs_view = NativeMethods.TablePtr->f1232((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1234((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -179,7 +364,7 @@ public sealed unsafe partial class PluginDescription : global::System.IDisposabl
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1215((void*)_handle);
+            NativeMethods.TablePtr->f1216((void*)_handle);
             _handle = 0;
         }
     }
