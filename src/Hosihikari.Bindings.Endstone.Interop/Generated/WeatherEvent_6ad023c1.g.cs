@@ -29,7 +29,7 @@ public sealed unsafe partial class WeatherEvent
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f1608((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1628((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

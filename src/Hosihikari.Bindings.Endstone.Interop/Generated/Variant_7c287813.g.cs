@@ -13,7 +13,7 @@ public sealed unsafe class Variant_7c287813 : global::System.IDisposable
 
     public static Variant_7c287813 CreateBool(bool value)
     {
-        var handle = NativeMethods.TablePtr->f1760(value);
+        var handle = NativeMethods.TablePtr->f1780(value);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -26,7 +26,7 @@ public sealed unsafe class Variant_7c287813 : global::System.IDisposable
         var __hs_stringBytes = global::System.Text.Encoding.UTF8.GetBytes(value);
         fixed (byte* __hs_stringData = __hs_stringBytes)
         {
-            var handle = NativeMethods.TablePtr->f1761(__hs_stringData, (nuint)__hs_stringBytes.Length);
+            var handle = NativeMethods.TablePtr->f1781(__hs_stringData, (nuint)__hs_stringBytes.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -37,7 +37,7 @@ public sealed unsafe class Variant_7c287813 : global::System.IDisposable
 
     public static Variant_7c287813 CreateInt32(int value)
     {
-        var handle = NativeMethods.TablePtr->f1762(value);
+        var handle = NativeMethods.TablePtr->f1782(value);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -45,7 +45,7 @@ public sealed unsafe class Variant_7c287813 : global::System.IDisposable
         return new Variant_7c287813((nint)handle);
     }
 
-    public int Index => NativeMethods.TablePtr->f1767((void*)_handle);
+    public int Index => NativeMethods.TablePtr->f1787((void*)_handle);
 
     public bool IsBool => Index == 0;
 
@@ -60,7 +60,7 @@ public sealed unsafe class Variant_7c287813 : global::System.IDisposable
             return null;
         }
 
-        return NativeMethods.TablePtr->f1764((void*)_handle);
+        return NativeMethods.TablePtr->f1784((void*)_handle);
     }
 
     public string? AsString()
@@ -70,7 +70,7 @@ public sealed unsafe class Variant_7c287813 : global::System.IDisposable
             return null;
         }
 
-        var __hs_view = NativeMethods.TablePtr->f1765((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1785((void*)_handle);
         return __hs_view.Data == null ? string.Empty : global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -81,14 +81,14 @@ public sealed unsafe class Variant_7c287813 : global::System.IDisposable
             return null;
         }
 
-        return NativeMethods.TablePtr->f1766((void*)_handle);
+        return NativeMethods.TablePtr->f1786((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1763((void*)_handle);
+            NativeMethods.TablePtr->f1783((void*)_handle);
             _handle = 0;
         }
     }

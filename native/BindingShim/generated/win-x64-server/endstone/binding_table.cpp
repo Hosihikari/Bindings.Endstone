@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <functional>
 #include <memory>
+#include <mutex>
 #include <new>
 #include <optional>
 #include <stdexcept>
@@ -96,6 +97,48 @@ template <class T>
 std::weak_ptr<T> hs_weak_from_handle(HosihikariSharedHandle handle)
 {
     return std::weak_ptr<T>(hs_shared_from_handle<T>(handle));
+}
+
+template <class T>
+struct hs_borrowed_holder
+{
+    std::vector<std::string> strings;
+    std::unique_ptr<T> value;
+};
+
+struct hs_borrowed_entry
+{
+    void* holder;
+    void (*release)(void*);
+};
+
+inline std::mutex hs_borrowedMutex;
+inline std::unordered_map<void*, hs_borrowed_entry> hs_borrowedRegistry;
+
+inline void hs_register_borrowed(void* target, void* holder, void (*release)(void*))
+{
+    std::lock_guard<std::mutex> lock(hs_borrowedMutex);
+    hs_borrowedRegistry[target] = hs_borrowed_entry{holder, release};
+}
+
+template <class T>
+void hs_destroy_borrowed_or_delete(void* target)
+{
+    void* holder = nullptr;
+    void (*release)(void*) = nullptr;
+    {
+        std::lock_guard<std::mutex> lock(hs_borrowedMutex);
+        auto it = hs_borrowedRegistry.find(target);
+        if (it != hs_borrowedRegistry.end())
+        {
+            holder = it->second.holder;
+            release = it->second.release;
+            hs_borrowedRegistry.erase(it);
+        }
+    }
+
+    if (release) { release(holder); }
+    else { delete static_cast<T*>(target); }
 }
 
 template <class T>
@@ -9330,7 +9373,7 @@ catch (...)
 
 static void hs_destroy_f0254b86(void* hs_self) try
 {
-    delete static_cast<endstone::Identifier<endstone::Attribute>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::Identifier<endstone::Attribute>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -9341,6 +9384,67 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_89e4c122(const char* s_data, std::size_t s_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::Attribute>>();
+    hs_borrowed->strings.emplace_back(s_data, s_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::Attribute>>(hs_borrowed->strings[0]);
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::Attribute>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_f0c72e68(const char* identifier_data, std::size_t identifier_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::Attribute>>();
+    hs_borrowed->strings.emplace_back(identifier_data, identifier_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::Attribute>>(std::string_view(hs_borrowed->strings[0]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::Attribute>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_d8db6b11(const char* namespace__data, std::size_t namespace__size, const char* key_data, std::size_t key_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::Attribute>>();
+    hs_borrowed->strings.emplace_back(namespace__data, namespace__size);
+    hs_borrowed->strings.emplace_back(key_data, key_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::Attribute>>(std::string_view(hs_borrowed->strings[0]), std::string_view(hs_borrowed->strings[1]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::Attribute>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static HosihikariStringView hs_get_5c45f524() try
@@ -9457,7 +9561,7 @@ catch (...)
 
 static void hs_destroy_6f7cc141(void* hs_self) try
 {
-    delete static_cast<endstone::Identifier<endstone::BlockType>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::Identifier<endstone::BlockType>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -9468,6 +9572,67 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_436a7679(const char* s_data, std::size_t s_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::BlockType>>();
+    hs_borrowed->strings.emplace_back(s_data, s_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::BlockType>>(hs_borrowed->strings[0]);
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::BlockType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_2aae5a58(const char* identifier_data, std::size_t identifier_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::BlockType>>();
+    hs_borrowed->strings.emplace_back(identifier_data, identifier_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::BlockType>>(std::string_view(hs_borrowed->strings[0]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::BlockType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_d33e431e(const char* namespace__data, std::size_t namespace__size, const char* key_data, std::size_t key_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::BlockType>>();
+    hs_borrowed->strings.emplace_back(namespace__data, namespace__size);
+    hs_borrowed->strings.emplace_back(key_data, key_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::BlockType>>(std::string_view(hs_borrowed->strings[0]), std::string_view(hs_borrowed->strings[1]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::BlockType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static HosihikariStringView hs_get_88919212() try
@@ -9584,7 +9749,7 @@ catch (...)
 
 static void hs_destroy_ecddc85a(void* hs_self) try
 {
-    delete static_cast<endstone::Identifier<endstone::EffectType>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::Identifier<endstone::EffectType>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -9595,6 +9760,67 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_b837d798(const char* s_data, std::size_t s_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::EffectType>>();
+    hs_borrowed->strings.emplace_back(s_data, s_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::EffectType>>(hs_borrowed->strings[0]);
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::EffectType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_afa867a7(const char* identifier_data, std::size_t identifier_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::EffectType>>();
+    hs_borrowed->strings.emplace_back(identifier_data, identifier_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::EffectType>>(std::string_view(hs_borrowed->strings[0]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::EffectType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_0436e06a(const char* namespace__data, std::size_t namespace__size, const char* key_data, std::size_t key_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::EffectType>>();
+    hs_borrowed->strings.emplace_back(namespace__data, namespace__size);
+    hs_borrowed->strings.emplace_back(key_data, key_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::EffectType>>(std::string_view(hs_borrowed->strings[0]), std::string_view(hs_borrowed->strings[1]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::EffectType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static HosihikariStringView hs_get_45263e5e() try
@@ -9711,7 +9937,7 @@ catch (...)
 
 static void hs_destroy_480784ce(void* hs_self) try
 {
-    delete static_cast<endstone::Identifier<endstone::Enchantment>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::Identifier<endstone::Enchantment>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -9722,6 +9948,67 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_adf80fd9(const char* s_data, std::size_t s_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::Enchantment>>();
+    hs_borrowed->strings.emplace_back(s_data, s_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::Enchantment>>(hs_borrowed->strings[0]);
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::Enchantment>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_c15968dd(const char* identifier_data, std::size_t identifier_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::Enchantment>>();
+    hs_borrowed->strings.emplace_back(identifier_data, identifier_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::Enchantment>>(std::string_view(hs_borrowed->strings[0]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::Enchantment>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_067a59db(const char* namespace__data, std::size_t namespace__size, const char* key_data, std::size_t key_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::Enchantment>>();
+    hs_borrowed->strings.emplace_back(namespace__data, namespace__size);
+    hs_borrowed->strings.emplace_back(key_data, key_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::Enchantment>>(std::string_view(hs_borrowed->strings[0]), std::string_view(hs_borrowed->strings[1]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::Enchantment>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static HosihikariStringView hs_get_e4337297() try
@@ -9838,7 +10125,7 @@ catch (...)
 
 static void hs_destroy_db7a25fb(void* hs_self) try
 {
-    delete static_cast<endstone::Identifier<endstone::ItemType>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::Identifier<endstone::ItemType>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -9849,6 +10136,67 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_e7ef4bcf(const char* s_data, std::size_t s_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::ItemType>>();
+    hs_borrowed->strings.emplace_back(s_data, s_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::ItemType>>(hs_borrowed->strings[0]);
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::ItemType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_db0af3b8(const char* identifier_data, std::size_t identifier_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::ItemType>>();
+    hs_borrowed->strings.emplace_back(identifier_data, identifier_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::ItemType>>(std::string_view(hs_borrowed->strings[0]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::ItemType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_c504eff7(const char* namespace__data, std::size_t namespace__size, const char* key_data, std::size_t key_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::ItemType>>();
+    hs_borrowed->strings.emplace_back(namespace__data, namespace__size);
+    hs_borrowed->strings.emplace_back(key_data, key_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::ItemType>>(std::string_view(hs_borrowed->strings[0]), std::string_view(hs_borrowed->strings[1]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::ItemType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static HosihikariStringView hs_get_5a376a49() try
@@ -9965,7 +10313,7 @@ catch (...)
 
 static void hs_destroy_f89e0f3f(void* hs_self) try
 {
-    delete static_cast<endstone::Identifier<endstone::PotionType>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::Identifier<endstone::PotionType>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -9976,6 +10324,67 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_1e37c9fe(const char* s_data, std::size_t s_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::PotionType>>();
+    hs_borrowed->strings.emplace_back(s_data, s_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::PotionType>>(hs_borrowed->strings[0]);
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::PotionType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_90ebf2af(const char* identifier_data, std::size_t identifier_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::PotionType>>();
+    hs_borrowed->strings.emplace_back(identifier_data, identifier_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::PotionType>>(std::string_view(hs_borrowed->strings[0]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::PotionType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_1093b0a8(const char* namespace__data, std::size_t namespace__size, const char* key_data, std::size_t key_size) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::Identifier<endstone::PotionType>>();
+    hs_borrowed->strings.emplace_back(namespace__data, namespace__size);
+    hs_borrowed->strings.emplace_back(key_data, key_size);
+    hs_borrowed->value = std::make_unique<endstone::Identifier<endstone::PotionType>>(std::string_view(hs_borrowed->strings[0]), std::string_view(hs_borrowed->strings[1]));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::Identifier<endstone::PotionType>>*>(hs_holder); });
+    return hs_target;
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static HosihikariStringView hs_get_0d65367b() try
@@ -14451,7 +14860,7 @@ catch (...)
 
 static void hs_destroy_2333fb4c(void* hs_self) try
 {
-    delete static_cast<endstone::PacketReceiveEvent*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::PacketReceiveEvent>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -14467,6 +14876,26 @@ catch (...)
 static void* hs_get_23676d63() try
 {
     return const_cast<void*>(static_cast<void const*>(&endstone::PacketReceiveEvent::NAME));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_a524b719(void* player, std::int32_t packet_id, const char* payload_data, std::size_t payload_size, void* address, std::int32_t sub_client_id) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::PacketReceiveEvent>();
+    hs_borrowed->strings.emplace_back(payload_data, payload_size);
+    hs_borrowed->value = std::make_unique<endstone::PacketReceiveEvent>(static_cast<endstone::Player*>(player), static_cast<const int>(packet_id), std::string_view(hs_borrowed->strings[0]), *static_cast<const endstone::SocketAddress*>(address), static_cast<const int>(sub_client_id));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::PacketReceiveEvent>*>(hs_holder); });
+    return hs_target;
 }
 catch (std::exception const& hs_error)
 {
@@ -14590,7 +15019,7 @@ catch (...)
 
 static void hs_destroy_578b0b0b(void* hs_self) try
 {
-    delete static_cast<endstone::PacketSendEvent*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::PacketSendEvent>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -14606,6 +15035,26 @@ catch (...)
 static void* hs_get_8a66849e() try
 {
     return const_cast<void*>(static_cast<void const*>(&endstone::PacketSendEvent::NAME));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_create_8d8f9b72(void* player, std::int32_t packet_id, const char* payload_data, std::size_t payload_size, void* address, std::int32_t sub_client_id) try
+{
+    auto* hs_borrowed = new hs_borrowed_holder<endstone::PacketSendEvent>();
+    hs_borrowed->strings.emplace_back(payload_data, payload_size);
+    hs_borrowed->value = std::make_unique<endstone::PacketSendEvent>(static_cast<endstone::Player*>(player), static_cast<const int>(packet_id), std::string_view(hs_borrowed->strings[0]), *static_cast<const endstone::SocketAddress*>(address), static_cast<const int>(sub_client_id));
+    auto* hs_target = hs_borrowed->value.get();
+    hs_register_borrowed(hs_target, hs_borrowed, [](void* hs_holder) { delete static_cast<hs_borrowed_holder<endstone::PacketSendEvent>*>(hs_holder); });
+    return hs_target;
 }
 catch (std::exception const& hs_error)
 {
@@ -25880,7 +26329,7 @@ catch (...)
 
 static void hs_destroy_a9643a4f(void* hs_self) try
 {
-    delete static_cast<endstone::detail::JoinView<std::_List_const_iterator<std::_List_val<std::_List_simple_types<std::pair<const std::basic_string<char>, std::variant<bool, std::basic_string<char>, int>>>>>, std::_List_const_iterator<std::_List_val<std::_List_simple_types<std::pair<const std::basic_string<char>, std::variant<bool, std::basic_string<char>, int>>>>>>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::detail::JoinView<std::_List_const_iterator<std::_List_val<std::_List_simple_types<std::pair<const std::basic_string<char>, std::variant<bool, std::basic_string<char>, int>>>>>, std::_List_const_iterator<std::_List_val<std::_List_simple_types<std::pair<const std::basic_string<char>, std::variant<bool, std::basic_string<char>, int>>>>>>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -25941,7 +26390,7 @@ catch (...)
 
 static void hs_destroy_3527a787(void* hs_self) try
 {
-    delete static_cast<endstone::detail::JoinView<std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const std::basic_string<char>, endstone::nbt::Tag>>>>, std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const std::basic_string<char>, endstone::nbt::Tag>>>>>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::detail::JoinView<std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const std::basic_string<char>, endstone::nbt::Tag>>>>, std::_Tree_const_iterator<std::_Tree_val<std::_Tree_simple_types<std::pair<const std::basic_string<char>, endstone::nbt::Tag>>>>>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -26002,7 +26451,7 @@ catch (...)
 
 static void hs_destroy_9b289992(void* hs_self) try
 {
-    delete static_cast<endstone::detail::JoinView<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<endstone::nbt::Tag>>>, std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<endstone::nbt::Tag>>>>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::detail::JoinView<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<endstone::nbt::Tag>>>, std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<endstone::nbt::Tag>>>>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -26063,7 +26512,7 @@ catch (...)
 
 static void hs_destroy_3edbb2f6(void* hs_self) try
 {
-    delete static_cast<endstone::detail::JoinView<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>, std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>>*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::detail::JoinView<std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>, std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>>>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -27946,7 +28395,7 @@ catch (...)
 
 static void hs_destroy_6d952785(void* hs_self) try
 {
-    delete static_cast<endstone::nbt::escape_view*>(hs_self);
+    hs_destroy_borrowed_or_delete<endstone::nbt::escape_view>(hs_self);
 }
 catch (std::exception const& hs_error)
 {
@@ -29487,6 +29936,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f20cf498,
     &hs_destroy_7a5ce5ce,
     &hs_destroy_f0254b86,
+    &hs_create_89e4c122,
+    &hs_create_f0c72e68,
+    &hs_create_d8db6b11,
     &hs_get_5c45f524,
     &hs_method_8fbdaacf,
     &hs_method_de387ceb,
@@ -29495,6 +29947,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_e93a0167,
     &hs_method_99905309,
     &hs_destroy_6f7cc141,
+    &hs_create_436a7679,
+    &hs_create_2aae5a58,
+    &hs_create_d33e431e,
     &hs_get_88919212,
     &hs_method_368d2e5c,
     &hs_method_d826ab39,
@@ -29503,6 +29958,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_f9895e58,
     &hs_method_ff363f9a,
     &hs_destroy_ecddc85a,
+    &hs_create_b837d798,
+    &hs_create_afa867a7,
+    &hs_create_0436e06a,
     &hs_get_45263e5e,
     &hs_method_d86c10f1,
     &hs_method_c82873c6,
@@ -29511,6 +29969,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_04eb2c33,
     &hs_method_231f561c,
     &hs_destroy_480784ce,
+    &hs_create_adf80fd9,
+    &hs_create_c15968dd,
+    &hs_create_067a59db,
     &hs_get_e4337297,
     &hs_method_15da8200,
     &hs_method_1580c7b3,
@@ -29519,6 +29980,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2569d99d,
     &hs_method_6f15e1ca,
     &hs_destroy_db7a25fb,
+    &hs_create_e7ef4bcf,
+    &hs_create_db0af3b8,
+    &hs_create_c504eff7,
     &hs_get_5a376a49,
     &hs_method_95fc5d09,
     &hs_method_b025d694,
@@ -29527,6 +29991,9 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_bc33017e,
     &hs_method_1d49e2cf,
     &hs_destroy_f89e0f3f,
+    &hs_create_1e37c9fe,
+    &hs_create_90ebf2af,
+    &hs_create_1093b0a8,
     &hs_get_0d65367b,
     &hs_method_726772db,
     &hs_method_53469ec5,
@@ -29810,6 +30277,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_4b50ef7b,
     &hs_destroy_2333fb4c,
     &hs_get_23676d63,
+    &hs_create_a524b719,
     &hs_method_919f586b,
     &hs_method_87ccf1c7,
     &hs_method_97a7e348,
@@ -29819,6 +30287,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_142c6737,
     &hs_destroy_578b0b0b,
     &hs_get_8a66849e,
+    &hs_create_8d8f9b72,
     &hs_method_53132e9f,
     &hs_method_e4c67418,
     &hs_method_20d62971,

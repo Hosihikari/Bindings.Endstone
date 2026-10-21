@@ -25,7 +25,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public static ItemStack Create_bea8b69c(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        var handle = NativeMethods.TablePtr->f712((void*)other.Handle);
+        var handle = NativeMethods.TablePtr->f730((void*)other.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,7 +36,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public static ItemStack Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type, int amount, int data)
     {
-        var handle = NativeMethods.TablePtr->f713((void*)type.Handle, amount, data);
+        var handle = NativeMethods.TablePtr->f731((void*)type.Handle, amount, data);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -47,7 +47,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public static ItemStack Create_5db531db(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        var handle = NativeMethods.TablePtr->f714((void*)other.Handle);
+        var handle = NativeMethods.TablePtr->f732((void*)other.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -58,54 +58,54 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public int getAmount()
     {
-        return NativeMethods.TablePtr->f715((void*)_handle);
+        return NativeMethods.TablePtr->f733((void*)_handle);
     }
 
     public int getData()
     {
-        return NativeMethods.TablePtr->f716((void*)_handle);
+        return NativeMethods.TablePtr->f734((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? getItemMeta()
     {
-        var __hs_handle = NativeMethods.TablePtr->f717((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f735((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle) : null;
     }
 
     public int getMaxStackSize()
     {
-        return NativeMethods.TablePtr->f718((void*)_handle);
+        return NativeMethods.TablePtr->f736((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag getNbt()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag((nint)NativeMethods.TablePtr->f719((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag((nint)NativeMethods.TablePtr->f737((void*)_handle));
     }
 
     public string getTranslationKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f720((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f738((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getType()
     {
-        return (nint)NativeMethods.TablePtr->f721((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f739((void*)_handle);
     }
 
     public bool hasItemMeta()
     {
-        return NativeMethods.TablePtr->f722((void*)_handle);
+        return NativeMethods.TablePtr->f740((void*)_handle);
     }
 
     public bool isSimilar(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return NativeMethods.TablePtr->f723((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f741((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return NativeMethods.TablePtr->f724((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f742((void*)_handle, (void*)other.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
@@ -118,32 +118,32 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return NativeMethods.TablePtr->f725((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f743((void*)_handle, (void*)other.Handle);
     }
 
     public void setAmount(int amount)
     {
-        NativeMethods.TablePtr->f726((void*)_handle, amount);
+        NativeMethods.TablePtr->f744((void*)_handle, amount);
     }
 
     public void setData(int data)
     {
-        NativeMethods.TablePtr->f727((void*)_handle, data);
+        NativeMethods.TablePtr->f745((void*)_handle, data);
     }
 
     public bool setItemMeta(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta)
     {
-        return NativeMethods.TablePtr->f728((void*)_handle, (void*)meta.Handle);
+        return NativeMethods.TablePtr->f746((void*)_handle, (void*)meta.Handle);
     }
 
     public void setNbt(global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag nbt)
     {
-        NativeMethods.TablePtr->f729((void*)_handle, (void*)nbt.Handle);
+        NativeMethods.TablePtr->f747((void*)_handle, (void*)nbt.Handle);
     }
 
     public void setType(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        NativeMethods.TablePtr->f730((void*)_handle, (void*)type.Handle);
+        NativeMethods.TablePtr->f748((void*)_handle, (void*)type.Handle);
     }
 
 
@@ -151,7 +151,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f711((void*)_handle);
+            NativeMethods.TablePtr->f729((void*)_handle);
             _handle = 0;
         }
     }

@@ -25,7 +25,7 @@ public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1059();
+        get => (nint)NativeMethods.TablePtr->f1079();
     }
 
     public static PlayerCommandEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, string command)
@@ -33,7 +33,7 @@ public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposab
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(command);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->f1060((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            var handle = NativeMethods.TablePtr->f1080((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -45,13 +45,13 @@ public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposab
 
     public string getCommand()
     {
-        var __hs_view = NativeMethods.TablePtr->f1061((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1081((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1062((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1082((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -60,7 +60,7 @@ public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposab
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(command);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1063((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f1083((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -69,7 +69,7 @@ public sealed unsafe partial class PlayerCommandEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1058((void*)_handle);
+            NativeMethods.TablePtr->f1078((void*)_handle);
             _handle = 0;
         }
     }

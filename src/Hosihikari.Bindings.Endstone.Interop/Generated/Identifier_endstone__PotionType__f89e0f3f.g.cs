@@ -23,40 +23,77 @@ public sealed unsafe partial class Identifier_endstone__PotionType_ : global::Sy
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
-    public static Identifier_endstone__PotionType_ Create_7a613bcf(nint s) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class stores borrowed strings but the constructor has no string parameter.", false)]
+    public static Identifier_endstone__PotionType_ Create(nint s) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class stores borrowed strings but the constructor has no string parameter.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
-    public static Identifier_endstone__PotionType_ Create_1e37c9fe(nint s) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
+    public static Identifier_endstone__PotionType_ Create_1e37c9fe(string s)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(s);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->f639(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
-    public static Identifier_endstone__PotionType_ Create_90ebf2af(nint identifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
+            return new Identifier_endstone__PotionType_((nint)handle);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
-    public static Identifier_endstone__PotionType_ Create(nint namespace_, nint key) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
+    public static Identifier_endstone__PotionType_ Create_90ebf2af(string identifier)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(identifier);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->f640(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new Identifier_endstone__PotionType_((nint)handle);
+        }
+    }
+
+    public static Identifier_endstone__PotionType_ Create(string namespace_, string key)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(namespace_);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(key);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var handle = NativeMethods.TablePtr->f641(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new Identifier_endstone__PotionType_((nint)handle);
+            }
+        }
+    }
 
     public static string Minecraft
     {
         get
         {
-            var view = NativeMethods.TablePtr->f624();
+            var view = NativeMethods.TablePtr->f642();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
 
     public string getKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f625((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f643((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getNamespace()
     {
-        var __hs_view = NativeMethods.TablePtr->f626((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f644((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -65,31 +102,31 @@ public sealed unsafe partial class Identifier_endstone__PotionType_ : global::Sy
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__PotionType_((nint)NativeMethods.TablePtr->f627(__hs_stringData0, (nuint)__hs_stringBytes0.Length));
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__PotionType_((nint)NativeMethods.TablePtr->f645(__hs_stringData0, (nuint)__hs_stringBytes0.Length));
         }
     }
 
     public string operator_basic_string()
     {
-        var __hs_view = NativeMethods.TablePtr->f628((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f646((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__PotionType_ other)
     {
-        return NativeMethods.TablePtr->f629((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f647((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__PotionType_ other)
     {
-        return NativeMethods.TablePtr->f630((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f648((void*)_handle, (void*)other.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f623((void*)_handle);
+            NativeMethods.TablePtr->f638((void*)_handle);
             _handle = 0;
         }
     }

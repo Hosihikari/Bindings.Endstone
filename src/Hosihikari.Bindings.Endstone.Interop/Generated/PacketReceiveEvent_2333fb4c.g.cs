@@ -25,43 +25,54 @@ public sealed unsafe partial class PacketReceiveEvent : global::System.IDisposab
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f906();
+        get => (nint)NativeMethods.TablePtr->f924();
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
-    public static PacketReceiveEvent Create(nint player, nint packet_id, nint payload, nint address, nint sub_client_id) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
+    public static PacketReceiveEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, int packet_id, string payload, global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress address, int sub_client_id)
+    {
+        var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(payload);
+        fixed (byte* __hs_stringData2 = __hs_stringBytes2)
+        {
+            var handle = NativeMethods.TablePtr->f925((void*)player.Handle, packet_id, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)address.Handle, sub_client_id);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new PacketReceiveEvent((nint)handle);
+        }
+    }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress getAddress()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->f907((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress((nint)NativeMethods.TablePtr->f926((void*)_handle));
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f908((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f927((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getPacketId()
     {
-        return NativeMethods.TablePtr->f909((void*)_handle);
+        return NativeMethods.TablePtr->f928((void*)_handle);
     }
 
     public string getPayload()
     {
-        var __hs_view = NativeMethods.TablePtr->f910((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f929((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f911((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f930((void*)_handle);
     }
 
     public int getSubClientId()
     {
-        return NativeMethods.TablePtr->f912((void*)_handle);
+        return NativeMethods.TablePtr->f931((void*)_handle);
     }
 
     public void setPayload(string payload)
@@ -69,7 +80,7 @@ public sealed unsafe partial class PacketReceiveEvent : global::System.IDisposab
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(payload);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f913((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f932((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -77,7 +88,7 @@ public sealed unsafe partial class PacketReceiveEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f905((void*)_handle);
+            NativeMethods.TablePtr->f923((void*)_handle);
             _handle = 0;
         }
     }

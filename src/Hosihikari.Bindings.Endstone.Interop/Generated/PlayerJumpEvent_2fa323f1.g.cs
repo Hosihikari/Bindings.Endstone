@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerJumpEvent : global::System.IDisposable
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1144();
+        get => (nint)NativeMethods.TablePtr->f1164();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1145((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1165((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -38,7 +38,7 @@ public sealed unsafe partial class PlayerJumpEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1143((void*)_handle);
+            NativeMethods.TablePtr->f1163((void*)_handle);
             _handle = 0;
         }
     }

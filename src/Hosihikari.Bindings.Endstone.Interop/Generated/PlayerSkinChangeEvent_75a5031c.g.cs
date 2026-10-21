@@ -25,12 +25,12 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1189();
+        get => (nint)NativeMethods.TablePtr->f1209();
     }
 
     public static PlayerSkinChangeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin new_skin, global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? message)
     {
-        var handle = NativeMethods.TablePtr->f1190((void*)player.Handle, (void*)new_skin.Handle, (void*)(message?.Handle ?? 0), message is not null);
+        var handle = NativeMethods.TablePtr->f1210((void*)player.Handle, (void*)new_skin.Handle, (void*)(message?.Handle ?? 0), message is not null);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -41,32 +41,32 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1191((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1211((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin getNewSkin()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f1192((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Skin((nint)NativeMethods.TablePtr->f1212((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? getSkinChangeMessage()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1193((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f1213((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)__hs_handle) : null;
     }
 
     public void setSkinChangeMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8? message)
     {
-        NativeMethods.TablePtr->f1194((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
+        NativeMethods.TablePtr->f1214((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1188((void*)_handle);
+            NativeMethods.TablePtr->f1208((void*)_handle);
             _handle = 0;
         }
     }

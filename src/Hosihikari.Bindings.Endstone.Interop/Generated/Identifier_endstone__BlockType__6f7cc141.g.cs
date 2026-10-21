@@ -23,40 +23,77 @@ public sealed unsafe partial class Identifier_endstone__BlockType_ : global::Sys
         return __hs_handle;
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
-    public static Identifier_endstone__BlockType_ Create_8fbfb31c(nint s) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
+    [global::System.Obsolete("BindingShim cannot project this member: the class stores borrowed strings but the constructor has no string parameter.", false)]
+    public static Identifier_endstone__BlockType_ Create(nint s) =>
+        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class stores borrowed strings but the constructor has no string parameter.");
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
-    public static Identifier_endstone__BlockType_ Create_436a7679(nint s) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
+    public static Identifier_endstone__BlockType_ Create_436a7679(string s)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(s);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->f595(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
-    public static Identifier_endstone__BlockType_ Create_2aae5a58(nint identifier) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
+            return new Identifier_endstone__BlockType_((nint)handle);
+        }
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
-    public static Identifier_endstone__BlockType_ Create(nint namespace_, nint key) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
+    public static Identifier_endstone__BlockType_ Create_2aae5a58(string identifier)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(identifier);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            var handle = NativeMethods.TablePtr->f596(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            if (handle == null)
+            {
+                throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+            }
+
+            return new Identifier_endstone__BlockType_((nint)handle);
+        }
+    }
+
+    public static Identifier_endstone__BlockType_ Create(string namespace_, string key)
+    {
+        var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(namespace_);
+        var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(key);
+        fixed (byte* __hs_stringData0 = __hs_stringBytes0)
+        {
+            fixed (byte* __hs_stringData1 = __hs_stringBytes1)
+            {
+                var handle = NativeMethods.TablePtr->f597(__hs_stringData0, (nuint)__hs_stringBytes0.Length, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+                if (handle == null)
+                {
+                    throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+                }
+
+                return new Identifier_endstone__BlockType_((nint)handle);
+            }
+        }
+    }
 
     public static string Minecraft
     {
         get
         {
-            var view = NativeMethods.TablePtr->f592();
+            var view = NativeMethods.TablePtr->f598();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
 
     public string getKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f593((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f599((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getNamespace()
     {
-        var __hs_view = NativeMethods.TablePtr->f594((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f600((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -65,31 +102,31 @@ public sealed unsafe partial class Identifier_endstone__BlockType_ : global::Sys
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_((nint)NativeMethods.TablePtr->f595(__hs_stringData0, (nuint)__hs_stringBytes0.Length));
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_((nint)NativeMethods.TablePtr->f601(__hs_stringData0, (nuint)__hs_stringBytes0.Length));
         }
     }
 
     public string operator_basic_string()
     {
-        var __hs_view = NativeMethods.TablePtr->f596((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f602((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ other)
     {
-        return NativeMethods.TablePtr->f597((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f603((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ other)
     {
-        return NativeMethods.TablePtr->f598((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f604((void*)_handle, (void*)other.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f591((void*)_handle);
+            NativeMethods.TablePtr->f594((void*)_handle);
             _handle = 0;
         }
     }

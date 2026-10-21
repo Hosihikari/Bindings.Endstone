@@ -25,7 +25,7 @@ public sealed unsafe partial class Vector : global::System.IDisposable
 
     public static Vector Create()
     {
-        var handle = NativeMethods.TablePtr->f1562();
+        var handle = NativeMethods.TablePtr->f1582();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -36,7 +36,7 @@ public sealed unsafe partial class Vector : global::System.IDisposable
 
     public static Vector Create_59d8f0d9(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        var handle = NativeMethods.TablePtr->f1563((void*)other.Handle);
+        var handle = NativeMethods.TablePtr->f1583((void*)other.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -47,7 +47,7 @@ public sealed unsafe partial class Vector : global::System.IDisposable
 
     public static Vector Create_f7d5c0b3(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        var handle = NativeMethods.TablePtr->f1564((void*)other.Handle);
+        var handle = NativeMethods.TablePtr->f1584((void*)other.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -58,157 +58,157 @@ public sealed unsafe partial class Vector : global::System.IDisposable
 
     public float angle(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return NativeMethods.TablePtr->f1565((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f1585((void*)_handle, (void*)other.Handle);
     }
 
     public nint crossProduct(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->f1566((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f1586((void*)_handle, (void*)other.Handle);
     }
 
     public float distance(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return NativeMethods.TablePtr->f1567((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f1587((void*)_handle, (void*)other.Handle);
     }
 
     public float distanceSquared(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return NativeMethods.TablePtr->f1568((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f1588((void*)_handle, (void*)other.Handle);
     }
 
     public float dot(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return NativeMethods.TablePtr->f1569((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f1589((void*)_handle, (void*)other.Handle);
     }
 
     public int getBlockX()
     {
-        return NativeMethods.TablePtr->f1570((void*)_handle);
+        return NativeMethods.TablePtr->f1590((void*)_handle);
     }
 
     public int getBlockY()
     {
-        return NativeMethods.TablePtr->f1571((void*)_handle);
+        return NativeMethods.TablePtr->f1591((void*)_handle);
     }
 
     public int getBlockZ()
     {
-        return NativeMethods.TablePtr->f1572((void*)_handle);
+        return NativeMethods.TablePtr->f1592((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector getCrossProduct(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1573((void*)_handle, (void*)other.Handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1593((void*)_handle, (void*)other.Handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector getMidpoint(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1574((void*)_handle, (void*)other.Handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1594((void*)_handle, (void*)other.Handle));
     }
 
     public float getX()
     {
-        return NativeMethods.TablePtr->f1575((void*)_handle);
+        return NativeMethods.TablePtr->f1595((void*)_handle);
     }
 
     public float getY()
     {
-        return NativeMethods.TablePtr->f1576((void*)_handle);
+        return NativeMethods.TablePtr->f1596((void*)_handle);
     }
 
     public float getZ()
     {
-        return NativeMethods.TablePtr->f1577((void*)_handle);
+        return NativeMethods.TablePtr->f1597((void*)_handle);
     }
 
     public bool isInAABB(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector min, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector max)
     {
-        return NativeMethods.TablePtr->f1578((void*)_handle, (void*)min.Handle, (void*)max.Handle);
+        return NativeMethods.TablePtr->f1598((void*)_handle, (void*)min.Handle, (void*)max.Handle);
     }
 
     public bool isInSphere(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector origin, float radius)
     {
-        return NativeMethods.TablePtr->f1579((void*)_handle, (void*)origin.Handle, radius);
+        return NativeMethods.TablePtr->f1599((void*)_handle, (void*)origin.Handle, radius);
     }
 
     public bool isNormalized()
     {
-        return NativeMethods.TablePtr->f1580((void*)_handle);
+        return NativeMethods.TablePtr->f1600((void*)_handle);
     }
 
     public bool isZero()
     {
-        return NativeMethods.TablePtr->f1581((void*)_handle);
+        return NativeMethods.TablePtr->f1601((void*)_handle);
     }
 
     public float length()
     {
-        return NativeMethods.TablePtr->f1582((void*)_handle);
+        return NativeMethods.TablePtr->f1602((void*)_handle);
     }
 
     public float lengthSquared()
     {
-        return NativeMethods.TablePtr->f1583((void*)_handle);
+        return NativeMethods.TablePtr->f1603((void*)_handle);
     }
 
     public nint midpoint(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->f1584((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f1604((void*)_handle, (void*)other.Handle);
     }
 
     public nint normalize()
     {
-        return (nint)NativeMethods.TablePtr->f1585((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1605((void*)_handle);
     }
 
     public nint normalizeZeros()
     {
-        return (nint)NativeMethods.TablePtr->f1586((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1606((void*)_handle);
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return NativeMethods.TablePtr->f1587((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f1607((void*)_handle, (void*)other.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector operator_multiply(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1588((void*)_handle, (void*)other.Handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1608((void*)_handle, (void*)other.Handle));
     }
 
     public nint operator_operator___3f9215a2(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->f1589((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f1609((void*)_handle, (void*)other.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector operator_add(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1590((void*)_handle, (void*)other.Handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1610((void*)_handle, (void*)other.Handle));
     }
 
     public nint operator_operator___90119843(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->f1591((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f1611((void*)_handle, (void*)other.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector operator_subtract(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1592((void*)_handle, (void*)other.Handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1612((void*)_handle, (void*)other.Handle));
     }
 
     public nint operator_operator___0a40232b(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->f1593((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f1613((void*)_handle, (void*)other.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector operator_divide(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1594((void*)_handle, (void*)other.Handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f1614((void*)_handle, (void*)other.Handle));
     }
 
     public nint operator_operator___4a2dbdbe(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return (nint)NativeMethods.TablePtr->f1595((void*)_handle, (void*)other.Handle);
+        return (nint)NativeMethods.TablePtr->f1615((void*)_handle, (void*)other.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
@@ -221,44 +221,44 @@ public sealed unsafe partial class Vector : global::System.IDisposable
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return NativeMethods.TablePtr->f1596((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f1616((void*)_handle, (void*)other.Handle);
     }
 
     public nint rotateAroundAxis(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector axis, float angle)
     {
-        return (nint)NativeMethods.TablePtr->f1597((void*)_handle, (void*)axis.Handle, angle);
+        return (nint)NativeMethods.TablePtr->f1617((void*)_handle, (void*)axis.Handle, angle);
     }
 
     public nint rotateAroundNonUnitAxis(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector axis, float angle)
     {
-        return (nint)NativeMethods.TablePtr->f1598((void*)_handle, (void*)axis.Handle, angle);
+        return (nint)NativeMethods.TablePtr->f1618((void*)_handle, (void*)axis.Handle, angle);
     }
 
     public nint rotateAroundX(float angle)
     {
-        return (nint)NativeMethods.TablePtr->f1599((void*)_handle, angle);
+        return (nint)NativeMethods.TablePtr->f1619((void*)_handle, angle);
     }
 
     public nint rotateAroundY(float angle)
     {
-        return (nint)NativeMethods.TablePtr->f1600((void*)_handle, angle);
+        return (nint)NativeMethods.TablePtr->f1620((void*)_handle, angle);
     }
 
     public nint rotateAroundZ(float angle)
     {
-        return (nint)NativeMethods.TablePtr->f1601((void*)_handle, angle);
+        return (nint)NativeMethods.TablePtr->f1621((void*)_handle, angle);
     }
 
     public nint zero()
     {
-        return (nint)NativeMethods.TablePtr->f1602((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1622((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1561((void*)_handle);
+            NativeMethods.TablePtr->f1581((void*)_handle);
             _handle = 0;
         }
     }
