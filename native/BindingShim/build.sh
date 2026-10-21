@@ -112,6 +112,7 @@ EOF
     -fPIC \
     -O2 \
     -pthread \
+    -include "$script_root/linux-compat.h" \
     -I "$endstone_root/include" \
     -I "$endstone_root/include/endstone" \
     -I "$generated_root" \

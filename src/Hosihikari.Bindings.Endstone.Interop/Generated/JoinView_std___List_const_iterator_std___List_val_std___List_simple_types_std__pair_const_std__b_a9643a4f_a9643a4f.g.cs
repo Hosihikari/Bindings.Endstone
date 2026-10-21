@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone.detail;
 
-public sealed unsafe partial class JoinView_std___List_const_iterator_std___List_val_std___List_simple_types_std__pair_const_std__b_a9643a4f : global::System.IDisposable
+public sealed partial class JoinView_std___List_const_iterator_std___List_val_std___List_simple_types_std__pair_const_std__b_a9643a4f
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -37,35 +37,24 @@ public sealed unsafe partial class JoinView_std___List_const_iterator_std___List
         return __hs_handle;
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the native name uses implementation-specific standard library types.", false)]
     public nint begin
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_4e99b612((void*)_handle);
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name uses implementation-specific standard library types.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name uses implementation-specific standard library types.");
     }
 
+    [global::System.Obsolete("BindingShim cannot project this member: the native name uses implementation-specific standard library types.", false)]
     public nint end
     {
-        get => (nint)NativeMethods.TablePtr->hs_get_20f90d2e((void*)_handle);
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name uses implementation-specific standard library types.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name uses implementation-specific standard library types.");
     }
 
-    public string sep
+    [global::System.Obsolete("BindingShim cannot project this member: the native name uses implementation-specific standard library types.", false)]
+    public nint sep
     {
-        get
-        {
-            var view = NativeMethods.TablePtr->hs_get_0b96ffb6((void*)_handle);
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public void Dispose()
-    {
-        if (_handle != 0)
-        {
-            if (_ownsHandle)
-            {
-                NativeMethods.TablePtr->hs_destroy_a9643a4f((void*)_handle);
-            }
-
-            _handle = 0;
-        }
+        get => throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name uses implementation-specific standard library types.");
+        set => throw new global::System.NotSupportedException("BindingShim cannot project this member: the native name uses implementation-specific standard library types.");
     }
 }
