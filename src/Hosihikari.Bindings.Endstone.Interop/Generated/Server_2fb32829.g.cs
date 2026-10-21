@@ -127,28 +127,39 @@ public sealed unsafe partial class Server
     {
         var __hs_map1Items = block_states;
         var __hs_map1Count = __hs_map1Items?.Count ?? 0;
-        var __hs_map1Entries = (global::Hosihikari.Bindings.Abi.MapEntry*)global::System.Runtime.InteropServices.Marshal.AllocHGlobal((__hs_map1Count == 0 ? 1 : __hs_map1Count) * sizeof(global::Hosihikari.Bindings.Abi.MapEntry));
-        var __hs_map1Strings = new nint[__hs_map1Count * 1];
-        var __hs_map1StringCount = 0;
-        var __hs_map1Index = 0;
+        var __hs_map1ByteTotal = 0;
         if (__hs_map1Items is not null)
         {
             foreach (var __hs_pair in __hs_map1Items)
             {
-                var __hs_entry = new global::Hosihikari.Bindings.Abi.MapEntry();
-                var __hs_KeyBytes = global::System.Text.Encoding.UTF8.GetBytes(__hs_pair.Key ?? string.Empty);
-                var __hs_KeyPtr = global::System.Runtime.InteropServices.Marshal.AllocHGlobal(__hs_KeyBytes.Length == 0 ? 1 : __hs_KeyBytes.Length);
-                if (__hs_KeyBytes.Length > 0) { global::System.Runtime.InteropServices.Marshal.Copy(__hs_KeyBytes, 0, __hs_KeyPtr, __hs_KeyBytes.Length); }
-                __hs_map1Strings[__hs_map1StringCount++] = __hs_KeyPtr;
-                __hs_entry.Key = (ulong)__hs_KeyPtr;
-                __hs_entry.KeySize = (ulong)__hs_KeyBytes.Length;
-                __hs_entry.Value = unchecked((ulong)(__hs_pair.Value).Handle);
-                __hs_map1Entries[__hs_map1Index++] = __hs_entry;
+                __hs_map1ByteTotal += global::System.Text.Encoding.UTF8.GetByteCount(__hs_pair.Key ?? string.Empty);
             }
         }
-        var __hs_map1View = new global::Hosihikari.Bindings.Abi.ArrayView { Data = __hs_map1Entries, Size = (nuint)__hs_map1Count };
-        try
+        scoped global::System.Span<byte> __hs_map1Arena;
+        if (__hs_map1ByteTotal <= 1024) { __hs_map1Arena = stackalloc byte[__hs_map1ByteTotal == 0 ? 1 : __hs_map1ByteTotal]; } else { __hs_map1Arena = new byte[__hs_map1ByteTotal]; }
+        scoped global::System.Span<global::Hosihikari.Bindings.Abi.MapEntry> __hs_map1EntrySpan;
+        if (__hs_map1Count <= 16) { __hs_map1EntrySpan = stackalloc global::Hosihikari.Bindings.Abi.MapEntry[__hs_map1Count == 0 ? 1 : __hs_map1Count]; } else { __hs_map1EntrySpan = new global::Hosihikari.Bindings.Abi.MapEntry[__hs_map1Count]; }
+        fixed (byte* __hs_map1ArenaPtr = __hs_map1Arena)
+        fixed (global::Hosihikari.Bindings.Abi.MapEntry* __hs_map1Data = __hs_map1EntrySpan)
         {
+            var __hs_map1Offset = 0;
+            var __hs_map1Index = 0;
+            if (__hs_map1Items is not null)
+            {
+                foreach (var __hs_pair in __hs_map1Items)
+                {
+                    var __hs_entry = new global::Hosihikari.Bindings.Abi.MapEntry();
+                    var __hs_map1KeyItem = __hs_pair.Key ?? string.Empty;
+                    var __hs_map1KeyLength = global::System.Text.Encoding.UTF8.GetByteCount(__hs_map1KeyItem);
+                    global::System.Text.Encoding.UTF8.GetBytes(__hs_map1KeyItem, __hs_map1Arena.Slice(__hs_map1Offset, __hs_map1KeyLength));
+                    __hs_entry.Key = (ulong)(__hs_map1ArenaPtr + __hs_map1Offset);
+                    __hs_entry.KeySize = (ulong)__hs_map1KeyLength;
+                    __hs_map1Offset += __hs_map1KeyLength;
+                    __hs_entry.Value = unchecked((ulong)(__hs_pair.Value).Handle);
+                    __hs_map1Data[__hs_map1Index++] = __hs_entry;
+                }
+            }
+            var __hs_map1View = new global::Hosihikari.Bindings.Abi.ArrayView { Data = __hs_map1Data, Size = (nuint)__hs_map1Count };
             var __hs_stringByteCount0 = global::System.Text.Encoding.UTF8.GetByteCount(type);
             scoped global::System.Span<byte> __hs_stringBytes0;
             if (__hs_stringByteCount0 <= 256)
@@ -165,11 +176,6 @@ public sealed unsafe partial class Server
                 var __hs_handle = NativeMethods.TablePtr->hs_method_22dd6517((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, __hs_map1View);
                 return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
             }
-        }
-        finally
-        {
-            for (var __hs_i = 0; __hs_i < __hs_map1StringCount; __hs_i++) { if (__hs_map1Strings[__hs_i] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal(__hs_map1Strings[__hs_i]); } }
-            global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_map1Entries);
         }
     }
 
