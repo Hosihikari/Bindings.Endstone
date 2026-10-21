@@ -46,6 +46,11 @@ public sealed unsafe partial class LeavesDecayEvent : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_ AsCancellable_endstone__BlockEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_((nint)NativeMethods.TablePtr->hs_cast_d895e309((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

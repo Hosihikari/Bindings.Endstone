@@ -81,6 +81,11 @@ public sealed unsafe partial class ServerCommandEvent : global::System.IDisposab
         }
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_ AsCancellable_endstone__ServerEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_((nint)NativeMethods.TablePtr->hs_cast_f36b8fcc((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

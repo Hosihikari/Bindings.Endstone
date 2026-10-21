@@ -69,6 +69,11 @@ public sealed unsafe partial class PlayerQuitEvent : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_221a79aa((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEvent AsPlayerEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEvent((nint)NativeMethods.TablePtr->hs_cast_062024fc((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

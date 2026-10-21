@@ -110,6 +110,11 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActionForm((nint)NativeMethods.TablePtr->hs_method_7a063590((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Form_endstone__ActionForm_ AsForm_endstone__ActionForm_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Form_endstone__ActionForm_((nint)NativeMethods.TablePtr->hs_cast_2a627338((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

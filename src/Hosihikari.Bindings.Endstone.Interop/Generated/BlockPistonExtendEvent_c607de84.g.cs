@@ -46,6 +46,11 @@ public sealed unsafe partial class BlockPistonExtendEvent : global::System.IDisp
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockPistonEvent AsBlockPistonEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockPistonEvent((nint)NativeMethods.TablePtr->hs_cast_f04bfb5f((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

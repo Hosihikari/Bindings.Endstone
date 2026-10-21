@@ -40,4 +40,9 @@ public sealed unsafe partial class BlockCommandSender
         var __hs_handle = NativeMethods.TablePtr->hs_method_b1c439de((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender AsCommandSender()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_3875f743((void*)_handle), false);
+    }
 }

@@ -188,6 +188,24 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CrossbowMeta? TryAsCrossbowMeta()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_4081aac0((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.CrossbowMeta((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.MapMeta? TryAsMapMeta()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_4a0b3d94((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.MapMeta((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.WritableBookMeta? TryAsWritableBookMeta()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_20389c4c((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.WritableBookMeta((nint)__hs_handle, false) : null;
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

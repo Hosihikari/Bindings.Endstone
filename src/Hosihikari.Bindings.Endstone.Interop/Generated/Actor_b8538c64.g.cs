@@ -207,4 +207,21 @@ public sealed unsafe partial class Actor
     {
         return NativeMethods.TablePtr->hs_method_ab7b90ae((void*)_handle, (void*)location.Handle);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender AsCommandSender()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_cf1bff98((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Item? TryAsItem()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_048d2bdd((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Item((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob? TryAsMob()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_558c95a0((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob((nint)__hs_handle, false) : null;
+    }
 }

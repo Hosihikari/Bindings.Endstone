@@ -61,4 +61,9 @@ public sealed unsafe partial class Registry_endstone__Enchantment_
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment((nint)NativeMethods.TablePtr->hs_method_a1e9c09b((void*)_handle, (void*)id.Handle), false);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.IRegistry AsIRegistry()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.IRegistry((nint)NativeMethods.TablePtr->hs_cast_1ea84b7b((void*)_handle), false);
+    }
 }

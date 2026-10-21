@@ -76,4 +76,9 @@ public sealed unsafe partial class Item
     {
         NativeMethods.TablePtr->hs_method_faf33d09((void*)_handle, unlimited);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor AsActor()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)NativeMethods.TablePtr->hs_cast_b3ea5c40((void*)_handle), false);
+    }
 }

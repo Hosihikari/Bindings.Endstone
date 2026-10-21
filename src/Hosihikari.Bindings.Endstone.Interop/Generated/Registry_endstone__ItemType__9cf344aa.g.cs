@@ -61,4 +61,9 @@ public sealed unsafe partial class Registry_endstone__ItemType_
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemType((nint)NativeMethods.TablePtr->hs_method_b144bf99((void*)_handle, (void*)id.Handle), false);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.IRegistry AsIRegistry()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.IRegistry((nint)NativeMethods.TablePtr->hs_cast_b2d20ea1((void*)_handle), false);
+    }
 }

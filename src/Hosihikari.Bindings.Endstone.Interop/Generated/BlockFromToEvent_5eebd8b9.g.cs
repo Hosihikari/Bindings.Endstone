@@ -62,6 +62,11 @@ public sealed unsafe partial class BlockFromToEvent : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)NativeMethods.TablePtr->hs_method_2b60a963((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_ AsCancellable_endstone__BlockEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_((nint)NativeMethods.TablePtr->hs_cast_9e380ca5((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

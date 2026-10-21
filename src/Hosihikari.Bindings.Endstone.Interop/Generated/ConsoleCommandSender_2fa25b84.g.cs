@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class ConsoleCommandSender
+public sealed unsafe partial class ConsoleCommandSender
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -33,5 +33,10 @@ public sealed partial class ConsoleCommandSender
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender AsCommandSender()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_84d6876f((void*)_handle), false);
     }
 }

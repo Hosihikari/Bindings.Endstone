@@ -74,6 +74,11 @@ public sealed unsafe partial class PlayerDeathEvent : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_7b4a723d((void*)_handle, (void*)(death_message?.Handle ?? 0), death_message is not null);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDeathEvent AsActorDeathEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDeathEvent((nint)NativeMethods.TablePtr->hs_cast_0187d923((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

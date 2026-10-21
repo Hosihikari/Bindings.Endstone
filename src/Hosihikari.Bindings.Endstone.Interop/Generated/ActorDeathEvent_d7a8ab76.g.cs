@@ -62,6 +62,17 @@ public sealed unsafe partial class ActorDeathEvent : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Mob_ AsActorEvent_endstone__Mob_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Mob_((nint)NativeMethods.TablePtr->hs_cast_975fae4c((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDeathEvent? TryAsPlayerDeathEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_1848fd63((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDeathEvent((nint)__hs_handle, false) : null;
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

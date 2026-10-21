@@ -114,4 +114,10 @@ public sealed unsafe partial class BanList_endstone__IpBanEntry_
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.IpBanList? TryAsIpBanList()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_427d9b49((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.IpBanList((nint)__hs_handle, false) : null;
+    }
 }

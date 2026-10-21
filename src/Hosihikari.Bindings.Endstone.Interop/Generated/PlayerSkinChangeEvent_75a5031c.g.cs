@@ -74,6 +74,11 @@ public sealed unsafe partial class PlayerSkinChangeEvent : global::System.IDispo
         NativeMethods.TablePtr->hs_method_56fe64c4((void*)_handle, (void*)(message?.Handle ?? 0), message is not null);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_ AsCancellable_endstone__PlayerEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_((nint)NativeMethods.TablePtr->hs_cast_dd30bd94((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

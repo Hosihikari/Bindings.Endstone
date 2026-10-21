@@ -67,6 +67,11 @@ public sealed unsafe partial class PlayerItemConsumeEvent : global::System.IDisp
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->hs_method_37f0fdff((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_ AsCancellable_endstone__PlayerEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_((nint)NativeMethods.TablePtr->hs_cast_3cafff1c((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

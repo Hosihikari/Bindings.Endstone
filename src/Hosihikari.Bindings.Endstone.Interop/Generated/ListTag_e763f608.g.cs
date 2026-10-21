@@ -111,6 +111,11 @@ public sealed unsafe partial class ListTag : global::System.IDisposable
     public nint type() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the member requires linking against the carrier.");
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase AsTagBase()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase((nint)NativeMethods.TablePtr->hs_cast_06c3c5db((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

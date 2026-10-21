@@ -56,6 +56,11 @@ public sealed unsafe partial class IpBanEntry : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BanEntry AsBanEntry()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BanEntry((nint)NativeMethods.TablePtr->hs_cast_d1caf0c7((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

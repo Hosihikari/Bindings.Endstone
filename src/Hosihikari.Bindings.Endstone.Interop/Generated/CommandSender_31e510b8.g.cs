@@ -85,4 +85,33 @@ public sealed unsafe partial class CommandSender
     {
         NativeMethods.TablePtr->hs_method_0d00119e((void*)_handle, (void*)message.Handle);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible AsPermissible()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible((nint)NativeMethods.TablePtr->hs_cast_f21a9878((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor? TryAsActor()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_afe29da6((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockCommandSender? TryAsBlockCommandSender()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_c1c07519((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockCommandSender((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSenderWrapper? TryAsCommandSenderWrapper()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_5abfdc46((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSenderWrapper((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ConsoleCommandSender? TryAsConsoleCommandSender()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_f5da92a1((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ConsoleCommandSender((nint)__hs_handle, false) : null;
+    }
 }

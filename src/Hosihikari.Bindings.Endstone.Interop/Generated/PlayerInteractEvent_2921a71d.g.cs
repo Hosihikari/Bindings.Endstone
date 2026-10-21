@@ -95,6 +95,11 @@ public sealed unsafe partial class PlayerInteractEvent : global::System.IDisposa
         return NativeMethods.TablePtr->hs_method_250987aa((void*)_handle);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_ AsCancellable_endstone__PlayerEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_((nint)NativeMethods.TablePtr->hs_cast_20fcdc99((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

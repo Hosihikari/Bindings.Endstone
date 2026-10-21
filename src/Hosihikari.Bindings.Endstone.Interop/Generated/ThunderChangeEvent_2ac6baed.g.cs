@@ -63,6 +63,11 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__WeatherEvent_ AsCancellable_endstone__WeatherEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__WeatherEvent_((nint)NativeMethods.TablePtr->hs_cast_f5ab7016((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

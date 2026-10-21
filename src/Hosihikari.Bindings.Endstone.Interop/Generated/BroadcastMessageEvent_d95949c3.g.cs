@@ -65,6 +65,11 @@ public sealed unsafe partial class BroadcastMessageEvent : global::System.IDispo
         NativeMethods.TablePtr->hs_method_4c0b7fcf((void*)_handle, (void*)message.Handle);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_ AsCancellable_endstone__ServerEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_((nint)NativeMethods.TablePtr->hs_cast_bdf67fae((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

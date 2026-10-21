@@ -66,6 +66,11 @@ public sealed unsafe partial class ActorExplodeEvent : global::System.IDisposabl
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Actor__ AsCancellable_endstone__ActorEvent_endstone__Actor__()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Actor__((nint)NativeMethods.TablePtr->hs_cast_212f7e9a((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

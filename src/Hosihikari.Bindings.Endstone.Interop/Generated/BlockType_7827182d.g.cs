@@ -55,4 +55,9 @@ public sealed unsafe partial class BlockType
     {
         return NativeMethods.TablePtr->hs_method_9375ea5f((void*)_handle);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__BlockType__Nested.Type AsType()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__BlockType__Nested.Type((nint)NativeMethods.TablePtr->hs_cast_2c3b91a5((void*)_handle), false);
+    }
 }

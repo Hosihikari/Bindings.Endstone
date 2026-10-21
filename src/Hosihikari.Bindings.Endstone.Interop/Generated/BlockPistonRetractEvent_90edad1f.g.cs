@@ -46,6 +46,11 @@ public sealed unsafe partial class BlockPistonRetractEvent : global::System.IDis
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockPistonEvent AsBlockPistonEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockPistonEvent((nint)NativeMethods.TablePtr->hs_cast_7a72a57b((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

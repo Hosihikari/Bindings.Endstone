@@ -192,6 +192,15 @@
 #ifndef HS_COMMAND_SENDER_WRAPPER_DESTROY_INDEX
 #error "HS_COMMAND_SENDER_WRAPPER_DESTROY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_COMMAND_SENDER_WRAPPER_AS_COMMAND_SENDER_INDEX
+#error "HS_COMMAND_SENDER_WRAPPER_AS_COMMAND_SENDER_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_COMMAND_SENDER_TRY_AS_WRAPPER_INDEX
+#error "HS_COMMAND_SENDER_TRY_AS_WRAPPER_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_COMMAND_SENDER_TRY_AS_ACTOR_INDEX
+#error "HS_COMMAND_SENDER_TRY_AS_ACTOR_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_ACTION_FORM_CREATE_INDEX
 #error "HS_ACTION_FORM_CREATE_INDEX must be defined by build.ps1"
 #endif
@@ -704,7 +713,9 @@ public:
             using WrapperCreateFn = void *(*)(void *, void *, void *, void *, void *, void *, void *);
             using IntMethodFn = std::int32_t (*)(void *);
             using GetNameFn = HosihikariStringView (*)(void *);
+            using CastFn = void *(*)(void *);
             bool mutableReferenceCtorOk = false;
+            bool inheritanceCastOk = false;
             if (auto *sender = reinterpret_cast<GetCommandSenderFn>(slots[HS_SERVER_COMMAND_SENDER_INDEX])(handle)) {
                 auto *wrapper = reinterpret_cast<WrapperCreateFn>(slots[HS_COMMAND_SENDER_WRAPPER_CREATE_INDEX])(
                     sender,
@@ -725,11 +736,27 @@ public:
                     mutableReferenceCtorOk = senderLevel == wrapperLevel
                         && std::string(senderName.data, senderName.size)
                             == std::string(wrapperName.data, wrapperName.size);
+
+                    auto *upcast = reinterpret_cast<CastFn>(
+                        slots[HS_COMMAND_SENDER_WRAPPER_AS_COMMAND_SENDER_INDEX])(wrapper);
+                    auto *roundtrip = reinterpret_cast<CastFn>(
+                        slots[HS_COMMAND_SENDER_TRY_AS_WRAPPER_INDEX])(upcast);
+                    auto *notActor = reinterpret_cast<CastFn>(
+                        slots[HS_COMMAND_SENDER_TRY_AS_ACTOR_INDEX])(sender);
+                    const auto upcastName = upcast
+                        ? reinterpret_cast<GetNameFn>(slots[HS_COMMAND_SENDER_NAME_INDEX])(upcast)
+                        : HosihikariStringView{};
+                    inheritanceCastOk = upcast != nullptr
+                        && roundtrip == wrapper
+                        && notActor == nullptr
+                        && std::string(upcastName.data, upcastName.size)
+                            == std::string(senderName.data, senderName.size);
                     reinterpret_cast<DestroyFn>(slots[HS_COMMAND_SENDER_WRAPPER_DESTROY_INDEX])(wrapper);
                 }
             }
 
             out << "mutable_reference.ctor=" << (mutableReferenceCtorOk ? "ok" : "FAIL") << "\n";
+            out << "inheritance.cast=" << (inheritanceCastOk ? "ok" : "FAIL") << "\n";
 
             using CreateActionFormFn = void *(*)();
             using SetContentFn = void *(*)(void *, void *);

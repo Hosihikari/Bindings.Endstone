@@ -70,4 +70,9 @@ public sealed unsafe partial class MapMeta
     {
         NativeMethods.TablePtr->hs_method_1052b284((void*)_handle, (void*)map.Handle);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta AsItemMeta()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->hs_cast_6d8c28a6((void*)_handle), false);
+    }
 }

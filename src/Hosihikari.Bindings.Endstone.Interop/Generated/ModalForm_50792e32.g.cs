@@ -105,6 +105,11 @@ public sealed unsafe partial class ModalForm : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ModalForm((nint)NativeMethods.TablePtr->hs_method_b175a990((void*)_handle, (void*)(text?.Handle ?? 0), text is not null), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Form_endstone__ModalForm_ AsForm_endstone__ModalForm_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Form_endstone__ModalForm_((nint)NativeMethods.TablePtr->hs_cast_a966c2c9((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

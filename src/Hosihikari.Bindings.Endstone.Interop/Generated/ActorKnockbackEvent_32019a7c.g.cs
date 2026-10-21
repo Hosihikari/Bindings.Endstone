@@ -73,6 +73,11 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
         NativeMethods.TablePtr->hs_method_c1270265((void*)_handle, (void*)knockback.Handle);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Mob__ AsCancellable_endstone__ActorEvent_endstone__Mob__()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Mob__((nint)NativeMethods.TablePtr->hs_cast_646ece2d((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

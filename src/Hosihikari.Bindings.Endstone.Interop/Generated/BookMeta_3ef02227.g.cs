@@ -96,4 +96,9 @@ public sealed unsafe partial class BookMeta
             NativeMethods.TablePtr->hs_method_8567bdf4((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, title is not null);
         }
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.WritableBookMeta AsWritableBookMeta()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.WritableBookMeta((nint)NativeMethods.TablePtr->hs_cast_bc4d3831((void*)_handle), false);
+    }
 }

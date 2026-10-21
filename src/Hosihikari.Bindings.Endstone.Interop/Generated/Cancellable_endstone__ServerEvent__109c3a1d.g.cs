@@ -49,4 +49,50 @@ public sealed unsafe partial class Cancellable_endstone__ServerEvent_
     {
         NativeMethods.TablePtr->hs_method_7f41c6c9((void*)_handle, cancel);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable AsICancellable()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->hs_cast_6e1e506e((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent AsServerEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->hs_cast_22ab2270((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BroadcastMessageEvent? TryAsBroadcastMessageEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_85bf3d23((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BroadcastMessageEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PacketReceiveEvent? TryAsPacketReceiveEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_e9772ca4((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PacketReceiveEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PacketSendEvent? TryAsPacketSendEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_d95b40ac((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PacketSendEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ScriptMessageEvent? TryAsScriptMessageEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_a9d20885((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ScriptMessageEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerCommandEvent? TryAsServerCommandEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_6721177d((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerCommandEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerListPingEvent? TryAsServerListPingEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_91f4b0a9((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerListPingEvent((nint)__hs_handle, false) : null;
+    }
 }

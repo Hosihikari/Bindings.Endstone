@@ -116,4 +116,9 @@ public sealed unsafe partial class PlayerInventory
     {
         NativeMethods.TablePtr->hs_method_5339c3c9((void*)_handle, (void*)(leggings?.Handle ?? 0), leggings is not null);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Inventory AsInventory()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Inventory((nint)NativeMethods.TablePtr->hs_cast_5511c96b((void*)_handle), false);
+    }
 }

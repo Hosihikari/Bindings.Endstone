@@ -75,6 +75,11 @@ public sealed unsafe partial class MessageForm : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.MessageForm((nint)NativeMethods.TablePtr->hs_method_6eb29429((void*)_handle, (void*)on_submitInvoke, (void*)on_submitUserData, (void*)on_submitRelease), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Form_endstone__MessageForm_ AsForm_endstone__MessageForm_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Form_endstone__MessageForm_((nint)NativeMethods.TablePtr->hs_cast_ae0325ad((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

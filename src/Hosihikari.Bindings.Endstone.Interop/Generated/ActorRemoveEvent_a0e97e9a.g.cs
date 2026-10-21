@@ -46,6 +46,11 @@ public sealed unsafe partial class ActorRemoveEvent : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Actor_ AsActorEvent_endstone__Actor_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Actor_((nint)NativeMethods.TablePtr->hs_cast_ec10347e((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

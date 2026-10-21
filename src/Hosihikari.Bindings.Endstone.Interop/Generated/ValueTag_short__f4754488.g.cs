@@ -71,6 +71,11 @@ public sealed unsafe partial class ValueTag_short_ : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_4e1beb8a((void*)_handle);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase AsTagBase()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase((nint)NativeMethods.TablePtr->hs_cast_4ccfa3d4((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

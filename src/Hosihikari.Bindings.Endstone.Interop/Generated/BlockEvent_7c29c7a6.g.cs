@@ -43,4 +43,9 @@ public sealed unsafe partial class BlockEvent
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)NativeMethods.TablePtr->hs_method_bfa4698d((void*)_handle), false);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_edf7d242((void*)_handle), false);
+    }
 }

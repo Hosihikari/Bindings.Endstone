@@ -132,4 +132,15 @@ public sealed unsafe partial class WritableBookMeta
             for (var __hs_i0 = 0; __hs_i0 < __hs_vectorHandles0.Length; __hs_i0++) { if (__hs_vectorHandles0[__hs_i0] != 0) { global::System.Runtime.InteropServices.Marshal.FreeHGlobal((nint)__hs_vectorHandles0[__hs_i0]); } }
         }
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta AsItemMeta()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->hs_cast_4d728731((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BookMeta? TryAsBookMeta()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_ce5da043((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BookMeta((nint)__hs_handle, false) : null;
+    }
 }

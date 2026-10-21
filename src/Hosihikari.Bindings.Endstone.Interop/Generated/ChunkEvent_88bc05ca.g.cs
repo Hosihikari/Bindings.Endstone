@@ -43,4 +43,9 @@ public sealed unsafe partial class ChunkEvent
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Chunk((nint)NativeMethods.TablePtr->hs_method_c7604b5b((void*)_handle), false);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.DimensionEvent AsDimensionEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.DimensionEvent((nint)NativeMethods.TablePtr->hs_cast_16f5e6ae((void*)_handle), false);
+    }
 }

@@ -46,6 +46,11 @@ public sealed unsafe partial class PlayerJumpEvent : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerMoveEvent AsPlayerMoveEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerMoveEvent((nint)NativeMethods.TablePtr->hs_cast_242254ab((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

@@ -36,6 +36,24 @@ public sealed unsafe partial class IRegistry : global::System.IDisposable
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__BlockType_? TryAsRegistry_endstone__BlockType_()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_3e1c2ed7((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__BlockType_((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__Enchantment_? TryAsRegistry_endstone__Enchantment_()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_61591796((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__Enchantment_((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__ItemType_? TryAsRegistry_endstone__ItemType_()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_9b7338f5((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__ItemType_((nint)__hs_handle, false) : null;
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

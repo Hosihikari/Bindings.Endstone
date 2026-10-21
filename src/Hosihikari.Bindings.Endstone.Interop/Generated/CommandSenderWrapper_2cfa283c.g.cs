@@ -161,6 +161,11 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
         NativeMethods.TablePtr->hs_method_11f99321((void*)_handle, (void*)message.Handle);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender AsCommandSender()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender((nint)NativeMethods.TablePtr->hs_cast_16573b99((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

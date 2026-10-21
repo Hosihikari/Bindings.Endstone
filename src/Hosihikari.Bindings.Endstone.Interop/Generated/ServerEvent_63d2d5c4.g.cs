@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed partial class ServerEvent
+public sealed unsafe partial class ServerEvent
 {
     private nint _handle;
     private readonly bool _ownsHandle;
@@ -33,5 +33,10 @@ public sealed partial class ServerEvent
         var __hs_handle = _handle;
         _handle = 0;
         return __hs_handle;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_65b80766((void*)_handle), false);
     }
 }

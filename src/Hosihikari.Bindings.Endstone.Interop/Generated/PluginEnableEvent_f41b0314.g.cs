@@ -62,6 +62,11 @@ public sealed unsafe partial class PluginEnableEvent : global::System.IDisposabl
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin((nint)NativeMethods.TablePtr->hs_method_10a06443((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent AsServerEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->hs_cast_061c3294((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

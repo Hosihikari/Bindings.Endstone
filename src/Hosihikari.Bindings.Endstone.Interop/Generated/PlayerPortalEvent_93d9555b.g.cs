@@ -46,6 +46,11 @@ public sealed unsafe partial class PlayerPortalEvent : global::System.IDisposabl
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerTeleportEvent AsPlayerTeleportEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerTeleportEvent((nint)NativeMethods.TablePtr->hs_cast_628f118a((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

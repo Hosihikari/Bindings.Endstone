@@ -4,14 +4,14 @@
 
 ## 边界
 
-- `Hosihikari.Bindings.Endstone.Interop` 由 `Hosihikari/Bindings.Generator` 从版本化 IR 生成，逐声明镜像 Endstone：一层指针与引用返回投影为类型化借用包装，其余不透明句柄保留 `nint`。ABI 值类型与 shim 加载器来自 `Hosihikari/Bindings.Abi`。
+- `Hosihikari.Bindings.Endstone.Interop` 由 `Hosihikari/Bindings.Generator` 从版本化 IR 生成，逐声明镜像 Endstone：一层指针与引用返回投影为类型化借用包装，`optional_ref<T>` 结果复用同一包装，其余不透明句柄保留 `nint`。ABI 值类型与 shim 加载器来自 `Hosihikari/Bindings.Abi`。
 - `native/BindingShim/` 是 C ABI 投影。Endstone 插件通过 `endstone::detail::getServer()` 获取服务器；shim 使用同一引导方式并直接调用虚接口，因此不需要 Endstone 导入库。
 - 手写 Idiomatic 层后置；当前公开面是生成的 Interop。
 
 ## 当前状态
 
 - Interop：`src/Hosihikari.Bindings.Endstone.Interop/Generated/` 下 215 个生成 C# 文件。
-- BindingShim：`native/BindingShim/generated/win-x64-server/endstone/` 中 1,844 个函数。
+- BindingShim：`native/BindingShim/generated/win-x64-server/endstone/` 中 2,051 个函数。
 - 覆盖：319 条声明、1,831 条成员已绑定。
 
 shim 以 `--virtual-dispatch` 模式发射：inline 成员、虚方法（含纯虚接口）、符合条件的模板实例、inline/constexpr 静态字段、`std::optional<T>` 参数/结果、`std::vector<T>` 参数/结果、`std::unique_ptr<T>` 结果、`std::shared_ptr<T>` 结果、`nonstd::expected_lite::expected<T, std::string>` 结果、`std::variant<T...>` 参数/结果、`NotNull`/`Nullable` 共享句柄、借用指针集合、拥有/共享元素数组、chrono 时间值、返回的 `std::function` 可调用句柄、映射为字典的 `unordered_map` 参数与结果、作为共享句柄的 `shared_ptr` 参数、作为所有权转移的 `unique_ptr` 参数以及通过 holder 支撑的借用字符串标识符以及经类型化控件 variant 的 `ModalForm` 控件被投影；非虚 out-of-line 成员保留 Interop stub，并在 `NotSupportedException` 中给出原因，同时标记 `[Obsolete]`，调用时产生 CS0618。宿主拥有的接口对象不释放；只有 shim 创建的对象生成释放器。

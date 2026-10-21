@@ -72,6 +72,11 @@ public sealed unsafe partial class ActorDamageEvent : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_f5f8691f((void*)_handle, damage);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Mob__ AsCancellable_endstone__ActorEvent_endstone__Mob__()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Mob__((nint)NativeMethods.TablePtr->hs_cast_630d9e1a((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

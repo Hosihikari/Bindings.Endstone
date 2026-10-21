@@ -269,4 +269,9 @@ public sealed unsafe partial class Enchantment
     {
         return NativeMethods.TablePtr->hs_method_51220b54((void*)_handle);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__Enchantment__Nested.Type AsType()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__Enchantment__Nested.Type((nint)NativeMethods.TablePtr->hs_cast_f921ca39((void*)_handle), false);
+    }
 }

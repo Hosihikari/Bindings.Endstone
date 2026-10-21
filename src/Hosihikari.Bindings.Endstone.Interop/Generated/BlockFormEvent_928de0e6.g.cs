@@ -46,6 +46,11 @@ public sealed unsafe partial class BlockFormEvent : global::System.IDisposable
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockGrowEvent AsBlockGrowEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockGrowEvent((nint)NativeMethods.TablePtr->hs_cast_3682cc7e((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

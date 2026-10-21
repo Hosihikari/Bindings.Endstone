@@ -194,4 +194,9 @@ public sealed unsafe partial class PlayerBanList
             }
         }
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BanList_endstone__PlayerBanEntry_ AsBanList_endstone__PlayerBanEntry_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BanList_endstone__PlayerBanEntry_((nint)NativeMethods.TablePtr->hs_cast_3f2bfc7e((void*)_handle), false);
+    }
 }

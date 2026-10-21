@@ -58,6 +58,11 @@ public sealed unsafe partial class PlayerRespawnEvent : global::System.IDisposab
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEvent AsPlayerEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEvent((nint)NativeMethods.TablePtr->hs_cast_c4a7a11c((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

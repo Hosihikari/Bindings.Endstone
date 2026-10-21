@@ -62,6 +62,11 @@ public sealed unsafe partial class PlayerPickupItemEvent : global::System.IDispo
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Item((nint)NativeMethods.TablePtr->hs_method_91dd524f((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_ AsCancellable_endstone__PlayerEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_((nint)NativeMethods.TablePtr->hs_cast_481b7aa1((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

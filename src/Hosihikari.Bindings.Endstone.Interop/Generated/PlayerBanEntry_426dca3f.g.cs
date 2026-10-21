@@ -74,6 +74,11 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BanEntry AsBanEntry()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BanEntry((nint)NativeMethods.TablePtr->hs_cast_bfe186a1((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

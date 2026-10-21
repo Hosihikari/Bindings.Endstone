@@ -88,6 +88,11 @@ public sealed unsafe partial class ValueTag_std__basic_string_char__ : global::S
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase AsTagBase()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.TagBase((nint)NativeMethods.TablePtr->hs_cast_000601bd((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

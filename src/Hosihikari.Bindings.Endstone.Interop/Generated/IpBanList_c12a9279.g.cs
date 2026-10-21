@@ -110,4 +110,9 @@ public sealed unsafe partial class IpBanList
             NativeMethods.TablePtr->hs_method_99fd116a((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BanList_endstone__IpBanEntry_ AsBanList_endstone__IpBanEntry_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BanList_endstone__IpBanEntry_((nint)NativeMethods.TablePtr->hs_cast_23412fdb((void*)_handle), false);
+    }
 }

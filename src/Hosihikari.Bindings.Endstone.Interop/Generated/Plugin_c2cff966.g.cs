@@ -104,4 +104,9 @@ public sealed unsafe partial class Plugin
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandExecutor AsCommandExecutor()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandExecutor((nint)NativeMethods.TablePtr->hs_cast_59074223((void*)_handle), false);
+    }
 }

@@ -47,4 +47,21 @@ public sealed unsafe partial class ActorEvent_endstone__Actor_
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_e596431f((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorRemoveEvent? TryAsActorRemoveEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_56650640((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorRemoveEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Actor__? TryAsCancellable_endstone__ActorEvent_endstone__Actor__()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_38550dc6((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Actor__((nint)__hs_handle, false) : null;
+    }
 }

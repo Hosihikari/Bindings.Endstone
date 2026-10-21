@@ -76,4 +76,9 @@ public sealed unsafe partial class CrossbowMeta
             NativeMethods.TablePtr->hs_method_dc173cf9((void*)_handle, __hs_vectorData0, (nuint)(projectiles?.Length ?? 0));
         }
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta AsItemMeta()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)NativeMethods.TablePtr->hs_cast_8fff943c((void*)_handle), false);
+    }
 }

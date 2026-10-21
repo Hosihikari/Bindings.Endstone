@@ -96,6 +96,11 @@ public sealed unsafe partial class PlayerChatEvent : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_97171171((void*)_handle, (void*)player.Handle);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_ AsCancellable_endstone__PlayerEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_((nint)NativeMethods.TablePtr->hs_cast_6fd71a13((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

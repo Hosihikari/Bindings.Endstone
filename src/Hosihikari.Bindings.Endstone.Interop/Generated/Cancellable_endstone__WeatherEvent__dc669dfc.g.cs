@@ -49,4 +49,26 @@ public sealed unsafe partial class Cancellable_endstone__WeatherEvent_
     {
         NativeMethods.TablePtr->hs_method_1c30a25b((void*)_handle, cancel);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable AsICancellable()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->hs_cast_5c6d48cb((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.WeatherEvent AsWeatherEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.WeatherEvent((nint)NativeMethods.TablePtr->hs_cast_71e960fa((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ThunderChangeEvent? TryAsThunderChangeEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_4acc7857((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ThunderChangeEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.WeatherChangeEvent? TryAsWeatherChangeEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_0530b500((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.WeatherChangeEvent((nint)__hs_handle, false) : null;
+    }
 }

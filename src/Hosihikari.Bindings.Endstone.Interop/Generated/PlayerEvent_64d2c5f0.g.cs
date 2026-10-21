@@ -47,4 +47,45 @@ public sealed unsafe partial class PlayerEvent
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event AsEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Event((nint)NativeMethods.TablePtr->hs_cast_56f879ae((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_? TryAsCancellable_endstone__PlayerEvent_()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_4e48a6d5((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerBedLeaveEvent? TryAsPlayerBedLeaveEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_65b028b9((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerBedLeaveEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDimensionChangeEvent? TryAsPlayerDimensionChangeEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_fe5e4580((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerDimensionChangeEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerJoinEvent? TryAsPlayerJoinEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_a0ac2f82((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerJoinEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerQuitEvent? TryAsPlayerQuitEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_94a3f305((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerQuitEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerRespawnEvent? TryAsPlayerRespawnEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_5335f95d((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerRespawnEvent((nint)__hs_handle, false) : null;
+    }
 }

@@ -89,6 +89,23 @@ public sealed unsafe partial class PlayerMoveEvent : global::System.IDisposable
         set => NativeMethods.TablePtr->hs_set_ce3f8806((void*)_handle, (void*)value);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_ AsCancellable_endstone__PlayerEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_((nint)NativeMethods.TablePtr->hs_cast_b973ae3e((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerJumpEvent? TryAsPlayerJumpEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_550f0be5((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerJumpEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerTeleportEvent? TryAsPlayerTeleportEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_9ca672c0((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerTeleportEvent((nint)__hs_handle, false) : null;
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

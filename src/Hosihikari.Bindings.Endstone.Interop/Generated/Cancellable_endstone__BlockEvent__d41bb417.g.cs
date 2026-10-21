@@ -49,4 +49,62 @@ public sealed unsafe partial class Cancellable_endstone__BlockEvent_
     {
         NativeMethods.TablePtr->hs_method_5da6baf7((void*)_handle, cancel);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockEvent AsBlockEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockEvent((nint)NativeMethods.TablePtr->hs_cast_c5d7e9c2((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable AsICancellable()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->hs_cast_801607c6((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockBreakEvent? TryAsBlockBreakEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_2b8a52bd((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockBreakEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockCookEvent? TryAsBlockCookEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_3e59a4bd((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockCookEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockExplodeEvent? TryAsBlockExplodeEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_bbdc4b57((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockExplodeEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockFromToEvent? TryAsBlockFromToEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_3ab5d6e4((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockFromToEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockGrowEvent? TryAsBlockGrowEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_4d67084b((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockGrowEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockPistonEvent? TryAsBlockPistonEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_c8c75776((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockPistonEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockPlaceEvent? TryAsBlockPlaceEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_3f0e3d17((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockPlaceEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.LeavesDecayEvent? TryAsLeavesDecayEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_ac39e1d7((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.LeavesDecayEvent((nint)__hs_handle, false) : null;
+    }
 }

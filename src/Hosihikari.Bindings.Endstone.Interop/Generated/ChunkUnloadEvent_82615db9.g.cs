@@ -58,6 +58,11 @@ public sealed unsafe partial class ChunkUnloadEvent : global::System.IDisposable
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ChunkEvent AsChunkEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ChunkEvent((nint)NativeMethods.TablePtr->hs_cast_45153e33((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

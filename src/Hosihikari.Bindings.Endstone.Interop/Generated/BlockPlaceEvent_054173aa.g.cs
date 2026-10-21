@@ -78,6 +78,11 @@ public sealed unsafe partial class BlockPlaceEvent : global::System.IDisposable
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_ AsCancellable_endstone__BlockEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_((nint)NativeMethods.TablePtr->hs_cast_55f5cc29((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

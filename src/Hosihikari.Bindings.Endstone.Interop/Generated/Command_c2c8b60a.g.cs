@@ -249,6 +249,12 @@ public sealed unsafe partial class Command : global::System.IDisposable
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginCommand? TryAsPluginCommand()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_1d149984((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.PluginCommand((nint)__hs_handle, false) : null;
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

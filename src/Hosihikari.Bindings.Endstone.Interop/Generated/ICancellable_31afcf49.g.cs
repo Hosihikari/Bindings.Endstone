@@ -53,4 +53,40 @@ public sealed unsafe partial class ICancellable
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public void Destroy() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Actor__? TryAsCancellable_endstone__ActorEvent_endstone__Actor__()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_dfd94705((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Actor__((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Mob__? TryAsCancellable_endstone__ActorEvent_endstone__Mob__()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_467ec8cd((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Mob__((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_? TryAsCancellable_endstone__BlockEvent_()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_0fac2e13((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_? TryAsCancellable_endstone__PlayerEvent_()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_319d560f((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_? TryAsCancellable_endstone__ServerEvent_()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_4ecdf7e6((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ServerEvent_((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__WeatherEvent_? TryAsCancellable_endstone__WeatherEvent_()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_949e30bb((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__WeatherEvent_((nint)__hs_handle, false) : null;
+    }
 }

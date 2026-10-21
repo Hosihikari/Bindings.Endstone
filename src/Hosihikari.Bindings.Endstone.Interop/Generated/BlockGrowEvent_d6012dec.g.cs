@@ -62,6 +62,17 @@ public sealed unsafe partial class BlockGrowEvent : global::System.IDisposable
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockState((nint)NativeMethods.TablePtr->hs_method_5f72ffd4((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_ AsCancellable_endstone__BlockEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_((nint)NativeMethods.TablePtr->hs_cast_ac6c6676((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockFormEvent? TryAsBlockFormEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_7e09b966((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockFormEvent((nint)__hs_handle, false) : null;
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

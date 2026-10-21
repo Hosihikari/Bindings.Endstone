@@ -62,6 +62,11 @@ public sealed unsafe partial class MapInitializeEvent : global::System.IDisposab
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView((nint)NativeMethods.TablePtr->hs_method_faa396d6((void*)_handle), false);
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent AsServerEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ServerEvent((nint)NativeMethods.TablePtr->hs_cast_e6890801((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

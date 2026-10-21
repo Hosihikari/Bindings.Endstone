@@ -63,6 +63,11 @@ public sealed unsafe partial class PlayerBedLeaveEvent : global::System.IDisposa
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEvent AsPlayerEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.PlayerEvent((nint)NativeMethods.TablePtr->hs_cast_b53e030a((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

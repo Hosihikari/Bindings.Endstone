@@ -61,6 +61,11 @@ public sealed unsafe partial class BlockExplodeEvent : global::System.IDisposabl
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_ AsCancellable_endstone__BlockEvent_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__BlockEvent_((nint)NativeMethods.TablePtr->hs_cast_b92cef72((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

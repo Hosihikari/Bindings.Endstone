@@ -78,6 +78,11 @@ public sealed unsafe partial class ActorTeleportEvent : global::System.IDisposab
     }
 
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Actor__ AsCancellable_endstone__ActorEvent_endstone__Actor__()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__ActorEvent_endstone__Actor__((nint)NativeMethods.TablePtr->hs_cast_b38e484d((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

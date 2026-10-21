@@ -43,4 +43,9 @@ public sealed unsafe partial class DimensionEvent
     {
         return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension((nint)NativeMethods.TablePtr->hs_method_c99ca150((void*)_handle), false);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.LevelEvent AsLevelEvent()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.LevelEvent((nint)NativeMethods.TablePtr->hs_cast_33ed9d13((void*)_handle), false);
+    }
 }

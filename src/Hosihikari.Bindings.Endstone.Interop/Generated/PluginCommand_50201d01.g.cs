@@ -95,6 +95,11 @@ public sealed unsafe partial class PluginCommand : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_3aac26f3((void*)_handle, executor?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
     }
 
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Command AsCommand()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command((nint)NativeMethods.TablePtr->hs_cast_aac01ba5((void*)_handle), false);
+    }
+
     public void Dispose()
     {
         if (_handle != 0)

@@ -49,4 +49,26 @@ public sealed unsafe partial class Cancellable_endstone__ActorEvent_endstone__Mo
     {
         NativeMethods.TablePtr->hs_method_f19ed5fb((void*)_handle, cancel);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Mob_ AsActorEvent_endstone__Mob_()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorEvent_endstone__Mob_((nint)NativeMethods.TablePtr->hs_cast_8ddea310((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable AsICancellable()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ICancellable((nint)NativeMethods.TablePtr->hs_cast_9f4a6f9d((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDamageEvent? TryAsActorDamageEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_632c82b1((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorDamageEvent((nint)__hs_handle, false) : null;
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorKnockbackEvent? TryAsActorKnockbackEvent()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_d74d6624((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ActorKnockbackEvent((nint)__hs_handle, false) : null;
+    }
 }

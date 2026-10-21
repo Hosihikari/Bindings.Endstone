@@ -59,4 +59,15 @@ public sealed unsafe partial class Mob
     {
         NativeMethods.TablePtr->hs_method_3cecb4b6((void*)_handle, health);
     }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor AsActor()
+    {
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor((nint)NativeMethods.TablePtr->hs_cast_4dd89f46((void*)_handle), false);
+    }
+
+    public global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? TryAsPlayer()
+    {
+        var __hs_handle = NativeMethods.TablePtr->hs_cast_56600815((void*)_handle);
+        return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Player((nint)__hs_handle, false) : null;
+    }
 }
