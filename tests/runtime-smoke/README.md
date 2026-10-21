@@ -39,6 +39,7 @@ The plugin verifies:
 - `Server::createBlockData` accepts a block-state map, and `BlockData::getBlockStates()` returns the boolean entry with its variant value intact;
 - `CommandSenderWrapper` is constructed from the server's `CommandSender&` through a mutable-reference parameter; the wrapper delegates `getName()` and `getPermissionLevel()` to the sender;
 - a `Permission` constructed through `Permission::Create` is transferred into `PluginManager::addPermission` as a `unique_ptr`, and the returned reference serves `getName()`;
+- `Command::Create` receives usages, aliases, and permissions as three independent string vectors; `getAliases()` returns the aliases unchanged;
 - a string `std::variant` round-trips through `ActionForm::setContent`/`getContent`, including index and string accessors;
 - `ActionForm::setOnSubmit`/`getOnSubmit` round-trips a `std::function`: the returned callable invokes the managed handler exactly once and releases its shared state once.
 
@@ -62,6 +63,7 @@ item_meta.map=ok
 modal_form.controls=ok
 permission.map=ok
 unique_ptr.param=ok
+multi_vector.ctor=ok
 block_data.map=ok
 mutable_reference.ctor=ok
 action_form.string_variant=ok

@@ -120,6 +120,15 @@
 #ifndef HS_PLUGIN_MANAGER_ADD_PERMISSION_INDEX
 #error "HS_PLUGIN_MANAGER_ADD_PERMISSION_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_COMMAND_CREATE_INDEX
+#error "HS_COMMAND_CREATE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_COMMAND_GET_ALIASES_INDEX
+#error "HS_COMMAND_GET_ALIASES_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_COMMAND_DESTROY_INDEX
+#error "HS_COMMAND_DESTROY_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_SERVER_CREATE_BLOCK_DATA_INDEX
 #error "HS_SERVER_CREATE_BLOCK_DATA_INDEX must be defined by build.ps1"
 #endif
@@ -533,6 +542,41 @@ public:
             }
 
             out << "unique_ptr.param=" << (uniquePtrParamOk ? "ok" : "FAIL") << "\n";
+
+            using CommandCreateFn = void *(*)(
+                const char *, std::size_t, const char *, std::size_t,
+                const HosihikariStringView *, std::size_t,
+                const HosihikariStringView *, std::size_t,
+                const HosihikariStringView *, std::size_t);
+            using CommandAliasesFn = HosihikariArrayView (*)(void *);
+            bool multiVectorOk = false;
+            {
+                const std::string commandName = "hosihikari-smoke";
+                const std::string commandDescription = "multi vector";
+                const char *usageText[] = {"/hosihikari-smoke"};
+                const char *aliasText[] = {"smoke-a", "smoke-b"};
+                const char *permissionText[] = {"hosihikari.smoke"};
+                HosihikariStringView usages[1] = {{usageText[0], std::strlen(usageText[0])}};
+                HosihikariStringView aliases[2] = {
+                    {aliasText[0], std::strlen(aliasText[0])},
+                    {aliasText[1], std::strlen(aliasText[1])},
+                };
+                HosihikariStringView permissions[1] = {{permissionText[0], std::strlen(permissionText[0])}};
+                auto *command = reinterpret_cast<CommandCreateFn>(slots[HS_COMMAND_CREATE_INDEX])(
+                    commandName.data(), commandName.size(), commandDescription.data(), commandDescription.size(),
+                    usages, 1, aliases, 2, permissions, 1);
+                if (command) {
+                    const auto result = reinterpret_cast<CommandAliasesFn>(
+                        slots[HS_COMMAND_GET_ALIASES_INDEX])(command);
+                    const auto *items = static_cast<HosihikariStringView const *>(result.data);
+                    multiVectorOk = result.size == 2
+                        && std::string(items[0].data, items[0].size) == "smoke-a"
+                        && std::string(items[1].data, items[1].size) == "smoke-b";
+                    reinterpret_cast<DestroyFn>(slots[HS_COMMAND_DESTROY_INDEX])(command);
+                }
+            }
+
+            out << "multi_vector.ctor=" << (multiVectorOk ? "ok" : "FAIL") << "\n";
 
             using CreateBlockDataFn = void *(*)(void *, const char *, std::size_t, HosihikariArrayView);
             using GetBlockStatesFn = HosihikariArrayView (*)(void *);
