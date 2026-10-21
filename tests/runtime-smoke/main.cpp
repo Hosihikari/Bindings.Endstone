@@ -129,6 +129,15 @@
 #ifndef HS_COMMAND_DESTROY_INDEX
 #error "HS_COMMAND_DESTROY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_ITEM_TYPE_ID_CREATE_INDEX
+#error "HS_ITEM_TYPE_ID_CREATE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_TYPE_ID_KEY_INDEX
+#error "HS_ITEM_TYPE_ID_KEY_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_TYPE_ID_DESTROY_INDEX
+#error "HS_ITEM_TYPE_ID_DESTROY_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_SERVER_CREATE_BLOCK_DATA_INDEX
 #error "HS_SERVER_CREATE_BLOCK_DATA_INDEX must be defined by build.ps1"
 #endif
@@ -577,6 +586,32 @@ public:
             }
 
             out << "multi_vector.ctor=" << (multiVectorOk ? "ok" : "FAIL") << "\n";
+
+            using IdentifierCreateFn = void *(*)(const char *, std::size_t);
+            using IdentifierStringFn = HosihikariStringView (*)(void *);
+            bool borrowedStringOk = false;
+            {
+                const std::string itemTypeName = "minecraft:diamond_sword";
+                auto *itemType = reinterpret_cast<IdentifierCreateFn>(slots[HS_ITEM_TYPE_ID_CREATE_INDEX])(
+                    itemTypeName.data(), itemTypeName.size());
+                if (itemType) {
+                    const auto key = reinterpret_cast<IdentifierStringFn>(
+                        slots[HS_ITEM_TYPE_ID_KEY_INDEX])(itemType);
+                    borrowedStringOk = std::string(key.data, key.size) == "diamond_sword";
+                    if (auto *factory = reinterpret_cast<GetItemFactoryFn>(
+                            slots[HS_SERVER_ITEM_FACTORY_INDEX])(handle)) {
+                        auto *meta = reinterpret_cast<GetItemMetaFn>(
+                            slots[HS_ITEM_FACTORY_GET_META_INDEX])(factory, itemType);
+                        borrowedStringOk = borrowedStringOk && meta != nullptr;
+                        if (meta) {
+                            reinterpret_cast<DestroyFn>(slots[HS_ITEM_META_DESTROY_INDEX])(meta);
+                        }
+                    }
+                    reinterpret_cast<DestroyFn>(slots[HS_ITEM_TYPE_ID_DESTROY_INDEX])(itemType);
+                }
+            }
+
+            out << "borrowed_string.ctor=" << (borrowedStringOk ? "ok" : "FAIL") << "\n";
 
             using CreateBlockDataFn = void *(*)(void *, const char *, std::size_t, HosihikariArrayView);
             using GetBlockStatesFn = HosihikariArrayView (*)(void *);
