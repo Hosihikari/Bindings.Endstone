@@ -40,12 +40,12 @@ public sealed unsafe partial class PacketReceiveEvent : global::System.IDisposab
         get => (nint)NativeMethods.TablePtr->hs_get_23676d63();
     }
 
-    public static PacketReceiveEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, int packet_id, string payload, global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress address, int sub_client_id)
+    public static PacketReceiveEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player? player, int packet_id, string payload, global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress address, int sub_client_id)
     {
         var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(payload);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            var handle = NativeMethods.TablePtr->hs_create_a524b719((void*)player.Handle, packet_id, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)address.Handle, sub_client_id);
+            var handle = NativeMethods.TablePtr->hs_create_a524b719((void*)(player?.Handle ?? 0), packet_id, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)address.Handle, sub_client_id);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

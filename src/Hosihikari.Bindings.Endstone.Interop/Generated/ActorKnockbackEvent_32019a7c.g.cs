@@ -35,9 +35,9 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
         return __hs_handle;
     }
 
-    public static ActorKnockbackEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob mob, global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor source, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
+    public static ActorKnockbackEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob mob, global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor? source, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
     {
-        var handle = NativeMethods.TablePtr->hs_create_30f49ae6((void*)mob.Handle, (void*)source.Handle, (void*)knockback.Handle);
+        var handle = NativeMethods.TablePtr->hs_create_30f49ae6((void*)mob.Handle, (void*)(source?.Handle ?? 0), (void*)knockback.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

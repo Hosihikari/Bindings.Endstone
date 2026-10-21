@@ -145,9 +145,9 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         NativeMethods.TablePtr->hs_method_483ef809((void*)_handle, data);
     }
 
-    public bool setItemMeta(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta)
+    public bool setItemMeta(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? meta)
     {
-        return NativeMethods.TablePtr->hs_method_5aa79c5f((void*)_handle, (void*)meta.Handle);
+        return NativeMethods.TablePtr->hs_method_5aa79c5f((void*)_handle, (void*)(meta?.Handle ?? 0));
     }
 
     public void setNbt(global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag nbt)

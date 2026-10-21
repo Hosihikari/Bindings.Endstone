@@ -35,12 +35,12 @@ public sealed unsafe partial class PermissionAttachmentInfo : global::System.IDi
         return __hs_handle;
     }
 
-    public static PermissionAttachmentInfo Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible permissible, string permission, global::Hosihikari.Bindings.Endstone.Interop.endstone.PermissionAttachment attachment, bool value)
+    public static PermissionAttachmentInfo Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permissible permissible, string permission, global::Hosihikari.Bindings.Endstone.Interop.endstone.PermissionAttachment? attachment, bool value)
     {
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(permission);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->hs_create_95738960((void*)permissible.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)attachment.Handle, value);
+            var handle = NativeMethods.TablePtr->hs_create_95738960((void*)permissible.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length, (void*)(attachment?.Handle ?? 0), value);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

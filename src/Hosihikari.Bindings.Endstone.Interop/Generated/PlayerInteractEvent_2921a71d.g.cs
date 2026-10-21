@@ -40,9 +40,9 @@ public sealed unsafe partial class PlayerInteractEvent : global::System.IDisposa
         get => (nint)NativeMethods.TablePtr->hs_get_dc89b525();
     }
 
-    public static PlayerInteractEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, int action, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? item, global::Hosihikari.Bindings.Endstone.Interop.endstone.Block block_clicked, int block_face, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector? clicked_position)
+    public static PlayerInteractEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, int action, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? item, global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? block_clicked, int block_face, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector? clicked_position)
     {
-        var handle = NativeMethods.TablePtr->hs_create_09873167((void*)player.Handle, action, (void*)(item?.Handle ?? 0), (void*)block_clicked.Handle, block_face, (void*)(clicked_position?.Handle ?? 0), item is not null, clicked_position is not null);
+        var handle = NativeMethods.TablePtr->hs_create_09873167((void*)player.Handle, action, (void*)(item?.Handle ?? 0), (void*)(block_clicked?.Handle ?? 0), block_face, (void*)(clicked_position?.Handle ?? 0), item is not null, clicked_position is not null);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");

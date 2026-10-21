@@ -136,7 +136,7 @@ $ItemTypeIdDestroy = Get-TableIndex "Identifier_endstone__ItemType_*.g.cs" 'Disp
 $ItemStackCreate = Get-TableIndex "ItemStack_*.g.cs" 'Create\([\s\S]*?int amount, int data\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemStack::Create"
 $ItemStackGetAmount = Get-TableIndex "ItemStack_*.g.cs" 'getAmount\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemStack::getAmount"
 $ItemStackGetData = Get-TableIndex "ItemStack_*.g.cs" 'getData\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemStack::getData"
-$ItemStackAssign = Get-TableIndex "ItemStack_*.g.cs" 'operator_assign_[A-Za-z0-9_]+\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemStack::operator="
+$ItemStackAssign = Get-TableIndex "ItemStack_*.g.cs" 'operator_assign[A-Za-z0-9_]*\([\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemStack::operator="
 $ItemStackDestroy = Get-TableIndex "ItemStack_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "ItemStack::Dispose"
 $ServerCreateBlockData = Get-TableIndex "Server_*.g.cs" 'createBlockData\(string type, [\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "Server::createBlockData"
 $BlockDataGetBlockStates = Get-TableIndex "BlockData_*.g.cs" 'getBlockStates\(\)[\s\S]*?TablePtr->(hs_[A-Za-z0-9_]+)' "BlockData::getBlockStates"

@@ -66,9 +66,9 @@ public sealed unsafe partial class MapMeta
         NativeMethods.TablePtr->hs_method_9ee58155((void*)_handle, id);
     }
 
-    public void setMapView(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map)
+    public void setMapView(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView? map)
     {
-        NativeMethods.TablePtr->hs_method_1052b284((void*)_handle, (void*)map.Handle);
+        NativeMethods.TablePtr->hs_method_1052b284((void*)_handle, (void*)(map?.Handle ?? 0));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta AsItemMeta()

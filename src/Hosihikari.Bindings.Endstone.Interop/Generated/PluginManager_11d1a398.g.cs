@@ -162,9 +162,9 @@ public sealed unsafe partial class PluginManager
         }
     }
 
-    public bool isPluginEnabled(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
+    public bool isPluginEnabled(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin? plugin)
     {
-        return NativeMethods.TablePtr->hs_method_44aacc70((void*)_handle, (void*)plugin.Handle);
+        return NativeMethods.TablePtr->hs_method_44aacc70((void*)_handle, (void*)(plugin?.Handle ?? 0));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin? loadPlugin(string file)
