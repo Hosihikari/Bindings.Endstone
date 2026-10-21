@@ -108,6 +108,8 @@ if (-not $ControlVariantCreateDropdown -or -not $ControlVariantIndex -or -not $C
 $PermissionCreate = Get-TableIndex "Permission_*.g.cs" 'Create\(string name, [\s\S]*?TablePtr->f(\d+)' "Permission::Create"
 $PermissionGetChildren = Get-TableIndex "Permission_*.g.cs" 'getChildren\(\)[\s\S]*?TablePtr->f(\d+)' "Permission::getChildren"
 $PermissionDestroy = Get-TableIndex "Permission_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "Permission::Dispose"
+$PermissionName = Get-TableIndex "Permission_*.g.cs" 'getName\(\)[\s\S]*?TablePtr->f(\d+)' "Permission::getName"
+$PluginManagerAddPermission = Get-TableIndex "PluginManager_*.g.cs" 'addPermission\([\s\S]*?TablePtr->f(\d+)' "PluginManager::addPermission"
 $ServerCreateBlockData = Get-TableIndex "Server_*.g.cs" 'createBlockData\(string type, [\s\S]*?TablePtr->f(\d+)' "Server::createBlockData"
 $BlockDataGetBlockStates = Get-TableIndex "BlockData_*.g.cs" 'getBlockStates\(\)[\s\S]*?TablePtr->f(\d+)' "BlockData::getBlockStates"
 $BlockDataDestroy = Get-TableIndex "BlockData_*.g.cs" 'Dispose\(\)[\s\S]*?TablePtr->f(\d+)' "BlockData::Dispose"
@@ -208,6 +210,8 @@ $Args = @(
     "/DHS_PERMISSION_CREATE_INDEX=$PermissionCreate",
     "/DHS_PERMISSION_GET_CHILDREN_INDEX=$PermissionGetChildren",
     "/DHS_PERMISSION_DESTROY_INDEX=$PermissionDestroy",
+    "/DHS_PERMISSION_NAME_INDEX=$PermissionName",
+    "/DHS_PLUGIN_MANAGER_ADD_PERMISSION_INDEX=$PluginManagerAddPermission",
     "/DHS_SERVER_CREATE_BLOCK_DATA_INDEX=$ServerCreateBlockData",
     "/DHS_BLOCK_DATA_GET_BLOCK_STATES_INDEX=$BlockDataGetBlockStates",
     "/DHS_BLOCK_DATA_DESTROY_INDEX=$BlockDataDestroy",

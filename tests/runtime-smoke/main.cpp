@@ -114,6 +114,12 @@
 #ifndef HS_PERMISSION_DESTROY_INDEX
 #error "HS_PERMISSION_DESTROY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_PERMISSION_NAME_INDEX
+#error "HS_PERMISSION_NAME_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_PLUGIN_MANAGER_ADD_PERMISSION_INDEX
+#error "HS_PLUGIN_MANAGER_ADD_PERMISSION_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_SERVER_CREATE_BLOCK_DATA_INDEX
 #error "HS_SERVER_CREATE_BLOCK_DATA_INDEX must be defined by build.ps1"
 #endif
@@ -508,6 +514,25 @@ public:
             }
 
             out << "permission.map=" << (permissionMapOk ? "ok" : "FAIL") << "\n";
+
+            using AddPermissionFn = void *(*)(void *, void *);
+            using PermissionNameFn = HosihikariStringView (*)(void *);
+            bool uniquePtrParamOk = false;
+            if (pluginManager) {
+                const std::string addedName = "hosihikari.smoke.unique_ptr";
+                auto *addedPermission = reinterpret_cast<PermissionCreateFn>(slots[HS_PERMISSION_CREATE_INDEX])(
+                    addedName.data(), addedName.size(), "", 0, 1, HosihikariArrayView{nullptr, 0});
+                if (addedPermission) {
+                    auto *registered = reinterpret_cast<AddPermissionFn>(
+                        slots[HS_PLUGIN_MANAGER_ADD_PERMISSION_INDEX])(pluginManager, addedPermission);
+                    if (registered) {
+                        const auto view = reinterpret_cast<PermissionNameFn>(slots[HS_PERMISSION_NAME_INDEX])(registered);
+                        uniquePtrParamOk = std::string(view.data, view.size) == addedName;
+                    }
+                }
+            }
+
+            out << "unique_ptr.param=" << (uniquePtrParamOk ? "ok" : "FAIL") << "\n";
 
             using CreateBlockDataFn = void *(*)(void *, const char *, std::size_t, HosihikariArrayView);
             using GetBlockStatesFn = HosihikariArrayView (*)(void *);
