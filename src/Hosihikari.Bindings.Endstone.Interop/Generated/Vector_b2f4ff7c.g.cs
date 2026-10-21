@@ -211,13 +211,15 @@ public sealed unsafe partial class Vector : global::System.IDisposable
         return (nint)NativeMethods.TablePtr->hs_method_4a2dbdbe((void*)_handle, (void*)other.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
-    public nint operator_assign_682756f6(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
+    public nint operator_assign_682756f6(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_682756f6((void*)_handle, (void*)other.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
-    public nint operator_assign_17143b18(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
+    public nint operator_assign_17143b18(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_17143b18((void*)_handle, (void*)other.Handle);
+    }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {

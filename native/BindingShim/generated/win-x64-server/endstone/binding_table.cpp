@@ -6270,6 +6270,21 @@ catch (...)
     return HosihikariSharedHandle{nullptr, nullptr, nullptr};
 }
 
+static void* hs_method_d998e156(void* hs_self, void* arg0) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::CommandMap*>(hs_self)->operator=(std::move(*static_cast<endstone::CommandMap*>(arg0)))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static bool hs_method_05b1c177(void* hs_self, HosihikariSharedHandle command) try
 {
     return static_cast<bool>(static_cast<endstone::CommandMap*>(hs_self)->registerCommand(hs_shared_from_handle<endstone::Command>(command)));
@@ -8682,6 +8697,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static void* hs_method_604c4ba6(void* hs_self, void* arg0) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Event*>(hs_self)->operator=(std::move(*static_cast<endstone::Event*>(arg0)))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void hs_destroy_b1ba5a9f(void* hs_self) try
@@ -12037,6 +12067,36 @@ catch (...)
 {
     setLastError("unknown native exception");
     return false;
+}
+
+static void* hs_method_f452cd9a(void* hs_self, void* other) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ItemStack*>(hs_self)->operator=(*static_cast<const endstone::ItemStack*>(other))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_d00055a6(void* hs_self, void* other) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::ItemStack*>(hs_self)->operator=(std::move(*static_cast<endstone::ItemStack*>(other)))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static bool hs_method_3f763bcf(void* hs_self, void* other) try
@@ -25939,6 +25999,36 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_method_682756f6(void* hs_self, void* other) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Vector*>(hs_self)->operator=(*static_cast<const endstone::Vector*>(other))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void* hs_method_17143b18(void* hs_self, void* other) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::Vector*>(hs_self)->operator=(std::move(*static_cast<endstone::Vector*>(other)))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static bool hs_method_b217dcd5(void* hs_self, void* other) try
 {
     return static_cast<bool>(static_cast<endstone::Vector*>(hs_self)->operator==(*static_cast<const endstone::Vector*>(other)));
@@ -29740,6 +29830,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_9377e1af,
     &hs_method_40f031d6,
     &hs_method_f9a885bb,
+    &hs_method_d998e156,
     &hs_method_05b1c177,
     &hs_method_92d89af7,
     &hs_method_e3076cf4,
@@ -29895,6 +29986,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_51220b54,
     &hs_method_5521cc7d,
     &hs_method_828d94d9,
+    &hs_method_604c4ba6,
     &hs_destroy_b1ba5a9f,
     &hs_create_821d4cdc,
     &hs_method_9a78ce22,
@@ -30095,6 +30187,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_833a1664,
     &hs_method_7caee6c3,
     &hs_method_6d85c46f,
+    &hs_method_f452cd9a,
+    &hs_method_d00055a6,
     &hs_method_3f763bcf,
     &hs_method_f556fcaf,
     &hs_method_483ef809,
@@ -30968,6 +31062,8 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_0a40232b,
     &hs_method_5df75d45,
     &hs_method_4a2dbdbe,
+    &hs_method_682756f6,
+    &hs_method_17143b18,
     &hs_method_b217dcd5,
     &hs_method_609d0268,
     &hs_method_4d4b89ff,

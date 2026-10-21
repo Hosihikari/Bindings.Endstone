@@ -138,6 +138,21 @@
 #ifndef HS_ITEM_TYPE_ID_DESTROY_INDEX
 #error "HS_ITEM_TYPE_ID_DESTROY_INDEX must be defined by build.ps1"
 #endif
+#ifndef HS_ITEM_STACK_CREATE_INDEX
+#error "HS_ITEM_STACK_CREATE_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_STACK_GET_AMOUNT_INDEX
+#error "HS_ITEM_STACK_GET_AMOUNT_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_STACK_GET_DATA_INDEX
+#error "HS_ITEM_STACK_GET_DATA_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_STACK_ASSIGN_INDEX
+#error "HS_ITEM_STACK_ASSIGN_INDEX must be defined by build.ps1"
+#endif
+#ifndef HS_ITEM_STACK_DESTROY_INDEX
+#error "HS_ITEM_STACK_DESTROY_INDEX must be defined by build.ps1"
+#endif
 #ifndef HS_SERVER_CREATE_BLOCK_DATA_INDEX
 #error "HS_SERVER_CREATE_BLOCK_DATA_INDEX must be defined by build.ps1"
 #endif
@@ -612,6 +627,40 @@ public:
             }
 
             out << "borrowed_string.ctor=" << (borrowedStringOk ? "ok" : "FAIL") << "\n";
+
+            using ItemStackCreateFn = void *(*)(void *, int, int);
+            using ItemStackIntFn = int (*)(void *);
+            using ItemStackAssignFn = void *(*)(void *, void *);
+            bool itemStackAssignOk = false;
+            {
+                const std::string itemTypeName = "minecraft:diamond_sword";
+                auto *itemType = reinterpret_cast<IdentifierCreateFn>(slots[HS_ITEM_TYPE_ID_CREATE_INDEX])(
+                    itemTypeName.data(), itemTypeName.size());
+                if (itemType) {
+                    auto *target = reinterpret_cast<ItemStackCreateFn>(
+                        slots[HS_ITEM_STACK_CREATE_INDEX])(itemType, 1, 0);
+                    auto *source = reinterpret_cast<ItemStackCreateFn>(
+                        slots[HS_ITEM_STACK_CREATE_INDEX])(itemType, 7, 3);
+                    if (target && source) {
+                        reinterpret_cast<ItemStackAssignFn>(slots[HS_ITEM_STACK_ASSIGN_INDEX])(target, source);
+                        itemStackAssignOk = reinterpret_cast<ItemStackIntFn>(
+                                                slots[HS_ITEM_STACK_GET_AMOUNT_INDEX])(target)
+                                == 7
+                            && reinterpret_cast<ItemStackIntFn>(
+                                   slots[HS_ITEM_STACK_GET_DATA_INDEX])(target)
+                                == 3;
+                    }
+                    if (source) {
+                        reinterpret_cast<DestroyFn>(slots[HS_ITEM_STACK_DESTROY_INDEX])(source);
+                    }
+                    if (target) {
+                        reinterpret_cast<DestroyFn>(slots[HS_ITEM_STACK_DESTROY_INDEX])(target);
+                    }
+                    reinterpret_cast<DestroyFn>(slots[HS_ITEM_TYPE_ID_DESTROY_INDEX])(itemType);
+                }
+            }
+
+            out << "assignment.operator=" << (itemStackAssignOk ? "ok" : "FAIL") << "\n";
 
             using CreateBlockDataFn = void *(*)(void *, const char *, std::size_t, HosihikariArrayView);
             using GetBlockStatesFn = HosihikariArrayView (*)(void *);

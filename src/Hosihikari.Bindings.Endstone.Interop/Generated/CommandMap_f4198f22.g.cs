@@ -55,9 +55,10 @@ public sealed unsafe partial class CommandMap
         }
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
-    public nint operator_assign(nint arg0) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
+    public nint operator_assign(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap arg0)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_d998e156((void*)_handle, (void*)arg0.Handle);
+    }
 
     public bool registerCommand(global::Hosihikari.Bindings.Abi.SharedHandle? command)
     {

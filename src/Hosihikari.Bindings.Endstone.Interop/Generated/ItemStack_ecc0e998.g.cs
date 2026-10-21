@@ -108,13 +108,15 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
         return NativeMethods.TablePtr->hs_method_6d85c46f((void*)_handle, (void*)other.Handle);
     }
 
-    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
-    public nint operator_assign_f452cd9a(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
+    public nint operator_assign_f452cd9a(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_f452cd9a((void*)_handle, (void*)other.Handle);
+    }
 
-    [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]
-    public nint operator_assign_d00055a6(nint other) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: assignment operators are not projected.");
+    public nint operator_assign_d00055a6(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
+    {
+        return (nint)NativeMethods.TablePtr->hs_method_d00055a6((void*)_handle, (void*)other.Handle);
+    }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {

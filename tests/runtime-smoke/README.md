@@ -41,6 +41,7 @@ The plugin verifies:
 - a `Permission` constructed through `Permission::Create` is transferred into `PluginManager::addPermission` as a `unique_ptr`, and the returned reference serves `getName()`;
 - `Command::Create` receives usages, aliases, and permissions as three independent string vectors; `getAliases()` returns the aliases unchanged;
 - an `Identifier<ItemType>` constructed from a managed string keeps its borrowed string alive, exposes `getKey()`, and serves `ItemFactory::getItemMeta`;
+- `ItemStack` copy assignment replaces the target stack's amount and data with the source stack's values;
 - a string `std::variant` round-trips through `ActionForm::setContent`/`getContent`, including index and string accessors;
 - `ActionForm::setOnSubmit`/`getOnSubmit` round-trips a `std::function`: the returned callable invokes the managed handler exactly once and releases its shared state once.
 
@@ -66,6 +67,7 @@ permission.map=ok
 unique_ptr.param=ok
 multi_vector.ctor=ok
 borrowed_string.ctor=ok
+assignment.operator=ok
 block_data.map=ok
 mutable_reference.ctor=ok
 action_form.string_variant=ok
