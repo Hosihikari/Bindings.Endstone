@@ -101,6 +101,37 @@ internal static class Benchmarks
                 _sink ^= (ulong)result.Count;
             });
 
+            var children8 = new Dictionary<string, bool>();
+            for (var index = 0; index < 8; index++)
+            {
+                children8["child" + index] = true;
+            }
+
+            using var permission8 = Permission.Create(
+                "hosihikari.benchmark.children8",
+                "benchmark",
+                1,
+                children8);
+            RunBenchmark(log, "map.permission.children_8", 50_000, 5_000, () =>
+            {
+                var result = permission8.getChildren();
+                _sink ^= (ulong)result.Count;
+            });
+
+            var itemFactory = server.getItemFactory();
+            using var itemType = Identifier_endstone__ItemType_.Create("minecraft", "diamond_sword");
+            using var itemMeta = itemFactory.getItemMeta(itemType);
+            if (itemMeta is not null)
+            {
+                using var enchantment = Identifier_endstone__Enchantment_.Create("minecraft", "sharpness");
+                itemMeta.addEnchant(enchantment, 5, true);
+                RunBenchmark(log, "map.item_meta.enchants", 100_000, 5_000, () =>
+                {
+                    var result = itemMeta.getEnchants();
+                    _sink ^= (ulong)result.Count;
+                });
+            }
+
             using var blockState = Variant_7c287813.CreateBool(true);
             var blockStates = new Dictionary<string, Variant_7c287813>
             {
@@ -118,11 +149,42 @@ internal static class Benchmarks
                 _sink ^= (ulong)(value?.Target ?? 0);
             });
 
+            var banList = server.getBanList();
+            const string banName = "hosihikari-benchmark-ban";
+            banList.removeBan(banName);
+            using (var added = banList.addBan(banName, "benchmark", 60, "benchmark"))
+            {
+                _sink ^= (ulong)(added?.Target ?? 0);
+            }
+
+            RunBenchmark(log, "shared.ban_entry", 200_000, 10_000, () =>
+            {
+                using var entry = banList.getBanEntry(banName);
+                _sink ^= (ulong)(entry?.Target ?? 0);
+            });
+
+            RunBenchmark(log, "shared.array.ban_entries", 100_000, 5_000, () =>
+            {
+                var entries = banList.getEntries();
+                foreach (var entry in entries)
+                {
+                    entry.Dispose();
+                }
+
+                _sink ^= (ulong)entries.Length;
+            });
+            banList.removeBan(banName);
+
             var pluginManager = server.getPluginManager();
             RunBenchmark(log, "vector.result.plugins", 100_000, 5_000, () =>
             {
                 var plugins = pluginManager.getPlugins();
                 _sink ^= (ulong)plugins.Length;
+            });
+            RunBenchmark(log, "vector.result.online_players", 200_000, 10_000, () =>
+            {
+                var players = server.getOnlinePlayers();
+                _sink ^= (ulong)players.Length;
             });
 
             log.AppendLine("result=OK");
