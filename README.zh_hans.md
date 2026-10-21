@@ -37,6 +37,10 @@ powershell -File native/BindingShim/build.ps1
 
 原生构建使用 clang-cl、C++20、MSVC STL 与本地工具链已有的 expected-lite/nlohmann_json 头；不链接 `endstone_core`，调用通过宿主提供的虚接口分发。
 
+## 基准
+
+`scripts/run-benchmarks.ps1` 通过一个原生 Endstone 插件在服务器进程内用 `nethost`/`hostfxr` 托管 CLR，并运行托管基准程序集。它报告标量与字符串方法、string/int vector 参数、map 参数与结果、variant 值 map 以及共享句柄的单次纳秒与托管分配。结果写入 `data/hosihikari/shim-benchmarks/benchmarks.txt`；数值依赖运行环境，不作为 CI 门禁。说明见 `tests/benchmarks/README.md`。
+
 ## 生成源码门禁
 
 `scripts/verify_generated.py` 校验 provenance、覆盖基线、原生表函数数、表版本与托管表。CI 构建解决方案、运行校验器，并用生成器验证提交的覆盖契约。

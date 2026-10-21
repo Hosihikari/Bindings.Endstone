@@ -37,6 +37,10 @@ powershell -File native/BindingShim/build.ps1
 
 The generated shim directory contains `hosihikari_abi.h` from `Bindings.Abi`, so the native build stays self-contained. The native build uses clang-cl, C++20, the MSVC STL, and the expected-lite/nlohmann_json headers already provisioned by the local toolchain. It does not link `endstone_core`; calls dispatch through the host-provided virtual interfaces.
 
+## Benchmarks
+
+`scripts/run-benchmarks.ps1` loads the shim in a real Endstone server through a native plugin that hosts the CLR with `nethost`/`hostfxr`, then runs the managed benchmark assembly in-process. It reports nanoseconds and managed allocation per call for scalar and string methods, string/int vector parameters, map parameters and results, variant-valued maps, and shared handles. Results are written to `data/hosihikari/shim-benchmarks/benchmarks.txt`; the numbers are environment-dependent and are not a CI gate. See `tests/benchmarks/README.md`.
+
 ## Generated-source gate
 
 `scripts/verify_generated.py` checks provenance, the coverage baseline, the native table function count, the table version, and the managed table. CI builds the solution, runs the verifier, and validates the committed coverage contract with the generator.
