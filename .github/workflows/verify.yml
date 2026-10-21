@@ -41,3 +41,45 @@ jobs:
 
       - name: Validate coverage contract
         run: dotnet run --project Generator/src/Hosihikari.Bindings.Generator/Hosihikari.Bindings.Generator.csproj -c Release -- validate-coverage coverage/summary.json coverage/manifest.jsonl
+
+  linux-shim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Endstone headers
+        uses: actions/checkout@v4
+        with:
+          repository: EndstoneMC/endstone
+          ref: v0.11.14
+          path: endstone
+          fetch-depth: 1
+
+      - name: expected-lite
+        uses: actions/checkout@v4
+        with:
+          repository: martinmoene/expected-lite
+          ref: v0.9.0
+          path: expected-lite
+          fetch-depth: 1
+
+      - name: nlohmann_json
+        uses: actions/checkout@v4
+        with:
+          repository: nlohmann/json
+          ref: v3.11.3
+          path: nlohmann-json
+          fetch-depth: 1
+
+      - name: Build Linux shim
+        run: |
+          ./native/BindingShim/build.sh \
+            --endstone-root endstone \
+            --expected-lite-include expected-lite/include \
+            --nlohmann-include nlohmann-json/include \
+            --output artifacts/native/libHosihikari.Bindings.Endstone.Shim.so
+
+      - name: Inspect exported entry points
+        run: |
+          nm -D --defined-only artifacts/native/libHosihikari.Bindings.Endstone.Shim.so \
+            | grep -E 'hosihikari_(get_binding_table_v1|endstone_get_server)'
