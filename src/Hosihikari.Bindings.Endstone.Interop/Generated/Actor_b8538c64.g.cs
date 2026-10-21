@@ -11,6 +11,18 @@ public sealed unsafe partial class Actor
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public bool addScoreboardTag(string tag)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(tag);

@@ -11,24 +11,36 @@ public sealed unsafe partial class Chunk : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f281((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f292((void*)_handle);
     }
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f282((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f293((void*)_handle);
     }
 
     public int getX()
     {
-        return NativeMethods.TablePtr->f283((void*)_handle);
+        return NativeMethods.TablePtr->f294((void*)_handle);
     }
 
     public int getZ()
     {
-        return NativeMethods.TablePtr->f284((void*)_handle);
+        return NativeMethods.TablePtr->f295((void*)_handle);
     }
 
 
@@ -36,7 +48,7 @@ public sealed unsafe partial class Chunk : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f280((void*)_handle);
+            NativeMethods.TablePtr->f291((void*)_handle);
             _handle = 0;
         }
     }

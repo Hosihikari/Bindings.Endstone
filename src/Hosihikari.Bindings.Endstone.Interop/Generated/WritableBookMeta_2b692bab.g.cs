@@ -11,9 +11,21 @@ public sealed unsafe partial class WritableBookMeta
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static int MetaType
     {
-        get => NativeMethods.TablePtr->f1592();
+        get => NativeMethods.TablePtr->f1607();
     }
 
     public void addPage(string[] pages)
@@ -35,7 +47,7 @@ public sealed unsafe partial class WritableBookMeta
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                NativeMethods.TablePtr->f1593((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                NativeMethods.TablePtr->f1608((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
             }
         }
         finally
@@ -46,18 +58,18 @@ public sealed unsafe partial class WritableBookMeta
 
     public string getPage(int page)
     {
-        var __hs_view = NativeMethods.TablePtr->f1594((void*)_handle, page);
+        var __hs_view = NativeMethods.TablePtr->f1609((void*)_handle, page);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getPageCount()
     {
-        return NativeMethods.TablePtr->f1595((void*)_handle);
+        return NativeMethods.TablePtr->f1610((void*)_handle);
     }
 
     public string[] getPages()
     {
-        var __hs_view = NativeMethods.TablePtr->f1596((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1611((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -69,7 +81,7 @@ public sealed unsafe partial class WritableBookMeta
 
     public bool hasPages()
     {
-        return NativeMethods.TablePtr->f1597((void*)_handle);
+        return NativeMethods.TablePtr->f1612((void*)_handle);
     }
 
     public void setPage(int page, string data)
@@ -77,7 +89,7 @@ public sealed unsafe partial class WritableBookMeta
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(data);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            NativeMethods.TablePtr->f1598((void*)_handle, page, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            NativeMethods.TablePtr->f1613((void*)_handle, page, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
         }
     }
 
@@ -100,7 +112,7 @@ public sealed unsafe partial class WritableBookMeta
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                NativeMethods.TablePtr->f1599((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                NativeMethods.TablePtr->f1614((void*)_handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
             }
         }
         finally

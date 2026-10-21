@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class BlockFromToEvent
+public sealed unsafe partial class BlockFromToEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -11,23 +11,51 @@ public sealed unsafe partial class BlockFromToEvent
 
     public nint Handle => _handle;
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.", false)]
-    public static BlockFromToEvent Create(nint block, nint to_block) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.");
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
+    public static BlockFromToEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Block block, global::Hosihikari.Bindings.Endstone.Interop.endstone.Block to_block)
+    {
+        var handle = NativeMethods.TablePtr->f188((void*)block.ReleaseHandle(), (void*)to_block.ReleaseHandle());
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockFromToEvent((nint)handle);
+    }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f181();
+        get => (nint)NativeMethods.TablePtr->f189();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f182((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f190((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getToBlock()
     {
-        return (nint)NativeMethods.TablePtr->f183((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f191((void*)_handle);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f187((void*)_handle);
+            _handle = 0;
+        }
     }
 }

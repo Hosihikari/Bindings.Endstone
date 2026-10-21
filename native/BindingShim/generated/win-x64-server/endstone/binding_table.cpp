@@ -921,6 +921,36 @@ catch (...)
     return false;
 }
 
+static void hs_destroy_21170623(void* hs_self) try
+{
+    delete static_cast<endstone::ActorDamageEvent*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void* hs_create_1c528cbf(void* actor, void* damage_source, float damage) try
+{
+    return new endstone::ActorDamageEvent(*static_cast<endstone::Mob*>(actor), std::unique_ptr<endstone::DamageSource>(static_cast<endstone::DamageSource*>(damage_source)), static_cast<const float>(damage));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_get_6558493f() try
 {
     return const_cast<void*>(static_cast<void const*>(&endstone::ActorDamageEvent::NAME));
@@ -996,6 +1026,36 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void hs_destroy_d7a8ab76(void* hs_self) try
+{
+    delete static_cast<endstone::ActorDeathEvent*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void* hs_create_b1e7cfa9(void* actor, void* damage_source) try
+{
+    return new endstone::ActorDeathEvent(*static_cast<endstone::Mob*>(actor), std::unique_ptr<endstone::DamageSource>(static_cast<endstone::DamageSource*>(damage_source)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void* hs_get_e04f0f07() try
@@ -2604,6 +2664,21 @@ catch (...)
     return;
 }
 
+static void* hs_create_f530a80b(void* block, void* player) try
+{
+    return new endstone::BlockBreakEvent(std::unique_ptr<endstone::Block>(static_cast<endstone::Block*>(block)), *static_cast<endstone::Player*>(player));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_get_9b024e34() try
 {
     return const_cast<void*>(static_cast<void const*>(&endstone::BlockBreakEvent::NAME));
@@ -2680,6 +2755,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_9a05ed4b(void* block, void* source, void* result) try
+{
+    return new endstone::BlockCookEvent(std::unique_ptr<endstone::Block>(static_cast<endstone::Block*>(block)), *static_cast<const endstone::ItemStack*>(source), *static_cast<const endstone::ItemStack*>(result));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void* hs_get_b09a94a0() try
@@ -2977,6 +3067,36 @@ catch (...)
     return HosihikariStringView{nullptr, 0};
 }
 
+static void hs_destroy_5eebd8b9(void* hs_self) try
+{
+    delete static_cast<endstone::BlockFromToEvent*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void* hs_create_075bf555(void* block, void* to_block) try
+{
+    return new endstone::BlockFromToEvent(std::unique_ptr<endstone::Block>(static_cast<endstone::Block*>(block)), std::unique_ptr<endstone::Block>(static_cast<endstone::Block*>(to_block)));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_get_a76524aa() try
 {
     return const_cast<void*>(static_cast<void const*>(&endstone::BlockFromToEvent::NAME));
@@ -3012,6 +3132,36 @@ catch (...)
 static void* hs_method_2b60a963(void* hs_self) try
 {
     return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::BlockFromToEvent*>(hs_self)->getToBlock()));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
+static void hs_destroy_d6012dec(void* hs_self) try
+{
+    delete static_cast<endstone::BlockGrowEvent*>(hs_self);
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void* hs_create_c754c95a(void* block, void* new_state) try
+{
+    return new endstone::BlockGrowEvent(std::unique_ptr<endstone::Block>(static_cast<endstone::Block*>(block)), std::unique_ptr<endstone::BlockState>(static_cast<endstone::BlockState*>(new_state)));
 }
 catch (std::exception const& hs_error)
 {
@@ -3193,6 +3343,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return;
+}
+
+static void* hs_create_0783046a(void* placed_block, void* replaced_block, void* placed_against, void* player) try
+{
+    return new endstone::BlockPlaceEvent(std::unique_ptr<endstone::BlockState>(static_cast<endstone::BlockState*>(placed_block)), std::unique_ptr<endstone::Block>(static_cast<endstone::Block*>(replaced_block)), std::unique_ptr<endstone::Block>(static_cast<endstone::Block*>(placed_against)), *static_cast<endstone::Player*>(player));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void* hs_get_c6e39b87() try
@@ -8966,6 +9131,21 @@ catch (...)
 {
     setLastError("unknown native exception");
     return HosihikariArrayView{nullptr, 0};
+}
+
+static void* hs_method_98c67315(void* hs_self, void* handler) try
+{
+    return const_cast<void*>(static_cast<void const*>(static_cast<endstone::HandlerList*>(hs_self)->registerHandler(std::unique_ptr<endstone::EventHandler>(static_cast<endstone::EventHandler*>(handler)))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
 }
 
 static void hs_method_6569bb82(void* hs_self, void* handler) try
@@ -16805,6 +16985,21 @@ catch (...)
     return nullptr;
 }
 
+static void* hs_create_ba4c0257(void* player, void* damage_source, void* death_message, bool death_message_hasValue) try
+{
+    return new endstone::PlayerDeathEvent(*static_cast<endstone::Player*>(player), std::unique_ptr<endstone::DamageSource>(static_cast<endstone::DamageSource*>(damage_source)), (death_message_hasValue ? std::optional<std::variant<std::basic_string<char>, endstone::Translatable>>{*static_cast<const std::variant<std::basic_string<char>, endstone::Translatable>*>(death_message)} : std::nullopt));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void* hs_method_09a43d68(void* hs_self, bool* hs_hasValue) try
 {
     auto result = static_cast<endstone::PlayerDeathEvent*>(hs_self)->getDeathMessage();
@@ -19751,6 +19946,21 @@ catch (...)
     return HosihikariArrayView{nullptr, 0};
 }
 
+static void* hs_method_1dd41d86(void* hs_self, void* perm) try
+{
+    return const_cast<void*>(static_cast<void const*>(&static_cast<endstone::PluginManager*>(hs_self)->addPermission(std::unique_ptr<endstone::Permission>(static_cast<endstone::Permission*>(perm)))));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return nullptr;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return nullptr;
+}
+
 static void hs_method_589ace68(void* hs_self, void* event) try
 {
     static_cast<endstone::PluginManager*>(hs_self)->callEvent(*static_cast<endstone::Event*>(event));
@@ -20094,6 +20304,21 @@ struct hs_cb_closure_hs_method_ab519a5b_cb1
 static void hs_method_ab519a5b(void* hs_self, const char* event_data, std::size_t event_size, void* executor_invoke, void* executor_userData, void* executor_release, std::int32_t priority, void* plugin, bool ignore_cancelled) try
 {
     static_cast<endstone::PluginManager*>(hs_self)->registerEvent(std::basic_string<char>(event_data, event_size), std::function<void (endstone::Event &)>(hs_cb_closure_hs_method_ab519a5b_cb1{std::make_shared<hs_cb_state_hs_method_ab519a5b_cb1>(reinterpret_cast<hs_cb_invoke_hs_method_ab519a5b_cb1>(executor_invoke), executor_userData, reinterpret_cast<hs_cb_release_hs_method_ab519a5b_cb1>(executor_release))}), static_cast<endstone::EventPriority>(priority), *static_cast<endstone::Plugin*>(plugin), static_cast<bool>(ignore_cancelled));
+}
+catch (std::exception const& hs_error)
+{
+    setLastError(hs_error.what());
+    return;
+}
+catch (...)
+{
+    setLastError("unknown native exception");
+    return;
+}
+
+static void hs_method_83f14c3f(void* hs_self, void* loader) try
+{
+    static_cast<endstone::PluginManager*>(hs_self)->registerLoader(std::unique_ptr<endstone::PluginLoader>(static_cast<endstone::PluginLoader*>(loader)));
 }
 catch (std::exception const& hs_error)
 {
@@ -28697,11 +28922,15 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_614fc2f1,
     &hs_method_ddf1c948,
     &hs_method_ab7b90ae,
+    &hs_destroy_21170623,
+    &hs_create_1c528cbf,
     &hs_get_6558493f,
     &hs_method_9c13068e,
     &hs_method_cb6b8ac2,
     &hs_method_68e835a4,
     &hs_method_f5f8691f,
+    &hs_destroy_d7a8ab76,
+    &hs_create_b1e7cfa9,
     &hs_get_e04f0f07,
     &hs_method_a099264e,
     &hs_method_3767e45d,
@@ -28806,11 +29035,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_2379ca17,
     &hs_method_bd1506a8,
     &hs_destroy_e2789edf,
+    &hs_create_f530a80b,
     &hs_get_9b024e34,
     &hs_method_f99f9261,
     &hs_method_24767f40,
     &hs_method_b1c439de,
     &hs_destroy_2c72a471,
+    &hs_create_9a05ed4b,
     &hs_get_b09a94a0,
     &hs_method_5825985b,
     &hs_method_0689da9d,
@@ -28829,9 +29060,13 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_928de0e6,
     &hs_get_7048e210,
     &hs_method_fb399834,
+    &hs_destroy_5eebd8b9,
+    &hs_create_075bf555,
     &hs_get_a76524aa,
     &hs_method_54b34f20,
     &hs_method_2b60a963,
+    &hs_destroy_d6012dec,
+    &hs_create_c754c95a,
     &hs_get_966cb35c,
     &hs_method_fab7e267,
     &hs_method_5f72ffd4,
@@ -28843,6 +29078,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_get_1040cf70,
     &hs_method_110c8164,
     &hs_destroy_054173aa,
+    &hs_create_0783046a,
     &hs_get_c6e39b87,
     &hs_method_64f7e745,
     &hs_method_5683151f,
@@ -29207,6 +29443,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_destroy_bedd34b0,
     &hs_create_8d9494ee,
     &hs_method_afbf70d8,
+    &hs_method_98c67315,
     &hs_method_6569bb82,
     &hs_method_9b6e74ba,
     &hs_destroy_50f38d54,
@@ -29701,6 +29938,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_3e202e96,
     &hs_destroy_21bb0371,
     &hs_get_6c21fa68,
+    &hs_create_ba4c0257,
     &hs_method_09a43d68,
     &hs_method_a73c6a4f,
     &hs_method_0f3fb098,
@@ -29884,6 +30122,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_ba0f439a,
     &hs_method_41bf9b37,
     &hs_method_5f1e701c,
+    &hs_method_1dd41d86,
     &hs_method_589ace68,
     &hs_method_cd5ea5e2,
     &hs_method_9b59fde0,
@@ -29904,6 +30143,7 @@ const HosihikariBindingTableV1 kTable{
     &hs_method_a6c745c0,
     &hs_method_6338183e,
     &hs_method_ab519a5b,
+    &hs_method_83f14c3f,
     &hs_method_b477b5a5,
     &hs_method_407bba61,
     &hs_method_841d0de2,

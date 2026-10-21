@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class ActorDamageEvent
+public sealed unsafe partial class ActorDamageEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -11,33 +11,61 @@ public sealed unsafe partial class ActorDamageEvent
 
     public nint Handle => _handle;
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::DamageSource>' is not a known bindable declaration.", false)]
-    public static ActorDamageEvent Create(nint actor, nint damage_source, nint damage) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::DamageSource>' is not a known bindable declaration.");
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
+    public static ActorDamageEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob actor, global::Hosihikari.Bindings.Endstone.Interop.endstone.DamageSource damage_source, float damage)
+    {
+        var handle = NativeMethods.TablePtr->f50((void*)actor.Handle, (void*)damage_source.ReleaseHandle(), damage);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDamageEvent((nint)handle);
+    }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f49();
+        get => (nint)NativeMethods.TablePtr->f51();
     }
 
     public float getDamage()
     {
-        return NativeMethods.TablePtr->f50((void*)_handle);
+        return NativeMethods.TablePtr->f52((void*)_handle);
     }
 
     public nint getDamageSource()
     {
-        return (nint)NativeMethods.TablePtr->f51((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f53((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f52((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f54((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public void setDamage(float damage)
     {
-        NativeMethods.TablePtr->f53((void*)_handle, damage);
+        NativeMethods.TablePtr->f55((void*)_handle, damage);
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f49((void*)_handle);
+            _handle = 0;
+        }
     }
 }

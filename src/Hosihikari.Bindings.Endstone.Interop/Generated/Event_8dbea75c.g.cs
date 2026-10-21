@@ -11,6 +11,18 @@ public sealed unsafe partial class Event
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static Event Create(bool async) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
@@ -21,13 +33,13 @@ public sealed unsafe partial class Event
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f529((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f540((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isAsynchronous()
     {
-        return NativeMethods.TablePtr->f530((void*)_handle);
+        return NativeMethods.TablePtr->f541((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: assignment operators are not projected.", false)]

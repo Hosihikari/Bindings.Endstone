@@ -11,26 +11,38 @@ public sealed unsafe partial class ItemFactory
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? asMetaFor(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta, global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        var __hs_handle = NativeMethods.TablePtr->f668((void*)_handle, (void*)meta.Handle, (void*)type.Handle);
+        var __hs_handle = NativeMethods.TablePtr->f680((void*)_handle, (void*)meta.Handle, (void*)type.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle) : null;
     }
 
     public bool equals(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta1, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta2)
     {
-        return NativeMethods.TablePtr->f669((void*)_handle, (void*)meta1.Handle, (void*)meta2.Handle);
+        return NativeMethods.TablePtr->f681((void*)_handle, (void*)meta1.Handle, (void*)meta2.Handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? getItemMeta(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        var __hs_handle = NativeMethods.TablePtr->f670((void*)_handle, (void*)type.Handle);
+        var __hs_handle = NativeMethods.TablePtr->f682((void*)_handle, (void*)type.Handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta((nint)__hs_handle) : null;
     }
 
     public bool isApplicable(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta meta, global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        return NativeMethods.TablePtr->f671((void*)_handle, (void*)meta.Handle, (void*)type.Handle);
+        return NativeMethods.TablePtr->f683((void*)_handle, (void*)meta.Handle, (void*)type.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

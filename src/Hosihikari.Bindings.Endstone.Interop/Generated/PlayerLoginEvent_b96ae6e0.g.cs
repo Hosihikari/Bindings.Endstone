@@ -11,9 +11,21 @@ public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1139();
+        get => (nint)NativeMethods.TablePtr->f1152();
     }
 
     public static PlayerLoginEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, string message)
@@ -21,7 +33,7 @@ public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
         var __hs_stringBytes1 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            var handle = NativeMethods.TablePtr->f1140((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
+            var handle = NativeMethods.TablePtr->f1153((void*)player.Handle, __hs_stringData1, (nuint)__hs_stringBytes1.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -33,13 +45,13 @@ public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1141((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1154((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getKickMessage()
     {
-        var __hs_view = NativeMethods.TablePtr->f1142((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1155((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -48,7 +60,7 @@ public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(message);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f1143((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f1156((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -57,7 +69,7 @@ public sealed unsafe partial class PlayerLoginEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1138((void*)_handle);
+            NativeMethods.TablePtr->f1151((void*)_handle);
             _handle = 0;
         }
     }

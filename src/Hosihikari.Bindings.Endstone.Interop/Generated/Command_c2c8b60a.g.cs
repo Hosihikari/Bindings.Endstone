@@ -11,13 +11,25 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: constructors accept at most one vector parameter.", false)]
     public static Command Create(nint name, nint description, nint usages, nint aliases, nint permissions) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: constructors accept at most one vector parameter.");
 
     public nint asPluginCommand()
     {
-        return (nint)NativeMethods.TablePtr->f357((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f368((void*)_handle);
     }
 
     public bool execute(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, string[] args)
@@ -39,7 +51,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                return NativeMethods.TablePtr->f358((void*)_handle, (void*)sender.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                return NativeMethods.TablePtr->f369((void*)_handle, (void*)sender.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
             }
         }
         finally
@@ -50,7 +62,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public string[] getAliases()
     {
-        var __hs_view = NativeMethods.TablePtr->f359((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f370((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -62,19 +74,19 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public string getDescription()
     {
-        var __hs_view = NativeMethods.TablePtr->f360((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f371((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f361((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f372((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string[] getPermissions()
     {
-        var __hs_view = NativeMethods.TablePtr->f362((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f373((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -86,7 +98,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public string[] getUsages()
     {
-        var __hs_view = NativeMethods.TablePtr->f363((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f374((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -98,12 +110,12 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public bool isRegistered()
     {
-        return NativeMethods.TablePtr->f364((void*)_handle);
+        return NativeMethods.TablePtr->f375((void*)_handle);
     }
 
     public bool registerTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->f365((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->f376((void*)_handle, (void*)command_map.Handle);
     }
 
     public void setDescription(string description)
@@ -111,7 +123,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(description);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f366((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f377((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -120,23 +132,23 @@ public sealed unsafe partial class Command : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f367((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f378((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool testPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->f368((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->f379((void*)_handle, (void*)target.Handle);
     }
 
     public bool testPermissionSilently(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->f369((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->f380((void*)_handle, (void*)target.Handle);
     }
 
     public bool unregisterFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->f370((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->f381((void*)_handle, (void*)command_map.Handle);
     }
 
 
@@ -144,7 +156,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f356((void*)_handle);
+            NativeMethods.TablePtr->f367((void*)_handle);
             _handle = 0;
         }
     }

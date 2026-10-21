@@ -11,106 +11,19 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static string Aqua
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f320();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string Black
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f321();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string Blue
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f322();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string Bold
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f323();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string DarkAqua
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f324();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string DarkBlue
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f325();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string DarkGray
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f326();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string DarkGreen
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f327();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string DarkPurple
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f328();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string DarkRed
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f329();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string Escape
-    {
-        get
-        {
-            var view = NativeMethods.TablePtr->f330();
-            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
-        }
-    }
-
-    public static string Gold
     {
         get
         {
@@ -119,7 +32,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string Gray
+    public static string Black
     {
         get
         {
@@ -128,7 +41,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string Green
+    public static string Blue
     {
         get
         {
@@ -137,7 +50,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string Italic
+    public static string Bold
     {
         get
         {
@@ -146,7 +59,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string LightPurple
+    public static string DarkAqua
     {
         get
         {
@@ -155,7 +68,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialAmethyst
+    public static string DarkBlue
     {
         get
         {
@@ -164,7 +77,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialCopper
+    public static string DarkGray
     {
         get
         {
@@ -173,7 +86,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialDiamond
+    public static string DarkGreen
     {
         get
         {
@@ -182,7 +95,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialEmerald
+    public static string DarkPurple
     {
         get
         {
@@ -191,7 +104,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialGold
+    public static string DarkRed
     {
         get
         {
@@ -200,7 +113,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialIron
+    public static string Escape
     {
         get
         {
@@ -209,7 +122,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialLapis
+    public static string Gold
     {
         get
         {
@@ -218,7 +131,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialNetherite
+    public static string Gray
     {
         get
         {
@@ -227,7 +140,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialQuartz
+    public static string Green
     {
         get
         {
@@ -236,7 +149,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialRedstone
+    public static string Italic
     {
         get
         {
@@ -245,7 +158,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MaterialResin
+    public static string LightPurple
     {
         get
         {
@@ -254,7 +167,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string MinecoinGold
+    public static string MaterialAmethyst
     {
         get
         {
@@ -263,7 +176,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string Obfuscated
+    public static string MaterialCopper
     {
         get
         {
@@ -272,7 +185,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string Red
+    public static string MaterialDiamond
     {
         get
         {
@@ -281,7 +194,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string Reset
+    public static string MaterialEmerald
     {
         get
         {
@@ -290,7 +203,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string White
+    public static string MaterialGold
     {
         get
         {
@@ -299,7 +212,7 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
-    public static string Yellow
+    public static string MaterialIron
     {
         get
         {
@@ -308,11 +221,110 @@ public sealed unsafe partial class ColorFormat : global::System.IDisposable
         }
     }
 
+    public static string MaterialLapis
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f353();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string MaterialNetherite
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f354();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string MaterialQuartz
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f355();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string MaterialRedstone
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f356();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string MaterialResin
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f357();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string MinecoinGold
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f358();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string Obfuscated
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f359();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string Red
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f360();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string Reset
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f361();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string White
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f362();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
+    public static string Yellow
+    {
+        get
+        {
+            var view = NativeMethods.TablePtr->f363();
+            return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
+        }
+    }
+
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f319((void*)_handle);
+            NativeMethods.TablePtr->f330((void*)_handle);
             _handle = 0;
         }
     }

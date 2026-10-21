@@ -11,6 +11,18 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static CompoundTag Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
@@ -99,7 +111,7 @@ public sealed unsafe partial class CompoundTag : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f406((void*)_handle);
+            NativeMethods.TablePtr->f417((void*)_handle);
             _handle = 0;
         }
     }

@@ -11,12 +11,24 @@ public sealed unsafe partial class CommandBuilder : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static CommandBuilder Create(string name)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->f1601(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var handle = NativeMethods.TablePtr->f1616(__hs_stringData0, (nuint)__hs_stringBytes0.Length);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -28,7 +40,7 @@ public sealed unsafe partial class CommandBuilder : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Command build()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command((nint)NativeMethods.TablePtr->f1602((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Command((nint)NativeMethods.TablePtr->f1617((void*)_handle));
     }
 
     public nint description(string description)
@@ -36,7 +48,7 @@ public sealed unsafe partial class CommandBuilder : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(description);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1603((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f1618((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -44,7 +56,7 @@ public sealed unsafe partial class CommandBuilder : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1600((void*)_handle);
+            NativeMethods.TablePtr->f1615((void*)_handle);
             _handle = 0;
         }
     }

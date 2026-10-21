@@ -11,9 +11,21 @@ public sealed unsafe partial class SocketAddress : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static SocketAddress Create()
     {
-        var handle = NativeMethods.TablePtr->f1496();
+        var handle = NativeMethods.TablePtr->f1511();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -27,7 +39,7 @@ public sealed unsafe partial class SocketAddress : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(hostname);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var handle = NativeMethods.TablePtr->f1497(__hs_stringData0, (nuint)__hs_stringBytes0.Length, port);
+            var handle = NativeMethods.TablePtr->f1512(__hs_stringData0, (nuint)__hs_stringBytes0.Length, port);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -39,25 +51,25 @@ public sealed unsafe partial class SocketAddress : global::System.IDisposable
 
     public string getHostname()
     {
-        var __hs_view = NativeMethods.TablePtr->f1498((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1513((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public uint getPort()
     {
-        return NativeMethods.TablePtr->f1499((void*)_handle);
+        return NativeMethods.TablePtr->f1514((void*)_handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress other)
     {
-        return NativeMethods.TablePtr->f1500((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f1515((void*)_handle, (void*)other.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1495((void*)_handle);
+            NativeMethods.TablePtr->f1510((void*)_handle);
             _handle = 0;
         }
     }

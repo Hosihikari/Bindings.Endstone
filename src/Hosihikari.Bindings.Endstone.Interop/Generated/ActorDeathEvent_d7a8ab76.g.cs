@@ -3,7 +3,7 @@
 
 namespace Hosihikari.Bindings.Endstone.Interop.endstone;
 
-public sealed unsafe partial class ActorDeathEvent
+public sealed unsafe partial class ActorDeathEvent : global::System.IDisposable
 {
     private nint _handle;
 
@@ -11,23 +11,51 @@ public sealed unsafe partial class ActorDeathEvent
 
     public nint Handle => _handle;
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::DamageSource>' is not a known bindable declaration.", false)]
-    public static ActorDeathEvent Create(nint actor, nint damage_source) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::DamageSource>' is not a known bindable declaration.");
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
+    public static ActorDeathEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob actor, global::Hosihikari.Bindings.Endstone.Interop.endstone.DamageSource damage_source)
+    {
+        var handle = NativeMethods.TablePtr->f57((void*)actor.Handle, (void*)damage_source.ReleaseHandle());
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new ActorDeathEvent((nint)handle);
+    }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f54();
+        get => (nint)NativeMethods.TablePtr->f58();
     }
 
     public nint getDamageSource()
     {
-        return (nint)NativeMethods.TablePtr->f55((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f59((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f56((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f60((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
+    }
+
+    public void Dispose()
+    {
+        if (_handle != 0)
+        {
+            NativeMethods.TablePtr->f56((void*)_handle);
+            _handle = 0;
+        }
     }
 }

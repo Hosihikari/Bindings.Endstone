@@ -11,28 +11,40 @@ public sealed unsafe partial class Registry_endstone__BlockType_
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public void forEach(nint funcInvoke, nint funcUserData, nint funcRelease)
     {
-        NativeMethods.TablePtr->f1311((void*)_handle, (void*)funcInvoke, (void*)funcUserData, (void*)funcRelease);
+        NativeMethods.TablePtr->f1326((void*)_handle, (void*)funcInvoke, (void*)funcUserData, (void*)funcRelease);
     }
 
     public nint get_2b7fe892(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
     {
-        return (nint)NativeMethods.TablePtr->f1312((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1327((void*)_handle, (void*)id.Handle);
     }
 
     public nint get_2186031d(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
     {
-        return (nint)NativeMethods.TablePtr->f1313((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1328((void*)_handle, (void*)id.Handle);
     }
 
     public nint getOrThrow_c76ca6db(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
     {
-        return (nint)NativeMethods.TablePtr->f1314((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1329((void*)_handle, (void*)id.Handle);
     }
 
     public nint getOrThrow_03bc5362(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ id)
     {
-        return (nint)NativeMethods.TablePtr->f1315((void*)_handle, (void*)id.Handle);
+        return (nint)NativeMethods.TablePtr->f1330((void*)_handle, (void*)id.Handle);
     }
 }

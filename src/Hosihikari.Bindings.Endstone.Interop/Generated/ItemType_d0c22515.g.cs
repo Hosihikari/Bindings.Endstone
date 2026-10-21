@@ -11,45 +11,57 @@ public sealed unsafe partial class ItemType
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint Air
     {
-        get => (nint)NativeMethods.TablePtr->f718();
+        get => (nint)NativeMethods.TablePtr->f730();
     }
 
     public static nint RegistryType
     {
-        get => (nint)NativeMethods.TablePtr->f719();
+        get => (nint)NativeMethods.TablePtr->f731();
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack createItemStack()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f720((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f732((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack createItemStack(int amount)
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f721((void*)_handle, amount));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack((nint)NativeMethods.TablePtr->f733((void*)_handle, amount));
     }
 
     public int getMaxDurability()
     {
-        return NativeMethods.TablePtr->f722((void*)_handle);
+        return NativeMethods.TablePtr->f734((void*)_handle);
     }
 
     public int getMaxStackSize()
     {
-        return NativeMethods.TablePtr->f723((void*)_handle);
+        return NativeMethods.TablePtr->f735((void*)_handle);
     }
 
     public string getTranslationKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f724((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f736((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getTranslationKey(int data)
     {
-        var __hs_view = NativeMethods.TablePtr->f725((void*)_handle, data);
+        var __hs_view = NativeMethods.TablePtr->f737((void*)_handle, data);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 }

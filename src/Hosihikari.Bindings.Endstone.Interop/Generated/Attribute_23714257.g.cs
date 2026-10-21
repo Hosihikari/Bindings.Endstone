@@ -11,91 +11,103 @@ public sealed unsafe partial class Attribute : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint Absorption
-    {
-        get => (nint)NativeMethods.TablePtr->f88();
-    }
-
-    public static nint AttackDamage
-    {
-        get => (nint)NativeMethods.TablePtr->f89();
-    }
-
-    public static nint FollowRange
-    {
-        get => (nint)NativeMethods.TablePtr->f90();
-    }
-
-    public static nint Health
-    {
-        get => (nint)NativeMethods.TablePtr->f91();
-    }
-
-    public static nint JumpStrength
     {
         get => (nint)NativeMethods.TablePtr->f92();
     }
 
-    public static nint KnockbackResistance
+    public static nint AttackDamage
     {
         get => (nint)NativeMethods.TablePtr->f93();
     }
 
-    public static nint LavaMovementSpeed
+    public static nint FollowRange
     {
         get => (nint)NativeMethods.TablePtr->f94();
     }
 
-    public static nint Luck
+    public static nint Health
     {
         get => (nint)NativeMethods.TablePtr->f95();
     }
 
-    public static nint MovementSpeed
+    public static nint JumpStrength
     {
         get => (nint)NativeMethods.TablePtr->f96();
     }
 
-    public static nint PlayerExhaustion
+    public static nint KnockbackResistance
     {
         get => (nint)NativeMethods.TablePtr->f97();
     }
 
-    public static nint PlayerExperience
+    public static nint LavaMovementSpeed
     {
         get => (nint)NativeMethods.TablePtr->f98();
     }
 
-    public static nint PlayerHunger
+    public static nint Luck
     {
         get => (nint)NativeMethods.TablePtr->f99();
     }
 
-    public static nint PlayerLevel
+    public static nint MovementSpeed
     {
         get => (nint)NativeMethods.TablePtr->f100();
     }
 
-    public static nint PlayerSaturation
+    public static nint PlayerExhaustion
     {
         get => (nint)NativeMethods.TablePtr->f101();
     }
 
-    public static nint UnderwaterMovementSpeed
+    public static nint PlayerExperience
     {
         get => (nint)NativeMethods.TablePtr->f102();
     }
 
-    public static nint ZombieSpawnReinforcements
+    public static nint PlayerHunger
     {
         get => (nint)NativeMethods.TablePtr->f103();
+    }
+
+    public static nint PlayerLevel
+    {
+        get => (nint)NativeMethods.TablePtr->f104();
+    }
+
+    public static nint PlayerSaturation
+    {
+        get => (nint)NativeMethods.TablePtr->f105();
+    }
+
+    public static nint UnderwaterMovementSpeed
+    {
+        get => (nint)NativeMethods.TablePtr->f106();
+    }
+
+    public static nint ZombieSpawnReinforcements
+    {
+        get => (nint)NativeMethods.TablePtr->f107();
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f87((void*)_handle);
+            NativeMethods.TablePtr->f91((void*)_handle);
             _handle = 0;
         }
     }

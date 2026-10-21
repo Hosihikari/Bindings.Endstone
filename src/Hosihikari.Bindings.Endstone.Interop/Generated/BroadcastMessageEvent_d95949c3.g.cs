@@ -11,41 +11,53 @@ public sealed unsafe partial class BroadcastMessageEvent : global::System.IDispo
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unordered_set<const endstone::CommandSender *>' is not a known bindable declaration.", false)]
     public static BroadcastMessageEvent Create(bool async, nint message, nint recipients) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unordered_set<const endstone::CommandSender *>' is not a known bindable declaration.");
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f248();
+        get => (nint)NativeMethods.TablePtr->f259();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f249((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f260((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getMessage()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f250((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f261((void*)_handle));
     }
 
     public nint getRecipients()
     {
-        return (nint)NativeMethods.TablePtr->f251((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f262((void*)_handle);
     }
 
     public void setMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)
     {
-        NativeMethods.TablePtr->f252((void*)_handle, (void*)message.Handle);
+        NativeMethods.TablePtr->f263((void*)_handle, (void*)message.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f247((void*)_handle);
+            NativeMethods.TablePtr->f258((void*)_handle);
             _handle = 0;
         }
     }

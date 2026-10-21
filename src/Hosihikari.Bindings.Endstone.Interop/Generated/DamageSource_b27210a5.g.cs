@@ -11,25 +11,37 @@ public sealed unsafe partial class DamageSource
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public nint getActor()
     {
-        return (nint)NativeMethods.TablePtr->f415((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f426((void*)_handle);
     }
 
     public nint getDamagingActor()
     {
-        return (nint)NativeMethods.TablePtr->f416((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f427((void*)_handle);
     }
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f417((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f428((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool isIndirect()
     {
-        return NativeMethods.TablePtr->f418((void*)_handle);
+        return NativeMethods.TablePtr->f429((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

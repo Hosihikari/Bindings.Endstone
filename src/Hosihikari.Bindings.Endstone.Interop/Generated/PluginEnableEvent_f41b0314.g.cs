@@ -11,14 +11,26 @@ public sealed unsafe partial class PluginEnableEvent : global::System.IDisposabl
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1226();
+        get => (nint)NativeMethods.TablePtr->f1239();
     }
 
     public static PluginEnableEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        var handle = NativeMethods.TablePtr->f1227((void*)plugin.Handle);
+        var handle = NativeMethods.TablePtr->f1240((void*)plugin.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,20 +41,20 @@ public sealed unsafe partial class PluginEnableEvent : global::System.IDisposabl
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1228((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1241((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlugin()
     {
-        return (nint)NativeMethods.TablePtr->f1229((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1242((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1225((void*)_handle);
+            NativeMethods.TablePtr->f1238((void*)_handle);
             _handle = 0;
         }
     }

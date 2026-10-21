@@ -11,34 +11,46 @@ public sealed unsafe partial class Score : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b getEntry()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b((nint)NativeMethods.TablePtr->f1362((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_ad84296b((nint)NativeMethods.TablePtr->f1377((void*)_handle));
     }
 
     public nint getObjective()
     {
-        return (nint)NativeMethods.TablePtr->f1363((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1378((void*)_handle);
     }
 
     public nint getScoreboard()
     {
-        return (nint)NativeMethods.TablePtr->f1364((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1379((void*)_handle);
     }
 
     public int getValue()
     {
-        return NativeMethods.TablePtr->f1365((void*)_handle);
+        return NativeMethods.TablePtr->f1380((void*)_handle);
     }
 
     public bool isScoreSet()
     {
-        return NativeMethods.TablePtr->f1366((void*)_handle);
+        return NativeMethods.TablePtr->f1381((void*)_handle);
     }
 
     public void setValue(int score)
     {
-        NativeMethods.TablePtr->f1367((void*)_handle, score);
+        NativeMethods.TablePtr->f1382((void*)_handle, score);
     }
 
 
@@ -46,7 +58,7 @@ public sealed unsafe partial class Score : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1361((void*)_handle);
+            NativeMethods.TablePtr->f1376((void*)_handle);
             _handle = 0;
         }
     }

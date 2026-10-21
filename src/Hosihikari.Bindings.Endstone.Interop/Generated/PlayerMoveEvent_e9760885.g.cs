@@ -11,14 +11,26 @@ public sealed unsafe partial class PlayerMoveEvent : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1145();
+        get => (nint)NativeMethods.TablePtr->f1158();
     }
 
     public static PlayerMoveEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Location from, global::Hosihikari.Bindings.Endstone.Interop.endstone.Location to)
     {
-        var handle = NativeMethods.TablePtr->f1146((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
+        var handle = NativeMethods.TablePtr->f1159((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,47 +41,47 @@ public sealed unsafe partial class PlayerMoveEvent : global::System.IDisposable
 
     public nint from_
     {
-        get => (nint)NativeMethods.TablePtr->f1147((void*)_handle);
-        set => NativeMethods.TablePtr->f1148((void*)_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->f1160((void*)_handle);
+        set => NativeMethods.TablePtr->f1161((void*)_handle, (void*)value);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1149((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1162((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getFrom()
     {
-        return (nint)NativeMethods.TablePtr->f1150((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1163((void*)_handle);
     }
 
     public nint getTo()
     {
-        return (nint)NativeMethods.TablePtr->f1151((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1164((void*)_handle);
     }
 
     public void setFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location from)
     {
-        NativeMethods.TablePtr->f1152((void*)_handle, (void*)from.Handle);
+        NativeMethods.TablePtr->f1165((void*)_handle, (void*)from.Handle);
     }
 
     public void setTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location to)
     {
-        NativeMethods.TablePtr->f1153((void*)_handle, (void*)to.Handle);
+        NativeMethods.TablePtr->f1166((void*)_handle, (void*)to.Handle);
     }
 
     public nint to_
     {
-        get => (nint)NativeMethods.TablePtr->f1154((void*)_handle);
-        set => NativeMethods.TablePtr->f1155((void*)_handle, (void*)value);
+        get => (nint)NativeMethods.TablePtr->f1167((void*)_handle);
+        set => NativeMethods.TablePtr->f1168((void*)_handle, (void*)value);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1144((void*)_handle);
+            NativeMethods.TablePtr->f1157((void*)_handle);
             _handle = 0;
         }
     }

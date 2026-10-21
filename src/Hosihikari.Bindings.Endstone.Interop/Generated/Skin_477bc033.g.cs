@@ -11,6 +11,18 @@ public sealed unsafe partial class Skin : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static Skin Create(string id, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image image, string? cape_id, global::Hosihikari.Bindings.Endstone.Interop.endstone.Image? cape_image)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(id);
@@ -19,7 +31,7 @@ public sealed unsafe partial class Skin : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var handle = NativeMethods.TablePtr->f1477(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
+                var handle = NativeMethods.TablePtr->f1492(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)image.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, (void*)(cape_image?.Handle ?? 0), cape_id is not null, cape_image is not null);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -32,30 +44,30 @@ public sealed unsafe partial class Skin : global::System.IDisposable
 
     public nint getCapeId()
     {
-        return (nint)NativeMethods.TablePtr->f1478((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1493((void*)_handle);
     }
 
     public nint getCapeImage()
     {
-        return (nint)NativeMethods.TablePtr->f1479((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1494((void*)_handle);
     }
 
     public string getId()
     {
-        var __hs_view = NativeMethods.TablePtr->f1480((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1495((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getImage()
     {
-        return (nint)NativeMethods.TablePtr->f1481((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1496((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1476((void*)_handle);
+            NativeMethods.TablePtr->f1491((void*)_handle);
             _handle = 0;
         }
     }

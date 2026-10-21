@@ -11,41 +11,60 @@ public sealed unsafe partial class BlockCookEvent : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.", false)]
-    public static BlockCookEvent Create(nint block, nint source, nint result) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.");
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
+    public static BlockCookEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Block block, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack source, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack result)
+    {
+        var handle = NativeMethods.TablePtr->f168((void*)block.ReleaseHandle(), (void*)source.Handle, (void*)result.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockCookEvent((nint)handle);
+    }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f163();
+        get => (nint)NativeMethods.TablePtr->f169();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f164((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f170((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getResult()
     {
-        return (nint)NativeMethods.TablePtr->f165((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f171((void*)_handle);
     }
 
     public nint getSource()
     {
-        return (nint)NativeMethods.TablePtr->f166((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f172((void*)_handle);
     }
 
     public void setResult(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack result)
     {
-        NativeMethods.TablePtr->f167((void*)_handle, (void*)result.Handle);
+        NativeMethods.TablePtr->f173((void*)_handle, (void*)result.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f162((void*)_handle);
+            NativeMethods.TablePtr->f167((void*)_handle);
             _handle = 0;
         }
     }

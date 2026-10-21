@@ -11,6 +11,18 @@ public sealed unsafe partial class ActionForm : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static ActionForm Create()
     {
         var handle = NativeMethods.TablePtr->f9();

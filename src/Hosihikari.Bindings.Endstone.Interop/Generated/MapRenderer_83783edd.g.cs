@@ -11,23 +11,35 @@ public sealed unsafe partial class MapRenderer
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static MapRenderer Create(nint is_contextual) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     public void initialize(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map)
     {
-        NativeMethods.TablePtr->f828((void*)_handle, (void*)map.Handle);
+        NativeMethods.TablePtr->f840((void*)_handle, (void*)map.Handle);
     }
 
     public bool isContextual()
     {
-        return NativeMethods.TablePtr->f829((void*)_handle);
+        return NativeMethods.TablePtr->f841((void*)_handle);
     }
 
     public void render(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map, global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCanvas canvas, global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
     {
-        NativeMethods.TablePtr->f830((void*)_handle, (void*)map.Handle, (void*)canvas.Handle, (void*)player.Handle);
+        NativeMethods.TablePtr->f842((void*)_handle, (void*)map.Handle, (void*)canvas.Handle, (void*)player.Handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

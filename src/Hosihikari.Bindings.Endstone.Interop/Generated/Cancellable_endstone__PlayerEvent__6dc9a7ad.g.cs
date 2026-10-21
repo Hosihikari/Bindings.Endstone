@@ -11,18 +11,30 @@ public sealed unsafe partial class Cancellable_endstone__PlayerEvent_
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public void cancel()
     {
-        NativeMethods.TablePtr->f271((void*)_handle);
+        NativeMethods.TablePtr->f282((void*)_handle);
     }
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->f272((void*)_handle);
+        return NativeMethods.TablePtr->f283((void*)_handle);
     }
 
     public void setCancelled(bool cancel)
     {
-        NativeMethods.TablePtr->f273((void*)_handle, cancel);
+        NativeMethods.TablePtr->f284((void*)_handle, cancel);
     }
 }

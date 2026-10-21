@@ -11,12 +11,24 @@ public sealed unsafe partial class LevelEvent
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class is abstract.", false)]
     public static LevelEvent Create(nint level) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
     public nint getLevel()
     {
-        return (nint)NativeMethods.TablePtr->f748((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f760((void*)_handle);
     }
 }

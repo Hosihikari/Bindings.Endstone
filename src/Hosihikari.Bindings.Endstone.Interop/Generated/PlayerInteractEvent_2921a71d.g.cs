@@ -11,14 +11,26 @@ public sealed unsafe partial class PlayerInteractEvent : global::System.IDisposa
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1087();
+        get => (nint)NativeMethods.TablePtr->f1100();
     }
 
     public static PlayerInteractEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, int action, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack? item, global::Hosihikari.Bindings.Endstone.Interop.endstone.Block block_clicked, int block_face, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector? clicked_position)
     {
-        var handle = NativeMethods.TablePtr->f1088((void*)player.Handle, action, (void*)(item?.Handle ?? 0), (void*)block_clicked.Handle, block_face, (void*)(clicked_position?.Handle ?? 0), item is not null, clicked_position is not null);
+        var handle = NativeMethods.TablePtr->f1101((void*)player.Handle, action, (void*)(item?.Handle ?? 0), (void*)block_clicked.Handle, block_face, (void*)(clicked_position?.Handle ?? 0), item is not null, clicked_position is not null);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,52 +41,52 @@ public sealed unsafe partial class PlayerInteractEvent : global::System.IDisposa
 
     public int getAction()
     {
-        return NativeMethods.TablePtr->f1089((void*)_handle);
+        return NativeMethods.TablePtr->f1102((void*)_handle);
     }
 
     public nint getBlock()
     {
-        return (nint)NativeMethods.TablePtr->f1090((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1103((void*)_handle);
     }
 
     public int getBlockFace()
     {
-        return NativeMethods.TablePtr->f1091((void*)_handle);
+        return NativeMethods.TablePtr->f1104((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector? getClickedPosition()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1092((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f1105((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)__hs_handle) : null;
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1093((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1106((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getItem()
     {
-        return (nint)NativeMethods.TablePtr->f1094((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1107((void*)_handle);
     }
 
     public bool hasBlock()
     {
-        return NativeMethods.TablePtr->f1095((void*)_handle);
+        return NativeMethods.TablePtr->f1108((void*)_handle);
     }
 
     public bool hasItem()
     {
-        return NativeMethods.TablePtr->f1096((void*)_handle);
+        return NativeMethods.TablePtr->f1109((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1086((void*)_handle);
+            NativeMethods.TablePtr->f1099((void*)_handle);
             _handle = 0;
         }
     }

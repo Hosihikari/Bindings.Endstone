@@ -11,12 +11,24 @@ public sealed unsafe partial class BlockEvent
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class is abstract.", false)]
     public static BlockEvent Create(nint block) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
     public nint getBlock()
     {
-        return (nint)NativeMethods.TablePtr->f172((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f178((void*)_handle);
     }
 }

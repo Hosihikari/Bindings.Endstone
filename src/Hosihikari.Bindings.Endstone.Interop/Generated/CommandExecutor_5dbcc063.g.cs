@@ -11,6 +11,18 @@ public sealed unsafe partial class CommandExecutor : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public bool onCommand(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender sender, global::Hosihikari.Bindings.Endstone.Interop.endstone.Command command, string[] args)
     {
         var __hs_vectorItems = args ?? global::System.Array.Empty<string>();
@@ -30,7 +42,7 @@ public sealed unsafe partial class CommandExecutor : global::System.IDisposable
             }
             fixed (global::Hosihikari.Bindings.Abi.StringView* __hs_vectorData = __hs_vectorViews)
             {
-                return NativeMethods.TablePtr->f372((void*)_handle, (void*)sender.Handle, (void*)command.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
+                return NativeMethods.TablePtr->f383((void*)_handle, (void*)sender.Handle, (void*)command.Handle, __hs_vectorData, (nuint)__hs_vectorViews.Length);
             }
         }
         finally
@@ -44,7 +56,7 @@ public sealed unsafe partial class CommandExecutor : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f371((void*)_handle);
+            NativeMethods.TablePtr->f382((void*)_handle);
             _handle = 0;
         }
     }

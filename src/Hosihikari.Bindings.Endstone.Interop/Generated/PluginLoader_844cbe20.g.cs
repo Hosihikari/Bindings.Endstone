@@ -11,23 +11,35 @@ public sealed unsafe partial class PluginLoader
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static PluginLoader Create(nint server) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
 
     public void disablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1230((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1243((void*)_handle, (void*)plugin.Handle);
     }
 
     public void enablePlugin(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin)
     {
-        NativeMethods.TablePtr->f1231((void*)_handle, (void*)plugin.Handle);
+        NativeMethods.TablePtr->f1244((void*)_handle, (void*)plugin.Handle);
     }
 
     public string[] getPluginFileFilters()
     {
-        var __hs_view = NativeMethods.TablePtr->f1232((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1245((void*)_handle);
         var __hs_items = (global::Hosihikari.Bindings.Abi.StringView*)__hs_view.Data;
         var __hs_result = new string[checked((int)__hs_view.Size)];
         for (var __hs_i = 0; __hs_i < __hs_result.Length; __hs_i++)
@@ -39,7 +51,7 @@ public sealed unsafe partial class PluginLoader
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f1233((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1246((void*)_handle);
     }
 
     public nint loadPlugin(string file)
@@ -47,7 +59,7 @@ public sealed unsafe partial class PluginLoader
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(file);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1234((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f1247((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
@@ -56,7 +68,7 @@ public sealed unsafe partial class PluginLoader
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(directory);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            var __hs_view = NativeMethods.TablePtr->f1235((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            var __hs_view = NativeMethods.TablePtr->f1248((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
             var __hs_result = new nint[checked((int)__hs_view.Size)];
             if (__hs_view.Size > 0)
             {

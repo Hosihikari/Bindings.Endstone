@@ -11,15 +11,27 @@ public sealed unsafe partial class OfflinePlayer
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f890((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f902((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID getUniqueId()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->f891((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)NativeMethods.TablePtr->f903((void*)_handle));
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

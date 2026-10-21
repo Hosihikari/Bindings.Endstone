@@ -11,11 +11,23 @@ public sealed unsafe partial class escape_view : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public string value
     {
         get
         {
-            var view = NativeMethods.TablePtr->f1742((void*)_handle);
+            var view = NativeMethods.TablePtr->f1757((void*)_handle);
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
@@ -24,7 +36,7 @@ public sealed unsafe partial class escape_view : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1741((void*)_handle);
+            NativeMethods.TablePtr->f1756((void*)_handle);
             _handle = 0;
         }
     }

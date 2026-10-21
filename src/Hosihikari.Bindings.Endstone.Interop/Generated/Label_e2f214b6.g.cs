@@ -11,9 +11,21 @@ public sealed unsafe partial class Label : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static Label Create()
     {
-        var handle = NativeMethods.TablePtr->f727();
+        var handle = NativeMethods.TablePtr->f739();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -24,7 +36,7 @@ public sealed unsafe partial class Label : global::System.IDisposable
 
     public static Label Create(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        var handle = NativeMethods.TablePtr->f728((void*)text.Handle);
+        var handle = NativeMethods.TablePtr->f740((void*)text.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -35,19 +47,19 @@ public sealed unsafe partial class Label : global::System.IDisposable
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getText()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f729((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f741((void*)_handle));
     }
 
     public nint setText(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 text)
     {
-        return (nint)NativeMethods.TablePtr->f730((void*)_handle, (void*)text.Handle);
+        return (nint)NativeMethods.TablePtr->f742((void*)_handle, (void*)text.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f726((void*)_handle);
+            NativeMethods.TablePtr->f738((void*)_handle);
             _handle = 0;
         }
     }

@@ -11,9 +11,21 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static TextInput Create()
     {
-        var handle = NativeMethods.TablePtr->f1508();
+        var handle = NativeMethods.TablePtr->f1523();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -27,7 +39,7 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
         var __hs_stringBytes2 = global::System.Text.Encoding.UTF8.GetBytes(default_text ?? string.Empty);
         fixed (byte* __hs_stringData2 = __hs_stringBytes2)
         {
-            var handle = NativeMethods.TablePtr->f1509((void*)label.Handle, (void*)placeholder.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, default_text is not null);
+            var handle = NativeMethods.TablePtr->f1524((void*)label.Handle, (void*)placeholder.Handle, __hs_stringData2, (nuint)__hs_stringBytes2.Length, default_text is not null);
             if (handle == null)
             {
                 throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -40,18 +52,18 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
     public string? getDefaultValue()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f1510((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f1525((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1511((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1526((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getPlaceholder()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1512((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f1527((void*)_handle));
     }
 
     public nint setDefaultValue(string? text)
@@ -59,25 +71,25 @@ public sealed unsafe partial class TextInput : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(text ?? string.Empty);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1513((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, text is not null);
+            return (nint)NativeMethods.TablePtr->f1528((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length, text is not null);
         }
     }
 
     public nint setLabel(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 label)
     {
-        return (nint)NativeMethods.TablePtr->f1514((void*)_handle, (void*)label.Handle);
+        return (nint)NativeMethods.TablePtr->f1529((void*)_handle, (void*)label.Handle);
     }
 
     public nint setPlaceholder(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 placeholder)
     {
-        return (nint)NativeMethods.TablePtr->f1515((void*)_handle, (void*)placeholder.Handle);
+        return (nint)NativeMethods.TablePtr->f1530((void*)_handle, (void*)placeholder.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1507((void*)_handle);
+            NativeMethods.TablePtr->f1522((void*)_handle);
             _handle = 0;
         }
     }

@@ -11,24 +11,36 @@ public sealed unsafe partial class BlockType
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint Air
     {
-        get => (nint)NativeMethods.TablePtr->f215();
+        get => (nint)NativeMethods.TablePtr->f226();
     }
 
     public static nint RegistryType
     {
-        get => (nint)NativeMethods.TablePtr->f216();
+        get => (nint)NativeMethods.TablePtr->f227();
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? createBlockData()
     {
-        var __hs_handle = NativeMethods.TablePtr->f217((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f228((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
     }
 
     public bool hasItemType()
     {
-        return NativeMethods.TablePtr->f218((void*)_handle);
+        return NativeMethods.TablePtr->f229((void*)_handle);
     }
 }

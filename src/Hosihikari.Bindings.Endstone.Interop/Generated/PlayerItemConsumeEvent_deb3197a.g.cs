@@ -11,14 +11,26 @@ public sealed unsafe partial class PlayerItemConsumeEvent : global::System.IDisp
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1112();
+        get => (nint)NativeMethods.TablePtr->f1125();
     }
 
     public static PlayerItemConsumeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item, int hand)
     {
-        var handle = NativeMethods.TablePtr->f1113((void*)player.Handle, (void*)item.Handle, hand);
+        var handle = NativeMethods.TablePtr->f1126((void*)player.Handle, (void*)item.Handle, hand);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,25 +41,25 @@ public sealed unsafe partial class PlayerItemConsumeEvent : global::System.IDisp
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1114((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1127((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getHand()
     {
-        return NativeMethods.TablePtr->f1115((void*)_handle);
+        return NativeMethods.TablePtr->f1128((void*)_handle);
     }
 
     public nint getItem()
     {
-        return (nint)NativeMethods.TablePtr->f1116((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1129((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1111((void*)_handle);
+            NativeMethods.TablePtr->f1124((void*)_handle);
             _handle = 0;
         }
     }

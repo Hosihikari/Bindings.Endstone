@@ -11,52 +11,64 @@ public sealed unsafe partial class BlockState : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Block? getBlock()
     {
-        var __hs_handle = NativeMethods.TablePtr->f202((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f213((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.Block((nint)__hs_handle) : null;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData? getData()
     {
-        var __hs_handle = NativeMethods.TablePtr->f203((void*)_handle);
+        var __hs_handle = NativeMethods.TablePtr->f214((void*)_handle);
         return __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData((nint)__hs_handle) : null;
     }
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f204((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f215((void*)_handle);
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location getLocation()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->f205((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Location((nint)NativeMethods.TablePtr->f216((void*)_handle));
     }
 
     public string getType()
     {
-        var __hs_view = NativeMethods.TablePtr->f206((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f217((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public int getX()
     {
-        return NativeMethods.TablePtr->f207((void*)_handle);
+        return NativeMethods.TablePtr->f218((void*)_handle);
     }
 
     public int getY()
     {
-        return NativeMethods.TablePtr->f208((void*)_handle);
+        return NativeMethods.TablePtr->f219((void*)_handle);
     }
 
     public int getZ()
     {
-        return NativeMethods.TablePtr->f209((void*)_handle);
+        return NativeMethods.TablePtr->f220((void*)_handle);
     }
 
     public void setData(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockData data)
     {
-        NativeMethods.TablePtr->f210((void*)_handle, (void*)data.Handle);
+        NativeMethods.TablePtr->f221((void*)_handle, (void*)data.Handle);
     }
 
     public void setType(string type)
@@ -64,23 +76,23 @@ public sealed unsafe partial class BlockState : global::System.IDisposable
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(type);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            NativeMethods.TablePtr->f211((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            NativeMethods.TablePtr->f222((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public bool update()
     {
-        return NativeMethods.TablePtr->f212((void*)_handle);
+        return NativeMethods.TablePtr->f223((void*)_handle);
     }
 
     public bool update(bool force)
     {
-        return NativeMethods.TablePtr->f213((void*)_handle, force);
+        return NativeMethods.TablePtr->f224((void*)_handle, force);
     }
 
     public bool update(bool force, bool apply_physics)
     {
-        return NativeMethods.TablePtr->f214((void*)_handle, force, apply_physics);
+        return NativeMethods.TablePtr->f225((void*)_handle, force, apply_physics);
     }
 
 
@@ -88,7 +100,7 @@ public sealed unsafe partial class BlockState : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f201((void*)_handle);
+            NativeMethods.TablePtr->f212((void*)_handle);
             _handle = 0;
         }
     }

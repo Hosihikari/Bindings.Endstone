@@ -11,12 +11,24 @@ public sealed unsafe partial class ChunkEvent
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class is abstract.", false)]
     public static ChunkEvent Create(nint chunk) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
     public nint getChunk()
     {
-        return (nint)NativeMethods.TablePtr->f285((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f296((void*)_handle);
     }
 }

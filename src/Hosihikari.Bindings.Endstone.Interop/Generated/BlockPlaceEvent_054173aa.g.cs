@@ -11,39 +11,58 @@ public sealed unsafe partial class BlockPlaceEvent : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::BlockState>' is not a known bindable declaration.", false)]
-    public static BlockPlaceEvent Create(nint placed_block, nint replaced_block, nint placed_against, nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::BlockState>' is not a known bindable declaration.");
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
+    public static BlockPlaceEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockState placed_block, global::Hosihikari.Bindings.Endstone.Interop.endstone.Block replaced_block, global::Hosihikari.Bindings.Endstone.Interop.endstone.Block placed_against, global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
+    {
+        var handle = NativeMethods.TablePtr->f205((void*)placed_block.ReleaseHandle(), (void*)replaced_block.ReleaseHandle(), (void*)placed_against.ReleaseHandle(), (void*)player.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockPlaceEvent((nint)handle);
+    }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f195();
+        get => (nint)NativeMethods.TablePtr->f206();
     }
 
     public nint getBlockAgainst()
     {
-        return (nint)NativeMethods.TablePtr->f196((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f207((void*)_handle);
     }
 
     public nint getBlockPlacedState()
     {
-        return (nint)NativeMethods.TablePtr->f197((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f208((void*)_handle);
     }
 
     public nint getBlockReplaced()
     {
-        return (nint)NativeMethods.TablePtr->f198((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f209((void*)_handle);
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f199((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f210((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f200((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f211((void*)_handle);
     }
 
 
@@ -51,7 +70,7 @@ public sealed unsafe partial class BlockPlaceEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f194((void*)_handle);
+            NativeMethods.TablePtr->f204((void*)_handle);
             _handle = 0;
         }
     }

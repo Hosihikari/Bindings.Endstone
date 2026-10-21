@@ -11,14 +11,26 @@ public sealed unsafe partial class BlockPistonExtendEvent : global::System.IDisp
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f189();
+        get => (nint)NativeMethods.TablePtr->f199();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f190((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f200((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -26,7 +38,7 @@ public sealed unsafe partial class BlockPistonExtendEvent : global::System.IDisp
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f188((void*)_handle);
+            NativeMethods.TablePtr->f198((void*)_handle);
             _handle = 0;
         }
     }

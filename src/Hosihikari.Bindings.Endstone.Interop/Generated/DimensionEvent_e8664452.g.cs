@@ -11,12 +11,24 @@ public sealed unsafe partial class DimensionEvent
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class is abstract.", false)]
     public static DimensionEvent Create(nint dimension) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
     public nint getDimension()
     {
-        return (nint)NativeMethods.TablePtr->f431((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f442((void*)_handle);
     }
 }

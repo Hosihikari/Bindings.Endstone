@@ -11,14 +11,26 @@ public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.I
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1058();
+        get => (nint)NativeMethods.TablePtr->f1071();
     }
 
     public static PlayerDimensionChangeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player, global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension from, global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension to)
     {
-        var handle = NativeMethods.TablePtr->f1059((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
+        var handle = NativeMethods.TablePtr->f1072((void*)player.Handle, (void*)from.Handle, (void*)to.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,25 +41,25 @@ public sealed unsafe partial class PlayerDimensionChangeEvent : global::System.I
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1060((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1073((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getFrom()
     {
-        return (nint)NativeMethods.TablePtr->f1061((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1074((void*)_handle);
     }
 
     public nint getTo()
     {
-        return (nint)NativeMethods.TablePtr->f1062((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1075((void*)_handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1057((void*)_handle);
+            NativeMethods.TablePtr->f1070((void*)_handle);
             _handle = 0;
         }
     }

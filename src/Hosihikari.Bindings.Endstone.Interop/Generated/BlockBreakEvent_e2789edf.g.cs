@@ -11,24 +11,43 @@ public sealed unsafe partial class BlockBreakEvent : global::System.IDisposable
 
     public nint Handle => _handle;
 
-    [global::System.Obsolete("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.", false)]
-    public static BlockBreakEvent Create(nint block, nint player) =>
-        throw new global::System.NotSupportedException("BindingShim cannot project this member: by-value record parameter 'std::unique_ptr<endstone::Block>' is not a known bindable declaration.");
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
+    public static BlockBreakEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Block block, global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)
+    {
+        var handle = NativeMethods.TablePtr->f162((void*)block.ReleaseHandle(), (void*)player.Handle);
+        if (handle == null)
+        {
+            throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
+        }
+
+        return new BlockBreakEvent((nint)handle);
+    }
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f158();
+        get => (nint)NativeMethods.TablePtr->f163();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f159((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f164((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f160((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f165((void*)_handle);
     }
 
 
@@ -36,7 +55,7 @@ public sealed unsafe partial class BlockBreakEvent : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f157((void*)_handle);
+            NativeMethods.TablePtr->f161((void*)_handle);
             _handle = 0;
         }
     }

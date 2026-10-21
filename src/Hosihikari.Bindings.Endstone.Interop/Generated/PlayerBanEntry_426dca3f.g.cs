@@ -11,6 +11,18 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static PlayerBanEntry Create(string name, global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? uuid, string? xuid)
     {
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
@@ -19,7 +31,7 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                var handle = NativeMethods.TablePtr->f1011(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
+                var handle = NativeMethods.TablePtr->f1023(__hs_stringData0, (nuint)__hs_stringBytes0.Length, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringBytes2.Length, uuid is not null, xuid is not null);
                 if (handle == null)
                 {
                     throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -32,21 +44,21 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1012((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1024((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID? getUniqueId()
     {
         var __hs_hasValue = false;
-        var __hs_handle = NativeMethods.TablePtr->f1013((void*)_handle, &__hs_hasValue);
+        var __hs_handle = NativeMethods.TablePtr->f1025((void*)_handle, &__hs_hasValue);
         return __hs_hasValue && __hs_handle != null ? new global::Hosihikari.Bindings.Endstone.Interop.endstone.UUID((nint)__hs_handle) : null;
     }
 
     public string? getXuid()
     {
         var __hs_hasValue = false;
-        var __hs_view = NativeMethods.TablePtr->f1014((void*)_handle, &__hs_hasValue);
+        var __hs_view = NativeMethods.TablePtr->f1026((void*)_handle, &__hs_hasValue);
         return __hs_hasValue ? global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size)) : null;
     }
 
@@ -54,7 +66,7 @@ public sealed unsafe partial class PlayerBanEntry : global::System.IDisposable
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1010((void*)_handle);
+            NativeMethods.TablePtr->f1022((void*)_handle);
             _handle = 0;
         }
     }

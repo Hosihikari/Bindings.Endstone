@@ -11,49 +11,61 @@ public sealed unsafe partial class CommandSender
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public nint asActor()
     {
-        return (nint)NativeMethods.TablePtr->f377((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f388((void*)_handle);
     }
 
     public nint asBlock()
     {
-        return (nint)NativeMethods.TablePtr->f378((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f389((void*)_handle);
     }
 
     public nint asCommandSender()
     {
-        return (nint)NativeMethods.TablePtr->f379((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f390((void*)_handle);
     }
 
     public nint asConsole()
     {
-        return (nint)NativeMethods.TablePtr->f380((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f391((void*)_handle);
     }
 
     public nint asPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f381((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f392((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f382((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f393((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f383((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f394((void*)_handle);
     }
 
     public void sendErrorMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)
     {
-        NativeMethods.TablePtr->f384((void*)_handle, (void*)message.Handle);
+        NativeMethods.TablePtr->f395((void*)_handle, (void*)message.Handle);
     }
 
     public void sendMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)
     {
-        NativeMethods.TablePtr->f385((void*)_handle, (void*)message.Handle);
+        NativeMethods.TablePtr->f396((void*)_handle, (void*)message.Handle);
     }
 }

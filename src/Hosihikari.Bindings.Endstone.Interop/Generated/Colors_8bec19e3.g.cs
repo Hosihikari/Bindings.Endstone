@@ -11,21 +11,33 @@ public sealed unsafe partial class Colors : global::System.IDisposable
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint BLACK
     {
-        get => (nint)NativeMethods.TablePtr->f354();
+        get => (nint)NativeMethods.TablePtr->f365();
     }
 
     public static nint WHITE
     {
-        get => (nint)NativeMethods.TablePtr->f355();
+        get => (nint)NativeMethods.TablePtr->f366();
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f353((void*)_handle);
+            NativeMethods.TablePtr->f364((void*)_handle);
             _handle = 0;
         }
     }

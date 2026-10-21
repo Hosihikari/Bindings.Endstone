@@ -11,9 +11,21 @@ public sealed unsafe partial class Form_endstone__ModalForm_ : global::System.ID
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static Form_endstone__ModalForm_ Create()
     {
-        var handle = NativeMethods.TablePtr->f551();
+        var handle = NativeMethods.TablePtr->f562();
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -24,29 +36,29 @@ public sealed unsafe partial class Form_endstone__ModalForm_ : global::System.ID
 
     public global::Hosihikari.Bindings.Endstone.Interop.Function_a442e6f7 getOnClose()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Function_a442e6f7((nint)NativeMethods.TablePtr->f552((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Function_a442e6f7((nint)NativeMethods.TablePtr->f563((void*)_handle));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getTitle()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f553((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8((nint)NativeMethods.TablePtr->f564((void*)_handle));
     }
 
     public nint setOnClose(nint on_closeInvoke, nint on_closeUserData, nint on_closeRelease)
     {
-        return (nint)NativeMethods.TablePtr->f554((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
+        return (nint)NativeMethods.TablePtr->f565((void*)_handle, (void*)on_closeInvoke, (void*)on_closeUserData, (void*)on_closeRelease);
     }
 
     public nint setTitle(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 title)
     {
-        return (nint)NativeMethods.TablePtr->f555((void*)_handle, (void*)title.Handle);
+        return (nint)NativeMethods.TablePtr->f566((void*)_handle, (void*)title.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f550((void*)_handle);
+            NativeMethods.TablePtr->f561((void*)_handle);
             _handle = 0;
         }
     }

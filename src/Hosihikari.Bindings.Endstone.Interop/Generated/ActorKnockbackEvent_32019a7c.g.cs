@@ -11,9 +11,21 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static ActorKnockbackEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Mob mob, global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor source, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
     {
-        var handle = NativeMethods.TablePtr->f66((void*)mob.Handle, (void*)source.Handle, (void*)knockback.Handle);
+        var handle = NativeMethods.TablePtr->f70((void*)mob.Handle, (void*)source.Handle, (void*)knockback.Handle);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -24,35 +36,35 @@ public sealed unsafe partial class ActorKnockbackEvent : global::System.IDisposa
 
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f67();
+        get => (nint)NativeMethods.TablePtr->f71();
     }
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f68((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f72((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector getKnockback()
     {
-        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f69((void*)_handle));
+        return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector((nint)NativeMethods.TablePtr->f73((void*)_handle));
     }
 
     public nint getSource()
     {
-        return (nint)NativeMethods.TablePtr->f70((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f74((void*)_handle);
     }
 
     public void setKnockback(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector knockback)
     {
-        NativeMethods.TablePtr->f71((void*)_handle, (void*)knockback.Handle);
+        NativeMethods.TablePtr->f75((void*)_handle, (void*)knockback.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f65((void*)_handle);
+            NativeMethods.TablePtr->f69((void*)_handle);
             _handle = 0;
         }
     }

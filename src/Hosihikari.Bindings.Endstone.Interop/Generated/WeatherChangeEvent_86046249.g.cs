@@ -11,14 +11,26 @@ public sealed unsafe partial class WeatherChangeEvent : global::System.IDisposab
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public static nint NAME
     {
-        get => (nint)NativeMethods.TablePtr->f1587();
+        get => (nint)NativeMethods.TablePtr->f1602();
     }
 
     public static WeatherChangeEvent Create(global::Hosihikari.Bindings.Endstone.Interop.endstone.Level level, bool to)
     {
-        var handle = NativeMethods.TablePtr->f1588((void*)level.Handle, to);
+        var handle = NativeMethods.TablePtr->f1603((void*)level.Handle, to);
         if (handle == null)
         {
             throw new global::System.InvalidOperationException(NativeMethods.GetLastError() ?? "BindingShim create call failed.");
@@ -29,13 +41,13 @@ public sealed unsafe partial class WeatherChangeEvent : global::System.IDisposab
 
     public string getEventName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1589((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1604((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool toWeatherState()
     {
-        return NativeMethods.TablePtr->f1590((void*)_handle);
+        return NativeMethods.TablePtr->f1605((void*)_handle);
     }
 
 
@@ -43,7 +55,7 @@ public sealed unsafe partial class WeatherChangeEvent : global::System.IDisposab
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f1586((void*)_handle);
+            NativeMethods.TablePtr->f1601((void*)_handle);
             _handle = 0;
         }
     }

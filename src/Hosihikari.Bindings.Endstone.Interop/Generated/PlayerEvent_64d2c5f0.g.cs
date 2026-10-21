@@ -11,13 +11,25 @@ public sealed unsafe partial class PlayerEvent
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class is abstract.", false)]
     public static PlayerEvent Create(nint player) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class is abstract.");
 
     public nint getPlayer()
     {
-        return (nint)NativeMethods.TablePtr->f1075((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1088((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

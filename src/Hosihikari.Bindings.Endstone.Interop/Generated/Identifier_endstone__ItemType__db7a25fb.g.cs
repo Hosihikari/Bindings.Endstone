@@ -11,6 +11,18 @@ public sealed unsafe partial class Identifier_endstone__ItemType_ : global::Syst
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class owns a borrowed string field.", false)]
     public static Identifier_endstone__ItemType_ Create_59ab2bc4(nint s) =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class owns a borrowed string field.");
@@ -31,20 +43,20 @@ public sealed unsafe partial class Identifier_endstone__ItemType_ : global::Syst
     {
         get
         {
-            var view = NativeMethods.TablePtr->f603();
+            var view = NativeMethods.TablePtr->f615();
             return global::System.Text.Encoding.UTF8.GetString(view.Data, checked((int)view.Size));
         }
     }
 
     public string getKey()
     {
-        var __hs_view = NativeMethods.TablePtr->f604((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f616((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public string getNamespace()
     {
-        var __hs_view = NativeMethods.TablePtr->f605((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f617((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
@@ -53,31 +65,31 @@ public sealed unsafe partial class Identifier_endstone__ItemType_ : global::Syst
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(key);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_((nint)NativeMethods.TablePtr->f606(__hs_stringData0, (nuint)__hs_stringBytes0.Length));
+            return new global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_((nint)NativeMethods.TablePtr->f618(__hs_stringData0, (nuint)__hs_stringBytes0.Length));
         }
     }
 
     public string operator_basic_string()
     {
-        var __hs_view = NativeMethods.TablePtr->f607((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f619((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ other)
     {
-        return NativeMethods.TablePtr->f608((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f620((void*)_handle, (void*)other.Handle);
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ other)
     {
-        return NativeMethods.TablePtr->f609((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->f621((void*)_handle, (void*)other.Handle);
     }
 
     public void Dispose()
     {
         if (_handle != 0)
         {
-            NativeMethods.TablePtr->f602((void*)_handle);
+            NativeMethods.TablePtr->f614((void*)_handle);
             _handle = 0;
         }
     }

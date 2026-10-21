@@ -11,28 +11,40 @@ public sealed unsafe partial class Mob
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     public int getHealth()
     {
-        return NativeMethods.TablePtr->f857((void*)_handle);
+        return NativeMethods.TablePtr->f869((void*)_handle);
     }
 
     public int getMaxHealth()
     {
-        return NativeMethods.TablePtr->f858((void*)_handle);
+        return NativeMethods.TablePtr->f870((void*)_handle);
     }
 
     public bool isGliding()
     {
-        return NativeMethods.TablePtr->f859((void*)_handle);
+        return NativeMethods.TablePtr->f871((void*)_handle);
     }
 
     public void setHealth(int health)
     {
-        NativeMethods.TablePtr->f860((void*)_handle, health);
+        NativeMethods.TablePtr->f872((void*)_handle, health);
     }
 
     public void setMaxHealth(int health)
     {
-        NativeMethods.TablePtr->f861((void*)_handle, health);
+        NativeMethods.TablePtr->f873((void*)_handle, health);
     }
 }

@@ -11,6 +11,18 @@ public sealed unsafe partial class Plugin
 
     public nint Handle => _handle;
 
+    internal nint ReleaseHandle()
+    {
+        if (_handle == 0)
+        {
+            throw new global::System.ObjectDisposedException("handle");
+        }
+
+        var __hs_handle = _handle;
+        _handle = 0;
+        return __hs_handle;
+    }
+
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
     public static Plugin Create() =>
         throw new global::System.NotSupportedException("BindingShim cannot project this member: the class has no accessible destructor.");
@@ -20,60 +32,60 @@ public sealed unsafe partial class Plugin
         var __hs_stringBytes0 = global::System.Text.Encoding.UTF8.GetBytes(name);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return (nint)NativeMethods.TablePtr->f1184((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
+            return (nint)NativeMethods.TablePtr->f1197((void*)_handle, __hs_stringData0, (nuint)__hs_stringBytes0.Length);
         }
     }
 
     public string getDataFolder()
     {
-        var __hs_view = NativeMethods.TablePtr->f1185((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1198((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getDescription()
     {
-        return (nint)NativeMethods.TablePtr->f1186((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1199((void*)_handle);
     }
 
     public nint getLogger()
     {
-        return (nint)NativeMethods.TablePtr->f1187((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1200((void*)_handle);
     }
 
     public string getName()
     {
-        var __hs_view = NativeMethods.TablePtr->f1188((void*)_handle);
+        var __hs_view = NativeMethods.TablePtr->f1201((void*)_handle);
         return global::System.Text.Encoding.UTF8.GetString(__hs_view.Data, checked((int)__hs_view.Size));
     }
 
     public nint getPluginLoader()
     {
-        return (nint)NativeMethods.TablePtr->f1189((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1202((void*)_handle);
     }
 
     public nint getServer()
     {
-        return (nint)NativeMethods.TablePtr->f1190((void*)_handle);
+        return (nint)NativeMethods.TablePtr->f1203((void*)_handle);
     }
 
     public bool isEnabled()
     {
-        return NativeMethods.TablePtr->f1191((void*)_handle);
+        return NativeMethods.TablePtr->f1204((void*)_handle);
     }
 
     public void onDisable()
     {
-        NativeMethods.TablePtr->f1192((void*)_handle);
+        NativeMethods.TablePtr->f1205((void*)_handle);
     }
 
     public void onEnable()
     {
-        NativeMethods.TablePtr->f1193((void*)_handle);
+        NativeMethods.TablePtr->f1206((void*)_handle);
     }
 
     public void onLoad()
     {
-        NativeMethods.TablePtr->f1194((void*)_handle);
+        NativeMethods.TablePtr->f1207((void*)_handle);
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]
