@@ -178,12 +178,12 @@ public sealed unsafe partial class Identifier_endstone__PotionType_ : global::Sy
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__PotionType_ other)
     {
-        return NativeMethods.TablePtr->hs_method_8995c2b6((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_8995c2b6((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__PotionType_ other)
     {
-        return NativeMethods.TablePtr->hs_method_6a05846e((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_6a05846e((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public void Dispose()

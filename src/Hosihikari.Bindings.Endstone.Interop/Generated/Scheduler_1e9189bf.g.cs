@@ -60,12 +60,12 @@ public sealed unsafe partial class Scheduler
 
     public bool isQueued(uint id)
     {
-        return NativeMethods.TablePtr->hs_method_8b614fe6((void*)_handle, id);
+        return NativeMethods.TablePtr->hs_method_8b614fe6((void*)_handle, id) != 0;
     }
 
     public bool isRunning(uint id)
     {
-        return NativeMethods.TablePtr->hs_method_e288ccfe((void*)_handle, id);
+        return NativeMethods.TablePtr->hs_method_e288ccfe((void*)_handle, id) != 0;
     }
 
     public global::Hosihikari.Bindings.Abi.SharedHandle? runTask(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin plugin, nint taskInvoke, nint taskUserData, nint taskRelease)

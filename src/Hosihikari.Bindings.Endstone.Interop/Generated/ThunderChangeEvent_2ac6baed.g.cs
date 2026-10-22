@@ -61,7 +61,7 @@ public sealed unsafe partial class ThunderChangeEvent : global::System.IDisposab
 
     public bool toThunderState()
     {
-        return NativeMethods.TablePtr->hs_method_00fa4571((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_00fa4571((void*)_handle) != 0;
     }
 
 

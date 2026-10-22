@@ -50,7 +50,7 @@ public sealed unsafe partial class Criteria
 
     public bool isReadOnly()
     {
-        return NativeMethods.TablePtr->hs_method_b898ebc7((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b898ebc7((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

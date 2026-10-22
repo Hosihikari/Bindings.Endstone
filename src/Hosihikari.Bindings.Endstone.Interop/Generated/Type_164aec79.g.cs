@@ -61,22 +61,22 @@ public sealed unsafe partial class Type
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockType other)
     {
-        return NativeMethods.TablePtr->hs_method_4c92e3db((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_4c92e3db((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ other)
     {
-        return NativeMethods.TablePtr->hs_method_cf2ded48((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_cf2ded48((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.BlockType other)
     {
-        return NativeMethods.TablePtr->hs_method_5d03a0e0((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_5d03a0e0((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__BlockType_ other)
     {
-        return NativeMethods.TablePtr->hs_method_5d861629((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_5d861629((void*)_handle, (void*)other.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

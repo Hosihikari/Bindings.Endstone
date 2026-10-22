@@ -248,7 +248,7 @@ public sealed unsafe partial class Server
         global::System.Text.Encoding.UTF8.GetBytes(command_line, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_1e44a472((void*)_handle, (void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return NativeMethods.TablePtr->hs_method_1e44a472((void*)_handle, (void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 
@@ -343,7 +343,7 @@ public sealed unsafe partial class Server
 
     public bool getOnlineMode()
     {
-        return NativeMethods.TablePtr->hs_method_5d68ac20((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5d68ac20((void*)_handle) != 0;
     }
 
     public nint[] getOnlinePlayers()
@@ -452,7 +452,7 @@ public sealed unsafe partial class Server
 
     public bool isPrimaryThread()
     {
-        return NativeMethods.TablePtr->hs_method_7c897210((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7c897210((void*)_handle) != 0;
     }
 
     public void reload()

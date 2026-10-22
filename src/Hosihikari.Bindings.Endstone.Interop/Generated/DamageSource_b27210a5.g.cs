@@ -57,7 +57,7 @@ public sealed unsafe partial class DamageSource
 
     public bool isIndirect()
     {
-        return NativeMethods.TablePtr->hs_method_a0e5d51d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a0e5d51d((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

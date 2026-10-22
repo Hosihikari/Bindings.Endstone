@@ -87,7 +87,7 @@ public sealed unsafe partial class Permissible
 
     public bool hasPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        return NativeMethods.TablePtr->hs_method_e11d24e9((void*)_handle, (void*)perm.Handle);
+        return NativeMethods.TablePtr->hs_method_e11d24e9((void*)_handle, (void*)perm.Handle) != 0;
     }
 
     public bool hasPermission(string name)
@@ -105,13 +105,13 @@ public sealed unsafe partial class Permissible
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_7eb49288((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_7eb49288((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool isPermissionSet(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        return NativeMethods.TablePtr->hs_method_2c42ae7c((void*)_handle, (void*)perm.Handle);
+        return NativeMethods.TablePtr->hs_method_2c42ae7c((void*)_handle, (void*)perm.Handle) != 0;
     }
 
     public bool isPermissionSet(string name)
@@ -129,7 +129,7 @@ public sealed unsafe partial class Permissible
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_0fea9886((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_0fea9886((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -140,7 +140,7 @@ public sealed unsafe partial class Permissible
 
     public bool removeAttachment(global::Hosihikari.Bindings.Endstone.Interop.endstone.PermissionAttachment attachment)
     {
-        return NativeMethods.TablePtr->hs_method_d0af79ef((void*)_handle, (void*)attachment.Handle);
+        return NativeMethods.TablePtr->hs_method_d0af79ef((void*)_handle, (void*)attachment.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

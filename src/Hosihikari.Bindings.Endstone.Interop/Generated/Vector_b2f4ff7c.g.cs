@@ -137,22 +137,22 @@ public sealed unsafe partial class Vector : global::System.IDisposable
 
     public bool isInAABB(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector min, global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector max)
     {
-        return NativeMethods.TablePtr->hs_method_753a5fd4((void*)_handle, (void*)min.Handle, (void*)max.Handle);
+        return NativeMethods.TablePtr->hs_method_753a5fd4((void*)_handle, (void*)min.Handle, (void*)max.Handle) != 0;
     }
 
     public bool isInSphere(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector origin, float radius)
     {
-        return NativeMethods.TablePtr->hs_method_c56f5329((void*)_handle, (void*)origin.Handle, radius);
+        return NativeMethods.TablePtr->hs_method_c56f5329((void*)_handle, (void*)origin.Handle, radius) != 0;
     }
 
     public bool isNormalized()
     {
-        return NativeMethods.TablePtr->hs_method_e341a456((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_e341a456((void*)_handle) != 0;
     }
 
     public bool isZero()
     {
-        return NativeMethods.TablePtr->hs_method_42a47900((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_42a47900((void*)_handle) != 0;
     }
 
     public float length()
@@ -182,7 +182,7 @@ public sealed unsafe partial class Vector : global::System.IDisposable
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return NativeMethods.TablePtr->hs_method_26814558((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_26814558((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector operator_multiply(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
@@ -237,7 +237,7 @@ public sealed unsafe partial class Vector : global::System.IDisposable
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector other)
     {
-        return NativeMethods.TablePtr->hs_method_b217dcd5((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_b217dcd5((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector rotateAroundAxis(global::Hosihikari.Bindings.Endstone.Interop.endstone.Vector axis, float angle)

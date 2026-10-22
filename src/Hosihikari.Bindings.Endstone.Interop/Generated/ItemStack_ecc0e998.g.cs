@@ -109,17 +109,17 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public bool hasItemMeta()
     {
-        return NativeMethods.TablePtr->hs_method_833a1664((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_833a1664((void*)_handle) != 0;
     }
 
     public bool isSimilar(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return NativeMethods.TablePtr->hs_method_7caee6c3((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_7caee6c3((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return NativeMethods.TablePtr->hs_method_6d85c46f((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_6d85c46f((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack operator_assign_f452cd9a(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
@@ -134,7 +134,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack other)
     {
-        return NativeMethods.TablePtr->hs_method_3f763bcf((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_3f763bcf((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public void setAmount(int amount)
@@ -149,7 +149,7 @@ public sealed unsafe partial class ItemStack : global::System.IDisposable
 
     public bool setItemMeta(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? meta)
     {
-        return NativeMethods.TablePtr->hs_method_5aa79c5f((void*)_handle, (void*)(meta?.Handle ?? 0));
+        return NativeMethods.TablePtr->hs_method_5aa79c5f((void*)_handle, (void*)(meta?.Handle ?? 0)) != 0;
     }
 
     public void setNbt(global::Hosihikari.Bindings.Endstone.Interop.endstone.CompoundTag nbt)

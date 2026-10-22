@@ -109,7 +109,7 @@ public sealed unsafe partial class ArrayTag_int_ : global::System.IDisposable
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->hs_method_5676c89d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5676c89d((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<int>>>' is not a known bindable declaration.", false)]

@@ -55,12 +55,12 @@ public sealed unsafe partial class MapMeta
 
     public bool hasMapId()
     {
-        return NativeMethods.TablePtr->hs_method_06b88344((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_06b88344((void*)_handle) != 0;
     }
 
     public bool hasMapView()
     {
-        return NativeMethods.TablePtr->hs_method_a04ea49e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a04ea49e((void*)_handle) != 0;
     }
 
     public void setMapId(long id)

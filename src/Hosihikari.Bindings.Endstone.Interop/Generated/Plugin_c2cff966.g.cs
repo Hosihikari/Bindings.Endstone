@@ -95,7 +95,7 @@ public sealed unsafe partial class Plugin
 
     public bool isEnabled()
     {
-        return NativeMethods.TablePtr->hs_method_1f11e477((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_1f11e477((void*)_handle) != 0;
     }
 
     public void onDisable()

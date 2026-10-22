@@ -55,12 +55,12 @@ public sealed unsafe partial class Task
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->hs_method_1b04d263((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_1b04d263((void*)_handle) != 0;
     }
 
     public bool isSync()
     {
-        return NativeMethods.TablePtr->hs_method_3838f72f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_3838f72f((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

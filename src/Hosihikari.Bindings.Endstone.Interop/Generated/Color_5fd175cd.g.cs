@@ -135,12 +135,12 @@ public sealed unsafe partial class Color : global::System.IDisposable
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Color other)
     {
-        return NativeMethods.TablePtr->hs_method_88cb059a((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_88cb059a((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Color other)
     {
-        return NativeMethods.TablePtr->hs_method_61844f16((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_61844f16((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Color setAlpha(int alpha)

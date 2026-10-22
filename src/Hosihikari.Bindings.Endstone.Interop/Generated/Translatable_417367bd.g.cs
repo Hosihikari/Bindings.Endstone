@@ -85,7 +85,7 @@ public sealed unsafe partial class Translatable : global::System.IDisposable
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->hs_method_32afdbcb((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_32afdbcb((void*)_handle) != 0;
     }
 
     public nint getParameters()

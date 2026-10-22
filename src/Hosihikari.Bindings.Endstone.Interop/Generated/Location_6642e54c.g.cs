@@ -127,7 +127,7 @@ public sealed unsafe partial class Location : global::System.IDisposable
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
     {
-        return NativeMethods.TablePtr->hs_method_72db90df((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_72db90df((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Location operator_add(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
@@ -172,7 +172,7 @@ public sealed unsafe partial class Location : global::System.IDisposable
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location other)
     {
-        return NativeMethods.TablePtr->hs_method_6639e422((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_6639e422((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public void setDimension(global::Hosihikari.Bindings.Endstone.Interop.endstone.Dimension dimension)

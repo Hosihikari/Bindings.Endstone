@@ -80,7 +80,7 @@ public sealed unsafe partial class PermissionAttachment : global::System.IDispos
 
     public bool remove()
     {
-        return NativeMethods.TablePtr->hs_method_5aae78fb((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5aae78fb((void*)_handle) != 0;
     }
 
     public void setPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm, bool value)

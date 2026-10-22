@@ -64,7 +64,7 @@ public sealed unsafe partial class UUID : global::System.IDisposable
 
     public bool isNil()
     {
-        return NativeMethods.TablePtr->hs_method_06f303a1((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_06f303a1((void*)_handle) != 0;
     }
 
     public static ulong size()

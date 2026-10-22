@@ -125,7 +125,7 @@ public sealed unsafe partial class Logger
 
     public bool isEnabledFor(byte level)
     {
-        return NativeMethods.TablePtr->hs_method_fa5a7e03((void*)_handle, level);
+        return NativeMethods.TablePtr->hs_method_fa5a7e03((void*)_handle, level) != 0;
     }
 
     public void log(byte level, string message)

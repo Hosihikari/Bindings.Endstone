@@ -63,17 +63,17 @@ public sealed unsafe partial class BookMeta
 
     public bool hasAuthor()
     {
-        return NativeMethods.TablePtr->hs_method_a6474ca8((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a6474ca8((void*)_handle) != 0;
     }
 
     public bool hasGeneration()
     {
-        return NativeMethods.TablePtr->hs_method_9b523c2c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9b523c2c((void*)_handle) != 0;
     }
 
     public bool hasTitle()
     {
-        return NativeMethods.TablePtr->hs_method_8a9362cc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_8a9362cc((void*)_handle) != 0;
     }
 
     public void setAuthor(string? author)

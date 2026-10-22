@@ -56,7 +56,7 @@ public sealed unsafe partial class Item
 
     public bool isUnlimitedLifetime()
     {
-        return NativeMethods.TablePtr->hs_method_c38c6e29((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c38c6e29((void*)_handle) != 0;
     }
 
     public void setItemStack(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack stack)

@@ -65,7 +65,7 @@ public sealed unsafe partial class CommandMap
         global::System.Text.Encoding.UTF8.GetBytes(command_line, __hs_stringBytes1);
         fixed (byte* __hs_stringData1 = __hs_stringBytes1)
         {
-            return NativeMethods.TablePtr->hs_method_40f031d6((void*)_handle, (void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1);
+            return NativeMethods.TablePtr->hs_method_40f031d6((void*)_handle, (void*)sender.Handle, __hs_stringData1, (nuint)__hs_stringByteCount1) != 0;
         }
     }
 
@@ -96,7 +96,7 @@ public sealed unsafe partial class CommandMap
 
     public bool registerCommand(global::Hosihikari.Bindings.Abi.SharedHandle? command)
     {
-        return NativeMethods.TablePtr->hs_method_05b1c177((void*)_handle, command?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        return NativeMethods.TablePtr->hs_method_05b1c177((void*)_handle, command?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

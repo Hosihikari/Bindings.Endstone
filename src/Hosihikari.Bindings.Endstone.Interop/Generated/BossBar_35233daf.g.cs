@@ -81,12 +81,12 @@ public sealed unsafe partial class BossBar : global::System.IDisposable
 
     public bool hasFlag(int flag)
     {
-        return NativeMethods.TablePtr->hs_method_67f21c42((void*)_handle, flag);
+        return NativeMethods.TablePtr->hs_method_67f21c42((void*)_handle, flag) != 0;
     }
 
     public bool isVisible()
     {
-        return NativeMethods.TablePtr->hs_method_a7098d5e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a7098d5e((void*)_handle) != 0;
     }
 
     public void removeAll()

@@ -86,22 +86,22 @@ public sealed unsafe partial class Objective : global::System.IDisposable
 
     public bool isDisplayed()
     {
-        return NativeMethods.TablePtr->hs_method_cabc5bde((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_cabc5bde((void*)_handle) != 0;
     }
 
     public bool isModifiable()
     {
-        return NativeMethods.TablePtr->hs_method_ae3a847e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_ae3a847e((void*)_handle) != 0;
     }
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective other)
     {
-        return NativeMethods.TablePtr->hs_method_57030bb9((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_57030bb9((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Objective other)
     {
-        return NativeMethods.TablePtr->hs_method_bb751e05((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_bb751e05((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public void setDisplay(int? slot, int order)

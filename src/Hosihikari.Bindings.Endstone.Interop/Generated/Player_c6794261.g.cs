@@ -49,7 +49,7 @@ public sealed unsafe partial class Player
 
     public bool getAllowFlight()
     {
-        return NativeMethods.TablePtr->hs_method_22c6dde5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_22c6dde5((void*)_handle) != 0;
     }
 
     public string getDeviceId()
@@ -155,22 +155,22 @@ public sealed unsafe partial class Player
 
     public bool isFlying()
     {
-        return NativeMethods.TablePtr->hs_method_c48a3c9d((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c48a3c9d((void*)_handle) != 0;
     }
 
     public bool isOp()
     {
-        return NativeMethods.TablePtr->hs_method_a6129068((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a6129068((void*)_handle) != 0;
     }
 
     public bool isSneaking()
     {
-        return NativeMethods.TablePtr->hs_method_034c9ee3((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_034c9ee3((void*)_handle) != 0;
     }
 
     public bool isSprinting()
     {
-        return NativeMethods.TablePtr->hs_method_17e3131f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_17e3131f((void*)_handle) != 0;
     }
 
     public void kick(string message)
@@ -207,7 +207,7 @@ public sealed unsafe partial class Player
         global::System.Text.Encoding.UTF8.GetBytes(command, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_66e6556f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_66e6556f((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 

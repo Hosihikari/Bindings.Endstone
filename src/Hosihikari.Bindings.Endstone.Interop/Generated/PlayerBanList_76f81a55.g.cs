@@ -338,7 +338,7 @@ public sealed unsafe partial class PlayerBanList
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_d5b50c77((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_d5b50c77((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -370,7 +370,7 @@ public sealed unsafe partial class PlayerBanList
         {
             fixed (byte* __hs_stringData2 = __hs_stringBytes2)
             {
-                return NativeMethods.TablePtr->hs_method_b5bff8d5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, uuid is not null, xuid is not null);
+                return NativeMethods.TablePtr->hs_method_b5bff8d5((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, (void*)(uuid?.Handle ?? 0), __hs_stringData2, (nuint)__hs_stringByteCount2, uuid is not null, xuid is not null) != 0;
             }
         }
     }

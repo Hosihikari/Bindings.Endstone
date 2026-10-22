@@ -254,12 +254,12 @@ public sealed unsafe partial class Enchantment
 
     public bool canEnchantItem(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        return NativeMethods.TablePtr->hs_method_e509f229((void*)_handle, (void*)item.Handle);
+        return NativeMethods.TablePtr->hs_method_e509f229((void*)_handle, (void*)item.Handle) != 0;
     }
 
     public bool conflictsWith(global::Hosihikari.Bindings.Endstone.Interop.endstone.Enchantment other)
     {
-        return NativeMethods.TablePtr->hs_method_b77af417((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_b77af417((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public int getMaxLevel()

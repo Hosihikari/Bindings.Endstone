@@ -118,12 +118,12 @@ public sealed unsafe partial class Inventory
 
     public bool contains(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)
     {
-        return NativeMethods.TablePtr->hs_method_7f00f8a3((void*)_handle, (void*)item.Handle);
+        return NativeMethods.TablePtr->hs_method_7f00f8a3((void*)_handle, (void*)item.Handle) != 0;
     }
 
     public bool contains(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item, int amount)
     {
-        return NativeMethods.TablePtr->hs_method_5c31ac2b((void*)_handle, (void*)item.Handle, amount);
+        return NativeMethods.TablePtr->hs_method_5c31ac2b((void*)_handle, (void*)item.Handle, amount) != 0;
     }
 
     public bool contains(string type)
@@ -141,13 +141,13 @@ public sealed unsafe partial class Inventory
         global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_376fa141((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_376fa141((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool containsAtLeast(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item, int amount)
     {
-        return NativeMethods.TablePtr->hs_method_66a561ae((void*)_handle, (void*)item.Handle, amount);
+        return NativeMethods.TablePtr->hs_method_66a561ae((void*)_handle, (void*)item.Handle, amount) != 0;
     }
 
     public bool containsAtLeast(string type, int amount)
@@ -165,7 +165,7 @@ public sealed unsafe partial class Inventory
         global::System.Text.Encoding.UTF8.GetBytes(type, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_6b032e11((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, amount);
+            return NativeMethods.TablePtr->hs_method_6b032e11((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0, amount) != 0;
         }
     }
 
@@ -230,7 +230,7 @@ public sealed unsafe partial class Inventory
 
     public bool isEmpty()
     {
-        return NativeMethods.TablePtr->hs_method_54f1a207((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_54f1a207((void*)_handle) != 0;
     }
 
     public void remove(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack item)

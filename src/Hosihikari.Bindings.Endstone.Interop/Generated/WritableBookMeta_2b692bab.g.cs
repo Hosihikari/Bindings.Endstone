@@ -93,7 +93,7 @@ public sealed unsafe partial class WritableBookMeta
 
     public bool hasPages()
     {
-        return NativeMethods.TablePtr->hs_method_9a458a7f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9a458a7f((void*)_handle) != 0;
     }
 
     public void setPage(int page, string data)

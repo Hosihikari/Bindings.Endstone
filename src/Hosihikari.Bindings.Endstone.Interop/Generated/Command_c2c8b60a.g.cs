@@ -167,7 +167,7 @@ public sealed unsafe partial class Command : global::System.IDisposable
                 __hs_vectorData1[__hs_i1] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr1 + __hs_vectorOffset1, Size = (nuint)__hs_length1 };
                 __hs_vectorOffset1 += __hs_length1;
             }
-            return NativeMethods.TablePtr->hs_method_843e3c70((void*)_handle, (void*)sender.Handle, __hs_vectorData1, (nuint)(args?.Length ?? 0));
+            return NativeMethods.TablePtr->hs_method_843e3c70((void*)_handle, (void*)sender.Handle, __hs_vectorData1, (nuint)(args?.Length ?? 0)) != 0;
         }
     }
 
@@ -221,12 +221,12 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public bool isRegistered()
     {
-        return NativeMethods.TablePtr->hs_method_a8c29d42((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_a8c29d42((void*)_handle) != 0;
     }
 
     public bool registerTo(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->hs_method_8293f1a6((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->hs_method_8293f1a6((void*)_handle, (void*)command_map.Handle) != 0;
     }
 
     public void setDescription(string description)
@@ -269,17 +269,17 @@ public sealed unsafe partial class Command : global::System.IDisposable
 
     public bool testPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->hs_method_df3ee941((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->hs_method_df3ee941((void*)_handle, (void*)target.Handle) != 0;
     }
 
     public bool testPermissionSilently(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender target)
     {
-        return NativeMethods.TablePtr->hs_method_76dd5767((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->hs_method_76dd5767((void*)_handle, (void*)target.Handle) != 0;
     }
 
     public bool unregisterFrom(global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandMap command_map)
     {
-        return NativeMethods.TablePtr->hs_method_b3d6ab8c((void*)_handle, (void*)command_map.Handle);
+        return NativeMethods.TablePtr->hs_method_b3d6ab8c((void*)_handle, (void*)command_map.Handle) != 0;
     }
 
 

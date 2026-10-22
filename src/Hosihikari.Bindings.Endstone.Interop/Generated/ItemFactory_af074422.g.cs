@@ -45,7 +45,7 @@ public sealed unsafe partial class ItemFactory
 
     public bool equals(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? meta1, global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? meta2)
     {
-        return NativeMethods.TablePtr->hs_method_c6d96d56((void*)_handle, (void*)(meta1?.Handle ?? 0), (void*)(meta2?.Handle ?? 0));
+        return NativeMethods.TablePtr->hs_method_c6d96d56((void*)_handle, (void*)(meta1?.Handle ?? 0), (void*)(meta2?.Handle ?? 0)) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? getItemMeta(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
@@ -56,7 +56,7 @@ public sealed unsafe partial class ItemFactory
 
     public bool isApplicable(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? meta, global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ type)
     {
-        return NativeMethods.TablePtr->hs_method_7f7364e4((void*)_handle, (void*)(meta?.Handle ?? 0), (void*)type.Handle);
+        return NativeMethods.TablePtr->hs_method_7f7364e4((void*)_handle, (void*)(meta?.Handle ?? 0), (void*)type.Handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: the class has no accessible destructor.", false)]

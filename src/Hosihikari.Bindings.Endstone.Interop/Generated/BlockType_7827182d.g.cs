@@ -55,7 +55,7 @@ public sealed unsafe partial class BlockType
 
     public bool hasItemType()
     {
-        return NativeMethods.TablePtr->hs_method_9375ea5f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_9375ea5f((void*)_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Registry_endstone__BlockType__Nested.Type AsType()

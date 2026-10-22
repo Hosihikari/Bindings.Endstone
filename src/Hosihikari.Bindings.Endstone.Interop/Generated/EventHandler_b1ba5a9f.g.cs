@@ -85,7 +85,7 @@ public sealed unsafe partial class EventHandler : global::System.IDisposable
 
     public bool isIgnoreCancelled()
     {
-        return NativeMethods.TablePtr->hs_method_f53a20bc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f53a20bc((void*)_handle) != 0;
     }
 
     public void Dispose()

@@ -86,7 +86,7 @@ public sealed unsafe partial class SocketAddress : global::System.IDisposable
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.SocketAddress other)
     {
-        return NativeMethods.TablePtr->hs_method_868949fd((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_868949fd((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public void Dispose()

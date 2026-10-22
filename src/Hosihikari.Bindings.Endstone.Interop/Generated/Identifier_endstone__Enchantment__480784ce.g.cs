@@ -178,12 +178,12 @@ public sealed unsafe partial class Identifier_endstone__Enchantment_ : global::S
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ other)
     {
-        return NativeMethods.TablePtr->hs_method_2569d99d((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_2569d99d((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ other)
     {
-        return NativeMethods.TablePtr->hs_method_6f15e1ca((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_6f15e1ca((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public void Dispose()

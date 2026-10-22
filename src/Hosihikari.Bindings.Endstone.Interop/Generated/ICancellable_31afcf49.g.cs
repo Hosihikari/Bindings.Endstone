@@ -44,7 +44,7 @@ public sealed unsafe partial class ICancellable
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->hs_method_297a2019((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_297a2019((void*)_handle) != 0;
     }
 
     public void setCancelled(bool cancel)

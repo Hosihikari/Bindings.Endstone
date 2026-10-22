@@ -61,7 +61,7 @@ public sealed unsafe partial class CrossbowMeta
 
     public bool hasChargedProjectiles()
     {
-        return NativeMethods.TablePtr->hs_method_abce5a3b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_abce5a3b((void*)_handle) != 0;
     }
 
     public void setChargedProjectiles(global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemStack[] projectiles)

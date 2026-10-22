@@ -44,7 +44,7 @@ public sealed unsafe partial class Cancellable_endstone__WeatherEvent_
 
     public bool isCancelled()
     {
-        return NativeMethods.TablePtr->hs_method_6db9fa6c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_6db9fa6c((void*)_handle) != 0;
     }
 
     public void setCancelled(bool cancel)

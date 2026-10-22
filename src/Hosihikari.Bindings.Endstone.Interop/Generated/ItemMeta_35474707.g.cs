@@ -44,7 +44,7 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
 
     public bool addEnchant(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id, int level, bool force)
     {
-        return NativeMethods.TablePtr->hs_method_9bed7a9c((void*)_handle, (void*)id.Handle, level, force);
+        return NativeMethods.TablePtr->hs_method_9bed7a9c((void*)_handle, (void*)id.Handle, level, force) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.ItemMeta? clone()
@@ -113,47 +113,47 @@ public sealed unsafe partial class ItemMeta : global::System.IDisposable
 
     public bool hasConflictingEnchant(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return NativeMethods.TablePtr->hs_method_e4906b2d((void*)_handle, (void*)id.Handle);
+        return NativeMethods.TablePtr->hs_method_e4906b2d((void*)_handle, (void*)id.Handle) != 0;
     }
 
     public bool hasDamage()
     {
-        return NativeMethods.TablePtr->hs_method_d9ef803c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d9ef803c((void*)_handle) != 0;
     }
 
     public bool hasDisplayName()
     {
-        return NativeMethods.TablePtr->hs_method_49583d1c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_49583d1c((void*)_handle) != 0;
     }
 
     public bool hasEnchant(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return NativeMethods.TablePtr->hs_method_ca72dfec((void*)_handle, (void*)id.Handle);
+        return NativeMethods.TablePtr->hs_method_ca72dfec((void*)_handle, (void*)id.Handle) != 0;
     }
 
     public bool hasEnchants()
     {
-        return NativeMethods.TablePtr->hs_method_d8a3a51a((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d8a3a51a((void*)_handle) != 0;
     }
 
     public bool hasLore()
     {
-        return NativeMethods.TablePtr->hs_method_25e37ea5((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_25e37ea5((void*)_handle) != 0;
     }
 
     public bool hasRepairCost()
     {
-        return NativeMethods.TablePtr->hs_method_93c57639((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_93c57639((void*)_handle) != 0;
     }
 
     public bool isUnbreakable()
     {
-        return NativeMethods.TablePtr->hs_method_1706707c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_1706707c((void*)_handle) != 0;
     }
 
     public bool removeEnchant(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__Enchantment_ id)
     {
-        return NativeMethods.TablePtr->hs_method_0cc34e1e((void*)_handle, (void*)id.Handle);
+        return NativeMethods.TablePtr->hs_method_0cc34e1e((void*)_handle, (void*)id.Handle) != 0;
     }
 
     public void removeEnchants()

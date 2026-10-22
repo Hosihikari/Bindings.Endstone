@@ -127,7 +127,7 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
 
     public bool hasPermission(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        return NativeMethods.TablePtr->hs_method_0112bd82((void*)_handle, (void*)perm.Handle);
+        return NativeMethods.TablePtr->hs_method_0112bd82((void*)_handle, (void*)perm.Handle) != 0;
     }
 
     public bool hasPermission(string name)
@@ -145,13 +145,13 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_7413ddc4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_7413ddc4((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool isPermissionSet(global::Hosihikari.Bindings.Endstone.Interop.endstone.Permission perm)
     {
-        return NativeMethods.TablePtr->hs_method_0cbfe3a8((void*)_handle, (void*)perm.Handle);
+        return NativeMethods.TablePtr->hs_method_0cbfe3a8((void*)_handle, (void*)perm.Handle) != 0;
     }
 
     public bool isPermissionSet(string name)
@@ -169,7 +169,7 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_29f6249e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_29f6249e((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -180,7 +180,7 @@ public sealed unsafe partial class CommandSenderWrapper : global::System.IDispos
 
     public bool removeAttachment(global::Hosihikari.Bindings.Endstone.Interop.endstone.PermissionAttachment attachment)
     {
-        return NativeMethods.TablePtr->hs_method_0ecf0f05((void*)_handle, (void*)attachment.Handle);
+        return NativeMethods.TablePtr->hs_method_0ecf0f05((void*)_handle, (void*)attachment.Handle) != 0;
     }
 
     public void sendErrorMessage(global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 message)

@@ -49,7 +49,7 @@ public sealed unsafe partial class Mob
 
     public bool isGliding()
     {
-        return NativeMethods.TablePtr->hs_method_6a0ca04e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_6a0ca04e((void*)_handle) != 0;
     }
 
     public void setHealth(int health)

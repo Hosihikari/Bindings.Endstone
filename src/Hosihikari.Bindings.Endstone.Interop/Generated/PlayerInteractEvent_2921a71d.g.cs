@@ -89,12 +89,12 @@ public sealed unsafe partial class PlayerInteractEvent : global::System.IDisposa
 
     public bool hasBlock()
     {
-        return NativeMethods.TablePtr->hs_method_ccde37b2((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_ccde37b2((void*)_handle) != 0;
     }
 
     public bool hasItem()
     {
-        return NativeMethods.TablePtr->hs_method_250987aa((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_250987aa((void*)_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Cancellable_endstone__PlayerEvent_ AsCancellable_endstone__PlayerEvent_()

@@ -81,7 +81,7 @@ public sealed unsafe partial class PermissionAttachmentInfo : global::System.IDi
 
     public bool getValue()
     {
-        return NativeMethods.TablePtr->hs_method_f0aee6c2((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_f0aee6c2((void*)_handle) != 0;
     }
 
     public void Dispose()

@@ -61,7 +61,7 @@ public sealed unsafe partial class WeatherChangeEvent : global::System.IDisposab
 
     public bool toWeatherState()
     {
-        return NativeMethods.TablePtr->hs_method_0e26b9b9((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0e26b9b9((void*)_handle) != 0;
     }
 
 

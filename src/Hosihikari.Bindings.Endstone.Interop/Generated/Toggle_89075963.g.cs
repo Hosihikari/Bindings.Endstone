@@ -61,7 +61,7 @@ public sealed unsafe partial class Toggle : global::System.IDisposable
 
     public bool getDefaultValue()
     {
-        return NativeMethods.TablePtr->hs_method_7807e4ae((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_7807e4ae((void*)_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.Variant_228e24a8 getLabel()

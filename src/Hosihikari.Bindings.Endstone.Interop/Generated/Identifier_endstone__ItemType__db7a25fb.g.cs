@@ -178,12 +178,12 @@ public sealed unsafe partial class Identifier_endstone__ItemType_ : global::Syst
 
     public bool operator_not_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ other)
     {
-        return NativeMethods.TablePtr->hs_method_bc33017e((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_bc33017e((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public bool operator_equal(global::Hosihikari.Bindings.Endstone.Interop.endstone.Identifier_endstone__ItemType_ other)
     {
-        return NativeMethods.TablePtr->hs_method_1d49e2cf((void*)_handle, (void*)other.Handle);
+        return NativeMethods.TablePtr->hs_method_1d49e2cf((void*)_handle, (void*)other.Handle) != 0;
     }
 
     public void Dispose()

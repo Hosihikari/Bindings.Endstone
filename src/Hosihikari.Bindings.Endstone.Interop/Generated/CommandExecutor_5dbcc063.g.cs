@@ -59,7 +59,7 @@ public sealed unsafe partial class CommandExecutor : global::System.IDisposable
                 __hs_vectorData2[__hs_i2] = new global::Hosihikari.Bindings.Abi.StringView { Data = __hs_vectorArenaPtr2 + __hs_vectorOffset2, Size = (nuint)__hs_length2 };
                 __hs_vectorOffset2 += __hs_length2;
             }
-            return NativeMethods.TablePtr->hs_method_13fd8943((void*)_handle, (void*)sender.Handle, (void*)command.Handle, __hs_vectorData2, (nuint)(args?.Length ?? 0));
+            return NativeMethods.TablePtr->hs_method_13fd8943((void*)_handle, (void*)sender.Handle, (void*)command.Handle, __hs_vectorData2, (nuint)(args?.Length ?? 0)) != 0;
         }
     }
 

@@ -59,7 +59,7 @@ public sealed unsafe partial class Score : global::System.IDisposable
 
     public bool isScoreSet()
     {
-        return NativeMethods.TablePtr->hs_method_5e82457b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_5e82457b((void*)_handle) != 0;
     }
 
     public void setValue(int score)

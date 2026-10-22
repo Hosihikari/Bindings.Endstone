@@ -200,13 +200,13 @@ public sealed unsafe partial class PluginManager
         global::System.Text.Encoding.UTF8.GetBytes(name, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_69df9686((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_69df9686((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool isPluginEnabled(global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin? plugin)
     {
-        return NativeMethods.TablePtr->hs_method_44aacc70((void*)_handle, (void*)(plugin?.Handle ?? 0));
+        return NativeMethods.TablePtr->hs_method_44aacc70((void*)_handle, (void*)(plugin?.Handle ?? 0)) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Plugin? loadPlugin(string file)

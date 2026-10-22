@@ -82,22 +82,22 @@ public sealed unsafe partial class MapView
 
     public bool isLocked()
     {
-        return NativeMethods.TablePtr->hs_method_dfced9b6((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_dfced9b6((void*)_handle) != 0;
     }
 
     public bool isUnlimitedTracking()
     {
-        return NativeMethods.TablePtr->hs_method_d2219fdf((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_d2219fdf((void*)_handle) != 0;
     }
 
     public bool isVirtual()
     {
-        return NativeMethods.TablePtr->hs_method_df1c121e((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_df1c121e((void*)_handle) != 0;
     }
 
     public bool removeRenderer(global::Hosihikari.Bindings.Abi.SharedHandle? renderer)
     {
-        return NativeMethods.TablePtr->hs_method_34277fd9((void*)_handle, renderer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData));
+        return NativeMethods.TablePtr->hs_method_34277fd9((void*)_handle, renderer?.ToNative() ?? default(global::Hosihikari.Bindings.Abi.SharedHandleData)) != 0;
     }
 
     public void setCenterX(int x)

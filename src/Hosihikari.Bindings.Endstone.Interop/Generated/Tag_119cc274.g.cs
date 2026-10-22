@@ -353,13 +353,13 @@ public sealed unsafe partial class Tag : global::System.IDisposable
         global::System.Text.Encoding.UTF8.GetBytes(key, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_c9fa7570((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_c9fa7570((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->hs_method_c6fd8bde((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_c6fd8bde((void*)_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.nbt.Tag operator_index(string key)

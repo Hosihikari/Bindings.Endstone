@@ -81,7 +81,7 @@ public sealed unsafe partial class PlayerEmoteEvent : global::System.IDisposable
 
     public bool isMuted()
     {
-        return NativeMethods.TablePtr->hs_method_008ffb5b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_008ffb5b((void*)_handle) != 0;
     }
 
     public void setMuted(bool muted)

@@ -90,7 +90,7 @@ public sealed unsafe partial class MapCursor : global::System.IDisposable
 
     public bool isVisible()
     {
-        return NativeMethods.TablePtr->hs_method_b8f3469f((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_b8f3469f((void*)_handle) != 0;
     }
 
     public void setCaption(string caption)

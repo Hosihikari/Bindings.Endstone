@@ -48,7 +48,7 @@ public sealed unsafe partial class MapRenderer
 
     public bool isContextual()
     {
-        return NativeMethods.TablePtr->hs_method_adda0eac((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_adda0eac((void*)_handle) != 0;
     }
 
     public void render(global::Hosihikari.Bindings.Endstone.Interop.endstone.MapView map, global::Hosihikari.Bindings.Endstone.Interop.endstone.MapCanvas canvas, global::Hosihikari.Bindings.Endstone.Interop.endstone.Player player)

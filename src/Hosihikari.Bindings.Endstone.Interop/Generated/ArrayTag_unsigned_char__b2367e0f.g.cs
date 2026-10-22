@@ -109,7 +109,7 @@ public sealed unsafe partial class ArrayTag_unsigned_char_ : global::System.IDis
 
     public bool empty()
     {
-        return NativeMethods.TablePtr->hs_method_0f9715b4((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_0f9715b4((void*)_handle) != 0;
     }
 
     [global::System.Obsolete("BindingShim cannot project this member: by-value return type 'std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<unsigned char>>>' is not a known bindable declaration.", false)]

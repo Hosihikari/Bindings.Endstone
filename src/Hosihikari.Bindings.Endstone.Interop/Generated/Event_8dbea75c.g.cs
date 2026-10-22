@@ -53,7 +53,7 @@ public sealed unsafe partial class Event
 
     public bool isAsynchronous()
     {
-        return NativeMethods.TablePtr->hs_method_828d94d9((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_828d94d9((void*)_handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.Event operator_assign(global::Hosihikari.Bindings.Endstone.Interop.endstone.Event arg0)

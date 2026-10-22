@@ -106,17 +106,17 @@ public sealed unsafe partial class BlockState : global::System.IDisposable
 
     public bool update()
     {
-        return NativeMethods.TablePtr->hs_method_86db12dc((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_86db12dc((void*)_handle) != 0;
     }
 
     public bool update(bool force)
     {
-        return NativeMethods.TablePtr->hs_method_aa94c59a((void*)_handle, force);
+        return NativeMethods.TablePtr->hs_method_aa94c59a((void*)_handle, force) != 0;
     }
 
     public bool update(bool force, bool apply_physics)
     {
-        return NativeMethods.TablePtr->hs_method_d784c8e6((void*)_handle, force, apply_physics);
+        return NativeMethods.TablePtr->hs_method_d784c8e6((void*)_handle, force, apply_physics) != 0;
     }
 
 

@@ -52,7 +52,7 @@ public sealed unsafe partial class Actor
         global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_96acbd59((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_96acbd59((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -130,37 +130,37 @@ public sealed unsafe partial class Actor
 
     public bool isDead()
     {
-        return NativeMethods.TablePtr->hs_method_bd047ad0((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_bd047ad0((void*)_handle) != 0;
     }
 
     public bool isInLava()
     {
-        return NativeMethods.TablePtr->hs_method_ead096dd((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_ead096dd((void*)_handle) != 0;
     }
 
     public bool isInWater()
     {
-        return NativeMethods.TablePtr->hs_method_80040a41((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_80040a41((void*)_handle) != 0;
     }
 
     public bool isNameTagAlwaysVisible()
     {
-        return NativeMethods.TablePtr->hs_method_43e8d43c((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_43e8d43c((void*)_handle) != 0;
     }
 
     public bool isNameTagVisible()
     {
-        return NativeMethods.TablePtr->hs_method_110331fd((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_110331fd((void*)_handle) != 0;
     }
 
     public bool isOnGround()
     {
-        return NativeMethods.TablePtr->hs_method_1a019155((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_1a019155((void*)_handle) != 0;
     }
 
     public bool isValid()
     {
-        return NativeMethods.TablePtr->hs_method_4566329b((void*)_handle);
+        return NativeMethods.TablePtr->hs_method_4566329b((void*)_handle) != 0;
     }
 
     public void remove()
@@ -183,7 +183,7 @@ public sealed unsafe partial class Actor
         global::System.Text.Encoding.UTF8.GetBytes(tag, __hs_stringBytes0);
         fixed (byte* __hs_stringData0 = __hs_stringBytes0)
         {
-            return NativeMethods.TablePtr->hs_method_157784ca((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0);
+            return NativeMethods.TablePtr->hs_method_157784ca((void*)_handle, __hs_stringData0, (nuint)__hs_stringByteCount0) != 0;
         }
     }
 
@@ -242,12 +242,12 @@ public sealed unsafe partial class Actor
 
     public bool teleport(global::Hosihikari.Bindings.Endstone.Interop.endstone.Actor target)
     {
-        return NativeMethods.TablePtr->hs_method_ddf1c948((void*)_handle, (void*)target.Handle);
+        return NativeMethods.TablePtr->hs_method_ddf1c948((void*)_handle, (void*)target.Handle) != 0;
     }
 
     public bool teleport(global::Hosihikari.Bindings.Endstone.Interop.endstone.Location location)
     {
-        return NativeMethods.TablePtr->hs_method_ab7b90ae((void*)_handle, (void*)location.Handle);
+        return NativeMethods.TablePtr->hs_method_ab7b90ae((void*)_handle, (void*)location.Handle) != 0;
     }
 
     public global::Hosihikari.Bindings.Endstone.Interop.endstone.CommandSender AsCommandSender()
