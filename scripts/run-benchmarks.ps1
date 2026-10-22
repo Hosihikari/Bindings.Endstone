@@ -16,12 +16,12 @@ $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $ServerRoot = (Resolve-Path $ServerRoot).Path
 $EndstoneRoot = (Resolve-Path $EndstoneRoot).Path
 if ([string]::IsNullOrWhiteSpace($GeneratorRoot)) {
-    $GeneratorRoot = (Resolve-Path (Join-Path $RepoRoot "..\Generator")).Path
+    $GeneratorRoot = (Resolve-Path (Join-Path $RepoRoot "..\Bindings.Generator")).Path
 } else {
     $GeneratorRoot = (Resolve-Path $GeneratorRoot).Path
 }
 if ([string]::IsNullOrWhiteSpace($AbiRoot)) {
-    $AbiRoot = (Resolve-Path (Join-Path (Split-Path $RepoRoot -Parent) "Abi")).Path
+    $AbiRoot = (Resolve-Path (Join-Path (Split-Path $RepoRoot -Parent) "Bindings.Abi")).Path
 } else {
     $AbiRoot = (Resolve-Path $AbiRoot).Path
 }

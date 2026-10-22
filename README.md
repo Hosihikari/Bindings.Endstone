@@ -24,8 +24,8 @@ The shim is emitted in `--virtual-dispatch` mode. Inline members, virtual method
 The frontend parses `include/endstone/endstone.hpp` with the Endstone dependency headers:
 
 ```shell
-powershell -File ../Generator/frontend/run-endstone.ps1
-powershell -File scripts/regenerate.ps1 -IrDirectory ..\Generator\artifacts\endstone-ir -AbiRoot ..\Abi
+powershell -File ../Bindings.Generator/frontend/run-endstone.ps1
+powershell -File scripts/regenerate.ps1 -IrDirectory ..\Bindings.Generator\artifacts\endstone-ir -AbiRoot ..\Bindings.Abi
 ```
 
 ## Build
